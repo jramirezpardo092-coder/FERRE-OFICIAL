@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ferretería Pardo SAS | Catálogo, herrajes y herramientas en Bogotá</title>
+  <meta name="description" content="Ferretería Pardo SAS: herrajes, cerrajería, herramientas y asesoría ferretera en Bogotá. Catálogo más claro, contacto directo y cotización por WhatsApp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="top-strip">
+    <div class="wrap top-strip-inner">
+      <span>📍 Calle 72 No. 50-23, Bogotá · Barrio 12 de Octubre</span>
+      <span class="top-strip-right">
+        <span>☎ 240 1680 · 231 1258</span>
+        <span>📱 311 848 6132</span>
+        <span class="hours-badge">🕗 Lun–Vie 8am–5:30pm · Sáb 8am–1:30pm</span>
+      </span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a href="#" class="brand" aria-label="Inicio Ferretería Pardo">
+        <img src="images/logo-ferreteria-pardo.png" alt="Ferretería Pardo SAS" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="brand-fallback" style="display:none">
+          <span>FP</span>
+          <div>
+            <strong>Ferretería Pardo</strong>
+            <small>Desde 1966</small>
+          </div>
+        </div>
+      </a>
+
+      <div class="search-shell">
+        <div class="search-box">
+          <input id="searchInput" type="search" placeholder="Buscar por nombre, referencia, marca o categoría" autocomplete="off" aria-autocomplete="list" aria-controls="searchSuggestions">
+          <button id="searchBtn" aria-label="Buscar">🔎</button>
+        </div>
+        <div id="searchMeta" class="search-meta">Busca por ejemplo: bisagra, yale, tornillo, ref 15942</div>
+      </div>
+
+      <div class="header-actions">
+        <a class="wa-btn" href="https://wa.me/573118486132?text=Hola%2C+quiero+cotizar+productos+de+Ferreter%C3%ADa+Pardo" target="_blank" rel="noreferrer">WhatsApp</a>
+        <button class="cart-btn" id="cartBtn" type="button">
+          🛒 <span id="cartCount">0</span>
+        </button>
+        <button class="wish-header-btn" id="wishBtn" type="button" title="Lista de deseos">
+          ♡ <span id="wishCount">0</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="wrap categories-bar-wrap">
+      <div class="cat-bar-container">
+        <button class="cat-scroll-btn cat-scroll-left" id="catScrollLeft" aria-label="Categorías anteriores">‹</button>
+        <div id="topCategories" class="top-categories" aria-label="Categorías rápidas"></div>
+        <button class="cat-scroll-btn cat-scroll-right" id="catScrollRight" aria-label="Categorías siguientes">›</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search suggestions portal: fuera del header para evitar conflictos de stacking context -->
+  <div id="searchSuggestions" class="search-suggestions" hidden></div>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Ferretería Pardo SAS · Barrio 12 de Octubre · Bogotá</div>
+        <h1>La nueva vitrina digital de Ferretería Pardo</h1>
+        <p>Un catálogo más claro, más confiable y más alineado con la ferretería real: herrajes, cerrajería, herramientas, tornillería y asesoría directa para escoger la referencia correcta.</p>
+        <div class="hero-cta">
+          <button class="primary-btn" type="button" onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})">Ver catálogo</button>
+          <a class="secondary-btn" href="https://wa.me/573118486132?text=Hola%2C+necesito+ayuda+con+un+pedido" target="_blank" rel="noreferrer">Pedir ayuda</a>
+        </div>
+        <div class="hero-trust">
+          <span>✔ Más de 40 años de experiencia</span>
+          <span>✔ Asesoría comercial real</span>
+          <span>✔ Domicilios en Bogotá</span>
+        </div>
+      </div>
+      <div class="hero-panels">
+        <div class="hero-card"><span id="statProducts">…</span><small>Productos</small></div>
+        <div class="hero-card"><span id="statCategories">…</span><small>Categorías</small></div>
+        <div class="hero-card"><span id="statBrands">…</span><small>Marcas</small></div>
+        <div class="hero-card"><span>⚡</span><small>Búsqueda instantánea y sugerencias</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured-section">
+    <div class="wrap featured-grid">
+      <div class="featured-card">
+        <h3>Top categorías</h3>
+        <div id="categoryHighlights" class="category-highlights"></div>
+      </div>
+      <div class="featured-card">
+        <h3>Lo que más buscan</h3>
+        <div id="popularSearches" class="quick-searches"></div>
+      </div>
+      <div class="featured-card">
+        <h3>Beneficios de compra</h3>
+        <ul class="feature-list">
+          <li>Filtros por categoría, precio, stock y descuento</li>
+          <li>Resultados paginados para miles de productos</li>
+          <li>Cotización directa por WhatsApp</li>
+          <li>Productos relacionados en cada ficha</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="identity-section">
+    <div class="wrap identity-grid">
+      <div class="identity-copy panel">
+        <div class="section-kicker">Nuestra esencia</div>
+        <h2>Ferretería Pardo, más reconocible y más útil en digital</h2>
+        <p>La página oficial presenta a Ferretería Pardo como una ferretería bogotana con amplia experiencia, portafolio variado, productos con respaldo y asesoría al cliente. Esta versión traslada esa identidad a una experiencia más limpia y práctica para buscar, filtrar y cotizar.</p>
+        <div class="identity-bullets">
+          <span>Herrajes y cerrajería</span>
+          <span>Herramientas y tornillería</span>
+          <span>Atención para hogar, obra y empresa</span>
+        </div>
+      </div>
+      <div class="identity-copy panel">
+        <div class="section-kicker">Misión y visión</div>
+        <h3>Misión</h3>
+        <p>Ofrecer productos de calidad y respaldo, con cumplimiento y una asesoría cercana apoyada en la trayectoria de la empresa.</p>
+        <h3>Visión</h3>
+        <p>Seguir consolidando a Ferretería Pardo como una referencia reconocida del mundo ferretero en Colombia, también desde su canal digital.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="visual-strip">
+    <div class="wrap">
+      <div class="section-kicker">Líneas destacadas</div>
+      <div class="visual-grid">
+        <article class="visual-card"><img src="images/yale-kit-cantonera.png" alt="Cerrajería y control de acceso"><div><strong>Cerrajería</strong><span>Kits Yale, cerrojos, cerraduras y accesorios</span></div></article>
+        <article class="visual-card"><img src="images/bisturi-plastico-economico.png" alt="Ferretería general"><div><strong>Ferretería general</strong><span>Consumibles y referencias de alta rotación</span></div></article>
+        <article class="visual-card"><img src="images/flexometro-irwin-3m.png" alt="Herramientas"><div><strong>Herramientas</strong><span>Herramientas de mano y referencias técnicas</span></div></article>
+        <article class="visual-card"><img src="images/acople-rapido.png" alt="Conectores y accesorios"><div><strong>Accesorios</strong><span>Conectores, acoples y piezas complementarias</span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <main class="wrap main-layout" id="catalogo">
+    <aside class="sidebar">
+      <div class="panel sticky-panel">
+        <div class="panel-title-row">
+          <h2>Filtros</h2>
+          <button id="clearFiltersBtn" class="link-btn" type="button">Limpiar</button>
+        </div>
+
+        <section class="filter-group">
+          <h3>Categorías</h3>
+          <div id="categoryFilters" class="category-list"></div>
+        </section>
+
+        <section class="filter-group">
+          <h3>Precio</h3>
+          <div class="price-grid">
+            <label>
+              <span>Mínimo</span>
+              <input id="priceMin" type="number" min="0" step="1000" placeholder="0">
+            </label>
+            <label>
+              <span>Máximo</span>
+              <input id="priceMax" type="number" min="0" step="1000" placeholder="Sin límite">
+            </label>
+          </div>
+          <div class="quick-range-row">
+            <button class="range-chip" type="button" data-min="0" data-max="5000">Hasta 5k</button>
+            <button class="range-chip" type="button" data-min="5001" data-max="20000">5k–20k</button>
+            <button class="range-chip" type="button" data-min="20001" data-max="100000">20k–100k</button>
+            <button class="range-chip" type="button" data-min="100001" data-max="">100k+</button>
+          </div>
+        </section>
+
+        <section class="filter-group">
+          <h3>Disponibilidad</h3>
+          <label class="check-row"><input id="onlyStock" type="checkbox"> <span>Solo productos con stock</span></label>
+          <label class="check-row"><input id="onlyDiscount" type="checkbox"> <span>Solo con descuento</span></label>
+        </section>
+
+        <div class="sidebar-info">
+          <div class="sidebar-info-title">📦 ¿Necesitas asesoría?</div>
+          <p>Escríbenos por WhatsApp y un asesor te ayuda a elegir el producto correcto.</p>
+          <a class="sidebar-wa-btn" href="https://wa.me/573118486132?text=Hola%2C+necesito+asesor%C3%ADa+para+un+producto" target="_blank" rel="noreferrer">Chatear ahora</a>
+        </div>
+      </div>
+    </aside>
+
+    <section class="content-area">
+      <div class="toolbar panel">
+        <div>
+          <h2>Resultados <span id="resultsCount" class="results-badge"></span></h2>
+          <p id="resultsSummary">Cargando catálogo…</p>
+        </div>
+        <div class="toolbar-actions">
+          <label>
+            <span>Ordenar</span>
+            <select id="sortSelect">
+              <option value="relevance">Relevancia</option>
+              <option value="price-asc">Precio: menor a mayor</option>
+              <option value="price-desc">Precio: mayor a menor</option>
+              <option value="name-asc">Nombre A–Z</option>
+              <option value="discount-desc">Mayor descuento</option>
+            </select>
+          </label>
+          <label>
+            <span>Mostrar</span>
+            <select id="perPageSelect">
+              <option value="24">24</option>
+              <option value="48">48</option>
+              <option value="72">72</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div id="activeChips" class="active-chips"></div>
+      <div id="loadingState" class="panel loading-state">Cargando productos…</div>
+      <div id="productGrid" class="product-grid"></div>
+      <div id="pagination" class="pagination"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div class="footer-col">
+        <img src="images/logo-ferreteria-pardo.png" alt="Ferretería Pardo" class="footer-logo" onerror="this.style.display='none'">
+        <p class="footer-about">Ferretería Pardo SAS atiende desde Bogotá con enfoque en calidad, respaldo y asesoría para herrajes, herramientas y productos de alta rotación.</p><div class="footer-qr"><img src="CODIGO QR VENTAS.png" alt="QR WhatsApp Ferretería Pardo"><small>Escanea y cotiza por WhatsApp</small></div>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul class="footer-list">
+          <li>📍 Calle 72 No. 50-23, Barrio 12 de Octubre</li>
+          <li>☎ 240 1680 · 240 8208 · 231 1258 · 250 7861</li>
+          <li>📱 311 848 6132</li>
+          <li>✉ ferrepardo@gmail.com</li>
+          <li>✉ ventas@ferreteriapardo.com</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Horario de atención</h4>
+        <ul class="footer-list">
+          <li>🗓 Lunes a Viernes: 8:00am – 5:30pm</li>
+          <li>🗓 Sábados: 8:00am – 1:30pm</li>
+          <li>🚚 Domicilios disponibles en Bogotá</li>
+        </ul>
+        <h4 style="margin-top:18px">Métodos de pago</h4>
+        <ul class="footer-list">
+          <li>💳 Transferencia electrónica</li>
+          <li>💵 Efectivo</li>
+          <li>🧾 Cheque</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="wrap footer-bottom-inner">
+        <span>© 2025 Ferretería Pardo SAS · NIT 900768420-1 · Bogotá, Colombia</span>
+        <a href="https://wa.me/573118486132" target="_blank" class="footer-wa">WhatsApp 311 848 6132</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Drawer -->
+  <div class="cart-overlay" id="cartOverlay">
+    <div class="cart-drawer">
+      <div class="cart-head">
+        <h3>🛒 Pedido</h3>
+        <button type="button" id="closeCartBtn">✕</button>
+      </div>
+      <div id="cartBody" class="cart-body"></div>
+      <div class="cart-foot" id="cartFoot" hidden>
+        <div class="cart-total-row">
+          <span>Total</span>
+          <strong id="cartTotal">$0</strong>
+        </div>
+        <button class="checkout-btn" id="checkoutBtn" type="button">Solicitar por WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wishlist Drawer -->
+  <div class="cart-overlay" id="wishOverlay">
+    <div class="cart-drawer">
+      <div class="cart-head">
+        <h3>♡ Lista de deseos</h3>
+        <button type="button" id="closeWishBtn">✕</button>
+      </div>
+      <div id="wishBody" class="cart-body"></div>
+      <div class="cart-foot" id="wishFoot" hidden>
+        <button class="checkout-btn" id="wishToCartBtn" type="button" style="background:var(--brand)">Agregar todo al pedido</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Modal -->
+  <div class="product-modal-overlay" id="productModalOverlay">
+    <div class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" type="button" id="closeProductModal">✕</button>
+      <div id="productModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Back to Top -->
+  <button id="backToTop" class="back-to-top" aria-label="Volver arriba">↑</button>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
