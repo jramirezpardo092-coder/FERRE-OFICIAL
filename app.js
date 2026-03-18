@@ -661,7 +661,7 @@ function renderCard(product) {
         <div class="product-unit">${escapeHtml(unit)}</div>
         <div class="price-wrap">
           <div class="price-stack">
-            ${product.original ? `<span class="price-old">${COP(product.original)}</span>` : ''}
+            ${product.original && product.disc && Number(product.disc) >= 10 && Number(product.original) > Number(product.precio) ? `<span class="price-old">${COP(product.original)}</span>` : ''}
             <span class="price-now">${COP(product.precio)}</span>
           </div>
         </div>
@@ -671,8 +671,7 @@ function renderCard(product) {
         <button class="add-btn ${inCart ? 'added' : ''}" data-action="add-cart" data-id="${escapeHtml(String(product.id))}" type="button">${inCart ? '✓ Agregado' : '+ Agregar'}</button>
       </div>
       <div class="product-secondary-actions">
-        <button class="mini-btn" data-action="wa-item" data-id="${escapeHtml(String(product.id))}" type="button">Cotizar</button>
-        <button class="mini-btn" data-action="view-item" data-id="${escapeHtml(String(product.id))}" type="button">Relacionados</button>
+        <button class="mini-btn wa-mini" data-action="wa-item" data-id="${escapeHtml(String(product.id))}" type="button">💬 Cotizar por WhatsApp</button>
       </div>
     </article>
   `;

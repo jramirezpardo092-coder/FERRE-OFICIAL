@@ -393,11 +393,32 @@ img{max-width:100%;display:block}
 .footer-qr img{width:124px;height:auto;border-radius:12px;display:block;background:#fff}
 .footer-qr small{display:block;margin-top:8px;color:var(--muted)}
 .search-meta{color:#6b7280}
+
+/* ── Testimonios ── */
+.testimonials-section{padding:48px 0;background:linear-gradient(135deg,#f8fafc 0%,#f1f5f9 100%)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testimonial-card{background:#fff;border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);border:1px solid var(--line);transition:transform .2s}
+.testimonial-card:hover{transform:translateY(-4px)}
+.testimonial-stars{color:#f59e0b;font-size:18px;margin-bottom:12px;letter-spacing:2px}
+.testimonial-card p{font-size:15px;line-height:1.7;color:var(--text);margin-bottom:16px;font-style:italic}
+.testimonial-author{font-size:13px;color:var(--muted)}
+.testimonial-author strong{color:var(--text);font-weight:700}
+
+/* ── WhatsApp mini button mejorado ── */
+.wa-mini{background:var(--brand-soft)!important;color:var(--brand)!important;border:1px solid var(--brand)!important;font-weight:600!important;width:100%}
+.wa-mini:hover{background:var(--brand)!important;color:#fff!important}
+
+/* ── Badge "Últimas unidades" mejorado ── */
+.badge.low{background:#fef2f2;color:#dc2626;font-weight:700;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+
 @media (max-width: 1024px){
   .identity-grid,.hero-grid,.visual-grid{grid-template-columns:1fr 1fr}
+  .testimonials-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width: 720px){
   .identity-grid,.visual-grid,.hero-grid{grid-template-columns:1fr}
   .visual-card{align-items:flex-start}
   .card-image{height:176px}
+  .testimonials-grid{grid-template-columns:1fr}
 }
