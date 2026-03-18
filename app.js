@@ -1202,6 +1202,39 @@ function handleQuoteForm(e) {
   }
 })();
 
+/* ─── Scroll Reveal Animations ─── */
+(function() {
+  const revealSections = document.querySelectorAll(
+    '.testimonials-section, .process-section, .brands-section, .quote-section, .visual-strip, .faq-section, .identity-section, .map-section'
+  );
+  revealSections.forEach(el => el.classList.add('reveal'));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  revealSections.forEach(el => observer.observe(el));
+})();
+
+/* ─── Hero Showcase Entrance Animation ─── */
+(function() {
+  const cards = document.querySelectorAll('.showcase-card');
+  cards.forEach((card, i) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = `opacity 0.5s ease ${i * 0.15}s, transform 0.5s ease ${i * 0.15}s`;
+    setTimeout(() => {
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    }, 100);
+  });
+})();
+
 /* ─── Live Social Proof (simulated, basado en estudio: +28% conversión) ─── */
 (function() {
   function updateLiveStats() {
