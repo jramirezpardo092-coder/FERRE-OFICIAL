@@ -512,13 +512,22 @@ function matchesSearch(product, q, qTokens) {
   return qTokens.every((token) => product.tokens.some((pt) => pt.includes(token) || isNearToken(pt, token)));
 }
 
+// Prioridad de imagen: productos con foto siempre antes que sin foto en cualquier orden
+function imgBoost(p) { return p.img ? 0 : 1; }
+
 function sorter(mode, q = '', qTokens = []) {
   switch (mode) {
-    case 'price-asc':     return (a, b) => Number(a.precio || 0) - Number(b.precio || 0);
-    case 'price-desc':    return (a, b) => Number(b.precio || 0) - Number(a.precio || 0);
-    case 'name-asc':      return (a, b) => String(a.nombre).localeCompare(String(b.nombre), 'es');
-    case 'discount-desc': return (a, b) => Number(b.disc || 0) - Number(a.disc || 0);
-    default:              return (a, b) => scoreProduct(b, q, qTokens) - scoreProduct(a, q, qTokens);
+    case 'price-asc':
+      return (a, b) => imgBoost(a) - imgBoost(b) || Number(a.precio || 0) - Number(b.precio || 0);
+    case 'price-desc':
+      return (a, b) => imgBoost(a) - imgBoost(b) || Number(b.precio || 0) - Number(a.precio || 0);
+    case 'name-asc':
+      return (a, b) => imgBoost(a) - imgBoost(b) || String(a.nombre).localeCompare(String(b.nombre), 'es');
+    case 'discount-desc':
+      return (a, b) => imgBoost(a) - imgBoost(b) || Number(b.disc || 0) - Number(a.disc || 0);
+    default:
+      return (a, b) => scoreProduct(b, q, qTokens) - scoreProduct(a, q, qTokens);
+      // (relevance ya usa scoreProduct que incluye +200 por img)
   }
 }
 
@@ -540,6 +549,7 @@ function scoreProduct(p, q, qTokens) {
   if (p.disc) score += Number(p.disc);
   if ((p.stock || 0) > 0) score += 8;
   if ((p.stock || 0) > 20) score += 6;
+  if (p.img) score += 200; // productos con foto siempre primero
   return score;
 }
 
