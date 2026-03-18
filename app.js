@@ -1165,3 +1165,39 @@ updateCartUI();
 updateWishUI();
 initBackToTop();
 loadCatalog();
+
+/* ─── Quote Form Handler ─── */
+function handleQuoteForm(e) {
+  e.preventDefault();
+  const name = document.getElementById('qName').value.trim();
+  const phone = document.getElementById('qPhone').value.trim();
+  const email = document.getElementById('qEmail').value.trim();
+  const products = document.getElementById('qProducts').value.trim();
+
+  if (!name || !phone || !products) {
+    showToast('Por favor completa los campos obligatorios', 'warn');
+    return false;
+  }
+
+  const msg = encodeURIComponent(
+    `Hola, soy ${name}.\n` +
+    `📱 Mi celular: ${phone}\n` +
+    (email ? `✉ Email: ${email}\n` : '') +
+    `\n📦 Productos que necesito:\n${products}\n` +
+    `\n¡Gracias!`
+  );
+
+  window.open(`https://wa.me/573118486132?text=${msg}`, '_blank');
+  showToast('Redirigido a WhatsApp con tu cotización');
+  document.getElementById('quoteForm').reset();
+  return false;
+}
+
+/* ─── Copyright year auto-update ─── */
+(function() {
+  const footerCopy = document.querySelector('.footer-bottom-inner span');
+  if (footerCopy) {
+    const year = new Date().getFullYear();
+    footerCopy.textContent = footerCopy.textContent.replace(/© \d{4}/, '© ' + year);
+  }
+})();

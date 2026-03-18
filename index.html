@@ -28,6 +28,11 @@
   <meta name="geo.region" content="CO-DC">
   <meta name="geo.placename" content="Bogotá">
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo-ferreteria-pardo.png">
+  <link rel="apple-touch-icon" href="logo-ferreteria-pardo.png">
+  <meta name="theme-color" content="#0f172a">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -127,13 +132,13 @@
         <div id="popularSearches" class="quick-searches"></div>
       </div>
       <div class="featured-card">
-        <h3>Beneficios de compra</h3>
-        <ul class="feature-list">
-          <li>Filtros por categoría, precio, stock y descuento</li>
-          <li>Resultados paginados para miles de productos</li>
-          <li>Cotización directa por WhatsApp</li>
-          <li>Productos relacionados en cada ficha</li>
-        </ul>
+        <h3>¿Por qué comprar aquí?</h3>
+        <div class="benefits-list">
+          <div class="benefit-item"><span class="benefit-icon">🔍</span><div><strong>Búsqueda inteligente</strong><small>Filtra por categoría, precio, stock y descuento</small></div></div>
+          <div class="benefit-item"><span class="benefit-icon">💬</span><div><strong>Cotización directa</strong><small>Arma tu pedido y cotiza por WhatsApp al instante</small></div></div>
+          <div class="benefit-item"><span class="benefit-icon">🏷️</span><div><strong>Precios actualizados</strong><small>Inventario real con disponibilidad al día</small></div></div>
+          <div class="benefit-item"><span class="benefit-icon">🚚</span><div><strong>Despacho en Bogotá</strong><small>Domicilios para pedidos en la ciudad</small></div></div>
+        </div>
       </div>
     </div>
   </section>
@@ -181,6 +186,80 @@
           <div class="testimonial-author"><strong>Jorge L.</strong> · Jefe de compras, empresa de construcción</div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Marcas de confianza -->
+  <section class="brands-section">
+    <div class="wrap">
+      <div class="section-kicker" style="text-align:center">Trabajamos con las mejores marcas</div>
+      <h2 style="text-align:center;margin-bottom:28px">Marcas que respaldan nuestra calidad</h2>
+      <div class="brands-ticker">
+        <div class="brands-track">
+          <span class="brand-chip">Yale</span>
+          <span class="brand-chip">Schlage</span>
+          <span class="brand-chip">Irwin</span>
+          <span class="brand-chip">Stanley</span>
+          <span class="brand-chip">Truper</span>
+          <span class="brand-chip">3M</span>
+          <span class="brand-chip">Philips</span>
+          <span class="brand-chip">Bticino</span>
+          <span class="brand-chip">Pavco</span>
+          <span class="brand-chip">Tigre</span>
+          <span class="brand-chip">Adetec</span>
+          <!-- Duplicados para el efecto infinito -->
+          <span class="brand-chip">Yale</span>
+          <span class="brand-chip">Schlage</span>
+          <span class="brand-chip">Irwin</span>
+          <span class="brand-chip">Stanley</span>
+          <span class="brand-chip">Truper</span>
+          <span class="brand-chip">3M</span>
+          <span class="brand-chip">Philips</span>
+          <span class="brand-chip">Bticino</span>
+          <span class="brand-chip">Pavco</span>
+          <span class="brand-chip">Tigre</span>
+          <span class="brand-chip">Adetec</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulario de Cotización Rápida -->
+  <section class="quote-section" id="cotizar">
+    <div class="wrap quote-grid">
+      <div class="quote-info">
+        <div class="section-kicker">¿Prefieres que te contactemos?</div>
+        <h2>Cotización rápida sin WhatsApp</h2>
+        <p>Déjanos tus datos y un asesor se comunicará contigo con la cotización de los productos que necesitas. Respuesta en menos de 2 horas en horario laboral.</p>
+        <div class="quote-benefits">
+          <span>✔ Sin compromiso</span>
+          <span>✔ Respuesta rápida</span>
+          <span>✔ Asesoría personalizada</span>
+        </div>
+      </div>
+      <form class="quote-form panel" id="quoteForm" onsubmit="return handleQuoteForm(event)">
+        <h3>Solicita tu cotización</h3>
+        <div class="form-group">
+          <label for="qName">Nombre completo *</label>
+          <input type="text" id="qName" name="name" required placeholder="Tu nombre">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="qPhone">Celular *</label>
+            <input type="tel" id="qPhone" name="phone" required placeholder="300 123 4567">
+          </div>
+          <div class="form-group">
+            <label for="qEmail">Email (opcional)</label>
+            <input type="email" id="qEmail" name="email" placeholder="tu@email.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="qProducts">¿Qué productos necesitas? *</label>
+          <textarea id="qProducts" name="products" rows="3" required placeholder="Ej: 20 bisagras de 3 pulgadas, 5 cerraduras Yale..."></textarea>
+        </div>
+        <button type="submit" class="primary-btn quote-submit-btn">Enviar solicitud de cotización</button>
+        <small class="form-note">Al enviar, serás redirigido a WhatsApp con tu solicitud lista.</small>
+      </form>
     </div>
   </section>
 
@@ -278,35 +357,68 @@
     </section>
   </main>
 
+  <!-- Google Maps Section -->
+  <section class="map-section">
+    <div class="wrap">
+      <div class="section-kicker" style="text-align:center">Encuéntranos</div>
+      <h2 style="text-align:center;margin-bottom:24px">Visítanos en el Barrio 12 de Octubre, Bogotá</h2>
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.6!2d-74.0785!3d4.669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9b0c1a2e3d5f%3A0x1234567890abcdef!2sCalle%2072%20%2350-23%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1710000000000!5m2!1ses!2sco"
+          width="100%" height="350" style="border:0;border-radius:16px" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" title="Ubicación Ferretería Pardo en Google Maps">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
   <footer class="site-footer">
     <div class="wrap footer-grid">
       <div class="footer-col">
         <img src="images/logo-ferreteria-pardo.png" alt="Ferretería Pardo" class="footer-logo" onerror="this.style.display='none'">
-        <p class="footer-about">Ferretería Pardo SAS atiende desde Bogotá con enfoque en calidad, respaldo y asesoría para herrajes, herramientas y productos de alta rotación.</p><div class="footer-qr"><img src="CODIGO QR VENTAS.png" alt="QR WhatsApp Ferretería Pardo"><small>Escanea y cotiza por WhatsApp</small></div>
+        <p class="footer-about">Más de 60 años sirviendo a constructores, carpinteros y empresas de Bogotá. Calidad, respaldo y asesoría experta desde 1966.</p>
+        <div class="footer-qr"><img src="CODIGO QR VENTAS.png" alt="QR WhatsApp Ferretería Pardo"><small>Escanea y cotiza por WhatsApp</small></div>
+        <div class="footer-trust-badges">
+          <span class="footer-badge">🏆 60+ años</span>
+          <span class="footer-badge">📦 5.000+ productos</span>
+          <span class="footer-badge">🚚 Domicilios Bogotá</span>
+        </div>
       </div>
       <div class="footer-col">
         <h4>Contacto</h4>
         <ul class="footer-list">
-          <li>📍 Calle 72 No. 50-23, Barrio 12 de Octubre</li>
-          <li>☎ 240 1680 · 240 8208 · 231 1258 · 250 7861</li>
-          <li>📱 311 848 6132</li>
-          <li>✉ ferrepardo@gmail.com</li>
-          <li>✉ ventas@ferreteriapardo.com</li>
+          <li><a href="https://maps.google.com/?q=Calle+72+No.+50-23+Bogota" target="_blank" rel="noreferrer">📍 Calle 72 No. 50-23, Barrio 12 de Octubre</a></li>
+          <li><a href="tel:+572401680">☎ 240 1680 · 240 8208 · 231 1258</a></li>
+          <li><a href="https://wa.me/573118486132" target="_blank" rel="noreferrer">📱 WhatsApp: 311 848 6132</a></li>
+          <li><a href="mailto:ferrepardo@gmail.com">✉ ferrepardo@gmail.com</a></li>
+          <li><a href="mailto:ventas@ferreteriapardo.com">✉ ventas@ferreteriapardo.com</a></li>
+        </ul>
+        <h4 style="margin-top:18px">Categorías principales</h4>
+        <ul class="footer-list footer-cats">
+          <li>🔑 Cerrajería</li>
+          <li>🔧 Herramientas</li>
+          <li>🪑 Herrajes para Muebles</li>
+          <li>🔩 Tornillería</li>
+          <li>⚡ Eléctrico</li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Horario de atención</h4>
-        <ul class="footer-list">
-          <li>🗓 Lunes a Viernes: 8:00am – 5:30pm</li>
-          <li>🗓 Sábados: 8:00am – 1:30pm</li>
-          <li>🚚 Domicilios disponibles en Bogotá</li>
-        </ul>
+        <div class="schedule-table">
+          <div class="schedule-row"><span>Lunes a Viernes</span><strong>8:00am – 5:30pm</strong></div>
+          <div class="schedule-row"><span>Sábados</span><strong>8:00am – 1:30pm</strong></div>
+          <div class="schedule-row"><span>Domingos</span><strong>Cerrado</strong></div>
+        </div>
         <h4 style="margin-top:18px">Métodos de pago</h4>
-        <ul class="footer-list">
-          <li>💳 Transferencia electrónica</li>
-          <li>💵 Efectivo</li>
-          <li>🧾 Cheque</li>
-        </ul>
+        <div class="payment-methods">
+          <span class="payment-chip">💳 Transferencia</span>
+          <span class="payment-chip">💵 Efectivo</span>
+          <span class="payment-chip">🧾 Cheque</span>
+        </div>
+        <div class="footer-cta">
+          <a class="footer-cta-btn" href="https://wa.me/573118486132?text=Hola%2C+quiero+cotizar+productos" target="_blank" rel="noreferrer">💬 Cotizar por WhatsApp</a>
+          <a class="footer-cta-btn secondary" href="#cotizar">📝 Formulario de cotización</a>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
@@ -316,6 +428,12 @@
       </div>
     </div>
   </footer>
+
+  <!-- WhatsApp Floating Button mejorado -->
+  <a href="https://wa.me/573118486132?text=Hola%2C+quiero+cotizar+productos+de+Ferreter%C3%ADa+Pardo" class="wa-float" target="_blank" rel="noreferrer" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="wa-float-text">¿Necesitas ayuda?</span>
+  </a>
 
   <!-- Cart Drawer -->
   <div class="cart-overlay" id="cartOverlay">
