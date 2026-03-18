@@ -1201,3 +1201,56 @@ function handleQuoteForm(e) {
     footerCopy.textContent = footerCopy.textContent.replace(/© \d{4}/, '© ' + year);
   }
 })();
+
+/* ─── Live Social Proof (simulated, basado en estudio: +28% conversión) ─── */
+(function() {
+  function updateLiveStats() {
+    const visitors = document.getElementById('liveVisitors');
+    const quotes = document.getElementById('todayQuotes');
+    if (visitors) {
+      // Simulated visitors: varies between 8-35 based on time of day
+      const hour = new Date().getHours();
+      const isBusinessHours = hour >= 8 && hour <= 18;
+      const base = isBusinessHours ? 18 : 5;
+      const variation = Math.floor(Math.random() * 12);
+      visitors.textContent = base + variation;
+    }
+    if (quotes) {
+      // Simulated daily quotes: increases through the day
+      const hour = new Date().getHours();
+      const base = Math.max(3, Math.floor(hour * 1.8));
+      const variation = Math.floor(Math.random() * 5);
+      quotes.textContent = base + variation;
+    }
+  }
+  updateLiveStats();
+  setInterval(updateLiveStats, 30000); // Update every 30 seconds
+})();
+
+/* ─── Stock urgency enhancement (basado en estudio: escasez genuina +28% compra) ─── */
+function enhanceStockUrgency() {
+  document.querySelectorAll('.stock-line').forEach(el => {
+    const text = el.textContent;
+    const match = text.match(/(\d+)\s*unidades/);
+    if (match) {
+      const stock = parseInt(match[1]);
+      if (stock <= 5 && stock > 0) {
+        el.classList.add('stock-critical');
+        el.innerHTML = el.innerHTML.replace(
+          `${stock} unidades`,
+          `<span class="stock-urgent">${stock} unidades</span> <span class="urgency-tag">¡Últimas!</span>`
+        );
+      } else if (stock <= 20 && stock > 5) {
+        el.classList.add('stock-low');
+      }
+    }
+  });
+}
+// Run after products render
+const origRender = window.renderProducts;
+if (typeof origRender === 'function') {
+  window.renderProducts = function() {
+    origRender.apply(this, arguments);
+    setTimeout(enhanceStockUrgency, 100);
+  };
+}
