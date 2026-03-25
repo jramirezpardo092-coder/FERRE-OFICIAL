@@ -74,17 +74,17 @@ function getProductImage(product) {
   const id = String(product.id || '');
 
   const exactById = {
-    '13650': 'images/bisturi-plastico-economico.png',
-    '15521': 'images/yale-kit-cantonera.png',
-    '15739': 'images/yale-cerrojo-pestillo.png'
+    '13650': 'bisturi-plastico-economico.png',
+    '15521': 'yale-kit-cantonera.png',
+    '15739': 'yale-cerrojo-pestillo.png'
   };
   if (exactById[id]) return exactById[id];
 
   const keywordRules = [
-    { test: /BISTURI NORTEO METALICO/, img: 'images/bisturi-metalico-grande.png' },
-    { test: /JUEGO DE ACOPLES Y CONECTORES PRETUL/, img: 'images/acople-rapido.png' },
-    { test: /^ACEITERA (300ML|500ML)$/, img: 'images/aceitera-350ml.png' },
-    { test: /YALE CERROJO.*(TEXAS|NIQUEL)/, img: 'images/yale-cerrojo-pestillo.png' }
+    { test: /BISTURI NORTEO METALICO/, img: 'bisturi-metalico-grande.png' },
+    { test: /JUEGO DE ACOPLES Y CONECTORES PRETUL/, img: 'acople-rapido.png' },
+    { test: /^ACEITERA (300ML|500ML)$/, img: 'aceitera-350ml.png' },
+    { test: /YALE CERROJO.*(TEXAS|NIQUEL)/, img: 'yale-cerrojo-pestillo.png' }
   ];
   for (const rule of keywordRules) if (rule.test.test(n)) return rule.img;
 
@@ -152,7 +152,7 @@ function updateWishUI() {
             <button type="button" data-wish-remove="${escapeHtml(String(item.id))}" style="width:28px;height:28px;border:1px solid var(--line-dark);background:#fff;border-radius:8px">✕</button>
           </div>
         </div>
-        <strong style="color:var(--brand)">${COP(item.precio)}</strong>
+        <div style="text-align:right"><strong style="color:var(--brand)">${COP(item.precio)}</strong><br><small style="color:#6b7280;font-size:10px">+ IVA</small></div>
       </div>
     `;
   }).join('');
@@ -289,6 +289,9 @@ function initEvents() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
+  /* Mobile filter toggle */
+  initMobileFilterToggle();
+
   /* Category scroll arrows */
   initCategoryScrollArrows();
 
@@ -304,6 +307,43 @@ function initEvents() {
 }
 
 /* ─── Category Scroll Arrows ─── */
+/* ─── Mobile Filter Toggle ─── */
+function initMobileFilterToggle() {
+  const toggle = $('mobileFilterToggle');
+  const sidebar = $('sidebar');
+  const backdrop = $('sidebarBackdrop');
+  const closeBtn = $('mobileSidebarClose');
+  if (!toggle || !sidebar) return;
+
+  function openFilters() {
+    sidebar.classList.add('open');
+    backdrop.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeFilters() {
+    sidebar.classList.remove('open');
+    backdrop.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  toggle.addEventListener('click', openFilters);
+  if (closeBtn) closeBtn.addEventListener('click', closeFilters);
+  if (backdrop) backdrop.addEventListener('click', closeFilters);
+
+  // Update badge count when filters are active
+  window.updateMobileFilterBadge = function() {
+    const badge = $('mobileFilterCount');
+    if (!badge) return;
+    let count = 0;
+    if (state.selectedCategories.size) count += state.selectedCategories.size;
+    if (state.minPrice != null || state.maxPrice != null) count++;
+    if (state.onlyStock) count++;
+    if (state.onlyDiscount) count++;
+    badge.hidden = count === 0;
+    badge.textContent = count;
+  };
+}
+
 function initCategoryScrollArrows() {
   const container = $('topCategories');
   const leftBtn = $('catScrollLeft');
@@ -502,6 +542,7 @@ function applyFilters() {
   renderSummary();
   renderProducts();
   renderPagination();
+  if (window.updateMobileFilterBadge) window.updateMobileFilterBadge();
 }
 
 function matchesSearch(product, q, qTokens) {
@@ -673,6 +714,7 @@ function renderCard(product) {
           <div class="price-stack">
             ${product.original && product.disc && Number(product.disc) >= 10 && Number(product.original) > Number(product.precio) ? `<span class="price-old">${COP(product.original)}</span>` : ''}
             <span class="price-now">${COP(product.precio)}</span>
+            <span class="iva-tag">+ IVA</span>
           </div>
         </div>
       </div>
@@ -750,7 +792,7 @@ function updateCartUI() {
     <div class="cart-item">
       <div>
         <h4>${escapeHtml(item.nombre)}</h4>
-        <p>Ref ${escapeHtml(String(item.id))} · ${COP(item.precio)} c/u</p>
+        <p>Ref ${escapeHtml(String(item.id))} · ${COP(item.precio)} c/u <span style="font-size:10px;color:#9ca3af;background:#f3f4f6;border-radius:4px;padding:1px 4px">+ IVA</span></p>
         <div class="qty-actions">
           <button type="button" data-cart="dec" data-id="${escapeHtml(String(item.id))}">−</button>
           <strong>${item.qty}</strong>
@@ -776,7 +818,7 @@ function updateCartUI() {
     });
   });
 
-  $('cartTotal').textContent = COP(total);
+  $('cartTotal').innerHTML = `${COP(total)} <span style="font-size:11px;color:#6b7280;font-weight:400">+ IVA</span>`;
   $('cartFoot').hidden = false;
 }
 
@@ -799,7 +841,7 @@ function checkoutWhatsApp() {
     lines.push(`  Ref: ${item.id} | Cant: ${item.qty} | ${COP(item.precio * item.qty)}`);
     lines.push('');
   });
-  lines.push(`Total estimado: ${COP(total)}`);
+  lines.push(`Total estimado: ${COP(total)} (precios + IVA)`);
 
   const message = encodeURIComponent(lines.join('\n'));
   window.open(`https://wa.me/573118486132?text=${message}`, '_blank');
@@ -813,7 +855,7 @@ function openItemWhatsApp(id) {
     'Hola, quiero cotizar este producto:',
     `• ${item.nombre}`,
     `• Ref: ${item.id}`,
-    `• Precio web: ${COP(item.precio)}`,
+    `• Precio web: ${COP(item.precio)} + IVA`,
     `• Categoría: ${item.cat}`
   ];
   const message = encodeURIComponent(lines.join('\n'));
@@ -857,7 +899,10 @@ function openProductModal(id) {
           <span class="product-pill">${stock > 0 ? `${stock} en stock` : 'Stock por confirmar'}</span>
         </div>
         <div class="modal-price-row">
-          <div class="modal-price">${COP(product.precio)}</div>
+          <div>
+            <div class="modal-price">${COP(product.precio)}</div>
+            <div class="modal-iva-note">Precio sin IVA incluido</div>
+          </div>
           ${product.original ? `<div class="modal-old-price">${COP(product.original)}</div>` : ''}
         </div>
         <div class="modal-stock">${stock > 0 ? '✅ Disponible para cotizar' : '📩 Consulta disponibilidad'}</div>
@@ -882,7 +927,7 @@ function openProductModal(id) {
           <article class="related-card">
             <div class="related-top">${escapeHtml(item.cat)} · Ref ${escapeHtml(String(item.id))}</div>
             <div class="related-name">${escapeHtml(item.nombre)}</div>
-            <div class="related-price">${COP(item.precio)}</div>
+            <div class="related-price">${COP(item.precio)} <span style="font-size:10px;color:#9ca3af">+ IVA</span></div>
             <button class="mini-btn" type="button" data-related-open="${escapeHtml(String(item.id))}">Ver ficha</button>
           </article>
         `).join('')}

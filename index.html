@@ -355,7 +355,7 @@
           <textarea id="qProducts" name="products" rows="3" required placeholder="Ej: 20 bisagras de 3 pulgadas, 5 cerraduras Yale..."></textarea>
         </div>
         <button type="submit" class="primary-btn quote-submit-btn">Enviar solicitud de cotización</button>
-        <small class="form-note">Al enviar, serás redirigido a WhatsApp con tu solicitud lista.</small>
+        <small class="form-note">Al enviar, serás redirigido a WhatsApp con tu solicitud lista. Los precios no incluyen IVA.</small>
       </form>
     </div>
   </section>
@@ -386,11 +386,20 @@
   </section>
 
   <main class="wrap main-layout" id="catalogo">
-    <aside class="sidebar">
+    <!-- Mobile filter toggle -->
+    <button class="mobile-filter-toggle" id="mobileFilterToggle" type="button">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+      Filtros y categorías
+      <span id="mobileFilterCount" class="mobile-filter-badge" hidden></span>
+    </button>
+    <aside class="sidebar" id="sidebar">
       <div class="panel sticky-panel">
         <div class="panel-title-row">
           <h2>Filtros</h2>
-          <button id="clearFiltersBtn" class="link-btn" type="button">Limpiar</button>
+          <div style="display:flex;gap:8px;align-items:center">
+            <button id="clearFiltersBtn" class="link-btn" type="button">Limpiar</button>
+            <button class="mobile-sidebar-close" id="mobileSidebarClose" type="button" aria-label="Cerrar filtros">✕</button>
+          </div>
         </div>
 
         <section class="filter-group">
@@ -597,6 +606,9 @@
     <span class="wa-float-text">¿Necesitas ayuda?</span>
   </a>
 
+  <!-- Mobile sidebar backdrop -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
   <!-- Cart Drawer -->
   <div class="cart-overlay" id="cartOverlay">
     <div class="cart-drawer">
@@ -606,8 +618,9 @@
       </div>
       <div id="cartBody" class="cart-body"></div>
       <div class="cart-foot" id="cartFoot" hidden>
+        <div class="cart-iva-note">⚠️ Precios no incluyen IVA</div>
         <div class="cart-total-row">
-          <span>Total</span>
+          <span>Subtotal</span>
           <strong id="cartTotal">$0</strong>
         </div>
         <button class="checkout-btn" id="checkoutBtn" type="button">Solicitar por WhatsApp</button>
