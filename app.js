@@ -13,6 +13,7 @@ const state = {
   maxPrice: null,
   onlyStock: false,
   onlyDiscount: false,
+  onlyWithPhoto: false,
   sort: 'relevance',
   page: 1,
   perPage: 24,
@@ -239,6 +240,7 @@ function initEvents() {
 
   $('onlyStock').addEventListener('change', (e) => { state.onlyStock = e.target.checked; state.page = 1; applyFilters(); });
   $('onlyDiscount').addEventListener('change', (e) => { state.onlyDiscount = e.target.checked; state.page = 1; applyFilters(); });
+  $('onlyWithPhoto').addEventListener('change', (e) => { state.onlyWithPhoto = e.target.checked; state.page = 1; applyFilters(); });
   $('sortSelect').addEventListener('change', (e) => { state.sort = e.target.value; state.page = 1; applyFilters(); });
 
   $('perPageSelect').addEventListener('change', (e) => {
@@ -339,6 +341,7 @@ function initMobileFilterToggle() {
     if (state.minPrice != null || state.maxPrice != null) count++;
     if (state.onlyStock) count++;
     if (state.onlyDiscount) count++;
+    if (state.onlyWithPhoto) count++;
     badge.hidden = count === 0;
     badge.textContent = count;
   };
@@ -411,6 +414,7 @@ function clearFilters() {
   state.maxPrice = null;
   state.onlyStock = false;
   state.onlyDiscount = false;
+  state.onlyWithPhoto = false;
   state.sort = 'relevance';
   state.page = 1;
 
@@ -419,6 +423,7 @@ function clearFilters() {
   $('priceMax').value = '';
   $('onlyStock').checked = false;
   $('onlyDiscount').checked = false;
+  $('onlyWithPhoto').checked = false;
   $('sortSelect').value = 'relevance';
   syncRangeChipState();
   renderCategoryFilters();
@@ -533,7 +538,8 @@ function applyFilters() {
     const matchesMax = state.maxPrice == null || price <= state.maxPrice;
     const matchesStock = !state.onlyStock || Number(product.stock || 0) > 0;
     const matchesDiscount = !state.onlyDiscount || Number(product.disc || 0) > 0;
-    return matchesQuery && matchesCategory && matchesMin && matchesMax && matchesStock && matchesDiscount;
+    const matchesPhoto = !state.onlyWithPhoto || !!product.img;
+    return matchesQuery && matchesCategory && matchesMin && matchesMax && matchesStock && matchesDiscount && matchesPhoto;
   });
 
   items.sort(sorter(state.sort, q, qTokens));
@@ -621,6 +627,7 @@ function renderActiveChips() {
   if (state.maxPrice != null) chips.push(`Hasta ${COP(state.maxPrice)}`);
   if (state.onlyStock) chips.push('Solo con stock');
   if (state.onlyDiscount) chips.push('Solo con descuento');
+  if (state.onlyWithPhoto) chips.push('Solo con foto');
   $('activeChips').innerHTML = chips.map((chip) => `<span class="active-chip">${escapeHtml(chip)}</span>`).join('');
 }
 
@@ -630,6 +637,14 @@ function renderProducts() {
   const grid = $('productGrid');
 
   if (!state.filtered.length) {
+    const recent = getRecentlyViewed(4);
+    const recentHTML = recent.length ? `
+      <div class="empty-recent">
+        <p style="font-weight:700;margin:16px 0 8px">Vistos recientemente:</p>
+        <div class="empty-recent-grid">
+          ${recent.map(p => `<button class="empty-recent-item" type="button" data-recent-open="${escapeHtml(String(p.id))}">${escapeHtml(p.nombre.slice(0,40))} · ${COP(p.precio)}</button>`).join('')}
+        </div>
+      </div>` : '';
     grid.innerHTML = `
       <div class="empty-state">
         <h3>Sin resultados</h3>
@@ -637,7 +652,9 @@ function renderProducts() {
         <a class="empty-state-wa" href="https://wa.me/573118486132?text=Hola%2C+busco+un+producto+y+no+lo+encuentro+en+el+cat%C3%A1logo" target="_blank" rel="noreferrer">
           💬 Consultar por WhatsApp
         </a>
+        ${recentHTML}
       </div>`;
+    grid.querySelectorAll('[data-recent-open]').forEach(b => b.addEventListener('click', () => openProductModal(b.dataset.recentOpen)));
     return;
   }
 
@@ -679,12 +696,13 @@ function renderCard(product) {
     : '';
 
   const stock = Number(product.stock || 0);
-  // "Últimas X" only for genuinely low stock (<=5), not just any low number
   const stockBadge = stock > 5
     ? '<span class="badge stock">En stock</span>'
     : stock > 0
       ? `<span class="badge low">⚡ Últimas ${stock}</span>`
       : '';
+
+  const photoBadge = product.img ? '<span class="badge photo-badge">📸 Foto real</span>' : '';
 
   // Capitalize unit consistently
   const unit = product.unidad
@@ -699,7 +717,7 @@ function renderCard(product) {
           <div class="emoji">${emoji}</div>
           <small>${getProductImage(product) ? `Ref. ${escapeHtml(String(product.id))}` : 'Foto pendiente'}</small>
         </div>
-        <div class="badge-row">${discountBadge}${stockBadge}</div>
+        <div class="badge-row">${photoBadge}${discountBadge}${stockBadge}</div>
         <button class="card-wish-btn ${inWish ? 'wished' : ''}" data-action="wish-toggle" data-id="${escapeHtml(String(product.id))}" type="button" aria-label="Guardar en favoritos">${inWish ? '♥' : '♡'}</button>
       </div>
       <div class="card-body">
@@ -708,8 +726,11 @@ function renderCard(product) {
           <span>Ref ${escapeHtml(String(product.id))}</span>
         </div>
         <div class="product-name">${escapeHtml(product.nombre)}</div>
-        <div class="stock-line">Stock: <strong>${stock > 0 ? `${stock} unidades` : 'Consultar'}</strong></div>
-        <div class="product-unit">${escapeHtml(unit)}</div>
+        <div class="card-brand-line">${escapeHtml(product.brand || '')}</div>
+        <div class="card-details-row">
+          <span class="detail-pill">${escapeHtml(unit)}</span>
+          <span class="detail-pill ${stock > 0 ? 'in-stock' : 'no-stock'}">${stock > 0 ? `✓ ${stock} und.` : '⏳ Consultar'}</span>
+        </div>
         <div class="price-wrap">
           <div class="price-stack">
             ${product.original && product.disc && Number(product.disc) >= 10 && Number(product.original) > Number(product.precio) ? `<span class="price-old">${COP(product.original)}</span>` : ''}
@@ -862,11 +883,33 @@ function openItemWhatsApp(id) {
   window.open(`https://wa.me/573118486132?text=${message}`, '_blank');
 }
 
+/* ─── Recently Viewed tracking ─── */
+function trackRecentlyViewed(id) {
+  try {
+    let recent = JSON.parse(localStorage.getItem('fp_recent') || '[]');
+    recent = recent.filter(r => r !== String(id));
+    recent.unshift(String(id));
+    if (recent.length > 12) recent = recent.slice(0, 12);
+    localStorage.setItem('fp_recent', JSON.stringify(recent));
+  } catch (_) {}
+}
+
+function getRecentlyViewed(limit = 4) {
+  try {
+    const recent = JSON.parse(localStorage.getItem('fp_recent') || '[]');
+    return recent
+      .map(id => state.products.find(p => String(p.id) === id))
+      .filter(Boolean)
+      .slice(0, limit);
+  } catch (_) { return []; }
+}
+
 /* ─── Product Modal ─── */
 function openProductModal(id) {
   const product = state.products.find((item) => String(item.id) === String(id));
   if (!product) return;
   state.activeProductId = String(id);
+  trackRecentlyViewed(id);
   const [emoji, bg] = categoryTheme(product.cat);
   const related = getRelatedProducts(product, 4);
   const stock = Number(product.stock || 0);
@@ -1197,6 +1240,10 @@ async function loadCatalog() {
     $('statProducts').textContent   = state.products.length.toLocaleString('es-CO');
     $('statCategories').textContent = state.categories.length.toLocaleString('es-CO');
     $('statBrands').textContent     = state.brands.length.toLocaleString('es-CO');
+    // Show count of products with real photos
+    const photosCount = state.products.filter(p => p.img).length;
+    const statPhotos = $('statPhotos');
+    if (statPhotos) statPhotos.textContent = photosCount.toLocaleString('es-CO');
     renderCategoryFilters();
     renderTopCategories();
     renderHighlights();
@@ -1220,6 +1267,15 @@ updateCartUI();
 updateWishUI();
 initBackToTop();
 loadCatalog();
+
+/* ─── Header scroll shadow ─── */
+(function() {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+})();
 
 /* ─── Quote Form Handler ─── */
 function handleQuoteForm(e) {

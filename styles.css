@@ -31,7 +31,8 @@ img{max-width:100%;display:block}
 
 /* ── Header ── */
 /* NOTE: backdrop-filter creates a stacking context; we isolate it carefully */
-.site-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(148,163,184,.16)}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(148,163,184,.16);transition:box-shadow .25s ease}
+.site-header.scrolled{box-shadow:0 4px 24px rgba(15,23,42,.08)}
 .header-row{display:grid;grid-template-columns:240px minmax(320px,1fr) auto;gap:22px;align-items:center;padding:14px 0}
 .brand img{height:46px;object-fit:contain}
 .brand-fallback{display:flex;align-items:center;gap:12px}
@@ -173,11 +174,11 @@ img{max-width:100%;display:block}
 
 /* ── Product Grid ── */
 .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
-.product-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .18s ease, box-shadow .18s ease}
-.product-card:hover{transform:translateY(-3px);box-shadow:0 24px 60px rgba(15,23,42,.12)}
-.card-image{position:relative;height:200px;background:linear-gradient(135deg,#fff7ed,#f3f4f6);display:grid;place-items:center;overflow:hidden}
-.card-image img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
-.product-card:hover .card-image img{transform:scale(1.04)}
+.product-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(15,23,42,.14);border-color:#e0e0e0}
+.card-image{position:relative;height:210px;background:linear-gradient(135deg,#fff7ed,#f3f4f6);display:grid;place-items:center;overflow:hidden}
+.card-image img{width:100%;height:100%;object-fit:contain;padding:8px;transition:transform .4s cubic-bezier(.25,.46,.45,.94)}
+.product-card:hover .card-image img{transform:scale(1.06)}
 .image-fallback{display:grid;place-items:center;text-align:center;padding:16px;height:100%;width:100%}
 .image-fallback .emoji{font-size:58px}
 .image-fallback small{font-size:12px;color:var(--muted)}
@@ -186,6 +187,7 @@ img{max-width:100%;display:block}
 .badge.discount{background:#fff7ed;color:var(--yellow)}
 .badge.stock{background:#dcfce7;color:var(--green)}
 .badge.low{background:#fef3c7;color:#92400e}
+.badge.photo-badge{background:rgba(0,0,0,.65);color:#fff;backdrop-filter:blur(4px);font-size:10px;padding:4px 7px}
 
 /* Wishlist heart on card */
 .card-wish-btn{
@@ -206,6 +208,11 @@ img{max-width:100%;display:block}
 .card-body{padding:14px 14px 10px;display:flex;flex-direction:column;gap:10px;flex:1}
 .card-meta{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:11px;color:var(--muted);text-transform:uppercase;font-weight:800;letter-spacing:.04em}
 .product-name{font-size:14px;font-weight:800;line-height:1.35;min-height:38px}
+.card-brand-line{font-size:11px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:.05em}
+.card-details-row{display:flex;gap:6px;flex-wrap:wrap}
+.detail-pill{font-size:11px;padding:3px 8px;border-radius:6px;background:#f1f5f9;color:var(--muted);font-weight:600}
+.detail-pill.in-stock{background:#dcfce7;color:var(--green)}
+.detail-pill.no-stock{background:#fef3c7;color:#92400e}
 .product-brand,.product-unit,.stock-line{font-size:12px;color:var(--muted)}
 .stock-line strong{color:var(--text)}
 .price-wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
@@ -229,6 +236,25 @@ img{max-width:100%;display:block}
 .empty-state h3{font-size:20px;margin:0 0 8px;color:var(--text)}
 .empty-state p{margin:0 0 16px;font-size:14px}
 .empty-state-wa{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;background:#16a34a;color:#fff;border-radius:999px;font-weight:800;font-size:14px}
+.empty-recent{margin-top:16px;text-align:left}
+.empty-recent-grid{display:flex;flex-wrap:wrap;gap:6px}
+.empty-recent-item{border:1px solid var(--line-dark);background:#fff;padding:8px 12px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s}
+.empty-recent-item:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-soft)}
+
+/* ── Add to cart animation ── */
+@keyframes addPulse{0%{transform:scale(1)}50%{transform:scale(.94)}100%{transform:scale(1)}}
+.add-btn:active{animation:addPulse .15s ease}
+.add-btn{transition:all .2s ease}
+.add-btn:hover{filter:brightness(1.1);box-shadow:0 4px 14px rgba(220,38,38,.25)}
+.add-btn.added:hover{filter:brightness(1.1);box-shadow:0 4px 14px rgba(22,163,74,.25)}
+
+/* ── Ghost btn hover ── */
+.ghost-btn{transition:all .2s ease}
+.ghost-btn:hover{background:var(--brand-soft);border-color:#fecaca;color:var(--brand)}
+
+/* ── WA mini button glow ── */
+.wa-mini{transition:all .2s ease}
+.wa-mini:hover{box-shadow:0 4px 16px rgba(22,163,74,.2)}
 
 /* ── Cart & Wish Overlays ── */
 .cart-overlay,.product-modal-overlay{
