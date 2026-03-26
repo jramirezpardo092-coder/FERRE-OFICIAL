@@ -9,7 +9,7 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply font-sans text-gray-900 antialiased;
+    @apply font-sans text-gray-900 antialiased bg-gray-50/50;
   }
 }
 
@@ -74,7 +74,7 @@
 
 /* Price IVA tag */
 .iva-tag {
-  @apply text-[10px] text-amber-600 font-medium ml-1;
+  @apply text-[10px] text-amber-600 font-semibold ml-1;
 }
 
 /* Badge styles */
@@ -86,4 +86,25 @@
 }
 .badge-discount {
   @apply absolute top-10 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10;
+}
+
+/* Catalog page specific */
+.catalog-search-highlight {
+  @apply bg-yellow-100 text-yellow-900 rounded px-0.5;
+}
+
+/* Custom checkbox style override */
+input[type="checkbox"]:checked {
+  background-color: #166534;
+  border-color: #166534;
+}
+
+/* Smooth page transition for catalog navigation */
+.catalog-fade-in {
+  animation: catalogFadeIn 0.2s ease-out;
+}
+
+@keyframes catalogFadeIn {
+  from { opacity: 0.6; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
