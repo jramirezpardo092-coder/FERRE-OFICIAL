@@ -15,18 +15,18 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center gap-2 bg-brand-green text-white font-semibold px-5 py-2.5 rounded-lg
+    @apply inline-flex items-center gap-2 bg-brand-green text-white font-semibold px-5 py-2.5 rounded-xl
            hover:bg-brand-green-dark transition-all duration-200 hover:shadow-lg hover:shadow-green-900/20
            active:scale-[0.98];
   }
   .btn-wa {
-    @apply inline-flex items-center gap-2 bg-[#25D366] text-white font-semibold px-5 py-2.5 rounded-lg
+    @apply inline-flex items-center gap-2 bg-[#25D366] text-white font-semibold px-5 py-2.5 rounded-xl
            hover:bg-[#1da851] transition-all duration-200 hover:shadow-lg hover:shadow-green-500/30
            active:scale-[0.98];
   }
   .btn-outline {
     @apply inline-flex items-center gap-2 border-2 border-brand-green text-brand-green font-semibold
-           px-5 py-2.5 rounded-lg hover:bg-brand-green hover:text-white transition-all duration-200
+           px-5 py-2.5 rounded-xl hover:bg-brand-green hover:text-white transition-all duration-200
            active:scale-[0.98];
   }
   .section-title {
@@ -44,6 +44,9 @@
   .text-balance {
     text-wrap: balance;
   }
+  .glass {
+    @apply bg-white/80 backdrop-blur-xl;
+  }
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
@@ -53,11 +56,28 @@
   }
 }
 
-/* WhatsApp floating button pulse */
+/* Keyframe animations */
 @keyframes wa-pulse {
   0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
   70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
   100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scalePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
 }
 
 .wa-floating-pulse {

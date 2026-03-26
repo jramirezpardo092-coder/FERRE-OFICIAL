@@ -11,8 +11,8 @@ const SLIDES = [
     subtitle: "5.000+ productos · Despacho 24h en Bogotá",
     cta: { label: "Ver catálogo completo", href: "/catalogo" },
     ctaSecondary: { label: "Cotizar por WhatsApp", href: SITE.social.whatsapp, external: true },
-    bg: "from-brand-green-dark via-brand-green to-emerald-700",
-    accent: "🏗️",
+    bg: "from-[#0a3d1e] via-[#166534] to-emerald-800",
+    badge: "Desde 1966",
   },
   {
     title: "Ofertas del mes",
@@ -20,15 +20,15 @@ const SLIDES = [
     cta: { label: "Ver ofertas", href: "/catalogo?ofertas=true" },
     ctaSecondary: null,
     bg: "from-gray-900 via-gray-800 to-gray-900",
-    accent: "🔥",
+    badge: "Ofertas",
   },
   {
     title: "Síguenos en Instagram y gana 5% en tu primera compra",
     subtitle: "Entérate de novedades, tips ferreteros y promociones exclusivas",
     cta: { label: "Seguir @ferreteriapardo", href: SITE.social.instagram, external: true },
     ctaSecondary: { label: "Ver Facebook", href: SITE.social.facebook, external: true },
-    bg: "from-purple-900 via-pink-900 to-orange-900",
-    accent: "📱",
+    bg: "from-[#166534] via-[#1a7a3d] to-emerald-600",
+    badge: "Redes",
   },
 ];
 
@@ -47,6 +47,10 @@ export default function HeroCarousel() {
     setCurrent((prev) => (prev + 1) % SLIDES.length);
   }, []);
 
+  const prev = useCallback(() => {
+    setCurrent((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
+  }, []);
+
   useEffect(() => {
     if (isPaused) return;
     const timer = setInterval(next, 5500);
@@ -63,7 +67,7 @@ export default function HeroCarousel() {
     >
       {/* Background */}
       <div className={cn(
-        "absolute inset-0 bg-gradient-to-br transition-all duration-700",
+        "absolute inset-0 bg-gradient-to-br transition-all duration-700 opacity-100",
         slide.bg
       )} />
 
@@ -79,8 +83,11 @@ export default function HeroCarousel() {
 
       <div className="relative max-w-7xl mx-auto px-4 py-16 md:py-24 lg:py-32">
         <div className="max-w-3xl">
-          {/* Accent */}
-          <div className="text-5xl mb-4 animate-bounce-subtle">{slide.accent}</div>
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 mb-6 opacity-0 animate-fade-in">
+            <div className="w-2 h-2 bg-[#f97316] rounded-full" />
+            <span className="text-sm font-semibold text-white/90 tracking-wide">{slide.badge}</span>
+          </div>
 
           {/* Content */}
           <h1 key={`title-${current}`} className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4 animate-fade-in text-balance">
@@ -94,24 +101,24 @@ export default function HeroCarousel() {
           <div className="flex flex-wrap gap-3 mb-12">
             {slide.cta.external ? (
               <a href={slide.cta.href} target="_blank" rel="noreferrer"
-                 className="inline-flex items-center gap-2 bg-white text-brand-green font-bold px-6 py-3 rounded-xl hover:bg-green-50 transition-all shadow-lg hover:shadow-xl text-sm md:text-base">
+                 className="inline-flex items-center gap-2 bg-white text-brand-green font-bold px-6 py-3 rounded-2xl hover:bg-green-50 transition-all shadow-lg hover:shadow-xl text-sm md:text-base">
                 {slide.cta.label}
               </a>
             ) : (
               <Link href={slide.cta.href}
-                    className="inline-flex items-center gap-2 bg-white text-brand-green font-bold px-6 py-3 rounded-xl hover:bg-green-50 transition-all shadow-lg hover:shadow-xl text-sm md:text-base">
+                    className="inline-flex items-center gap-2 bg-white text-brand-green font-bold px-6 py-3 rounded-2xl hover:bg-green-50 transition-all shadow-lg hover:shadow-xl text-sm md:text-base">
                 {slide.cta.label}
               </Link>
             )}
             {slide.ctaSecondary && (
               slide.ctaSecondary.external ? (
                 <a href={slide.ctaSecondary.href} target="_blank" rel="noreferrer"
-                   className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/10 transition-all text-sm md:text-base">
+                   className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-6 py-3 rounded-2xl hover:bg-white/10 transition-all text-sm md:text-base">
                   {slide.ctaSecondary.label}
                 </a>
               ) : (
                 <Link href={slide.ctaSecondary.href}
-                      className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/10 transition-all text-sm md:text-base">
+                      className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-6 py-3 rounded-2xl hover:bg-white/10 transition-all text-sm md:text-base">
                   {slide.ctaSecondary.label}
                 </Link>
               )
@@ -122,23 +129,53 @@ export default function HeroCarousel() {
         {/* Stats bar */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
           {STATS.map((stat) => (
-            <div key={stat.label} className="bg-white/10 backdrop-blur-md rounded-xl px-4 py-3 text-center border border-white/10">
+            <div key={stat.label} className="bg-white/10 backdrop-blur-md rounded-2xl px-4 py-3 text-center border border-white/20 hover:border-white/40 transition-all">
               <div className="text-2xl md:text-3xl font-extrabold text-white">{stat.value}</div>
               <div className="text-xs md:text-sm text-white/70 font-medium">{stat.label}</div>
             </div>
           ))}
         </div>
 
-        {/* Carousel dots */}
-        <div className="flex items-center justify-center gap-2 mt-8">
-          {SLIDES.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={cn("carousel-dot", i === current && "active")}
-              aria-label={`Slide ${i + 1}`}
-            />
-          ))}
+        {/* Navigation and dots container */}
+        <div className="flex items-center justify-between mt-12">
+          {/* Left arrow */}
+          <button
+            onClick={prev}
+            className="p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 transition-all text-white"
+            aria-label="Previous slide"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          {/* Carousel dots */}
+          <div className="flex items-center justify-center gap-3">
+            {SLIDES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={cn(
+                  "transition-all duration-300",
+                  i === current
+                    ? "w-10 h-3 bg-[#166534] rounded-full"
+                    : "w-3 h-3 bg-white/30 hover:bg-white/50 rounded-full"
+                )}
+                aria-label={`Slide ${i + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Right arrow */}
+          <button
+            onClick={next}
+            className="p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 transition-all text-white"
+            aria-label="Next slide"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
         </div>
       </div>
     </section>

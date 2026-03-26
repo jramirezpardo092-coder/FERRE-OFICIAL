@@ -32,6 +32,12 @@ const FacebookIcon = () => (
 const PhoneIcon = () => (
   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
 );
+const LocationIcon = () => (
+  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+);
+const ClockIcon = () => (
+  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+);
 const CartIcon = () => (
   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg>
 );
@@ -69,69 +75,172 @@ export default function Header() {
 
   return (
     <>
-      {/* Top strip */}
-      <div className="bg-brand-green text-white text-xs py-1.5 hidden lg:block">
+      {/* Top strip - Premium elegant */}
+      <div className="bg-brand-green text-white text-xs py-2.5 hidden lg:block">
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
-          <span className="flex items-center gap-1">
-            📍 {SITE.address}
+          <span className="flex items-center gap-2 font-medium">
+            <LocationIcon />
+            {SITE.address}
           </span>
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1">
-              <PhoneIcon /> {SITE.phone1Display}
+          <div className="flex items-center gap-6">
+            <span className="flex items-center gap-2 font-medium">
+              <PhoneIcon />
+              {SITE.phone1Display}
             </span>
-            <span className="flex items-center gap-1">
-              <PhoneIcon /> {SITE.phone2Display}
+            <span className="flex items-center gap-2 font-medium">
+              <PhoneIcon />
+              {SITE.phone2Display}
             </span>
-            <span className="text-green-200">🕗 Lun–Vie 8:15am–4:55pm · Sáb 8:15am–2:15pm</span>
+            <span className="flex items-center gap-2 text-green-100 font-medium">
+              <ClockIcon />
+              Lun–Vie 8:15am–4:55pm · Sáb 8:15am–2:15pm
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Main Header */}
+      {/* Main Header - Premium design */}
       <header
         className={cn(
           "sticky top-0 z-50 bg-white transition-all duration-300",
-          scrolled && "shadow-lg shadow-black/5"
+          scrolled && "backdrop-blur-xl bg-white/80 shadow-lg shadow-black/5"
         )}
       >
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-16 lg:h-[72px]">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 shrink-0">
+            {/* Logo - Bigger and better typography */}
+            <Link href="/" className="flex items-center gap-3 shrink-0">
               <Image
                 src="/logo-ferreteria-pardo.png"
                 alt="Ferretería Pardo SAS"
-                width={44}
-                height={44}
-                className="rounded-lg"
+                width={48}
+                height={48}
+                className="rounded-xl"
                 priority
               />
               <div className="hidden sm:block">
-                <div className="font-extrabold text-brand-green leading-tight text-sm">Ferretería Pardo</div>
-                <div className="text-[10px] text-gray-400 font-medium">Desde 1966 · Bogotá</div>
+                <div className="font-black text-brand-green leading-tight text-base">Ferretería Pardo</div>
+                <div className="text-xs text-gray-500 font-semibold">Desde 1966 · Bogotá</div>
               </div>
             </Link>
 
-            {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-1">
+            {/* Desktop Nav - Premium styling */}
+            <nav className="hidden lg:flex items-center gap-2">
               {NAV_LINKS.map((link) =>
                 link.hasDropdown ? (
                   <div key={link.label} className="relative group" ref={dropdownRef}>
                     <button
                       onClick={() => setCatOpen(!catOpen)}
-                      className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-brand-green transition-colors rounded-lg hover:bg-green-50"
+                      className="flex items-center px-4 py-2.5 text-sm font-semibold text-gray-700 hover:text-brand-green transition-all duration-300 rounded-xl hover:bg-green-50"
                     >
                       {link.label}
                       <ChevronDown />
                     </button>
                     {catOpen && (
-                      <div className="absolute top-full left-0 mt-1 w-60 bg-white rounded-xl shadow-xl shadow-black/10 border border-gray-100 py-2 animate-fade-in z-50">
+                      <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl shadow-black/10 border border-gray-100 p-4 animate-fade-in z-50">
+                        <div className="grid grid-cols-3 gap-3">
+                          {CATEGORIES.map((cat) => (
+                            <Link
+                              key={cat.slug}
+                              href={`/catalogo?cat=${encodeURIComponent(cat.name)}`}
+                              className="flex flex-col items-center gap-2 p-3 text-sm text-gray-700 hover:bg-green-50 hover:text-brand-green transition-all duration-300 rounded-xl border border-transparent hover:border-green-200"
+                              onClick={() => setCatOpen(false)}
+                            >
+                              <span className="text-2xl">{cat.icon}</span>
+                              <span className="text-center font-medium text-xs">{cat.name}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className="px-4 py-2.5 text-sm font-semibold text-gray-700 hover:text-brand-green transition-all duration-300 rounded-xl hover:bg-green-50"
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
+            </nav>
+
+            {/* Right actions */}
+            <div className="flex items-center gap-2">
+              {/* Social icons - desktop */}
+              <div className="hidden xl:flex items-center gap-2 mr-2">
+                <a href={SITE.social.instagram} target="_blank" rel="noreferrer"
+                   className="p-2.5 text-gray-400 hover:text-pink-500 transition-all duration-300 rounded-xl hover:bg-pink-50">
+                  <InstagramIcon />
+                </a>
+                <a href={SITE.social.facebook} target="_blank" rel="noreferrer"
+                   className="p-2.5 text-gray-400 hover:text-blue-600 transition-all duration-300 rounded-xl hover:bg-blue-50">
+                  <FacebookIcon />
+                </a>
+              </div>
+
+              <Link href="/catalogo" className="btn-primary text-xs hidden lg:inline-flex rounded-xl px-5 py-2.5">
+                Explorar catálogo
+              </Link>
+
+              <a href={SITE.social.whatsapp} target="_blank" rel="noreferrer"
+                 className="btn-wa text-xs hidden md:inline-flex rounded-xl px-4 py-2.5">
+                <WhatsAppMini />
+                Hablar con asesor
+              </a>
+
+              {/* Cart button - Premium scale animation */}
+              <button
+                className="relative p-2.5 text-gray-700 hover:text-brand-green transition-all duration-300 rounded-xl hover:bg-green-50"
+                aria-label="Ver carrito"
+                onClick={() => {
+                  const event = new CustomEvent("toggle-cart");
+                  window.dispatchEvent(event);
+                }}
+              >
+                <CartIcon />
+                {cartCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-brand-orange text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center animate-scale-pulse">
+                    {cartCount}
+                  </span>
+                )}
+              </button>
+
+              {/* Mobile menu toggle */}
+              <button
+                className="lg:hidden p-2.5 text-gray-700 rounded-xl hover:bg-gray-100 transition-all duration-300"
+                onClick={() => setMobileOpen(!mobileOpen)}
+                aria-label="Menú"
+              >
+                {mobileOpen ? <CloseIcon /> : <MenuIcon />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile menu - Smooth slide-down animation */}
+        {mobileOpen && (
+          <div className="lg:hidden bg-white border-t border-gray-100 animate-slide-down">
+            <nav className="max-w-7xl mx-auto px-4 py-4 space-y-2">
+              {NAV_LINKS.map((link) =>
+                link.hasDropdown ? (
+                  <div key={link.label}>
+                    <button
+                      onClick={() => setCatOpen(!catOpen)}
+                      className="w-full flex items-center justify-between px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-green-50 hover:text-brand-green transition-all duration-300 rounded-xl"
+                    >
+                      {link.label}
+                      <ChevronDown />
+                    </button>
+                    {catOpen && (
+                      <div className="ml-2 space-y-1 mt-1 pb-2">
                         {CATEGORIES.map((cat) => (
                           <Link
                             key={cat.slug}
                             href={`/catalogo?cat=${encodeURIComponent(cat.name)}`}
-                            className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-green-50 hover:text-brand-green transition-colors"
-                            onClick={() => setCatOpen(false)}
+                            className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:text-brand-green hover:bg-green-50 transition-all duration-300 rounded-xl"
+                            onClick={() => { setCatOpen(false); setMobileOpen(false); }}
                           >
                             <span className="text-lg">{cat.icon}</span>
                             {cat.name}
@@ -144,102 +253,7 @@ export default function Header() {
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-brand-green transition-colors rounded-lg hover:bg-green-50"
-                  >
-                    {link.label}
-                  </Link>
-                )
-              )}
-            </nav>
-
-            {/* Right actions */}
-            <div className="flex items-center gap-2">
-              {/* Social icons - desktop */}
-              <div className="hidden xl:flex items-center gap-1.5 mr-2">
-                <a href={SITE.social.instagram} target="_blank" rel="noreferrer"
-                   className="p-2 text-gray-400 hover:text-pink-500 transition-colors">
-                  <InstagramIcon />
-                </a>
-                <a href={SITE.social.facebook} target="_blank" rel="noreferrer"
-                   className="p-2 text-gray-400 hover:text-blue-600 transition-colors">
-                  <FacebookIcon />
-                </a>
-              </div>
-
-              <Link href="/catalogo" className="btn-primary text-xs hidden lg:inline-flex">
-                Explorar catálogo
-              </Link>
-
-              <a href={SITE.social.whatsapp} target="_blank" rel="noreferrer"
-                 className="btn-wa text-xs hidden md:inline-flex">
-                <WhatsAppMini />
-                Hablar con asesor
-              </a>
-
-              {/* Cart button */}
-              <button
-                className="relative p-2 text-gray-700 hover:text-brand-green transition-colors"
-                aria-label="Ver carrito"
-                onClick={() => {
-                  const event = new CustomEvent("toggle-cart");
-                  window.dispatchEvent(event);
-                }}
-              >
-                <CartIcon />
-                {cartCount > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 bg-brand-orange text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center animate-bounce-subtle">
-                    {cartCount}
-                  </span>
-                )}
-              </button>
-
-              {/* Mobile menu toggle */}
-              <button
-                className="lg:hidden p-2 text-gray-700"
-                onClick={() => setMobileOpen(!mobileOpen)}
-                aria-label="Menú"
-              >
-                {mobileOpen ? <CloseIcon /> : <MenuIcon />}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile menu */}
-        {mobileOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-100 animate-fade-in">
-            <nav className="max-w-7xl mx-auto px-4 py-4 space-y-1">
-              {NAV_LINKS.map((link) =>
-                link.hasDropdown ? (
-                  <div key={link.label}>
-                    <button
-                      onClick={() => setCatOpen(!catOpen)}
-                      className="w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-green-50 rounded-lg"
-                    >
-                      {link.label}
-                      <ChevronDown />
-                    </button>
-                    {catOpen && (
-                      <div className="ml-4 space-y-0.5 mt-1">
-                        {CATEGORIES.map((cat) => (
-                          <Link
-                            key={cat.slug}
-                            href={`/catalogo?cat=${encodeURIComponent(cat.name)}`}
-                            className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 hover:text-brand-green hover:bg-green-50 rounded-lg"
-                            onClick={() => { setCatOpen(false); setMobileOpen(false); }}
-                          >
-                            <span>{cat.icon}</span>
-                            {cat.name}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    className="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:text-brand-green hover:bg-green-50 rounded-lg"
+                    className="block px-4 py-3 text-sm font-semibold text-gray-700 hover:text-brand-green hover:bg-green-50 transition-all duration-300 rounded-xl"
                     onClick={() => setMobileOpen(false)}
                   >
                     {link.label}
@@ -248,30 +262,53 @@ export default function Header() {
               )}
 
               {/* Mobile actions */}
-              <div className="pt-3 border-t border-gray-100 space-y-2">
+              <div className="pt-4 border-t border-gray-100 space-y-2">
                 <a href={SITE.social.whatsapp} target="_blank" rel="noreferrer"
-                   className="btn-wa w-full justify-center text-sm">
+                   className="btn-wa w-full justify-center text-sm rounded-xl py-3">
                   <WhatsAppMini /> Cotizar por WhatsApp
                 </a>
-                <Link href="/catalogo" className="btn-primary w-full justify-center text-sm">
+                <Link href="/catalogo" className="btn-primary w-full justify-center text-sm rounded-xl py-3">
                   Explorar catálogo completo
                 </Link>
               </div>
 
               {/* Mobile info */}
-              <div className="pt-3 border-t border-gray-100 text-xs text-gray-500 space-y-1">
-                <p className="flex items-center gap-1"><PhoneIcon /> {SITE.phone1Display} | {SITE.phone2Display}</p>
-                <p>📍 {SITE.address}</p>
-                <p>🕗 Lun–Vie 8:15am–4:55pm · Sáb 8:15am–2:15pm</p>
+              <div className="pt-4 border-t border-gray-100 text-xs text-gray-500 space-y-2">
+                <p className="flex items-center gap-2"><PhoneIcon /> {SITE.phone1Display} | {SITE.phone2Display}</p>
+                <p className="flex items-center gap-2"><LocationIcon /> {SITE.address}</p>
+                <p className="flex items-center gap-2"><ClockIcon /> Lun–Vie 8:15am–4:55pm · Sáb 8:15am–2:15pm</p>
                 <div className="flex items-center gap-3 pt-2">
-                  <a href={SITE.social.instagram} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-pink-500"><InstagramIcon /></a>
-                  <a href={SITE.social.facebook} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-blue-600"><FacebookIcon /></a>
+                  <a href={SITE.social.instagram} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-pink-500 transition-all duration-300"><InstagramIcon /></a>
+                  <a href={SITE.social.facebook} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-blue-600 transition-all duration-300"><FacebookIcon /></a>
                 </div>
               </div>
             </nav>
           </div>
         )}
       </header>
+
+      <style>{`
+        @keyframes scale-pulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.15); }
+        }
+        @keyframes slide-down {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-scale-pulse {
+          animation: scale-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .animate-slide-down {
+          animation: slide-down 300ms ease-out;
+        }
+      `}</style>
     </>
   );
 }
