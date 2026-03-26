@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Product } from "@/lib/types";
 import { formatCOP, getProductImage, getDiscountPercent, cn } from "@/lib/utils";
 import { addToCart } from "@/lib/cart-store";
@@ -47,9 +48,15 @@ export default function ProductCard({ product, onOpenModal, viewMode = "grid" }:
   if (viewMode === "list") {
     return (
       <div
-        className="group bg-white rounded-xl border border-gray-100 overflow-hidden hover:shadow-lg hover:border-gray-200 cursor-pointer transition-all flex"
+        className="group bg-white rounded-xl border border-gray-100 overflow-hidden hover:shadow-lg hover:border-gray-200 cursor-pointer transition-all flex relative"
         onClick={() => onOpenModal?.(product)}
       >
+        <Link
+          href={`/producto/${product.id}`}
+          className="absolute inset-0 z-0"
+          aria-label={`Ver ${product.nombre}`}
+          onClick={(e) => { if (onOpenModal) e.preventDefault(); }}
+        />
         {/* Image */}
         <div className="relative w-32 sm:w-40 shrink-0 bg-gray-50 overflow-hidden">
           {discount && discount >= 20 && (
@@ -125,6 +132,13 @@ export default function ProductCard({ product, onOpenModal, viewMode = "grid" }:
       className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:-translate-y-1 hover:shadow-xl hover:shadow-black/8 cursor-pointer relative transition-all duration-300"
       onClick={() => onOpenModal?.(product)}
     >
+      {/* Link invisible para SEO - si hay modal, el click lo intercepta */}
+      <Link
+        href={`/producto/${product.id}`}
+        className="absolute inset-0 z-0"
+        aria-label={`Ver ${product.nombre}`}
+        onClick={(e) => { if (onOpenModal) e.preventDefault(); }}
+      />
       {/* Badges — repositioned for clarity */}
       <div className="absolute top-2.5 left-2.5 z-10 flex flex-col gap-1">
         {discount && discount >= 20 && (
