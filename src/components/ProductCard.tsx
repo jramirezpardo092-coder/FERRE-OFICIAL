@@ -79,10 +79,10 @@ export default function ProductCard({ product, onOpenModal, viewMode = "grid" }:
         <div className="flex-1 p-4 flex flex-col justify-between min-w-0">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-[10px] font-bold text-brand-green uppercase tracking-wider">{product.brand}</span>
+              <span className="text-[10px] font-bold text-brand-red uppercase tracking-wider">{product.brand}</span>
               {hasImage && <span className="text-[9px] bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded font-medium">📸 Foto</span>}
             </div>
-            <h3 className="text-sm font-semibold text-gray-800 leading-tight line-clamp-2 group-hover:text-brand-green transition-colors">{product.nombre}</h3>
+            <h3 className="text-sm font-semibold text-gray-800 leading-tight line-clamp-2 group-hover:text-brand-red transition-colors">{product.nombre}</h3>
             <div className="flex items-center gap-2 mt-1.5">
               <span className="text-[10px] px-2 py-0.5 bg-gray-100 text-gray-500 rounded font-medium">{product.unidad}</span>
               <span className={cn("text-[10px] px-2 py-0.5 rounded font-semibold",
@@ -106,7 +106,7 @@ export default function ProductCard({ product, onOpenModal, viewMode = "grid" }:
               )}
             </div>
             <div className="flex gap-2 shrink-0">
-              <button onClick={handleAdd} className="flex items-center gap-1.5 bg-brand-green text-white text-xs font-bold px-4 py-2.5 rounded-lg hover:bg-brand-green-dark transition-all active:scale-[0.97]">
+              <button onClick={handleAdd} className="flex items-center gap-1.5 bg-brand-red text-white text-xs font-bold px-4 py-2.5 rounded-lg hover:bg-brand-red-dark transition-all active:scale-[0.97]">
                 <CartIcon /> Agregar
               </button>
               <button onClick={handleWA} className="flex items-center justify-center bg-[#25D366] text-white p-2.5 rounded-lg hover:bg-[#1da851] transition-all active:scale-[0.97]" title="Cotizar por WhatsApp">
@@ -171,12 +171,12 @@ export default function ProductCard({ product, onOpenModal, viewMode = "grid" }:
       {/* Content */}
       <div className="p-3 md:p-4">
         {/* Brand */}
-        <div className="text-[10px] font-bold text-brand-green uppercase tracking-wider mb-0.5">
+        <div className="text-[10px] font-bold text-brand-red uppercase tracking-wider mb-0.5">
           {product.brand}
         </div>
 
         {/* Name */}
-        <h3 className="text-[13px] font-semibold text-gray-800 leading-tight line-clamp-2 mb-2 min-h-[2.25rem] group-hover:text-brand-green transition-colors">
+        <h3 className="text-[13px] font-semibold text-gray-800 leading-tight line-clamp-2 mb-2 min-h-[2.25rem] group-hover:text-brand-red transition-colors">
           {product.nombre}
         </h3>
 
@@ -217,7 +217,7 @@ export default function ProductCard({ product, onOpenModal, viewMode = "grid" }:
         <div className="flex gap-2">
           <button
             onClick={handleAdd}
-            className="flex-1 flex items-center justify-center gap-1.5 bg-brand-green text-white text-xs font-bold py-2.5 rounded-xl hover:bg-brand-green-dark transition-all active:scale-[0.97] shadow-sm shadow-green-900/10"
+            className="flex-1 flex items-center justify-center gap-1.5 bg-brand-red text-white text-xs font-bold py-2.5 rounded-xl hover:bg-brand-red-dark transition-all active:scale-[0.97] shadow-sm shadow-red-900/10"
           >
             <PlusIcon /> Agregar
           </button>

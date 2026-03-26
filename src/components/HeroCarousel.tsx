@@ -11,13 +11,13 @@ const SLIDES = [
     subtitle: "5.000+ productos · Despacho 24h en Bogotá",
     cta: { label: "Ver catálogo completo", href: "/catalogo" },
     ctaSecondary: { label: "Cotizar por WhatsApp", href: SITE.social.whatsapp },
-    bg: "from-[#052e16] via-[#166534] to-emerald-800",
+    bg: "from-[#7F1D1D] via-[#D02731] to-[#A81F27]",
     badge: "Desde 1966",
   },
   {
     title: "Ofertas del mes",
     subtitle: "Hasta 30% de descuento en herramientas y cerrajería seleccionada",
-    cta: { label: "Ver ofertas", href: "/catalogo?ofertas=true" },
+    cta: { label: "Ver ofertas", href: "/ofertas" },
     ctaSecondary: null,
     bg: "from-gray-950 via-gray-900 to-gray-950",
     badge: "Ofertas",
@@ -27,16 +27,16 @@ const SLIDES = [
     subtitle: "Entérate de novedades, tips ferreteros y promociones exclusivas",
     cta: { label: "Seguir @ferreteriapardo", href: SITE.social.instagram },
     ctaSecondary: { label: "Ver Facebook", href: SITE.social.facebook },
-    bg: "from-[#052e16] via-[#14532d] to-[#166534]",
+    bg: "from-[#7F1D1D] via-[#A81F27] to-[#D02731]",
     badge: "Redes",
   },
 ];
 
 const STATS = [
   { value: "5.000+", label: "Productos" },
+  { value: "60+", label: "Años de experiencia" },
+  { value: "11", label: "Marcas reconocidas" },
   { value: "9", label: "Categorías" },
-  { value: "11", label: "Marcas" },
-  { value: "1.145", label: "Con foto real" },
 ];
 
 export default function HeroCarousel() {
@@ -104,12 +104,12 @@ export default function HeroCarousel() {
           <div className="flex flex-wrap gap-4 mb-12">
             {slide.cta.href.startsWith('http') ? (
               <a href={slide.cta.href} target="_blank" rel="noreferrer"
-                 className="inline-flex items-center gap-2 bg-white text-brand-green font-bold px-8 py-4 rounded-2xl hover:bg-green-50 transition-all shadow-lg hover:shadow-xl text-base">
+                 className="inline-flex items-center gap-2 bg-white text-brand-red font-bold px-8 py-4 rounded-2xl hover:bg-red-50 transition-all shadow-lg hover:shadow-xl text-base">
                 {slide.cta.label}
               </a>
             ) : (
               <Link href={slide.cta.href}
-                    className="inline-flex items-center gap-2 bg-white text-brand-green font-bold px-8 py-4 rounded-2xl hover:bg-green-50 transition-all shadow-lg hover:shadow-xl text-base">
+                    className="inline-flex items-center gap-2 bg-white text-brand-red font-bold px-8 py-4 rounded-2xl hover:bg-red-50 transition-all shadow-lg hover:shadow-xl text-base">
                 {slide.cta.label}
               </Link>
             )}

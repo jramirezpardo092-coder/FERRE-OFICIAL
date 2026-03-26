@@ -6,12 +6,17 @@ import BrandCarousel from "@/components/BrandCarousel";
 import Testimonials from "@/components/Testimonials";
 import { Product } from "@/lib/types";
 import productsData from "@/data/products.json";
+import { getLocalBusinessJsonLd } from "@/lib/seo";
 
 export default function HomePage() {
   const products = productsData as Product[];
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getLocalBusinessJsonLd()) }}
+      />
       <HeroCarousel />
       <CategoryGrid />
       <FeaturedProducts products={products} />

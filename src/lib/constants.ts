@@ -44,8 +44,7 @@ export const NAV_LINKS = [
   { label: "Inicio", href: "/" },
   { label: "Catálogo", href: "/catalogo" },
   { label: "Categorías", href: "#categorias", hasDropdown: true },
-  { label: "Marcas", href: "#marcas" },
-  { label: "Ofertas", href: "/catalogo?ofertas=true" },
-  { label: "Blog", href: "/blog" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Marcas", href: "/marcas" },
+  { label: "Ofertas", href: "/ofertas" },
+  { label: "Contacto", href: "/contacto" },
 ];

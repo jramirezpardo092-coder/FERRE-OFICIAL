@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import MiniCart from "@/components/MiniCart";
+import { getOrganizationJsonLd, getWebsiteJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Ferretería Pardo SAS | Catálogo, herrajes y herramientas en Bogotá",
@@ -41,6 +42,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(getOrganizationJsonLd()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(getWebsiteJsonLd()) }}
+        />
+      </head>
       <body className="min-h-screen flex flex-col">
         <Header />
         <main className="flex-1">{children}</main>

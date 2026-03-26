@@ -45,7 +45,7 @@ export default function CatalogoPage() {
 
       <Suspense fallback={
         <div className="flex flex-col items-center justify-center py-20 gap-3">
-          <div className="animate-spin rounded-full h-10 w-10 border-3 border-brand-green border-t-transparent" />
+          <div className="animate-spin rounded-full h-10 w-10 border-3 border-brand-red border-t-transparent" />
           <p className="text-sm text-gray-400">Cargando catálogo...</p>
         </div>
       }>

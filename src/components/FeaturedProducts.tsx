@@ -30,7 +30,7 @@ export default function FeaturedProducts({ products }: Props) {
           </div>
           <Link
             href="/catalogo"
-            className="hidden md:inline-flex items-center gap-1 text-brand-green font-semibold text-sm hover:underline"
+            className="hidden md:inline-flex items-center gap-1 text-brand-red font-semibold text-sm hover:underline"
           >
             Ver todo el catálogo →
           </Link>

@@ -1,8 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import Link from "next/link";
 import { CATEGORIES } from "@/lib/constants";
+import productsData from "@/data/products.json";
+import { Product } from "@/lib/types";
 
 // SVG Icon Components
 const IconKey = () => (
@@ -74,20 +76,17 @@ const iconMap: Record<string, () => React.ReactElement> = {
   "Seguridad Industrial": IconShield,
 };
 
-// Product counts for each category (hardcoded)
-const productCounts: Record<string, string> = {
-  "Cerrajería": "1,550",
-  "Ferretería General": "2,180",
-  "Herramientas": "890",
-  "Herrajes para Muebles": "650",
-  "Tornillería y Fijación": "1,240",
-  "Adhesivos y Sellantes": "420",
-  "Eléctrico": "780",
-  "Fontanería": "950",
-  "Seguridad Industrial": "370",
-};
-
 export default function CategoryGrid() {
+  const products = productsData as Product[];
+
+  // Dynamic product counts from actual data
+  const productCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    products.forEach((p) => {
+      counts[p.cat] = (counts[p.cat] || 0) + 1;
+    });
+    return counts;
+  }, [products]);
   return (
     <section id="categorias" className="py-20 md:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4">
@@ -105,26 +104,26 @@ export default function CategoryGrid() {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 mb-12">
           {CATEGORIES.map((cat) => {
             const IconComponent = iconMap[cat.name] || IconWrench;
-            const count = productCounts[cat.name] || "0";
+            const count = (productCounts[cat.name] || 0).toLocaleString("es-CO");
             return (
               <Link
                 key={cat.slug}
                 href={`/catalogo?cat=${encodeURIComponent(cat.name)}`}
                 className="group"
               >
-                <div className="relative h-full bg-white rounded-3xl p-8 md:p-10 text-center border border-gray-200 hover:border-brand-green/30 hover:shadow-2xl hover:shadow-green-900/10 transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center">
+                <div className="relative h-full bg-white rounded-3xl p-8 md:p-10 text-center border border-gray-200 hover:border-brand-red/30 hover:shadow-2xl hover:shadow-red-900/10 transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center">
                   {/* Product Count Badge */}
                   <div className="absolute top-3 right-3 bg-brand-orange/10 text-brand-orange text-xs font-bold px-3 py-1.5 rounded-full">
                     {count}
                   </div>
 
                   {/* Icon Container */}
-                  <div className="w-16 h-16 rounded-3xl bg-green-50 flex items-center justify-center text-brand-green mb-4 group-hover:bg-brand-green group-hover:text-white transition-all duration-300">
+                  <div className="w-16 h-16 rounded-3xl bg-red-50 flex items-center justify-center text-brand-red mb-4 group-hover:bg-brand-red group-hover:text-white transition-all duration-300">
                     <IconComponent />
                   </div>
 
                   {/* Category Name */}
-                  <h3 className="font-bold text-base md:text-lg text-gray-800 group-hover:text-brand-green transition-colors duration-300 leading-tight">
+                  <h3 className="font-bold text-base md:text-lg text-gray-800 group-hover:text-brand-red transition-colors duration-300 leading-tight">
                     {cat.name}
                   </h3>
                 </div>
@@ -137,7 +136,7 @@ export default function CategoryGrid() {
         <div className="flex justify-center">
           <Link
             href="/catalogo"
-            className="inline-flex items-center px-10 py-4 bg-brand-green text-white font-semibold rounded-2xl hover:bg-green-700 hover:shadow-lg transition-all duration-300 hover:scale-105 text-base"
+            className="inline-flex items-center px-10 py-4 bg-brand-red text-white font-semibold rounded-2xl hover:bg-brand-red-dark hover:shadow-lg transition-all duration-300 hover:scale-105 text-base"
           >
             Ver todas las categorías
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

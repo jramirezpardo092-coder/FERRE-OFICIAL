@@ -34,9 +34,9 @@ export default function Testimonials() {
 
         <div className="grid md:grid-cols-3 gap-6">
           {TESTIMONIALS.map((t) => (
-            <div key={t.name} className="bg-white rounded-3xl p-8 border-2 border-gray-100 hover:scale-[1.03] hover:shadow-xl hover:border-brand-green/20 transition-all duration-300">
+            <div key={t.name} className="bg-white rounded-3xl p-8 border-2 border-gray-100 hover:scale-[1.03] hover:shadow-xl hover:border-brand-red/20 transition-all duration-300">
               {/* Decorative quote mark */}
-              <div className="text-6xl text-green-100 font-serif mb-2">"</div>
+              <div className="text-6xl text-red-100 font-serif mb-2">"</div>
 
               {/* Stars */}
               <div className="flex gap-0.5 mb-4">
@@ -51,7 +51,7 @@ export default function Testimonials() {
 
               <div>
                 <div className="text-base font-bold text-gray-900">{t.name}</div>
-                <div className="text-sm text-brand-green font-medium">{t.role}</div>
+                <div className="text-sm text-brand-red font-medium">{t.role}</div>
               </div>
             </div>
           ))}

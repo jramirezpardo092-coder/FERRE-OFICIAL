@@ -62,7 +62,7 @@ export default function MiniCart() {
           <h2 className="font-extrabold text-lg text-gray-900">
             Tu pedido
             {count > 0 && (
-              <span className="ml-2 text-xs font-bold bg-brand-green text-white px-2 py-0.5 rounded-full">
+              <span className="ml-2 text-xs font-bold bg-brand-red text-white px-2 py-0.5 rounded-full">
                 {count}
               </span>
             )}
@@ -91,7 +91,7 @@ export default function MiniCart() {
             items.map((item) => (
               <div key={item.id} className="flex gap-3 bg-gray-50 rounded-xl p-3">
                 <div className="flex-1 min-w-0">
-                  <div className="text-[10px] font-bold text-brand-green uppercase">{item.brand}</div>
+                  <div className="text-[10px] font-bold text-brand-red uppercase">{item.brand}</div>
                   <h4 className="text-sm font-semibold text-gray-800 truncate">{item.nombre}</h4>
                   <div className="flex items-center gap-2 mt-1">
                     <span className="text-sm font-bold">{formatCOP(item.precio)}</span>
@@ -110,12 +110,12 @@ export default function MiniCart() {
                   <div className="flex items-center gap-1 bg-white rounded-lg border border-gray-200">
                     <button
                       onClick={() => updateQty(item.id, item.qty - 1)}
-                      className="w-7 h-7 flex items-center justify-center text-gray-500 hover:text-brand-green"
+                      className="w-7 h-7 flex items-center justify-center text-gray-500 hover:text-brand-red"
                     >−</button>
                     <span className="w-6 text-center text-sm font-bold">{item.qty}</span>
                     <button
                       onClick={() => updateQty(item.id, item.qty + 1)}
-                      className="w-7 h-7 flex items-center justify-center text-gray-500 hover:text-brand-green"
+                      className="w-7 h-7 flex items-center justify-center text-gray-500 hover:text-brand-red"
                     >+</button>
                   </div>
                 </div>

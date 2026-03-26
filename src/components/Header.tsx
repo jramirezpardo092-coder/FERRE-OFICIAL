@@ -155,7 +155,7 @@ export default function Header() {
   return (
     <>
       {/* Top strip - Premium elegant with gradient */}
-      <div className="bg-gradient-to-r from-brand-green-dark to-brand-green text-white text-xs py-2.5 hidden lg:block">
+      <div className="bg-gradient-to-r from-brand-red-dark to-brand-red text-white text-xs py-2.5 hidden lg:block">
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
           <span className="flex items-center gap-2 font-medium">
             <LocationIcon />
@@ -170,7 +170,7 @@ export default function Header() {
               <PhoneIcon />
               {SITE.phone2Display}
             </span>
-            <span className="flex items-center gap-2 text-green-100 font-medium">
+            <span className="flex items-center gap-2 text-red-100 font-medium">
               <ClockIcon />
               Lun–Vie 8:15am–4:55pm · Sáb 8:15am–2:15pm
             </span>
@@ -198,7 +198,7 @@ export default function Header() {
                 priority
               />
               <div className="hidden sm:block">
-                <div className="font-black text-brand-green leading-tight text-lg">Ferretería Pardo</div>
+                <div className="font-black text-brand-red leading-tight text-lg">Ferretería Pardo</div>
                 <div className="text-xs text-gray-500 font-semibold">Desde 1966 · Bogotá</div>
               </div>
             </Link>
@@ -210,7 +210,7 @@ export default function Header() {
                   <div key={link.label} className="relative group" ref={dropdownRef}>
                     <button
                       onClick={() => setCatOpen(!catOpen)}
-                      className="flex items-center px-4 py-2.5 text-sm font-semibold text-gray-700 hover:text-brand-green transition-all duration-300 rounded-2xl hover:bg-green-50"
+                      className="flex items-center px-4 py-2.5 text-sm font-semibold text-gray-700 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50"
                     >
                       {link.label}
                       <ChevronDown />
@@ -224,11 +224,11 @@ export default function Header() {
                               <Link
                                 key={cat.slug}
                                 href={`/catalogo?cat=${encodeURIComponent(cat.name)}`}
-                                className="flex flex-col items-center gap-2 p-3 text-sm text-gray-700 hover:bg-green-50 hover:text-brand-green transition-all duration-300 rounded-2xl border border-transparent hover:border-green-200"
+                                className="flex flex-col items-center gap-2 p-3 text-sm text-gray-700 hover:bg-red-50 hover:text-brand-red transition-all duration-300 rounded-2xl border border-transparent hover:border-red-200"
                                 onClick={() => setCatOpen(false)}
                               >
                                 {IconComponent && (
-                                  <div className="text-brand-green">
+                                  <div className="text-brand-red">
                                     <IconComponent />
                                   </div>
                                 )}
@@ -244,7 +244,7 @@ export default function Header() {
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="px-4 py-2.5 text-sm font-semibold text-gray-700 hover:text-brand-green transition-all duration-300 rounded-2xl hover:bg-green-50"
+                    className="px-4 py-2.5 text-sm font-semibold text-gray-700 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50"
                   >
                     {link.label}
                   </Link>
@@ -278,7 +278,7 @@ export default function Header() {
 
               {/* Cart button - Premium scale animation */}
               <button
-                className="relative p-2.5 text-gray-700 hover:text-brand-green transition-all duration-300 rounded-2xl hover:bg-green-50"
+                className="relative p-2.5 text-gray-700 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50"
                 aria-label="Ver carrito"
                 onClick={() => {
                   const event = new CustomEvent("toggle-cart");
@@ -314,7 +314,7 @@ export default function Header() {
                   <div key={link.label}>
                     <button
                       onClick={() => setCatOpen(!catOpen)}
-                      className="w-full flex items-center justify-between px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-green-50 hover:text-brand-green transition-all duration-300 rounded-2xl"
+                      className="w-full flex items-center justify-between px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-red-50 hover:text-brand-red transition-all duration-300 rounded-2xl"
                     >
                       {link.label}
                       <ChevronDown />
@@ -327,11 +327,11 @@ export default function Header() {
                             <Link
                               key={cat.slug}
                               href={`/catalogo?cat=${encodeURIComponent(cat.name)}`}
-                              className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:text-brand-green hover:bg-green-50 transition-all duration-300 rounded-2xl"
+                              className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-red-50 transition-all duration-300 rounded-2xl"
                               onClick={() => { setCatOpen(false); setMobileOpen(false); }}
                             >
                               {IconComponent && (
-                                <div className="text-brand-green">
+                                <div className="text-brand-red">
                                   <IconComponent />
                                 </div>
                               )}
@@ -346,7 +346,7 @@ export default function Header() {
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="block px-4 py-3 text-sm font-semibold text-gray-700 hover:text-brand-green hover:bg-green-50 transition-all duration-300 rounded-2xl"
+                    className="block px-4 py-3 text-sm font-semibold text-gray-700 hover:text-brand-red hover:bg-red-50 transition-all duration-300 rounded-2xl"
                     onClick={() => setMobileOpen(false)}
                   >
                     {link.label}

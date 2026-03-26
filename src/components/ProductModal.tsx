@@ -85,7 +85,7 @@ export default function ProductModal({ product, onClose }: Props) {
           {/* Details */}
           <div className="md:w-1/2 p-6">
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-xs font-bold text-brand-green uppercase tracking-wider">
+              <span className="text-xs font-bold text-brand-red uppercase tracking-wider">
                 {product.brand}
               </span>
               <span className="text-gray-300">·</span>
@@ -132,7 +132,7 @@ export default function ProductModal({ product, onClose }: Props) {
             <div className="space-y-2.5">
               <button
                 onClick={() => { addToCart(product); onClose(); }}
-                className="w-full btn-primary justify-center py-3.5 text-sm rounded-xl shadow-md shadow-green-900/15"
+                className="w-full btn-primary justify-center py-3.5 text-sm rounded-xl shadow-md shadow-red-900/15"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />

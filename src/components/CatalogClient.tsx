@@ -240,7 +240,7 @@ export default function CatalogClient({ products }: Props) {
             onFocus={() => setShowSuggestions(true)}
             onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
             placeholder="Buscar por nombre, referencia, marca o categoría..."
-            className="w-full pl-12 pr-12 py-4 bg-white border-2 border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-brand-green/30 focus:border-brand-green outline-none transition-all shadow-sm hover:border-gray-300"
+            className="w-full pl-12 pr-12 py-4 bg-white border-2 border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-brand-red/30 focus:border-brand-red outline-none transition-all shadow-sm hover:border-gray-300"
           />
           {search && (
             <button
@@ -284,8 +284,8 @@ export default function CatalogClient({ products }: Props) {
             className={cn(
               "shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all border",
               !category
-                ? "bg-brand-green text-white border-brand-green shadow-sm"
-                : "bg-white text-gray-600 border-gray-200 hover:border-brand-green hover:text-brand-green"
+                ? "bg-brand-red text-white border-brand-red shadow-sm"
+                : "bg-white text-gray-600 border-gray-200 hover:border-brand-red hover:text-brand-red"
             )}
           >
             Todas
@@ -297,8 +297,8 @@ export default function CatalogClient({ products }: Props) {
               className={cn(
                 "shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all border flex items-center gap-1.5",
                 category === cat.name
-                  ? "bg-brand-green text-white border-brand-green shadow-sm"
-                  : "bg-white text-gray-600 border-gray-200 hover:border-brand-green hover:text-brand-green"
+                  ? "bg-brand-red text-white border-brand-red shadow-sm"
+                  : "bg-white text-gray-600 border-gray-200 hover:border-brand-red hover:text-brand-red"
               )}
             >
               <span>{cat.icon}</span>
@@ -319,10 +319,10 @@ export default function CatalogClient({ products }: Props) {
             <button
               key={f.key}
               onClick={() => removeFilter(f.key)}
-              className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 text-brand-green text-xs font-semibold rounded-full border border-green-200 hover:bg-green-100 transition-colors group"
+              className="inline-flex items-center gap-1.5 px-3 py-1 bg-red-50 text-brand-red text-xs font-semibold rounded-full border border-red-200 hover:bg-red-100 transition-colors group"
             >
               {f.label}
-              <span className="w-3.5 h-3.5 rounded-full bg-brand-green/10 group-hover:bg-brand-green/20 flex items-center justify-center">
+              <span className="w-3.5 h-3.5 rounded-full bg-brand-red/10 group-hover:bg-brand-red/20 flex items-center justify-center">
                 <svg className="w-2 h-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -339,12 +339,12 @@ export default function CatalogClient({ products }: Props) {
         {/* ── Mobile filter toggle ─────────────── */}
         <button
           onClick={() => setSidebarOpen(true)}
-          className="lg:hidden fixed bottom-20 left-4 z-50 bg-brand-green text-white font-bold px-4 py-2.5 rounded-full shadow-lg flex items-center gap-2 text-sm hover:bg-brand-green-dark transition-colors"
+          className="lg:hidden fixed bottom-20 left-4 z-50 bg-brand-red text-white font-bold px-4 py-2.5 rounded-full shadow-lg flex items-center gap-2 text-sm hover:bg-brand-red-dark transition-colors"
         >
           <FilterIcon />
           Filtros
           {activeFilters.length > 0 && (
-            <span className="bg-white text-brand-green text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">
+            <span className="bg-white text-brand-red text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">
               {activeFilters.length}
             </span>
           )}
@@ -377,7 +377,7 @@ export default function CatalogClient({ products }: Props) {
                 <button
                   onClick={() => setCategory("")}
                   className={cn("w-full text-left text-sm px-3 py-2 rounded-lg transition-colors",
-                    !category ? "bg-green-50 text-brand-green font-semibold border border-green-200" : "text-gray-600 hover:bg-gray-50")}
+                    !category ? "bg-red-50 text-brand-red font-semibold border border-red-200" : "text-gray-600 hover:bg-gray-50")}
                 >
                   Todas ({catCounts["__all"] || products.length})
                 </button>
@@ -388,7 +388,7 @@ export default function CatalogClient({ products }: Props) {
                       key={cat.slug}
                       onClick={() => setCategory(cat.name === category ? "" : cat.name)}
                       className={cn("w-full text-left text-sm px-3 py-2 rounded-lg transition-colors flex items-center justify-between",
-                        category === cat.name ? "bg-green-50 text-brand-green font-semibold border border-green-200" : "text-gray-600 hover:bg-gray-50")}
+                        category === cat.name ? "bg-red-50 text-brand-red font-semibold border border-red-200" : "text-gray-600 hover:bg-gray-50")}
                     >
                       <span className="flex items-center gap-2">
                         <span className="text-sm">{cat.icon}</span>
@@ -414,7 +414,7 @@ export default function CatalogClient({ products }: Props) {
                 <button
                   onClick={() => setBrand("")}
                   className={cn("w-full text-left text-sm px-3 py-2 rounded-lg transition-colors",
-                    !brand ? "bg-green-50 text-brand-green font-semibold border border-green-200" : "text-gray-600 hover:bg-gray-50")}
+                    !brand ? "bg-red-50 text-brand-red font-semibold border border-red-200" : "text-gray-600 hover:bg-gray-50")}
                 >
                   Todas
                 </button>
@@ -425,7 +425,7 @@ export default function CatalogClient({ products }: Props) {
                       key={b}
                       onClick={() => setBrand(b === brand ? "" : b)}
                       className={cn("w-full text-left text-sm px-3 py-2 rounded-lg transition-colors flex items-center justify-between",
-                        brand === b ? "bg-green-50 text-brand-green font-semibold border border-green-200" : "text-gray-600 hover:bg-gray-50")}
+                        brand === b ? "bg-red-50 text-brand-red font-semibold border border-red-200" : "text-gray-600 hover:bg-gray-50")}
                     >
                       <span className="truncate">{b}</span>
                       <span className={cn("text-[11px] font-medium tabular-nums", count === 0 ? "text-gray-300" : "text-gray-400")}>{count}</span>
@@ -434,7 +434,7 @@ export default function CatalogClient({ products }: Props) {
                 })}
               </div>
               {!brandsExpanded && BRANDS.length > 5 && (
-                <button onClick={() => setBrandsExpanded(true)} className="w-full text-xs text-brand-green font-medium mt-1 hover:underline">
+                <button onClick={() => setBrandsExpanded(true)} className="w-full text-xs text-brand-red font-medium mt-1 hover:underline">
                   Ver todas las marcas ({BRANDS.length})
                 </button>
               )}
@@ -444,7 +444,7 @@ export default function CatalogClient({ products }: Props) {
             <div className="space-y-2 pt-1 border-t border-gray-100">
               <label className="flex items-center gap-2.5 text-sm cursor-pointer py-1 hover:bg-gray-50 rounded-lg px-2 -mx-2 transition-colors">
                 <input type="checkbox" checked={onlyPhoto} onChange={(e) => setOnlyPhoto(e.target.checked)}
-                       className="w-4 h-4 rounded text-brand-green focus:ring-brand-green border-gray-300" />
+                       className="w-4 h-4 rounded text-brand-red focus:ring-brand-red border-gray-300" />
                 <span className="flex-1">Solo con foto real</span>
                 <span className="text-[10px] bg-gray-100 px-2 py-0.5 rounded-full text-gray-500 font-medium">
                   {products.filter(p => !!p.img).length}
@@ -452,7 +452,7 @@ export default function CatalogClient({ products }: Props) {
               </label>
               <label className="flex items-center gap-2.5 text-sm cursor-pointer py-1 hover:bg-gray-50 rounded-lg px-2 -mx-2 transition-colors">
                 <input type="checkbox" checked={onlyOfertas} onChange={(e) => setOnlyOfertas(e.target.checked)}
-                       className="w-4 h-4 rounded text-brand-green focus:ring-brand-green border-gray-300" />
+                       className="w-4 h-4 rounded text-brand-red focus:ring-brand-red border-gray-300" />
                 <span className="flex-1">Solo ofertas</span>
                 <span className="text-[10px] bg-red-50 px-2 py-0.5 rounded-full text-red-500 font-medium">
                   {products.filter(p => p.disc && p.disc > 0).length}
@@ -487,14 +487,14 @@ export default function CatalogClient({ products }: Props) {
               <div className="hidden sm:flex items-center border border-gray-200 rounded-lg overflow-hidden">
                 <button
                   onClick={() => setViewMode("grid")}
-                  className={cn("p-2 transition-colors", viewMode === "grid" ? "bg-brand-green text-white" : "bg-white text-gray-400 hover:text-gray-600")}
+                  className={cn("p-2 transition-colors", viewMode === "grid" ? "bg-brand-red text-white" : "bg-white text-gray-400 hover:text-gray-600")}
                   title="Vista cuadrícula"
                 >
                   <GridIcon />
                 </button>
                 <button
                   onClick={() => setViewMode("list")}
-                  className={cn("p-2 transition-colors", viewMode === "list" ? "bg-brand-green text-white" : "bg-white text-gray-400 hover:text-gray-600")}
+                  className={cn("p-2 transition-colors", viewMode === "list" ? "bg-brand-red text-white" : "bg-white text-gray-400 hover:text-gray-600")}
                   title="Vista lista"
                 >
                   <ListIcon />
@@ -504,7 +504,7 @@ export default function CatalogClient({ products }: Props) {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="text-sm border border-gray-200 rounded-lg px-3 py-2 bg-white focus:ring-2 focus:ring-brand-green/20 outline-none font-medium"
+                className="text-sm border border-gray-200 rounded-lg px-3 py-2 bg-white focus:ring-2 focus:ring-brand-red/20 outline-none font-medium"
               >
                 <option value="relevance">Relevancia</option>
                 <option value="price-asc">Menor precio</option>
@@ -538,7 +538,7 @@ export default function CatalogClient({ products }: Props) {
               </svg>
               <p className="font-semibold text-gray-600 text-lg">No se encontraron productos</p>
               <p className="text-sm mt-1 text-gray-400">Intenta ajustar los filtros o buscar con otros términos</p>
-              <button onClick={clearAll} className="mt-4 px-5 py-2 bg-brand-green text-white font-semibold text-sm rounded-lg hover:bg-brand-green-dark transition-colors">
+              <button onClick={clearAll} className="mt-4 px-5 py-2 bg-brand-red text-white font-semibold text-sm rounded-lg hover:bg-brand-red-dark transition-colors">
                 Limpiar filtros
               </button>
             </div>
@@ -580,7 +580,7 @@ export default function CatalogClient({ products }: Props) {
                         className={cn(
                           "w-10 h-10 rounded-lg text-sm font-medium transition-all",
                           page === pageNum
-                            ? "bg-brand-green text-white shadow-md shadow-green-900/20"
+                            ? "bg-brand-red text-white shadow-md shadow-red-900/20"
                             : "bg-white border border-gray-200 hover:bg-gray-50 hover:border-gray-300"
                         )}
                       >

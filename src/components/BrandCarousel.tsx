@@ -21,9 +21,9 @@ export default function BrandCarousel() {
           {BRANDS.map((brand) => (
             <div
               key={brand}
-              className="bg-gray-50 rounded-3xl px-6 py-8 flex items-center justify-center border-2 border-gray-100 hover:border-brand-green/30 hover:bg-green-50 hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer group"
+              className="bg-gray-50 rounded-3xl px-6 py-8 flex items-center justify-center border-2 border-gray-100 hover:border-brand-red/30 hover:bg-red-50 hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer group"
             >
-              <span className="font-black text-lg text-gray-800 group-hover:text-brand-green transition-colors duration-300 text-center">
+              <span className="font-black text-lg text-gray-800 group-hover:text-brand-red transition-colors duration-300 text-center">
                 {brand}
               </span>
             </div>
@@ -34,7 +34,7 @@ export default function BrandCarousel() {
         <div className="text-center mt-10">
           <Link
             href="/marcas"
-            className="inline-flex items-center gap-2 text-brand-green font-bold hover:text-green-700 transition-colors"
+            className="inline-flex items-center gap-2 text-brand-red font-bold hover:text-red-700 transition-colors"
           >
             Ver todas las marcas
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
