@@ -10,8 +10,8 @@ const SLIDES = [
     title: "Tu ferretería de confianza desde 1966",
     subtitle: "5.000+ productos · Despacho 24h en Bogotá",
     cta: { label: "Ver catálogo completo", href: "/catalogo" },
-    ctaSecondary: { label: "Cotizar por WhatsApp", href: SITE.social.whatsapp, external: true },
-    bg: "from-[#0a3d1e] via-[#166534] to-emerald-800",
+    ctaSecondary: { label: "Cotizar por WhatsApp", href: SITE.social.whatsapp },
+    bg: "from-[#052e16] via-[#166534] to-emerald-800",
     badge: "Desde 1966",
   },
   {
@@ -19,15 +19,15 @@ const SLIDES = [
     subtitle: "Hasta 30% de descuento en herramientas y cerrajería seleccionada",
     cta: { label: "Ver ofertas", href: "/catalogo?ofertas=true" },
     ctaSecondary: null,
-    bg: "from-gray-900 via-gray-800 to-gray-900",
+    bg: "from-gray-950 via-gray-900 to-gray-950",
     badge: "Ofertas",
   },
   {
     title: "Síguenos en Instagram y gana 5% en tu primera compra",
     subtitle: "Entérate de novedades, tips ferreteros y promociones exclusivas",
-    cta: { label: "Seguir @ferreteriapardo", href: SITE.social.instagram, external: true },
-    ctaSecondary: { label: "Ver Facebook", href: SITE.social.facebook, external: true },
-    bg: "from-[#166534] via-[#1a7a3d] to-emerald-600",
+    cta: { label: "Seguir @ferreteriapardo", href: SITE.social.instagram },
+    ctaSecondary: { label: "Ver Facebook", href: SITE.social.facebook },
+    bg: "from-[#052e16] via-[#14532d] to-[#166534]",
     badge: "Redes",
   },
 ];
@@ -71,6 +71,9 @@ export default function HeroCarousel() {
         slide.bg
       )} />
 
+      {/* Animated gradient overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-40 animate-pulse" />
+
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
@@ -85,40 +88,40 @@ export default function HeroCarousel() {
         <div className="max-w-3xl">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 mb-6 opacity-0 animate-fade-in">
-            <div className="w-2 h-2 bg-[#f97316] rounded-full" />
-            <span className="text-sm font-semibold text-white/90 tracking-wide">{slide.badge}</span>
+            <div className="w-3 h-3 bg-[#f97316] rounded-full" />
+            <span className="text-sm font-semibold text-white/90 tracking-widest uppercase bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-full">{slide.badge}</span>
           </div>
 
           {/* Content */}
-          <h1 key={`title-${current}`} className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4 animate-fade-in text-balance">
+          <h1 key={`title-${current}`} className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4 animate-fade-in text-balance">
             {slide.title}
           </h1>
-          <p key={`sub-${current}`} className="text-lg md:text-xl text-white/80 mb-8 max-w-xl animate-fade-in">
+          <p key={`sub-${current}`} className="text-xl md:text-2xl text-white/80 mb-8 max-w-xl animate-fade-in">
             {slide.subtitle}
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-wrap gap-3 mb-12">
-            {slide.cta.external ? (
+          <div className="flex flex-wrap gap-4 mb-12">
+            {slide.cta.href.startsWith('http') ? (
               <a href={slide.cta.href} target="_blank" rel="noreferrer"
-                 className="inline-flex items-center gap-2 bg-white text-brand-green font-bold px-6 py-3 rounded-2xl hover:bg-green-50 transition-all shadow-lg hover:shadow-xl text-sm md:text-base">
+                 className="inline-flex items-center gap-2 bg-white text-brand-green font-bold px-8 py-4 rounded-2xl hover:bg-green-50 transition-all shadow-lg hover:shadow-xl text-base">
                 {slide.cta.label}
               </a>
             ) : (
               <Link href={slide.cta.href}
-                    className="inline-flex items-center gap-2 bg-white text-brand-green font-bold px-6 py-3 rounded-2xl hover:bg-green-50 transition-all shadow-lg hover:shadow-xl text-sm md:text-base">
+                    className="inline-flex items-center gap-2 bg-white text-brand-green font-bold px-8 py-4 rounded-2xl hover:bg-green-50 transition-all shadow-lg hover:shadow-xl text-base">
                 {slide.cta.label}
               </Link>
             )}
             {slide.ctaSecondary && (
-              slide.ctaSecondary.external ? (
+              slide.ctaSecondary.href.startsWith('http') ? (
                 <a href={slide.ctaSecondary.href} target="_blank" rel="noreferrer"
-                   className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-6 py-3 rounded-2xl hover:bg-white/10 transition-all text-sm md:text-base">
+                   className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-2xl hover:bg-white/10 transition-all text-base">
                   {slide.ctaSecondary.label}
                 </a>
               ) : (
                 <Link href={slide.ctaSecondary.href}
-                      className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-6 py-3 rounded-2xl hover:bg-white/10 transition-all text-sm md:text-base">
+                      className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-2xl hover:bg-white/10 transition-all text-base">
                   {slide.ctaSecondary.label}
                 </Link>
               )
@@ -127,10 +130,10 @@ export default function HeroCarousel() {
         </div>
 
         {/* Stats bar */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {STATS.map((stat) => (
-            <div key={stat.label} className="bg-white/10 backdrop-blur-md rounded-2xl px-4 py-3 text-center border border-white/20 hover:border-white/40 transition-all">
-              <div className="text-2xl md:text-3xl font-extrabold text-white">{stat.value}</div>
+            <div key={stat.label} className="bg-white/10 backdrop-blur-md rounded-3xl px-4 py-3 text-center border border-white/20 hover:border-white/40 transition-all">
+              <div className="text-3xl md:text-4xl font-extrabold text-white">{stat.value}</div>
               <div className="text-xs md:text-sm text-white/70 font-medium">{stat.label}</div>
             </div>
           ))}
@@ -141,7 +144,7 @@ export default function HeroCarousel() {
           {/* Left arrow */}
           <button
             onClick={prev}
-            className="p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 transition-all text-white"
+            className="p-2 rounded-2xl w-12 h-12 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 transition-all text-white flex items-center justify-center"
             aria-label="Previous slide"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -150,7 +153,7 @@ export default function HeroCarousel() {
           </button>
 
           {/* Carousel dots */}
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-2">
             {SLIDES.map((_, i) => (
               <button
                 key={i}
@@ -158,7 +161,7 @@ export default function HeroCarousel() {
                 className={cn(
                   "transition-all duration-300",
                   i === current
-                    ? "w-10 h-3 bg-[#166534] rounded-full"
+                    ? "w-12 h-3.5 bg-brand-orange rounded-full"
                     : "w-3 h-3 bg-white/30 hover:bg-white/50 rounded-full"
                 )}
                 aria-label={`Slide ${i + 1}`}
@@ -169,7 +172,7 @@ export default function HeroCarousel() {
           {/* Right arrow */}
           <button
             onClick={next}
-            className="p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 transition-all text-white"
+            className="p-2 rounded-2xl w-12 h-12 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 transition-all text-white flex items-center justify-center"
             aria-label="Next slide"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
