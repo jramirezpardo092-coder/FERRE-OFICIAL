@@ -112,7 +112,7 @@ export default function CategoryGrid() {
                 href={`/catalogo?cat=${encodeURIComponent(cat.name)}`}
                 className="group"
               >
-                <div className="h-full bg-white rounded-3xl p-8 md:p-10 text-center border border-gray-200 hover:border-brand-green/30 hover:shadow-2xl hover:shadow-green-900/10 transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center">
+                <div className="relative h-full bg-white rounded-3xl p-8 md:p-10 text-center border border-gray-200 hover:border-brand-green/30 hover:shadow-2xl hover:shadow-green-900/10 transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center">
                   {/* Product Count Badge */}
                   <div className="absolute top-3 right-3 bg-brand-orange/10 text-brand-orange text-xs font-bold px-3 py-1.5 rounded-full">
                     {count}
