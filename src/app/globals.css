@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-sans text-gray-900 antialiased;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-brand-green text-white font-semibold px-5 py-2.5 rounded-lg
+           hover:bg-brand-green-dark transition-all duration-200 hover:shadow-lg hover:shadow-green-900/20
+           active:scale-[0.98];
+  }
+  .btn-wa {
+    @apply inline-flex items-center gap-2 bg-[#25D366] text-white font-semibold px-5 py-2.5 rounded-lg
+           hover:bg-[#1da851] transition-all duration-200 hover:shadow-lg hover:shadow-green-500/30
+           active:scale-[0.98];
+  }
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border-2 border-brand-green text-brand-green font-semibold
+           px-5 py-2.5 rounded-lg hover:bg-brand-green hover:text-white transition-all duration-200
+           active:scale-[0.98];
+  }
+  .section-title {
+    @apply text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900;
+  }
+  .section-subtitle {
+    @apply text-base md:text-lg text-gray-500 max-w-2xl;
+  }
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/5;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* WhatsApp floating button pulse */
+@keyframes wa-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.wa-floating-pulse {
+  animation: wa-pulse 2s infinite;
+}
+
+/* Carousel dots */
+.carousel-dot {
+  @apply w-2.5 h-2.5 rounded-full bg-white/40 transition-all duration-300 cursor-pointer;
+}
+.carousel-dot.active {
+  @apply bg-white w-8;
+}
+
+/* Price IVA tag */
+.iva-tag {
+  @apply text-[10px] text-amber-600 font-medium ml-1;
+}
+
+/* Badge styles */
+.badge-bestseller {
+  @apply absolute top-2 left-2 bg-brand-orange text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide z-10;
+}
+.badge-photo {
+  @apply absolute top-2 right-2 bg-black/70 text-white text-[10px] font-medium px-2 py-0.5 rounded-full backdrop-blur-sm z-10;
+}
+.badge-discount {
+  @apply absolute top-10 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10;
+}
