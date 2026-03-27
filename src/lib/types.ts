@@ -9,6 +9,9 @@ export interface Product {
   original?: number | null;
   disc?: number | null;
   img?: string;
+  ref?: string;
+  sku?: string;
+  tags?: string[];
 }
 
 export interface CartItem extends Product {

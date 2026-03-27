@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { Product } from "@/lib/types";
 import { CATEGORIES, BRANDS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { searchProducts } from "@/lib/search";
 import ProductCard from "./ProductCard";
 import ProductModal from "./ProductModal";
 
@@ -68,6 +69,7 @@ export default function CatalogClient({ products }: Props) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [brandsExpanded, setBrandsExpanded] = useState(false);
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [isFuzzy, setIsFuzzy] = useState(false);
 
   const topRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -82,19 +84,17 @@ export default function CatalogClient({ products }: Props) {
     setPage(1);
   }, [debouncedSearch, category, brand, onlyPhoto, onlyOfertas, sortBy]);
 
-  // Filtered products
+  // Filtered products — hybrid search (tokenized + fuzzy fallback)
   const filtered = useMemo(() => {
-    let result = [...products];
+    let result: Product[];
+    let fuzzy = false;
 
     if (debouncedSearch.trim()) {
-      const q = debouncedSearch.toLowerCase();
-      result = result.filter(
-        (p) =>
-          p.nombre.toLowerCase().includes(q) ||
-          p.brand.toLowerCase().includes(q) ||
-          p.id.includes(q) ||
-          p.cat.toLowerCase().includes(q)
-      );
+      const { results, isFuzzy: wasFuzzy } = searchProducts(products, debouncedSearch);
+      result = [...results];
+      fuzzy = wasFuzzy;
+    } else {
+      result = [...products];
     }
 
     if (category) {
@@ -113,40 +113,55 @@ export default function CatalogClient({ products }: Props) {
       result = result.filter((p) => p.disc && p.disc > 0);
     }
 
-    switch (sortBy) {
-      case "price-asc":
-        result.sort((a, b) => a.precio - b.precio);
-        break;
-      case "price-desc":
-        result.sort((a, b) => b.precio - a.precio);
-        break;
-      case "discount":
-        result.sort((a, b) => (b.disc || 0) - (a.disc || 0));
-        break;
-      case "name":
-        result.sort((a, b) => a.nombre.localeCompare(b.nombre));
-        break;
-      default:
-        result.sort((a, b) => {
-          if (a.img && !b.img) return -1;
-          if (!a.img && b.img) return 1;
-          return (b.disc || 0) - (a.disc || 0);
-        });
+    // Only re-sort if user explicitly chose a sort option or no search
+    if (sortBy !== "relevance" || !debouncedSearch.trim()) {
+      switch (sortBy) {
+        case "price-asc":
+          result.sort((a, b) => a.precio - b.precio);
+          break;
+        case "price-desc":
+          result.sort((a, b) => b.precio - a.precio);
+          break;
+        case "discount":
+          result.sort((a, b) => (b.disc || 0) - (a.disc || 0));
+          break;
+        case "name":
+          result.sort((a, b) => a.nombre.localeCompare(b.nombre));
+          break;
+        default:
+          // No search active: sort by image first, then discount
+          result.sort((a, b) => {
+            if (a.img && !b.img) return -1;
+            if (!a.img && b.img) return 1;
+            return (b.disc || 0) - (a.disc || 0);
+          });
+      }
     }
+    // When search is active + relevance sort, keep search engine order
 
+    setIsFuzzy(fuzzy);
     return result;
   }, [products, debouncedSearch, category, brand, onlyPhoto, onlyOfertas, sortBy]);
 
-  // Search suggestions
+  // Search suggestions (tokenized)
   const suggestions = useMemo(() => {
     if (search.length < 2) return [];
-    const q = search.toLowerCase();
-    const cats = CATEGORIES.filter(c => c.name.toLowerCase().includes(q)).map(c => ({ type: "cat" as const, label: c.name, icon: c.icon }));
-    const brs = BRANDS.filter(b => b.toLowerCase().includes(q)).map(b => ({ type: "brand" as const, label: b, icon: "🏷️" }));
+    const tokens = search.toLowerCase().split(/\s+/).filter(Boolean);
+    const cats = CATEGORIES.filter(c => {
+      const name = c.name.toLowerCase();
+      return tokens.every(t => name.includes(t));
+    }).map(c => ({ type: "cat" as const, label: c.name, icon: c.icon }));
+    const brs = BRANDS.filter(b => {
+      const name = b.toLowerCase();
+      return tokens.every(t => name.includes(t));
+    }).map(b => ({ type: "brand" as const, label: b, icon: "🏷️" }));
     const prods = products
-      .filter(p => p.nombre.toLowerCase().includes(q))
+      .filter(p => {
+        const searchable = `${p.nombre} ${p.brand} ${p.ref || ""} ${p.id}`.toLowerCase();
+        return tokens.every(t => searchable.includes(t));
+      })
       .slice(0, 5)
-      .map(p => ({ type: "product" as const, label: p.nombre, icon: p.img ? "📸" : "📦" }));
+      .map(p => ({ type: "product" as const, label: p.nombre, icon: p.img ? "📸" : "📦", id: p.id }));
     return [...cats, ...brs, ...prods].slice(0, 8);
   }, [search, products]);
 
@@ -185,13 +200,14 @@ export default function CatalogClient({ products }: Props) {
     topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
-  // Category counts (cached)
+  // Category counts (cached) — tokenized search
   const catCounts = useMemo(() => {
     const counts: Record<string, number> = {};
+    const tokens = debouncedSearch.trim() ? debouncedSearch.toLowerCase().split(/\s+/).filter(Boolean) : [];
     const baseFiltered = products.filter(p => {
-      if (debouncedSearch.trim()) {
-        const q = debouncedSearch.toLowerCase();
-        if (!(p.nombre.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q) || p.id.includes(q) || p.cat.toLowerCase().includes(q))) return false;
+      if (tokens.length > 0) {
+        const searchable = `${p.nombre} ${p.brand} ${p.id} ${p.cat} ${p.ref || ""} ${p.sku || ""} ${(p.tags || []).join(" ")}`.toLowerCase();
+        if (!tokens.every(t => searchable.includes(t))) return false;
       }
       if (brand && p.brand !== brand) return false;
       if (onlyPhoto && !p.img) return false;
@@ -205,13 +221,14 @@ export default function CatalogClient({ products }: Props) {
     return counts;
   }, [products, debouncedSearch, brand, onlyPhoto, onlyOfertas]);
 
-  // Brand counts
+  // Brand counts — tokenized search
   const brandCounts = useMemo(() => {
     const counts: Record<string, number> = {};
+    const tokens = debouncedSearch.trim() ? debouncedSearch.toLowerCase().split(/\s+/).filter(Boolean) : [];
     const baseFiltered = products.filter(p => {
-      if (debouncedSearch.trim()) {
-        const q = debouncedSearch.toLowerCase();
-        if (!(p.nombre.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q) || p.id.includes(q) || p.cat.toLowerCase().includes(q))) return false;
+      if (tokens.length > 0) {
+        const searchable = `${p.nombre} ${p.brand} ${p.id} ${p.cat} ${p.ref || ""} ${p.sku || ""} ${(p.tags || []).join(" ")}`.toLowerCase();
+        if (!tokens.every(t => searchable.includes(t))) return false;
       }
       if (category && p.cat !== category) return false;
       if (onlyPhoto && !p.img) return false;
@@ -477,6 +494,11 @@ export default function CatalogClient({ products }: Props) {
                 <>
                   Mostrando <span className="font-bold text-gray-900">{start}–{end}</span> de{" "}
                   <span className="font-bold text-gray-900">{filtered.length.toLocaleString("es-CO")}</span> productos
+                  {isFuzzy && debouncedSearch.trim() && (
+                    <span className="ml-2 text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full font-medium">
+                      Resultados aproximados
+                    </span>
+                  )}
                 </>
               ) : (
                 <span className="text-gray-400">Sin resultados</span>

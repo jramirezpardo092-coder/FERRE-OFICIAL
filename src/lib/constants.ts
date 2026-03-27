@@ -37,7 +37,9 @@ export const CATEGORIES = [
 
 export const BRANDS = [
   "YALE", "STANLEY", "DEWALT", "MAKITA", "BOSCH",
-  "TRUPER", "PRETUL", "TOTAL", "KL", "MHA", "FERRETERÍA PARDO",
+  "TRUPER", "PRETUL", "TOTAL", "KL", "MHA",
+  "IRWIN", "QUALITA", "FLEXON", "BAHCO", "VERA",
+  "FERRETERÍA PARDO",
 ];
 
 export const NAV_LINKS = [
