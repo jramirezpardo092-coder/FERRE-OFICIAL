@@ -154,35 +154,35 @@ export default function Header() {
 
   return (
     <>
-      {/* Top strip - Premium elegant with gradient */}
-      <div className="bg-gradient-to-r from-brand-red-dark to-brand-red text-white text-xs py-2.5 hidden lg:block">
+      {/* Top strip - Sleek info bar */}
+      <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white text-xs py-2 hidden lg:block">
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
-          <span className="flex items-center gap-2 font-medium">
+          <span className="flex items-center gap-2 font-medium text-gray-300">
             <LocationIcon />
             {SITE.address}
           </span>
           <div className="flex items-center gap-6">
-            <span className="flex items-center gap-2 font-medium">
+            <span className="flex items-center gap-2 font-medium text-gray-300">
               <PhoneIcon />
               {SITE.phone1Display}
             </span>
-            <span className="flex items-center gap-2 font-medium">
+            <span className="flex items-center gap-2 font-medium text-gray-300">
               <PhoneIcon />
               {SITE.phone2Display}
             </span>
-            <span className="flex items-center gap-2 text-red-100 font-medium">
+            <span className="flex items-center gap-2 text-gray-400 font-medium">
               <ClockIcon />
-              Lun–Vie 8:15am–4:55pm · Sáb 8:15am–2:15pm
+              Lun-Vie 8:15am-4:55pm · Sab 8:15am-2:15pm
             </span>
           </div>
         </div>
       </div>
 
-      {/* Main Header - Premium design */}
+      {/* Main Header */}
       <header
         className={cn(
-          "sticky top-0 z-50 bg-white transition-all duration-300",
-          scrolled && "backdrop-blur-2xl bg-white/90 shadow-xl shadow-black/8"
+          "sticky top-0 z-50 bg-white transition-all duration-300 border-b",
+          scrolled ? "backdrop-blur-2xl bg-white/95 shadow-lg shadow-black/5 border-gray-100" : "border-transparent"
         )}
       >
         <div className="max-w-7xl mx-auto px-4">
@@ -216,8 +216,8 @@ export default function Header() {
                       <ChevronDown />
                     </button>
                     {catOpen && (
-                      <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-3xl shadow-2xl shadow-black/10 border border-gray-100 p-4 animate-fade-in z-50">
-                        <div className="grid grid-cols-3 gap-3">
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[360px] bg-white rounded-2xl shadow-2xl shadow-black/12 border border-gray-100 p-5 animate-fade-in z-50">
+                        <div className="grid grid-cols-3 gap-2">
                           {CATEGORIES.map((cat) => {
                             const IconComponent = categoryIconMap[cat.name];
                             return (
@@ -266,12 +266,8 @@ export default function Header() {
                 </a>
               </div>
 
-              <Link href="/catalogo" className="btn-primary text-xs hidden lg:inline-flex rounded-2xl px-6 py-3">
-                Explorar catálogo
-              </Link>
-
               <a href={SITE.social.whatsapp} target="_blank" rel="noreferrer"
-                 className="btn-wa text-xs hidden md:inline-flex rounded-2xl px-6 py-3">
+                 className="btn-wa text-xs hidden md:inline-flex rounded-xl px-5 py-2.5">
                 <WhatsAppMini />
                 Hablar con asesor
               </a>

@@ -244,9 +244,9 @@ export default function CatalogClient({ products }: Props) {
   return (
     <div className="max-w-[1400px] mx-auto px-4 py-6" ref={topRef}>
       {/* ── Search bar ─────────────────────────── */}
-      <div className="mb-5 relative">
+      <div className="mb-6 relative">
         <div className="relative max-w-3xl mx-auto">
-          <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+          <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
             <SearchIcon />
           </div>
           <input
@@ -257,23 +257,23 @@ export default function CatalogClient({ products }: Props) {
             onFocus={() => setShowSuggestions(true)}
             onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
             placeholder="Buscar por nombre, referencia, marca o categoría..."
-            className="w-full pl-12 pr-12 py-4 bg-white border-2 border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-brand-red/30 focus:border-brand-red outline-none transition-all shadow-sm hover:border-gray-300"
+            className="w-full pl-12 pr-12 py-4 bg-white border-2 border-gray-200 rounded-2xl text-sm focus:ring-4 focus:ring-brand-red/10 focus:border-brand-red outline-none transition-all duration-300 shadow-sm hover:border-gray-300 hover:shadow-md"
           />
           {search && (
             <button
               onClick={() => { setSearch(""); searchInputRef.current?.focus(); }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1 rounded-full hover:bg-gray-100 transition-colors"
             >
               <CloseIcon />
             </button>
           )}
           {/* Suggestions dropdown */}
           {showSuggestions && suggestions.length > 0 && (
-            <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-xl z-50 overflow-hidden">
+            <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-2xl shadow-2xl shadow-black/10 z-50 overflow-hidden py-1">
               {suggestions.map((s, i) => (
                 <button
                   key={i}
-                  className="w-full text-left px-4 py-2.5 text-sm hover:bg-gray-50 flex items-center gap-3 transition-colors"
+                  className="w-full text-left px-4 py-3 text-sm hover:bg-red-50/50 flex items-center gap-3 transition-colors duration-150"
                   onMouseDown={() => {
                     if (s.type === "cat") { setCategory(s.label); setSearch(""); }
                     else if (s.type === "brand") { setBrand(s.label); setSearch(""); }
@@ -281,9 +281,9 @@ export default function CatalogClient({ products }: Props) {
                     setShowSuggestions(false);
                   }}
                 >
-                  <span className="text-base">{s.icon}</span>
-                  <span className="flex-1 truncate">{s.label}</span>
-                  <span className="text-[10px] uppercase text-gray-400 font-medium">
+                  <span className="text-base w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center shrink-0">{s.icon}</span>
+                  <span className="flex-1 truncate font-medium">{s.label}</span>
+                  <span className="text-[10px] uppercase text-gray-400 font-semibold tracking-wider bg-gray-50 px-2 py-0.5 rounded-md">
                     {s.type === "cat" ? "Categoría" : s.type === "brand" ? "Marca" : "Producto"}
                   </span>
                 </button>
@@ -294,15 +294,15 @@ export default function CatalogClient({ products }: Props) {
       </div>
 
       {/* ── Category quick-filter pills (horizontal scroll) ─── */}
-      <div className="mb-5 -mx-4 px-4 overflow-x-auto scrollbar-hide">
+      <div className="mb-6 -mx-4 px-4 overflow-x-auto scrollbar-hide">
         <div className="flex gap-2 pb-1">
           <button
             onClick={() => setCategory("")}
             className={cn(
-              "shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all border",
+              "shrink-0 px-5 py-2.5 rounded-xl text-xs font-semibold transition-all duration-200 border",
               !category
-                ? "bg-brand-red text-white border-brand-red shadow-sm"
-                : "bg-white text-gray-600 border-gray-200 hover:border-brand-red hover:text-brand-red"
+                ? "bg-brand-red text-white border-brand-red shadow-md shadow-red-900/15"
+                : "bg-white text-gray-600 border-gray-200 hover:border-brand-red/50 hover:text-brand-red hover:bg-red-50/50"
             )}
           >
             Todas
@@ -312,15 +312,15 @@ export default function CatalogClient({ products }: Props) {
               key={cat.slug}
               onClick={() => setCategory(cat.name === category ? "" : cat.name)}
               className={cn(
-                "shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all border flex items-center gap-1.5",
+                "shrink-0 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all duration-200 border flex items-center gap-1.5",
                 category === cat.name
-                  ? "bg-brand-red text-white border-brand-red shadow-sm"
-                  : "bg-white text-gray-600 border-gray-200 hover:border-brand-red hover:text-brand-red"
+                  ? "bg-brand-red text-white border-brand-red shadow-md shadow-red-900/15"
+                  : "bg-white text-gray-600 border-gray-200 hover:border-brand-red/50 hover:text-brand-red hover:bg-red-50/50"
               )}
             >
               <span>{cat.icon}</span>
               {cat.name}
-              <span className={cn("text-[10px]", category === cat.name ? "text-green-200" : "text-gray-400")}>
+              <span className={cn("text-[10px] tabular-nums", category === cat.name ? "text-red-200" : "text-gray-400")}>
                 {catCounts[cat.name] || 0}
               </span>
             </button>
@@ -374,7 +374,7 @@ export default function CatalogClient({ products }: Props) {
           !sidebarOpen && "max-lg:hidden"
         )}>
           <div className={cn(
-            "bg-white rounded-2xl border border-gray-100 p-5 space-y-4 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto lg:scrollbar-hide",
+            "bg-white rounded-2xl border border-gray-100 p-5 space-y-4 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto sidebar-scroll shadow-sm",
             "max-lg:absolute max-lg:left-0 max-lg:top-0 max-lg:h-full max-lg:w-80 max-lg:overflow-y-auto max-lg:rounded-none max-lg:animate-slide-in-right"
           )}>
             {/* Mobile close */}
@@ -488,14 +488,14 @@ export default function CatalogClient({ products }: Props) {
         {/* ── Main content ─────────────────────── */}
         <main className="flex-1 min-w-0">
           {/* Toolbar: results + sort + view toggle */}
-          <div className="flex items-center justify-between mb-4 bg-gray-50 rounded-xl px-4 py-3">
+          <div className="flex items-center justify-between mb-5 bg-white rounded-2xl px-5 py-3.5 border border-gray-100 shadow-sm">
             <div className="text-sm text-gray-500">
               {filtered.length > 0 ? (
                 <>
                   Mostrando <span className="font-bold text-gray-900">{start}–{end}</span> de{" "}
                   <span className="font-bold text-gray-900">{filtered.length.toLocaleString("es-CO")}</span> productos
                   {isFuzzy && debouncedSearch.trim() && (
-                    <span className="ml-2 text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full font-medium">
+                    <span className="ml-2 text-xs bg-amber-50 text-amber-700 px-2.5 py-0.5 rounded-lg font-medium border border-amber-200">
                       Resultados aproximados
                     </span>
                   )}
@@ -506,17 +506,17 @@ export default function CatalogClient({ products }: Props) {
             </div>
             <div className="flex items-center gap-3">
               {/* View toggle */}
-              <div className="hidden sm:flex items-center border border-gray-200 rounded-lg overflow-hidden">
+              <div className="hidden sm:flex items-center border border-gray-200 rounded-xl overflow-hidden">
                 <button
                   onClick={() => setViewMode("grid")}
-                  className={cn("p-2 transition-colors", viewMode === "grid" ? "bg-brand-red text-white" : "bg-white text-gray-400 hover:text-gray-600")}
+                  className={cn("p-2.5 transition-all duration-200", viewMode === "grid" ? "bg-brand-red text-white shadow-inner" : "bg-white text-gray-400 hover:text-gray-600 hover:bg-gray-50")}
                   title="Vista cuadrícula"
                 >
                   <GridIcon />
                 </button>
                 <button
                   onClick={() => setViewMode("list")}
-                  className={cn("p-2 transition-colors", viewMode === "list" ? "bg-brand-red text-white" : "bg-white text-gray-400 hover:text-gray-600")}
+                  className={cn("p-2.5 transition-all duration-200", viewMode === "list" ? "bg-brand-red text-white shadow-inner" : "bg-white text-gray-400 hover:text-gray-600 hover:bg-gray-50")}
                   title="Vista lista"
                 >
                   <ListIcon />
@@ -526,7 +526,7 @@ export default function CatalogClient({ products }: Props) {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="text-sm border border-gray-200 rounded-lg px-3 py-2 bg-white focus:ring-2 focus:ring-brand-red/20 outline-none font-medium"
+                className="text-sm border border-gray-200 rounded-xl px-3.5 py-2.5 bg-white focus:ring-4 focus:ring-brand-red/10 focus:border-brand-red outline-none font-medium transition-all duration-200 cursor-pointer hover:border-gray-300"
               >
                 <option value="relevance">Relevancia</option>
                 <option value="price-asc">Menor precio</option>
@@ -554,13 +554,15 @@ export default function CatalogClient({ products }: Props) {
               ))}
             </div>
           ) : (
-            <div className="text-center py-20 bg-gray-50 rounded-2xl">
-              <svg className="w-20 h-20 mx-auto mb-4 text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-              <p className="font-semibold text-gray-600 text-lg">No se encontraron productos</p>
-              <p className="text-sm mt-1 text-gray-400">Intenta ajustar los filtros o buscar con otros términos</p>
-              <button onClick={clearAll} className="mt-4 px-5 py-2 bg-brand-red text-white font-semibold text-sm rounded-lg hover:bg-brand-red-dark transition-colors">
+            <div className="text-center py-24 bg-gradient-to-b from-gray-50 to-white rounded-3xl border border-gray-100">
+              <div className="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-3xl flex items-center justify-center">
+                <svg className="w-12 h-12 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+              <p className="font-bold text-gray-700 text-lg">No se encontraron productos</p>
+              <p className="text-sm mt-2 text-gray-400 max-w-sm mx-auto">Intenta ajustar los filtros o buscar con otros terminos</p>
+              <button onClick={clearAll} className="mt-6 px-6 py-2.5 bg-brand-red text-white font-semibold text-sm rounded-xl hover:bg-brand-red-dark transition-all duration-200 shadow-sm shadow-red-900/10 hover:shadow-md">
                 Limpiar filtros
               </button>
             </div>
@@ -568,20 +570,20 @@ export default function CatalogClient({ products }: Props) {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex flex-col items-center gap-3 mt-8">
+            <div className="flex flex-col items-center gap-4 mt-10">
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => goToPage(Math.max(1, page - 1))}
                   disabled={page === 1}
-                  className="px-4 py-2.5 rounded-lg bg-white border border-gray-200 text-sm font-medium disabled:opacity-40 hover:bg-gray-50 hover:border-gray-300 transition-all"
+                  className="px-5 py-2.5 rounded-xl bg-white border border-gray-200 text-sm font-semibold disabled:opacity-30 hover:bg-gray-50 hover:border-gray-300 hover:shadow-sm transition-all duration-200"
                 >
                   ← Anterior
                 </button>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1.5">
                   {page > 3 && totalPages > 5 && (
                     <>
-                      <button onClick={() => goToPage(1)} className="w-10 h-10 rounded-lg text-sm font-medium bg-white border border-gray-200 hover:bg-gray-50 transition-colors">1</button>
-                      {page > 4 && <span className="px-1 text-gray-400">...</span>}
+                      <button onClick={() => goToPage(1)} className="w-10 h-10 rounded-xl text-sm font-semibold bg-white border border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200">1</button>
+                      {page > 4 && <span className="px-1 text-gray-300 text-xs">...</span>}
                     </>
                   )}
                   {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
@@ -600,9 +602,9 @@ export default function CatalogClient({ products }: Props) {
                         key={pageNum}
                         onClick={() => goToPage(pageNum)}
                         className={cn(
-                          "w-10 h-10 rounded-lg text-sm font-medium transition-all",
+                          "w-10 h-10 rounded-xl text-sm font-semibold transition-all duration-200",
                           page === pageNum
-                            ? "bg-brand-red text-white shadow-md shadow-red-900/20"
+                            ? "bg-brand-red text-white shadow-lg shadow-red-900/25 scale-105"
                             : "bg-white border border-gray-200 hover:bg-gray-50 hover:border-gray-300"
                         )}
                       >
@@ -612,21 +614,21 @@ export default function CatalogClient({ products }: Props) {
                   })}
                   {page < totalPages - 2 && totalPages > 5 && (
                     <>
-                      {page < totalPages - 3 && <span className="px-1 text-gray-400">...</span>}
-                      <button onClick={() => goToPage(totalPages)} className="w-10 h-10 rounded-lg text-sm font-medium bg-white border border-gray-200 hover:bg-gray-50 transition-colors">{totalPages}</button>
+                      {page < totalPages - 3 && <span className="px-1 text-gray-300 text-xs">...</span>}
+                      <button onClick={() => goToPage(totalPages)} className="w-10 h-10 rounded-xl text-sm font-semibold bg-white border border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200">{totalPages}</button>
                     </>
                   )}
                 </div>
                 <button
                   onClick={() => goToPage(Math.min(totalPages, page + 1))}
                   disabled={page === totalPages}
-                  className="px-4 py-2.5 rounded-lg bg-white border border-gray-200 text-sm font-medium disabled:opacity-40 hover:bg-gray-50 hover:border-gray-300 transition-all"
+                  className="px-5 py-2.5 rounded-xl bg-white border border-gray-200 text-sm font-semibold disabled:opacity-30 hover:bg-gray-50 hover:border-gray-300 hover:shadow-sm transition-all duration-200"
                 >
                   Siguiente →
                 </button>
               </div>
-              <p className="text-xs text-gray-400">
-                Página {page} de {totalPages}
+              <p className="text-xs text-gray-400 font-medium">
+                Pagina {page} de {totalPages}
               </p>
             </div>
           )}

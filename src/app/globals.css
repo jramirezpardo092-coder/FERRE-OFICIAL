@@ -11,6 +11,9 @@
   body {
     @apply font-sans text-gray-900 antialiased bg-gray-50/50;
   }
+  ::selection {
+    @apply bg-brand-red/15 text-brand-red;
+  }
 }
 
 @layer components {
@@ -88,8 +91,49 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes badgePop {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
 .wa-floating-pulse {
   animation: wa-pulse 2s infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.4) 50%, transparent 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+}
+
+.animate-badge-pop {
+  animation: badgePop 0.3s ease-out forwards;
 }
 
 /* Carousel dots */
@@ -105,12 +149,12 @@
   @apply text-[10px] text-amber-600 font-semibold ml-1;
 }
 
-/* Badge styles */
+/* Badge styles - enhanced */
 .badge-bestseller {
-  @apply absolute top-2 left-2 bg-brand-orange text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide z-10;
+  @apply absolute top-2 left-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-lg uppercase tracking-wide z-10 shadow-md shadow-orange-500/20;
 }
 .badge-photo {
-  @apply absolute top-2 right-2 bg-black/70 text-white text-[10px] font-medium px-2 py-0.5 rounded-full backdrop-blur-sm z-10;
+  @apply absolute top-2 right-2 bg-black/60 text-white text-[10px] font-medium px-2 py-0.5 rounded-full backdrop-blur-sm z-10;
 }
 .badge-discount {
   @apply absolute top-10 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10;
@@ -130,4 +174,45 @@ input[type="checkbox"]:checked {
 /* Smooth page transition for catalog navigation */
 .catalog-fade-in {
   animation: catalogFadeIn 0.2s ease-out;
+}
+
+/* Product card image shimmer placeholder */
+.img-placeholder {
+  @apply relative overflow-hidden;
+}
+.img-placeholder::after {
+  content: "";
+  @apply absolute inset-0;
+  background: linear-gradient(90deg, transparent 25%, rgba(0,0,0,0.03) 50%, transparent 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* Elegant focus ring for inputs */
+input:focus-visible,
+select:focus-visible {
+  @apply ring-2 ring-brand-red/20 ring-offset-1;
+}
+
+/* Subtle divider line with gradient */
+.divider-gradient {
+  background: linear-gradient(90deg, transparent, rgba(208,39,49,0.15), transparent);
+  height: 1px;
+}
+
+/* Better scrollbar for sidebar on desktop */
+@media (min-width: 1024px) {
+  .sidebar-scroll::-webkit-scrollbar {
+    width: 4px;
+  }
+  .sidebar-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .sidebar-scroll::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.1);
+    border-radius: 999px;
+  }
+  .sidebar-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0,0.2);
+  }
 }
