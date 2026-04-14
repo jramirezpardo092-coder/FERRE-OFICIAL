@@ -81,10 +81,10 @@ export default function ProductCard({ product, onOpenModal, viewMode = "grid" }:
               loading="lazy"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-gray-200 min-h-[120px]">
-              <svg className="w-12 h-12 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
+            <div className="w-full h-full flex items-center justify-center min-h-[120px] relative">
+              <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center text-gray-300 group-hover:bg-red-50 group-hover:text-brand-red/30 transition-all duration-300">
+                <span className="text-lg font-extrabold">{product.brand?.charAt(0) || "F"}</span>
+              </div>
             </div>
           )}
         </div>
@@ -184,11 +184,14 @@ export default function ProductCard({ product, onOpenModal, viewMode = "grid" }:
             loading="lazy"
           />
         ) : (
-          <div className="w-full h-full flex flex-col items-center justify-center text-gray-300 gap-2">
-            <svg className="w-14 h-14 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-            <span className="text-[10px] text-gray-300 font-medium">Sin imagen</span>
+          <div className="w-full h-full flex flex-col items-center justify-center gap-2 relative">
+            <div className="absolute inset-0 opacity-[0.03]" style={{
+              backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='1'%3E%3Ccircle cx='3' cy='3' r='1'/%3E%3C/g%3E%3C/svg%3E\")"
+            }} />
+            <div className="w-16 h-16 rounded-2xl bg-gray-100 flex items-center justify-center text-gray-300 group-hover:bg-red-50 group-hover:text-brand-red/30 transition-all duration-300">
+              <span className="text-2xl font-extrabold">{product.brand?.charAt(0) || "F"}</span>
+            </div>
+            <span className="text-[10px] text-gray-300 font-semibold tracking-wide uppercase">{product.brand || "Producto"}</span>
           </div>
         )}
         {/* Bottom gradient fade into content area */}

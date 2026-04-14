@@ -85,24 +85,24 @@ export default function HeroCarousel() {
         }} />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 py-16 md:py-24 lg:py-28">
-        <div className="max-w-3xl">
+      <div className="relative max-w-7xl mx-auto px-4 py-12 md:py-16 lg:py-20">
+        <div className="max-w-2xl">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2.5 mb-8">
+          <div className="inline-flex items-center gap-2.5 mb-6">
             <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse" />
-            <span className="text-[11px] font-bold text-white/80 tracking-[0.2em] uppercase bg-white/10 backdrop-blur-md border border-white/15 px-4 py-1.5 rounded-full">{slide.badge}</span>
+            <span className="text-[10px] font-bold text-white/70 tracking-[0.2em] uppercase bg-white/10 backdrop-blur-md border border-white/10 px-3.5 py-1 rounded-full">{slide.badge}</span>
           </div>
 
           {/* Content */}
-          <h1 key={`title-${current}`} className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] mb-5 animate-fade-in text-balance">
+          <h1 key={`title-${current}`} className="text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold text-white leading-[1.15] mb-4 animate-fade-in text-balance">
             {slide.title}
           </h1>
-          <p key={`sub-${current}`} className="text-lg md:text-xl text-white/70 mb-10 max-w-xl animate-fade-in leading-relaxed">
+          <p key={`sub-${current}`} className="text-base md:text-lg text-white/60 mb-8 max-w-lg animate-fade-in leading-relaxed">
             {slide.subtitle}
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-wrap gap-3 mb-14">
+          <div className="flex flex-wrap gap-3 mb-10">
             {slide.cta.href.startsWith('http') ? (
               <a href={slide.cta.href} target="_blank" rel="noreferrer"
                  className="inline-flex items-center gap-2 bg-white text-gray-900 font-bold px-7 py-3.5 rounded-xl hover:bg-gray-50 transition-all duration-200 shadow-xl shadow-black/20 hover:shadow-2xl hover:-translate-y-0.5 text-sm">

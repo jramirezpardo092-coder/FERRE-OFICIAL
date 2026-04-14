@@ -12,32 +12,46 @@ export const metadata: Metadata = {
 
 export default function CatalogoPage() {
   const products = productsData as Product[];
+  const withStock = products.filter(p => p.stock > 0).length;
+  const withPhoto = products.filter(p => !!p.img).length;
+  const onSale = products.filter(p => p.disc && p.disc > 0).length;
 
   return (
     <div className="min-h-screen bg-gray-50/30">
-      {/* Page header */}
-      <div className="bg-white border-b border-gray-100">
-        <div className="max-w-[1400px] mx-auto px-4 py-5">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
+      {/* Branded page header */}
+      <div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+        {/* Decorative */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-20 -right-20 w-80 h-80 bg-brand-red/10 rounded-full blur-3xl" />
+          <div className="absolute -bottom-16 -left-16 w-60 h-60 bg-brand-red/5 rounded-full blur-3xl" />
+        </div>
+        <div className="relative max-w-[1400px] mx-auto px-4 py-8 md:py-10">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <div>
-              <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900">Catálogo completo</h1>
-              <p className="text-gray-400 mt-0.5 text-sm">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-6 h-[2px] bg-brand-red rounded-full" />
+                <span className="text-[10px] font-bold text-brand-red uppercase tracking-[0.2em]">Catalogo</span>
+              </div>
+              <h1 className="text-2xl md:text-3xl font-extrabold text-white">
+                Catalogo completo
+              </h1>
+              <p className="text-gray-400 mt-1 text-sm">
                 {products.length.toLocaleString("es-CO")} productos · Precios + IVA · Cotiza por WhatsApp
               </p>
             </div>
-            <div className="flex items-center gap-3 text-xs text-gray-400">
-              <span className="flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                {products.filter(p => p.stock > 0).length.toLocaleString("es-CO")} con stock
-              </span>
-              <span className="flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-blue-500"></span>
-                {products.filter(p => !!p.img).length.toLocaleString("es-CO")} con foto
-              </span>
-              <span className="flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-red-500"></span>
-                {products.filter(p => p.disc && p.disc > 0).length.toLocaleString("es-CO")} en oferta
-              </span>
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span className="text-xs text-gray-300 font-medium">{withStock.toLocaleString("es-CO")} con stock</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2">
+                <span className="w-2 h-2 rounded-full bg-blue-400"></span>
+                <span className="text-xs text-gray-300 font-medium">{withPhoto.toLocaleString("es-CO")} con foto</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2">
+                <span className="w-2 h-2 rounded-full bg-red-400"></span>
+                <span className="text-xs text-gray-300 font-medium">{onSale.toLocaleString("es-CO")} en oferta</span>
+              </div>
             </div>
           </div>
         </div>
@@ -46,7 +60,7 @@ export default function CatalogoPage() {
       <Suspense fallback={
         <div className="flex flex-col items-center justify-center py-20 gap-3">
           <div className="animate-spin rounded-full h-10 w-10 border-3 border-brand-red border-t-transparent" />
-          <p className="text-sm text-gray-400">Cargando catálogo...</p>
+          <p className="text-sm text-gray-400">Cargando catalogo...</p>
         </div>
       }>
         <CatalogClient products={products} />

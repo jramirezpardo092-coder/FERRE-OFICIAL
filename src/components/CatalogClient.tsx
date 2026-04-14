@@ -378,13 +378,24 @@ export default function CatalogClient({ products }: Props) {
             "max-lg:absolute max-lg:left-0 max-lg:top-0 max-lg:h-full max-lg:w-80 max-lg:overflow-y-auto max-lg:rounded-none max-lg:animate-slide-in-right"
           )}>
             {/* Mobile close */}
-            <div className="lg:hidden flex items-center justify-between mb-2">
+            <div className="lg:hidden flex items-center justify-between mb-3 pb-3 border-b border-gray-100">
               <h3 className="font-bold text-lg">Filtros</h3>
-              <button onClick={() => setSidebarOpen(false)} className="p-2 hover:bg-gray-100 rounded-full">
+              <button onClick={() => setSidebarOpen(false)} className="p-2 hover:bg-gray-100 rounded-xl transition-colors">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
+            </div>
+
+            {/* Desktop sidebar header */}
+            <div className="hidden lg:flex items-center gap-2 pb-3 border-b border-gray-100 mb-1">
+              <FilterIcon />
+              <h3 className="font-bold text-sm text-gray-700">Filtros</h3>
+              {activeFilters.length > 0 && (
+                <span className="ml-auto text-[10px] font-bold bg-brand-red text-white w-5 h-5 rounded-full flex items-center justify-center">
+                  {activeFilters.length}
+                </span>
+              )}
             </div>
 
             {/* Categories */}
@@ -458,27 +469,28 @@ export default function CatalogClient({ products }: Props) {
             </div>
 
             {/* Toggles */}
-            <div className="space-y-2 pt-1 border-t border-gray-100">
-              <label className="flex items-center gap-2.5 text-sm cursor-pointer py-1 hover:bg-gray-50 rounded-lg px-2 -mx-2 transition-colors">
+            <div className="space-y-1 pt-3 border-t border-gray-100">
+              <h4 className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Filtros rapidos</h4>
+              <label className="flex items-center gap-2.5 text-sm cursor-pointer py-2 hover:bg-gray-50 rounded-xl px-3 -mx-1 transition-colors">
                 <input type="checkbox" checked={onlyPhoto} onChange={(e) => setOnlyPhoto(e.target.checked)}
                        className="w-4 h-4 rounded text-brand-red focus:ring-brand-red border-gray-300" />
-                <span className="flex-1">Solo con foto real</span>
-                <span className="text-[10px] bg-gray-100 px-2 py-0.5 rounded-full text-gray-500 font-medium">
+                <span className="flex-1 font-medium text-gray-600">Solo con foto</span>
+                <span className="text-[10px] bg-blue-50 text-blue-600 px-2 py-0.5 rounded-full font-semibold border border-blue-100">
                   {products.filter(p => !!p.img).length}
                 </span>
               </label>
-              <label className="flex items-center gap-2.5 text-sm cursor-pointer py-1 hover:bg-gray-50 rounded-lg px-2 -mx-2 transition-colors">
+              <label className="flex items-center gap-2.5 text-sm cursor-pointer py-2 hover:bg-gray-50 rounded-xl px-3 -mx-1 transition-colors">
                 <input type="checkbox" checked={onlyOfertas} onChange={(e) => setOnlyOfertas(e.target.checked)}
                        className="w-4 h-4 rounded text-brand-red focus:ring-brand-red border-gray-300" />
-                <span className="flex-1">Solo ofertas</span>
-                <span className="text-[10px] bg-red-50 px-2 py-0.5 rounded-full text-red-500 font-medium">
+                <span className="flex-1 font-medium text-gray-600">Solo ofertas</span>
+                <span className="text-[10px] bg-red-50 text-red-500 px-2 py-0.5 rounded-full font-semibold border border-red-100">
                   {products.filter(p => p.disc && p.disc > 0).length}
                 </span>
               </label>
             </div>
 
             {activeFilters.length > 0 && (
-              <button onClick={clearAll} className="w-full text-xs text-red-500 hover:text-red-700 font-medium py-2 border-t border-gray-100 mt-2">
+              <button onClick={clearAll} className="w-full text-xs text-white bg-gray-900 hover:bg-gray-800 font-semibold py-2.5 rounded-xl mt-2 transition-all duration-200 shadow-sm hover:shadow-md">
                 Limpiar todos los filtros
               </button>
             )}

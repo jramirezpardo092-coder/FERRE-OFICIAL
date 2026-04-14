@@ -108,8 +108,8 @@ export default function CategoryGrid() {
           </p>
         </div>
 
-        {/* Category Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5 mb-12">
+        {/* Category Grid — flex wrap to center the last row */}
+        <div className="flex flex-wrap justify-center gap-4 md:gap-5 mb-12">
           {CATEGORIES.map((cat) => {
             const IconComponent = iconMap[cat.name] || IconWrench;
             const count = (productCounts[cat.name] || 0).toLocaleString("es-CO");
@@ -117,7 +117,7 @@ export default function CategoryGrid() {
               <Link
                 key={cat.slug}
                 href={`/catalogo?cat=${encodeURIComponent(cat.name)}`}
-                className="group"
+                className="group w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.75rem)] lg:w-[calc(20%-1rem)]"
               >
                 <div className="relative h-full bg-white rounded-2xl p-6 md:p-8 text-center border border-gray-100 hover:border-brand-red/20 hover:shadow-xl hover:shadow-red-900/5 transition-all duration-300 hover:-translate-y-1 flex flex-col items-center justify-center">
                   {/* Product Count Badge */}
