@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -42,6 +43,12 @@ const config: Config = {
         "slide-in-right": "slideInRight 0.3s ease-out",
         "pulse-soft": "pulseSoft 2s infinite",
         "bounce-subtle": "bounceSubtle 2s infinite",
+        "reveal": "reveal 0.7s ease-out both",
+        "reveal-left": "revealLeft 0.7s ease-out both",
+        "reveal-right": "revealRight 0.7s ease-out both",
+        "reveal-scale": "revealScale 0.6s ease-out both",
+        "count-up": "countUp 0.4s ease-out",
+        "glow": "glow 2s ease-in-out infinite alternate",
       },
       keyframes: {
         fadeIn: {
@@ -63,6 +70,30 @@ const config: Config = {
         bounceSubtle: {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-4px)" },
+        },
+        reveal: {
+          "0%": { opacity: "0", transform: "translateY(30px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        revealLeft: {
+          "0%": { opacity: "0", transform: "translateX(-30px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        revealRight: {
+          "0%": { opacity: "0", transform: "translateX(30px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        revealScale: {
+          "0%": { opacity: "0", transform: "scale(0.9)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
+        countUp: {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        glow: {
+          "0%": { boxShadow: "0 0 5px rgba(208,39,49,0.2)" },
+          "100%": { boxShadow: "0 0 20px rgba(208,39,49,0.4)" },
         },
       },
     },

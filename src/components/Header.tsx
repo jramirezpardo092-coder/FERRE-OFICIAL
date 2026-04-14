@@ -6,6 +6,19 @@ import Image from "next/image";
 import { SITE, NAV_LINKS, CATEGORIES } from "@/lib/constants";
 import { getCartCount, subscribeCart } from "@/lib/cart-store";
 import { cn } from "@/lib/utils";
+import { useTheme } from "./ThemeProvider";
+
+const SunIcon = () => (
+  <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+  </svg>
+);
+
+const MoonIcon = () => (
+  <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+  </svg>
+);
 
 /* ── Icons ─── */
 const MenuIcon = () => (
@@ -130,6 +143,7 @@ export default function Header() {
   const [catOpen, setCatOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { theme, toggle: toggleTheme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -181,8 +195,8 @@ export default function Header() {
       {/* Main Header */}
       <header
         className={cn(
-          "sticky top-0 z-50 bg-white transition-all duration-300 border-b",
-          scrolled ? "backdrop-blur-2xl bg-white/95 shadow-lg shadow-black/5 border-gray-100" : "border-transparent"
+          "sticky top-0 z-50 bg-white dark:bg-gray-900 transition-all duration-300 border-b",
+          scrolled ? "backdrop-blur-2xl bg-white/95 dark:bg-gray-900/95 shadow-lg shadow-black/5 border-gray-100 dark:border-gray-800" : "border-transparent"
         )}
       >
         <div className="max-w-7xl mx-auto px-4">
@@ -210,13 +224,13 @@ export default function Header() {
                   <div key={link.label} className="relative group" ref={dropdownRef}>
                     <button
                       onClick={() => setCatOpen(!catOpen)}
-                      className="flex items-center px-4 py-2.5 text-sm font-semibold text-gray-700 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50"
+                      className="flex items-center px-4 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/20"
                     >
                       {link.label}
                       <ChevronDown />
                     </button>
                     {catOpen && (
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[360px] bg-white rounded-2xl shadow-2xl shadow-black/12 border border-gray-100 p-5 animate-fade-in z-50">
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[360px] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl shadow-black/12 border border-gray-100 dark:border-gray-700 p-5 animate-fade-in z-50">
                         <div className="grid grid-cols-3 gap-2">
                           {CATEGORIES.map((cat) => {
                             const IconComponent = categoryIconMap[cat.name];
@@ -224,7 +238,7 @@ export default function Header() {
                               <Link
                                 key={cat.slug}
                                 href={`/catalogo?cat=${encodeURIComponent(cat.name)}`}
-                                className="flex flex-col items-center gap-2 p-3 text-sm text-gray-700 hover:bg-red-50 hover:text-brand-red transition-all duration-300 rounded-2xl border border-transparent hover:border-red-200"
+                                className="flex flex-col items-center gap-2 p-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-brand-red transition-all duration-300 rounded-2xl border border-transparent hover:border-red-200 dark:hover:border-red-800"
                                 onClick={() => setCatOpen(false)}
                               >
                                 {IconComponent && (
@@ -244,7 +258,7 @@ export default function Header() {
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="px-4 py-2.5 text-sm font-semibold text-gray-700 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50"
+                    className="px-4 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/20"
                   >
                     {link.label}
                   </Link>
@@ -272,9 +286,18 @@ export default function Header() {
                 Hablar con asesor
               </a>
 
+              {/* Dark mode toggle */}
+              <button
+                onClick={toggleTheme}
+                className="p-2.5 text-gray-500 dark:text-gray-400 hover:text-brand-red dark:hover:text-brand-orange transition-all duration-300 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800"
+                aria-label="Cambiar tema"
+              >
+                {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+              </button>
+
               {/* Cart button - Premium scale animation */}
               <button
-                className="relative p-2.5 text-gray-700 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50"
+                className="relative p-2.5 text-gray-700 dark:text-gray-300 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/20"
                 aria-label="Ver carrito"
                 onClick={() => {
                   const event = new CustomEvent("toggle-cart");

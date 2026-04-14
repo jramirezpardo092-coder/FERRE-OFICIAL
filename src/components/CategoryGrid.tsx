@@ -88,7 +88,7 @@ export default function CategoryGrid() {
   }, [products]);
 
   return (
-    <section id="categorias" className="py-20 md:py-28 bg-white relative">
+    <section id="categorias" className="py-20 md:py-28 bg-white dark:bg-gray-950 relative">
       {/* Subtle top divider */}
       <div className="absolute top-0 left-0 right-0 divider-gradient" />
 
@@ -119,9 +119,9 @@ export default function CategoryGrid() {
                 href={`/catalogo?cat=${encodeURIComponent(cat.name)}`}
                 className="group w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.75rem)] lg:w-[calc(20%-1rem)]"
               >
-                <div className="relative h-full bg-white rounded-2xl p-6 md:p-8 text-center border border-gray-100 hover:border-brand-red/20 hover:shadow-xl hover:shadow-red-900/5 transition-all duration-300 hover:-translate-y-1 flex flex-col items-center justify-center">
+                <div className="relative h-full bg-white dark:bg-gray-900 rounded-2xl p-6 md:p-8 text-center border border-gray-100 dark:border-gray-800 hover:border-brand-red/20 dark:hover:border-brand-red/30 hover:shadow-xl hover:shadow-red-900/5 transition-all duration-300 hover:-translate-y-1 flex flex-col items-center justify-center">
                   {/* Product Count Badge */}
-                  <div className="absolute top-3 right-3 bg-gray-100 text-gray-500 text-[10px] font-bold px-2.5 py-1 rounded-lg group-hover:bg-red-50 group-hover:text-brand-red transition-colors duration-300">
+                  <div className="absolute top-3 right-3 bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 text-[10px] font-bold px-2.5 py-1 rounded-lg group-hover:bg-red-50 dark:group-hover:bg-red-900/20 group-hover:text-brand-red transition-colors duration-300">
                     {count}
                   </div>
 
@@ -131,7 +131,7 @@ export default function CategoryGrid() {
                   </div>
 
                   {/* Category Name */}
-                  <h3 className="font-bold text-sm md:text-base text-gray-700 group-hover:text-brand-red transition-colors duration-300 leading-tight">
+                  <h3 className="font-bold text-sm md:text-base text-gray-700 dark:text-gray-200 group-hover:text-brand-red transition-colors duration-300 leading-tight">
                     {cat.name}
                   </h3>
                 </div>

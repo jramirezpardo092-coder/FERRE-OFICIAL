@@ -14,13 +14,13 @@ export default function FeaturedProducts({ products }: Props) {
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
 
   const featured = products
-    .filter((p) => p.img && p.disc && p.disc >= 15)
+    .filter((p) => p.img && p.disc && p.disc >= 15 && p.stock > 0)
     .slice(0, 8);
 
   if (featured.length === 0) return null;
 
   return (
-    <section className="py-20 md:py-28 bg-gray-50 relative">
+    <section className="py-20 md:py-28 bg-gray-50 dark:bg-gray-900/50 relative">
       <div className="absolute top-0 left-0 right-0 divider-gradient" />
 
       <div className="max-w-7xl mx-auto px-4">

@@ -47,11 +47,11 @@ export default function ProductModal({ product, onClose }: Props) {
 
       {/* Modal */}
       <div
-        className="relative bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl animate-slide-up"
+        className="relative bg-white dark:bg-gray-900 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl animate-slide-up"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close */}
-        <button onClick={onClose} className="absolute top-4 right-4 z-10 p-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-gray-100 transition-colors shadow-sm border border-gray-200">
+        <button onClick={onClose} className="absolute top-4 right-4 z-10 p-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors shadow-sm border border-gray-200 dark:border-gray-700">
           <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -59,7 +59,7 @@ export default function ProductModal({ product, onClose }: Props) {
 
         <div className="md:flex">
           {/* Image */}
-          <div className="md:w-1/2 bg-gray-50 p-6 flex items-center justify-center min-h-[280px] relative">
+          <div className="md:w-1/2 bg-gray-50 dark:bg-gray-800 p-6 flex items-center justify-center min-h-[280px] relative">
             {discount && (
               <span className="absolute top-4 left-4 bg-red-500 text-white text-xs font-bold px-2.5 py-1 rounded-lg z-10 shadow-sm">
                 -{discount}% OFF
@@ -93,7 +93,7 @@ export default function ProductModal({ product, onClose }: Props) {
               <span className="text-xs text-gray-400 font-mono">Ref {product.id}</span>
             </div>
 
-            <h2 className="text-xl font-extrabold text-gray-900 mb-3 leading-tight">{product.nombre}</h2>
+            <h2 className="text-xl font-extrabold text-gray-900 dark:text-white mb-3 leading-tight">{product.nombre}</h2>
 
             <div className="flex flex-wrap gap-2 mb-4">
               <span className="text-xs px-2.5 py-1 bg-gray-100 text-gray-600 rounded-lg font-medium">
@@ -111,9 +111,9 @@ export default function ProductModal({ product, onClose }: Props) {
             </div>
 
             {/* Price block */}
-            <div className="bg-gray-50 rounded-xl p-4 mb-4 border border-gray-100">
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 mb-4 border border-gray-100 dark:border-gray-700">
               <div className="flex items-baseline gap-2">
-                <span className="text-3xl font-extrabold text-gray-900 tracking-tight">
+                <span className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">
                   {formatCOP(product.precio)}
                 </span>
                 <span className="text-sm text-amber-600 font-semibold">+ IVA</span>

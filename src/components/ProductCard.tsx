@@ -66,7 +66,7 @@ export default function ProductCard({ product, onOpenModal, viewMode = "grid" }:
         {/* Image */}
         <div className="relative w-32 sm:w-44 shrink-0 bg-gradient-to-br from-gray-50 to-gray-100/50 overflow-hidden">
           {discount && discount >= 20 && (
-            <span className="absolute top-2.5 left-2.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-lg uppercase z-10 shadow-sm">Top</span>
+            <span className="absolute top-2.5 left-2.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-lg uppercase z-10 shadow-sm">Oferta</span>
           )}
           {discount && (
             <span className="absolute bottom-2.5 left-2.5 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-lg z-10 shadow-sm">-{discount}%</span>
@@ -139,7 +139,7 @@ export default function ProductCard({ product, onOpenModal, viewMode = "grid" }:
   /* ══ GRID VIEW (default) ══════════════ */
   return (
     <div
-      className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:-translate-y-1.5 hover:shadow-xl hover:shadow-black/8 hover:border-gray-200/80 cursor-pointer relative transition-all duration-300"
+      className="group bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden hover:-translate-y-1.5 hover:shadow-xl hover:shadow-black/8 dark:hover:shadow-black/30 hover:border-gray-200/80 dark:hover:border-gray-700 cursor-pointer relative transition-all duration-300"
       onClick={() => onOpenModal?.(product)}
     >
       {/* Link invisible para SEO */}
@@ -154,7 +154,7 @@ export default function ProductCard({ product, onOpenModal, viewMode = "grid" }:
       <div className="absolute top-3 left-3 z-10 flex flex-col gap-1.5">
         {discount && discount >= 20 && (
           <span className="bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[9px] font-bold px-2.5 py-1 rounded-lg uppercase tracking-wide shadow-md shadow-orange-500/20 animate-badge-pop">
-            Mas vendido
+            Super oferta
           </span>
         )}
         {discount && (
@@ -195,7 +195,7 @@ export default function ProductCard({ product, onOpenModal, viewMode = "grid" }:
           </div>
         )}
         {/* Bottom gradient fade into content area */}
-        <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white dark:from-gray-900 to-transparent pointer-events-none" />
       </div>
 
       {/* Content */}
@@ -206,7 +206,7 @@ export default function ProductCard({ product, onOpenModal, viewMode = "grid" }:
         </div>
 
         {/* Name */}
-        <h3 className="text-[13px] font-semibold text-gray-800 leading-snug line-clamp-2 mb-2.5 min-h-[2.25rem] group-hover:text-brand-red transition-colors duration-300">
+        <h3 className="text-[13px] font-semibold text-gray-800 dark:text-gray-200 leading-snug line-clamp-2 mb-2.5 min-h-[2.25rem] group-hover:text-brand-red transition-colors duration-300">
           {product.nombre}
         </h3>
 
@@ -228,7 +228,7 @@ export default function ProductCard({ product, onOpenModal, viewMode = "grid" }:
         {/* Price block */}
         <div className="mb-3">
           <div className="flex items-baseline gap-1.5">
-            <span className="text-xl font-extrabold text-gray-900 tracking-tight">
+            <span className="text-xl font-extrabold text-gray-900 dark:text-white tracking-tight">
               {formatCOP(product.precio)}
             </span>
             <span className="text-[10px] text-amber-600 font-semibold">+ IVA</span>

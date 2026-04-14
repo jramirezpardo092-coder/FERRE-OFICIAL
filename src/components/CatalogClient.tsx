@@ -257,7 +257,7 @@ export default function CatalogClient({ products }: Props) {
             onFocus={() => setShowSuggestions(true)}
             onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
             placeholder="Buscar por nombre, referencia, marca o categoría..."
-            className="w-full pl-12 pr-12 py-4 bg-white border-2 border-gray-200 rounded-2xl text-sm focus:ring-4 focus:ring-brand-red/10 focus:border-brand-red outline-none transition-all duration-300 shadow-sm hover:border-gray-300 hover:shadow-md"
+            className="w-full pl-12 pr-12 py-4 bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 rounded-2xl text-sm focus:ring-4 focus:ring-brand-red/10 focus:border-brand-red outline-none transition-all duration-300 shadow-sm hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-md dark:text-gray-100"
           />
           {search && (
             <button
@@ -374,7 +374,7 @@ export default function CatalogClient({ products }: Props) {
           !sidebarOpen && "max-lg:hidden"
         )}>
           <div className={cn(
-            "bg-white rounded-2xl border border-gray-100 p-5 space-y-4 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto sidebar-scroll shadow-sm",
+            "bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-5 space-y-4 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto sidebar-scroll shadow-sm",
             "max-lg:absolute max-lg:left-0 max-lg:top-0 max-lg:h-full max-lg:w-80 max-lg:overflow-y-auto max-lg:rounded-none max-lg:animate-slide-in-right"
           )}>
             {/* Mobile close */}
@@ -500,7 +500,7 @@ export default function CatalogClient({ products }: Props) {
         {/* ── Main content ─────────────────────── */}
         <main className="flex-1 min-w-0">
           {/* Toolbar: results + sort + view toggle */}
-          <div className="flex items-center justify-between mb-5 bg-white rounded-2xl px-5 py-3.5 border border-gray-100 shadow-sm">
+          <div className="flex items-center justify-between mb-5 bg-white dark:bg-gray-900 rounded-2xl px-5 py-3.5 border border-gray-100 dark:border-gray-800 shadow-sm">
             <div className="text-sm text-gray-500">
               {filtered.length > 0 ? (
                 <>

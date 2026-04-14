@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import MiniCart from "@/components/MiniCart";
+import ThemeProvider from "@/components/ThemeProvider";
 import { getOrganizationJsonLd, getWebsiteJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -52,12 +53,14 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(getWebsiteJsonLd()) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <WhatsAppFloat />
-        <MiniCart />
+      <body className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+        <ThemeProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <WhatsAppFloat />
+          <MiniCart />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -17,7 +17,7 @@ export default function CatalogoPage() {
   const onSale = products.filter(p => p.disc && p.disc > 0).length;
 
   return (
-    <div className="min-h-screen bg-gray-50/30">
+    <div className="min-h-screen bg-gray-50/30 dark:bg-gray-950">
       {/* Branded page header */}
       <div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
         {/* Decorative */}
