@@ -2,9 +2,12 @@ import Fuse from "fuse.js";
 import { Product } from "./types";
 
 let fuseInstance: Fuse<Product> | null = null;
+let fuseProducts: Product[] | null = null;
 
 export function getFuseInstance(products: Product[]): Fuse<Product> {
-  if (!fuseInstance) {
+  // Re-crear el índice si cambia la lista (ej: /ofertas vs /catalogo)
+  if (!fuseInstance || fuseProducts !== products) {
+    fuseProducts = products;
     fuseInstance = new Fuse(products, {
       keys: [
         { name: "nombre", weight: 0.4 },
@@ -53,7 +56,6 @@ export function searchProducts(
         if (tokens.every((t) => nameL.includes(t))) s += 50;
         if (nameL.startsWith(tokens[0])) s += 30;
         if (p.brand.toLowerCase().includes(q.toLowerCase())) s += 20;
-        if (p.img) s += 5;
         if (p.stock > 0) s += 5;
         if (p.disc && p.disc > 0) s += 3;
         return s;

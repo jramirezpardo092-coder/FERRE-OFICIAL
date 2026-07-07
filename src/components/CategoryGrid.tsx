@@ -1,10 +1,6 @@
-"use client";
-
-import React, { useMemo } from "react";
+import React from "react";
 import Link from "next/link";
 import { CATEGORIES } from "@/lib/constants";
-import productsData from "@/data/products.json";
-import { Product } from "@/lib/types";
 
 // SVG Icon Components
 const IconKey = () => (
@@ -76,17 +72,11 @@ const iconMap: Record<string, () => React.ReactElement> = {
   "Seguridad Industrial": IconShield,
 };
 
-export default function CategoryGrid() {
-  const products = productsData as Product[];
+interface Props {
+  counts: Record<string, number>;
+}
 
-  const productCounts = useMemo(() => {
-    const counts: Record<string, number> = {};
-    products.forEach((p) => {
-      counts[p.cat] = (counts[p.cat] || 0) + 1;
-    });
-    return counts;
-  }, [products]);
-
+export default function CategoryGrid({ counts: productCounts }: Props) {
   return (
     <section id="categorias" className="py-20 md:py-28 bg-white dark:bg-gray-950 relative">
       {/* Subtle top divider */}

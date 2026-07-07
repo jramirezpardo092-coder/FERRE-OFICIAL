@@ -17,6 +17,12 @@ export default function HomePage() {
     .sort((a, b) => (b.disc || 0) - (a.disc || 0))
     .slice(0, 8);
 
+  // Conteo por categoría en el servidor: el catálogo completo no viaja al cliente
+  const categoryCounts: Record<string, number> = {};
+  products.forEach((p) => {
+    categoryCounts[p.cat] = (categoryCounts[p.cat] || 0) + 1;
+  });
+
   return (
     <>
       <script
@@ -25,7 +31,7 @@ export default function HomePage() {
       />
       <HeroCarousel />
       <ScrollReveal>
-        <CategoryGrid />
+        <CategoryGrid counts={categoryCounts} />
       </ScrollReveal>
       <ScrollReveal>
         <FeaturedProducts products={featured} />

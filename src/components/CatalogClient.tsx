@@ -152,7 +152,7 @@ export default function CatalogClient({ products }: Props) {
         return tokens.every(t => searchable.includes(t));
       })
       .slice(0, 5)
-      .map(p => ({ type: "product" as const, label: p.nombre, icon: p.img ? "📸" : "📦", id: p.id }));
+      .map(p => ({ type: "product" as const, label: p.nombre, icon: "📦", id: p.id }));
     return [...cats, ...brs, ...prods].slice(0, 8);
   }, [search, products]);
 
