@@ -13,7 +13,6 @@ export const metadata: Metadata = {
 export default function CatalogoPage() {
   const products = productsData as Product[];
   const withStock = products.filter(p => p.stock > 0).length;
-  const withPhoto = products.filter(p => !!p.img).length;
   const onSale = products.filter(p => p.disc && p.disc > 0).length;
 
   return (
@@ -43,10 +42,6 @@ export default function CatalogoPage() {
               <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
                 <span className="text-xs text-gray-300 font-medium">{withStock.toLocaleString("es-CO")} con stock</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2">
-                <span className="w-2 h-2 rounded-full bg-blue-400"></span>
-                <span className="text-xs text-gray-300 font-medium">{withPhoto.toLocaleString("es-CO")} con foto</span>
               </div>
               <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2">
                 <span className="w-2 h-2 rounded-full bg-red-400"></span>

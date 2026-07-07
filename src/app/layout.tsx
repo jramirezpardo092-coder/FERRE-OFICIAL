@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -6,6 +7,12 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import MiniCart from "@/components/MiniCart";
 import ThemeProvider from "@/components/ThemeProvider";
 import { getOrganizationJsonLd, getWebsiteJsonLd } from "@/lib/seo";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-manrope",
+});
 
 export const metadata: Metadata = {
   title: "Ferretería Pardo SAS | Catálogo, herrajes y herramientas en Bogotá",
@@ -42,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
+    <html lang="es" className={manrope.variable}>
       <head>
         <script
           type="application/ld+json"

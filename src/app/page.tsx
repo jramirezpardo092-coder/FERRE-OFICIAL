@@ -11,6 +11,11 @@ import { getLocalBusinessJsonLd } from "@/lib/seo";
 
 export default function HomePage() {
   const products = productsData as Product[];
+  // Filtrar en el servidor: solo los 8 destacados viajan al cliente
+  const featured = products
+    .filter((p) => p.disc && p.disc >= 15 && p.stock > 0)
+    .sort((a, b) => (b.disc || 0) - (a.disc || 0))
+    .slice(0, 8);
 
   return (
     <>
@@ -23,7 +28,7 @@ export default function HomePage() {
         <CategoryGrid />
       </ScrollReveal>
       <ScrollReveal>
-        <FeaturedProducts products={products} />
+        <FeaturedProducts products={featured} />
       </ScrollReveal>
       <ScrollReveal variant="scale">
         <InstagramSection />

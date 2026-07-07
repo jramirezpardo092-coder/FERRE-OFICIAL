@@ -13,9 +13,8 @@ interface Props {
 export default function FeaturedProducts({ products }: Props) {
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
 
-  const featured = products
-    .filter((p) => p.img && p.disc && p.disc >= 15 && p.stock > 0)
-    .slice(0, 8);
+  // Los productos llegan ya filtrados/ordenados desde el servidor
+  const featured = products.slice(0, 8);
 
   if (featured.length === 0) return null;
 
@@ -31,7 +30,7 @@ export default function FeaturedProducts({ products }: Props) {
               <span className="text-xs font-bold text-brand-red uppercase tracking-[0.2em]">Destacados</span>
             </div>
             <h2 className="section-title">Lo que mas buscan</h2>
-            <p className="section-subtitle mt-2">Productos destacados con fotos reales</p>
+            <p className="section-subtitle mt-2">Los mejores descuentos del catalogo</p>
           </div>
           <Link
             href="/catalogo"

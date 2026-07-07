@@ -35,7 +35,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["Manrope", "system-ui", "sans-serif"],
+        sans: ["var(--font-manrope)", "Manrope", "system-ui", "sans-serif"],
       },
       animation: {
         "fade-in": "fadeIn 0.5s ease-out",

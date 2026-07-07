@@ -61,7 +61,6 @@ export default function CatalogClient({ products }: Props) {
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [category, setCategory] = useState(initialCat);
   const [brand, setBrand] = useState("");
-  const [onlyPhoto, setOnlyPhoto] = useState(false);
   const [onlyOfertas, setOnlyOfertas] = useState(initialOfertas);
   const [sortBy, setSortBy] = useState("relevance");
   const [page, setPage] = useState(1);
@@ -82,7 +81,7 @@ export default function CatalogClient({ products }: Props) {
 
   useEffect(() => {
     setPage(1);
-  }, [debouncedSearch, category, brand, onlyPhoto, onlyOfertas, sortBy]);
+  }, [debouncedSearch, category, brand, onlyOfertas, sortBy]);
 
   // Filtered products — hybrid search (tokenized + fuzzy fallback)
   const filtered = useMemo(() => {
@@ -105,10 +104,6 @@ export default function CatalogClient({ products }: Props) {
       result = result.filter((p) => p.brand === brand);
     }
 
-    if (onlyPhoto) {
-      result = result.filter((p) => !!p.img);
-    }
-
     if (onlyOfertas) {
       result = result.filter((p) => p.disc && p.disc > 0);
     }
@@ -129,19 +124,15 @@ export default function CatalogClient({ products }: Props) {
           result.sort((a, b) => a.nombre.localeCompare(b.nombre));
           break;
         default:
-          // No search active: sort by image first, then discount
-          result.sort((a, b) => {
-            if (a.img && !b.img) return -1;
-            if (!a.img && b.img) return 1;
-            return (b.disc || 0) - (a.disc || 0);
-          });
+          // No search active: sort by discount
+          result.sort((a, b) => (b.disc || 0) - (a.disc || 0));
       }
     }
     // When search is active + relevance sort, keep search engine order
 
     setIsFuzzy(fuzzy);
     return result;
-  }, [products, debouncedSearch, category, brand, onlyPhoto, onlyOfertas, sortBy]);
+  }, [products, debouncedSearch, category, brand, onlyOfertas, sortBy]);
 
   // Search suggestions (tokenized)
   const suggestions = useMemo(() => {
@@ -176,13 +167,11 @@ export default function CatalogClient({ products }: Props) {
   const activeFilters: { key: string; label: string }[] = [];
   if (category) activeFilters.push({ key: "category", label: category });
   if (brand) activeFilters.push({ key: "brand", label: brand });
-  if (onlyPhoto) activeFilters.push({ key: "photo", label: "Solo con foto" });
   if (onlyOfertas) activeFilters.push({ key: "ofertas", label: "Solo ofertas" });
 
   const removeFilter = (key: string) => {
     if (key === "category") setCategory("");
     if (key === "brand") setBrand("");
-    if (key === "photo") setOnlyPhoto(false);
     if (key === "ofertas") setOnlyOfertas(false);
   };
 
@@ -190,7 +179,6 @@ export default function CatalogClient({ products }: Props) {
     setSearch("");
     setCategory("");
     setBrand("");
-    setOnlyPhoto(false);
     setOnlyOfertas(false);
     setSortBy("relevance");
   };
@@ -210,7 +198,6 @@ export default function CatalogClient({ products }: Props) {
         if (!tokens.every(t => searchable.includes(t))) return false;
       }
       if (brand && p.brand !== brand) return false;
-      if (onlyPhoto && !p.img) return false;
       if (onlyOfertas && !(p.disc && p.disc > 0)) return false;
       return true;
     });
@@ -219,7 +206,7 @@ export default function CatalogClient({ products }: Props) {
     });
     counts["__all"] = baseFiltered.length;
     return counts;
-  }, [products, debouncedSearch, brand, onlyPhoto, onlyOfertas]);
+  }, [products, debouncedSearch, brand, onlyOfertas]);
 
   // Brand counts — tokenized search
   const brandCounts = useMemo(() => {
@@ -231,7 +218,6 @@ export default function CatalogClient({ products }: Props) {
         if (!tokens.every(t => searchable.includes(t))) return false;
       }
       if (category && p.cat !== category) return false;
-      if (onlyPhoto && !p.img) return false;
       if (onlyOfertas && !(p.disc && p.disc > 0)) return false;
       return true;
     });
@@ -239,7 +225,7 @@ export default function CatalogClient({ products }: Props) {
       counts[b] = baseFiltered.filter(p => p.brand === b).length;
     });
     return counts;
-  }, [products, debouncedSearch, category, onlyPhoto, onlyOfertas]);
+  }, [products, debouncedSearch, category, onlyOfertas]);
 
   return (
     <div className="max-w-[1400px] mx-auto px-4 py-6" ref={topRef}>
@@ -471,14 +457,6 @@ export default function CatalogClient({ products }: Props) {
             {/* Toggles */}
             <div className="space-y-1 pt-3 border-t border-gray-100">
               <h4 className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Filtros rapidos</h4>
-              <label className="flex items-center gap-2.5 text-sm cursor-pointer py-2 hover:bg-gray-50 rounded-xl px-3 -mx-1 transition-colors">
-                <input type="checkbox" checked={onlyPhoto} onChange={(e) => setOnlyPhoto(e.target.checked)}
-                       className="w-4 h-4 rounded text-brand-red focus:ring-brand-red border-gray-300" />
-                <span className="flex-1 font-medium text-gray-600">Solo con foto</span>
-                <span className="text-[10px] bg-blue-50 text-blue-600 px-2 py-0.5 rounded-full font-semibold border border-blue-100">
-                  {products.filter(p => !!p.img).length}
-                </span>
-              </label>
               <label className="flex items-center gap-2.5 text-sm cursor-pointer py-2 hover:bg-gray-50 rounded-xl px-3 -mx-1 transition-colors">
                 <input type="checkbox" checked={onlyOfertas} onChange={(e) => setOnlyOfertas(e.target.checked)}
                        className="w-4 h-4 rounded text-brand-red focus:ring-brand-red border-gray-300" />
