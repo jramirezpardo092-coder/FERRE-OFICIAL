@@ -30,13 +30,13 @@ export default function FeaturedProducts({ products }: Props) {
               <span className="text-xs font-bold text-brand-red uppercase tracking-[0.2em]">Destacados</span>
             </div>
             <h2 className="section-title">Lo que mas buscan</h2>
-            <p className="section-subtitle mt-2">Los mejores descuentos del catalogo</p>
+            <p className="section-subtitle mt-2">Los mejores descuentos del catálogo</p>
           </div>
           <Link
             href="/catalogo"
             className="hidden md:inline-flex items-center gap-2 text-brand-red font-semibold text-sm hover:text-red-700 transition-colors"
           >
-            Ver todo el catalogo
+            Ver todo el catálogo
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
@@ -55,7 +55,7 @@ export default function FeaturedProducts({ products }: Props) {
 
         <div className="mt-8 text-center md:hidden">
           <Link href="/catalogo" className="btn-primary text-sm">
-            Ver catalogo completo
+            Ver catálogo completo
             <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>

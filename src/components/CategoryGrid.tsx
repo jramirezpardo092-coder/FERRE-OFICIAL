@@ -87,11 +87,11 @@ export default function CategoryGrid({ counts: productCounts }: Props) {
         <div className="text-center mb-14">
           <div className="inline-flex items-center gap-2 mb-4">
             <div className="w-8 h-[2px] bg-brand-red rounded-full" />
-            <span className="text-xs font-bold text-brand-red uppercase tracking-[0.2em]">Categorias</span>
+            <span className="text-xs font-bold text-brand-red uppercase tracking-[0.2em]">Categorías</span>
             <div className="w-8 h-[2px] bg-brand-red rounded-full" />
           </div>
           <h2 className="section-title">
-            Explora por categoria
+            Explora por categoría
           </h2>
           <p className="section-subtitle mx-auto mt-4">
             9 categorias con todo lo que necesitas para tu obra, hogar o negocio

@@ -16,7 +16,7 @@ export default function Footer() {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 py-10 md:py-12 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <h3 className="text-2xl md:text-3xl font-extrabold text-white">Necesitas cotizar?</h3>
+            <h3 className="text-2xl md:text-3xl font-extrabold text-white">¿Necesitas cotizar?</h3>
             <p className="text-red-200 text-sm mt-1.5">Respuesta inmediata por WhatsApp. Precios especiales por volumen.</p>
           </div>
           <a
@@ -41,18 +41,18 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-6">
               <Image
                 src="/logo-ferreteria-pardo.png"
-                alt="Ferreteria Pardo"
+                alt="Ferretería Pardo"
                 width={44}
                 height={44}
                 className="rounded-xl"
               />
               <div>
-                <div className="font-black text-white text-lg">Ferreteria Pardo</div>
-                <div className="text-[11px] text-gray-500">Desde 1966 · Bogota</div>
+                <div className="font-black text-white text-lg">Ferretería Pardo</div>
+                <div className="text-[11px] text-gray-500">Desde 1966 · Bogotá</div>
               </div>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed mb-6">
-              Mas de 60 anos ofreciendo herrajes, cerrajeria, herramientas y soluciones ferreteras de calidad en Bogota.
+              Más de 60 años ofreciendo herrajes, cerrajería, herramientas y soluciones ferreteras de calidad en Bogotá.
             </p>
             {/* Payments */}
             <div className="flex flex-wrap gap-2">
@@ -66,7 +66,7 @@ export default function Footer() {
 
           {/* Col 2: Quick links */}
           <div>
-            <h4 className="font-bold text-white mb-6 text-sm uppercase tracking-wider">Enlaces rapidos</h4>
+            <h4 className="font-bold text-white mb-6 text-sm uppercase tracking-wider">Enlaces rápidos</h4>
             <nav className="space-y-3">
               {NAV_LINKS.map((link) => (
                 <Link
@@ -82,7 +82,7 @@ export default function Footer() {
 
           {/* Col 3: Contact */}
           <div>
-            <h4 className="font-bold text-white mb-6 text-sm uppercase tracking-wider">Contactanos</h4>
+            <h4 className="font-bold text-white mb-6 text-sm uppercase tracking-wider">Contáctanos</h4>
             <div className="space-y-3.5 text-sm text-gray-400">
               <div className="flex items-start gap-3">
                 <svg className="w-4 h-4 text-brand-red shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -179,7 +179,7 @@ export default function Footer() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Ubicacion Ferreteria Pardo"
+                title="Ubicación Ferretería Pardo"
               />
             </div>
           </div>
@@ -189,8 +189,8 @@ export default function Footer() {
       {/* Bottom */}
       <div className="border-t border-gray-800/50">
         <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-gray-600">
-          <p>&copy; 2026 Ferreteria Pardo SAS. Todos los derechos reservados.</p>
-          <p>Hecho con cuidado en Bogota</p>
+          <p>&copy; 2026 Ferretería Pardo SAS. Todos los derechos reservados.</p>
+          <p>Hecho con cuidado en Bogotá</p>
         </div>
       </div>
     </footer>

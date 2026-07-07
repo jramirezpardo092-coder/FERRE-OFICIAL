@@ -32,7 +32,7 @@ export default function CatalogoPage() {
                 <span className="text-[10px] font-bold text-brand-red uppercase tracking-[0.2em]">Catalogo</span>
               </div>
               <h1 className="text-2xl md:text-3xl font-extrabold text-white">
-                Catalogo completo
+                Catálogo completo
               </h1>
               <p className="text-gray-400 mt-1 text-sm">
                 {products.length.toLocaleString("es-CO")} productos · Precios + IVA · Cotiza por WhatsApp
@@ -55,7 +55,7 @@ export default function CatalogoPage() {
       <Suspense fallback={
         <div className="flex flex-col items-center justify-center py-20 gap-3">
           <div className="animate-spin rounded-full h-10 w-10 border-3 border-brand-red border-t-transparent" />
-          <p className="text-sm text-gray-400">Cargando catalogo...</p>
+          <p className="text-sm text-gray-400">Cargando catálogo...</p>
         </div>
       }>
         <CatalogClient products={products} />

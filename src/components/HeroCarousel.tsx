@@ -7,9 +7,9 @@ import { cn } from "@/lib/utils";
 
 const SLIDES = [
   {
-    title: "Tu ferreteria de confianza desde 1966",
-    subtitle: "5.000+ productos · Despacho 24h en Bogota",
-    cta: { label: "Ver catalogo completo", href: "/catalogo" },
+    title: "Tu ferretería de confianza desde 1966",
+    subtitle: "5.000+ productos · Despacho 24h en Bogotá",
+    cta: { label: "Ver catálogo completo", href: "/catalogo" },
     ctaSecondary: { label: "Cotizar por WhatsApp", href: SITE.social.whatsapp },
     bg: "from-[#7F1D1D] via-[#D02731] to-[#A81F27]",
     accent: "from-orange-500/20 to-transparent",
@@ -17,7 +17,7 @@ const SLIDES = [
   },
   {
     title: "Ofertas del mes",
-    subtitle: "Hasta 30% de descuento en herramientas y cerrajeria seleccionada",
+    subtitle: "Hasta 30% de descuento en herramientas y cerrajería seleccionada",
     cta: { label: "Ver ofertas", href: "/ofertas" },
     ctaSecondary: null,
     bg: "from-gray-950 via-gray-900 to-gray-800",
@@ -25,8 +25,8 @@ const SLIDES = [
     badge: "Ofertas",
   },
   {
-    title: "Siguenos en Instagram y gana 5% en tu primera compra",
-    subtitle: "Enterate de novedades, tips ferreteros y promociones exclusivas",
+    title: "Síguenos en Instagram y gana 5% en tu primera compra",
+    subtitle: "Entérate de novedades, tips ferreteros y promociones exclusivas",
     cta: { label: "Seguir @ferreteriapardo", href: SITE.social.instagram },
     ctaSecondary: { label: "Ver Facebook", href: SITE.social.facebook },
     bg: "from-[#7F1D1D] via-[#A81F27] to-[#D02731]",
@@ -37,9 +37,9 @@ const SLIDES = [
 
 const STATS = [
   { value: "5.000+", label: "Productos" },
-  { value: "60+", label: "Anos de experiencia" },
+  { value: "60+", label: "Años de experiencia" },
   { value: "11", label: "Marcas reconocidas" },
-  { value: "9", label: "Categorias" },
+  { value: "9", label: "Categorías" },
 ];
 
 export default function HeroCarousel() {

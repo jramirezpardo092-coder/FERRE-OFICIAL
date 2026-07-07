@@ -456,7 +456,7 @@ export default function CatalogClient({ products }: Props) {
 
             {/* Toggles */}
             <div className="space-y-1 pt-3 border-t border-gray-100">
-              <h4 className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Filtros rapidos</h4>
+              <h4 className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Filtros rápidos</h4>
               <label className="flex items-center gap-2.5 text-sm cursor-pointer py-2 hover:bg-gray-50 rounded-xl px-3 -mx-1 transition-colors">
                 <input type="checkbox" checked={onlyOfertas} onChange={(e) => setOnlyOfertas(e.target.checked)}
                        className="w-4 h-4 rounded text-brand-red focus:ring-brand-red border-gray-300" />
@@ -618,7 +618,7 @@ export default function CatalogClient({ products }: Props) {
                 </button>
               </div>
               <p className="text-xs text-gray-400 font-medium">
-                Pagina {page} de {totalPages}
+                Página {page} de {totalPages}
               </p>
             </div>
           )}

@@ -4,21 +4,21 @@ const TESTIMONIALS = [
   {
     name: "Carlos M.",
     role: "Contratista",
-    text: "Llevo mas de 10 anos comprando en Ferreteria Pardo. Siempre tienen stock y la atencion es excelente.",
+    text: "Llevo más de 10 años comprando en Ferretería Pardo. Siempre tienen stock y la atención es excelente.",
     rating: 5,
     initials: "CM",
   },
   {
-    name: "Maria R.",
-    role: "Disenadora de interiores",
-    text: "Los herrajes para muebles que manejan son de primera calidad. El catalogo web me ha facilitado mucho las cotizaciones.",
+    name: "María R.",
+    role: "Diseñadora de interiores",
+    text: "Los herrajes para muebles que manejan son de primera calidad. El catálogo web me ha facilitado mucho las cotizaciones.",
     rating: 5,
     initials: "MR",
   },
   {
-    name: "Andres P.",
+    name: "Andrés P.",
     role: "Cerrajero",
-    text: "La variedad de productos Yale que tienen es impresionante. Definitivamente mi proveedor de confianza en Bogota.",
+    text: "La variedad de productos Yale que tienen es impresionante. Definitivamente mi proveedor de confianza en Bogotá.",
     rating: 5,
     initials: "AP",
   },
@@ -38,7 +38,7 @@ export default function Testimonials() {
           </div>
           <h2 className="section-title">Lo que dicen nuestros clientes</h2>
           <p className="section-subtitle mx-auto mt-4">
-            Mas de 60 anos construyendo confianza en Bogota
+            Más de 60 años construyendo confianza en Bogotá
           </p>
         </div>
 
