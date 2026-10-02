@@ -7,7 +7,7 @@ import productsData from "@/data/products.json";
 export const metadata: Metadata = {
   title: "Marcas | Ferretería Pardo SAS - Bogotá",
   description:
-    "Conoce las marcas que distribuimos: Yale, Stanley, DeWalt, Makita, Bosch, Truper y más. Productos originales con garantía.",
+    "Explora las marcas del catálogo de Ferretería Pardo. Encuentra productos y cotiza por WhatsApp.",
 };
 
 export default function MarcasPage() {
@@ -16,7 +16,8 @@ export default function MarcasPage() {
   // Count products per brand
   const brandCounts: Record<string, number> = {};
   products.forEach((p) => {
-    const brand = (p.brand || "Sin marca").toUpperCase();
+    const brand = p.brand || "Sin marca";
+    if (brand === "Sin marca") return;
     brandCounts[brand] = (brandCounts[brand] || 0) + 1;
   });
 
@@ -30,11 +31,11 @@ export default function MarcasPage() {
 
       <section className="max-w-7xl mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-3">
             Nuestras marcas
           </h1>
-          <p className="text-gray-500 text-lg">
-            Solo trabajamos con marcas que garantizan calidad y respaldo.
+          <p className="text-gray-500 dark:text-gray-400 text-lg">
+            Encuentra los productos de cada marca en nuestro catálogo.
           </p>
         </div>
 
@@ -43,9 +44,9 @@ export default function MarcasPage() {
             <Link
               key={brand.name}
               href={`/catalogo?brand=${encodeURIComponent(brand.name)}`}
-              className="group bg-white rounded-2xl border border-gray-200 p-6 text-center hover:shadow-xl hover:border-brand-red/30 hover:scale-105 transition-all duration-300"
+              className="group bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 text-center hover:shadow-xl hover:border-brand-red/30 hover:scale-105 transition-all duration-300"
             >
-              <div className="text-lg font-bold text-gray-900 group-hover:text-brand-red transition-colors mb-2">
+              <div className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-brand-red transition-colors mb-2">
                 {brand.name}
               </div>
               <div className="text-sm text-gray-400">

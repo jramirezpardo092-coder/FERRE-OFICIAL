@@ -1,0 +1,13 @@
+{
+  "updatedAt": "2026-10-02",
+  "productCount": 5994,
+  "priceList": "Precio de venta 1",
+  "pricesIncludeTax": false,
+  "source": "Siigo",
+  "salesRange": {
+    "from": "2015-01-01",
+    "to": "2026-10-02"
+  },
+  "includesCreditNotes": false,
+  "manualSnapshot": true
+}

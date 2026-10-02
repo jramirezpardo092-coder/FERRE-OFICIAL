@@ -3,9 +3,9 @@
 import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import { Product } from "@/lib/types";
-import { CATEGORIES, BRANDS } from "@/lib/constants";
+import { CATEGORIES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import { searchProducts } from "@/lib/search";
+import { searchProducts, normalizeSearchText, getSearchableText } from "@/lib/search";
 import ProductCard from "./ProductCard";
 import ProductModal from "./ProductModal";
 
@@ -50,51 +50,65 @@ const ChevronUp = () => (
 
 interface Props {
   products: Product[];
+  offersOnly?: boolean;
 }
 
-export default function CatalogClient({ products }: Props) {
+export default function CatalogClient({ products, offersOnly = false }: Props) {
   const searchParams = useSearchParams();
-  const initialCat = searchParams.get("cat") || "";
-  const initialOfertas = searchParams.get("ofertas") === "true";
-
-  const [search, setSearch] = useState("");
-  const [debouncedSearch, setDebouncedSearch] = useState("");
-  const [category, setCategory] = useState(initialCat);
-  const [brand, setBrand] = useState("");
-  const [onlyOfertas, setOnlyOfertas] = useState(initialOfertas);
-  const [sortBy, setSortBy] = useState("relevance");
-  const [page, setPage] = useState(1);
+  const query = searchParams.get("q") || "";
+  const category = searchParams.get("cat") || "";
+  const brand = searchParams.get("brand") || "";
+  const onlyOfertas = offersOnly || searchParams.get("ofertas") === "true";
+  const requestedSort = searchParams.get("sort") || "relevance";
+  const sortBy = ["relevance", "price-asc", "price-desc", "discount", "name"].includes(requestedSort)
+    ? requestedSort : "relevance";
+  const requestedPage = Number(searchParams.get("page") || 1);
+  const [search, setSearch] = useState(query);
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [brandsExpanded, setBrandsExpanded] = useState(false);
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const [isFuzzy, setIsFuzzy] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   const topRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
-  // Debounce search
-  useEffect(() => {
-    const timer = setTimeout(() => setDebouncedSearch(search), 300);
-    return () => clearTimeout(timer);
-  }, [search]);
-
-  useEffect(() => {
-    setPage(1);
-  }, [debouncedSearch, category, brand, onlyOfertas, sortBy]);
-
-  // Filtered products — hybrid search (tokenized + fuzzy fallback)
-  const filtered = useMemo(() => {
-    let result: Product[];
-    let fuzzy = false;
-
-    if (debouncedSearch.trim()) {
-      const { results, isFuzzy: wasFuzzy } = searchProducts(products, debouncedSearch);
-      result = [...results];
-      fuzzy = wasFuzzy;
-    } else {
-      result = [...products];
+  // Native history keeps filters shareable and supports back/forward without reloading products.
+  const updateFilters = useCallback((updates: Record<string, string | null>) => {
+    const params = new URLSearchParams(window.location.search);
+    Object.entries(updates).forEach(([key, value]) => {
+      if (value === null || !value.trim()) params.delete(key);
+      else params.set(key, value);
+    });
+    const queryString = params.toString();
+    const url = `${window.location.pathname}${queryString ? `?${queryString}` : ""}${window.location.hash}`;
+    if (url !== `${window.location.pathname}${window.location.search}${window.location.hash}`) {
+      window.history.pushState(null, "", url);
     }
+  }, []);
+
+  const setCategory = (value: string) => updateFilters({ cat: value, page: null });
+  const setBrand = (value: string) => updateFilters({ brand: value, page: null });
+  const setOnlyOfertas = (value: boolean) => updateFilters({ ofertas: value ? "true" : null, page: null });
+  const setSortBy = (value: string) => updateFilters({ sort: value === "relevance" ? null : value, page: null });
+
+  useEffect(() => {
+    setSearch(query);
+  }, [query]);
+
+  useEffect(() => {
+    if (search === query) return;
+    const timer = setTimeout(() => updateFilters({ q: search, page: null }), 300);
+    return () => clearTimeout(timer);
+  }, [search, query, updateFilters]);
+
+  const brands = useMemo(() => Array.from(new Set(products.map(p => p.brand).filter(Boolean)))
+    .sort((a, b) => a.localeCompare(b, "es")), [products]);
+  const searchResult = useMemo(() => searchProducts(products, query), [products, query]);
+  const isFuzzy = searchResult.isFuzzy;
+
+  const filtered = useMemo(() => {
+    let result = [...searchResult.results];
 
     if (category) {
       result = result.filter((p) => p.cat === category);
@@ -109,13 +123,21 @@ export default function CatalogClient({ products }: Props) {
     }
 
     // Only re-sort if user explicitly chose a sort option or no search
-    if (sortBy !== "relevance" || !debouncedSearch.trim()) {
+    if (sortBy !== "relevance" || !query.trim()) {
       switch (sortBy) {
         case "price-asc":
-          result.sort((a, b) => a.precio - b.precio);
+          result.sort((a, b) => {
+            const aKnown = a.priceVerified === true && a.precio > 0;
+            const bKnown = b.priceVerified === true && b.precio > 0;
+            return Number(bKnown) - Number(aKnown) || a.precio - b.precio;
+          });
           break;
         case "price-desc":
-          result.sort((a, b) => b.precio - a.precio);
+          result.sort((a, b) => {
+            const aKnown = a.priceVerified === true && a.precio > 0;
+            const bKnown = b.priceVerified === true && b.precio > 0;
+            return Number(bKnown) - Number(aKnown) || b.precio - a.precio;
+          });
           break;
         case "discount":
           result.sort((a, b) => (b.disc || 0) - (a.disc || 0));
@@ -124,52 +146,52 @@ export default function CatalogClient({ products }: Props) {
           result.sort((a, b) => a.nombre.localeCompare(b.nombre));
           break;
         default:
-          // No search active: sort by discount
-          result.sort((a, b) => (b.disc || 0) - (a.disc || 0));
+          result.sort((a, b) => Number(b.stock > 0) - Number(a.stock > 0)
+            || a.nombre.localeCompare(b.nombre, "es"));
       }
     }
     // When search is active + relevance sort, keep search engine order
 
-    setIsFuzzy(fuzzy);
     return result;
-  }, [products, debouncedSearch, category, brand, onlyOfertas, sortBy]);
+  }, [searchResult, query, category, brand, onlyOfertas, sortBy]);
 
   // Search suggestions (tokenized)
   const suggestions = useMemo(() => {
     if (search.length < 2) return [];
-    const tokens = search.toLowerCase().split(/\s+/).filter(Boolean);
+    const tokens = normalizeSearchText(search).split(/\s+/).filter(Boolean);
     const cats = CATEGORIES.filter(c => {
-      const name = c.name.toLowerCase();
+      const name = normalizeSearchText(c.name);
       return tokens.every(t => name.includes(t));
     }).map(c => ({ type: "cat" as const, label: c.name, icon: c.icon }));
-    const brs = BRANDS.filter(b => {
-      const name = b.toLowerCase();
+    const brs = brands.filter(b => {
+      const name = normalizeSearchText(b);
       return tokens.every(t => name.includes(t));
     }).map(b => ({ type: "brand" as const, label: b, icon: "🏷️" }));
     const prods = products
       .filter(p => {
-        const searchable = `${p.nombre} ${p.brand} ${p.ref || ""} ${p.id}`.toLowerCase();
+        const searchable = getSearchableText(p);
         return tokens.every(t => searchable.includes(t));
       })
       .slice(0, 5)
       .map(p => ({ type: "product" as const, label: p.nombre, icon: "📦", id: p.id }));
     return [...cats, ...brs, ...prods].slice(0, 8);
-  }, [search, products]);
-
-  const [showSuggestions, setShowSuggestions] = useState(false);
+  }, [search, products, brands]);
 
   const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+  const page = Math.min(Math.max(1, Number.isSafeInteger(requestedPage) ? requestedPage : 1), Math.max(1, totalPages));
   const paged = filtered.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
 
   const start = (page - 1) * ITEMS_PER_PAGE + 1;
   const end = Math.min(page * ITEMS_PER_PAGE, filtered.length);
 
   const activeFilters: { key: string; label: string }[] = [];
+  if (query.trim()) activeFilters.push({ key: "search", label: `Búsqueda: ${query}` });
   if (category) activeFilters.push({ key: "category", label: category });
   if (brand) activeFilters.push({ key: "brand", label: brand });
-  if (onlyOfertas) activeFilters.push({ key: "ofertas", label: "Solo ofertas" });
+  if (onlyOfertas && !offersOnly) activeFilters.push({ key: "ofertas", label: "Solo ofertas" });
 
   const removeFilter = (key: string) => {
+    if (key === "search") { setSearch(""); updateFilters({ q: null, page: null }); }
     if (key === "category") setCategory("");
     if (key === "brand") setBrand("");
     if (key === "ofertas") setOnlyOfertas(false);
@@ -177,26 +199,19 @@ export default function CatalogClient({ products }: Props) {
 
   const clearAll = () => {
     setSearch("");
-    setCategory("");
-    setBrand("");
-    setOnlyOfertas(false);
-    setSortBy("relevance");
+    updateFilters({ q: null, cat: null, brand: null, ofertas: null, sort: null, page: null });
+    setShowSuggestions(false);
   };
 
   const goToPage = useCallback((p: number) => {
-    setPage(p);
+    updateFilters({ page: p === 1 ? null : String(p) });
     topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, []);
+  }, [updateFilters]);
 
-  // Category counts (cached) — tokenized search
+  // Counts use the same exact or approximate search results as the product grid.
   const catCounts = useMemo(() => {
     const counts: Record<string, number> = {};
-    const tokens = debouncedSearch.trim() ? debouncedSearch.toLowerCase().split(/\s+/).filter(Boolean) : [];
-    const baseFiltered = products.filter(p => {
-      if (tokens.length > 0) {
-        const searchable = `${p.nombre} ${p.brand} ${p.id} ${p.cat} ${p.ref || ""} ${p.sku || ""} ${(p.tags || []).join(" ")}`.toLowerCase();
-        if (!tokens.every(t => searchable.includes(t))) return false;
-      }
+    const baseFiltered = searchResult.results.filter(p => {
       if (brand && p.brand !== brand) return false;
       if (onlyOfertas && !(p.disc && p.disc > 0)) return false;
       return true;
@@ -206,48 +221,52 @@ export default function CatalogClient({ products }: Props) {
     });
     counts["__all"] = baseFiltered.length;
     return counts;
-  }, [products, debouncedSearch, brand, onlyOfertas]);
+  }, [searchResult, brand, onlyOfertas]);
 
-  // Brand counts — tokenized search
   const brandCounts = useMemo(() => {
     const counts: Record<string, number> = {};
-    const tokens = debouncedSearch.trim() ? debouncedSearch.toLowerCase().split(/\s+/).filter(Boolean) : [];
-    const baseFiltered = products.filter(p => {
-      if (tokens.length > 0) {
-        const searchable = `${p.nombre} ${p.brand} ${p.id} ${p.cat} ${p.ref || ""} ${p.sku || ""} ${(p.tags || []).join(" ")}`.toLowerCase();
-        if (!tokens.every(t => searchable.includes(t))) return false;
-      }
+    const baseFiltered = searchResult.results.filter(p => {
       if (category && p.cat !== category) return false;
       if (onlyOfertas && !(p.disc && p.disc > 0)) return false;
       return true;
     });
-    BRANDS.forEach(b => {
+    brands.forEach(b => {
       counts[b] = baseFiltered.filter(p => p.brand === b).length;
     });
     return counts;
-  }, [products, debouncedSearch, category, onlyOfertas]);
+  }, [searchResult, brands, category, onlyOfertas]);
+
+  const offerCount = searchResult.results.filter(p => (!category || p.cat === category)
+    && (!brand || p.brand === brand) && p.disc && p.disc > 0).length;
 
   return (
     <div className="max-w-[1400px] mx-auto px-4 py-6" ref={topRef}>
       {/* ── Search bar ─────────────────────────── */}
       <div className="mb-6 relative">
-        <div className="relative max-w-3xl mx-auto">
+        <div className="relative max-w-3xl mx-auto"
+          onBlurCapture={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setShowSuggestions(false);
+          }}
+          onKeyDown={(event) => {
+            if (event.key === "Escape") setShowSuggestions(false);
+          }}>
           <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
             <SearchIcon />
           </div>
           <input
             ref={searchInputRef}
             type="search"
+            aria-label="Buscar productos"
             value={search}
             onChange={(e) => { setSearch(e.target.value); setShowSuggestions(true); }}
             onFocus={() => setShowSuggestions(true)}
-            onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
             placeholder="Buscar por nombre, referencia, marca o categoría..."
             className="w-full pl-12 pr-12 py-4 bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 rounded-2xl text-sm focus:ring-4 focus:ring-brand-red/10 focus:border-brand-red outline-none transition-all duration-300 shadow-sm hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-md dark:text-gray-100"
           />
           {search && (
             <button
-              onClick={() => { setSearch(""); searchInputRef.current?.focus(); }}
+              onClick={() => { setSearch(""); updateFilters({ q: null, page: null }); searchInputRef.current?.focus(); }}
+              aria-label="Limpiar búsqueda"
               className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1 rounded-full hover:bg-gray-100 transition-colors"
             >
               <CloseIcon />
@@ -255,14 +274,15 @@ export default function CatalogClient({ products }: Props) {
           )}
           {/* Suggestions dropdown */}
           {showSuggestions && suggestions.length > 0 && (
-            <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-2xl shadow-2xl shadow-black/10 z-50 overflow-hidden py-1">
+            <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-2xl shadow-black/10 z-50 overflow-hidden py-1">
               {suggestions.map((s, i) => (
                 <button
                   key={i}
                   className="w-full text-left px-4 py-3 text-sm hover:bg-red-50/50 flex items-center gap-3 transition-colors duration-150"
-                  onMouseDown={() => {
-                    if (s.type === "cat") { setCategory(s.label); setSearch(""); }
-                    else if (s.type === "brand") { setBrand(s.label); setSearch(""); }
+                  onMouseDown={(event) => event.preventDefault()}
+                  onClick={() => {
+                    if (s.type === "cat") { setSearch(""); updateFilters({ cat: s.label, q: null, page: null }); }
+                    else if (s.type === "brand") { setSearch(""); updateFilters({ brand: s.label, q: null, page: null }); }
                     else { setSearch(s.label); }
                     setShowSuggestions(false);
                   }}
@@ -288,7 +308,7 @@ export default function CatalogClient({ products }: Props) {
               "shrink-0 px-5 py-2.5 rounded-xl text-xs font-semibold transition-all duration-200 border",
               !category
                 ? "bg-brand-red text-white border-brand-red shadow-md shadow-red-900/15"
-                : "bg-white text-gray-600 border-gray-200 hover:border-brand-red/50 hover:text-brand-red hover:bg-red-50/50"
+                : "bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-brand-red/50 hover:text-brand-red hover:bg-red-50/50"
             )}
           >
             Todas
@@ -301,7 +321,7 @@ export default function CatalogClient({ products }: Props) {
                 "shrink-0 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all duration-200 border flex items-center gap-1.5",
                 category === cat.name
                   ? "bg-brand-red text-white border-brand-red shadow-md shadow-red-900/15"
-                  : "bg-white text-gray-600 border-gray-200 hover:border-brand-red/50 hover:text-brand-red hover:bg-red-50/50"
+                  : "bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-brand-red/50 hover:text-brand-red hover:bg-red-50/50"
               )}
             >
               <span>{cat.icon}</span>
@@ -354,19 +374,19 @@ export default function CatalogClient({ products }: Props) {
         </button>
 
         {/* ── Sidebar ──────────────────────────── */}
-        <aside className={cn(
-          "shrink-0 w-64",
+        <aside onClick={(event) => { if (event.target === event.currentTarget) setSidebarOpen(false); }} className={cn(
+          "shrink-0 lg:w-64",
           "max-lg:fixed max-lg:inset-0 max-lg:z-[80] max-lg:bg-black/50 max-lg:backdrop-blur-sm",
           !sidebarOpen && "max-lg:hidden"
         )}>
           <div className={cn(
             "bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-5 space-y-4 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto sidebar-scroll shadow-sm",
-            "max-lg:absolute max-lg:left-0 max-lg:top-0 max-lg:h-full max-lg:w-80 max-lg:overflow-y-auto max-lg:rounded-none max-lg:animate-slide-in-right"
+            "max-lg:absolute max-lg:left-0 max-lg:top-0 max-lg:h-full max-lg:w-80 max-lg:max-w-full max-lg:overflow-y-auto max-lg:rounded-none max-lg:animate-slide-in-right"
           )}>
             {/* Mobile close */}
             <div className="lg:hidden flex items-center justify-between mb-3 pb-3 border-b border-gray-100">
               <h3 className="font-bold text-lg">Filtros</h3>
-              <button onClick={() => setSidebarOpen(false)} className="p-2 hover:bg-gray-100 rounded-xl transition-colors">
+              <button onClick={() => setSidebarOpen(false)} aria-label="Cerrar filtros" className="p-2 hover:bg-gray-100 rounded-xl transition-colors">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -376,7 +396,7 @@ export default function CatalogClient({ products }: Props) {
             {/* Desktop sidebar header */}
             <div className="hidden lg:flex items-center gap-2 pb-3 border-b border-gray-100 mb-1">
               <FilterIcon />
-              <h3 className="font-bold text-sm text-gray-700">Filtros</h3>
+              <h3 className="font-bold text-sm text-gray-700 dark:text-gray-200">Filtros</h3>
               {activeFilters.length > 0 && (
                 <span className="ml-auto text-[10px] font-bold bg-brand-red text-white w-5 h-5 rounded-full flex items-center justify-center">
                   {activeFilters.length}
@@ -391,9 +411,9 @@ export default function CatalogClient({ products }: Props) {
                 <button
                   onClick={() => setCategory("")}
                   className={cn("w-full text-left text-sm px-3 py-2 rounded-lg transition-colors",
-                    !category ? "bg-red-50 text-brand-red font-semibold border border-red-200" : "text-gray-600 hover:bg-gray-50")}
+                    !category ? "bg-red-50 text-brand-red font-semibold border border-red-200" : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800")}
                 >
-                  Todas ({catCounts["__all"] || products.length})
+                  Todas ({catCounts["__all"] ?? 0})
                 </button>
                 {CATEGORIES.map((cat) => {
                   const count = catCounts[cat.name] || 0;
@@ -402,7 +422,7 @@ export default function CatalogClient({ products }: Props) {
                       key={cat.slug}
                       onClick={() => setCategory(cat.name === category ? "" : cat.name)}
                       className={cn("w-full text-left text-sm px-3 py-2 rounded-lg transition-colors flex items-center justify-between",
-                        category === cat.name ? "bg-red-50 text-brand-red font-semibold border border-red-200" : "text-gray-600 hover:bg-gray-50")}
+                        category === cat.name ? "bg-red-50 text-brand-red font-semibold border border-red-200" : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800")}
                     >
                       <span className="flex items-center gap-2">
                         <span className="text-sm">{cat.icon}</span>
@@ -424,22 +444,22 @@ export default function CatalogClient({ products }: Props) {
                 Marca
                 {brandsExpanded ? <ChevronUp /> : <ChevronDown />}
               </button>
-              <div className={cn("space-y-0.5 overflow-hidden transition-all", brandsExpanded ? "max-h-[500px]" : "max-h-[180px]")}>
+              <div className="space-y-0.5">
                 <button
                   onClick={() => setBrand("")}
                   className={cn("w-full text-left text-sm px-3 py-2 rounded-lg transition-colors",
-                    !brand ? "bg-red-50 text-brand-red font-semibold border border-red-200" : "text-gray-600 hover:bg-gray-50")}
+                    !brand ? "bg-red-50 text-brand-red font-semibold border border-red-200" : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800")}
                 >
                   Todas
                 </button>
-                {BRANDS.map((b) => {
+                {(brandsExpanded ? brands : brands.slice(0, 4)).map((b) => {
                   const count = brandCounts[b] || 0;
                   return (
                     <button
                       key={b}
                       onClick={() => setBrand(b === brand ? "" : b)}
                       className={cn("w-full text-left text-sm px-3 py-2 rounded-lg transition-colors flex items-center justify-between",
-                        brand === b ? "bg-red-50 text-brand-red font-semibold border border-red-200" : "text-gray-600 hover:bg-gray-50")}
+                        brand === b ? "bg-red-50 text-brand-red font-semibold border border-red-200" : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800")}
                     >
                       <span className="truncate">{b}</span>
                       <span className={cn("text-[11px] font-medium tabular-nums", count === 0 ? "text-gray-300" : "text-gray-400")}>{count}</span>
@@ -447,25 +467,25 @@ export default function CatalogClient({ products }: Props) {
                   );
                 })}
               </div>
-              {!brandsExpanded && BRANDS.length > 5 && (
+              {!brandsExpanded && brands.length > 4 && (
                 <button onClick={() => setBrandsExpanded(true)} className="w-full text-xs text-brand-red font-medium mt-1 hover:underline">
-                  Ver todas las marcas ({BRANDS.length})
+                  Ver todas las marcas ({brands.length})
                 </button>
               )}
             </div>
 
             {/* Toggles */}
-            <div className="space-y-1 pt-3 border-t border-gray-100">
+            {!offersOnly && <div className="space-y-1 pt-3 border-t border-gray-100">
               <h4 className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Filtros rápidos</h4>
               <label className="flex items-center gap-2.5 text-sm cursor-pointer py-2 hover:bg-gray-50 rounded-xl px-3 -mx-1 transition-colors">
                 <input type="checkbox" checked={onlyOfertas} onChange={(e) => setOnlyOfertas(e.target.checked)}
                        className="w-4 h-4 rounded text-brand-red focus:ring-brand-red border-gray-300" />
                 <span className="flex-1 font-medium text-gray-600">Solo ofertas</span>
                 <span className="text-[10px] bg-red-50 text-red-500 px-2 py-0.5 rounded-full font-semibold border border-red-100">
-                  {products.filter(p => p.disc && p.disc > 0).length}
+                  {offerCount}
                 </span>
               </label>
-            </div>
+            </div>}
 
             {activeFilters.length > 0 && (
               <button onClick={clearAll} className="w-full text-xs text-white bg-gray-900 hover:bg-gray-800 font-semibold py-2.5 rounded-xl mt-2 transition-all duration-200 shadow-sm hover:shadow-md">
@@ -478,13 +498,13 @@ export default function CatalogClient({ products }: Props) {
         {/* ── Main content ─────────────────────── */}
         <main className="flex-1 min-w-0">
           {/* Toolbar: results + sort + view toggle */}
-          <div className="flex items-center justify-between mb-5 bg-white dark:bg-gray-900 rounded-2xl px-5 py-3.5 border border-gray-100 dark:border-gray-800 shadow-sm">
-            <div className="text-sm text-gray-500">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-5 bg-white dark:bg-gray-900 rounded-2xl px-5 py-3.5 border border-gray-100 dark:border-gray-800 shadow-sm">
+            <div className="text-sm text-gray-500 dark:text-gray-400">
               {filtered.length > 0 ? (
                 <>
-                  Mostrando <span className="font-bold text-gray-900">{start}–{end}</span> de{" "}
-                  <span className="font-bold text-gray-900">{filtered.length.toLocaleString("es-CO")}</span> productos
-                  {isFuzzy && debouncedSearch.trim() && (
+                  Mostrando <span className="font-bold text-gray-900 dark:text-gray-100">{start}–{end}</span> de{" "}
+                  <span className="font-bold text-gray-900 dark:text-gray-100">{filtered.length.toLocaleString("es-CO")}</span> productos
+                  {isFuzzy && query.trim() && (
                     <span className="ml-2 text-xs bg-amber-50 text-amber-700 px-2.5 py-0.5 rounded-lg font-medium border border-amber-200">
                       Resultados aproximados
                     </span>
@@ -499,14 +519,14 @@ export default function CatalogClient({ products }: Props) {
               <div className="hidden sm:flex items-center border border-gray-200 rounded-xl overflow-hidden">
                 <button
                   onClick={() => setViewMode("grid")}
-                  className={cn("p-2.5 transition-all duration-200", viewMode === "grid" ? "bg-brand-red text-white shadow-inner" : "bg-white text-gray-400 hover:text-gray-600 hover:bg-gray-50")}
+                  className={cn("p-2.5 transition-all duration-200", viewMode === "grid" ? "bg-brand-red text-white shadow-inner" : "bg-white text-gray-400 hover:text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800")}
                   title="Vista cuadrícula"
                 >
                   <GridIcon />
                 </button>
                 <button
                   onClick={() => setViewMode("list")}
-                  className={cn("p-2.5 transition-all duration-200", viewMode === "list" ? "bg-brand-red text-white shadow-inner" : "bg-white text-gray-400 hover:text-gray-600 hover:bg-gray-50")}
+                  className={cn("p-2.5 transition-all duration-200", viewMode === "list" ? "bg-brand-red text-white shadow-inner" : "bg-white text-gray-400 hover:text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800")}
                   title="Vista lista"
                 >
                   <ListIcon />
@@ -514,9 +534,10 @@ export default function CatalogClient({ products }: Props) {
               </div>
               {/* Sort */}
               <select
+                aria-label="Ordenar productos"
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="text-sm border border-gray-200 rounded-xl px-3.5 py-2.5 bg-white focus:ring-4 focus:ring-brand-red/10 focus:border-brand-red outline-none font-medium transition-all duration-200 cursor-pointer hover:border-gray-300"
+                className="text-sm border border-gray-200 dark:border-gray-700 rounded-xl px-3.5 py-2.5 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-brand-red/10 focus:border-brand-red outline-none font-medium transition-all duration-200 cursor-pointer hover:border-gray-300"
               >
                 <option value="relevance">Relevancia</option>
                 <option value="price-asc">Menor precio</option>
@@ -551,7 +572,7 @@ export default function CatalogClient({ products }: Props) {
                 </svg>
               </div>
               <p className="font-bold text-gray-700 text-lg">No se encontraron productos</p>
-              <p className="text-sm mt-2 text-gray-400 max-w-sm mx-auto">Intenta ajustar los filtros o buscar con otros terminos</p>
+              <p className="text-sm mt-2 text-gray-400 max-w-sm mx-auto">Intenta ajustar los filtros o buscar con otros términos</p>
               <button onClick={clearAll} className="mt-6 px-6 py-2.5 bg-brand-red text-white font-semibold text-sm rounded-xl hover:bg-brand-red-dark transition-all duration-200 shadow-sm shadow-red-900/10 hover:shadow-md">
                 Limpiar filtros
               </button>
@@ -561,18 +582,18 @@ export default function CatalogClient({ products }: Props) {
           {/* Pagination */}
           {totalPages > 1 && (
             <div className="flex flex-col items-center gap-4 mt-10">
-              <div className="flex items-center gap-2">
+              <div className="grid grid-cols-2 sm:flex w-full sm:w-auto items-center gap-2">
                 <button
                   onClick={() => goToPage(Math.max(1, page - 1))}
                   disabled={page === 1}
-                  className="px-5 py-2.5 rounded-xl bg-white border border-gray-200 text-sm font-semibold disabled:opacity-30 hover:bg-gray-50 hover:border-gray-300 hover:shadow-sm transition-all duration-200"
+                  className="px-5 py-2.5 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-sm font-semibold disabled:opacity-30 hover:bg-gray-50 hover:border-gray-300 hover:shadow-sm transition-all duration-200"
                 >
                   ← Anterior
                 </button>
-                <div className="flex items-center gap-1.5">
+                <div className="flex flex-wrap items-center justify-center gap-1.5 col-span-2 row-start-1 sm:col-span-1 sm:row-auto">
                   {page > 3 && totalPages > 5 && (
                     <>
-                      <button onClick={() => goToPage(1)} className="w-10 h-10 rounded-xl text-sm font-semibold bg-white border border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200">1</button>
+                      <button onClick={() => goToPage(1)} className="w-10 h-10 rounded-xl text-sm font-semibold bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200">1</button>
                       {page > 4 && <span className="px-1 text-gray-300 text-xs">...</span>}
                     </>
                   )}
@@ -595,7 +616,7 @@ export default function CatalogClient({ products }: Props) {
                           "w-10 h-10 rounded-xl text-sm font-semibold transition-all duration-200",
                           page === pageNum
                             ? "bg-brand-red text-white shadow-lg shadow-red-900/25 scale-105"
-                            : "bg-white border border-gray-200 hover:bg-gray-50 hover:border-gray-300"
+                            : "bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 hover:border-gray-300"
                         )}
                       >
                         {pageNum}
@@ -605,14 +626,14 @@ export default function CatalogClient({ products }: Props) {
                   {page < totalPages - 2 && totalPages > 5 && (
                     <>
                       {page < totalPages - 3 && <span className="px-1 text-gray-300 text-xs">...</span>}
-                      <button onClick={() => goToPage(totalPages)} className="w-10 h-10 rounded-xl text-sm font-semibold bg-white border border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200">{totalPages}</button>
+                      <button onClick={() => goToPage(totalPages)} className="w-10 h-10 rounded-xl text-sm font-semibold bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200">{totalPages}</button>
                     </>
                   )}
                 </div>
                 <button
                   onClick={() => goToPage(Math.min(totalPages, page + 1))}
                   disabled={page === totalPages}
-                  className="px-5 py-2.5 rounded-xl bg-white border border-gray-200 text-sm font-semibold disabled:opacity-30 hover:bg-gray-50 hover:border-gray-300 hover:shadow-sm transition-all duration-200"
+                  className="px-5 py-2.5 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-sm font-semibold disabled:opacity-30 hover:bg-gray-50 hover:border-gray-300 hover:shadow-sm transition-all duration-200"
                 >
                   Siguiente →
                 </button>

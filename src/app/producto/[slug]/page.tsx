@@ -3,8 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Product } from "@/lib/types";
-import { SITE } from "@/lib/constants";
-import { formatCOP, getProductImage, getDiscountPercent } from "@/lib/utils";
+import { formatCOP, getProductImage, getDiscountPercent, hasVerifiedPrice, formatTaxLabel, getUnitPriceWithTax, getAvailableQuantity, formatQuantity } from "@/lib/utils";
 import { getProductJsonLd } from "@/lib/seo";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ProductActions from "./ProductActions";
@@ -20,13 +19,17 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const product = products.find((p) => p.id === params.slug);
   if (!product) return { title: "Producto no encontrado" };
+  const priceDescription = hasVerifiedPrice(product)
+    ? `${formatCOP(product.precio)} ${formatTaxLabel(product)}`
+    : "Precio por confirmar";
 
   return {
     title: `${product.nombre} - ${product.brand} | Ferretería Pardo`,
-    description: `${product.nombre} de ${product.brand}. ${formatCOP(product.precio)} + IVA. Disponible en Ferretería Pardo, Bogotá. Cotiza por WhatsApp.`,
+    alternates: { canonical: `/producto/${product.id}` },
+    description: `${product.nombre} de ${product.brand}. ${priceDescription}. Consulta disponibilidad en Ferretería Pardo, Bogotá. Cotiza por WhatsApp.`,
     openGraph: {
       title: `${product.nombre} - ${product.brand}`,
-      description: `${formatCOP(product.precio)} + IVA | ${product.cat}`,
+      description: `${priceDescription} | ${product.cat}`,
       images: product.img ? [`/${product.img}`] : ["/logo-ferreteria-pardo.png"],
     },
   };
@@ -36,9 +39,14 @@ export default function ProductoPage({ params }: { params: { slug: string } }) {
   const product = products.find((p) => p.id === params.slug);
   if (!product) notFound();
 
-  const discount = getDiscountPercent(product);
+  const priceConfirmed = hasVerifiedPrice(product);
+  const discount = priceConfirmed ? getDiscountPercent(product) : null;
+  const priceWithTax = getUnitPriceWithTax(product);
   const imgSrc = getProductImage(product);
-  const inStock = product.stock > 0;
+  const stock = getAvailableQuantity(product);
+  const inStock = stock > 0;
+  const hasUnit = product.unidad.trim() !== "" && product.unidad !== "Consultar unidad";
+  const stockLabel = `${formatQuantity(stock)} ${hasUnit ? product.unidad : "disponibles"}`;
 
   // Related products (same category, different product)
   const related = products
@@ -63,7 +71,7 @@ export default function ProductoPage({ params }: { params: { slug: string } }) {
         {/* Product detail */}
         <div className="grid md:grid-cols-2 gap-10 lg:gap-16 mb-16">
           {/* Image */}
-          <div className="relative bg-white rounded-3xl border border-gray-200 overflow-hidden aspect-square">
+          <div className="relative bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-800 overflow-hidden aspect-square">
             {discount && (
               <span className="absolute top-4 left-4 bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-xl z-10">
                 -{discount}%
@@ -93,7 +101,7 @@ export default function ProductoPage({ params }: { params: { slug: string } }) {
             <div className="text-sm font-bold text-brand-red uppercase tracking-wider mb-2">
               {product.brand}
             </div>
-            <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4 leading-tight">
+            <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white mb-4 leading-tight">
               {product.nombre}
             </h1>
 
@@ -109,19 +117,24 @@ export default function ProductoPage({ params }: { params: { slug: string } }) {
                   ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
                   : "bg-amber-50 text-amber-700 border border-amber-200"
               }`}>
-                {inStock ? `En stock (${product.stock} und.)` : "Consultar disponibilidad"}
+                {inStock ? `En stock (${stockLabel})` : "Consultar disponibilidad"}
               </span>
             </div>
 
             {/* Price */}
-            <div className="bg-gray-50 rounded-2xl p-6 mb-8">
-              <div className="flex items-baseline gap-2">
-                <span className="text-4xl font-extrabold text-gray-900">
-                  {formatCOP(product.precio)}
+            <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-6 mb-8">
+              <div className="flex flex-wrap items-baseline gap-2">
+                <span className={`${priceConfirmed ? "text-4xl" : "text-2xl"} font-extrabold text-gray-900 dark:text-white`}>
+                  {priceConfirmed ? formatCOP(product.precio) : "Precio por confirmar"}
                 </span>
-                <span className="text-sm text-amber-600 font-semibold">+ IVA / {product.unidad}</span>
+                <span className="text-sm text-amber-600 dark:text-amber-400 font-semibold">{formatTaxLabel(product)} / {product.unidad}</span>
               </div>
-              {product.original && product.original > product.precio && (
+              {priceWithTax !== null && (
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                  Precio con IVA: <span className="font-semibold">{formatCOP(priceWithTax)}</span>
+                </p>
+              )}
+              {priceConfirmed && product.original && product.original > product.precio && (
                 <div className="flex items-center gap-3 mt-2">
                   <span className="text-lg text-gray-400 line-through">
                     {formatCOP(product.original)}
@@ -137,9 +150,9 @@ export default function ProductoPage({ params }: { params: { slug: string } }) {
             <ProductActions product={product} />
 
             {/* Category */}
-            <div className="mt-8 pt-6 border-t border-gray-100">
+            <div className="mt-8 pt-6 border-t border-gray-100 dark:border-gray-800">
               <div className="text-sm text-gray-500">
-                <span className="font-medium text-gray-700">Categoría:</span>{" "}
+                <span className="font-medium text-gray-700 dark:text-gray-300">Categoría:</span>{" "}
                 <Link
                   href={`/catalogo?cat=${encodeURIComponent(product.cat)}`}
                   className="text-brand-red hover:underline"
@@ -154,17 +167,18 @@ export default function ProductoPage({ params }: { params: { slug: string } }) {
         {/* Related Products */}
         {related.length > 0 && (
           <div>
-            <h2 className="text-2xl font-extrabold text-gray-900 mb-6">Productos relacionados</h2>
+            <h2 className="text-2xl font-extrabold text-gray-900 dark:text-white mb-6">Productos relacionados</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {related.map((p) => {
-                const relDiscount = getDiscountPercent(p);
+                const relatedPriceConfirmed = hasVerifiedPrice(p);
+                const relDiscount = relatedPriceConfirmed ? getDiscountPercent(p) : null;
                 return (
                   <Link
                     key={p.id}
                     href={`/producto/${p.id}`}
-                    className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                    className="group bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                   >
-                    <div className="relative aspect-square bg-gray-50">
+                    <div className="relative aspect-square bg-gray-50 dark:bg-gray-800">
                       {relDiscount && (
                         <span className="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-md z-10">
                           -{relDiscount}%
@@ -189,10 +203,13 @@ export default function ProductoPage({ params }: { params: { slug: string } }) {
                     </div>
                     <div className="p-3">
                       <div className="text-[10px] font-bold text-brand-red uppercase">{p.brand}</div>
-                      <h3 className="text-xs font-semibold text-gray-800 line-clamp-2 mb-1 group-hover:text-brand-red transition-colors">
+                      <h3 className="text-xs font-semibold text-gray-800 dark:text-gray-200 line-clamp-2 mb-1 group-hover:text-brand-red transition-colors">
                         {p.nombre}
                       </h3>
-                      <div className="text-sm font-extrabold text-gray-900">{formatCOP(p.precio)}</div>
+                      <div className="text-sm font-extrabold text-gray-900 dark:text-white">
+                        {relatedPriceConfirmed ? formatCOP(p.precio) : "Precio por confirmar"}{" "}
+                        <span className="text-xs font-normal text-gray-500 dark:text-gray-400">{formatTaxLabel(p)}</span>
+                      </div>
                     </div>
                   </Link>
                 );

@@ -1,9 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/lib/types";
-import { formatCOP, getProductImage, getDiscountPercent, cn } from "@/lib/utils";
+import { formatCOP, getProductImage, getDiscountPercent, hasVerifiedPrice, formatTaxLabel, getAvailableQuantity, formatQuantity, buildWhatsAppUrl, cn } from "@/lib/utils";
 import { addToCart } from "@/lib/cart-store";
 
 /* ── Icons ──────────────────────────── */
@@ -34,20 +35,26 @@ interface Props {
 }
 
 export default function ProductCard({ product, onOpenModal, viewMode = "grid" }: Props) {
-  const discount = getDiscountPercent(product);
+  const [feedback, setFeedback] = useState("");
+  const priceConfirmed = hasVerifiedPrice(product);
+  const discount = priceConfirmed ? getDiscountPercent(product) : null;
+  const priceLabel = priceConfirmed ? formatCOP(product.precio) : "Precio por confirmar";
+  const taxLabel = formatTaxLabel(product);
   const hasImage = !!product.img;
-  const inStock = product.stock > 0;
+  const stock = getAvailableQuantity(product);
+  const inStock = stock > 0;
+  const hasUnit = product.unidad.trim() !== "" && product.unidad !== "Consultar unidad";
+  const stockLabel = `${formatQuantity(stock)} ${hasUnit ? product.unidad : "disponibles"}`;
   const imgSrc = getProductImage(product);
 
   const handleAdd = (e: React.MouseEvent) => {
     e.stopPropagation();
-    addToCart(product);
+    setFeedback(addToCart(product) ? "Agregado al pedido" : "Ya agregaste toda la cantidad disponible");
   };
 
   const handleWA = (e: React.MouseEvent) => {
     e.stopPropagation();
-    const msg = `Hola, quiero cotizar:\n• ${product.nombre}\n• Ref: ${product.id}\n• Precio web: ${formatCOP(product.precio)} + IVA\n\n¿Está disponible?`;
-    window.open(`https://wa.me/573118486132?text=${encodeURIComponent(msg)}`, "_blank");
+    window.open(buildWhatsAppUrl([{ ...product, qty: inStock ? Math.min(1, stock) : 1 }]), "_blank", "noopener,noreferrer");
   };
 
   /* ══ LIST VIEW ═══════════════════════ */
@@ -100,22 +107,23 @@ export default function ProductCard({ product, onOpenModal, viewMode = "grid" }:
               )}
             </div>
             <h3 className="text-sm font-semibold text-gray-800 leading-snug line-clamp-2 group-hover:text-brand-red transition-colors duration-300">{product.nombre}</h3>
+            <p className="mt-1 text-[10px] text-gray-500">Código: {product.id}</p>
             <div className="flex items-center gap-2 mt-2">
               <span className="text-[10px] px-2 py-0.5 bg-gray-100 text-gray-500 rounded-md font-medium">{product.unidad}</span>
               <span className={cn("text-[10px] px-2 py-0.5 rounded-md font-semibold",
                 inStock ? "bg-emerald-50 text-emerald-600" : "bg-amber-50 text-amber-600"
               )}>
-                {inStock ? `✓ ${product.stock} disp.` : "Consultar"}
+                {inStock ? `✓ ${stockLabel}` : "Consultar"}
               </span>
             </div>
           </div>
           <div className="flex items-end justify-between mt-3 gap-3">
             <div>
-              <div className="flex items-baseline gap-1.5">
-                <span className="text-xl font-extrabold text-gray-900 tracking-tight">{formatCOP(product.precio)}</span>
-                <span className="text-[10px] text-amber-600 font-semibold">+ IVA</span>
+              <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1">
+                <span className={cn("font-extrabold text-gray-900 tracking-tight", priceConfirmed ? "text-xl" : "text-sm")}>{priceLabel}</span>
+                <span className="text-[10px] text-amber-600 font-semibold">{taxLabel}</span>
               </div>
-              {product.original && product.original > product.precio && (
+              {priceConfirmed && product.original && product.original > product.precio && (
                 <div className="flex items-center gap-2 mt-0.5">
                   <span className="text-xs text-gray-400 line-through">{formatCOP(product.original)}</span>
                   <span className="text-[10px] font-bold text-red-500">Ahorras {discount}%</span>
@@ -123,14 +131,15 @@ export default function ProductCard({ product, onOpenModal, viewMode = "grid" }:
               )}
             </div>
             <div className="flex gap-2 shrink-0">
-              <button onClick={handleAdd} className="relative z-10 flex items-center gap-1.5 bg-brand-red text-white text-xs font-bold px-4 py-2.5 rounded-xl hover:bg-brand-red-dark transition-all duration-200 active:scale-[0.96] shadow-sm shadow-red-900/10 hover:shadow-md hover:shadow-red-900/15">
-                <CartIcon /> Agregar
+              <button onClick={handleAdd} disabled={!inStock} className="relative z-10 flex items-center gap-1.5 bg-brand-red text-white text-xs font-bold px-4 py-2.5 rounded-xl hover:bg-brand-red-dark transition-all duration-200 active:scale-[0.96] shadow-sm shadow-red-900/10 hover:shadow-md hover:shadow-red-900/15 disabled:opacity-50 disabled:cursor-not-allowed">
+                <CartIcon /> {inStock ? "Agregar" : "Sin stock"}
               </button>
               <button onClick={handleWA} className="relative z-10 flex items-center justify-center bg-[#25D366] text-white p-2.5 rounded-xl hover:bg-[#1da851] transition-all duration-200 active:scale-[0.96] shadow-sm" title="Cotizar por WhatsApp">
                 <WAIcon />
               </button>
             </div>
           </div>
+          {feedback && <p role="status" className="mt-2 text-xs text-gray-600">{feedback}</p>}
         </div>
       </div>
     );
@@ -209,6 +218,7 @@ export default function ProductCard({ product, onOpenModal, viewMode = "grid" }:
         <h3 className="text-[13px] font-semibold text-gray-800 dark:text-gray-200 leading-snug line-clamp-2 mb-2.5 min-h-[2.25rem] group-hover:text-brand-red transition-colors duration-300">
           {product.nombre}
         </h3>
+        <p className="mb-2 text-[10px] text-gray-500 dark:text-gray-400">Código: {product.id}</p>
 
         {/* Detail pills */}
         <div className="flex flex-wrap gap-1.5 mb-3">
@@ -221,19 +231,19 @@ export default function ProductCard({ product, onOpenModal, viewMode = "grid" }:
               ? "bg-emerald-50 text-emerald-600 border border-emerald-100"
               : "bg-amber-50 text-amber-600 border border-amber-100"
           )}>
-            {inStock ? `✓ ${product.stock} und.` : "Consultar"}
+            {inStock ? `✓ ${stockLabel}` : "Consultar"}
           </span>
         </div>
 
         {/* Price block */}
         <div className="mb-3">
-          <div className="flex items-baseline gap-1.5">
-            <span className="text-xl font-extrabold text-gray-900 dark:text-white tracking-tight">
-              {formatCOP(product.precio)}
+          <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1">
+            <span className={cn("font-extrabold text-gray-900 dark:text-white tracking-tight", priceConfirmed ? "text-xl" : "text-sm")}>
+              {priceLabel}
             </span>
-            <span className="text-[10px] text-amber-600 font-semibold">+ IVA</span>
+            <span className="text-[10px] text-amber-600 dark:text-amber-400 font-semibold">{taxLabel}</span>
           </div>
-          {product.original && product.original > product.precio && (
+          {priceConfirmed && product.original && product.original > product.precio && (
             <div className="flex items-center gap-2 mt-1">
               <span className="text-[11px] text-gray-400 line-through">{formatCOP(product.original)}</span>
               <span className="text-[10px] font-bold text-red-600 bg-red-50 px-1.5 py-0.5 rounded-md border border-red-100">
@@ -247,9 +257,10 @@ export default function ProductCard({ product, onOpenModal, viewMode = "grid" }:
         <div className="flex gap-2">
           <button
             onClick={handleAdd}
-            className="relative z-10 flex-1 flex items-center justify-center gap-1.5 bg-brand-red text-white text-xs font-bold py-2.5 rounded-xl hover:bg-brand-red-dark transition-all duration-200 active:scale-[0.96] shadow-sm shadow-red-900/10 hover:shadow-md hover:shadow-red-900/20"
+            disabled={!inStock}
+            className="relative z-10 flex-1 flex items-center justify-center gap-1.5 bg-brand-red text-white text-xs font-bold py-2.5 rounded-xl hover:bg-brand-red-dark transition-all duration-200 active:scale-[0.96] shadow-sm shadow-red-900/10 hover:shadow-md hover:shadow-red-900/20 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <PlusIcon /> Agregar
+            <PlusIcon /> {inStock ? "Agregar" : "Sin stock"}
           </button>
           <button
             onClick={handleWA}
@@ -259,6 +270,7 @@ export default function ProductCard({ product, onOpenModal, viewMode = "grid" }:
             <WAIcon />
           </button>
         </div>
+        {feedback && <p role="status" className="mt-2 text-xs text-gray-600 dark:text-gray-300">{feedback}</p>}
       </div>
     </div>
   );

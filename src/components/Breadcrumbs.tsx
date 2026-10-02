@@ -20,8 +20,8 @@ export default function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(getBreadcrumbJsonLd(jsonLdItems)) }}
       />
-      <nav aria-label="Breadcrumb" className="max-w-7xl mx-auto px-4 py-3">
-        <ol className="flex items-center gap-1.5 text-sm text-gray-500 flex-wrap">
+      <nav aria-label="Ruta de navegación" className="max-w-7xl mx-auto px-4 py-3">
+        <ol className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400 flex-wrap">
           {allItems.map((item, i) => (
             <li key={item.href} className="flex items-center gap-1.5">
               {i > 0 && (
@@ -30,7 +30,7 @@ export default function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
                 </svg>
               )}
               {i === allItems.length - 1 ? (
-                <span className="text-gray-900 font-medium">{item.label}</span>
+                <span aria-current="page" className="text-gray-900 dark:text-white font-medium">{item.label}</span>
               ) : (
                 <Link href={item.href} className="hover:text-brand-red transition-colors">
                   {item.label}

@@ -29,8 +29,8 @@ export default function FeaturedProducts({ products }: Props) {
               <div className="w-8 h-[2px] bg-brand-red rounded-full" />
               <span className="text-xs font-bold text-brand-red uppercase tracking-[0.2em]">Destacados</span>
             </div>
-            <h2 className="section-title">Lo que mas buscan</h2>
-            <p className="section-subtitle mt-2">Los mejores descuentos del catálogo</p>
+            <h2 className="section-title">Productos para tu proyecto</h2>
+            <p className="section-subtitle mt-2">Explora nuestras categorías y arma tu pedido</p>
           </div>
           <Link
             href="/catalogo"

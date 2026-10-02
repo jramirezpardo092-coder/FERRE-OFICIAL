@@ -3,8 +3,9 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { SITE, NAV_LINKS, CATEGORIES } from "@/lib/constants";
-import { getCartCount, subscribeCart } from "@/lib/cart-store";
+import { getCart, subscribeCart } from "@/lib/cart-store";
 import { cn } from "@/lib/utils";
 import { useTheme } from "./ThemeProvider";
 
@@ -141,20 +142,47 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [catOpen, setCatOpen] = useState(false);
+  const [mobileCatOpen, setMobileCatOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const mobileToggleRef = useRef<HTMLButtonElement>(null);
+  const categoryToggleRef = useRef<HTMLButtonElement>(null);
+  const pathname = usePathname();
   const { theme, toggle: toggleTheme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-    setCartCount(getCartCount());
-    return subscribeCart(() => setCartCount(getCartCount()));
+    setMobileOpen(false);
+    setCatOpen(false);
+    setMobileCatOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    setCartCount(getCart().length);
+    return subscribeCart(() => setCartCount(getCart().length));
   }, []);
+
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape" || (!mobileOpen && !catOpen)) return;
+      if (mobileOpen) {
+        setMobileOpen(false);
+        setMobileCatOpen(false);
+        mobileToggleRef.current?.focus();
+      } else {
+        setCatOpen(false);
+        categoryToggleRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [mobileOpen, catOpen]);
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
@@ -218,19 +246,22 @@ export default function Header() {
             </Link>
 
             {/* Desktop Nav - Premium styling */}
-            <nav className="hidden lg:flex items-center gap-2">
+            <nav aria-label="Navegación principal" className="hidden lg:flex items-center gap-2">
               {NAV_LINKS.map((link) =>
                 link.hasDropdown ? (
                   <div key={link.label} className="relative group" ref={dropdownRef}>
                     <button
+                      ref={categoryToggleRef}
                       onClick={() => setCatOpen(!catOpen)}
+                      aria-expanded={catOpen}
+                      aria-controls="desktop-categories"
                       className="flex items-center px-4 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/20"
                     >
                       {link.label}
                       <ChevronDown />
                     </button>
                     {catOpen && (
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[360px] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl shadow-black/12 border border-gray-100 dark:border-gray-700 p-5 animate-fade-in z-50">
+                      <div id="desktop-categories" className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[360px] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl shadow-black/12 border border-gray-100 dark:border-gray-700 p-5 animate-fade-in z-50">
                         <div className="grid grid-cols-3 gap-2">
                           {CATEGORIES.map((cat) => {
                             const IconComponent = categoryIconMap[cat.name];
@@ -258,7 +289,8 @@ export default function Header() {
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="px-4 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/20"
+                    aria-current={pathname === link.href ? "page" : undefined}
+                    className={cn("px-4 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/20", pathname === link.href && "bg-red-50 dark:bg-red-900/20 text-brand-red dark:text-red-400")}
                   >
                     {link.label}
                   </Link>
@@ -271,10 +303,12 @@ export default function Header() {
               {/* Social icons - desktop */}
               <div className="hidden xl:flex items-center gap-2 mr-2">
                 <a href={SITE.social.instagram} target="_blank" rel="noreferrer"
+                   aria-label="Instagram de Ferretería Pardo"
                    className="p-2.5 text-gray-400 hover:text-pink-500 transition-all duration-300 rounded-2xl hover:bg-pink-50">
                   <InstagramIcon />
                 </a>
                 <a href={SITE.social.facebook} target="_blank" rel="noreferrer"
+                   aria-label="Facebook de Ferretería Pardo"
                    className="p-2.5 text-gray-400 hover:text-blue-600 transition-all duration-300 rounded-2xl hover:bg-blue-50">
                   <FacebookIcon />
                 </a>
@@ -298,8 +332,9 @@ export default function Header() {
               {/* Cart button - Premium scale animation */}
               <button
                 className="relative p-2.5 text-gray-700 dark:text-gray-300 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/20"
-                aria-label="Ver carrito"
+                aria-label={`Ver pedido${cartCount ? `, ${cartCount} ${cartCount === 1 ? "referencia" : "referencias"}` : ""}`}
                 onClick={() => {
+                  setMobileOpen(false);
                   const event = new CustomEvent("toggle-cart");
                   window.dispatchEvent(event);
                 }}
@@ -314,9 +349,12 @@ export default function Header() {
 
               {/* Mobile menu toggle */}
               <button
-                className="lg:hidden p-2.5 text-gray-700 rounded-2xl hover:bg-gray-100 transition-all duration-300"
+                ref={mobileToggleRef}
+                className="lg:hidden p-2.5 text-gray-700 dark:text-gray-200 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
                 onClick={() => setMobileOpen(!mobileOpen)}
-                aria-label="Menú"
+                aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
+                aria-expanded={mobileOpen}
+                aria-controls="mobile-navigation"
               >
                 {mobileOpen ? <CloseIcon /> : <MenuIcon />}
               </button>
@@ -326,28 +364,30 @@ export default function Header() {
 
         {/* Mobile menu - Smooth slide-down animation */}
         {mobileOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-100 animate-slide-down">
-            <nav className="max-w-7xl mx-auto px-4 py-4 space-y-1.5">
+          <div id="mobile-navigation" className="lg:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 animate-slide-down max-h-[calc(100dvh-4rem)] overflow-y-auto">
+            <nav aria-label="Navegación móvil" className="max-w-7xl mx-auto px-4 py-4 space-y-1.5">
               {NAV_LINKS.map((link) =>
                 link.hasDropdown ? (
                   <div key={link.label}>
                     <button
-                      onClick={() => setCatOpen(!catOpen)}
-                      className="w-full flex items-center justify-between px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-red-50 hover:text-brand-red transition-all duration-300 rounded-2xl"
+                      onClick={() => setMobileCatOpen(!mobileCatOpen)}
+                      aria-expanded={mobileCatOpen}
+                      aria-controls="mobile-categories"
+                      className="w-full flex items-center justify-between px-4 py-3 text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-brand-red transition-all duration-300 rounded-2xl"
                     >
                       {link.label}
                       <ChevronDown />
                     </button>
-                    {catOpen && (
-                      <div className="ml-2 space-y-1.5 mt-1 pb-2">
+                    {mobileCatOpen && (
+                      <div id="mobile-categories" className="ml-2 space-y-1.5 mt-1 pb-2">
                         {CATEGORIES.map((cat) => {
                           const IconComponent = categoryIconMap[cat.name];
                           return (
                             <Link
                               key={cat.slug}
                               href={`/catalogo?cat=${encodeURIComponent(cat.name)}`}
-                              className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:text-brand-red hover:bg-red-50 transition-all duration-300 rounded-2xl"
-                              onClick={() => { setCatOpen(false); setMobileOpen(false); }}
+                              className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 dark:text-gray-300 hover:text-brand-red hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-300 rounded-2xl"
+                              onClick={() => { setMobileCatOpen(false); setMobileOpen(false); }}
                             >
                               {IconComponent && (
                                 <div className="text-brand-red">
@@ -365,7 +405,8 @@ export default function Header() {
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="block px-4 py-3 text-sm font-semibold text-gray-700 hover:text-brand-red hover:bg-red-50 transition-all duration-300 rounded-2xl"
+                    aria-current={pathname === link.href ? "page" : undefined}
+                    className={cn("block px-4 py-3 text-sm font-semibold text-gray-700 dark:text-gray-200 hover:text-brand-red hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-300 rounded-2xl", pathname === link.href && "bg-red-50 dark:bg-red-900/20 text-brand-red dark:text-red-400")}
                     onClick={() => setMobileOpen(false)}
                   >
                     {link.label}
@@ -374,24 +415,24 @@ export default function Header() {
               )}
 
               {/* Mobile actions */}
-              <div className="pt-4 border-t border-gray-100 space-y-1.5">
+              <div className="pt-4 border-t border-gray-100 dark:border-gray-800 space-y-1.5">
                 <a href={SITE.social.whatsapp} target="_blank" rel="noreferrer"
                    className="btn-wa w-full justify-center text-sm rounded-2xl py-3">
                   <WhatsAppMini /> Cotizar por WhatsApp
                 </a>
-                <Link href="/catalogo" className="btn-primary w-full justify-center text-sm rounded-2xl py-3">
+                <Link href="/catalogo" onClick={() => setMobileOpen(false)} className="btn-primary w-full justify-center text-sm rounded-2xl py-3">
                   Explorar catálogo completo
                 </Link>
               </div>
 
               {/* Mobile info */}
-              <div className="pt-4 border-t border-gray-100 text-xs text-gray-500 space-y-2">
+              <div className="pt-4 border-t border-gray-100 dark:border-gray-800 text-xs text-gray-500 dark:text-gray-400 space-y-2">
                 <p className="flex items-center gap-2"><PhoneIcon /> {SITE.phone1Display} | {SITE.phone2Display}</p>
                 <p className="flex items-center gap-2"><LocationIcon /> {SITE.address}</p>
                 <p className="flex items-center gap-2"><ClockIcon /> Lun–Vie 8:15am–4:55pm · Sáb 8:15am–2:15pm</p>
                 <div className="flex items-center gap-3 pt-2">
-                  <a href={SITE.social.instagram} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-pink-500 transition-all duration-300"><InstagramIcon /></a>
-                  <a href={SITE.social.facebook} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-blue-600 transition-all duration-300"><FacebookIcon /></a>
+                  <a href={SITE.social.instagram} target="_blank" rel="noreferrer" aria-label="Instagram de Ferretería Pardo" className="text-gray-400 hover:text-pink-500 transition-all duration-300"><InstagramIcon /></a>
+                  <a href={SITE.social.facebook} target="_blank" rel="noreferrer" aria-label="Facebook de Ferretería Pardo" className="text-gray-400 hover:text-blue-600 transition-all duration-300"><FacebookIcon /></a>
                 </div>
               </div>
             </nav>
