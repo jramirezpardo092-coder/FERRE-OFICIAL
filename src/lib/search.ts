@@ -4,6 +4,14 @@ import { Product } from "./types";
 let fuseInstance: Fuse<Product> | null = null;
 let fuseProducts: Product[] | null = null;
 
+export function normalizeSearchText(value: string): string {
+  return value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+export function getSearchableText(product: Product): string {
+  return normalizeSearchText(`${product.nombre} ${product.brand} ${product.id} ${product.cat} ${product.ref || ""} ${product.sku || ""} ${(product.tags || []).join(" ")}`);
+}
+
 export function getFuseInstance(products: Product[]): Fuse<Product> {
   // Re-crear el índice si cambia la lista (ej: /ofertas vs /catalogo)
   if (!fuseInstance || fuseProducts !== products) {
@@ -13,6 +21,7 @@ export function getFuseInstance(products: Product[]): Fuse<Product> {
         { name: "nombre", weight: 0.4 },
         { name: "brand", weight: 0.15 },
         { name: "ref", weight: 0.2 },
+        { name: "sku", weight: 0.1 },
         { name: "id", weight: 0.1 },
         { name: "cat", weight: 0.05 },
         { name: "tags", weight: 0.1 },
@@ -20,6 +29,7 @@ export function getFuseInstance(products: Product[]): Fuse<Product> {
       threshold: 0.35,
       distance: 200,
       ignoreLocation: true,
+      ignoreDiacritics: true,
       useExtendedSearch: false,
       includeScore: true,
       minMatchCharLength: 2,
@@ -38,11 +48,12 @@ export function searchProducts(
   const q = query.trim();
   if (!q) return { results: products, isFuzzy: false };
 
-  const tokens = q.toLowerCase().split(/\s+/).filter(Boolean);
+  const normalizedQuery = normalizeSearchText(q);
+  const tokens = normalizedQuery.split(/\s+/).filter(Boolean);
 
   // 1. Tokenized exact match
   const exactResults = products.filter((p) => {
-    const searchable = `${p.nombre} ${p.brand} ${p.id} ${p.cat} ${p.ref || ""} ${p.sku || ""} ${(p.tags || []).join(" ")}`.toLowerCase();
+    const searchable = getSearchableText(p);
     return tokens.every((t) => searchable.includes(t));
   });
 
@@ -51,11 +62,11 @@ export function searchProducts(
     exactResults.sort((a, b) => {
       const score = (p: Product) => {
         let s = 0;
-        const nameL = p.nombre.toLowerCase();
-        if (p.id === q || (p.ref && p.ref.toLowerCase() === q.toLowerCase())) s += 100;
+        const nameL = normalizeSearchText(p.nombre);
+        if ([p.id, p.ref, p.sku].some(value => value && normalizeSearchText(value) === normalizedQuery)) s += 100;
         if (tokens.every((t) => nameL.includes(t))) s += 50;
         if (nameL.startsWith(tokens[0])) s += 30;
-        if (p.brand.toLowerCase().includes(q.toLowerCase())) s += 20;
+        if (normalizeSearchText(p.brand).includes(normalizedQuery)) s += 20;
         if (p.stock > 0) s += 5;
         if (p.disc && p.disc > 0) s += 3;
         return s;
@@ -67,9 +78,9 @@ export function searchProducts(
 
   // 2. Fuzzy fallback
   const fuse = getFuseInstance(products);
-  const fuseResults = fuse.search(q, { limit: 100 });
+  const fuseResults = fuse.search(normalizedQuery);
   return {
     results: fuseResults.map((r) => r.item),
-    isFuzzy: true,
+    isFuzzy: fuseResults.length > 0,
   };
 }

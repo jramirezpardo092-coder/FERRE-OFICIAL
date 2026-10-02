@@ -5,7 +5,10 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+    color-scheme: light;
   }
+  html.dark { color-scheme: dark; }
   body {
     @apply font-sans text-gray-900 antialiased bg-gray-50/50;
     @apply dark:bg-gray-950 dark:text-gray-100;
@@ -217,7 +220,7 @@ select:focus-visible {
 }
 
 /* Scroll reveal classes */
-.scroll-hidden {
+.scroll-hidden.reveal-ready {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.7s ease-out, transform 0.7s ease-out;
@@ -226,7 +229,7 @@ select:focus-visible {
   opacity: 1;
   transform: translateY(0);
 }
-.scroll-hidden-left {
+.scroll-hidden-left.reveal-ready {
   opacity: 0;
   transform: translateX(-30px);
   transition: opacity 0.7s ease-out, transform 0.7s ease-out;
@@ -235,7 +238,7 @@ select:focus-visible {
   opacity: 1;
   transform: translateX(0);
 }
-.scroll-hidden-scale {
+.scroll-hidden-scale.reveal-ready {
   opacity: 0;
   transform: scale(0.92);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -246,7 +249,7 @@ select:focus-visible {
 }
 
 /* Staggered children animation */
-.stagger-children > * {
+.stagger-children.reveal-ready > * {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
@@ -273,4 +276,25 @@ select:focus-visible {
 }
 .dark .sidebar-scroll::-webkit-scrollbar-thumb:hover {
   background: rgba(255,255,255,0.25);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #D02731;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .scroll-hidden, .scroll-hidden-left, .scroll-hidden-scale,
+  .scroll-hidden.reveal-ready, .scroll-hidden-left.reveal-ready,
+  .scroll-hidden-scale.reveal-ready, .stagger-children.reveal-ready > * {
+    opacity: 1;
+    transform: none;
+  }
 }

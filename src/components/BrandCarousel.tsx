@@ -1,11 +1,8 @@
-"use client";
-
 import Link from "next/link";
-import { BRANDS } from "@/lib/constants";
 
-export default function BrandCarousel() {
+export default function BrandCarousel({ brands }: { brands: string[] }) {
   return (
-    <section id="marcas" className="py-20 md:py-28 bg-white relative">
+    <section id="marcas" className="py-20 md:py-28 bg-white dark:bg-gray-950 relative">
       <div className="absolute top-0 left-0 right-0 divider-gradient" />
 
       <div className="max-w-7xl mx-auto px-4">
@@ -25,15 +22,16 @@ export default function BrandCarousel() {
 
         {/* Brand grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-          {BRANDS.map((brand) => (
-            <div
+          {brands.map((brand) => (
+            <Link
               key={brand}
-              className="bg-gray-50 rounded-2xl px-5 py-7 flex items-center justify-center border border-gray-100 hover:border-brand-red/20 hover:bg-white hover:shadow-lg hover:shadow-red-900/5 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group"
+              href={`/catalogo?brand=${encodeURIComponent(brand)}`}
+              className="bg-gray-50 dark:bg-gray-900 rounded-2xl px-5 py-7 flex items-center justify-center border border-gray-100 dark:border-gray-800 hover:border-brand-red/20 hover:shadow-lg hover:shadow-red-900/5 hover:-translate-y-0.5 transition-all duration-300 group"
             >
-              <span className="font-black text-base text-gray-600 group-hover:text-brand-red transition-colors duration-300 text-center">
+              <span className="font-black text-base text-gray-600 dark:text-gray-300 group-hover:text-brand-red transition-colors duration-300 text-center">
                 {brand}
               </span>
-            </div>
+            </Link>
           ))}
         </div>
 

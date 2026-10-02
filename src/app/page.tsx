@@ -11,11 +11,13 @@ import { getLocalBusinessJsonLd } from "@/lib/seo";
 
 export default function HomePage() {
   const products = productsData as Product[];
-  // Filtrar en el servidor: solo los 8 destacados viajan al cliente
-  const featured = products
-    .filter((p) => p.disc && p.disc >= 15 && p.stock > 0)
-    .sort((a, b) => (b.disc || 0) - (a.disc || 0))
+  // Una selección con disponibilidad de distintas categorías.
+  const available = products.filter((p) => p.priceVerified === true && p.stock >= 1);
+  const featured = Array.from(new Set(available.map((p) => p.cat)))
+    .map((category) => available.find((p) => p.cat === category)!)
     .slice(0, 8);
+  const brands = Array.from(new Set(products.map((p) => p.brand)))
+    .filter((brand) => brand && brand !== "Sin marca").sort();
 
   // Conteo por categoría en el servidor: el catálogo completo no viaja al cliente
   const categoryCounts: Record<string, number> = {};
@@ -29,7 +31,11 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(getLocalBusinessJsonLd()) }}
       />
-      <HeroCarousel />
+      <HeroCarousel
+        productCount={products.length}
+        brandCount={brands.length}
+        categoryCount={Object.keys(categoryCounts).length}
+      />
       <ScrollReveal>
         <CategoryGrid counts={categoryCounts} />
       </ScrollReveal>
@@ -40,7 +46,7 @@ export default function HomePage() {
         <InstagramSection />
       </ScrollReveal>
       <ScrollReveal>
-        <BrandCarousel />
+        <BrandCarousel brands={brands} />
       </ScrollReveal>
       <ScrollReveal variant="left">
         <Testimonials />

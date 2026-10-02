@@ -26,7 +26,7 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   return (
-    <section className="py-20 md:py-28 bg-gray-50 relative">
+    <section className="py-20 md:py-28 bg-gray-50 dark:bg-gray-950 relative">
       <div className="absolute top-0 left-0 right-0 divider-gradient" />
 
       <div className="max-w-7xl mx-auto px-4">
@@ -44,7 +44,7 @@ export default function Testimonials() {
 
         <div className="grid md:grid-cols-3 gap-5">
           {TESTIMONIALS.map((t) => (
-            <div key={t.name} className="bg-white rounded-2xl p-7 md:p-8 border border-gray-100 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/5 hover:border-gray-200 transition-all duration-300">
+            <div key={t.name} className="bg-white dark:bg-gray-900 rounded-2xl p-7 md:p-8 border border-gray-100 dark:border-gray-800 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/5 hover:border-gray-200 dark:hover:border-gray-700 transition-all duration-300">
               {/* Stars */}
               <div className="flex gap-0.5 mb-5">
                 {Array.from({ length: t.rating }).map((_, i) => (
@@ -54,15 +54,15 @@ export default function Testimonials() {
                 ))}
               </div>
 
-              <p className="text-gray-600 text-[15px] leading-relaxed mb-6">&ldquo;{t.text}&rdquo;</p>
+              <p className="text-gray-600 dark:text-gray-300 text-[15px] leading-relaxed mb-6">&ldquo;{t.text}&rdquo;</p>
 
-              <div className="flex items-center gap-3 pt-5 border-t border-gray-100">
-                <div className="w-10 h-10 rounded-xl bg-brand-red/10 text-brand-red font-bold text-sm flex items-center justify-center">
+              <div className="flex items-center gap-3 pt-5 border-t border-gray-100 dark:border-gray-800">
+                <div className="w-10 h-10 rounded-xl bg-brand-red/10 text-brand-red dark:text-red-400 font-bold text-sm flex items-center justify-center">
                   {t.initials}
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-gray-900">{t.name}</div>
-                  <div className="text-xs text-gray-500">{t.role}</div>
+                  <div className="text-sm font-bold text-gray-900 dark:text-white">{t.name}</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">{t.role}</div>
                 </div>
               </div>
             </div>

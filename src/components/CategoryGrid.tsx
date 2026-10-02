@@ -94,7 +94,7 @@ export default function CategoryGrid({ counts: productCounts }: Props) {
             Explora por categoría
           </h2>
           <p className="section-subtitle mx-auto mt-4">
-            9 categorias con todo lo que necesitas para tu obra, hogar o negocio
+            9 categorías con todo lo que necesitas para tu obra, hogar o negocio
           </p>
         </div>
 
@@ -136,7 +136,7 @@ export default function CategoryGrid({ counts: productCounts }: Props) {
             href="/catalogo"
             className="inline-flex items-center gap-2 px-8 py-3.5 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5 text-sm"
           >
-            Ver todas las categorias
+            Ver todas las categorías
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>

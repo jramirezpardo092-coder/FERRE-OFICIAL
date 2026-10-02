@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { SITE, NAV_LINKS, CATEGORIES } from "@/lib/constants";
+import { SITE, NAV_LINKS } from "@/lib/constants";
 
 export default function Footer() {
   return (
@@ -17,7 +17,7 @@ export default function Footer() {
         <div className="relative max-w-7xl mx-auto px-4 py-10 md:py-12 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <h3 className="text-2xl md:text-3xl font-extrabold text-white">¿Necesitas cotizar?</h3>
-            <p className="text-red-200 text-sm mt-1.5">Respuesta inmediata por WhatsApp. Precios especiales por volumen.</p>
+            <p className="text-red-200 text-sm mt-1.5">Consulta disponibilidad y condiciones para tu pedido por WhatsApp.</p>
           </div>
           <a
             href={SITE.social.whatsapp}
@@ -71,12 +71,15 @@ export default function Footer() {
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.label}
-                  href={link.href}
+                  href={link.href === "#categorias" ? "/#categorias" : link.href}
                   className="block text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all duration-200"
                 >
                   {link.label}
                 </Link>
               ))}
+              <Link href="/blog" className="block text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all duration-200">
+                Guías de compra
+              </Link>
             </nav>
           </div>
 
@@ -139,6 +142,7 @@ export default function Footer() {
             <div className="flex gap-3 mb-8">
               <a
                 href={SITE.social.instagram}
+                aria-label="Ferretería Pardo en Instagram"
                 target="_blank"
                 rel="noreferrer"
                 className="w-11 h-11 bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 rounded-xl flex items-center justify-center hover:scale-110 hover:shadow-lg hover:shadow-pink-500/20 transition-all duration-200"
@@ -149,6 +153,7 @@ export default function Footer() {
               </a>
               <a
                 href={SITE.social.facebook}
+                aria-label="Ferretería Pardo en Facebook"
                 target="_blank"
                 rel="noreferrer"
                 className="w-11 h-11 bg-blue-600 rounded-xl flex items-center justify-center hover:scale-110 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-200"
@@ -159,6 +164,7 @@ export default function Footer() {
               </a>
               <a
                 href={SITE.social.whatsapp}
+                aria-label="Contactar a Ferretería Pardo por WhatsApp"
                 target="_blank"
                 rel="noreferrer"
                 className="w-11 h-11 bg-[#25D366] rounded-xl flex items-center justify-center hover:scale-110 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-200"

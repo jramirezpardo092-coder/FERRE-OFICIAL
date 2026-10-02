@@ -22,12 +22,18 @@ export default function ScrollReveal({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      el.classList.add("scroll-visible");
+      return;
+    }
+    el.classList.add("reveal-ready");
+    let timer: ReturnType<typeof setTimeout> | undefined;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           if (delay > 0) {
-            setTimeout(() => el.classList.add("scroll-visible"), delay);
+            timer = setTimeout(() => el.classList.add("scroll-visible"), delay);
           } else {
             el.classList.add("scroll-visible");
           }
@@ -38,7 +44,10 @@ export default function ScrollReveal({
     );
 
     observer.observe(el);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      if (timer) clearTimeout(timer);
+    };
   }, [delay]);
 
   const baseClass = stagger

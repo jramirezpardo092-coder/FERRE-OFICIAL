@@ -12,6 +12,8 @@ export interface Product {
   ref?: string;
   sku?: string;
   tags?: string[];
+  taxRate?: number;
+  priceVerified?: boolean;
 }
 
 export interface CartItem extends Product {

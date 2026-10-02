@@ -1,5 +1,6 @@
-import { SITE, CATEGORIES } from "./constants";
+import { SITE } from "./constants";
 import { Product } from "./types";
+import { getUnitPriceWithTax, getAvailableQuantity } from "./utils";
 
 export function getLocalBusinessJsonLd() {
   return {
@@ -64,6 +65,7 @@ export function getOrganizationJsonLd() {
 
 export function getProductJsonLd(product: Product) {
   const slug = product.id;
+  const priceWithTax = getUnitPriceWithTax(product);
   return {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -74,19 +76,27 @@ export function getProductJsonLd(product: Product) {
       "@type": "Brand",
       name: product.brand,
     },
-    offers: {
-      "@type": "Offer",
-      url: `${SITE.url}/producto/${slug}`,
-      priceCurrency: "COP",
-      price: product.precio,
-      availability: product.stock > 0
-        ? "https://schema.org/InStock"
-        : "https://schema.org/OutOfStock",
-      seller: {
-        "@type": "Organization",
-        name: SITE.name,
+    ...(priceWithTax !== null && {
+      offers: {
+        "@type": "Offer",
+        url: `${SITE.url}/producto/${slug}`,
+        priceCurrency: "COP",
+        price: priceWithTax,
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          priceCurrency: "COP",
+          price: priceWithTax,
+          valueAddedTaxIncluded: true,
+        },
+        availability: getAvailableQuantity(product) > 0
+          ? "https://schema.org/InStock"
+          : "https://schema.org/OutOfStock",
+        seller: {
+          "@type": "Organization",
+          name: SITE.name,
+        },
       },
-    },
+    }),
   };
 }
 

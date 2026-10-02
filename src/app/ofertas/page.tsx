@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Suspense } from "react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import CatalogClient from "@/components/CatalogClient";
@@ -6,9 +7,9 @@ import { Product } from "@/lib/types";
 import productsData from "@/data/products.json";
 
 export const metadata: Metadata = {
-  title: "Ofertas | Hasta 50% Dto | Ferretería Pardo SAS",
+  title: "Ofertas y descuentos | Ferretería Pardo SAS",
   description:
-    "Descubre productos en oferta en Ferretería Pardo. Herramientas, cerrajería y ferretería con descuentos. Cotiza por WhatsApp.",
+    "Consulta las ofertas vigentes de Ferretería Pardo y cotiza por WhatsApp.",
 };
 
 export default function OfertasPage() {
@@ -21,17 +22,22 @@ export default function OfertasPage() {
 
       <section className="max-w-7xl mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">
-            Ofertas del mes
+          <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-2">
+            Ofertas vigentes
           </h1>
-          <p className="text-gray-500">
-            {offerProducts.length} productos con descuento. Precios + IVA.
+          <p className="text-gray-500 dark:text-gray-400">
+            {offerProducts.length > 0 ? `${offerProducts.length} productos con descuento. Precios antes de IVA.` : "Pronto encontrarás aquí nuestras promociones confirmadas."}
           </p>
         </div>
 
-        <Suspense fallback={<div className="py-20 text-center text-gray-400">Cargando productos...</div>}>
-          <CatalogClient products={offerProducts} />
-        </Suspense>
+        {offerProducts.length === 0 ? (
+          <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 p-8 text-center">
+            <p className="text-gray-600 dark:text-gray-300 mb-5">Mientras tanto, explora el catálogo y consulta la disponibilidad de lo que necesitas.</p>
+            <Link href="/catalogo" className="btn-primary">Ver catálogo</Link>
+          </div>
+        ) : <Suspense fallback={<div className="py-20 text-center text-gray-400">Cargando productos...</div>}>
+          <CatalogClient products={offerProducts} offersOnly />
+        </Suspense>}
       </section>
     </>
   );

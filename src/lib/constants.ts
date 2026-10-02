@@ -20,7 +20,8 @@ export const SITE = {
     whatsapp: "https://wa.me/573118486132?text=Hola%2C+vi+el+cat%C3%A1logo+en+la+p%C3%A1gina+y+quiero+cotizar",
   },
   payments: ["Efectivo", "Transferencia bancaria", "Nequi", "Daviplata", "Tarjeta débito/crédito"],
-  mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.686!2d-74.078!3d4.667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sCalle+72+No.+50-23%2C+Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1",
+  mapEmbed: "https://maps.google.com/maps?q=Ferreter%C3%ADa%20Pardo%2C%20Calle%2072%2050-23%2C%20Bogot%C3%A1&output=embed",
+  mapDirections: "https://www.google.com/maps/dir/?api=1&destination=Ferreter%C3%ADa%20Pardo%2C%20Calle%2072%2050-23%2C%20Bogot%C3%A1",
 };
 
 export const CATEGORIES = [
@@ -45,7 +46,7 @@ export const BRANDS = [
 export const NAV_LINKS = [
   { label: "Inicio", href: "/" },
   { label: "Catálogo", href: "/catalogo" },
-  { label: "Categorías", href: "#categorias", hasDropdown: true },
+  { label: "Categorías", href: "/#categorias", hasDropdown: true },
   { label: "Marcas", href: "/marcas" },
   { label: "Ofertas", href: "/ofertas" },
   { label: "Contacto", href: "/contacto" },
