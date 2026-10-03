@@ -79,6 +79,9 @@ export default function ProductMedia({
           id={imageId}
           src={selected.src}
           alt={selected.alt?.trim() || product.nombre}
+          // Los WebP importados ya son sin pérdida: servirlos directamente conserva sus píxeles.
+          unoptimized={selected.src.startsWith("/products/whatsapp/")}
+          quality={100}
           fill
           sizes={sizes}
           priority={priority && selectedIndex === 0}
@@ -91,6 +94,8 @@ export default function ProductMedia({
           <Image
             src={primary.src}
             alt={showSecondary ? "" : primary.alt?.trim() || product.nombre}
+            unoptimized={primary.src.startsWith("/products/whatsapp/")}
+            quality={100}
             aria-hidden={showSecondary ? true : undefined}
             fill
             sizes={sizes}
@@ -104,6 +109,8 @@ export default function ProductMedia({
               key={secondary.src}
               src={secondary.src}
               alt={showSecondary ? secondary.alt?.trim() || product.nombre : ""}
+              unoptimized={secondary.src.startsWith("/products/whatsapp/")}
+              quality={100}
               aria-hidden={showSecondary ? undefined : true}
               fill
               sizes={sizes}
@@ -123,9 +130,9 @@ export default function ProductMedia({
         </div>
       )}
       </div>
-      {showGalleryControls && candidates.length > 1 && (
+      {showGalleryControls && candidates.length > 0 && (
         <div className="border-t border-gray-200 bg-white px-3 py-3 dark:border-gray-800 dark:bg-gray-900">
-          <div role="group" aria-label={`Fotos de ${product.nombre}`} className="flex flex-wrap justify-center gap-2">
+          {candidates.length > 1 && <div role="group" aria-label={`Fotos de ${product.nombre}`} className="flex flex-wrap justify-center gap-2">
             {candidates.map((image, index) => {
               const unavailable = failedSources.includes(image.src);
               const isSelected = selected?.src === image.src;
@@ -140,7 +147,19 @@ export default function ProductMedia({
                 className={cn("min-h-11 min-w-11 rounded-lg border px-3 py-2 text-xs font-semibold shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red disabled:cursor-default disabled:opacity-40", isSelected ? "border-brand-red bg-brand-red text-white" : "border-gray-200 bg-white text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200")}
               >Foto {index + 1}</button>;
             })}
-          </div>
+          </div>}
+          {selected && <a
+            href={selected.src}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Ampliar foto ${selectedIndex + 1} de ${product.nombre} (se abre en otra pestaña)`}
+            className={cn("mx-auto flex min-h-11 w-fit items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red dark:text-gray-200 dark:hover:bg-gray-800", candidates.length > 1 && "mt-2")}
+          >
+            <svg className="h-4 w-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M21 21l-5.2-5.2M10 7v6m-3-3h6M17 10a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            Ampliar imagen
+          </a>}
           <p role="status" aria-live="polite" className="sr-only">{selected ? `Foto ${selectedIndex + 1} de ${candidates.length}: ${selected.alt?.trim() || product.nombre}` : "Sin fotos disponibles."}</p>
           {failedSources.length > 0 && <p className="mt-2 text-center text-xs text-gray-500 dark:text-gray-400">Una foto no está disponible.{selected ? " Mostramos otra imagen." : ""}</p>}
         </div>
