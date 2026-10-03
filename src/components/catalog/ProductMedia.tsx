@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
 import Image from "next/image";
 import type { Product, ProductImage } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -34,43 +34,64 @@ export default function ProductMedia({
   const [failedSources, setFailedSources] = useState<string[]>([]);
   const [secondaryRequested, setSecondaryRequested] = useState(false);
   const [loadedSecondary, setLoadedSecondary] = useState<string | null>(null);
-  const [alternateSelected, setAlternateSelected] = useState(false);
-  const isActive = active || alternateSelected;
+  const [selectedSource, setSelectedSource] = useState<string | null>(null);
+  const imageId = `product-photo-${useId().replace(/:/g, "")}`;
   const candidates = useMemo(() => {
     const images = new Map<string, ProductImage>();
     const primaryPath = getLocalProductImagePath(product.img);
     if (primaryPath) images.set(primaryPath, { src: primaryPath, alt: product.nombre, verified: true });
     (product.gallery ?? []).forEach((image) => {
       const src = getLocalProductImagePath(image.src);
-      if (image.verified === true && src && !images.has(src)) images.set(src, { ...image, src });
+      if (image.verified !== true || !src) return;
+      const existing = images.get(src);
+      // The approved description also belongs to the legacy primary image.
+      if (!existing || image.alt?.trim()) images.set(src, { ...existing, ...image, src });
     });
     return [...images.values()];
   }, [product.img, product.gallery, product.nombre]);
   const available = candidates.filter((image) => !failedSources.includes(image.src));
   const primary = available[0];
   const secondary = available[1];
+  const selected = available.find((image) => image.src === selectedSource) || primary;
+  const selectedIndex = selected ? candidates.findIndex((image) => image.src === selected.src) : -1;
 
   useEffect(() => {
     setFailedSources([]);
     setSecondaryRequested(false);
     setLoadedSecondary(null);
-    setAlternateSelected(false);
+    setSelectedSource(null);
   }, [product.id, product.img, product.gallery]);
   useEffect(() => {
     // La segunda foto se descarga al interactuar, no en todas las tarjetas a la vez.
-    if (isActive) setSecondaryRequested(true);
-  }, [isActive, product.id, product.img, product.gallery]);
+    if (active && !showGalleryControls) setSecondaryRequested(true);
+  }, [active, showGalleryControls, product.id, product.img, product.gallery]);
 
   const failImage = (src: string) => setFailedSources((failed) => failed.includes(src) ? failed : [...failed, src]);
-  const showSecondary = isActive && secondary && loadedSecondary === secondary.src;
+  const showSecondary = active && secondary && loadedSecondary === secondary.src;
 
   return (
-    <div className={cn("relative aspect-square overflow-hidden bg-gray-50 dark:bg-gray-950", className)}>
-      {primary ? (
+    <div className={cn("overflow-hidden bg-gray-50 dark:bg-gray-950", className)}>
+      <div className="relative aspect-square">
+      {primary && selected ? showGalleryControls ? (
+        // Only the selected photo mounts: choosing a later photo never downloads the whole gallery.
+        <Image
+          key={selected.src}
+          id={imageId}
+          src={selected.src}
+          alt={selected.alt?.trim() || product.nombre}
+          fill
+          sizes={sizes}
+          priority={priority && selectedIndex === 0}
+          loading={priority && selectedIndex === 0 ? undefined : "lazy"}
+          className={cn("object-contain p-5", imageClassName)}
+          onError={() => failImage(selected.src)}
+        />
+      ) : (
         <>
           <Image
             src={primary.src}
-            alt={primary.alt || product.nombre}
+            alt={showSecondary ? "" : primary.alt?.trim() || product.nombre}
+            aria-hidden={showSecondary ? true : undefined}
             fill
             sizes={sizes}
             priority={priority}
@@ -80,9 +101,10 @@ export default function ProductMedia({
           />
           {secondaryRequested && secondary && (
             <Image
+              key={secondary.src}
               src={secondary.src}
-              alt=""
-              aria-hidden="true"
+              alt={showSecondary ? secondary.alt?.trim() || product.nombre : ""}
+              aria-hidden={showSecondary ? undefined : true}
               fill
               sizes={sizes}
               loading="lazy"
@@ -91,22 +113,6 @@ export default function ProductMedia({
               onError={() => failImage(secondary.src)}
             />
           )}
-          {showGalleryControls && secondary && (
-            <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2">
-              {[false, true].map((alternate, index) => (
-                <button
-                  key={index}
-                  type="button"
-                  onClick={() => setAlternateSelected(alternate)}
-                  aria-label={`Ver foto ${index + 1} de ${product.nombre}`}
-                  aria-pressed={alternateSelected === alternate}
-                  className={cn("min-h-10 rounded-lg border px-3 py-2 text-xs font-semibold shadow-sm", alternateSelected === alternate ? "border-brand-red bg-brand-red text-white" : "border-gray-200 bg-white text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200")}
-                >
-                  Foto {index + 1}
-                </button>
-              ))}
-            </div>
-          )}
         </>
       ) : (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-4 text-center text-gray-500 dark:text-gray-400">
@@ -114,6 +120,29 @@ export default function ProductMedia({
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2 2H6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
           <span className="text-xs">Sin foto disponible</span>
+        </div>
+      )}
+      </div>
+      {showGalleryControls && candidates.length > 1 && (
+        <div className="border-t border-gray-200 bg-white px-3 py-3 dark:border-gray-800 dark:bg-gray-900">
+          <div role="group" aria-label={`Fotos de ${product.nombre}`} className="flex flex-wrap justify-center gap-2">
+            {candidates.map((image, index) => {
+              const unavailable = failedSources.includes(image.src);
+              const isSelected = selected?.src === image.src;
+              return <button
+                key={image.src}
+                type="button"
+                disabled={unavailable}
+                onClick={() => setSelectedSource(image.src)}
+                aria-label={unavailable ? `Foto ${index + 1} no disponible` : `Ver foto ${index + 1} de ${product.nombre}`}
+                aria-controls={selected ? imageId : undefined}
+                aria-pressed={isSelected}
+                className={cn("min-h-11 min-w-11 rounded-lg border px-3 py-2 text-xs font-semibold shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red disabled:cursor-default disabled:opacity-40", isSelected ? "border-brand-red bg-brand-red text-white" : "border-gray-200 bg-white text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200")}
+              >Foto {index + 1}</button>;
+            })}
+          </div>
+          <p role="status" aria-live="polite" className="sr-only">{selected ? `Foto ${selectedIndex + 1} de ${candidates.length}: ${selected.alt?.trim() || product.nombre}` : "Sin fotos disponibles."}</p>
+          {failedSources.length > 0 && <p className="mt-2 text-center text-xs text-gray-500 dark:text-gray-400">Una foto no está disponible.{selected ? " Mostramos otra imagen." : ""}</p>}
         </div>
       )}
     </div>
