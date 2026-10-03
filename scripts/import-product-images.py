@@ -8,6 +8,8 @@ outside the repository. Its mapping is authoritative; no SKU/model is inferred.
 Default is dry-run. --write publishes lossless WebP files and merges gallery,
 then writes a private audit beside the manifest. Photos keep their dimensions;
 there is no crop, resize, generative edit, or claim that a screenshot is original.
+Use --collection official for manufacturer assets. --replace-gallery replaces
+only the galleries of SKUs present in the approved manifest, preserving specs.
 """
 
 import argparse
@@ -68,7 +70,9 @@ def encode_photo(data):
         return output.getvalue(), image.size, source_format, Image.__version__
 
 
-def prepare_import(repo_root, manifest_path):
+def prepare_import(repo_root, manifest_path, collection="whatsapp", replace_gallery=False):
+    if collection not in {"whatsapp", "official"}:
+        raise ValueError("Collection must be whatsapp or official.")
     repo_root = Path(repo_root).resolve()
     manifest_path = Path(manifest_path).resolve(strict=True)
     if manifest_path.is_relative_to(repo_root):
@@ -86,11 +90,12 @@ def prepare_import(repo_root, manifest_path):
     if not isinstance(records, list) or not records:
         raise ValueError("Manifest must be a nonempty array of approved image records.")
     known_skus = set(ids)
-    output_dir = (repo_root / "public/products/whatsapp").resolve()
+    output_dir = (repo_root / "public/products" / collection).resolve()
     if not output_dir.is_relative_to(repo_root / "public"):
         raise ValueError("Image output directory must remain inside this repository's public directory.")
     merged = copy.deepcopy(enrichment)
     files, inventory, audit_rows, verified_files = {}, {}, [], {}
+    replaced_skus = set()
 
     for number, record in enumerate(records, 1):
         if not isinstance(record, dict):
@@ -138,11 +143,14 @@ def prepare_import(repo_root, manifest_path):
             state["next"] += 1
             state["by_hash"][digest] = target
             files[target] = encoded
-        public_src = f"/products/whatsapp/{target.name}"
+        public_src = f"/products/{collection}/{target.name}"
         verified_files[target] = digest
         entry = merged.setdefault(sku, {})
         if not isinstance(entry, dict) or not isinstance(entry.get("gallery", []), list):
             raise ValueError(f"Existing enrichment/gallery for {sku} is malformed; review it before merging.")
+        if replace_gallery and sku not in replaced_skus:
+            entry["gallery"] = []
+            replaced_skus.add(sku)
         gallery = entry.setdefault("gallery", [])
         approved = {"src": public_src, "alt": alt.strip(), "verified": True}
         found = next((index for index, item in enumerate(gallery) if isinstance(item, dict) and isinstance(item.get("src"), str) and item["src"].lstrip("/") == public_src.lstrip("/")), None)
@@ -155,6 +163,8 @@ def prepare_import(repo_root, manifest_path):
             "sourceFormat": source_format, "provenance": provenance, "publicSrc": public_src,
             "webpSha256": digest, "webpBytes": len(encoded), "width": size[0], "height": size[1],
             "encoding": "WebP lossless", "pillowVersion": pillow_version, "resized": False, "cropped": False,
+            # Research evidence stays in the private audit, never in the public product DTO.
+            **{key: record[key] for key in ("sourcePage", "imageUrl", "evidence", "exactVariant") if key in record},
         })
 
     return {
@@ -163,7 +173,8 @@ def prepare_import(repo_root, manifest_path):
         "merged": merged, "files": files,
         "reusedFiles": {target: digest for target, digest in verified_files.items() if target not in files},
         "auditPath": manifest_path.with_name(f"{manifest_path.stem}.import-audit.json"),
-        "audit": {"manifestSha256": sha(manifest_bytes), "catalogSha256": sha(catalog_bytes), "images": audit_rows},
+        "audit": {"manifestSha256": sha(manifest_bytes), "catalogSha256": sha(catalog_bytes),
+                  "collection": collection, "replacedGalleries": sorted(replaced_skus), "images": audit_rows},
     }
 
 
@@ -205,9 +216,11 @@ def main():
     parser.add_argument("--manifest", required=True, type=Path, help="Private JSON manifest outside the repository")
     parser.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--write", action="store_true", help="Publish prepared WebP files and merge gallery; otherwise read-only dry-run")
+    parser.add_argument("--collection", choices=("whatsapp", "official"), default="whatsapp")
+    parser.add_argument("--replace-gallery", action="store_true", help="Replace galleries for manifest SKUs only, keeping specifications")
     args = parser.parse_args()
     try:
-        plan = prepare_import(args.repo_root, args.manifest)
+        plan = prepare_import(args.repo_root, args.manifest, args.collection, args.replace_gallery)
         if args.write:
             apply_import(plan)
     except (ValueError, OSError) as error:
