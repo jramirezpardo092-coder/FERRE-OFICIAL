@@ -9,8 +9,8 @@
     ],
     "gallery": [
       {
-        "src": "/products/whatsapp/13751-1.webp",
-        "alt": "Cepillo eléctrico Einhell TC PL750",
+        "src": "/products/official/13751-1.webp",
+        "alt": "EINHELL CEPILLO TC PL 750",
         "verified": true
       }
     ]
@@ -72,8 +72,8 @@
     ],
     "gallery": [
       {
-        "src": "/products/whatsapp/3267-1.webp",
-        "alt": "Lijadora roto orbital CAT DX461U",
+        "src": "/products/official/3267-1.webp",
+        "alt": "CAT LIJADORA ROTO ORBITAL 400W 5\" MOD 46",
         "verified": true
       }
     ]
@@ -93,8 +93,8 @@
     ],
     "gallery": [
       {
-        "src": "/products/whatsapp/3234-1.webp",
-        "alt": "Sierra para mármol CAT DX55U",
+        "src": "/products/official/3234-1.webp",
+        "alt": "CAT SIERRA PARA MARMOL 1400W C/BIS",
         "verified": true
       }
     ]
@@ -156,11 +156,6 @@
     ],
     "gallery": [
       {
-        "src": "/products/whatsapp/13384-1.webp",
-        "alt": "Manija Vera Cádiz para alcoba y variantes",
-        "verified": true
-      },
-      {
         "src": "/products/whatsapp/13384-2.webp",
         "alt": "Ficha técnica de manija Vera Cádiz para alcoba",
         "verified": true
@@ -182,13 +177,13 @@
     ],
     "gallery": [
       {
-        "src": "/products/whatsapp/13383-1.webp",
-        "alt": "Manija Vera Cádiz para baño y variantes",
+        "src": "/products/official/13383-1.webp",
+        "alt": "CERRADURA VERA MANIJA CADIZ BAÑO",
         "verified": true
       },
       {
-        "src": "/products/whatsapp/13383-2.webp",
-        "alt": "Ficha técnica de manija Vera Cádiz para baño",
+        "src": "/products/official/13383-2.webp",
+        "alt": "VERA CADIZ 34632 foto adicional",
         "verified": true
       }
     ]
@@ -208,13 +203,8 @@
     ],
     "gallery": [
       {
-        "src": "/products/whatsapp/14616-1.webp",
-        "alt": "Pomo KL 101A cromado para alcoba",
-        "verified": true
-      },
-      {
-        "src": "/products/whatsapp/14616-2.webp",
-        "alt": "Ficha técnica de pomo KL 101A para alcoba",
+        "src": "/products/official/14616-1.webp",
+        "alt": "CERRADURA KL POMO ALCOBA CROMADA",
         "verified": true
       }
     ]
@@ -234,8 +224,8 @@
     ],
     "gallery": [
       {
-        "src": "/products/whatsapp/15609-1.webp",
-        "alt": "Manija Gaira niquelada para entrada ref6801",
+        "src": "/products/official/15609-1.webp",
+        "alt": "CERRADURA FEH MANIJA CUADRADA GAIRA ENTRADA NIQUELADA",
         "verified": true
       }
     ]
@@ -255,8 +245,8 @@
     ],
     "gallery": [
       {
-        "src": "/products/whatsapp/15468-1.webp",
-        "alt": "Manija Gaira niquelada para alcoba ref6802",
+        "src": "/products/official/15468-1.webp",
+        "alt": "CERRADURA FEH MANIJA CUADRADA GAIRA ALCOBA NIQUELADA",
         "verified": true
       }
     ]
@@ -276,8 +266,8 @@
     ],
     "gallery": [
       {
-        "src": "/products/whatsapp/15469-1.webp",
-        "alt": "Manija Gaira niquelada para baño ref6803",
+        "src": "/products/official/15469-1.webp",
+        "alt": "CERRADURA FEH MANIJA CUADRADA GAIRA BAÑO NIQUELADA",
         "verified": true
       }
     ]
@@ -297,8 +287,8 @@
     ],
     "gallery": [
       {
-        "src": "/products/whatsapp/15470-1.webp",
-        "alt": "Manija Gaira negra para alcoba ref6805",
+        "src": "/products/official/15470-1.webp",
+        "alt": "CERRADURA FEH MANIJA CUADRADA GAIRA ALCOBA NEGRA",
         "verified": true
       }
     ]
@@ -318,8 +308,8 @@
     ],
     "gallery": [
       {
-        "src": "/products/whatsapp/15471-1.webp",
-        "alt": "Manija Gaira negra para baño ref6806",
+        "src": "/products/official/15471-1.webp",
+        "alt": "CERRADURA FEH MANIJA CUADRADA GAIRA BAÑO NEGRA",
         "verified": true
       }
     ]
@@ -336,6 +326,13 @@
         "value": "5 MTS",
         "verified": true
       }
+    ],
+    "gallery": [
+      {
+        "src": "/products/official/13829-1.webp",
+        "alt": "Flexometro TRUPER FH-5M de 5 metros, referencia 14578",
+        "verified": true
+      }
     ]
   },
   "2994": {
@@ -350,13 +347,20 @@
         "value": "17\"",
         "verified": true
       }
+    ],
+    "gallery": [
+      {
+        "src": "/products/official/2994-1.webp",
+        "alt": "Caja de herramientas TRUPER CHP-17X de 17 pulgadas con broche metalico, referencia 19656",
+        "verified": true
+      }
     ]
   },
   "13689": {
     "gallery": [
       {
-        "src": "/products/whatsapp/13689-1.webp",
-        "alt": "Compresor Einhell TC-AC190/24",
+        "src": "/products/official/13689-1.webp",
+        "alt": "EINHELL COMPRESOR 24LTS 2HP TC-AC190/24",
         "verified": true
       }
     ]
@@ -382,8 +386,8 @@
   "4281": {
     "gallery": [
       {
-        "src": "/products/whatsapp/4281-1.webp",
-        "alt": "Lijadora roto orbital Einhell 40E",
+        "src": "/products/official/4281-1.webp",
+        "alt": "EINHELL LIJADORA ROTO ORBITAL 40E 127V",
         "verified": true
       }
     ]
@@ -400,8 +404,8 @@
   "3256": {
     "gallery": [
       {
-        "src": "/products/whatsapp/3256-1.webp",
-        "alt": "Lijadora de palma WESCO WS4151U",
+        "src": "/products/official/3256-1.webp",
+        "alt": "WESCO LIJADORA DE PALMA 240W 1/4",
         "verified": true
       }
     ]
@@ -409,8 +413,8 @@
   "14805": {
     "gallery": [
       {
-        "src": "/products/whatsapp/14805-1.webp",
-        "alt": "Amoladora WESCO WS4740U",
+        "src": "/products/official/14805-1.webp",
+        "alt": "WESCO AMOLADORA 750W 115MM",
         "verified": true
       }
     ]
@@ -445,8 +449,8 @@
   "8035": {
     "gallery": [
       {
-        "src": "/products/whatsapp/8035-1.webp",
-        "alt": "Cargador rápido CAT DXC4",
+        "src": "/products/official/8035-1.webp",
+        "alt": "CAT CARGADOR RAPIDO 18V",
         "verified": true
       }
     ]
@@ -472,8 +476,8 @@
   "3665": {
     "gallery": [
       {
-        "src": "/products/whatsapp/3665-1.webp",
-        "alt": "Flexómetro Stanley de 8 m 30-626",
+        "src": "/products/official/3665-1.webp",
+        "alt": "STANLEY FLEXOMETRO 8MT",
         "verified": true
       }
     ]
@@ -499,8 +503,8 @@
   "7384": {
     "gallery": [
       {
-        "src": "/products/whatsapp/7384-1.webp",
-        "alt": "Grapadora Stanley TR-250",
+        "src": "/products/official/7384-1.webp",
+        "alt": "STANLEY GRAPADORA TR-250",
         "verified": true
       }
     ]
@@ -508,8 +512,8 @@
   "7412": {
     "gallery": [
       {
-        "src": "/products/whatsapp/7412-1.webp",
-        "alt": "Grapadora Stanley TR-150",
+        "src": "/products/official/7412-1.webp",
+        "alt": "STANLEY GRAPADORA TR-150",
         "verified": true
       }
     ]
@@ -588,11 +592,6 @@
   "13913": {
     "gallery": [
       {
-        "src": "/products/whatsapp/13913-1.webp",
-        "alt": "Manija Segurex Júpiter anticada",
-        "verified": true
-      },
-      {
         "src": "/products/whatsapp/13913-2.webp",
         "alt": "Ficha de manija Segurex Júpiter para entrada",
         "verified": true
@@ -601,11 +600,6 @@
   },
   "1334": {
     "gallery": [
-      {
-        "src": "/products/whatsapp/1334-1.webp",
-        "alt": "Manija Segurex Júpiter anticada",
-        "verified": true
-      },
       {
         "src": "/products/whatsapp/1334-2.webp",
         "alt": "Ficha de manija Segurex Júpiter para alcoba",
@@ -651,13 +645,7 @@
     ]
   },
   "14828": {
-    "gallery": [
-      {
-        "src": "/products/whatsapp/14828-1.webp",
-        "alt": "Manija Barú negra para baño ref6825",
-        "verified": true
-      }
-    ]
+    "gallery": []
   },
   "14844": {
     "gallery": [
@@ -678,24 +666,1341 @@
     ]
   },
   "14714": {
-    "gallery": [
-      {
-        "src": "/products/whatsapp/14714-1.webp",
-        "alt": "Manija Barú niquelada para baño ref6822",
-        "verified": true
-      }
-    ]
+    "gallery": []
   },
   "15258": {
     "gallery": [
       {
-        "src": "/products/whatsapp/15258-1.webp",
-        "alt": "Cerrojo digital Yale YF67 para mueble",
+        "src": "/products/official/15258-1.webp",
+        "alt": "CERRADURA YALE CERROJO MUEBLE DIGITAL YF67 REF 6796",
         "verified": true
       },
       {
-        "src": "/products/whatsapp/15258-2.webp",
-        "alt": "Ficha técnica de cerrojo digital Yale YF67",
+        "src": "/products/official/15258-2.webp",
+        "alt": "CERRADURA YALE CERROJO MUEBLE DIGITAL YF67 REF 6796",
+        "verified": true
+      }
+    ]
+  },
+  "15694": {
+    "gallery": [
+      {
+        "src": "/products/official/15694-1.webp",
+        "alt": "CERRADURA YALE 170-1/4 LL-LL NEGRA",
+        "verified": true
+      }
+    ]
+  },
+  "15307": {
+    "gallery": [
+      {
+        "src": "/products/official/15307-1.webp",
+        "alt": "CERRADURA YALE RUSTICA EMBUTIR ENTRADA NEGRO",
+        "verified": true
+      }
+    ]
+  },
+  "0670": {
+    "gallery": [
+      {
+        "src": "/products/official/0670-1.webp",
+        "alt": "YALE CERRADURA DIGITAL PH30 PHILLIPS",
+        "verified": true
+      }
+    ]
+  },
+  "15308": {
+    "gallery": [
+      {
+        "src": "/products/official/15308-1.webp",
+        "alt": "CERRADURA YALE RUSTICA EMBUTIR ALCOBA NEGRO",
+        "verified": true
+      }
+    ]
+  },
+  "13049": {
+    "gallery": [
+      {
+        "src": "/products/official/13049-1.webp",
+        "alt": "CERRADURA YALE MANIJA AUSTIN ALCOBA",
+        "verified": true
+      }
+    ]
+  },
+  "14582": {
+    "gallery": [
+      {
+        "src": "/products/official/14582-1.webp",
+        "alt": "KL MANIJON STROM M6",
+        "verified": true
+      }
+    ]
+  },
+  "14573": {
+    "gallery": [
+      {
+        "src": "/products/official/14573-1.webp",
+        "alt": "KL CERRADURA SOBREPONER DOBLE PASADOR DERECHA KL 1070D",
+        "verified": true
+      }
+    ]
+  },
+  "14576": {
+    "gallery": [
+      {
+        "src": "/products/official/14576-1.webp",
+        "alt": "KL CERRADURA SOBREPONER DOBLE PASADOR MULTIPUNTO IZQUIERDA",
+        "verified": true
+      }
+    ]
+  },
+  "14574": {
+    "gallery": [
+      {
+        "src": "/products/official/14574-1.webp",
+        "alt": "KL CERRADURA SOBREPONER DOBLE PASADOR IZQUIERDA KL 1070I",
+        "verified": true
+      }
+    ]
+  },
+  "14570": {
+    "gallery": [
+      {
+        "src": "/products/official/14570-1.webp",
+        "alt": "KL CERRADURA SOB 3 BULONES IZQUIERDA PUNTOS KL 1050I",
+        "verified": true
+      }
+    ]
+  },
+  "0886": {
+    "gallery": [
+      {
+        "src": "/products/official/0886-1.webp",
+        "alt": "KL CERRADURA SOBREPONER DOBLE PASADOR MULTIPUNTO DERECHA",
+        "verified": true
+      }
+    ]
+  },
+  "14579": {
+    "gallery": [
+      {
+        "src": "/products/official/14579-1.webp",
+        "alt": "KL MANIJON TROM",
+        "verified": true
+      }
+    ]
+  },
+  "14575": {
+    "gallery": [
+      {
+        "src": "/products/official/14575-1.webp",
+        "alt": "KL CERRADURA SOB DOBLE PASADOR DERECHA MULTIKL 1070MAX D",
+        "verified": true
+      }
+    ]
+  },
+  "14599": {
+    "gallery": [
+      {
+        "src": "/products/official/14599-1.webp",
+        "alt": "KL CERRADURA PICOL PIN SEG DOBLE CIL-OVA KL 116 2",
+        "verified": true
+      }
+    ]
+  },
+  "14592": {
+    "gallery": [
+      {
+        "src": "/products/official/14592-1.webp",
+        "alt": "KL CERROJO LLAVE-MARIPOSA NEGRO KL 504 BLACK",
+        "verified": true
+      }
+    ]
+  },
+  "14587": {
+    "gallery": [
+      {
+        "src": "/products/official/14587-1.webp",
+        "alt": "KL MANIJA NOVOS CUADRADA MJ1",
+        "verified": true
+      }
+    ]
+  },
+  "14620": {
+    "gallery": [
+      {
+        "src": "/products/official/14620-1.webp",
+        "alt": "KL CERRADURA PIST 4 PASA BACKSET 50MM SIN CILINDRO SIN ESCUDO",
+        "verified": true
+      }
+    ]
+  },
+  "14797": {
+    "gallery": [
+      {
+        "src": "/products/official/14797-1.webp",
+        "alt": "KL MANIJON COLON CUADRADO M 4",
+        "verified": true
+      }
+    ]
+  },
+  "14591": {
+    "gallery": [
+      {
+        "src": "/products/official/14591-1.webp",
+        "alt": "KL CERROJO LLAVE-LLAVE KL 503",
+        "verified": true
+      }
+    ]
+  },
+  "14597": {
+    "gallery": [
+      {
+        "src": "/products/official/14597-1.webp",
+        "alt": "KL CERRADURA PASADOR CUADRADO 2 AVANCES LLAVE TETRA",
+        "verified": true
+      }
+    ]
+  },
+  "14766": {
+    "gallery": [
+      {
+        "src": "/products/official/14766-1.webp",
+        "alt": "KL MANIJON COLON BLACK",
+        "verified": true
+      }
+    ]
+  },
+  "15961": {
+    "gallery": [
+      {
+        "src": "/products/official/15961-1.webp",
+        "alt": "CERRADURA KL BACKSET 45MM DOS PASADORES LLAVE TETRA C640P 72 2",
+        "verified": true
+      }
+    ]
+  },
+  "15346": {
+    "gallery": [
+      {
+        "src": "/products/official/15346-1.webp",
+        "alt": "KL CILINDRO LL-LL 60MM",
+        "verified": true
+      }
+    ]
+  },
+  "15040": {
+    "gallery": [
+      {
+        "src": "/products/official/15040-1.webp",
+        "alt": "KL CILINDRO RIM PLUS",
+        "verified": true
+      }
+    ]
+  },
+  "15679": {
+    "gallery": [
+      {
+        "src": "/products/official/15679-1.webp",
+        "alt": "FEH CERRADURA MANIJA CUADRADA GAIRA ENTRADA NEGRA",
+        "verified": true
+      }
+    ]
+  },
+  "9295": {
+    "gallery": [
+      {
+        "src": "/products/official/9295-1.webp",
+        "alt": "MANIJA FEH COLONIAL NEGRA 90x8",
+        "verified": true
+      }
+    ]
+  },
+  "12828": {
+    "gallery": [
+      {
+        "src": "/products/official/12828-1.webp",
+        "alt": "CERRADURA FEH PICOLORO 1680 LLAVE-MARIPOSA",
+        "verified": true
+      }
+    ]
+  },
+  "13122": {
+    "gallery": [
+      {
+        "src": "/products/official/13122-1.webp",
+        "alt": "CILINDRO FEH 70 MM LLA-MARI",
+        "verified": true
+      }
+    ]
+  },
+  "0773": {
+    "gallery": [
+      {
+        "src": "/products/official/0773-1.webp",
+        "alt": "CERRADURA VERA MUEBLE 111 NQ",
+        "verified": true
+      }
+    ]
+  },
+  "1538": {
+    "gallery": [
+      {
+        "src": "/products/official/1538-1.webp",
+        "alt": "CERRADURA VERA ALCOBA POMO MADERA DORADA",
+        "verified": true
+      }
+    ]
+  },
+  "6400": {
+    "gallery": [
+      {
+        "src": "/products/official/6400-1.webp",
+        "alt": "TOPE ESTACIONARIO VERA DORADO",
+        "verified": true
+      }
+    ]
+  },
+  "4118": {
+    "gallery": [
+      {
+        "src": "/products/official/4118-1.webp",
+        "alt": "CERRADURA VERA CERROJO SENCILLO",
+        "verified": true
+      }
+    ]
+  },
+  "9233": {
+    "gallery": [
+      {
+        "src": "/products/official/9233-1.webp",
+        "alt": "ESCUDO ALEMAN NEGRO REF 46984 VERA",
+        "verified": true
+      }
+    ]
+  },
+  "9322": {
+    "gallery": [
+      {
+        "src": "/products/official/9322-1.webp",
+        "alt": "TOPE ESTACIONARIO VERA NIQUELADO",
+        "verified": true
+      }
+    ]
+  },
+  "10748": {
+    "gallery": [
+      {
+        "src": "/products/official/10748-1.webp",
+        "alt": "CIERRAPUERTAS VERA 60KILOS",
+        "verified": true
+      }
+    ]
+  },
+  "11549": {
+    "gallery": [
+      {
+        "src": "/products/official/11549-1.webp",
+        "alt": "CERRADURA VERA MANIJA CADIZ ALCOBA ANTICADO",
+        "verified": true
+      }
+    ]
+  },
+  "9659": {
+    "gallery": [
+      {
+        "src": "/products/official/9659-1.webp",
+        "alt": "CERRADURA VERA CERROJO DOBLE",
+        "verified": true
+      }
+    ]
+  },
+  "15933": {
+    "gallery": [
+      {
+        "src": "/products/official/15933-1.webp",
+        "alt": "CANASTA MULTIUSO FEH 4 LADOS 36CM CIERRE LENTO",
+        "verified": true
+      }
+    ]
+  },
+  "15957": {
+    "gallery": [
+      {
+        "src": "/products/official/15957-1.webp",
+        "alt": "CERROJO FEH ORION LLAVE-MARIPOSA NIQUELADA LLAVE DE PUNTO",
+        "verified": true
+      }
+    ]
+  },
+  "15956": {
+    "gallery": [
+      {
+        "src": "/products/official/15956-1.webp",
+        "alt": "CERROJO FEH ORION LLAVE-LLAVE NIQUELADA LLAVE DE PUNTO",
+        "verified": true
+      }
+    ]
+  },
+  "11764": {
+    "gallery": [
+      {
+        "src": "/products/official/11764-1.webp",
+        "alt": "CERRADURA YALE MUEBLE VITRINA 560",
+        "verified": true
+      }
+    ]
+  },
+  "0981": {
+    "gallery": [
+      {
+        "src": "/products/official/0981-1.webp",
+        "alt": "CERRADURA YALE GUANTERA 6700",
+        "verified": true
+      }
+    ]
+  },
+  "12641": {
+    "gallery": [
+      {
+        "src": "/products/official/12641-1.webp",
+        "alt": "YALE BARRA COMBO ANT 1 MAN-CIERRA 150 KILOS",
+        "verified": true
+      }
+    ]
+  },
+  "1997": {
+    "gallery": [
+      {
+        "src": "/products/official/1997-1.webp",
+        "alt": "CERRADURA YALE MUEBLE B440 US26D",
+        "verified": true
+      }
+    ]
+  },
+  "12241": {
+    "gallery": [
+      {
+        "src": "/products/official/12241-1.webp",
+        "alt": "YALE MANIJA EIFFEL US26DM BARRA ANTIPANICO",
+        "verified": true
+      }
+    ]
+  },
+  "11765": {
+    "gallery": [
+      {
+        "src": "/products/official/11765-1.webp",
+        "alt": "CERRADURA YALE MUEBLE 500 OVALADA",
+        "verified": true
+      }
+    ]
+  },
+  "11763": {
+    "gallery": [
+      {
+        "src": "/products/official/11763-1.webp",
+        "alt": "CERRADURA YALE MUEBLE OMBLIGO 510 US26D",
+        "verified": true
+      }
+    ]
+  },
+  "0967": {
+    "gallery": [
+      {
+        "src": "/products/official/0967-1.webp",
+        "alt": "CERRADURA YALE SOBREPONER OF5",
+        "verified": true
+      }
+    ]
+  },
+  "14100": {
+    "gallery": [
+      {
+        "src": "/products/official/14100-1.webp",
+        "alt": "CIERRA PUERTA YALE INSTALA FACIL 45KG",
+        "verified": true
+      }
+    ]
+  },
+  "14010": {
+    "gallery": [
+      {
+        "src": "/products/official/14010-1.webp",
+        "alt": "CERRADURA YALE MUEBLE B420 US26D",
+        "verified": true
+      }
+    ]
+  },
+  "0826": {
+    "gallery": [
+      {
+        "src": "/products/official/0826-1.webp",
+        "alt": "Cerradura A50WS Segurex Bell Wood Gold Alcoba",
+        "verified": true
+      }
+    ]
+  },
+  "0830": {
+    "gallery": [
+      {
+        "src": "/products/official/0830-1.webp",
+        "alt": "Cerradura A50WS Segurex Jupiter Cromo Mate Alcoba",
+        "verified": true
+      }
+    ]
+  },
+  "0813": {
+    "gallery": [
+      {
+        "src": "/products/official/0813-1.webp",
+        "alt": "Cerradura A40S Segurex Jupiter Cromo Baño",
+        "verified": true
+      }
+    ]
+  },
+  "14860": {
+    "gallery": [
+      {
+        "src": "/products/official/14860-1.webp",
+        "alt": "Cerradura B80 Segurex Amazonas Negro Entrada Principal",
+        "verified": true
+      }
+    ]
+  },
+  "11675": {
+    "gallery": [
+      {
+        "src": "/products/official/11675-1.webp",
+        "alt": "Conjunto HC380 Century Orbit Antique Entrada Principal",
+        "verified": true
+      }
+    ]
+  },
+  "14518": {
+    "gallery": [
+      {
+        "src": "/products/official/14518-1.webp",
+        "alt": "CERRADURA YALE MUEBLE 555B LATON BRILLANTE",
+        "verified": true
+      }
+    ]
+  },
+  "0059": {
+    "gallery": [
+      {
+        "src": "/products/official/0059-1.webp",
+        "alt": "STANLEY PISTOLA SILICONA 30W",
+        "verified": true
+      }
+    ]
+  },
+  "1499": {
+    "gallery": [
+      {
+        "src": "/products/official/1499-1.webp",
+        "alt": "EINH KIT COMPRESOR 5 PIEZAS ACCE Y PIEZA",
+        "verified": true
+      }
+    ]
+  },
+  "2448": {
+    "gallery": [
+      {
+        "src": "/products/official/2448-1.webp",
+        "alt": "Disco DEWALT DW44640 de 14 pulgadas, 7/64 pulgadas de espesor y eje de 1 pulgada",
+        "verified": true
+      }
+    ]
+  },
+  "2706": {
+    "gallery": [
+      {
+        "src": "/products/official/2706-1.webp",
+        "alt": "STANLEY JUEGO DESTORNILLADOR 4PZ 3/16-1/4",
+        "verified": true
+      }
+    ]
+  },
+  "2892": {
+    "gallery": [
+      {
+        "src": "/products/official/2892-1.webp",
+        "alt": "CAT TALADRO PERCUTOR 750W 1/2",
+        "verified": true
+      }
+    ]
+  },
+  "3296": {
+    "gallery": [
+      {
+        "src": "/products/official/3296-1.webp",
+        "alt": "CAT BATERIA DE LITIO 18V 4.0 AH",
+        "verified": true
+      }
+    ]
+  },
+  "3610": {
+    "gallery": [
+      {
+        "src": "/products/official/3610-1.webp",
+        "alt": "CUCHILLA SIMPLE PARA CEPILLO N°4-5 2\" STANLEY",
+        "verified": true
+      }
+    ]
+  },
+  "3647": {
+    "gallery": [
+      {
+        "src": "/products/official/3647-1.webp",
+        "alt": "STANLEY ESCUADRA METALICA BRASIL/PROF 12\"",
+        "verified": true
+      }
+    ]
+  },
+  "3649": {
+    "gallery": [
+      {
+        "src": "/products/official/3649-1.webp",
+        "alt": "ESCUADRA METALICA STANLEY 8\"",
+        "verified": true
+      }
+    ]
+  },
+  "3650": {
+    "gallery": [
+      {
+        "src": "/products/official/3650-1.webp",
+        "alt": "ESCUADRA METALICA STANLEY 10\"",
+        "verified": true
+      }
+    ]
+  },
+  "3664": {
+    "gallery": [
+      {
+        "src": "/products/official/3664-1.webp",
+        "alt": "FLEXOMETRO STANLEY 3/4\" 5MT",
+        "verified": true
+      }
+    ]
+  },
+  "8887": {
+    "gallery": [
+      {
+        "src": "/products/official/8887-1.webp",
+        "alt": "STANLEY TIJERA AVIACION RECTA",
+        "verified": true
+      }
+    ]
+  },
+  "11502": {
+    "gallery": [
+      {
+        "src": "/products/official/11502-1.webp",
+        "alt": "FLEXOMETRO STANLEY 8MT AMARILLO",
+        "verified": true
+      }
+    ]
+  },
+  "11841": {
+    "gallery": [
+      {
+        "src": "/products/official/11841-1.webp",
+        "alt": "ATORNILLADOR REVERSIBLE 6",
+        "verified": true
+      }
+    ]
+  },
+  "13654": {
+    "gallery": [
+      {
+        "src": "/products/official/13654-1.webp",
+        "alt": "DESTORNILLADOR STANLEY 1/4\"X6\" PALA",
+        "verified": true
+      }
+    ]
+  },
+  "13738": {
+    "gallery": [
+      {
+        "src": "/products/official/13738-1.webp",
+        "alt": "EINHELL TALADRO 1/2 SIN ESCOBILLAS TE-CD18 LI-I 2 BATERÍAS",
+        "verified": true
+      }
+    ]
+  },
+  "11566": {
+    "gallery": [
+      {
+        "src": "/products/official/11566-1.webp",
+        "alt": "Segueta TRUPER ST-101-D para madera, zanco T y 6 DPP, referencia 18126",
+        "verified": true
+      }
+    ]
+  },
+  "12523": {
+    "gallery": [
+      {
+        "src": "/products/official/12523-1.webp",
+        "alt": "Broca de manita TRUPER para madera de 3/4 de pulgada, referencia 11378",
+        "verified": true
+      }
+    ]
+  },
+  "13662": {
+    "gallery": [
+      {
+        "src": "/products/official/13662-1.webp",
+        "alt": "Mandril TRUPER EXPERT de 3/8 de pulgada para brocasierras pequenas, referencia 18122",
+        "verified": true
+      }
+    ]
+  },
+  "13663": {
+    "gallery": [
+      {
+        "src": "/products/official/13663-1.webp",
+        "alt": "Mandril TRUPER EXPERT de 7/16 de pulgada para brocasierras grandes, referencia 18123",
+        "verified": true
+      }
+    ]
+  },
+  "13712": {
+    "gallery": [
+      {
+        "src": "/products/official/13712-1.webp",
+        "alt": "Broca TRUPER para concreto de 1/4 por 4 pulgadas con punta de carburo, referencia 11203",
+        "verified": true
+      }
+    ]
+  },
+  "13713": {
+    "gallery": [
+      {
+        "src": "/products/official/13713-1.webp",
+        "alt": "Broca TRUPER para concreto de 1/4 por 6 pulgadas con punta de carburo, referencia 11206",
+        "verified": true
+      }
+    ]
+  },
+  "13716": {
+    "gallery": [
+      {
+        "src": "/products/official/13716-1.webp",
+        "alt": "Broca TRUPER SDS Plus de 1/4 por 4 pulgadas, referencia 11263",
+        "verified": true
+      }
+    ]
+  },
+  "13717": {
+    "gallery": [
+      {
+        "src": "/products/official/13717-1.webp",
+        "alt": "Broca TRUPER SDS Plus de 1/4 por 6 pulgadas, referencia 11264",
+        "verified": true
+      }
+    ]
+  },
+  "13722": {
+    "gallery": [
+      {
+        "src": "/products/official/13722-1.webp",
+        "alt": "Disco flap TRUPER de 4-1/2 pulgadas grano 80, referencia 11688",
+        "verified": true
+      }
+    ]
+  },
+  "13932": {
+    "gallery": [
+      {
+        "src": "/products/official/13932-1.webp",
+        "alt": "Calibrador digital TRUPER de 6 pulgadas con estuche, referencia 14388",
+        "verified": true
+      }
+    ]
+  },
+  "14029": {
+    "gallery": [
+      {
+        "src": "/products/official/14029-1.webp",
+        "alt": "Disco sierra TRUPER de 12 pulgadas para madera, 80 dientes y eje de 1 pulgada, referencia 12684",
+        "verified": true
+      }
+    ]
+  },
+  "14031": {
+    "gallery": [
+      {
+        "src": "/products/official/14031-1.webp",
+        "alt": "Broca de manita TRUPER para madera de 7/8 de pulgada, referencia 11381",
+        "verified": true
+      }
+    ]
+  },
+  "14122": {
+    "gallery": [
+      {
+        "src": "/products/official/14122-1.webp",
+        "alt": "Disco sierra TRUPER de 10 pulgadas para madera, 60 dientes y eje de 1 pulgada, referencia 18308",
+        "verified": true
+      }
+    ]
+  },
+  "14127": {
+    "gallery": [
+      {
+        "src": "/products/official/14127-1.webp",
+        "alt": "Flexometro TRUPER FH-8M de 8 metros, referencia 14579",
+        "verified": true
+      }
+    ]
+  },
+  "14128": {
+    "gallery": [
+      {
+        "src": "/products/official/14128-1.webp",
+        "alt": "Disco sierra TRUPER de 10 pulgadas para aluminio, 80 dientes y eje de 5/8, referencia 18310",
+        "verified": true
+      }
+    ]
+  },
+  "14129": {
+    "gallery": [
+      {
+        "src": "/products/official/14129-1.webp",
+        "alt": "Disco sierra TRUPER de 12 pulgadas para aluminio, 80 dientes y eje de 1 pulgada, referencia 12685",
+        "verified": true
+      }
+    ]
+  },
+  "14134": {
+    "gallery": [
+      {
+        "src": "/products/official/14134-1.webp",
+        "alt": "Disco sierra TRUPER de 10 pulgadas para madera, 80 dientes y eje de 1 pulgada, referencia 18309",
+        "verified": true
+      }
+    ]
+  },
+  "14135": {
+    "gallery": [
+      {
+        "src": "/products/official/14135-1.webp",
+        "alt": "Disco sierra TRUPER de 10 pulgadas para aluminio, 100 dientes y eje de 5/8, referencia 18313",
+        "verified": true
+      }
+    ]
+  },
+  "14174": {
+    "gallery": [
+      {
+        "src": "/products/official/14174-1.webp",
+        "alt": "Broca de manita TRUPER para madera de 1/2 pulgada, referencia 11372",
+        "verified": true
+      }
+    ]
+  },
+  "14175": {
+    "gallery": [
+      {
+        "src": "/products/official/14175-1.webp",
+        "alt": "Broca de manita TRUPER para madera de 5/8 de pulgada, referencia 11375",
+        "verified": true
+      }
+    ]
+  },
+  "14178": {
+    "gallery": [
+      {
+        "src": "/products/official/14178-1.webp",
+        "alt": "Formon TRUPER de 3/4 de pulgada, referencia 14627",
+        "verified": true
+      }
+    ]
+  },
+  "14328": {
+    "gallery": [
+      {
+        "src": "/products/official/14328-1.webp",
+        "alt": "Broca TRUPER SDS Plus de 3/8 por 6 pulgadas, referencia 11272",
+        "verified": true
+      }
+    ]
+  },
+  "14507": {
+    "gallery": [
+      {
+        "src": "/products/official/14507-1.webp",
+        "alt": "Caja TRUPER REP-CUT-6 con diez cuchillas de 18 mm y estuche, referencia 16965",
+        "verified": true
+      }
+    ]
+  },
+  "15335": {
+    "gallery": [
+      {
+        "src": "/products/official/15335-1.webp",
+        "alt": "Juego PRETUL de cinco piezas para sierra copa, cuatro copas y un mandril, referencia 23550",
+        "verified": true
+      }
+    ]
+  },
+  "15362": {
+    "gallery": [
+      {
+        "src": "/products/official/15362-1.webp",
+        "alt": "Segueta TRUPER ST-101-BR para madera con zanco T, referencia 18125",
+        "verified": true
+      }
+    ]
+  },
+  "15643": {
+    "gallery": [
+      {
+        "src": "/products/official/15643-1.webp",
+        "alt": "Disco sierra TRUPER de 10 pulgadas para madera, 80 dientes y eje de 5/8, referencia 12683",
+        "verified": true
+      }
+    ]
+  },
+  "15852": {
+    "gallery": [
+      {
+        "src": "/products/official/15852-1.webp",
+        "alt": "Caladora TOTAL UTS206656 de 570 W con velocidad variable, guia lateral y tres hojas",
+        "verified": true
+      }
+    ]
+  },
+  "15964": {
+    "gallery": [
+      {
+        "src": "/products/official/15964-1.webp",
+        "alt": "Disco diamantado continuo TRUPER de 4 pulgadas y eje de 7/8, referencia 11578",
+        "verified": true
+      }
+    ]
+  },
+  "15966": {
+    "gallery": [
+      {
+        "src": "/products/official/15966-1.webp",
+        "alt": "Nivel laser verde TRUPER de 30 metros, referencia 17078",
+        "verified": true
+      }
+    ]
+  },
+  "15993": {
+    "gallery": [
+      {
+        "src": "/products/official/15993-1.webp",
+        "alt": "Arco PRETUL APS-12 de 12 pulgadas para segueta, referencia 20017",
+        "verified": true
+      }
+    ]
+  },
+  "2477": {
+    "gallery": [
+      {
+        "src": "/products/official/2477-1.webp",
+        "alt": "Disco sierra TRUPER 7-1/4 pulgadas para madera, 60 dientes y eje de 5/8, referencia 18324",
+        "verified": true
+      }
+    ]
+  },
+  "2772": {
+    "gallery": [
+      {
+        "src": "/products/official/2772-1.webp",
+        "alt": "Segueta TRUPER ST-119-BO para corte curvo en madera, zanco T y 12 DPP, referencia 18131",
+        "verified": true
+      }
+    ]
+  },
+  "2987": {
+    "gallery": [
+      {
+        "src": "/products/official/2987-1.webp",
+        "alt": "Caja de herramientas TRUPER CHP-20X de 20 pulgadas con broches metalicos, referencia 10380",
+        "verified": true
+      }
+    ]
+  },
+  "3040": {
+    "gallery": [
+      {
+        "src": "/products/official/3040-1.webp",
+        "alt": "Flexometro TOTAL TMT126051 de 5 metros por 19 mm con escala metrica y pulgadas",
+        "verified": true
+      }
+    ]
+  },
+  "3081": {
+    "gallery": [
+      {
+        "src": "/products/official/3081-1.webp",
+        "alt": "Formon TRUPER de 1 pulgada con mango de dos materiales, referencia 14633",
+        "verified": true
+      }
+    ]
+  },
+  "4282": {
+    "gallery": [
+      {
+        "src": "/products/official/4282-1.webp",
+        "alt": "Broca TRUPER SDS Plus de 5/8 por 24 pulgadas, referencia 11276",
+        "verified": true
+      }
+    ]
+  },
+  "5529": {
+    "gallery": [
+      {
+        "src": "/products/official/5529-1.webp",
+        "alt": "Pistola calafateadora reforzada TRUPER PICA-R, referencia 101280",
+        "verified": true
+      }
+    ]
+  },
+  "8547": {
+    "gallery": [
+      {
+        "src": "/products/official/8547-1.webp",
+        "alt": "Segueta TRUPER ST-119-B para madera, zanco T y 12 DPP, referencia 18130",
+        "verified": true
+      }
+    ]
+  },
+  "9346": {
+    "gallery": [
+      {
+        "src": "/products/official/9346-1.webp",
+        "alt": "Pistola calafateadora TRUPER PICA-X, referencia 17558",
+        "verified": true
+      }
+    ]
+  },
+  "9757": {
+    "gallery": [
+      {
+        "src": "/products/official/9757-1.webp",
+        "alt": "Formon TRUPER de 5/8 de pulgada, referencia 14624",
+        "verified": true
+      }
+    ]
+  },
+  "0435": {
+    "gallery": [
+      {
+        "src": "/products/official/0435-1.webp",
+        "alt": "Par de bisagras mini Mobile HBM187-01, parche, cazoleta de 26 mm y acabado niquelado",
+        "verified": true
+      }
+    ]
+  },
+  "11724": {
+    "gallery": [
+      {
+        "src": "/products/official/11724-1.webp",
+        "alt": "Par de bisagras Bonuit HBM554-03 de cierre lento, interior, cazoleta de 35 mm y acabado niquelado",
+        "verified": true
+      }
+    ]
+  },
+  "12962": {
+    "gallery": [
+      {
+        "src": "/products/official/12962-1.webp",
+        "alt": "Par de bisagras Bonuit HBM897-02 semi parche, cierre lento clip-on en acero 201, cazoleta de 35 mm con tapas",
+        "verified": true
+      }
+    ]
+  },
+  "13357": {
+    "gallery": [
+      {
+        "src": "/products/official/13357-1.webp",
+        "alt": "Par de bisagras Mobile HBM188-01 parche, cazoleta de 35 mm y acabado niquelado",
+        "verified": true
+      }
+    ]
+  },
+  "13358": {
+    "gallery": [
+      {
+        "src": "/products/official/13358-1.webp",
+        "alt": "Par de bisagras Mobile HBM188-02 semi parche, cazoleta de 35 mm y acabado niquelado",
+        "verified": true
+      }
+    ]
+  },
+  "13562": {
+    "gallery": [
+      {
+        "src": "/products/official/13562-1.webp",
+        "alt": "Cerradura Mobile HCM202-05 doble pico de loro de 19 por 22 mm con llaves, aro y platina recibidora",
+        "verified": true
+      }
+    ]
+  },
+  "13992": {
+    "gallery": [
+      {
+        "src": "/products/official/13992-1.webp",
+        "alt": "Par de bisagras Bonuit HBM897-01 parche, cierre lento clip-on en acero 201, cazoleta de 35 mm con tapas",
+        "verified": true
+      }
+    ]
+  },
+  "1753": {
+    "gallery": [
+      {
+        "src": "/products/official/1753-1.webp",
+        "alt": "Broca INCOLMA Barracuda HSS de 1/4 pulgadas, referencia 88510613",
+        "verified": true
+      }
+    ]
+  },
+  "1754": {
+    "gallery": [
+      {
+        "src": "/products/official/1754-1.webp",
+        "alt": "Broca INCOLMA Barracuda HSS de 1/8 pulgadas, referencia 88510605",
+        "verified": true
+      }
+    ]
+  },
+  "1758": {
+    "gallery": [
+      {
+        "src": "/products/official/1758-1.webp",
+        "alt": "Broca INCOLMA Barracuda HSS de 13/64 pulgadas, referencia 88510610",
+        "verified": true
+      }
+    ]
+  },
+  "1768": {
+    "gallery": [
+      {
+        "src": "/products/official/1768-1.webp",
+        "alt": "Broca INCOLMA Barracuda HSS de 3/16 pulgadas, referencia 88510609",
+        "verified": true
+      }
+    ]
+  },
+  "1769": {
+    "gallery": [
+      {
+        "src": "/products/official/1769-1.webp",
+        "alt": "Broca INCOLMA Barracuda HSS de 3/32 pulgadas, referencia 88510603",
+        "verified": true
+      }
+    ]
+  },
+  "1770": {
+    "gallery": [
+      {
+        "src": "/products/official/1770-1.webp",
+        "alt": "Broca INCOLMA Barracuda HSS de 3/8 pulgadas, referencia 88510621",
+        "verified": true
+      }
+    ]
+  },
+  "1772": {
+    "gallery": [
+      {
+        "src": "/products/official/1772-1.webp",
+        "alt": "Broca INCOLMA Barracuda HSS de 5/16 pulgadas, referencia 88510617",
+        "verified": true
+      }
+    ]
+  },
+  "1773": {
+    "gallery": [
+      {
+        "src": "/products/official/1773-1.webp",
+        "alt": "Broca INCOLMA Barracuda HSS de 5/32 pulgadas, referencia 88510607",
+        "verified": true
+      }
+    ]
+  },
+  "1777": {
+    "gallery": [
+      {
+        "src": "/products/official/1777-1.webp",
+        "alt": "Broca INCOLMA Barracuda HSS de 7/64 pulgadas, referencia 88510604",
+        "verified": true
+      }
+    ]
+  },
+  "1779": {
+    "gallery": [
+      {
+        "src": "/products/official/1779-1.webp",
+        "alt": "Broca INCOLMA Barracuda HSS de 9/64 pulgadas, referencia 88510606",
+        "verified": true
+      }
+    ]
+  },
+  "12023": {
+    "gallery": [
+      {
+        "src": "/products/official/12023-1.webp",
+        "alt": "Cerrojo nocturno MHA D-108",
+        "verified": true
+      }
+    ]
+  },
+  "13125": {
+    "gallery": [
+      {
+        "src": "/products/official/13125-1.webp",
+        "alt": "Cerradura multipunto MHA 325-R",
+        "verified": true
+      }
+    ]
+  },
+  "15001": {
+    "gallery": [
+      {
+        "src": "/products/official/15001-1.webp",
+        "alt": "Manija MHA Everest en acero inoxidable",
+        "verified": true
+      }
+    ]
+  },
+  "15710": {
+    "gallery": [
+      {
+        "src": "/products/official/15710-1.webp",
+        "alt": "Cerradura digital MHA HC321 PLUS",
+        "verified": true
+      }
+    ]
+  },
+  "15838": {
+    "gallery": [
+      {
+        "src": "/products/official/15838-1.webp",
+        "alt": "Cerrojo digital MHA HC121 PLUS",
+        "verified": true
+      }
+    ]
+  },
+  "15519": {
+    "gallery": [
+      {
+        "src": "/products/official/15519-1.webp",
+        "alt": "Cerradura MHA SL151 ET negra para alcoba",
+        "verified": true
+      }
+    ]
+  },
+  "0432": {
+    "gallery": [
+      {
+        "src": "/products/official/0432-1.webp",
+        "alt": "BISAGRA DOBLE ACCION 3\" NEGRA TAIWAN(PAR)",
+        "verified": true
+      }
+    ]
+  },
+  "7708": {
+    "gallery": [
+      {
+        "src": "/products/official/7708-1.webp",
+        "alt": "CERRADURA CON MANIJA NIQUEL P/MUEBLE",
+        "verified": true
+      }
+    ]
+  },
+  "0696": {
+    "gallery": [
+      {
+        "src": "/products/official/0696-1.webp",
+        "alt": "CERRADURA GUANTERA RABBIT 401.",
+        "verified": true
+      }
+    ]
+  },
+  "7422": {
+    "gallery": [
+      {
+        "src": "/products/official/7422-1.webp",
+        "alt": "CERRADURA OMBLIGO P/CLOSET T",
+        "verified": true
+      }
+    ]
+  },
+  "0774": {
+    "gallery": [
+      {
+        "src": "/products/official/0774-1.webp",
+        "alt": "CERRADURA SAFE MUEBLE 112-30CO",
+        "verified": true
+      }
+    ]
+  },
+  "0775": {
+    "gallery": [
+      {
+        "src": "/products/official/0775-1.webp",
+        "alt": "CERRADURA SAFE MUEBLE 112-30NQ",
+        "verified": true
+      }
+    ]
+  },
+  "0910": {
+    "gallery": [
+      {
+        "src": "/products/official/0910-1.webp",
+        "alt": "CERRADURA VIDRIO SENCILLA (408 )",
+        "verified": true
+      }
+    ]
+  },
+  "10164": {
+    "gallery": [
+      {
+        "src": "/products/official/10164-1.webp",
+        "alt": "COCINA CARRO BOTE LAT 3 NIVE KPTJ009F",
+        "verified": true
+      }
+    ]
+  },
+  "15581": {
+    "gallery": [
+      {
+        "src": "/products/official/15581-1.webp",
+        "alt": "Cazuela QUALITA Q6805 rectangular de acero inoxidable, 100 × 51 mm",
+        "verified": true
+      }
+    ]
+  },
+  "7552": {
+    "gallery": [
+      {
+        "src": "/products/official/7552-1.webp",
+        "alt": "Perfil del riel Ducasse U300 de acero negro de 6 m, 10100660001",
+        "verified": true
+      }
+    ]
+  },
+  "9574": {
+    "gallery": [
+      {
+        "src": "/products/official/9574-1.webp",
+        "alt": "Perfil del riel Ducasse U30/U300 galvanizado de 6 m, 10100659991",
+        "verified": true
+      }
+    ]
+  },
+  "15907": {
+    "gallery": [
+      {
+        "src": "/products/official/15907-1.webp",
+        "alt": "Rueda Ducasse con perno 10100112401",
         "verified": true
       }
     ]

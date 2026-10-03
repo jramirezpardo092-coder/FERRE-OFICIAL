@@ -9,3 +9,5 @@ npm-debug.log*
 .vercel
 .env*
 *.tsbuildinfo
+__pycache__/
+*.py[cod]

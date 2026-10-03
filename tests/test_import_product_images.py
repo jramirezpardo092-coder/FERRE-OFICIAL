@@ -149,6 +149,34 @@ class ProductImageImportTests(unittest.TestCase):
                 self.assertFalse((self.repo / "public").exists())
                 path.write_bytes(before)
 
+    def test_official_replacement_keeps_other_skus_specs_and_lossless_pixels(self):
+        importer.apply_import(self.prepare())
+        existing = json.loads(self.enrichment_path.read_text(encoding="utf8"))
+        existing["5"]["gallery"] = [{"src": "/products/whatsapp/5-1.webp", "alt": "Other SKU", "verified": True}]
+        self.enrichment_path.write_text(json.dumps(existing), encoding="utf8")
+        official_record = {**self.record, "provenance": "download-original", "sourcePage": "https://manufacturer.example/product/exact-model", "evidence": "Exact model and finish"}
+        self.write_manifest([official_record, official_record])
+        plan = importer.prepare_import(self.repo, self.manifest, "official", True)
+        importer.apply_import(plan)
+        merged = json.loads(self.enrichment_path.read_text(encoding="utf8"))
+        self.assertEqual(merged["0005"]["gallery"], [{"src": "/products/official/0005-1.webp", "alt": self.record["alt"], "verified": True}])
+        self.assertEqual(merged["0005"]["specs"], existing["0005"]["specs"])
+        self.assertEqual(merged["5"], existing["5"])
+        self.assertEqual(self.catalog_path.read_bytes(), self.catalog_bytes)
+        with Image.open(self.repo / "public/products/official/0005-1.webp") as output:
+            self.assertEqual(output.convert("RGBA").tobytes(), self.pixels.tobytes())
+        self.assertEqual(plan["audit"]["replacedGalleries"], ["0005"])
+        self.assertEqual(plan["audit"]["images"][0]["sourcePage"], official_record["sourcePage"])
+        self.assertNotIn("sourcePage", self.enrichment_path.read_text(encoding="utf8"))
+        repeat = importer.prepare_import(self.repo, self.manifest, "official", True)
+        self.assertEqual(len(repeat["files"]), 0)
+        self.assertEqual(repeat["merged"], merged)
+
+    def test_collection_cannot_escape_public_image_directory(self):
+        with self.assertRaisesRegex(ValueError, "Collection"):
+            importer.prepare_import(self.repo, self.manifest, "../../outside", True)
+        self.assertFalse((self.repo / "public").exists())
+
 
 if __name__ == "__main__":
     unittest.main()
