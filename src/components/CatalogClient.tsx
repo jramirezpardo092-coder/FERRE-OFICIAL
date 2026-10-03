@@ -1,652 +1,175 @@
 "use client";
 
-import { useState, useMemo, useEffect, useRef, useCallback } from "react";
-import { useSearchParams } from "next/navigation";
-import { Product } from "@/lib/types";
-import { CATEGORIES } from "@/lib/constants";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import type { Product } from "@/lib/types";
+import type { CatalogResponse, CatalogSuggestion } from "@/lib/catalog-types";
+import { getActiveFilterCount, normalizeCatalogFilters, type FiltersValue } from "@/lib/catalog-filters";
 import { cn } from "@/lib/utils";
-import { searchProducts, normalizeSearchText, getSearchableText } from "@/lib/search";
 import ProductCard from "./ProductCard";
 import ProductModal from "./ProductModal";
+import CatalogFilters from "./catalog/CatalogFilters";
+import CatalogFilterDrawer from "./catalog/CatalogFilterDrawer";
+import CatalogSearch from "./catalog/CatalogSearch";
+import CatalogPagination from "./catalog/CatalogPagination";
+import CatalogEmptyState from "./catalog/CatalogEmptyState";
+import ParditoState from "./catalog/ParditoState";
 
-const ITEMS_PER_PAGE = 24;
+const SORT_OPTIONS = ["relevance", "price-asc", "price-desc", "discount", "name"];
 
-/* ── Icons ────────────────────────── */
-const SearchIcon = () => (
-  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-  </svg>
-);
-const FilterIcon = () => (
-  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-  </svg>
-);
-const CloseIcon = () => (
-  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-  </svg>
-);
-const GridIcon = () => (
-  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
-    <path d="M1 2.5A1.5 1.5 0 012.5 1h3A1.5 1.5 0 017 2.5v3A1.5 1.5 0 015.5 7h-3A1.5 1.5 0 011 5.5v-3zm8 0A1.5 1.5 0 0110.5 1h3A1.5 1.5 0 0115 2.5v3A1.5 1.5 0 0113.5 7h-3A1.5 1.5 0 019 5.5v-3zm-8 8A1.5 1.5 0 012.5 9h3A1.5 1.5 0 017 10.5v3A1.5 1.5 0 015.5 15h-3A1.5 1.5 0 011 13.5v-3zm8 0A1.5 1.5 0 0110.5 9h3a1.5 1.5 0 011.5 1.5v3a1.5 1.5 0 01-1.5 1.5h-3A1.5 1.5 0 019 13.5v-3z"/>
-  </svg>
-);
-const ListIcon = () => (
-  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
-    <path fillRule="evenodd" d="M2.5 12a.5.5 0 01.5-.5h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5z"/>
-  </svg>
-);
-const ChevronDown = () => (
-  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-  </svg>
-);
-const ChevronUp = () => (
-  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-  </svg>
-);
-
-interface Props {
-  products: Product[];
-  offersOnly?: boolean;
-}
-
-export default function CatalogClient({ products, offersOnly = false }: Props) {
+/** Only one page of public products reaches the browser. Sales data stay on the server. */
+export default function CatalogClient({ offersOnly = false }: { offersOnly?: boolean }) {
+  const router = useRouter();
   const searchParams = useSearchParams();
+  const paramsKey = searchParams.toString();
   const query = searchParams.get("q") || "";
-  const category = searchParams.get("cat") || "";
-  const brand = searchParams.get("brand") || "";
-  const onlyOfertas = offersOnly || searchParams.get("ofertas") === "true";
-  const requestedSort = searchParams.get("sort") || "relevance";
-  const sortBy = ["relevance", "price-asc", "price-desc", "discount", "name"].includes(requestedSort)
-    ? requestedSort : "relevance";
-  const requestedPage = Number(searchParams.get("page") || 1);
+  const sort = SORT_OPTIONS.includes(searchParams.get("sort") || "") ? searchParams.get("sort")! : "relevance";
+  const filters = useMemo(() => {
+    const params = new URLSearchParams(paramsKey);
+    return normalizeCatalogFilters({
+      category: params.get("cat") || "", brand: params.get("brand") || "",
+      priceMin: params.get("min") ?? params.get("priceMin") ?? "",
+      priceMax: params.get("max") ?? params.get("priceMax") ?? "",
+      availability: params.get("availability") as FiltersValue["availability"],
+      offersOnly: offersOnly || params.get("ofertas") === "true",
+    });
+  }, [paramsKey, offersOnly]);
   const [search, setSearch] = useState(query);
-  const [modalProduct, setModalProduct] = useState<Product | null>(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [brandsExpanded, setBrandsExpanded] = useState(false);
+  const [result, setResult] = useState<{ key: string; data: CatalogResponse } | null>(null);
+  const [error, setError] = useState(false);
+  const [retry, setRetry] = useState(0);
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const [showSuggestions, setShowSuggestions] = useState(false);
-
+  const [modalProduct, setModalProduct] = useState<Product | null>(null);
   const topRef = useRef<HTMLDivElement>(null);
-  const searchInputRef = useRef<HTMLInputElement>(null);
+  const requestKey = (offersOnly ? "offers:" : "catalog:") + paramsKey;
+  const loading = !result || result.key !== requestKey;
+  const data = result?.data;
+  const busy = loading && !error;
 
-  // Native history keeps filters shareable and supports back/forward without reloading products.
-  const updateFilters = useCallback((updates: Record<string, string | null>) => {
+  // Shareable URLs also keep filters aligned with browser Back/Forward.
+  const updateParams = useCallback((updates: Record<string, string | null>) => {
     const params = new URLSearchParams(window.location.search);
-    Object.entries(updates).forEach(([key, value]) => {
+    for (const [key, value] of Object.entries(updates)) {
       if (value === null || !value.trim()) params.delete(key);
       else params.set(key, value);
-    });
-    const queryString = params.toString();
-    const url = `${window.location.pathname}${queryString ? `?${queryString}` : ""}${window.location.hash}`;
-    if (url !== `${window.location.pathname}${window.location.search}${window.location.hash}`) {
-      window.history.pushState(null, "", url);
     }
+    const next = params.toString();
+    const url = window.location.pathname + (next ? "?" + next : "") + window.location.hash;
+    if (url !== window.location.pathname + window.location.search + window.location.hash) window.history.pushState(null, "", url);
   }, []);
-
-  const setCategory = (value: string) => updateFilters({ cat: value, page: null });
-  const setBrand = (value: string) => updateFilters({ brand: value, page: null });
-  const setOnlyOfertas = (value: boolean) => updateFilters({ ofertas: value ? "true" : null, page: null });
-  const setSortBy = (value: string) => updateFilters({ sort: value === "relevance" ? null : value, page: null });
-
+  useEffect(() => { setSearch(query); }, [query]);
   useEffect(() => {
-    setSearch(query);
-  }, [query]);
-
+    const restoreSearch = () => setSearch(new URLSearchParams(window.location.search).get("q") || "");
+    window.addEventListener("popstate", restoreSearch);
+    return () => window.removeEventListener("popstate", restoreSearch);
+  }, []);
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const closeOnDesktop = () => { if (desktop.matches) setDrawerOpen(false); };
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => desktop.removeEventListener("change", closeOnDesktop);
+  }, []);
   useEffect(() => {
     if (search === query) return;
-    const timer = setTimeout(() => updateFilters({ q: search, page: null }), 300);
+    const timer = setTimeout(() => updateParams({ q: search.slice(0, 120), page: null }), 300);
     return () => clearTimeout(timer);
-  }, [search, query, updateFilters]);
+  }, [search, query, updateParams]);
 
-  const brands = useMemo(() => Array.from(new Set(products.map(p => p.brand).filter(Boolean)))
-    .sort((a, b) => a.localeCompare(b, "es")), [products]);
-  const searchResult = useMemo(() => searchProducts(products, query), [products, query]);
-  const isFuzzy = searchResult.isFuzzy;
-
-  const filtered = useMemo(() => {
-    let result = [...searchResult.results];
-
-    if (category) {
-      result = result.filter((p) => p.cat === category);
-    }
-
-    if (brand) {
-      result = result.filter((p) => p.brand === brand);
-    }
-
-    if (onlyOfertas) {
-      result = result.filter((p) => p.disc && p.disc > 0);
-    }
-
-    // Only re-sort if user explicitly chose a sort option or no search
-    if (sortBy !== "relevance" || !query.trim()) {
-      switch (sortBy) {
-        case "price-asc":
-          result.sort((a, b) => {
-            const aKnown = a.priceVerified === true && a.precio > 0;
-            const bKnown = b.priceVerified === true && b.precio > 0;
-            return Number(bKnown) - Number(aKnown) || a.precio - b.precio;
-          });
-          break;
-        case "price-desc":
-          result.sort((a, b) => {
-            const aKnown = a.priceVerified === true && a.precio > 0;
-            const bKnown = b.priceVerified === true && b.precio > 0;
-            return Number(bKnown) - Number(aKnown) || b.precio - a.precio;
-          });
-          break;
-        case "discount":
-          result.sort((a, b) => (b.disc || 0) - (a.disc || 0));
-          break;
-        case "name":
-          result.sort((a, b) => a.nombre.localeCompare(b.nombre));
-          break;
-        default:
-          result.sort((a, b) => Number(b.stock > 0) - Number(a.stock > 0)
-            || a.nombre.localeCompare(b.nombre, "es"));
+  useEffect(() => {
+    const controller = new AbortController();
+    let current = true;
+    setError(false);
+    const params = new URLSearchParams(paramsKey);
+    if (offersOnly) params.set("ofertas", "true");
+    async function load() {
+      try {
+        const response = await fetch("/api/catalogo?" + params, { signal: controller.signal, cache: "no-store" });
+        if (!response.ok) throw new Error("Catalog unavailable");
+        const body = await response.json() as CatalogResponse;
+        if (current) setResult({ key: requestKey, data: body });
+      } catch {
+        if (current && !controller.signal.aborted) setError(true);
       }
     }
-    // When search is active + relevance sort, keep search engine order
+    void load();
+    // Slow requests cannot replace the results of a newer search.
+    return () => { current = false; controller.abort(); };
+  }, [paramsKey, offersOnly, requestKey, retry]);
 
-    return result;
-  }, [searchResult, query, category, brand, onlyOfertas, sortBy]);
-
-  // Search suggestions (tokenized)
-  const suggestions = useMemo(() => {
-    if (search.length < 2) return [];
-    const tokens = normalizeSearchText(search).split(/\s+/).filter(Boolean);
-    const cats = CATEGORIES.filter(c => {
-      const name = normalizeSearchText(c.name);
-      return tokens.every(t => name.includes(t));
-    }).map(c => ({ type: "cat" as const, label: c.name, icon: c.icon }));
-    const brs = brands.filter(b => {
-      const name = normalizeSearchText(b);
-      return tokens.every(t => name.includes(t));
-    }).map(b => ({ type: "brand" as const, label: b, icon: "🏷️" }));
-    const prods = products
-      .filter(p => {
-        const searchable = getSearchableText(p);
-        return tokens.every(t => searchable.includes(t));
-      })
-      .slice(0, 5)
-      .map(p => ({ type: "product" as const, label: p.nombre, icon: "📦", id: p.id }));
-    return [...cats, ...brs, ...prods].slice(0, 8);
-  }, [search, products, brands]);
-
-  const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
-  const page = Math.min(Math.max(1, Number.isSafeInteger(requestedPage) ? requestedPage : 1), Math.max(1, totalPages));
-  const paged = filtered.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
-
-  const start = (page - 1) * ITEMS_PER_PAGE + 1;
-  const end = Math.min(page * ITEMS_PER_PAGE, filtered.length);
-
-  const activeFilters: { key: string; label: string }[] = [];
-  if (query.trim()) activeFilters.push({ key: "search", label: `Búsqueda: ${query}` });
-  if (category) activeFilters.push({ key: "category", label: category });
-  if (brand) activeFilters.push({ key: "brand", label: brand });
-  if (onlyOfertas && !offersOnly) activeFilters.push({ key: "ofertas", label: "Solo ofertas" });
-
-  const removeFilter = (key: string) => {
-    if (key === "search") { setSearch(""); updateFilters({ q: null, page: null }); }
-    if (key === "category") setCategory("");
-    if (key === "brand") setBrand("");
-    if (key === "ofertas") setOnlyOfertas(false);
-  };
-
+  const changeFilters = (next: FiltersValue) => updateParams({
+    cat: next.category, brand: next.brand, min: next.priceMin, max: next.priceMax,
+    priceMin: null, priceMax: null, availability: next.availability === "all" ? null : next.availability,
+    ofertas: !offersOnly && next.offersOnly ? "true" : null, page: null,
+  });
   const clearAll = () => {
     setSearch("");
-    updateFilters({ q: null, cat: null, brand: null, ofertas: null, sort: null, page: null });
-    setShowSuggestions(false);
+    updateParams({ q: null, cat: null, brand: null, min: null, max: null, priceMin: null, priceMax: null, availability: null, ofertas: null, page: null, sort: null });
   };
+  const chooseSuggestion = (suggestion: CatalogSuggestion) => {
+    if (suggestion.type === "product") router.push("/producto/" + encodeURIComponent(suggestion.value));
+    else {
+      setSearch("");
+      updateParams({ q: null, [suggestion.type === "category" ? "cat" : "brand"]: suggestion.value, page: null });
+    }
+  };
+  const activeCount = getActiveFilterCount({ ...filters, offersOnly: !offersOnly && filters.offersOnly }) + Number(!!query.trim());
+  const filterProps = { value: filters, onChange: changeFilters, onClear: clearAll,
+    categories: data?.categories || [], brands: data?.brands || [], priceBounds: data?.priceBounds, offersLocked: offersOnly };
+  const chips = [
+    query && { key: "q", label: "Búsqueda: " + query },
+    filters.category && { key: "cat", label: filters.category },
+    filters.brand && { key: "brand", label: filters.brand },
+    filters.availability !== "all" && { key: "availability", label: filters.availability === "in-stock" ? "En stock" : "Consultar disponibilidad" },
+    (filters.priceMin || filters.priceMax) && { key: "price", label: "Precio: " + (filters.priceMin || "0") + " – " + (filters.priceMax || "sin máximo") + " COP" },
+    !offersOnly && filters.offersOnly && { key: "ofertas", label: "Solo ofertas" },
+  ].filter((chip): chip is { key: string; label: string } => !!chip);
 
-  const goToPage = useCallback((p: number) => {
-    updateFilters({ page: p === 1 ? null : String(p) });
-    topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, [updateFilters]);
-
-  // Counts use the same exact or approximate search results as the product grid.
-  const catCounts = useMemo(() => {
-    const counts: Record<string, number> = {};
-    const baseFiltered = searchResult.results.filter(p => {
-      if (brand && p.brand !== brand) return false;
-      if (onlyOfertas && !(p.disc && p.disc > 0)) return false;
-      return true;
-    });
-    CATEGORIES.forEach(cat => {
-      counts[cat.name] = baseFiltered.filter(p => p.cat === cat.name).length;
-    });
-    counts["__all"] = baseFiltered.length;
-    return counts;
-  }, [searchResult, brand, onlyOfertas]);
-
-  const brandCounts = useMemo(() => {
-    const counts: Record<string, number> = {};
-    const baseFiltered = searchResult.results.filter(p => {
-      if (category && p.cat !== category) return false;
-      if (onlyOfertas && !(p.disc && p.disc > 0)) return false;
-      return true;
-    });
-    brands.forEach(b => {
-      counts[b] = baseFiltered.filter(p => p.brand === b).length;
-    });
-    return counts;
-  }, [searchResult, brands, category, onlyOfertas]);
-
-  const offerCount = searchResult.results.filter(p => (!category || p.cat === category)
-    && (!brand || p.brand === brand) && p.disc && p.disc > 0).length;
-
-  return (
-    <div className="max-w-[1400px] mx-auto px-4 py-6" ref={topRef}>
-      {/* ── Search bar ─────────────────────────── */}
-      <div className="mb-6 relative">
-        <div className="relative max-w-3xl mx-auto"
-          onBlurCapture={(event) => {
-            if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setShowSuggestions(false);
-          }}
-          onKeyDown={(event) => {
-            if (event.key === "Escape") setShowSuggestions(false);
-          }}>
-          <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
-            <SearchIcon />
-          </div>
-          <input
-            ref={searchInputRef}
-            type="search"
-            aria-label="Buscar productos"
-            value={search}
-            onChange={(e) => { setSearch(e.target.value); setShowSuggestions(true); }}
-            onFocus={() => setShowSuggestions(true)}
-            placeholder="Buscar por nombre, referencia, marca o categoría..."
-            className="w-full pl-12 pr-12 py-4 bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 rounded-2xl text-sm focus:ring-4 focus:ring-brand-red/10 focus:border-brand-red outline-none transition-all duration-300 shadow-sm hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-md dark:text-gray-100"
-          />
-          {search && (
-            <button
-              onClick={() => { setSearch(""); updateFilters({ q: null, page: null }); searchInputRef.current?.focus(); }}
-              aria-label="Limpiar búsqueda"
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1 rounded-full hover:bg-gray-100 transition-colors"
-            >
-              <CloseIcon />
-            </button>
-          )}
-          {/* Suggestions dropdown */}
-          {showSuggestions && suggestions.length > 0 && (
-            <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-2xl shadow-black/10 z-50 overflow-hidden py-1">
-              {suggestions.map((s, i) => (
-                <button
-                  key={i}
-                  className="w-full text-left px-4 py-3 text-sm hover:bg-red-50/50 flex items-center gap-3 transition-colors duration-150"
-                  onMouseDown={(event) => event.preventDefault()}
-                  onClick={() => {
-                    if (s.type === "cat") { setSearch(""); updateFilters({ cat: s.label, q: null, page: null }); }
-                    else if (s.type === "brand") { setSearch(""); updateFilters({ brand: s.label, q: null, page: null }); }
-                    else { setSearch(s.label); }
-                    setShowSuggestions(false);
-                  }}
-                >
-                  <span className="text-base w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center shrink-0">{s.icon}</span>
-                  <span className="flex-1 truncate font-medium">{s.label}</span>
-                  <span className="text-[10px] uppercase text-gray-400 font-semibold tracking-wider bg-gray-50 px-2 py-0.5 rounded-md">
-                    {s.type === "cat" ? "Categoría" : s.type === "brand" ? "Marca" : "Producto"}
-                  </span>
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* ── Category quick-filter pills (horizontal scroll) ─── */}
-      <div className="mb-6 -mx-4 px-4 overflow-x-auto scrollbar-hide">
-        <div className="flex gap-2 pb-1">
-          <button
-            onClick={() => setCategory("")}
-            className={cn(
-              "shrink-0 px-5 py-2.5 rounded-xl text-xs font-semibold transition-all duration-200 border",
-              !category
-                ? "bg-brand-red text-white border-brand-red shadow-md shadow-red-900/15"
-                : "bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-brand-red/50 hover:text-brand-red hover:bg-red-50/50"
-            )}
-          >
-            Todas
-          </button>
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat.slug}
-              onClick={() => setCategory(cat.name === category ? "" : cat.name)}
-              className={cn(
-                "shrink-0 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all duration-200 border flex items-center gap-1.5",
-                category === cat.name
-                  ? "bg-brand-red text-white border-brand-red shadow-md shadow-red-900/15"
-                  : "bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-brand-red/50 hover:text-brand-red hover:bg-red-50/50"
-              )}
-            >
-              <span>{cat.icon}</span>
-              {cat.name}
-              <span className={cn("text-[10px] tabular-nums", category === cat.name ? "text-red-200" : "text-gray-400")}>
-                {catCounts[cat.name] || 0}
-              </span>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* ── Active filter chips ─────────────────── */}
-      {activeFilters.length > 0 && (
-        <div className="flex flex-wrap items-center gap-2 mb-4">
-          <span className="text-xs text-gray-400 font-medium">Filtros activos:</span>
-          {activeFilters.map((f) => (
-            <button
-              key={f.key}
-              onClick={() => removeFilter(f.key)}
-              className="inline-flex items-center gap-1.5 px-3 py-1 bg-red-50 text-brand-red text-xs font-semibold rounded-full border border-red-200 hover:bg-red-100 transition-colors group"
-            >
-              {f.label}
-              <span className="w-3.5 h-3.5 rounded-full bg-brand-red/10 group-hover:bg-brand-red/20 flex items-center justify-center">
-                <svg className="w-2 h-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </span>
-            </button>
-          ))}
-          <button onClick={clearAll} className="text-xs text-red-500 hover:text-red-700 font-medium ml-1 hover:underline">
-            Limpiar todo
-          </button>
-        </div>
-      )}
-
-      <div className="flex gap-6">
-        {/* ── Mobile filter toggle ─────────────── */}
-        <button
-          onClick={() => setSidebarOpen(true)}
-          className="lg:hidden fixed bottom-20 left-4 z-50 bg-brand-red text-white font-bold px-4 py-2.5 rounded-full shadow-lg flex items-center gap-2 text-sm hover:bg-brand-red-dark transition-colors"
-        >
-          <FilterIcon />
-          Filtros
-          {activeFilters.length > 0 && (
-            <span className="bg-white text-brand-red text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">
-              {activeFilters.length}
-            </span>
-          )}
-        </button>
-
-        {/* ── Sidebar ──────────────────────────── */}
-        <aside onClick={(event) => { if (event.target === event.currentTarget) setSidebarOpen(false); }} className={cn(
-          "shrink-0 lg:w-64",
-          "max-lg:fixed max-lg:inset-0 max-lg:z-[80] max-lg:bg-black/50 max-lg:backdrop-blur-sm",
-          !sidebarOpen && "max-lg:hidden"
-        )}>
-          <div className={cn(
-            "bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-5 space-y-4 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto sidebar-scroll shadow-sm",
-            "max-lg:absolute max-lg:left-0 max-lg:top-0 max-lg:h-full max-lg:w-80 max-lg:max-w-full max-lg:overflow-y-auto max-lg:rounded-none max-lg:animate-slide-in-right"
-          )}>
-            {/* Mobile close */}
-            <div className="lg:hidden flex items-center justify-between mb-3 pb-3 border-b border-gray-100">
-              <h3 className="font-bold text-lg">Filtros</h3>
-              <button onClick={() => setSidebarOpen(false)} aria-label="Cerrar filtros" className="p-2 hover:bg-gray-100 rounded-xl transition-colors">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-
-            {/* Desktop sidebar header */}
-            <div className="hidden lg:flex items-center gap-2 pb-3 border-b border-gray-100 mb-1">
-              <FilterIcon />
-              <h3 className="font-bold text-sm text-gray-700 dark:text-gray-200">Filtros</h3>
-              {activeFilters.length > 0 && (
-                <span className="ml-auto text-[10px] font-bold bg-brand-red text-white w-5 h-5 rounded-full flex items-center justify-center">
-                  {activeFilters.length}
-                </span>
-              )}
-            </div>
-
-            {/* Categories */}
-            <div>
-              <h4 className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Categoría</h4>
-              <div className="space-y-0.5">
-                <button
-                  onClick={() => setCategory("")}
-                  className={cn("w-full text-left text-sm px-3 py-2 rounded-lg transition-colors",
-                    !category ? "bg-red-50 text-brand-red font-semibold border border-red-200" : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800")}
-                >
-                  Todas ({catCounts["__all"] ?? 0})
-                </button>
-                {CATEGORIES.map((cat) => {
-                  const count = catCounts[cat.name] || 0;
-                  return (
-                    <button
-                      key={cat.slug}
-                      onClick={() => setCategory(cat.name === category ? "" : cat.name)}
-                      className={cn("w-full text-left text-sm px-3 py-2 rounded-lg transition-colors flex items-center justify-between",
-                        category === cat.name ? "bg-red-50 text-brand-red font-semibold border border-red-200" : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800")}
-                    >
-                      <span className="flex items-center gap-2">
-                        <span className="text-sm">{cat.icon}</span>
-                        <span className="truncate">{cat.name}</span>
-                      </span>
-                      <span className={cn("text-[11px] font-medium tabular-nums", count === 0 ? "text-gray-300" : "text-gray-400")}>{count}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Brands — collapsible */}
-            <div>
-              <button
-                onClick={() => setBrandsExpanded(!brandsExpanded)}
-                className="w-full flex items-center justify-between text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2"
-              >
-                Marca
-                {brandsExpanded ? <ChevronUp /> : <ChevronDown />}
-              </button>
-              <div className="space-y-0.5">
-                <button
-                  onClick={() => setBrand("")}
-                  className={cn("w-full text-left text-sm px-3 py-2 rounded-lg transition-colors",
-                    !brand ? "bg-red-50 text-brand-red font-semibold border border-red-200" : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800")}
-                >
-                  Todas
-                </button>
-                {(brandsExpanded ? brands : brands.slice(0, 4)).map((b) => {
-                  const count = brandCounts[b] || 0;
-                  return (
-                    <button
-                      key={b}
-                      onClick={() => setBrand(b === brand ? "" : b)}
-                      className={cn("w-full text-left text-sm px-3 py-2 rounded-lg transition-colors flex items-center justify-between",
-                        brand === b ? "bg-red-50 text-brand-red font-semibold border border-red-200" : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800")}
-                    >
-                      <span className="truncate">{b}</span>
-                      <span className={cn("text-[11px] font-medium tabular-nums", count === 0 ? "text-gray-300" : "text-gray-400")}>{count}</span>
-                    </button>
-                  );
-                })}
-              </div>
-              {!brandsExpanded && brands.length > 4 && (
-                <button onClick={() => setBrandsExpanded(true)} className="w-full text-xs text-brand-red font-medium mt-1 hover:underline">
-                  Ver todas las marcas ({brands.length})
-                </button>
-              )}
-            </div>
-
-            {/* Toggles */}
-            {!offersOnly && <div className="space-y-1 pt-3 border-t border-gray-100">
-              <h4 className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Filtros rápidos</h4>
-              <label className="flex items-center gap-2.5 text-sm cursor-pointer py-2 hover:bg-gray-50 rounded-xl px-3 -mx-1 transition-colors">
-                <input type="checkbox" checked={onlyOfertas} onChange={(e) => setOnlyOfertas(e.target.checked)}
-                       className="w-4 h-4 rounded text-brand-red focus:ring-brand-red border-gray-300" />
-                <span className="flex-1 font-medium text-gray-600">Solo ofertas</span>
-                <span className="text-[10px] bg-red-50 text-red-500 px-2 py-0.5 rounded-full font-semibold border border-red-100">
-                  {offerCount}
-                </span>
-              </label>
-            </div>}
-
-            {activeFilters.length > 0 && (
-              <button onClick={clearAll} className="w-full text-xs text-white bg-gray-900 hover:bg-gray-800 font-semibold py-2.5 rounded-xl mt-2 transition-all duration-200 shadow-sm hover:shadow-md">
-                Limpiar todos los filtros
-              </button>
-            )}
-          </div>
-        </aside>
-
-        {/* ── Main content ─────────────────────── */}
-        <main className="flex-1 min-w-0">
-          {/* Toolbar: results + sort + view toggle */}
-          <div className="flex flex-wrap items-center justify-between gap-3 mb-5 bg-white dark:bg-gray-900 rounded-2xl px-5 py-3.5 border border-gray-100 dark:border-gray-800 shadow-sm">
-            <div className="text-sm text-gray-500 dark:text-gray-400">
-              {filtered.length > 0 ? (
-                <>
-                  Mostrando <span className="font-bold text-gray-900 dark:text-gray-100">{start}–{end}</span> de{" "}
-                  <span className="font-bold text-gray-900 dark:text-gray-100">{filtered.length.toLocaleString("es-CO")}</span> productos
-                  {isFuzzy && query.trim() && (
-                    <span className="ml-2 text-xs bg-amber-50 text-amber-700 px-2.5 py-0.5 rounded-lg font-medium border border-amber-200">
-                      Resultados aproximados
-                    </span>
-                  )}
-                </>
-              ) : (
-                <span className="text-gray-400">Sin resultados</span>
-              )}
-            </div>
-            <div className="flex items-center gap-3">
-              {/* View toggle */}
-              <div className="hidden sm:flex items-center border border-gray-200 rounded-xl overflow-hidden">
-                <button
-                  onClick={() => setViewMode("grid")}
-                  className={cn("p-2.5 transition-all duration-200", viewMode === "grid" ? "bg-brand-red text-white shadow-inner" : "bg-white text-gray-400 hover:text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800")}
-                  title="Vista cuadrícula"
-                >
-                  <GridIcon />
-                </button>
-                <button
-                  onClick={() => setViewMode("list")}
-                  className={cn("p-2.5 transition-all duration-200", viewMode === "list" ? "bg-brand-red text-white shadow-inner" : "bg-white text-gray-400 hover:text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800")}
-                  title="Vista lista"
-                >
-                  <ListIcon />
-                </button>
-              </div>
-              {/* Sort */}
-              <select
-                aria-label="Ordenar productos"
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="text-sm border border-gray-200 dark:border-gray-700 rounded-xl px-3.5 py-2.5 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-4 focus:ring-brand-red/10 focus:border-brand-red outline-none font-medium transition-all duration-200 cursor-pointer hover:border-gray-300"
-              >
-                <option value="relevance">Relevancia</option>
-                <option value="price-asc">Menor precio</option>
-                <option value="price-desc">Mayor precio</option>
-                <option value="discount">Mayor descuento</option>
-                <option value="name">A–Z</option>
-              </select>
-            </div>
-          </div>
-
-          {/* Products grid */}
-          {paged.length > 0 ? (
-            <div className={cn(
-              viewMode === "grid"
-                ? "grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4"
-                : "flex flex-col gap-3"
-            )}>
-              {paged.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  onOpenModal={setModalProduct}
-                  viewMode={viewMode}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-24 bg-gradient-to-b from-gray-50 to-white rounded-3xl border border-gray-100">
-              <div className="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-3xl flex items-center justify-center">
-                <svg className="w-12 h-12 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
-              <p className="font-bold text-gray-700 text-lg">No se encontraron productos</p>
-              <p className="text-sm mt-2 text-gray-400 max-w-sm mx-auto">Intenta ajustar los filtros o buscar con otros términos</p>
-              <button onClick={clearAll} className="mt-6 px-6 py-2.5 bg-brand-red text-white font-semibold text-sm rounded-xl hover:bg-brand-red-dark transition-all duration-200 shadow-sm shadow-red-900/10 hover:shadow-md">
-                Limpiar filtros
-              </button>
-            </div>
-          )}
-
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <div className="flex flex-col items-center gap-4 mt-10">
-              <div className="grid grid-cols-2 sm:flex w-full sm:w-auto items-center gap-2">
-                <button
-                  onClick={() => goToPage(Math.max(1, page - 1))}
-                  disabled={page === 1}
-                  className="px-5 py-2.5 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-sm font-semibold disabled:opacity-30 hover:bg-gray-50 hover:border-gray-300 hover:shadow-sm transition-all duration-200"
-                >
-                  ← Anterior
-                </button>
-                <div className="flex flex-wrap items-center justify-center gap-1.5 col-span-2 row-start-1 sm:col-span-1 sm:row-auto">
-                  {page > 3 && totalPages > 5 && (
-                    <>
-                      <button onClick={() => goToPage(1)} className="w-10 h-10 rounded-xl text-sm font-semibold bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200">1</button>
-                      {page > 4 && <span className="px-1 text-gray-300 text-xs">...</span>}
-                    </>
-                  )}
-                  {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-                    let pageNum: number;
-                    if (totalPages <= 5) {
-                      pageNum = i + 1;
-                    } else if (page <= 3) {
-                      pageNum = i + 1;
-                    } else if (page >= totalPages - 2) {
-                      pageNum = totalPages - 4 + i;
-                    } else {
-                      pageNum = page - 2 + i;
-                    }
-                    return (
-                      <button
-                        key={pageNum}
-                        onClick={() => goToPage(pageNum)}
-                        className={cn(
-                          "w-10 h-10 rounded-xl text-sm font-semibold transition-all duration-200",
-                          page === pageNum
-                            ? "bg-brand-red text-white shadow-lg shadow-red-900/25 scale-105"
-                            : "bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 hover:border-gray-300"
-                        )}
-                      >
-                        {pageNum}
-                      </button>
-                    );
-                  })}
-                  {page < totalPages - 2 && totalPages > 5 && (
-                    <>
-                      {page < totalPages - 3 && <span className="px-1 text-gray-300 text-xs">...</span>}
-                      <button onClick={() => goToPage(totalPages)} className="w-10 h-10 rounded-xl text-sm font-semibold bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200">{totalPages}</button>
-                    </>
-                  )}
-                </div>
-                <button
-                  onClick={() => goToPage(Math.min(totalPages, page + 1))}
-                  disabled={page === totalPages}
-                  className="px-5 py-2.5 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-sm font-semibold disabled:opacity-30 hover:bg-gray-50 hover:border-gray-300 hover:shadow-sm transition-all duration-200"
-                >
-                  Siguiente →
-                </button>
-              </div>
-              <p className="text-xs text-gray-400 font-medium">
-                Página {page} de {totalPages}
-              </p>
-            </div>
-          )}
-        </main>
-      </div>
-
-      <ProductModal product={modalProduct} onClose={() => setModalProduct(null)} />
+  return <div ref={topRef} className="mx-auto max-w-[1400px] scroll-mt-24 px-4 py-6 md:py-8">
+    <div className="mx-auto mb-6 max-w-3xl">
+      <CatalogSearch value={search} onChange={setSearch} suggestions={!loading && query === search ? data?.suggestions || [] : []} onSelect={chooseSuggestion} loading={busy || search !== query} />
+      <p className="mt-2 px-1 text-xs text-gray-500 dark:text-gray-400">Busca por nombre, SKU o referencia. Todos incluye productos agotados para consultar.</p>
     </div>
-  );
+    {chips.length > 0 && <div className="mb-5 flex flex-wrap items-center gap-2" aria-label="Filtros activos">
+      {chips.map(chip => <button key={chip.key} type="button" onClick={() => {
+        if (chip.key === "q") setSearch("");
+        updateParams(chip.key === "price" ? { min: null, max: null, priceMin: null, priceMax: null, page: null } : { [chip.key]: null, page: null });
+      }} className="inline-flex max-w-full items-center gap-2 rounded-full border border-red-200 bg-red-50 px-3 py-2 text-xs font-semibold text-brand-red dark:border-red-900 dark:bg-red-900/20 dark:text-red-300" aria-label={"Quitar filtro " + chip.label}>
+        <span className="truncate">{chip.label}</span><span aria-hidden="true">✕</span>
+      </button>)}
+      <button type="button" onClick={clearAll} className="px-2 py-2 text-xs font-semibold text-brand-red hover:underline dark:text-red-300">Limpiar todo</button>
+    </div>}
+    <div className="flex items-start gap-6">
+      <aside className="sticky top-24 hidden max-h-[calc(100vh-7rem)] w-64 shrink-0 overflow-y-auto lg:block"><CatalogFilters {...filterProps} idPrefix="desktop-catalog" /></aside>
+      <section className="min-w-0 flex-1" aria-label="Productos del catálogo" aria-busy={busy}>
+        <div className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
+          <div className="text-sm text-gray-500 dark:text-gray-400" role="status" aria-live="polite">
+            {error ? "Catálogo no disponible" : loading ? "Buscando productos…" : data && data.total > 0 ? <><strong className="text-gray-900 dark:text-white">{(data.page - 1) * data.pageSize + 1}–{Math.min(data.page * data.pageSize, data.total)}</strong> de <strong className="text-gray-900 dark:text-white">{data.total.toLocaleString("es-CO")}</strong> productos</> : "Sin resultados"}
+            {!loading && data?.isFuzzy && <span className="mt-1 block text-xs text-amber-700 dark:text-amber-400">Coincidencias aproximadas: verifica la referencia.</span>}
+          </div>
+          <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto">
+            <button type="button" onClick={() => setDrawerOpen(true)} aria-haspopup="dialog" aria-expanded={drawerOpen} className="rounded-xl border border-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-white lg:hidden">Filtros{activeCount > 0 ? " (" + activeCount + ")" : ""}</button>
+            <select aria-label="Ordenar productos" value={sort} onChange={event => updateParams({ sort: event.target.value === "relevance" ? null : event.target.value, page: null })} className="min-w-0 flex-1 rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white sm:flex-none">
+              <option value="relevance">Relevancia</option><option value="price-asc">Menor precio</option><option value="price-desc">Mayor precio</option><option value="discount">Mayor descuento</option><option value="name">A–Z</option>
+            </select>
+            <div className="hidden gap-1 sm:flex" aria-label="Vista de productos">
+              {(["grid", "list"] as const).map(mode => <button type="button" key={mode} onClick={() => setViewMode(mode)} aria-pressed={viewMode === mode} aria-label={mode === "grid" ? "Vista cuadrícula" : "Vista lista"} className={cn("rounded-lg px-3 py-2 text-sm", viewMode === mode ? "bg-brand-red text-white" : "text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800")}>{mode === "grid" ? "▦" : "☰"}</button>)}
+            </div>
+          </div>
+        </div>
+        {!loading && data?.filtersValid === false && <p role="status" className="mb-4 rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-300">Revisa los filtros. Un rango de precio inválido no se aplica; puedes corregirlo en Filtros.</p>}
+        {error ? <ParditoState mode="error" onRetry={() => setRetry(value => value + 1)} /> : loading ? <ParditoState /> : data?.products.length ? <>
+          <div className={cn(viewMode === "grid" ? "grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4 md:gap-4" : "flex flex-col gap-3")}>
+            {data.products.map(product => <ProductCard key={product.id} product={product} onOpenModal={setModalProduct} viewMode={viewMode} />)}
+          </div>
+          <CatalogPagination page={data.page} totalPages={data.totalPages} onPageChange={page => {
+            updateParams({ page: page === 1 ? null : String(page) });
+            topRef.current?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+          }} />
+        </> : <CatalogEmptyState query={query} onClear={clearAll} onCategory={category => { clearAll(); updateParams({ cat: category }); }} categories={data?.categories.map(category => category.name) || []} />}
+      </section>
+    </div>
+    <CatalogFilterDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)}><CatalogFilters {...filterProps} idPrefix="mobile-catalog" /></CatalogFilterDrawer>
+    <ProductModal product={modalProduct} onClose={() => setModalProduct(null)} />
+  </div>;
 }

@@ -16,6 +16,7 @@ import shutil
 import unicodedata
 import warnings
 from collections import Counter
+from datetime import date
 from pathlib import Path
 
 import openpyxl
@@ -147,6 +148,31 @@ def read_sales(path):
         workbook.close()
 
 
+def parse_sales_range_label(label):
+    """Read the period printed by Siigo, without relying on caller flags."""
+    months = {
+        "ENERO": 1, "FEBRERO": 2, "MARZO": 3, "ABRIL": 4,
+        "MAYO": 5, "JUNIO": 6, "JULIO": 7, "AGOSTO": 8,
+        "SEPTIEMBRE": 9, "OCTUBRE": 10, "NOVIEMBRE": 11, "DICIEMBRE": 12,
+    }
+    match = re.fullmatch(r"DE\s+([A-Z]+)\s*(\d{1,2})\s+(\d{4})\s+A\s+([A-Z]+)\s*(\d{1,2})\s+(\d{4})", normalized(label))
+    if not match or match[1] not in months or match[4] not in months:
+        raise ValueError(f"Cannot verify the sales period printed in the workbook: {label!r}")
+    start = date(int(match[3]), months[match[1]], int(match[2]))
+    end = date(int(match[6]), months[match[4]], int(match[5]))
+    if start > end:
+        raise ValueError("Workbook sales period is reversed.")
+    return start.isoformat(), end.isoformat()
+
+
+def validate_sales_range(label, requested_from, requested_to):
+    actual = parse_sales_range_label(label)
+    requested = (date.fromisoformat(requested_from).isoformat(), date.fromisoformat(requested_to).isoformat())
+    if actual != requested:
+        raise ValueError(f"Sales period mismatch: workbook has {actual[0]} to {actual[1]}; flags request {requested[0]} to {requested[1]}.")
+    return actual
+
+
 def classify(name, group, legacy):
     text = normalized(name)
     # Only unambiguous product terms override historical categories/group errors.
@@ -211,6 +237,8 @@ def main():
         if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
             raise ValueError("Dates must use ISO YYYY-MM-DD.")
     warnings.simplefilter("ignore", UserWarning)
+    sales, sales_meta = read_sales(args.sales)
+    validate_sales_range(sales_meta["rangeLabel"], args.sales_from, args.sales_to)
     private.mkdir(parents=True, exist_ok=True)
     sources = {}
     for label, path in (("products", args.products), ("sales", args.sales), ("legacyCatalog", args.legacy_catalog)):
@@ -224,7 +252,6 @@ def main():
             raise ValueError(f"Source copy checksum mismatch: {label}")
         sources[label] = {"original": str(path.resolve()), "copy": str(source_copy), "sha256": original_hash}
     products, product_meta = read_products(args.products)
-    sales, sales_meta = read_sales(args.sales)
     legacy_items = json.loads(args.legacy_catalog.read_text(encoding="utf-8-sig"))
     legacy = {item["id"]: item for item in legacy_items}
     sold = {sku: row for sku, row in sales.items() if row["quantitySold"] > 0}

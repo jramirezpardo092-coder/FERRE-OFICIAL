@@ -1,3 +1,15 @@
+export type ProductImage = {
+  src: string;
+  alt?: string;
+  verified: true;
+};
+
+export type ProductSpec = {
+  label: string;
+  value: string;
+  verified: true;
+};
+
 export interface Product {
   id: string;
   nombre: string;
@@ -9,6 +21,8 @@ export interface Product {
   original?: number | null;
   disc?: number | null;
   img?: string;
+  gallery?: ProductImage[];
+  specs?: ProductSpec[];
   ref?: string;
   sku?: string;
   tags?: string[];

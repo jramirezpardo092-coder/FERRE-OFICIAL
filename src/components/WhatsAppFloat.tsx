@@ -1,8 +1,12 @@
 "use client";
 
 import { SITE } from "@/lib/constants";
+import { usePathname } from "next/navigation";
+import ParditoAssist from "./catalog/ParditoAssist";
 
 export default function WhatsAppFloat() {
+  const pathname = usePathname();
+  if (pathname === "/catalogo" || pathname === "/ofertas") return <ParditoAssist />;
   return (
     <a
       href={SITE.social.whatsapp}
