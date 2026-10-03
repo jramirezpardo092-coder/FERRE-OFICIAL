@@ -1,0 +1,249 @@
+{
+  "13751": {
+    "specs": [
+      {
+        "label": "Modelo",
+        "value": "TC PL 750",
+        "verified": true
+      }
+    ]
+  },
+  "14863": {
+    "specs": [
+      {
+        "label": "Modelo",
+        "value": "WS4509KU",
+        "verified": true
+      },
+      {
+        "label": "Potencia",
+        "value": "1400W",
+        "verified": true
+      }
+    ]
+  },
+  "14774": {
+    "specs": [
+      {
+        "label": "Modelo",
+        "value": "CAT-1000BL",
+        "verified": true
+      }
+    ]
+  },
+  "3267": {
+    "specs": [
+      {
+        "label": "Modelo",
+        "value": "DX461U",
+        "verified": true
+      },
+      {
+        "label": "Potencia",
+        "value": "400W",
+        "verified": true
+      },
+      {
+        "label": "Medida",
+        "value": "5\"",
+        "verified": true
+      }
+    ]
+  },
+  "3234": {
+    "specs": [
+      {
+        "label": "Modelo",
+        "value": "DX55U",
+        "verified": true
+      },
+      {
+        "label": "Potencia",
+        "value": "1400W",
+        "verified": true
+      }
+    ]
+  },
+  "12771": {
+    "specs": [
+      {
+        "label": "Modelo",
+        "value": "CAROLINA",
+        "verified": true
+      },
+      {
+        "label": "Función",
+        "value": "Entrada",
+        "verified": true
+      }
+    ]
+  },
+  "12770": {
+    "specs": [
+      {
+        "label": "Modelo",
+        "value": "CAROLINA",
+        "verified": true
+      },
+      {
+        "label": "Función",
+        "value": "Alcoba",
+        "verified": true
+      }
+    ]
+  },
+  "12769": {
+    "specs": [
+      {
+        "label": "Modelo",
+        "value": "CAROLINA",
+        "verified": true
+      },
+      {
+        "label": "Función",
+        "value": "Baño",
+        "verified": true
+      }
+    ]
+  },
+  "13384": {
+    "specs": [
+      {
+        "label": "Modelo",
+        "value": "CADIZ",
+        "verified": true
+      },
+      {
+        "label": "Función",
+        "value": "Alcoba",
+        "verified": true
+      }
+    ]
+  },
+  "13383": {
+    "specs": [
+      {
+        "label": "Modelo",
+        "value": "CADIZ",
+        "verified": true
+      },
+      {
+        "label": "Función",
+        "value": "Baño",
+        "verified": true
+      }
+    ]
+  },
+  "14616": {
+    "specs": [
+      {
+        "label": "Modelo",
+        "value": "101",
+        "verified": true
+      },
+      {
+        "label": "Función",
+        "value": "Alcoba",
+        "verified": true
+      }
+    ]
+  },
+  "15609": {
+    "specs": [
+      {
+        "label": "Modelo",
+        "value": "GAIRA",
+        "verified": true
+      },
+      {
+        "label": "Función",
+        "value": "Entrada",
+        "verified": true
+      }
+    ]
+  },
+  "15468": {
+    "specs": [
+      {
+        "label": "Modelo",
+        "value": "GAIRA",
+        "verified": true
+      },
+      {
+        "label": "Función",
+        "value": "Alcoba",
+        "verified": true
+      }
+    ]
+  },
+  "15469": {
+    "specs": [
+      {
+        "label": "Modelo",
+        "value": "GAIRA",
+        "verified": true
+      },
+      {
+        "label": "Función",
+        "value": "Baño",
+        "verified": true
+      }
+    ]
+  },
+  "15470": {
+    "specs": [
+      {
+        "label": "Modelo",
+        "value": "GAIRA",
+        "verified": true
+      },
+      {
+        "label": "Función",
+        "value": "Alcoba",
+        "verified": true
+      }
+    ]
+  },
+  "15471": {
+    "specs": [
+      {
+        "label": "Modelo",
+        "value": "GAIRA",
+        "verified": true
+      },
+      {
+        "label": "Función",
+        "value": "Baño",
+        "verified": true
+      }
+    ]
+  },
+  "13829": {
+    "specs": [
+      {
+        "label": "Referencia",
+        "value": "14578",
+        "verified": true
+      },
+      {
+        "label": "Medida",
+        "value": "5 MTS",
+        "verified": true
+      }
+    ]
+  },
+  "2994": {
+    "specs": [
+      {
+        "label": "Referencia",
+        "value": "19656",
+        "verified": true
+      },
+      {
+        "label": "Medida",
+        "value": "17\"",
+        "verified": true
+      }
+    ]
+  }
+}

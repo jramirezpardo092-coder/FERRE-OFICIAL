@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "node --test tests/cart.test.cjs",
+    "test": "node --test tests/*.test.cjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import CatalogClient from "@/components/CatalogClient";
+import ParditoState from "@/components/catalog/ParditoState";
 import { Product } from "@/lib/types";
 import productsData from "@/data/products.json";
 
@@ -35,8 +36,8 @@ export default function OfertasPage() {
             <p className="text-gray-600 dark:text-gray-300 mb-5">Mientras tanto, explora el catálogo y consulta la disponibilidad de lo que necesitas.</p>
             <Link href="/catalogo" className="btn-primary">Ver catálogo</Link>
           </div>
-        ) : <Suspense fallback={<div className="py-20 text-center text-gray-400">Cargando productos...</div>}>
-          <CatalogClient products={offerProducts} offersOnly />
+        ) : <Suspense fallback={<ParditoState />}>
+          <CatalogClient offersOnly />
         </Suspense>}
       </section>
     </>

@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import CatalogClient from "@/components/CatalogClient";
+import ParditoState from "@/components/catalog/ParditoState";
 import { Product } from "@/lib/types";
 import productsData from "@/data/products.json";
 import catalogSource from "@/data/catalog-source.json";
@@ -36,11 +37,12 @@ export default function CatalogoPage() {
                 <span className="text-[10px] font-bold text-brand-red uppercase tracking-[0.2em]">Catálogo</span>
               </div>
               <h1 className="text-2xl md:text-3xl font-extrabold text-white">
-                Catálogo completo
+                Encuentra tu próxima solución
               </h1>
               <p className="text-gray-400 mt-1 text-sm">
                 {products.length.toLocaleString("es-CO")} productos · Precios antes de IVA · Cotiza por WhatsApp
               </p>
+              <p className="mt-2 text-xs text-gray-300">Selección basada en nuestras ventas del último año. Incluye agotados para consultar reposición.</p>
               <p className="text-gray-400 mt-2 text-xs">Actualización: {updatedDate}. Confirma disponibilidad al cotizar.</p>
             </div>
             <div className="flex items-center gap-4">
@@ -57,13 +59,8 @@ export default function CatalogoPage() {
         </div>
       </div>
 
-      <Suspense fallback={
-        <div className="flex flex-col items-center justify-center py-20 gap-3">
-          <div className="animate-spin rounded-full h-10 w-10 border-3 border-brand-red border-t-transparent" />
-          <p className="text-sm text-gray-400">Cargando catálogo...</p>
-        </div>
-      }>
-        <CatalogClient products={products} />
+      <Suspense fallback={<div className="mx-auto max-w-3xl px-4 py-8"><ParditoState /></div>}>
+        <CatalogClient />
       </Suspense>
     </div>
   );

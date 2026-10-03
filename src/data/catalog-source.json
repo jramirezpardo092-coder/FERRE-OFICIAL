@@ -1,13 +1,26 @@
 {
   "updatedAt": "2026-10-02",
-  "productCount": 5994,
+  "productCount": 1319,
   "priceList": "Precio de venta 1",
   "pricesIncludeTax": false,
   "source": "Siigo",
   "salesRange": {
-    "from": "2015-01-01",
-    "to": "2026-10-02"
+    "from": "2025-10-01",
+    "to": "2026-09-30"
   },
-  "includesCreditNotes": false,
-  "manualSnapshot": true
+  "includesCreditNotes": true,
+  "manualSnapshot": true,
+  "selection": {
+    "method": "annual-net-subtotal-coverage-by-category",
+    "coveragePercent": 95.0,
+    "categoryBaselineProductCount": 5994,
+    "categoryBaseline": "existing-catalog-categories",
+    "requiresPositiveAnnualNetQuantity": true,
+    "usesStock": false,
+    "frequencyVerified": false
+  },
+  "salesReport": {
+    "processedAt": "2026-09-30T14:06",
+    "closingVerified": false
+  }
 }
