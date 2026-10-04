@@ -4,9 +4,9 @@ import productsData from "@/data/products.json";
 import type { Product } from "./types";
 import type { CatalogFacet, CatalogResponse, CatalogSuggestion } from "./catalog-types";
 import { applyCatalogFilters, normalizeCatalogFilters, validateCatalogFilters } from "./catalog-filters";
-import { enrichProducts } from "./product-enrichment";
+import { enrichProducts, getLocalProductImagePath } from "./product-enrichment";
 import { normalizeSearchText, searchProducts } from "./search";
-import { getDiscountPercent, hasVerifiedPrice } from "./utils";
+import { getAvailableQuantity, getDiscountPercent, hasVerifiedPrice } from "./utils";
 
 const PAGE_SIZE = 24;
 const SORT_OPTIONS = new Set(["relevance", "price-asc", "price-desc", "discount", "name"]);
@@ -52,6 +52,36 @@ for (const product of catalog) {
 /** Server consumers receive their own data, so mutation cannot alter another request. */
 export function getCatalogProducts(): Product[] {
   return catalog.map(publicProduct);
+}
+
+/** Home highlights use the same approved photos as the catalog, without hiding other references. */
+export function getFeaturedCatalogProducts(): Product[] {
+  const candidates = catalog.filter((product) => {
+    const primary = getLocalProductImagePath(product.img);
+    return hasVerifiedPrice(product) && getAvailableQuantity(product) > 0 && !!primary
+      && product.gallery?.some((image) => image.verified === true && getLocalProductImagePath(image.src) === primary);
+  });
+  const featured: Product[] = [];
+  const selectedIds = new Set<string>();
+  const selectedCategories = new Set<string>();
+  const add = (product: Product) => {
+    featured.push(publicProduct(product));
+    selectedIds.add(product.id);
+  };
+  // Give photographed categories a place first, keeping the published order.
+  for (const product of candidates) {
+    if (selectedCategories.has(product.cat) || selectedIds.has(product.id)) continue;
+    add(product);
+    selectedCategories.add(product.cat);
+    if (featured.length === 8) return featured;
+  }
+  // Categories without an approved photograph do not create empty cards.
+  for (const product of candidates) {
+    if (selectedIds.has(product.id)) continue;
+    add(product);
+    if (featured.length === 8) break;
+  }
+  return featured;
 }
 
 export function getCatalogProduct(id: string): Product | undefined {

@@ -5,17 +5,12 @@ import InstagramSection from "@/components/InstagramSection";
 import BrandCarousel from "@/components/BrandCarousel";
 import Testimonials from "@/components/Testimonials";
 import ScrollReveal from "@/components/ScrollReveal";
-import { Product } from "@/lib/types";
-import productsData from "@/data/products.json";
+import { getCatalogProducts, getFeaturedCatalogProducts } from "@/lib/catalog-service";
 import { getLocalBusinessJsonLd } from "@/lib/seo";
 
 export default function HomePage() {
-  const products = productsData as Product[];
-  // Una selección con disponibilidad de distintas categorías.
-  const available = products.filter((p) => p.priceVerified === true && p.stock >= 1);
-  const featured = Array.from(new Set(available.map((p) => p.cat)))
-    .map((category) => available.find((p) => p.cat === category)!)
-    .slice(0, 8);
+  const products = getCatalogProducts();
+  const featured = getFeaturedCatalogProducts();
   const brands = Array.from(new Set(products.map((p) => p.brand)))
     .filter((brand) => brand && brand !== "Sin marca").sort();
 
