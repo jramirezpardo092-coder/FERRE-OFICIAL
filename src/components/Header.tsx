@@ -249,7 +249,7 @@ export default function Header() {
                 className="h-9 w-[126px] bg-white"
                 priority
               />
-              <div className="hidden sm:block">
+              <div className="hidden sm:block lg:hidden">
                 <div className="font-black text-brand-red dark:text-red-400 leading-tight text-lg">Ferretería Pardo</div>
                 <div className="text-xs text-gray-500 dark:text-gray-400 font-semibold">Desde 1966 · Bogotá</div>
               </div>
@@ -309,23 +309,23 @@ export default function Header() {
             </nav>
 
             {/* Right actions */}
-            <div className="flex items-center gap-2">
+            <div className="flex shrink-0 items-center gap-2">
               {/* Social icons - desktop */}
               <div className="hidden xl:flex items-center gap-2 mr-2">
                 <a href={SITE.social.instagram} target="_blank" rel="noreferrer"
                    aria-label="Instagram de Ferretería Pardo"
-                   className="flex h-11 w-11 items-center justify-center text-gray-400 hover:text-pink-500 transition-all duration-300 rounded-2xl hover:bg-pink-50">
+                   className="flex h-11 w-11 shrink-0 items-center justify-center text-gray-500 dark:text-gray-400 hover:text-pink-500 transition-all duration-300 rounded-2xl hover:bg-pink-50">
                   <InstagramIcon />
                 </a>
                 <a href={SITE.social.facebook} target="_blank" rel="noreferrer"
                    aria-label="Facebook de Ferretería Pardo"
-                   className="flex h-11 w-11 items-center justify-center text-gray-400 hover:text-blue-600 transition-all duration-300 rounded-2xl hover:bg-blue-50">
+                   className="flex h-11 w-11 shrink-0 items-center justify-center text-gray-500 dark:text-gray-400 hover:text-blue-600 transition-all duration-300 rounded-2xl hover:bg-blue-50">
                   <FacebookIcon />
                 </a>
               </div>
 
               <a href={SITE.social.whatsapp} target="_blank" rel="noreferrer"
-                 className="btn-wa text-xs hidden md:inline-flex rounded-xl px-5 py-2.5">
+                 className="btn-wa text-xs hidden xl:inline-flex whitespace-nowrap rounded-xl px-5 py-2.5">
                 <WhatsAppMini />
                 Hablar con asesor
               </a>
@@ -333,7 +333,7 @@ export default function Header() {
               {/* Dark mode toggle */}
               <button
                 onClick={toggleTheme}
-                className="flex h-11 w-11 items-center justify-center text-gray-500 dark:text-gray-400 hover:text-brand-red dark:hover:text-brand-orange transition-all duration-300 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800 motion-reduce:transition-none"
+                className="flex h-11 w-11 shrink-0 items-center justify-center text-gray-500 dark:text-gray-400 hover:text-brand-red dark:hover:text-brand-orange transition-all duration-300 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800 motion-reduce:transition-none"
                 aria-label="Cambiar tema"
               >
                 {theme === "dark" ? <SunIcon /> : <MoonIcon />}
