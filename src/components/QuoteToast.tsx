@@ -11,8 +11,18 @@ export default function QuoteToast() {
       setPaused(false);
       setNotice((previous) => ({ count: getCart().length, serial: (previous?.serial ?? 0) + 1 }));
     };
+    const dismiss = () => {
+      setNotice(null);
+      setPaused(false);
+    };
     window.addEventListener("cart-added", show);
-    return () => window.removeEventListener("cart-added", show);
+    window.addEventListener("open-cart", dismiss);
+    window.addEventListener("toggle-cart", dismiss);
+    return () => {
+      window.removeEventListener("cart-added", show);
+      window.removeEventListener("open-cart", dismiss);
+      window.removeEventListener("toggle-cart", dismiss);
+    };
   }, []);
   useEffect(() => {
     if (!notice || paused) return;

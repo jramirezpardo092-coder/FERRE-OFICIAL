@@ -104,3 +104,9 @@ Los tipos schema.org válidos no garantizan resultados enriquecidos de Google. R
 - **Responsable del catálogo:** revisar el SKU `5964`, validar paquetes/funciones/acabados y priorizar fotos exactas de las 200 referencias. Mantener las 192 fotos publicadas como punto de partida; ampliar solo con evidencia y aprobación.
 - **Responsable técnico:** incorporar hash del commit final, resultados de aceptación y rutas de capturas; comprobar SEO tras cualquier actualización aprobada de datos.
 - **Responsable de publicación:** para la futura promoción a `ferreteriapardo.com`, configurar `NEXT_PUBLIC_SITE_URL` en el entorno correspondiente, reconstruir y verificar canonical, JSON-LD, sitemap y redirecciones 301. Sin cambios de DNS en esta entrega; la migración requiere coordinar origen y destino para evitar URLs contradictorias.
+
+## Pendiente técnico — dependencias
+
+**Responsable técnico:** planificar una migración separada de Next.js 14 a 16 y Tailwind 3 a 4, con revisión de compatibilidad y validación propia. No se realizan esas migraciones dentro de esta entrega.
+
+Según el `npm audit` actual registrado por integración, hay **11 vulnerabilidades preexistentes**. La incorporación de `sharp` **0.35.5** no añadió vulnerabilidades nuevas en esa comparación; los hallazgos existentes permanecen como trabajo técnico pendiente. Este registro no afirma que se hayan mitigado exploits ni determina por sí solo la aceptación de la publicación.
