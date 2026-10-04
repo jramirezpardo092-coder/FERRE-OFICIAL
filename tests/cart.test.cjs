@@ -98,7 +98,7 @@ test("reconciles stale prices, taxes, names, units, stock and removed references
     { ...product, nombre: "Cerradura nueva", precio: 250, taxRate: 5, unidad: "caja", stock: 2 },
     { ...product, id: "NO-STOCK", stock: 0 },
   ], saved.map((item) => item.id));
-  assert.equal(result.items.length, 1);
+  assert.equal(result.items.length, 2);
   assert.equal(result.items[0].qty, 2);
   assert.equal(result.items[0].precio, 250);
   assert.equal(result.items[0].unidad, "caja");
@@ -106,7 +106,54 @@ test("reconciles stale prices, taxes, names, units, stock and removed references
   assert.match(result.changes.join("\n"), /precio actualizado/);
   assert.match(result.changes.join("\n"), /IVA actualizado a 5%/);
   assert.match(result.changes.join("\n"), /ya no pertenece al catálogo/);
-  assert.match(result.changes.join("\n"), /no tiene unidades disponibles/);
+  assert.equal(result.items[1].id, "NO-STOCK");
+  assert.equal(result.items[1].stock, 0);
+  assert.equal(result.items[1].qty, 1);
+  assert.match(result.changes.join("\n"), /disponibilidad a confirmar; se conserva en la cotización/);
+});
+
+test("restores and adds sold-out quotations without claiming stock or changing source products", () => {
+  const exhausted = { ...product, id: "0044", stock: 0, priceVerified: false };
+  const snapshot = JSON.stringify(exhausted);
+  const restored = loadStore(JSON.stringify([{ ...exhausted, qty: 2 }]));
+  assert.equal(restored.store.getCart()[0].id, "0044");
+  assert.equal(restored.store.getCart()[0].qty, 2);
+  assert.equal(restored.store.addToCart(exhausted), true);
+  assert.equal(restored.store.getCart()[0].qty, 3);
+  assert.equal(restored.additions(), 1);
+  assert.equal(restored.store.updateQty("0044", 8), true);
+  assert.equal(restored.store.getCart()[0].qty, 8);
+  assert.equal(restored.store.addToCart(exhausted, Infinity), false);
+  assert.equal(restored.store.addToCart(exhausted, 0), false);
+  assert.equal(JSON.stringify(exhausted), snapshot);
+  assert.equal(restored.store.getCartTotal(), 0);
+  assert.equal("availabilityPending" in restored.store.getCart()[0], false);
+});
+
+test("reconciles a sold-out quote when stock returns, caps quantity and removes retired exact SKUs", () => {
+  const exhausted = { ...product, id: "0044", stock: 0 };
+  const { store } = loadStore(JSON.stringify([{ ...exhausted, qty: 8 }, { ...exhausted, id: "44", qty: 1 }]));
+  const result = store.reconcileCart([{ ...exhausted, stock: 3, precio: 500 }], ["0044", "44"]);
+  assert.equal(result.items.length, 1);
+  assert.equal(result.items[0].id, "0044");
+  assert.equal(result.items[0].qty, 3);
+  assert.equal(result.items[0].precio, 500);
+  assert.match(result.changes.join("\n"), /cantidad ajustada de 8 a 3/);
+  assert.match(result.changes.join("\n"), /ya no pertenece al catálogo/);
+  assert.equal(store.updateQty("0044", 4), false);
+  assert.equal(store.addToCart({ ...exhausted, stock: 3 }), false);
+});
+
+test("accepts measurable sold-out quantities and keeps indivisible requests whole", () => {
+  const { store } = loadStore();
+  assert.equal(store.addToCart({ ...product, stock: 0, unidad: "metro" }, 0.25), true);
+  assert.equal(store.updateQty("P1", 2.75), true);
+  assert.equal(store.getCart()[0].qty, 2.75);
+  assert.equal(store.addToCart({ ...product, id: "PAIR", stock: 0.5, unidad: "numero de pares" }), true);
+  assert.equal(store.getCart()[1].qty, 1);
+  assert.equal(store.updateQty("PAIR", 2.5), true);
+  assert.equal(store.getCart()[1].qty, 2);
+  assert.equal(store.addToCart({ ...product, id: "TINY", stock: 0, unidad: "metro" }, 0.00000001), false);
 });
 
 test("permits measured fractional stock and keeps indivisible units whole", () => {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useId } from "react";
+import { useId, useState } from "react";
 import { cn, formatCOP } from "@/lib/utils";
 import { getActiveFilterCount, validateCatalogFilters, type FiltersValue } from "@/lib/catalog-filters";
 
@@ -30,6 +30,10 @@ const countLabel = (count: number) => new Intl.NumberFormat("es-CO").format(coun
 
 export default function CatalogFilters({ value, onChange, onClear, categories, brands, priceBounds, idPrefix, offersLocked = false }: CatalogFiltersProps) {
   const generatedId = useId();
+  const [brandSearch, setBrandSearch] = useState("");
+  const visibleBrands = brands.filter(brand => brand.name.toLocaleLowerCase("es-CO").includes(brandSearch.toLocaleLowerCase("es-CO")));
+  const priceInput = (raw: string) => raw ? new Intl.NumberFormat("es-CO", { maximumFractionDigits: 0 }).format(Number(raw)) : "";
+  const priceDraft = (raw: string) => raw.replace(/[^0-9]/g, "");
   const prefix = idPrefix || `catalog-filters-${generatedId.replace(/:/g, "")}`;
   const validation = validateCatalogFilters(value);
   const activeCount = getActiveFilterCount(offersLocked ? { ...value, offersOnly: false } : value);
@@ -38,8 +42,8 @@ export default function CatalogFilters({ value, onChange, onClear, categories, b
   const minError = validation.errors.priceMin;
   const maxError = validation.errors.priceMax;
   const rangeError = validation.errors.priceRange;
-  const minPlaceholder = priceBounds && Number.isFinite(priceBounds.min) && priceBounds.min > 0 ? String(priceBounds.min) : "Sin mínimo";
-  const maxPlaceholder = priceBounds && Number.isFinite(priceBounds.max) && priceBounds.max > 0 ? String(priceBounds.max) : "Sin máximo";
+  const minPlaceholder = priceBounds && Number.isFinite(priceBounds.min) && priceBounds.min > 0 ? formatCOP(priceBounds.min) : "Sin mínimo";
+  const maxPlaceholder = priceBounds && Number.isFinite(priceBounds.max) && priceBounds.max > 0 ? formatCOP(priceBounds.max) : "Sin máximo";
 
   return (
     <section aria-labelledby={`${prefix}-title`} className="rounded-2xl border border-gray-200/80 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900 sm:p-5">
@@ -66,11 +70,12 @@ export default function CatalogFilters({ value, onChange, onClear, categories, b
 
         <fieldset>
           <legend className="mb-2 text-sm font-semibold text-gray-800 dark:text-gray-200">Marca</legend>
+          {brands.length > 10 && <div className="mb-2"><label htmlFor={`${prefix}-brand-search`} className="sr-only">Buscar marca</label><input id={`${prefix}-brand-search`} type="search" value={brandSearch} onChange={event => setBrandSearch(event.target.value)} placeholder="Buscar marca" className={inputClass} /></div>}
           <label htmlFor={`${prefix}-brand`} className="sr-only">Filtrar por marca</label>
           <select id={`${prefix}-brand`} name="brand" value={value.brand} onChange={(event) => update({ brand: event.target.value })} className={inputClass}>
             <option value="">Todas las marcas</option>
             {value.brand && !brands.some((brand) => brand.name === value.brand) && <option value={value.brand}>{value.brand} (0)</option>}
-            {brands.map((brand) => <option key={brand.name} value={brand.name}>{brand.name} ({countLabel(brand.count)})</option>)}
+            {visibleBrands.map((brand) => <option key={brand.name} value={brand.name}>{brand.name} ({countLabel(brand.count)})</option>)}
           </select>
         </fieldset>
 
@@ -79,16 +84,16 @@ export default function CatalogFilters({ value, onChange, onClear, categories, b
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label htmlFor={`${prefix}-price-min`} className="mb-1.5 block text-xs font-medium text-gray-600 dark:text-gray-400">Mínimo (COP)</label>
-              <input id={`${prefix}-price-min`} name="priceMin" type="number" inputMode="decimal" min={0} step="0.01" value={value.priceMin} placeholder={minPlaceholder}
-                onChange={(event) => update({ priceMin: event.target.value })}
+              <input id={`${prefix}-price-min`} name="priceMin" type="text" inputMode="numeric" value={priceInput(value.priceMin)} placeholder={minPlaceholder}
+                onChange={(event) => update({ priceMin: priceDraft(event.target.value) })}
                 aria-invalid={!!(minError || rangeError)} aria-describedby={minError ? `${prefix}-price-min-error` : rangeError ? priceErrorId : `${prefix}-price-help`}
                 className={cn(inputClass, (minError || rangeError) && "border-red-400 dark:border-red-500")} />
               {minError && <p id={`${prefix}-price-min-error`} className="mt-1.5 text-xs text-red-600 dark:text-red-400">{minError}</p>}
             </div>
             <div>
               <label htmlFor={`${prefix}-price-max`} className="mb-1.5 block text-xs font-medium text-gray-600 dark:text-gray-400">Máximo (COP)</label>
-              <input id={`${prefix}-price-max`} name="priceMax" type="number" inputMode="decimal" min={0} step="0.01" value={value.priceMax} placeholder={maxPlaceholder}
-                onChange={(event) => update({ priceMax: event.target.value })}
+              <input id={`${prefix}-price-max`} name="priceMax" type="text" inputMode="numeric" value={priceInput(value.priceMax)} placeholder={maxPlaceholder}
+                onChange={(event) => update({ priceMax: priceDraft(event.target.value) })}
                 aria-invalid={!!(maxError || rangeError)} aria-describedby={maxError ? `${prefix}-price-max-error` : rangeError ? priceErrorId : `${prefix}-price-help`}
                 className={cn(inputClass, (maxError || rangeError) && "border-red-400 dark:border-red-500")} />
               {maxError && <p id={`${prefix}-price-max-error`} className="mt-1.5 text-xs text-red-600 dark:text-red-400">{maxError}</p>}

@@ -1,5 +1,6 @@
 import Fuse from "fuse.js";
 import { Product } from "./types";
+import { SEARCH_SYNONYMS } from "./catalog/synonyms";
 
 let fuseInstance: Fuse<Product> | null = null;
 let fuseProducts: Product[] | null = null;
@@ -9,7 +10,10 @@ export function normalizeSearchText(value: string): string {
 }
 
 export function getSearchableText(product: Product): string {
-  return normalizeSearchText(`${product.nombre} ${product.brand} ${product.id} ${product.cat} ${product.ref || ""} ${product.sku || ""} ${(product.tags || []).join(" ")}`);
+  const text = normalizeSearchText(`${product.nombre} ${product.brand} ${product.id} ${product.cat} ${product.ref || ""} ${product.sku || ""} ${(product.tags || []).join(" ")}`);
+  const names = normalizeSearchText(product.nombre);
+  const aliases = SEARCH_SYNONYMS.filter(group => group.some(term => names.includes(term))).flat();
+  return text + " " + aliases.join(" ");
 }
 
 export function getFuseInstance(products: Product[]): Fuse<Product> {

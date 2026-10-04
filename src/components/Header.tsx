@@ -8,6 +8,8 @@ import { SITE, NAV_LINKS, CATEGORIES } from "@/lib/constants";
 import { getCart, subscribeCart } from "@/lib/cart-store";
 import { cn } from "@/lib/utils";
 import { useTheme } from "./ThemeProvider";
+import QuoteToast from "./QuoteToast";
+import { getCategoryPath } from "@/lib/catalog/routes";
 
 const SunIcon = () => (
   <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -144,6 +146,7 @@ export default function Header() {
   const [catOpen, setCatOpen] = useState(false);
   const [mobileCatOpen, setMobileCatOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
+  const [quotePulse, setQuotePulse] = useState(0);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
   const categoryToggleRef = useRef<HTMLButtonElement>(null);
@@ -165,7 +168,13 @@ export default function Header() {
 
   useEffect(() => {
     setCartCount(getCart().length);
-    return subscribeCart(() => setCartCount(getCart().length));
+    const unsubscribe = subscribeCart(() => setCartCount(getCart().length));
+    const animate = () => setQuotePulse((previous) => previous + 1);
+    window.addEventListener("cart-added", animate);
+    return () => {
+      unsubscribe();
+      window.removeEventListener("cart-added", animate);
+    };
   }, []);
 
   useEffect(() => {
@@ -268,7 +277,7 @@ export default function Header() {
                             return (
                               <Link
                                 key={cat.slug}
-                                href={`/catalogo?cat=${encodeURIComponent(cat.name)}`}
+                                href={getCategoryPath(cat.name)}
                                 className="flex flex-col items-center gap-2 p-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-brand-red transition-all duration-300 rounded-2xl border border-transparent hover:border-red-200 dark:hover:border-red-800"
                                 onClick={() => setCatOpen(false)}
                               >
@@ -323,7 +332,7 @@ export default function Header() {
               {/* Dark mode toggle */}
               <button
                 onClick={toggleTheme}
-                className="p-2.5 text-gray-500 dark:text-gray-400 hover:text-brand-red dark:hover:text-brand-orange transition-all duration-300 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800"
+                className="flex h-11 w-11 items-center justify-center text-gray-500 dark:text-gray-400 hover:text-brand-red dark:hover:text-brand-orange transition-all duration-300 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800 motion-reduce:transition-none"
                 aria-label="Cambiar tema"
               >
                 {theme === "dark" ? <SunIcon /> : <MoonIcon />}
@@ -331,8 +340,9 @@ export default function Header() {
 
               {/* Cart button - Premium scale animation */}
               <button
-                className="relative p-2.5 text-gray-700 dark:text-gray-300 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/20"
-                aria-label={`Ver pedido${cartCount ? `, ${cartCount} ${cartCount === 1 ? "referencia" : "referencias"}` : ""}`}
+                className="relative flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-2xl px-2.5 text-gray-700 transition-colors hover:bg-red-50 hover:text-brand-red dark:text-gray-300 dark:hover:bg-red-900/20 motion-reduce:transition-none"
+                data-quote-trigger
+                aria-label={`Ver cotización${cartCount ? `, ${cartCount} ${cartCount === 1 ? "referencia" : "referencias"}` : ""}`}
                 onClick={() => {
                   setMobileOpen(false);
                   const event = new CustomEvent("toggle-cart");
@@ -340,8 +350,9 @@ export default function Header() {
                 }}
               >
                 <CartIcon />
+                <span className="hidden text-xs font-semibold sm:inline">Cotización</span>
                 {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-brand-orange text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center animate-pulse">
+                  <span key={quotePulse} className={cn("absolute -top-1 -right-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-red px-1 text-xs font-bold text-white", quotePulse > 0 && "animate-quote-bump")}>
                     {cartCount}
                   </span>
                 )}
@@ -350,7 +361,7 @@ export default function Header() {
               {/* Mobile menu toggle */}
               <button
                 ref={mobileToggleRef}
-                className="lg:hidden p-2.5 text-gray-700 dark:text-gray-200 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
+                className="flex h-11 w-11 items-center justify-center lg:hidden text-gray-700 dark:text-gray-200 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 motion-reduce:transition-none"
                 onClick={() => setMobileOpen(!mobileOpen)}
                 aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
                 aria-expanded={mobileOpen}
@@ -385,7 +396,7 @@ export default function Header() {
                           return (
                             <Link
                               key={cat.slug}
-                              href={`/catalogo?cat=${encodeURIComponent(cat.name)}`}
+                              href={getCategoryPath(cat.name)}
                               className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 dark:text-gray-300 hover:text-brand-red hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-300 rounded-2xl"
                               onClick={() => { setMobileCatOpen(false); setMobileOpen(false); }}
                             >
@@ -439,8 +450,17 @@ export default function Header() {
           </div>
         )}
       </header>
+      <QuoteToast />
 
       <style>{`
+        @keyframes quote-bump {
+          0%, 100% { transform: scale(1); }
+          45% { transform: scale(1.3); }
+        }
+        .animate-quote-bump { animation: quote-bump 300ms ease-out; }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-quote-bump, .animate-slide-down { animation: none; }
+        }
         @keyframes slide-down {
           from {
             opacity: 0;

@@ -22,7 +22,8 @@ const normalization = loadModule("src/lib/catalog/normalize.ts", { "./dictionari
 const routes = loadModule("src/lib/catalog/routes.ts", { "../constants": constants, "./normalize": normalization });
 const utils = loadModule("src/lib/utils.ts", { "./constants": constants });
 const filters = loadModule("src/lib/catalog-filters.ts", { "./utils": utils });
-const search = loadModule("src/lib/search.ts", { "fuse.js": require("fuse.js") });
+const synonyms = loadModule("src/lib/catalog/synonyms.ts");
+const search = loadModule("src/lib/search.ts", { "fuse.js": require("fuse.js"), "./catalog/synonyms": synonyms });
 const base = { id: "0001", nombre: "Taladro", precio: 100, stock: 3, unidad: "unidad", cat: "Herramientas", brand: "TRUPER", taxRate: 19, priceVerified: true };
 const fixture = Array.from({ length: 55 }, (_, index) => ({
   ...base, id: `P${String(index).padStart(3, "0")}`, nombre: `Taladro ${index}`, precio: 100 + index,
@@ -36,7 +37,7 @@ function service(products = fixture, enrichmentEntries = {}) {
   return loadModule("src/lib/catalog-service.ts", {
     "server-only": {}, "@/data/products.json": products,
     "./catalog-filters": filters, "./product-enrichment": enrichment,
-    "./search": search, "./utils": utils, "./catalog/routes": routes,
+    "./search": search, "./utils": utils, "./catalog/routes": routes, "./catalog/normalize": normalization,
   });
 }
 const query = (catalog, parameters = "", offersOnly = false) => catalog.queryCatalog(new URLSearchParams(parameters), offersOnly);
@@ -109,7 +110,7 @@ test("home eligibility keeps sold-out, pending-price and unphotographed referenc
   const entire = plain(catalog.getCatalogProducts());
   assert.deepEqual(ids(catalog.getFeaturedCatalogProducts()), ["measured"]);
   assert.equal(query(catalog).total, products.length);
-  assert.deepEqual(ids(query(catalog).products), products.map((product) => product.id));
+  assert.deepEqual(ids(query(catalog).products).sort(), products.map((product) => product.id).sort());
   for (const product of products) {
     const match = query(catalog, `q=${encodeURIComponent(product.id)}`).products;
     assert.deepEqual(ids(match), [product.id]);
@@ -176,7 +177,7 @@ test("HomePage server rendering passes enriched highlights while counting the wh
   assert.deepEqual(plain(captured.categories), { Herramientas: 2, Cerrajería: 1 });
 });
 
-test("server catalog pages at 24, keeps published order and exhausted references by default", () => {
+test("server catalog pages at 24, available first without excluding exhausted references", () => {
   const catalog = service();
   const first = query(catalog);
   const second = query(catalog, "page=2");
@@ -185,9 +186,11 @@ test("server catalog pages at 24, keeps published order and exhausted references
   assert.equal(first.pageSize, 24);
   assert.equal(first.totalPages, 3);
   assert.equal(first.products.length, 24);
-  assert.equal(first.products[0].id, "P000");
-  assert.equal(first.products[0].stock, 0);
-  assert.deepEqual(ids([...first.products, ...second.products, ...final.products]), fixture.map((product) => product.id));
+  assert.equal(first.products[0].id, "P001");
+  assert.equal(first.products[0].stock, 3);
+  const all = [...first.products, ...second.products, ...final.products];
+  assert.equal(all.at(-1).id, "P000");
+  assert.deepEqual(ids(all).sort(), fixture.map((product) => product.id).sort());
 });
 
 test("invalid pages fall back safely, excessive pages clamp and empty results stay page1", () => {
@@ -285,7 +288,7 @@ test("availability stays voluntary and the offers-only server option cannot be s
   assert.deepEqual(ids(query(catalog, "availability=on-request").products), ["exhausted", "fractional-pair"]);
   assert.deepEqual(ids(query(catalog, "availability=in-stock").products), ["available", "measured"]);
   assert.deepEqual(ids(query(catalog, "ofertas=false", true).products), ["exhausted"]);
-  assert.deepEqual(ids(query(catalog, "sort=untrusted-sort").products), ["available", "exhausted", "measured", "fractional-pair"]);
+  assert.deepEqual(ids(query(catalog, "sort=untrusted-sort").products), ["available", "measured", "exhausted", "fractional-pair"]);
 });
 
 test("suggestions are bounded, structured and never contain the complete catalog", () => {

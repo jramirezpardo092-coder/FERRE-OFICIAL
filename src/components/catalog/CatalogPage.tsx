@@ -24,7 +24,7 @@ export default function CatalogPage({ category, searchParams }: CatalogPageProps
   const params = toSearchParams(searchParams);
   if (category) params.set("cat", category.name);
   const initialData = queryCatalog(params);
-  params.delete("cat");
+  if (category) params.delete("cat");
   const initialParamsKey = params.toString();
   const date = new Intl.DateTimeFormat("es-CO", { day: "numeric", month: "long", year: "numeric", timeZone: "America/Bogota" }).format(new Date(`${catalogSource.updatedAt}T12:00:00-05:00`));
   return <div className="min-h-screen bg-gray-50/30 dark:bg-gray-950">

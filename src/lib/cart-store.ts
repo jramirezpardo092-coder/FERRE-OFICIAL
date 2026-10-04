@@ -29,16 +29,17 @@ function parseCart(value: unknown): CartItem[] {
     const item = entry as Partial<CartItem>;
     const quantity = item.qty;
     if (
-      !isProduct(item) || getAvailableQuantity(item) <= 0 ||
+      !isProduct(item) ||
       typeof quantity !== "number" || !Number.isFinite(quantity) || quantity <= 0
     ) continue;
     const stock = getAvailableQuantity(item);
-    const qty = Math.min(allowsFractionalQuantity(item) ? normalizeQuantity(quantity) : Math.floor(quantity), stock);
+    const requestedQty = allowsFractionalQuantity(item) ? normalizeQuantity(quantity) : Math.floor(quantity);
+    const qty = stock > 0 ? Math.min(requestedQty, stock) : requestedQty;
     if (qty <= 0) continue;
     const existing = items.get(item.id);
     items.set(item.id, {
       ...item as CartItem,
-      qty: Math.min(normalizeQuantity((existing?.qty ?? 0) + qty), stock),
+      qty: stock > 0 ? Math.min(normalizeQuantity((existing?.qty ?? 0) + qty), stock) : normalizeQuantity((existing?.qty ?? 0) + qty),
     });
   }
   return [...items.values()];
@@ -98,21 +99,20 @@ export function reconcileCart(currentProducts: Product[], requestedIds: string[]
     if (!requested.has(item.id)) return [item];
     const product = current.get(item.id);
     if (!product) {
-      changes.push(`${item.nombre}: se retiró del pedido porque ya no pertenece al catálogo.`);
+      changes.push(`${item.nombre}: se retiró de la cotización porque ya no pertenece al catálogo.`);
       return [];
     }
     const stock = getAvailableQuantity(product);
-    if (stock <= 0) {
-      changes.push(`${product.nombre}: se retiró del pedido porque no tiene unidades disponibles.`);
-      return [];
-    }
-    const qty = Math.min(allowsFractionalQuantity(product) ? item.qty : Math.floor(item.qty), stock);
+    const requestedQty = allowsFractionalQuantity(product) ? normalizeQuantity(item.qty) : Math.floor(item.qty);
+    const qty = stock > 0 ? Math.min(requestedQty, stock) : requestedQty;
     if (qty <= 0) {
-      changes.push(`${product.nombre}: se retiró del pedido porque su unidad de venta no admite esta cantidad.`);
+      changes.push(`${product.nombre}: se retiró de la cotización porque su unidad de venta no admite esta cantidad.`);
       return [];
     }
     if (qty !== item.qty) changes.push(`${product.nombre}: cantidad ajustada de ${formatQuantity(item.qty)} a ${formatQuantity(qty)} por disponibilidad.`);
-    else if (item.stock !== product.stock) changes.push(`${product.nombre}: disponibilidad actualizada a ${formatQuantity(stock)} ${product.unidad}.`);
+    else if (item.stock !== product.stock) changes.push(stock > 0
+      ? `${product.nombre}: disponibilidad actualizada a ${formatQuantity(stock)} ${product.unidad}.`
+      : `${product.nombre}: disponibilidad a confirmar; se conserva en la cotización.`);
     if (item.precio !== product.precio || hasVerifiedPrice(item) !== hasVerifiedPrice(product)) {
       const previous = hasVerifiedPrice(item) ? `${formatCOP(item.precio)} sin IVA` : "por confirmar";
       const next = hasVerifiedPrice(product) ? `${formatCOP(product.precio)} sin IVA` : "por confirmar";
@@ -147,13 +147,13 @@ export function revalidateCart(): Promise<CartValidation> {
           const response = await fetch(`/api/pedido/productos?ids=${encodeURIComponent(ids.slice(offset, offset + 100).join(","))}`, {
             cache: "no-store", signal: controller.signal,
           });
-          if (!response.ok) throw new Error("No fue posible actualizar el pedido. Inténtalo de nuevo.");
+          if (!response.ok) throw new Error("No fue posible actualizar la cotización. Inténtalo de nuevo.");
           const data: unknown = await response.json();
           if (!data || typeof data !== "object" || !Array.isArray((data as { products?: unknown }).products)) {
-            throw new Error("No fue posible verificar los productos del pedido.");
+            throw new Error("No fue posible verificar los productos de la cotización.");
           }
           const batch = (data as { products: unknown[] }).products;
-          if (!batch.every(isProduct)) throw new Error("No fue posible verificar los productos del pedido.");
+          if (!batch.every(isProduct)) throw new Error("No fue posible verificar los productos de la cotización.");
           products.push(...batch);
         } finally {
           clearTimeout(timeout);
@@ -163,7 +163,7 @@ export function revalidateCart(): Promise<CartValidation> {
       changes.push(...result.changes);
       if (result.items.every((item) => ids.includes(item.id))) return { items: result.items, changes };
     }
-    throw new Error("El pedido cambió durante la actualización. Vuelve a preparar la cotización.");
+    throw new Error("La cotización cambió durante la actualización. Vuelve a prepararla.");
   })().finally(() => { revalidation = null; });
   return revalidation;
 }
@@ -172,11 +172,11 @@ export function addToCart(product: Product, qty?: number): boolean {
   loadCart();
   const stock = getAvailableQuantity(product);
   const existing = cartItems.find((item) => item.id === product.id);
-  const desired = qty ?? Math.min(1, stock - (existing?.qty ?? 0));
+  const desired = qty ?? (stock > 0 ? Math.min(1, stock - (existing?.qty ?? 0)) : 1);
   const quantity = allowsFractionalQuantity(product) ? normalizeQuantity(desired) : Math.floor(desired);
-  if (!Number.isFinite(quantity) || quantity <= 0 || stock <= 0) return false;
+  if (!Number.isFinite(quantity) || quantity <= 0) return false;
   const nextQuantity = normalizeQuantity((existing?.qty ?? 0) + quantity);
-  if (nextQuantity > stock) return false;
+  if (!Number.isFinite(nextQuantity) || (stock > 0 && nextQuantity > stock)) return false;
   if (existing) {
     Object.assign(existing, product, { qty: nextQuantity });
   } else {
@@ -205,7 +205,8 @@ export function updateQty(productId: string, qty: number): boolean {
     removeFromCart(productId);
     return true;
   }
-  if (quantity > getAvailableQuantity(item)) return false;
+  const stock = getAvailableQuantity(item);
+  if (stock > 0 && quantity > stock) return false;
   item.qty = quantity;
   saveCart();
   notify();
