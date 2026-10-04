@@ -42,7 +42,7 @@ El rojo de marca permanece #D02731. Sobre #FBEAEA da 4,496:1, ligeramente inferi
 
 ## Tipografía
 
-- **Display:** Archivo variable, `wdth=80`, peso 700–800; `font-display: swap`, latin. H1/H2, precios y cifras. Única fuente con preload. `font-display` es el nombre de utilidad y `--font-archivo` la variable de Next.
+- **Display:** Archivo, ancho fijado en `wdth=80` y peso variable 700–800; `font-display: swap`, latin. H1/H2, precios y cifras. Única fuente con preload. `font-display` es el nombre de utilidad y `--font-archivo` la variable de Next. El archivo se limita a los ejes usados mediante `fontTools.varLib.instancer`: 24.328 bytes frente a 90.104, conservando los 302 glifos y su mapa Unicode; véase [informe](docs/visual/reports/font-optimization.json).
 - **Texto:** Manrope existente, estilos usados 400/600; `display: swap`, latin y preload desactivado. No introducir otra familia de texto.
 - **Técnica:** IBM Plex Mono 500 normal, latin, `display: swap`, sin preload; SKU, referencia, medidas, fecha, contadores y paginación. Nunca por debajo de 12 px.
 - Máximo dos archivos binarios nuevos: Archivo latin variable e IBM Plex Mono latin 500. Usar `next/font/local` con originales oficiales y licencia OFL para evitar que el loader de Google emita otros subconjuntos. Manrope mantiene su origen existente.
