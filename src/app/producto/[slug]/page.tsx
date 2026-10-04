@@ -10,25 +10,33 @@ import ProductCard from "@/components/ProductCard";
 import ProductMedia from "@/components/catalog/ProductMedia";
 import ProductSpecs from "@/components/catalog/ProductSpecs";
 import ProductActions from "./ProductActions";
+import PriceDisplay from "@/components/catalog/PriceDisplay";
+import PricePreferenceToggle from "@/components/catalog/PricePreferenceToggle";
+import { getStockLabel } from "@/lib/quote-presentation";
+import { getProductSlug, getProductPath, getCategoryPath } from "@/lib/catalog/routes";
+import { displayBrand, normalizeProductName, formatUnit } from "@/lib/catalog/normalize";
 
 // Generate static pages for all products
 export function generateStaticParams() {
-  return getCatalogProducts().map((product) => ({ slug: product.id }));
+  return getCatalogProducts().map((product) => ({ slug: getProductSlug(product) }));
 }
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const product = getCatalogProduct(params.slug);
   if (!product) return { title: "Producto no encontrado" };
+  const name = normalizeProductName(product.nombre);
+  const brand = displayBrand(product.brand);
+  const title = [name, brand && !name.toLowerCase().includes(brand.toLowerCase()) ? brand : "", "Ferretería Pardo Bogotá"].filter(Boolean).join(" | ");
   const priceDescription = hasVerifiedPrice(product)
     ? `${formatCOP(product.precio)} ${formatTaxLabel(product)}`
     : "Precio por confirmar";
 
   return {
-    title: `${product.nombre} - ${product.brand} | Ferretería Pardo`,
-    alternates: { canonical: `/producto/${encodeURIComponent(product.id)}` },
-    description: `${product.nombre} de ${product.brand}. ${priceDescription}. Consulta disponibilidad en Ferretería Pardo, Bogotá. Cotiza por WhatsApp.`,
+    title,
+    alternates: { canonical: getProductPath(product) },
+    description: `${name}${brand && !name.toLowerCase().includes(brand.toLowerCase()) ? ` de ${brand}` : ""}. ${priceDescription}. Consulta disponibilidad en Ferretería Pardo, Bogotá. Cotiza por WhatsApp.`,
     openGraph: {
-      title: `${product.nombre} - ${product.brand}`,
+      title: name,
       description: `${priceDescription} | ${product.cat}`,
       images: [getLocalProductImagePath(product.img) || "/logo-ferreteria-pardo.png"],
     },
@@ -61,8 +69,8 @@ export default function ProductoPage({ params }: { params: { slug: string } }) {
       <Breadcrumbs
         items={[
           { label: "Catálogo", href: "/catalogo" },
-          { label: product.cat, href: `/catalogo?cat=${encodeURIComponent(product.cat)}` },
-          { label: product.nombre, href: `/producto/${encodeURIComponent(product.id)}` },
+          { label: product.cat, href: getCategoryPath(product.cat) },
+          { label: normalizeProductName(product.nombre), href: getProductPath(product) },
         ]}
       />
 
@@ -82,52 +90,29 @@ export default function ProductoPage({ params }: { params: { slug: string } }) {
           {/* Info */}
           <div className="min-w-0">
             <div className="text-sm font-bold text-brand-red dark:text-red-400 uppercase tracking-wider mb-2">
-              {product.brand}
+              {displayBrand(product.brand)}
             </div>
             <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white mb-4 leading-tight">
-              {product.nombre}
+              {normalizeProductName(product.nombre)}
             </h1>
 
             <div className="flex flex-wrap items-center gap-3 mb-6">
               <span className="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-lg font-mono">
                 SKU {product.id}
               </span>
-              <span className="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-lg font-medium">
-                {product.unidad}
-              </span>
+              {formatUnit(product.unidad) && <span className="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-lg font-medium">{formatUnit(product.unidad)}</span>}
               <span className={`text-xs px-3 py-1 rounded-lg font-semibold ${
                 inStock
                   ? "bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-900"
                   : "bg-amber-50 text-amber-700 border border-amber-200 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-900"
               }`}>
-                {inStock ? `En stock (${stockLabel})` : "Consultar disponibilidad"}
+                {getStockLabel(product)}
               </span>
             </div>
 
-            {/* Price */}
-            <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-6 mb-8">
-              <div className="flex flex-wrap items-baseline gap-2">
-                <span className={`${priceConfirmed ? "text-4xl" : "text-2xl"} font-extrabold text-gray-900 dark:text-white`}>
-                  {priceConfirmed ? formatCOP(product.precio) : "Precio por confirmar"}
-                </span>
-                <span className="text-sm text-amber-600 dark:text-amber-400 font-semibold">{formatTaxLabel(product)}{hasUnit ? ` / ${product.unidad}` : " · unidad por confirmar"}</span>
-              </div>
-              {priceConfirmed && <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">Precio base sin IVA</p>}
-              {priceWithTax !== null && (
-                <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-                  Precio con IVA: <span className="font-semibold">{formatCOP(priceWithTax)}</span>
-                </p>
-              )}
-              {discount && product.original && (
-                <div className="flex items-center gap-3 mt-2">
-                  <span className="text-lg text-gray-400 line-through">
-                    {formatCOP(product.original)}
-                  </span>
-                  <span className="text-sm font-bold text-red-500 bg-red-50 px-2 py-0.5 rounded">
-                    Ahorras {discount}%
-                  </span>
-                </div>
-              )}
+            <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-5 mb-6">
+              <PricePreferenceToggle idPrefix="detail-price" className="mb-4" />
+              <PriceDisplay product={product} principalClassName="text-3xl md:text-4xl" />
             </div>
 
             {product.ref && product.ref !== product.id && <p className="mb-4 text-xs text-gray-500 dark:text-gray-400">Ref. {product.ref}</p>}
@@ -146,7 +131,7 @@ export default function ProductoPage({ params }: { params: { slug: string } }) {
               <div className="text-sm text-gray-500">
                 <span className="font-medium text-gray-700 dark:text-gray-300">Categoría:</span>{" "}
                 <Link
-                  href={`/catalogo?cat=${encodeURIComponent(product.cat)}`}
+                  href={getCategoryPath(product.cat)}
                   className="text-brand-red hover:underline"
                 >
                   {product.cat}
@@ -160,7 +145,7 @@ export default function ProductoPage({ params }: { params: { slug: string } }) {
         {related.length > 0 && (
           <div>
             <h2 className="text-2xl font-extrabold text-gray-900 dark:text-white mb-6">Productos relacionados</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {related.map((item) => <ProductCard key={item.id} product={item} />)}
             </div>
           </div>

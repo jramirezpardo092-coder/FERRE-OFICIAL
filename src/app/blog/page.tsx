@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getCategoryPath } from "@/lib/catalog/routes";
 import type { Metadata } from "next";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { SITE } from "@/lib/constants";
@@ -99,7 +100,7 @@ export default function BlogPage() {
                 ))}
               </ul>
               <Link
-                href={`/catalogo?cat=${encodeURIComponent(guide.category)}`}
+                href={getCategoryPath(guide.category)}
                 className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-brand-red dark:text-red-400 hover:underline underline-offset-4"
               >
                 Ver {guide.category.toLowerCase()}

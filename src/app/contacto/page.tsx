@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SITE } from "@/lib/constants";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { getLocalBusinessJsonLd } from "@/lib/seo";
+import MapFacade from "@/components/MapFacade";
 
 export const metadata: Metadata = {
   title: "Contacto | Ferretería Pardo SAS - Bogotá",
@@ -12,10 +12,6 @@ export const metadata: Metadata = {
 export default function ContactoPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(getLocalBusinessJsonLd()) }}
-      />
       <Breadcrumbs items={[{ label: "Contacto", href: "/contacto" }]} />
 
       <section className="max-w-7xl mx-auto px-4 py-12 md:py-16">
@@ -90,18 +86,7 @@ export default function ContactoPage() {
         </div>
 
         {/* Map */}
-        <div className="rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-800 shadow-lg mb-12 h-[300px] md:h-[420px]">
-          <iframe
-            src={SITE.mapEmbed}
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Ubicación Ferretería Pardo"
-          />
-        </div>
+        <div className="mb-12"><MapFacade /></div>
 
         {/* WhatsApp CTA */}
         <div className="bg-gradient-to-r from-brand-red to-brand-red-dark rounded-3xl p-6 sm:p-10 md:p-14 text-center text-white">

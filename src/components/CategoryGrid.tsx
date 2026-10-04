@@ -1,4 +1,5 @@
 import React from "react";
+import { getCategoryPath } from "@/lib/catalog/routes";
 import Link from "next/link";
 import { CATEGORIES } from "@/lib/constants";
 
@@ -106,7 +107,7 @@ export default function CategoryGrid({ counts: productCounts }: Props) {
             return (
               <Link
                 key={cat.slug}
-                href={`/catalogo?cat=${encodeURIComponent(cat.name)}`}
+                href={getCategoryPath(cat.name)}
                 className="group w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.75rem)] lg:w-[calc(20%-1rem)]"
               >
                 <div className="relative h-full bg-white dark:bg-gray-900 rounded-2xl p-6 md:p-8 text-center border border-gray-100 dark:border-gray-800 hover:border-brand-red/20 dark:hover:border-brand-red/30 hover:shadow-xl hover:shadow-red-900/5 transition-all duration-300 hover:-translate-y-1 flex flex-col items-center justify-center">

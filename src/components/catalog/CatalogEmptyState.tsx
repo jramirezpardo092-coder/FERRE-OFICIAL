@@ -14,8 +14,8 @@ export default function CatalogEmptyState({ query, onClear, onCategory, categori
     <p className="mx-auto mt-3 max-w-md break-words text-sm text-gray-600 dark:text-gray-300">{query ? <>No encontramos resultados para <strong>“{query}”</strong> con estos filtros.</> : "No encontramos productos con esta combinación de filtros."} Prueba el código, la referencia de fábrica o un nombre más corto.</p>
     <div className="mt-6 flex flex-wrap justify-center gap-3">
       <button type="button" onClick={onClear} className="rounded-xl bg-brand-red px-5 py-3 text-sm font-bold text-white hover:bg-brand-red-dark">Limpiar búsqueda y filtros</button>
-      <a href={help} target="_blank" rel="noreferrer" className="rounded-xl border border-green-700 px-5 py-3 text-sm font-bold text-green-700 hover:bg-green-50 dark:text-green-400 dark:hover:bg-green-950">Pedir ayuda por WhatsApp</a>
+      <a href={help} target="_blank" rel="noreferrer" className="rounded-xl border border-green-700 px-5 py-3 text-sm font-bold text-green-700 hover:bg-green-50 dark:text-green-400 dark:hover:bg-green-950">Pregúntanos por WhatsApp</a>
     </div>
-    {categories.length > 0 && <div className="mt-7 flex flex-wrap justify-center gap-2" aria-label="Explorar categorías">{categories.slice(0, 4).map(category => <button key={category} type="button" onClick={() => onCategory(category)} className="rounded-full bg-gray-100 px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-red-50 hover:text-brand-red dark:bg-gray-800 dark:text-gray-200">{category}</button>)}</div>}
+    {categories.length > 0 && <div role="group" className="mt-7 flex flex-wrap justify-center gap-2" aria-label="Explorar categorías">{categories.slice(0, 4).map(category => <button key={category} type="button" onClick={() => onCategory(category)} className="min-h-11 rounded-full bg-gray-100 px-4 py-2 text-xs font-semibold text-gray-700 hover:bg-red-50 hover:text-brand-red dark:bg-gray-800 dark:text-gray-200">{category}</button>)}</div>}
   </section>;
 }

@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { SITE, CATEGORIES } from "@/lib/constants";
 import productsData from "@/data/products.json";
 import { Product } from "@/lib/types";
+import { getProductPath, getCategoryPath } from "@/lib/catalog/routes";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const products = productsData as Product[];
@@ -17,14 +18,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const categoryPages: MetadataRoute.Sitemap = CATEGORIES.map((cat) => ({
-    url: `${baseUrl}/catalogo?cat=${encodeURIComponent(cat.name)}`,
+    url: `${baseUrl}${getCategoryPath(cat.name)}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }));
 
   const productPages: MetadataRoute.Sitemap = products.map((p) => ({
-    url: `${baseUrl}/producto/${p.id}`,
+    url: `${baseUrl}${getProductPath(p)}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.6,

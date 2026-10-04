@@ -8,6 +8,8 @@ import { SITE, NAV_LINKS, CATEGORIES } from "@/lib/constants";
 import { getCart, subscribeCart } from "@/lib/cart-store";
 import { cn } from "@/lib/utils";
 import { useTheme } from "./ThemeProvider";
+import QuoteToast from "./QuoteToast";
+import { getCategoryPath } from "@/lib/catalog/routes";
 
 const SunIcon = () => (
   <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -144,6 +146,7 @@ export default function Header() {
   const [catOpen, setCatOpen] = useState(false);
   const [mobileCatOpen, setMobileCatOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
+  const [quotePulse, setQuotePulse] = useState(0);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
   const categoryToggleRef = useRef<HTMLButtonElement>(null);
@@ -165,7 +168,13 @@ export default function Header() {
 
   useEffect(() => {
     setCartCount(getCart().length);
-    return subscribeCart(() => setCartCount(getCart().length));
+    const unsubscribe = subscribeCart(() => setCartCount(getCart().length));
+    const animate = () => setQuotePulse((previous) => previous + 1);
+    window.addEventListener("cart-added", animate);
+    return () => {
+      unsubscribe();
+      window.removeEventListener("cart-added", animate);
+    };
   }, []);
 
   useEffect(() => {
@@ -230,18 +239,19 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-16 lg:h-[72px]">
             {/* Logo - Premium styling */}
-            <Link href="/" className="flex items-center gap-3 shrink-0">
+            <Link href="/" className="flex min-h-11 items-center gap-3 shrink-0">
               <Image
-                src="/logo-ferreteria-pardo.png"
+                src="/logo-ferreteria-pardo.svg"
                 alt="Ferretería Pardo SAS"
-                width={52}
-                height={52}
-                className="rounded-2xl"
+                width={126}
+                height={36}
+                sizes="126px"
+                className="h-9 w-[126px] bg-white"
                 priority
               />
-              <div className="hidden sm:block">
-                <div className="font-black text-brand-red leading-tight text-lg">Ferretería Pardo</div>
-                <div className="text-xs text-gray-500 font-semibold">Desde 1966 · Bogotá</div>
+              <div className="hidden sm:block lg:hidden">
+                <div className="font-black text-brand-red dark:text-red-400 leading-tight text-lg">Ferretería Pardo</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400 font-semibold">Desde 1966 · Bogotá</div>
               </div>
             </Link>
 
@@ -255,7 +265,7 @@ export default function Header() {
                       onClick={() => setCatOpen(!catOpen)}
                       aria-expanded={catOpen}
                       aria-controls="desktop-categories"
-                      className="flex items-center px-4 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/20"
+                      className="flex min-h-11 items-center px-4 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/20"
                     >
                       {link.label}
                       <ChevronDown />
@@ -268,7 +278,7 @@ export default function Header() {
                             return (
                               <Link
                                 key={cat.slug}
-                                href={`/catalogo?cat=${encodeURIComponent(cat.name)}`}
+                                href={getCategoryPath(cat.name)}
                                 className="flex flex-col items-center gap-2 p-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-brand-red transition-all duration-300 rounded-2xl border border-transparent hover:border-red-200 dark:hover:border-red-800"
                                 onClick={() => setCatOpen(false)}
                               >
@@ -290,7 +300,7 @@ export default function Header() {
                     key={link.label}
                     href={link.href}
                     aria-current={pathname === link.href ? "page" : undefined}
-                    className={cn("px-4 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/20", pathname === link.href && "bg-red-50 dark:bg-red-900/20 text-brand-red dark:text-red-400")}
+                    className={cn("flex min-h-11 items-center px-4 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/20", pathname === link.href && "bg-red-50 dark:bg-red-900/20 text-brand-red dark:text-red-400")}
                   >
                     {link.label}
                   </Link>
@@ -299,23 +309,23 @@ export default function Header() {
             </nav>
 
             {/* Right actions */}
-            <div className="flex items-center gap-2">
+            <div className="flex shrink-0 items-center gap-2">
               {/* Social icons - desktop */}
               <div className="hidden xl:flex items-center gap-2 mr-2">
                 <a href={SITE.social.instagram} target="_blank" rel="noreferrer"
                    aria-label="Instagram de Ferretería Pardo"
-                   className="p-2.5 text-gray-400 hover:text-pink-500 transition-all duration-300 rounded-2xl hover:bg-pink-50">
+                   className="flex h-11 w-11 shrink-0 items-center justify-center text-gray-500 dark:text-gray-400 hover:text-pink-500 transition-all duration-300 rounded-2xl hover:bg-pink-50">
                   <InstagramIcon />
                 </a>
                 <a href={SITE.social.facebook} target="_blank" rel="noreferrer"
                    aria-label="Facebook de Ferretería Pardo"
-                   className="p-2.5 text-gray-400 hover:text-blue-600 transition-all duration-300 rounded-2xl hover:bg-blue-50">
+                   className="flex h-11 w-11 shrink-0 items-center justify-center text-gray-500 dark:text-gray-400 hover:text-blue-600 transition-all duration-300 rounded-2xl hover:bg-blue-50">
                   <FacebookIcon />
                 </a>
               </div>
 
               <a href={SITE.social.whatsapp} target="_blank" rel="noreferrer"
-                 className="btn-wa text-xs hidden md:inline-flex rounded-xl px-5 py-2.5">
+                 className="btn-wa text-xs hidden xl:inline-flex whitespace-nowrap rounded-xl px-5 py-2.5">
                 <WhatsAppMini />
                 Hablar con asesor
               </a>
@@ -323,7 +333,7 @@ export default function Header() {
               {/* Dark mode toggle */}
               <button
                 onClick={toggleTheme}
-                className="p-2.5 text-gray-500 dark:text-gray-400 hover:text-brand-red dark:hover:text-brand-orange transition-all duration-300 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800"
+                className="flex h-11 w-11 shrink-0 items-center justify-center text-gray-500 dark:text-gray-400 hover:text-brand-red dark:hover:text-brand-orange transition-all duration-300 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800 motion-reduce:transition-none"
                 aria-label="Cambiar tema"
               >
                 {theme === "dark" ? <SunIcon /> : <MoonIcon />}
@@ -331,8 +341,9 @@ export default function Header() {
 
               {/* Cart button - Premium scale animation */}
               <button
-                className="relative p-2.5 text-gray-700 dark:text-gray-300 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/20"
-                aria-label={`Ver pedido${cartCount ? `, ${cartCount} ${cartCount === 1 ? "referencia" : "referencias"}` : ""}`}
+                className="relative flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-2xl px-2.5 text-gray-700 transition-colors hover:bg-red-50 hover:text-brand-red dark:text-gray-300 dark:hover:bg-red-900/20 motion-reduce:transition-none"
+                data-quote-trigger
+                aria-label={`Ver cotización${cartCount ? `, ${cartCount} ${cartCount === 1 ? "referencia" : "referencias"}` : ""}`}
                 onClick={() => {
                   setMobileOpen(false);
                   const event = new CustomEvent("toggle-cart");
@@ -340,8 +351,9 @@ export default function Header() {
                 }}
               >
                 <CartIcon />
+                <span className="hidden text-xs font-semibold sm:inline">Cotización</span>
                 {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-brand-orange text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center animate-pulse">
+                  <span key={quotePulse} className={cn("absolute -top-1 -right-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-red px-1 text-xs font-bold text-white", quotePulse > 0 && "animate-quote-bump")}>
                     {cartCount}
                   </span>
                 )}
@@ -350,7 +362,7 @@ export default function Header() {
               {/* Mobile menu toggle */}
               <button
                 ref={mobileToggleRef}
-                className="lg:hidden p-2.5 text-gray-700 dark:text-gray-200 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
+                className="flex h-11 w-11 items-center justify-center lg:hidden text-gray-700 dark:text-gray-200 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 motion-reduce:transition-none"
                 onClick={() => setMobileOpen(!mobileOpen)}
                 aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
                 aria-expanded={mobileOpen}
@@ -385,8 +397,8 @@ export default function Header() {
                           return (
                             <Link
                               key={cat.slug}
-                              href={`/catalogo?cat=${encodeURIComponent(cat.name)}`}
-                              className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 dark:text-gray-300 hover:text-brand-red hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-300 rounded-2xl"
+                              href={getCategoryPath(cat.name)}
+                              className="flex min-h-11 items-center gap-3 px-4 py-2.5 text-sm text-gray-600 dark:text-gray-300 hover:text-brand-red hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-300 rounded-2xl"
                               onClick={() => { setMobileCatOpen(false); setMobileOpen(false); }}
                             >
                               {IconComponent && (
@@ -431,16 +443,25 @@ export default function Header() {
                 <p className="flex items-center gap-2"><LocationIcon /> {SITE.address}</p>
                 <p className="flex items-center gap-2"><ClockIcon /> Lun–Vie 8:15am–4:55pm · Sáb 8:15am–2:15pm</p>
                 <div className="flex items-center gap-3 pt-2">
-                  <a href={SITE.social.instagram} target="_blank" rel="noreferrer" aria-label="Instagram de Ferretería Pardo" className="text-gray-400 hover:text-pink-500 transition-all duration-300"><InstagramIcon /></a>
-                  <a href={SITE.social.facebook} target="_blank" rel="noreferrer" aria-label="Facebook de Ferretería Pardo" className="text-gray-400 hover:text-blue-600 transition-all duration-300"><FacebookIcon /></a>
+                  <a href={SITE.social.instagram} target="_blank" rel="noreferrer" aria-label="Instagram de Ferretería Pardo" className="flex h-11 w-11 items-center justify-center rounded-xl text-gray-400 hover:text-pink-500 transition-all duration-300"><InstagramIcon /></a>
+                  <a href={SITE.social.facebook} target="_blank" rel="noreferrer" aria-label="Facebook de Ferretería Pardo" className="flex h-11 w-11 items-center justify-center rounded-xl text-gray-400 hover:text-blue-600 transition-all duration-300"><FacebookIcon /></a>
                 </div>
               </div>
             </nav>
           </div>
         )}
       </header>
+      <QuoteToast />
 
       <style>{`
+        @keyframes quote-bump {
+          0%, 100% { transform: scale(1); }
+          45% { transform: scale(1.3); }
+        }
+        .animate-quote-bump { animation: quote-bump 300ms ease-out; }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-quote-bump, .animate-slide-down { animation: none; }
+        }
         @keyframes slide-down {
           from {
             opacity: 0;

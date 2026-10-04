@@ -2,7 +2,7 @@ export const SITE = {
   name: "Ferretería Pardo SAS",
   tagline: "Desde 1966",
   description: "Herrajes, cerrajería, herramientas y tornillería. 60+ años de experiencia en Bogotá.",
-  url: "https://ferre-oficial.vercel.app",
+  url: ((typeof process !== "undefined" && process.env.NEXT_PUBLIC_SITE_URL) || "https://ferre-oficial.vercel.app").replace(/\/$/, ""),
   phone1: "3208345756",
   phone2: "3118486132",
   phone1Display: "320 834 5756",

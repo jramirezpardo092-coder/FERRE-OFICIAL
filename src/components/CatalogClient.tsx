@@ -2,12 +2,15 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import dynamic from "next/dynamic";
 import type { Product } from "@/lib/types";
 import type { CatalogResponse, CatalogSuggestion } from "@/lib/catalog-types";
 import { getActiveFilterCount, normalizeCatalogFilters, type FiltersValue } from "@/lib/catalog-filters";
-import { cn } from "@/lib/utils";
+import { cn, formatCOP } from "@/lib/utils";
+import { getCategoryPath, getProductPath } from "@/lib/catalog/routes";
+import { CATEGORIES } from "@/lib/constants";
+import PricePreferenceToggle from "./catalog/PricePreferenceToggle";
 import ProductCard from "./ProductCard";
-import ProductModal from "./ProductModal";
 import CatalogFilters from "./catalog/CatalogFilters";
 import CatalogFilterDrawer from "./catalog/CatalogFilterDrawer";
 import CatalogSearch from "./catalog/CatalogSearch";
@@ -15,10 +18,12 @@ import CatalogPagination from "./catalog/CatalogPagination";
 import CatalogEmptyState from "./catalog/CatalogEmptyState";
 import ParditoState from "./catalog/ParditoState";
 
-const SORT_OPTIONS = ["relevance", "price-asc", "price-desc", "discount", "name"];
+const SORT_OPTIONS = ["relevance", "availability", "price-asc", "price-desc", "discount", "name"];
+// La vista rápida se descarga cuando el cliente abre una ficha.
+const ProductModal = dynamic(() => import("./ProductModal"), { ssr: false });
 
 /** Only one page of public products reaches the browser. Sales data stay on the server. */
-export default function CatalogClient({ offersOnly = false }: { offersOnly?: boolean }) {
+export default function CatalogClient({ offersOnly = false, initialData, initialParamsKey = "", category = "" }: { offersOnly?: boolean; initialData?: CatalogResponse; initialParamsKey?: string; category?: string }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const paramsKey = searchParams.toString();
@@ -27,22 +32,23 @@ export default function CatalogClient({ offersOnly = false }: { offersOnly?: boo
   const filters = useMemo(() => {
     const params = new URLSearchParams(paramsKey);
     return normalizeCatalogFilters({
-      category: params.get("cat") || "", brand: params.get("brand") || "",
+      category: category || params.get("cat") || "", brand: params.get("brand") || "",
       priceMin: params.get("min") ?? params.get("priceMin") ?? "",
       priceMax: params.get("max") ?? params.get("priceMax") ?? "",
       availability: params.get("availability") as FiltersValue["availability"],
       offersOnly: offersOnly || params.get("ofertas") === "true",
     });
-  }, [paramsKey, offersOnly]);
+  }, [paramsKey, offersOnly, category]);
   const [search, setSearch] = useState(query);
-  const [result, setResult] = useState<{ key: string; data: CatalogResponse } | null>(null);
+  const resultKey = (key: string) => (offersOnly ? "offers:" : "catalog:") + category + ":" + key;
+  const [result, setResult] = useState<{ key: string; data: CatalogResponse } | null>(() => initialData ? { key: resultKey(initialParamsKey), data: initialData } : null);
   const [error, setError] = useState(false);
   const [retry, setRetry] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [viewMode, setViewMode] = useState<"responsive" | "grid" | "list">("responsive");
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
   const topRef = useRef<HTMLDivElement>(null);
-  const requestKey = (offersOnly ? "offers:" : "catalog:") + paramsKey;
+  const requestKey = resultKey(paramsKey);
   const loading = !result || result.key !== requestKey;
   const data = result?.data;
   const busy = loading && !error;
@@ -54,10 +60,20 @@ export default function CatalogClient({ offersOnly = false }: { offersOnly?: boo
       if (value === null || !value.trim()) params.delete(key);
       else params.set(key, value);
     }
-    const next = params.toString();
-    const url = window.location.pathname + (next ? "?" + next : "") + window.location.hash;
-    if (url !== window.location.pathname + window.location.search + window.location.hash) window.history.pushState(null, "", url);
-  }, []);
+    const nextCategory = Object.prototype.hasOwnProperty.call(updates, "cat") ? updates.cat : category || params.get("cat");
+    const path = offersOnly ? "/ofertas" : getCategoryPath(nextCategory || "");
+    if (!nextCategory || path !== "/catalogo") params.delete("cat");
+    const nextQuery = params.toString();
+    const url = path + (nextQuery ? "?" + nextQuery : "");
+    if (path !== window.location.pathname) router.push(url);
+    else if (url !== window.location.pathname + window.location.search) window.history.pushState(null, "", url);
+  }, [category, offersOnly, router]);
+  useEffect(() => {
+    if (initialData) {
+      const key = (offersOnly ? "offers:" : "catalog:") + category + ":" + initialParamsKey;
+      setResult(previous => previous?.key === key && previous.data === initialData ? previous : { key, data: initialData });
+    }
+  }, [initialData, initialParamsKey, category, offersOnly]);
   useEffect(() => { setSearch(query); }, [query]);
   useEffect(() => {
     const restoreSearch = () => setSearch(new URLSearchParams(window.location.search).get("q") || "");
@@ -77,14 +93,16 @@ export default function CatalogClient({ offersOnly = false }: { offersOnly?: boo
   }, [search, query, updateParams]);
 
   useEffect(() => {
+    if (result?.key === requestKey && retry === 0) return;
     const controller = new AbortController();
     let current = true;
     setError(false);
     const params = new URLSearchParams(paramsKey);
+    if (category) params.set("cat", category);
     if (offersOnly) params.set("ofertas", "true");
     async function load() {
       try {
-        const response = await fetch("/api/catalogo?" + params, { signal: controller.signal, cache: "no-store" });
+        const response = await fetch("/api/catalogo?" + params, { signal: controller.signal });
         if (!response.ok) throw new Error("Catalog unavailable");
         const body = await response.json() as CatalogResponse;
         if (current) setResult({ key: requestKey, data: body });
@@ -95,7 +113,7 @@ export default function CatalogClient({ offersOnly = false }: { offersOnly?: boo
     void load();
     // Slow requests cannot replace the results of a newer search.
     return () => { current = false; controller.abort(); };
-  }, [paramsKey, offersOnly, requestKey, retry]);
+  }, [paramsKey, offersOnly, category, requestKey, retry]);
 
   const changeFilters = (next: FiltersValue) => updateParams({
     cat: next.category, brand: next.brand, min: next.priceMin, max: next.priceMax,
@@ -107,7 +125,7 @@ export default function CatalogClient({ offersOnly = false }: { offersOnly?: boo
     updateParams({ q: null, cat: null, brand: null, min: null, max: null, priceMin: null, priceMax: null, availability: null, ofertas: null, page: null, sort: null });
   };
   const chooseSuggestion = (suggestion: CatalogSuggestion) => {
-    if (suggestion.type === "product") router.push("/producto/" + encodeURIComponent(suggestion.value));
+    if (suggestion.type === "product") router.push(getProductPath({ id: suggestion.value, nombre: suggestion.label }));
     else {
       setSearch("");
       updateParams({ q: null, [suggestion.type === "category" ? "cat" : "brand"]: suggestion.value, page: null });
@@ -121,55 +139,72 @@ export default function CatalogClient({ offersOnly = false }: { offersOnly?: boo
     filters.category && { key: "cat", label: filters.category },
     filters.brand && { key: "brand", label: filters.brand },
     filters.availability !== "all" && { key: "availability", label: filters.availability === "in-stock" ? "En stock" : "Consultar disponibilidad" },
-    (filters.priceMin || filters.priceMax) && { key: "price", label: "Precio: " + (filters.priceMin || "0") + " – " + (filters.priceMax || "sin máximo") + " COP" },
+    (filters.priceMin || filters.priceMax) && { key: "price", label: "Precio sin IVA: " + formatCOP(Number(filters.priceMin || 0)) + " – " + (filters.priceMax ? formatCOP(Number(filters.priceMax)) : "sin máximo") },
     !offersOnly && filters.offersOnly && { key: "ofertas", label: "Solo ofertas" },
   ].filter((chip): chip is { key: string; label: string } => !!chip);
 
-  return <div ref={topRef} className="mx-auto max-w-[1400px] scroll-mt-24 px-4 py-6 md:py-8">
+  return <div ref={topRef} className="mx-auto max-w-[1400px] scroll-mt-24 px-4 pt-5 pb-24 md:pt-8">
     <div className="mx-auto mb-6 max-w-3xl">
       <CatalogSearch value={search} onChange={setSearch} suggestions={!loading && query === search ? data?.suggestions || [] : []} onSelect={chooseSuggestion} loading={busy || search !== query} />
-      <p className="mt-2 px-1 text-xs text-gray-500 dark:text-gray-400">Busca por nombre, SKU o referencia. Todos incluye productos agotados para consultar.</p>
+      <p className="mt-2 px-1 text-xs text-gray-600 dark:text-gray-300">Busca por nombre, SKU o referencia. Incluimos agotados para consultar reposición.</p>
     </div>
-    {chips.length > 0 && <div className="mb-5 flex flex-wrap items-center gap-2" aria-label="Filtros activos">
+    <nav aria-label="Categorías del catálogo" className="mb-4 flex gap-2 overflow-x-auto pb-2">
+      {CATEGORIES.map(item => <a key={item.slug} href={getCategoryPath(item.name)} onClick={event => {
+        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+        event.preventDefault(); setSearch(""); updateParams({ cat: item.name, q: null, page: null });
+      }} aria-current={category === item.name ? "page" : undefined} className={cn("inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full border px-4 text-xs font-semibold", category === item.name ? "border-brand-red bg-brand-red text-white" : "border-gray-200 bg-white text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200")}>
+        {item.name}<span>{data?.categories.find(facet => facet.name === item.name)?.count || 0}</span>
+      </a>)}
+    </nav>
+    <div role="group" className="mb-5 flex flex-wrap gap-x-5 gap-y-2 rounded-xl bg-gray-100 px-4 py-3 text-xs leading-relaxed text-gray-700 dark:bg-gray-900 dark:text-gray-200" aria-label="Información para cotizar">
+      <span>Recoge en tienda · Calle 72 No. 50-23</span><span>Envíos: consulta condiciones</span><span>Factura electrónica</span><span>Nequi, Daviplata, tarjetas</span>
+    </div>
+    <PricePreferenceToggle idPrefix="catalog-price" className="mb-5" />
+    {chips.length > 0 && <div role="group" className="mb-5 flex flex-wrap items-center gap-2" aria-label="Filtros activos">
       {chips.map(chip => <button key={chip.key} type="button" onClick={() => {
         if (chip.key === "q") setSearch("");
         updateParams(chip.key === "price" ? { min: null, max: null, priceMin: null, priceMax: null, page: null } : { [chip.key]: null, page: null });
-      }} className="inline-flex max-w-full items-center gap-2 rounded-full border border-red-200 bg-red-50 px-3 py-2 text-xs font-semibold text-brand-red dark:border-red-900 dark:bg-red-900/20 dark:text-red-300" aria-label={"Quitar filtro " + chip.label}>
+      }} className="inline-flex min-h-11 max-w-full items-center gap-2 rounded-full border border-red-200 bg-red-50 px-3 py-2 text-xs font-semibold text-brand-red dark:border-red-900 dark:bg-red-900/20 dark:text-red-300" aria-label={"Quitar filtro " + chip.label}>
         <span className="truncate">{chip.label}</span><span aria-hidden="true">✕</span>
       </button>)}
-      <button type="button" onClick={clearAll} className="px-2 py-2 text-xs font-semibold text-brand-red hover:underline dark:text-red-300">Limpiar todo</button>
+      <button type="button" onClick={clearAll} className="min-h-11 px-2 py-2 text-xs font-semibold text-brand-red hover:underline dark:text-red-300">Limpiar filtros</button>
     </div>}
     <div className="flex items-start gap-6">
       <aside className="sticky top-24 hidden max-h-[calc(100vh-7rem)] w-64 shrink-0 overflow-y-auto lg:block"><CatalogFilters {...filterProps} idPrefix="desktop-catalog" /></aside>
       <section className="min-w-0 flex-1" aria-label="Productos del catálogo" aria-busy={busy}>
+        <h2 className="sr-only">Productos para cotizar</h2>
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
           <div className="text-sm text-gray-500 dark:text-gray-400" role="status" aria-live="polite">
             {error ? "Catálogo no disponible" : loading ? "Buscando productos…" : data && data.total > 0 ? <><strong className="text-gray-900 dark:text-white">{(data.page - 1) * data.pageSize + 1}–{Math.min(data.page * data.pageSize, data.total)}</strong> de <strong className="text-gray-900 dark:text-white">{data.total.toLocaleString("es-CO")}</strong> productos</> : "Sin resultados"}
             {!loading && data?.isFuzzy && <span className="mt-1 block text-xs text-amber-700 dark:text-amber-400">Coincidencias aproximadas: verifica la referencia.</span>}
           </div>
           <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto">
-            <button type="button" onClick={() => setDrawerOpen(true)} aria-haspopup="dialog" aria-expanded={drawerOpen} className="rounded-xl border border-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-white lg:hidden">Filtros{activeCount > 0 ? " (" + activeCount + ")" : ""}</button>
-            <select aria-label="Ordenar productos" value={sort} onChange={event => updateParams({ sort: event.target.value === "relevance" ? null : event.target.value, page: null })} className="min-w-0 flex-1 rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white sm:flex-none">
-              <option value="relevance">Relevancia</option><option value="price-asc">Menor precio</option><option value="price-desc">Mayor precio</option><option value="discount">Mayor descuento</option><option value="name">A–Z</option>
+            <button type="button" onClick={() => setDrawerOpen(true)} aria-haspopup="dialog" aria-expanded={drawerOpen} className="min-h-11 rounded-xl border border-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-white lg:hidden">Filtros{activeCount > 0 ? " (" + activeCount + ")" : ""}</button>
+            <select aria-label="Ordenar productos" value={sort} onChange={event => updateParams({ sort: event.target.value === "relevance" ? null : event.target.value, page: null })} className="min-h-11 min-w-0 flex-1 rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white sm:flex-none">
+              <option value="relevance">{query ? "Relevancia" : "Disponibles · con foto · A–Z"}</option><option value="availability">Disponibles primero</option><option value="price-asc">Menor precio</option><option value="price-desc">Mayor precio</option><option value="discount">Mayor descuento</option><option value="name">A–Z</option>
             </select>
-            <div className="hidden gap-1 sm:flex" aria-label="Vista de productos">
-              {(["grid", "list"] as const).map(mode => <button type="button" key={mode} onClick={() => setViewMode(mode)} aria-pressed={viewMode === mode} aria-label={mode === "grid" ? "Vista cuadrícula" : "Vista lista"} className={cn("rounded-lg px-3 py-2 text-sm", viewMode === mode ? "bg-brand-red text-white" : "text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800")}>{mode === "grid" ? "▦" : "☰"}</button>)}
+            <div role="group" className="hidden gap-1 sm:flex" aria-label="Vista de productos">
+              {(["grid", "list"] as const).map(mode => <button type="button" key={mode} onClick={() => setViewMode(mode)} aria-pressed={viewMode === mode || (viewMode === "responsive" && mode === "grid")} aria-label={mode === "grid" ? "Vista cuadrícula" : "Vista lista"} className={cn("min-h-11 min-w-11 rounded-lg px-3 py-2 text-sm", viewMode === mode || (viewMode === "responsive" && mode === "grid") ? "bg-brand-red text-white" : "text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800")}><svg aria-hidden="true" className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth={1.75} d={mode === "grid" ? "M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z" : "M8 5h13M8 12h13M8 19h13M3 5h1M3 12h1M3 19h1"} /></svg></button>)}
             </div>
           </div>
         </div>
         {!loading && data?.filtersValid === false && <p role="status" className="mb-4 rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-300">Revisa los filtros. Un rango de precio inválido no se aplica; puedes corregirlo en Filtros.</p>}
         {error ? <ParditoState mode="error" onRetry={() => setRetry(value => value + 1)} /> : loading ? <ParditoState /> : data?.products.length ? <>
-          <div className={cn(viewMode === "grid" ? "grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4 md:gap-4" : "flex flex-col gap-3")}>
+          <div className={cn(viewMode === "responsive" ? "grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 md:gap-4" : viewMode === "grid" ? "grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4 md:gap-4" : "flex flex-col gap-3")}>
             {data.products.map(product => <ProductCard key={product.id} product={product} onOpenModal={setModalProduct} viewMode={viewMode} />)}
           </div>
-          <CatalogPagination page={data.page} totalPages={data.totalPages} onPageChange={page => {
+          <CatalogPagination page={data.page} totalPages={data.totalPages} pageHref={page => {
+            const params = new URLSearchParams(paramsKey);
+            if (page > 1) params.set("page", String(page)); else params.delete("page");
+            return (offersOnly ? "/ofertas" : getCategoryPath(category)) + (params.size ? "?" + params.toString() : "");
+          }} onPageChange={page => {
             updateParams({ page: page === 1 ? null : String(page) });
             topRef.current?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
           }} />
-        </> : <CatalogEmptyState query={query} onClear={clearAll} onCategory={category => { clearAll(); updateParams({ cat: category }); }} categories={data?.categories.map(category => category.name) || []} />}
+        </> : <CatalogEmptyState query={query} onClear={clearAll} onCategory={nextCategory => { setSearch(""); updateParams({ q: null, cat: nextCategory, brand: null, min: null, max: null, availability: null, page: null }); }} categories={CATEGORIES.map(item => item.name)} />}
       </section>
     </div>
     <CatalogFilterDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)}><CatalogFilters {...filterProps} idPrefix="mobile-catalog" /></CatalogFilterDrawer>
-    <ProductModal product={modalProduct} onClose={() => setModalProduct(null)} />
+    {modalProduct && <ProductModal product={modalProduct} onClose={() => setModalProduct(null)} />}
   </div>;
 }

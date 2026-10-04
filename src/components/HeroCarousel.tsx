@@ -1,5 +1,6 @@
 "use client";
 
+import { getCategoryPath } from "@/lib/catalog/routes";
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { SITE } from "@/lib/constants";
@@ -92,7 +93,7 @@ export default function HeroCarousel({ productCount, brandCount, categoryCount }
               <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">O explora una categoría</p>
               <div className="flex flex-wrap gap-2">
                 {QUICK_CATEGORIES.map((category) => (
-                  <Link key={category} href={"/catalogo?cat=" + encodeURIComponent(category)} className="rounded-lg border border-gray-200 dark:border-gray-700 px-3 py-2 text-xs font-semibold text-gray-700 dark:text-gray-300 hover:border-brand-red hover:text-brand-red transition-colors">{category}</Link>
+                  <Link key={category} href={getCategoryPath(category)} className="rounded-lg border border-gray-200 dark:border-gray-700 px-3 py-2 text-xs font-semibold text-gray-700 dark:text-gray-300 hover:border-brand-red hover:text-brand-red transition-colors">{category}</Link>
                 ))}
               </div>
             </div>

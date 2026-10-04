@@ -4,12 +4,14 @@ import productsData from "@/data/products.json";
 import type { Product } from "./types";
 import type { CatalogFacet, CatalogResponse, CatalogSuggestion } from "./catalog-types";
 import { applyCatalogFilters, normalizeCatalogFilters, validateCatalogFilters } from "./catalog-filters";
-import { enrichProducts } from "./product-enrichment";
+import { enrichProducts, getLocalProductImagePath } from "./product-enrichment";
 import { normalizeSearchText, searchProducts } from "./search";
-import { getDiscountPercent, hasVerifiedPrice } from "./utils";
+import { getAvailableQuantity, getDiscountPercent, hasVerifiedPrice } from "./utils";
+import { getProductSlug } from "./catalog/routes";
+import { displayBrand, normalizeProductName } from "./catalog/normalize";
 
 const PAGE_SIZE = 24;
-const SORT_OPTIONS = new Set(["relevance", "price-asc", "price-desc", "discount", "name"]);
+const SORT_OPTIONS = new Set(["relevance", "availability", "price-asc", "price-desc", "discount", "name"]);
 
 /** A published Product is the only data allowed across the server/client boundary. */
 function publicProduct(product: Product): Product {
@@ -42,6 +44,8 @@ function publicProduct(product: Product): Product {
 
 const catalog = enrichProducts(productsData as Product[]).map(publicProduct);
 const catalogById = new Map(catalog.map((product) => [product.id, product]));
+const catalogBySlug = new Map(catalog.map((product) => [getProductSlug(product), product]));
+const displayNames = new Map(catalog.map((product) => [product.id, normalizeProductName(product.nombre)]));
 const catalogByCategory = new Map<string, Product[]>();
 for (const product of catalog) {
   const category = catalogByCategory.get(product.cat) || [];
@@ -54,8 +58,38 @@ export function getCatalogProducts(): Product[] {
   return catalog.map(publicProduct);
 }
 
+/** Home highlights use the same approved photos as the catalog, without hiding other references. */
+export function getFeaturedCatalogProducts(): Product[] {
+  const candidates = catalog.filter((product) => {
+    const primary = getLocalProductImagePath(product.img);
+    return hasVerifiedPrice(product) && getAvailableQuantity(product) > 0 && !!primary
+      && product.gallery?.some((image) => image.verified === true && getLocalProductImagePath(image.src) === primary);
+  });
+  const featured: Product[] = [];
+  const selectedIds = new Set<string>();
+  const selectedCategories = new Set<string>();
+  const add = (product: Product) => {
+    featured.push(publicProduct(product));
+    selectedIds.add(product.id);
+  };
+  // Give photographed categories a place first, keeping the published order.
+  for (const product of candidates) {
+    if (selectedCategories.has(product.cat) || selectedIds.has(product.id)) continue;
+    add(product);
+    selectedCategories.add(product.cat);
+    if (featured.length === 8) return featured;
+  }
+  // Categories without an approved photograph do not create empty cards.
+  for (const product of candidates) {
+    if (selectedIds.has(product.id)) continue;
+    add(product);
+    if (featured.length === 8) break;
+  }
+  return featured;
+}
+
 export function getCatalogProduct(id: string): Product | undefined {
-  const product = catalogById.get(id);
+  const product = catalogById.get(id) || catalogBySlug.get(id);
   return product ? publicProduct(product) : undefined;
 }
 
@@ -76,7 +110,7 @@ function facets(products: Product[], field: "cat" | "brand"): CatalogFacet[] {
   const counts = new Map<string, number>();
   for (const product of products) {
     const name = product[field];
-    if (name.trim()) counts.set(name, (counts.get(name) || 0) + 1);
+    if (name.trim() && (field !== "brand" || displayBrand(name))) counts.set(name, (counts.get(name) || 0) + 1);
   }
   return [...counts].map(([name, count]) => ({ name, count })).sort((a, b) => a.name.localeCompare(b.name, "es"));
 }
@@ -103,15 +137,15 @@ function suggestions(query: string, results: Product[]): CatalogSuggestion[] {
   const brands = brandOptions.filter((item) => matches(item.name)).slice(0, 2);
   return [
     ...results.slice(0, 4).map((product): CatalogSuggestion => ({
-      type: "product", label: product.nombre, value: product.id,
-      description: [product.brand, product.cat].filter(Boolean).join(" · "),
+      type: "product", label: normalizeProductName(product.nombre), value: product.id,
+      description: [displayBrand(product.brand), product.cat].filter(Boolean).join(" · "),
       ...(product.img ? { img: product.img } : {}),
     })),
     ...categories.map((item): CatalogSuggestion => ({ type: "category", label: item.name, value: item.name, description: `${item.count.toLocaleString("es-CO")} referencias` })),
     ...brands.map((item): CatalogSuggestion => ({ type: "brand", label: item.name, value: item.name, description: `${item.count.toLocaleString("es-CO")} referencias` })),
     ...results.slice(4, 8).map((product): CatalogSuggestion => ({
-      type: "product", label: product.nombre, value: product.id,
-      description: [product.brand, product.cat].filter(Boolean).join(" · "),
+      type: "product", label: normalizeProductName(product.nombre), value: product.id,
+      description: [displayBrand(product.brand), product.cat].filter(Boolean).join(" · "),
       ...(product.img ? { img: product.img } : {}),
     })),
   ].slice(0, 8);
@@ -135,7 +169,11 @@ export function queryCatalog(params: URLSearchParams, offersOnly = false): Catal
   const selected = applyCatalogFilters(searchResult.results, filters);
   const sort = params.get("sort") || "relevance";
   const safeSort = SORT_OPTIONS.has(sort) ? sort : "relevance";
-  if (safeSort === "name") selected.sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
+  const byName = (a: Product, b: Product) => displayNames.get(a.id)!.localeCompare(displayNames.get(b.id)!, "es-CO") || a.id.localeCompare(b.id);
+  const byAvailability = (a: Product, b: Product) => Number(getAvailableQuantity(b) > 0) - Number(getAvailableQuantity(a) > 0);
+  if (safeSort === "name") selected.sort(byName);
+  else if (safeSort === "availability") selected.sort((a, b) => byAvailability(a, b) || byName(a, b));
+  else if (safeSort === "relevance" && !q) selected.sort((a, b) => byAvailability(a, b) || Number(!!b.img) - Number(!!a.img) || byName(a, b));
   else if (safeSort === "price-asc" || safeSort === "price-desc") {
     const direction = safeSort === "price-asc" ? 1 : -1;
     selected.sort((a, b) => {
@@ -148,7 +186,7 @@ export function queryCatalog(params: URLSearchParams, offersOnly = false): Catal
       ? getDiscountPercent(product) || 0 : 0;
     selected.sort((a, b) => discount(b) - discount(a));
   }
-  // Relevance without a search preserves the published order, including exhausted rotators.
+  // No sales counts exist in the public source. The fallback is explicit, and exhausted references remain searchable.
   const total = selected.length;
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
   const rawPage = params.get("page") || "1";

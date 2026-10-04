@@ -1,14 +1,14 @@
 import { Product, CartItem } from "./types";
 import { SITE } from "./constants";
 
-export function formatCOP(amount: number): string {
-  return new Intl.NumberFormat("es-CO", {
+const copFormatter = new Intl.NumberFormat("es-CO", {
     style: "currency",
     currency: "COP",
-    minimumFractionDigits: Number.isInteger(amount) ? 0 : 2,
-    maximumFractionDigits: 2,
-  }).format(amount);
-}
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  });
+const quantityFormatter = new Intl.NumberFormat("es-CO", { maximumFractionDigits: 6 });
+export function formatCOP(amount: number): string { return copFormatter.format(amount); }
 
 export function hasVerifiedPrice(product: Product): boolean {
   return product.priceVerified === true && Number.isFinite(product.precio) && product.precio > 0;
@@ -43,7 +43,7 @@ export function getAvailableQuantity(product: Product): number {
 }
 
 export function formatQuantity(quantity: number): string {
-  return new Intl.NumberFormat("es-CO", { maximumFractionDigits: 6 }).format(quantity);
+  return quantityFormatter.format(quantity);
 }
 
 export function getQuotationTotals(items: CartItem[]) {

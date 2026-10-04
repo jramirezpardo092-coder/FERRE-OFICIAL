@@ -76,9 +76,9 @@ export default function CatalogSearch({ value, onChange, suggestions, onSelect, 
           onChange={(event) => { onChange(event.target.value); setOpen(true); }}
           onFocus={() => setOpen(true)} onKeyDown={handleKeyDown}
           onBlur={(event) => { if (!(event.relatedTarget instanceof Node) || !rootRef.current?.contains(event.relatedTarget)) setOpen(false); }}
-          className="min-w-0 flex-1 bg-transparent py-3 text-sm text-gray-900 outline-none placeholder:text-gray-400 dark:text-white dark:placeholder:text-gray-500 sm:text-base" />
+          className="min-h-11 min-w-0 flex-1 bg-transparent py-3 text-sm text-gray-900 outline-none placeholder:text-gray-500 dark:text-white dark:placeholder:text-gray-400 sm:text-base" />
         {value && <button type="button" aria-label="Limpiar búsqueda" onClick={() => { onChange(""); setOpen(false); setActiveIndex(-1); inputRef.current?.focus(); }}
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red dark:hover:bg-gray-800 dark:hover:text-gray-200">
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-200">
           <svg aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 6l12 12M6 18L18 6" /></svg>
         </button>}
       </div>
@@ -90,7 +90,7 @@ export default function CatalogSearch({ value, onChange, suggestions, onSelect, 
         <ul ref={listRef} id={listId} role="listbox" aria-label="Sugerencias de búsqueda" aria-busy={loading} className="max-h-80 overflow-y-auto overscroll-contain p-1.5">
           {choices.map((suggestion, index) => <li key={`${suggestion.type}-${suggestion.value}`} id={`${listId}-${index}`} role="option" aria-selected={index === activeIndex}
             onMouseDown={(event) => event.preventDefault()} onClick={() => select(suggestion)}
-            className={cn("flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 transition-colors", index === activeIndex ? "bg-red-50 dark:bg-red-900/20" : "hover:bg-gray-50 dark:hover:bg-gray-800")}>
+            className={cn("flex min-h-11 cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 transition-colors", index === activeIndex ? "bg-red-50 dark:bg-red-900/20" : "hover:bg-gray-50 dark:hover:bg-gray-800")}>
             <span aria-hidden="true" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-400">
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {suggestion.type === "category" ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M3 5h7l2 3h9v11H3V5z" />
@@ -100,9 +100,9 @@ export default function CatalogSearch({ value, onChange, suggestions, onSelect, 
             </span>
             <span className="min-w-0 flex-1">
               <span className="block truncate text-sm font-semibold text-gray-800 dark:text-gray-100">{suggestion.label}</span>
-              {suggestion.description && <span className="mt-0.5 block truncate text-xs text-gray-500 dark:text-gray-400">{suggestion.description}</span>}
+              {suggestion.description && <span className="mt-0.5 block truncate text-[13px] text-gray-600 dark:text-gray-400">{suggestion.description}</span>}
             </span>
-            <span className="shrink-0 text-[10px] font-medium uppercase tracking-wide text-gray-400 dark:text-gray-500">{suggestion.type === "product" ? "Producto" : suggestion.type === "category" ? "Categoría" : "Marca"}</span>
+            <span className="shrink-0 text-xs font-medium uppercase tracking-wide text-gray-600 dark:text-gray-400">{suggestion.type === "product" ? "Producto" : suggestion.type === "category" ? "Categoría" : "Marca"}</span>
           </li>)}
         </ul>
       </div>}
