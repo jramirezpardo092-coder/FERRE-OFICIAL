@@ -185,6 +185,7 @@ export default function Header() {
           </div> : <Link key={link.label} href={link.href} aria-current={pathname===link.href ? "page" : undefined} className={cn(navClass,pathname===link.href && "bg-paper text-ink underline decoration-brand decoration-2 underline-offset-8")}>{link.label}</Link>)}
         </nav>
         <div className="flex shrink-0 items-center gap-2">
+          {(pathname === "/catalogo" || pathname.startsWith("/catalogo/")) && <span id="catalog-assist-slot" className="inline-flex h-11 w-11 shrink-0 sm:hidden" />}
           <a href={SITE.social.whatsapp} target="_blank" rel="noreferrer" className="btn-wa hidden whitespace-nowrap px-3 xl:inline-flex"><WhatsAppMini />Hablar con asesor</a>
           <button type="button" className="relative flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-chip border border-control bg-surface px-3 text-sm font-semibold text-ink transition-colors hover:bg-paper" data-quote-trigger aria-label={"Ver cotización" + (cartCount ? ", " + cartCount + " " + (cartCount === 1 ? "referencia" : "referencias") : "")}
             onClick={() => {setMobileOpen(false); window.dispatchEvent(new CustomEvent("toggle-cart"));}}>

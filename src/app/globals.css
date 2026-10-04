@@ -73,6 +73,12 @@
   .sidebar-scroll { scrollbar-width: thin; scrollbar-color: rgb(var(--control)) transparent; }
 }
 
+.pardito-assist-hidden:not(:focus-visible) { visibility: hidden; pointer-events: none; }
+@media (max-width: 639px) {
+  /* Antes de hidratar el portal, no mostrar una segunda ayuda encima de las tarjetas. */
+  .pardito-assist-catalog[data-pardito-placement="floating"] { display: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;

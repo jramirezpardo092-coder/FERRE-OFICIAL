@@ -1,0 +1,280 @@
+{
+  "scope": "Local Chrome laboratory runs, all outcomes preserved; font preload diagnostic only on Windows. Full final matrix and mobile Lighthouse run in CI.",
+  "runs": [
+    {
+      "report": "verification/summary.json",
+      "source": {
+        "head": "29d0e631cddcffe00b9ec1dd43dc03b21b08560c",
+        "dirty": true,
+        "changes": [
+          "M DESIGN.md",
+          " M docs/visual-verification.md",
+          " M package-lock.json",
+          " M package.json",
+          " M scripts/verify-visual-browser.cjs",
+          " M src/app/contacto/page.tsx",
+          " M src/app/globals.css",
+          " M src/components/CatalogClient.tsx",
+          " M src/components/Footer.tsx",
+          " M src/components/Header.tsx",
+          " M src/components/HeroCarousel.tsx",
+          " M src/components/catalog/CatalogPage.tsx",
+          " M src/components/catalog/ParditoAssist.tsx",
+          " M src/components/catalog/PricePreferenceToggle.tsx",
+          " M src/components/catalog/product-visual.css",
+          " M src/lib/constants.ts",
+          " M src/lib/seo.ts",
+          " M tests/catalog-seo.test.cjs",
+          "?? docs/visual/revision-2/",
+          "?? scripts/verify-visual-layout.cjs",
+          "?? scripts/verify-visual-layout.test.cjs"
+        ],
+        "localBuildId": "hAyQXds84fYo4OpQcL88a"
+      },
+      "fontPreloadGate": "report",
+      "states": 52,
+      "errors": [],
+      "failed": [
+        {
+          "key": "categoria-1440-light",
+          "checks": {
+            "catalogFirstViewport": {
+              "required": true,
+              "scrollY": 0,
+              "bounds": {
+                "left": 0,
+                "top": 81,
+                "right": 1440,
+                "bottom": 900
+              },
+              "cardSkus": [
+                "7708",
+                "14827",
+                "14713",
+                "14844"
+              ],
+              "bottoms": [
+                975,
+                975,
+                975,
+                975
+              ],
+              "passed": false,
+              "scope": "Initial position only; full card, price and action rectangles must fit below the fixed header and inside the viewport."
+            }
+          },
+          "axe": []
+        },
+        {
+          "key": "categoria-1440-dark",
+          "checks": {
+            "catalogFirstViewport": {
+              "required": true,
+              "scrollY": 0,
+              "bounds": {
+                "left": 0,
+                "top": 81,
+                "right": 1440,
+                "bottom": 900
+              },
+              "cardSkus": [
+                "7708",
+                "14827",
+                "14713",
+                "14844"
+              ],
+              "bottoms": [
+                975,
+                975,
+                975,
+                975
+              ],
+              "passed": false,
+              "scope": "Initial position only; full card, price and action rectangles must fit below the fixed header and inside the viewport."
+            }
+          },
+          "axe": []
+        }
+      ],
+      "axeViolations": 0,
+      "initialCatalogGeometry": [
+        {
+          "key": "catalogo-390-light",
+          "firstCardOrRowBottoms": [
+            662
+          ],
+          "passed": true
+        },
+        {
+          "key": "catalogo-390-dark",
+          "firstCardOrRowBottoms": [
+            662
+          ],
+          "passed": true
+        },
+        {
+          "key": "catalogo-1440-light",
+          "firstCardOrRowBottoms": [
+            851,
+            851,
+            851,
+            851
+          ],
+          "passed": true
+        },
+        {
+          "key": "catalogo-1440-dark",
+          "firstCardOrRowBottoms": [
+            851,
+            851,
+            851,
+            851
+          ],
+          "passed": true
+        },
+        {
+          "key": "categoria-390-light",
+          "firstCardOrRowBottoms": [
+            786
+          ],
+          "passed": true
+        },
+        {
+          "key": "categoria-390-dark",
+          "firstCardOrRowBottoms": [
+            786
+          ],
+          "passed": true
+        },
+        {
+          "key": "categoria-1440-light",
+          "firstCardOrRowBottoms": [
+            975,
+            975,
+            975,
+            975
+          ],
+          "passed": false
+        },
+        {
+          "key": "categoria-1440-dark",
+          "firstCardOrRowBottoms": [
+            975,
+            975,
+            975,
+            975
+          ],
+          "passed": false
+        }
+      ]
+    },
+    {
+      "report": "verification-final/summary.json",
+      "source": {
+        "head": "29d0e631cddcffe00b9ec1dd43dc03b21b08560c",
+        "dirty": true,
+        "changes": [
+          "M DESIGN.md",
+          " M docs/visual-verification.md",
+          " M docs/visual/README.md",
+          " M package-lock.json",
+          " M package.json",
+          " M scripts/verify-visual-browser.cjs",
+          " M src/app/contacto/page.tsx",
+          " M src/app/globals.css",
+          " M src/components/Breadcrumbs.tsx",
+          " M src/components/CatalogClient.tsx",
+          " M src/components/Footer.tsx",
+          " M src/components/Header.tsx",
+          " M src/components/HeroCarousel.tsx",
+          " M src/components/catalog/CatalogPage.tsx",
+          " M src/components/catalog/ParditoAssist.tsx",
+          " M src/components/catalog/PricePreferenceToggle.tsx",
+          " M src/components/catalog/product-visual.css",
+          " M src/lib/constants.ts",
+          " M src/lib/seo.ts",
+          " M tests/catalog-seo.test.cjs",
+          "?? docs/visual/revision-2/",
+          "?? scripts/verify-visual-layout.cjs",
+          "?? scripts/verify-visual-layout.test.cjs"
+        ],
+        "localBuildId": "roqM3yhG1cBi_1sqk0uPA"
+      },
+      "fontPreloadGate": "report",
+      "states": 32,
+      "errors": [],
+      "failed": [],
+      "axeViolations": 0,
+      "initialCatalogGeometry": [
+        {
+          "key": "catalogo-390-light",
+          "firstCardOrRowBottoms": [
+            662
+          ],
+          "passed": true
+        },
+        {
+          "key": "catalogo-390-dark",
+          "firstCardOrRowBottoms": [
+            662
+          ],
+          "passed": true
+        },
+        {
+          "key": "catalogo-1440-light",
+          "firstCardOrRowBottoms": [
+            851,
+            851,
+            851,
+            851
+          ],
+          "passed": true
+        },
+        {
+          "key": "catalogo-1440-dark",
+          "firstCardOrRowBottoms": [
+            851,
+            851,
+            851,
+            851
+          ],
+          "passed": true
+        },
+        {
+          "key": "categoria-390-light",
+          "firstCardOrRowBottoms": [
+            762
+          ],
+          "passed": true
+        },
+        {
+          "key": "categoria-390-dark",
+          "firstCardOrRowBottoms": [
+            762
+          ],
+          "passed": true
+        },
+        {
+          "key": "categoria-1440-light",
+          "firstCardOrRowBottoms": [
+            895,
+            895,
+            895,
+            895
+          ],
+          "passed": true
+        },
+        {
+          "key": "categoria-1440-dark",
+          "firstCardOrRowBottoms": [
+            895,
+            895,
+            895,
+            895
+          ],
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

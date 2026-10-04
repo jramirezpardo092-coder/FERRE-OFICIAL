@@ -1,8 +1,10 @@
 # Refinamiento visual · Ferretería Pardo
 
+**Revisión del 04·10·2026:** las correcciones móviles, las cuatro columnas y el horario solicitado se documentan en [las 12 comparativas nuevas](revision-2/README.md). La evidencia que sigue es el primer refinamiento y se conserva como historial.
+
 Fuente de verdad: [DESIGN.md](../../DESIGN.md). Comparación con producción basada en `6909394e0f59a585caeaece768ffec4eee6f83d8`. Las 32 referencias se capturaron antes de modificar componentes. Las cuatro capturas de cotización se reencuadraron sobre la misma producción para mostrar el panel completo, sin cambiar la cotización ni enviar mensajes.
 
-Se conservan rutas, precios, datos, fotos aprobadas, metadatos, JSON-LD y la lógica de cotización. [Informe de invariantes](reports/invariants.json).
+El primer refinamiento conservó rutas, precios, datos, fotos aprobadas, metadatos, JSON-LD y la lógica de cotización. [Informe de invariantes original](reports/invariants.json). La revisión 2 añade la actualización de horario visible y de `openingHoursSpecification` solicitada expresamente por el propietario; el resto sigue protegido.
 
 ## Resultados de verificación
 
@@ -15,7 +17,7 @@ Se conservan rutas, precios, datos, fotos aprobadas, metadatos, JSON-LD y la ló
 - Archivo variable con ancho 80 y peso 700–800; Manrope 400/600 e IBM Plex Mono 500. Sólo dos archivos nuevos de fuente y preload exclusivo de Archivo.
 - Tres franjas a 60° como remate: esquina del inicio, separadores y vacíos. Sin degradados ni animaciones al hacer scroll.
 - PARDITO corporativo existente de 180 px en vacíos y discreto en ayuda. No se crearon ilustraciones nuevas ni fotos de productos.
-- Tres columnas con barra lateral a 1280 px para conservar el CTA de 14 px; cuatro sin barra lateral.
+- La revisión inicial tenía tres columnas con barra lateral a 1280 px. La revisión 2 muestra cuatro, con CTA de 14 px en dos líneas y marco fotográfico 4:3.
 - El rojo sólido sigue siendo #D02731; su token de texto sobre el tinte es #CF2630 para superar 4,5:1 (el par original da 4,496:1). WhatsApp usa texto oscuro sobre el único CTA verde sólido; blanco sobre ese verde no alcanza 4,5:1.
 
 ## Evidencia antes y después

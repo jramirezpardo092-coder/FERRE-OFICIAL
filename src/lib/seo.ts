@@ -14,8 +14,9 @@ export function getLocalBusinessJsonLd() {
     // Coordinates of this exact shop in its publicly listed Waze/Google place.
     geo: { "@type": "GeoCoordinates", latitude: 4.6681456, longitude: -74.074293 },
     openingHoursSpecification: [
-      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:15", closes: "16:55" },
-      { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "08:15", closes: "14:15" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"], opens: "08:15", closes: "16:45" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "08:15", closes: "16:30" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "08:15", closes: "13:00" },
       { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "00:00", closes: "00:00" },
     ],
     sameAs: [SITE.social.instagram, SITE.social.facebook], paymentAccepted: SITE.payments.join(", "), currenciesAccepted: "COP",

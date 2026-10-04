@@ -120,6 +120,12 @@ export default function Footer() {
                   <svg aria-hidden="true" className="h-4 w-4 shrink-0 text-hero-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
+                  <span>{SITE.hours.friday}</span>
+                </div>
+                <div className="flex items-center gap-3 text-xs text-hero-muted">
+                  <svg aria-hidden="true" className="h-4 w-4 shrink-0 text-hero-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
                   <span>{SITE.hours.saturday}</span>
                 </div>
                 <div className="flex items-center gap-3 text-xs text-hero-muted">

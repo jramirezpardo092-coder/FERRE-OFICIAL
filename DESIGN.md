@@ -51,7 +51,7 @@ El rojo de marca permanece #D02731. Sobre #FBEAEA da 4,496:1, ligeramente inferi
 ## Forma, espacio y movimiento
 
 - Contenedor máximo 1280 px; laterales 16 px móvil, 24 px tablet, 32 px escritorio. Base 4 px; separaciones de bloque 24/32/48 px.
-- `--radius-control: 6px`, `--radius-card: 10px`, `--radius-chip: 999px`. La excepción circular es el flotante PARDITO de 56 px.
+- `--radius-control: 6px`, `--radius-card: 10px`, `--radius-chip: 999px`. PARDITO usa radio card: 56 px como flotante y 44 px en el espacio reservado del header del catálogo móvil.
 - Borde 1 px; sin sombra en reposo. Hover de tarjeta: borde ink-2 y sombra 0 2px 6px con overlay al 6 %, desplazamiento máximo 1 px.
 - Transiciones 150–200 ms en color, borde, foco, imagen y estado agregado. Imagen hover 1,03. Pulso del contador una sola vez y ≤ 200 ms. Sin animación decorativa o dependiente de scroll. `prefers-reduced-motion` elimina animación, escala y desplazamiento.
 - Motivo: tres trazos diagonales paralelos a 60°, decorativos `aria-hidden`, un acento por bloque. Color brand; trazos finos, no fondo sólido dominante. Inicio y footer; separadores puntuales y estado vacío. No sustituir ni alterar el logo original.
@@ -64,19 +64,21 @@ Una barra de surface con borde line. Logo original de al menos 36 px en escritor
 
 ### Inicio y hero compacto
 
-Inicio con fondo hero negro, acento diagonal en esquina, H1 display de 56 px en escritorio y 40 px en móvil, y buscador protagonista. Contenido y destinos existentes conservados. Catálogo/categoría con hero paper: H1 display de 40 px en escritorio y 28 px en móvil, y fecha mono `ACTUALIZADO 02·10·2026`. Altura máxima de 140/110 px respectivamente. Las introducciones de categoría existentes se mantienen completas en el DOM y pueden colocarse inmediatamente debajo del bloque compacto, sin alterar metadatos.
+Inicio con fondo hero negro, acento diagonal en esquina, H1 display de 56 px en escritorio y 40 px en móvil, y buscador protagonista. En móvil, las franjas ocupan sólo la esquina superior derecha, por encima del inicio del texto; nunca se cruzan con títulos o párrafos. Contenido y destinos existentes conservados. Catálogo/categoría con hero paper: H1 display de 40 px en escritorio y 28 px en móvil, fecha mono y una sola línea breve bajo el H1 móvil. Altura máxima de 120/110 px respectivamente. Las introducciones de categoría existentes se mantienen completas al final del catálogo, sin alterar metadatos. La reposición de agotados se menciona una sola vez.
 
 ### Herramientas y filtros
 
-Buscador de 52 px, radio de 6 px y borde control; foco de 1,5 px ink. Categorías en chips con conteo mono; activo ink/on-ink; ocultar conteos de 0. El filtro activo sigue disponible en la lista de filtros aplicados para quitarlo. Información de confianza en una línea de íconos de 16 px y divisores, sin caja, con desplazamiento horizontal móvil. Segmento Con IVA / Sin IVA (empresas) junto al selector de orden, usando el store existente. Radios de 16 px dentro de etiquetas táctiles de 44 px; disponibilidad en fila compacta con texto y descripción; secciones con separadores line y títulos mono uppercase. Barra lateral sticky con scroll propio.
+Buscador de 52 px, radio de 6 px y borde control; foco de 1,5 px ink, sin ayuda repetida debajo. Categorías en chips con conteo mono; activo ink/on-ink; ocultar conteos de 0. El filtro activo sigue disponible en la lista de filtros aplicados para quitarlo. Información de confianza en una línea de íconos de 16 px y divisores, sin caja, con desplazamiento horizontal móvil. Segmento «Con IVA / Sin IVA», sin salto de línea y con «empresas» en el nombre accesible, usando el store existente. En móvil, contador, Filtros y orden comparten fila; el segmento IVA ocupa la siguiente. Separaciones de 12 px en estas herramientas para mostrar completa la primera tarjeta a 390×844. Radios de 16 px dentro de etiquetas táctiles de 44 px; disponibilidad en fila compacta con texto y descripción; secciones con separadores line y títulos mono uppercase. Barra lateral sticky con scroll propio.
+
+En categorías, las migas conservan objetivos de 44 px con espaciado vertical compacto. En escritorio, los filtros aplicados comparten la fila de 52 px del buscador; en móvil quedan justo debajo. Así la primera fila también cabe a 1440×900 sin eliminar controles.
 
 ### Tarjeta
 
-`data-design-card` y SKU identifican la tarjeta para medición. Grilla: área 1:1 constante, fondo photo para imagen real y margen interior del 10 %, `object-contain`; sin foto usa paper, ícono de 40 px ink-2 y «Foto pendiente» de 12 px. Lista móvil: imagen de 88 px.
+`data-design-card` y SKU identifican la tarjeta para medición. Grilla: área 1:1 constante, excepto el catálogo de escritorio (desde 1024 px), donde el marco es 4:3. Fondo photo para imagen real y margen interior del 10 %, `object-contain`; sin foto usa paper, ícono de 40 px ink-2 y «Foto pendiente» de 12 px. Lista móvil: imagen de 88 px.
 
 Metadatos en una sola línea truncada: marca existente uppercase ink, SKU/ref mono ink-2. Nombre de 16/22 px semibold, dos líneas y altura mínima de 44 px. Stock: punto de 8 px ok/warn/muted más texto ink-2, sin colorear el texto. Precio display de 22/28 px, IVA de 12 px; segunda línea de 12 px para base + IVA + unidad. Reservar la misma altura aunque falten precio/unidad. `data-design-price` marca el precio principal y `data-design-actions` el bloque de acciones.
 
-Grilla de 3 columnas con barra lateral a 1280 px, 4 sin barra lateral: conserva el CTA a 14 px sin comprimirlo. Acciones ancladas al fondo y alineadas por fila con diferencia ≤ 2 px. Botón tint/brand-text con borde brand-text y +; hover brand/on-brand. Si la cantidad en cotización es positiva: ink/on-ink y «✓ En cotización · cantidad» durante la sesión, con snapshot escalar del store existente. El estado no cambia la operación ni validación de agregar. En móvil el CTA es un botón «+» de 44 px a la derecha del precio con nombre accesible; el estado agregado muestra cantidad/confirmación. WhatsApp es un botón cuadrado de 44 px, outline sobre surface. Agotados siguen cotizables y marcados a confirmar.
+Catálogo de 4 columnas desde 1280 px, también con barra lateral; primera fila completa con precio y acciones dentro de 1440×900. El CTA conserva 14 px, con dos líneas y altura de 56 px en el catálogo de escritorio. Acciones ancladas al fondo y alineadas por fila con diferencia ≤ 2 px. Botón tint/brand-text con borde brand-text y +; hover brand/on-brand. Si la cantidad en cotización es positiva: ink/on-ink y «✓ En cotización · cantidad» durante la sesión, con snapshot escalar del store existente. El estado no cambia la operación ni validación de agregar. En móvil el CTA es un botón «+» de 44 px a la derecha del precio con nombre accesible; el estado agregado muestra cantidad/confirmación. WhatsApp es un botón cuadrado de 44 px, outline sobre surface. Agotados siguen cotizables y marcados a confirmar. PARDITO ocupa un espacio reservado de 44 px en el header del catálogo móvil: se oculta al bajar y reaparece al subir; nunca se superpone a las acciones. La lista conserva 96 px de espacio inferior.
 
 ### Ficha
 
@@ -97,6 +99,8 @@ Una PR. Comparativas antes/después: 8 vistas × 2 anchos (390/1440) × 2 temas 
 Script reproducible: detectar colores Tailwind no tokenizados en todos los componentes/páginas; contar fondos rojos sólidos efectivos visibles en catálogo desktop (incluye pseudo-elementos y estados reales); agrupar tarjetas por fila y comprobar diferencias de alineación de precio/acciones ≤ 2 px; axe con 0 violaciones en ambos temas y anchos. Comprobar foco/44 px, estados agregados, barra móvil, precio/IVA y contrastes. CLS < 0,1 y PSI móvil ≥ 95 en catálogo/ficha; conservar todas las mediciones, sin seleccionar reintentos favorables.
 
 Congelados: JSON de datos y enriquecimiento, core cart-store, rutas/middleware, seo.ts/metadata/JSON-LD y APIs. Las pruebas funcionales existentes siguen pasando; adaptar únicamente expectativas legítimas de presentación con evidencia.
+
+Correcciones solicitadas el 04·10·2026: se actualizan únicamente las reglas anteriores de franjas móviles, compacidad del catálogo, cuatro columnas, marco 4:3 y posición de PARDITO. La nueva instrucción sobre horarios autoriza actualizar el horario visible y `openingHoursSpecification`: lunes a jueves 08:15–16:45, viernes 08:15–16:30 y sábado 08:15–13:00. Los precios de lista 2 y los otros ajustes funcionales se reservan para una PR posterior a la fusión de la #9 por el usuario.
 
 ## Validación de dirección con la propietaria/el propietario
 

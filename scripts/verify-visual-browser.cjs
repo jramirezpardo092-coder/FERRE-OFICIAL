@@ -6,6 +6,7 @@ const path = require('node:path');
 const { pathToFileURL } = require('node:url');
 const { execFileSync } = require('node:child_process');
 const { classifyUtility } = require('./verify-visual-tokens.cjs');
+const { catalogLayoutChecks, measureViewportLayout, measureCatalogHits, planViewportCases } = require('./verify-visual-layout.cjs');
 
 const VIEWS = {
   inicio: '/', catalogo: '/catalogo', categoria: '/catalogo/cerrajeria',
@@ -204,7 +205,7 @@ function measureDocument() {
   };
 }
 
-function summarizeMeasurement(dom, { alignmentRequired, redBudgetRequired, fontGate }) {
+function summarizeMeasurement(dom, { alignmentRequired, redBudgetRequired, fontGate, layoutScope, initialViewport = false }) {
   const rows = groupRows(dom.cards), comparable = rows.filter(row => row.comparable);
   const red = dom.paints.filter(paint => paint.kind === 'brand-red'), green = dom.paints.filter(paint => paint.kind === 'whatsapp');
   const redRegions = countPaintRegions(red), greenRegions = countPaintRegions(green);
@@ -223,6 +224,8 @@ function summarizeMeasurement(dom, { alignmentRequired, redBudgetRequired, fontG
     fonts: { required: fontGate === 'required', passed: dom.fonts.passed, evidence: dom.fonts },
     cls: { required: true, maximumExclusive: .1, value: cls, passed: cls !== null && cls < .1, scope: 'Observed initial load and current state, session-window CLS; not a Lighthouse/PSI run.' },
     whatsappFill: { passed: greenRegions.length <= 1, count: greenRegions.length, regions: greenRegions },
+    ...catalogLayoutChecks(dom.viewportLayout?.catalog, dom.viewport || {}, dom.scrollY, groupRows(dom.viewportLayout?.catalog?.cards || []), initialViewport && layoutScope === 'catalog'),
+    homeStripes: { required: initialViewport && layoutScope === 'home' && [360,390,430].includes(dom.viewport?.width), passed: dom.viewportLayout?.stripes?.passed === true, evidence: dom.viewportLayout?.stripes || null },
   };
   const required = Object.values(checks).filter(check => check.required !== false);
   return { checks, passed: required.every(check => check.passed) };
@@ -270,6 +273,7 @@ async function clickVisible(page, selector) {
 async function auditState(page, axeSource, output, key, options) {
   await settle(page);
   const dom = await page.evaluate(measureDocument);
+  dom.viewportLayout = await page.evaluate(measureViewportLayout);
   const summary = summarizeMeasurement(dom, options);
   await page.addScriptTag({ content: axeSource });
   const axe = await page.evaluate(async () => window.axe.run(document, { resultTypes: ['violations', 'incomplete', 'passes', 'inapplicable'] }));
@@ -277,6 +281,46 @@ async function auditState(page, axeSource, output, key, options) {
   fs.writeFileSync(path.join(output, `${key}.axe.json`), JSON.stringify(axe, null, 2) + '\n');
   await page.screenshot({ path: path.join(output, `${key}.png`), fullPage: false });
   return { key, url: dom.url, theme: dom.theme, viewport: dom.viewport, ...summary, axe: { violations: axe.violations.map(v => ({ id: v.id, impact: v.impact, nodes: v.nodes.map(n => ({ target: n.target, html: n.html, failureSummary: n.failureSummary })) })), incomplete: axe.incomplete.map(v => ({ id: v.id, impact: v.impact, nodes: v.nodes.length })) }, passed: summary.passed && axe.violations.length === 0, evidence: [`${key}.dom.json`, `${key}.axe.json`, `${key}.png`] };
+}
+
+async function probeHomeStripes(page, output, key) {
+  const states = [], buttons = await page.$$('.home-hero button[aria-label^="Ver diapositiva "]');
+  if (buttons.length !== 3) return { passed: false, states, reason: 'Expected three carousel slide controls; cannot verify every title and paragraph.' };
+  for (const [index, button] of buttons.entries()) {
+    await button.click(); // Focus pauses the existing carousel; no timer or UI state is rewritten.
+    await settle(page);
+    const layout = await page.evaluate(measureViewportLayout);
+    const evidence = `${key}-slide-${index + 1}.png`;
+    await page.screenshot({ path: path.join(output,evidence), fullPage: false });
+    states.push({ slide: index + 1, evidence, ...layout.stripes, passed: layout.stripes?.passed === true });
+  }
+  const result = { passed: states.length === 3 && states.every(state => state.passed), states };
+  fs.writeFileSync(path.join(output,`${key}.stripes.json`),JSON.stringify(result,null,2)+'\n');
+  return result;
+}
+
+async function probeCatalogMobile(page, output, key) {
+  const originalScroll = await page.evaluate(() => scrollY);
+  const maximum = await page.evaluate(() => Math.max(0,document.documentElement.scrollHeight-innerHeight));
+  const down = Math.min(maximum,633), up = Math.max(0,down-317);
+  const phases = [{ phase:'initial',scroll:0,triggerVisible:true },{ phase:'down',scroll:down,triggerVisible:false },{ phase:'up',scroll:up,triggerVisible:true }];
+  const states = [];
+  try {
+    for (const phase of phases) {
+      await page.evaluate(top => scrollTo({ top,behavior:'instant' }),phase.scroll);
+      await settle(page);
+      await settle(page); // Let the scroll listener commit, then settle its finite transform transition.
+      const measurement = await page.evaluate(measureCatalogHits);
+      const scrollValid = phase.phase === 'initial' ? measurement.scrollY <= .5 : phase.phase === 'down' ? measurement.scrollY > 100 : measurement.scrollY < down-8;
+      const triggerPassed = measurement.trigger.present && measurement.trigger.visible === phase.triggerVisible && measurement.trigger.visibleCount === (phase.triggerVisible ? 1 : 0);
+      const evidence = `${key}-scroll-${phase.phase}.png`;
+      await page.screenshot({ path:path.join(output,evidence),fullPage:false });
+      states.push({ phase:phase.phase,expectedTriggerVisible:phase.triggerVisible,scrollValid,triggerPassed,evidence,...measurement,passed:measurement.passed && scrollValid && triggerPassed });
+    }
+  } finally { await page.evaluate(top => scrollTo({ top,behavior:'instant' }),originalScroll); await settle(page); }
+  const result = { required:true,passed:states.length===3&&states.every(state=>state.passed),states,scope:'All enabled card actions completely inside the unobstructed viewport: center and four interior quarter points. Fixed-header cuts are excluded with evidence; Pardito is not excluded. No action or WhatsApp link is clicked.' };
+  fs.writeFileSync(path.join(output,`${key}.hits.json`),JSON.stringify(result,null,2)+'\n');
+  return result;
 }
 
 // The outline is outside the control: compare it with the composed ancestor background.
@@ -315,6 +359,7 @@ async function main() {
   const temporaryRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'ferre-visual-'));
   let browser;
   const results = [], errors = [];
+  const plannedCases = planViewportCases(options);
   let sha = null, sourceState = null;
   try {
     const repository = path.join(__dirname, '..');
@@ -325,7 +370,8 @@ async function main() {
   } catch {}
   try {
     browser = await puppeteer.launch({ executablePath: options.chromePath, headless: true, userDataDir: temporaryRoot, args: ['--no-first-run', '--no-default-browser-check'] });
-    for (const view of options.views) for (const width of options.widths) for (const theme of options.themes) {
+    for (const planned of plannedCases) {
+      const { view,width,theme } = planned;
       const key = `${view}-${width}-${theme}`;
       console.log(`Auditing ${key}`);
       const context = await browser.createBrowserContext();
@@ -348,7 +394,7 @@ async function main() {
         await page.goto(url.href, { waitUntil: 'networkidle0', timeout: 45000 });
         if (new URL(page.url()).origin !== options.base.origin) throw new Error('Unexpected origin redirect; do not audit a login page.');
         await page.waitForFunction(selectedTheme => document.documentElement.classList.contains('dark') === (selectedTheme === 'dark'), {}, theme);
-        const stateOptions = { alignmentRequired: width >= 768 && ['catalogo', 'categoria'].includes(view), redBudgetRequired: width >= 768 && url.pathname.startsWith('/catalogo'), fontGate: options.fontGate };
+        const stateOptions = { alignmentRequired: width >= 768 && ['catalogo', 'categoria'].includes(view), redBudgetRequired: width >= 768 && url.pathname.startsWith('/catalogo'), fontGate: options.fontGate, layoutScope: ['catalogo','categoria'].includes(view) ? 'catalog' : view === 'inicio' ? 'home' : null, initialViewport: true };
         if (view === 'footer') await page.$eval('footer', element => element.scrollIntoView({ block: 'start', behavior: 'instant' }));
         if (view === 'cotizacion') {
           await clickVisible(page, '[data-quote-trigger]');
@@ -367,15 +413,26 @@ async function main() {
         result.focusProbe = await page.evaluate(measureFocusProbe);
         result.pageErrors = pageErrors;
         result.passed = result.passed && result.focusProbe.passed && pageErrors.length === 0;
+        result.primaryCase = planned.primary;
+        if (view === 'inicio' && [360,390,430].includes(width)) {
+          result.stripeSequence = await probeHomeStripes(page,options.output,key);
+          result.passed = result.passed && result.stripeSequence.passed;
+          result.evidence.push(`${key}.stripes.json`);
+        }
+        if (['catalogo','categoria'].includes(view) && width < 640) {
+          result.catalogHitSequence = await probeCatalogMobile(page,options.output,key);
+          result.passed = result.passed && result.catalogHitSequence.passed;
+          result.evidence.push(`${key}.hits.json`);
+        }
         results.push(result);
-        if (['catalogo', 'categoria'].includes(view) && width >= 768) {
+        if (planned.primary && ['catalogo', 'categoria'].includes(view) && width >= 768) {
           await page.mouse.move(0, 0);
           await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
           const button = await page.$('[data-design-card] button[aria-label^="Agregar a cotización"]');
           if (!button) throw new Error('Missing card CTA; cannot verify hover.');
           await button.evaluate(element => element.scrollIntoView({ block: 'center', behavior: 'instant' }));
           await button.hover();
-          const hover = await auditState(page, axeSource, options.output, `${key}-hover`, stateOptions);
+          const hover = await auditState(page, axeSource, options.output, `${key}-hover`, { ...stateOptions,initialViewport:false });
           hover.hoverProbe = await button.evaluate(element => {
             const background = getComputedStyle(element).backgroundColor;
             const expected = getComputedStyle(document.documentElement).getPropertyValue('--brand').trim().split(/\s+/).map(Number);
@@ -386,9 +443,13 @@ async function main() {
           results.push(hover);
           await clickVisible(page, '[data-design-card] button[aria-label^="Agregar a cotización"]');
           await page.waitForFunction(() => [...document.querySelectorAll('[data-design-card] button')].some(button => button.textContent.includes('En cotización')));
-          results.push(await auditState(page, axeSource, options.output, `${key}-added`, stateOptions));
+          results.push(await auditState(page, axeSource, options.output, `${key}-added`, { ...stateOptions,initialViewport:false }));
         }
-        console.log(`${key}: ${result.passed ? 'PASS' : 'FAIL'}, axe=${result.axe.violations.length}, red=${result.checks.redSurfaces.count}, alignment=${result.checks.alignment.required ? result.checks.alignment.passed : 'n/a'}`);
+        const failedChecks = Object.entries(result.checks).filter(([,check])=>check.required!==false&&!check.passed).map(([name])=>name);
+        if (result.stripeSequence?.passed===false) failedChecks.push('stripeSequence');
+        if (result.catalogHitSequence?.passed===false) failedChecks.push('catalogHitSequence');
+        if (!result.focusProbe.passed) failedChecks.push('focusProbe');
+        console.log(`${key}: ${result.passed ? 'PASS' : 'FAIL'}, axe=${result.axe.violations.length}, red=${result.checks.redSurfaces.count}, alignment=${result.checks.alignment.required ? result.checks.alignment.passed : 'n/a'}, failedChecks=${failedChecks.join(',')||'none'}`);
       } catch (error) {
         const entry = { key, message: error.message };
         errors.push(entry);
@@ -396,7 +457,7 @@ async function main() {
         console.error(`${key}: runtime/config error: ${error.message}`);
       } finally { await context.close(); }
       // Persist progress so failures are reviewable before the batch completes.
-      fs.writeFileSync(path.join(options.output, 'summary.json'), JSON.stringify({ reportedCommit: sha, sourceState, browser: await browser.version(), baseUrl: options.base.origin, fontPreloadGate: options.fontGate, primaryCasesExpected: options.views.length * options.widths.length * options.themes.length, results, errors }, null, 2) + '\n');
+      fs.writeFileSync(path.join(options.output, 'summary.json'), JSON.stringify({ reportedCommit: sha, sourceState, browser: await browser.version(), baseUrl: options.base.origin, fontPreloadGate: options.fontGate, primaryCasesExpected: options.views.length * options.widths.length * options.themes.length, supplementalViewportCasesExpected: plannedCases.filter(item=>!item.primary).length, results, errors }, null, 2) + '\n');
     }
   } finally {
     if (browser) await browser.close();

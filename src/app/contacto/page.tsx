@@ -66,6 +66,7 @@ export default function ContactoPage() {
             <h2 className="text-lg font-bold text-ink  mb-2">Horario</h2>
             <div className="text-ink-2  space-y-1 text-sm">
               <p>{SITE.hours.weekdays}</p>
+              <p>{SITE.hours.friday}</p>
               <p>{SITE.hours.saturday}</p>
               <p className="text-ink-2 font-medium">{SITE.hours.sunday}</p>
             </div>

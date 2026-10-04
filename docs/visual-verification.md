@@ -31,6 +31,16 @@ La matriz predeterminada contiene ocho vistas (`inicio`, `catalogo`, `categoria`
 
 El catálogo de escritorio añade estados hover y agregado en cada tema. El hover desplaza el CTA al viewport, lo apunta con el cursor y verifica que su fondo corresponda a `brand`. La cotización añade un estado vacío antes de preparar un producto real. Son 12 comprobaciones adicionales. Cada caso usa almacenamiento vacío y queda aislado de los demás.
 
+La revisión 2 añade ocho viewports de límite por defecto: catálogo/categoría a 1280 px y el inicio a 360/430 px, ambos temas. Son 52 estados con axe, conservando los 32 casos base. Los casos adicionales se registran con `primaryCase:false` y el informe declara la cobertura solicitada; una ejecución reducida no equivale a la matriz completa.
+
+- Primera pantalla: a 390 × 844 px deben entrar completos la primera tarjeta, su precio y sus acciones; a 1440 × 900 px debe entrar completa la primera fila de cuatro tarjetas. Se exige scroll inicial cero y que las cajas queden por debajo del header fijo.
+- Columnas: a partir de 1280 px, la primera fila real debe tener exactamente cuatro tarjetas separadas. Una clase CSS que declare cuatro columnas no demuestra el resultado; el límite de 1280 px se prueba además de 1440 px.
+- Media: únicamente en la cuadrícula del catálogo, marcos 4:3 a partir de 1024 px y 1:1 debajo de 640 px. No afecta fichas, destacados ni vista lista. El hero del catálogo debe medir como máximo 120 px.
+- Inicio: a 360/390/430 px se revisan las tres diapositivas. El verificador pulsa sus controles existentes (el foco pausa el carrusel) y mide el stroke realmente pintado de las franjas SVG frente a las cajas completas de H1 y párrafo. Los huecos del SVG no cuentan como dibujo. Se conserva una envolvente conservadora con muestreo de como máximo 0,25 px y margen de incertidumbre; una geometría sin resolver impide aprobar.
+- Pardito móvil: en catálogo y categoría, se mide al inicio, tras bajar 633 px y tras subir 317 px. Se exige una ayuda visible al inicio/subir y ninguna al bajar. Todos los botones y enlaces de acción de tarjetas completamente visibles se prueban por centro y cuatro puntos interiores. Las partes cortadas por el viewport/header fijo se excluyen con evidencia; Pardito no se excluye como posible obstrucción. Ninguna acción de tarjeta ni enlace de WhatsApp se pulsa.
+
+Las secuencias adicionales guardan `*.stripes.json`, `*.hits.json` y PNG de cada paso. Las geometrías iniciales se conservan antes de realizar estas interacciones. Marcadores necesarios: `data-catalog-hero`, `data-catalog-grid`, `data-design-card`, `data-sku`, `data-design-price`, `data-design-actions` y `data-pardito-trigger`. H1/párrafo usan `data-home-title`/`data-home-intro` o el H1 seguido inmediatamente por su párrafo dentro de `.home-hero`.
+
 - AST: cero colores de paleta Tailwind, hex o colores literales en `src/components` y `src/app`; acepta los tokens semánticos. Inspecciona literales, concatenaciones constantes y fragmentos de plantillas, ignorando comentarios. Las clases que se generan al ejecutar se inspeccionan también en el navegador.
 - Catálogo de escritorio: hasta dos regiones rojas sólidas visibles, incluidas las de hover. El JSON conserva los nodos que pintan, recortes, opacidades y pseudoelementos no resolubles; un pseudoelemento sin medición impide dar ese criterio por aprobado.
 - Filas de escritorio: diferencias de posición superior del precio y las acciones de como máximo 2 px, usando `data-design-card`, `data-sku`, `data-design-price` y `data-design-actions`. Comprueba todas las tarjetas montadas, también las filas fuera del primer viewport.
@@ -59,5 +69,5 @@ Código `0`: los criterios obligatorios pasan. Código `1`: existe un fallo medi
 Pruebas de los límites del verificador:
 
 ```sh
-node --test scripts/verify-visual.test.cjs
+node --test scripts/verify-visual*.test.cjs
 ```

@@ -7,7 +7,7 @@ interface BreadcrumbItem {
   href: string;
 }
 
-export default function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
+export default function Breadcrumbs({ items, compact = false }: { items: BreadcrumbItem[]; compact?: boolean }) {
   const allItems = [{ label: "Inicio", href: "/" }, ...items];
   const jsonLdItems = allItems.map((item) => ({
     name: item.label,
@@ -20,7 +20,7 @@ export default function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(getBreadcrumbJsonLd(jsonLdItems)) }}
       />
-      <nav aria-label="Ruta de navegación" className="site-container py-3">
+      <nav aria-label="Ruta de navegación" className={compact ? "site-container py-0" : "site-container py-3"}>
         <ol className="flex items-center gap-1.5 text-sm text-ink-2  flex-wrap">
           {allItems.map((item, i) => (
             <li key={item.href} className="flex items-center gap-1.5">

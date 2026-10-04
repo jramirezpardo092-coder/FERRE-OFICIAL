@@ -12,9 +12,9 @@ export default function PricePreferenceToggle({ idPrefix, className }: { idPrefi
     <fieldset className={cn("inline-flex shrink-0 rounded-control border border-control bg-surface p-0.5", className)}>
       <legend className="sr-only">Visualización de precios: con IVA o sin IVA para empresas</legend>
       {(["gross", "net"] as const).map(option => <label key={option} className="relative cursor-pointer">
-        <input id={`${id}-${option}`} type="radio" name={id} value={option} checked={mode === option} onChange={() => setPricePreference(option)} className="peer sr-only" />
-        <span className={cn("flex min-h-11 items-center justify-center rounded-control px-3 text-sm font-semibold transition-colors duration-150 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-ink motion-reduce:transition-none", mode === option ? "bg-ink text-on-ink" : "text-ink-2 hover:bg-paper hover:text-ink")}>
-          {option === "gross" ? "Con IVA" : <span className="text-center leading-5">Sin IVA<span className="block sm:inline"> (empresas)</span></span>}
+        <input id={`${id}-${option}`} type="radio" name={id} value={option} aria-label={option === "gross" ? "Precios con IVA" : "Precios sin IVA para empresas"} checked={mode === option} onChange={() => setPricePreference(option)} className="peer sr-only" />
+        <span className={cn("flex min-h-11 items-center justify-center whitespace-nowrap rounded-control px-3 text-sm font-semibold transition-colors duration-150 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-ink motion-reduce:transition-none", mode === option ? "bg-ink text-on-ink" : "text-ink-2 hover:bg-paper hover:text-ink")}>
+          {option === "gross" ? "Con IVA" : "Sin IVA"}
         </span>
       </label>)}
     </fieldset>

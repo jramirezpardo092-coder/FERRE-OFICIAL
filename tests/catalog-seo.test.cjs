@@ -35,7 +35,12 @@ test("each category has unique metadata; pagination self canonical and filters n
 test("schemas use genuine product content, integer gross COP, no invented image or unknown brand", () => {
   const business = seo.getLocalBusinessJsonLd();
   assert.equal(business["@type"], "HardwareStore"); assert.equal(business.telephone.length, 2);
-  assert.equal(business.openingHoursSpecification[0].closes, "16:55");
+  assert.deepEqual(JSON.parse(JSON.stringify(business.openingHoursSpecification)), [
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"], opens: "08:15", closes: "16:45" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "08:15", closes: "16:30" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "08:15", closes: "13:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "00:00", closes: "00:00" },
+  ]);
   assert.ok(business.address.streetAddress.includes("12 de Octubre"));
   assert.ok(business.paymentAccepted.includes("Nequi"));
   const product = { id: "0099", nombre: "BISAGRA BO-90 PVC", brand: "Sin marca", precio: 5200, taxRate: 19, priceVerified: true, stock: 0, unidad: "unidad", cat: "Cerrajería" };

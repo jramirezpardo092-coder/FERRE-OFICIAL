@@ -50,14 +50,14 @@ export default function HeroCarousel({ productCount, brandCount, categoryCount }
       onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}
       onFocusCapture={() => setIsPaused(true)}
       onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setIsPaused(false); }}>
-      <BrandStripes className="pointer-events-none absolute -right-4 top-8 h-40 w-64 opacity-70" />
+      <BrandStripes className="pointer-events-none absolute right-4 top-1 h-6 w-11 opacity-70 lg:-right-4 lg:top-8 lg:h-40 lg:w-64" />
       <div className="site-container relative py-8 md:py-12">
         <div className="grid lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-12 items-center">
           <div>
             <p className="mb-4 font-mono text-xs uppercase tracking-wider text-hero-muted">{slide.badge}</p>
             <div aria-live={isPaused || rotationPaused ? "polite" : "off"} aria-atomic="true">
-              <h1 className="max-w-xl text-balance font-display text-3xl font-extrabold leading-[1.04] md:text-5xl">{slide.title}</h1>
-              <p className="text-base md:text-lg text-hero-muted leading-relaxed max-w-lg mt-5 mb-7">{slide.subtitle}</p>
+              <h1 data-home-title className="max-w-xl text-balance font-display text-3xl font-extrabold leading-[1.04] md:text-5xl">{slide.title}</h1>
+              <p data-home-intro className="text-base md:text-lg text-hero-muted leading-relaxed max-w-lg mt-5 mb-7">{slide.subtitle}</p>
             </div>
             <div className="flex flex-wrap gap-3">
               {slide.cta.href.startsWith("https://") ? (
