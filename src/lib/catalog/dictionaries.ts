@@ -1,0 +1,138 @@
+/** Diccionarios de presentación. No sustituyen referencias, SKU ni marcas de la fuente. */
+export const NAME_ABBREVIATIONS: ReadonlyArray<readonly [string, string]> = [
+  ["P/", "para "],
+  ["C/", "con "],
+  ["S/", "sin "],
+  ["AUTOPERF.", "autoperforante"],
+  ["AUTOPERF", "autoperforante"],
+  ["EXT.", "extensión"],
+  ["JGO.", "juego"],
+  ["JGO", "juego"],
+  ["UND.", "unidad"],
+  ["UND", "unidad"],
+  ["UNID.", "unidad"],
+  ["ALUM.", "aluminio"],
+  ["GALV.", "galvanizado"],
+  ["PULG.", "pulgadas"],
+];
+
+/** Solo se corrige la escritura de palabras conocidas; no se completa información técnica. */
+export const NAME_SPELLING: Readonly<Record<string, string>> = {
+  ACCION: "acción",
+  ALEMAN: "alemán",
+  ALUMINIO: "aluminio",
+  BATERIA: "batería",
+  COMUN: "común",
+  ELECTRICA: "eléctrica",
+  ELECTRICAS: "eléctricas",
+  ELECTRICO: "eléctrico",
+  ELECTRICOS: "eléctricos",
+  ELECTROSTATICA: "electrostática",
+  ELECTROESTATICA: "electrostática",
+  EXTENSION: "extensión",
+  GRANULO: "gránulo",
+  INALAMBRICA: "inalámbrica",
+  INALAMBRICO: "inalámbrico",
+  MARQUETERIA: "marquetería",
+  MAGICO: "mágico",
+  MECANICA: "mecánica",
+  MECANICO: "mecánico",
+  METALICA: "metálica",
+  METALICO: "metálico",
+  MODULO: "módulo",
+  MODULOS: "módulos",
+  METODOS: "métodos",
+  NEUMATICA: "neumática",
+  NEUMATICO: "neumático",
+  PLASTICA: "plástica",
+  PLASTICO: "plástico",
+  RAPIDA: "rápida",
+  RAPIDO: "rápido",
+  SINTETICA: "sintética",
+  TORX: "Torx",
+  TRAFICO: "tráfico",
+  ZOCALO: "zócalo",
+};
+
+/** Nombres de familias/modelos observados. Esta tabla solo conserva su escritura. */
+export const MODEL_WORDS: Readonly<Record<string, string>> = {
+  MAXI: "Maxi", MAGIC: "Magic", DOOR: "Door", OMEGA: "Omega", MINIOMEGA: "Miniomega",
+  OMEGUITA: "Omeguita", SELENE: "Selene", SATURNO: "Saturno", PLUS: "PLUS",
+};
+
+export const PRESERVED_ACRONYMS: ReadonlySet<string> = new Set([
+  "PVC", "CPVC", "USB", "USB-C", "HDMI", "VGA", "LED", "HSS", "SDS",
+  "SDS-PLUS", "SDS-MAX", "TCT", "HVLP", "PH", "PZ", "PI", "DW", "TW",
+  "GT", "COB", "LAT", "REF", "MDF", "MHA", "KL", "FEH", "ABS", "PTFE",
+  "INOX", "CAT", "SDSPLUS", "SAS", "AH", "C/F", "S/P", "LL-LL", "LL-M",
+  "DOB/PAS", "B-N-G", "PIE", "LL", "MRP", "LL+MRP", "LL+LL",
+]);
+
+export type BrandEntry = { name: string; display: string };
+
+/** La coincidencia literal produce una sugerencia pendiente de revisión, nunca una marca asignada. */
+export const BRAND_DICTIONARY: ReadonlyArray<BrandEntry> = [
+  { name: "YALE", display: "Yale" },
+  { name: "GRIVAL", display: "Grival" },
+  { name: "DEWALT", display: "DeWalt" },
+  { name: "STANLEY", display: "Stanley" },
+  { name: "TRUPER", display: "Truper" },
+  { name: "MAKITA", display: "Makita" },
+  { name: "NORTON", display: "Norton" },
+  { name: "PABSA", display: "Pabsa" },
+  { name: "BAHCO", display: "Bahco" },
+  { name: "IRWIN", display: "Irwin" },
+  { name: "EINHELL", display: "Einhell" },
+  { name: "3M", display: "3M" },
+  { name: "KL", display: "KL" },
+  { name: "FLEXON", display: "Flexon" },
+  { name: "RANGER", display: "Ranger" },
+  { name: "VERA", display: "Vera" },
+  { name: "SEGUREX", display: "Segurex" },
+  { name: "TOTAL", display: "Total" },
+  { name: "QUALITA", display: "Qualita" },
+  { name: "PRETUL", display: "Pretul" },
+  { name: "MHA", display: "MHA" },
+  { name: "DUCASSE", display: "Ducasse" },
+  { name: "WESCO", display: "Wesco" },
+  { name: "CATERPILLAR", display: "Caterpillar" },
+  { name: "HITACHI", display: "Hitachi" },
+  { name: "BOSCH", display: "Bosch" },
+  { name: "WORX", display: "Worx" },
+  { name: "INCOLMA", display: "Incolma" },
+  { name: "INDUMA", display: "Induma" },
+  { name: "IDEACE", display: "Ideace" },
+  { name: "CROIX", display: "Croix" },
+  { name: "INAFER", display: "Inafer" },
+  { name: "BONUIT", display: "Bonuit" },
+];
+
+export type UnitEntry = { singular: string; plural: string };
+
+/** Las claves se comparan sin tildes y sin distinguir mayúsculas. Las medidas no se convierten. */
+export const UNIT_DICTIONARY: Readonly<Record<string, UnitEntry>> = {
+  unidad: { singular: "unidad", plural: "unidades" },
+  unidades: { singular: "unidad", plural: "unidades" },
+  und: { singular: "unidad", plural: "unidades" },
+  par: { singular: "par", plural: "pares" },
+  pares: { singular: "par", plural: "pares" },
+  "numero de pares": { singular: "par", plural: "pares" },
+  metro: { singular: "m", plural: "m" },
+  metros: { singular: "m", plural: "m" },
+  m: { singular: "m", plural: "m" },
+  "kilogramo neto": { singular: "kg", plural: "kg" },
+  kilogramo: { singular: "kg", plural: "kg" },
+  kg: { singular: "kg", plural: "kg" },
+  caja: { singular: "caja", plural: "cajas" },
+  cajas: { singular: "caja", plural: "cajas" },
+  combo: { singular: "combo", plural: "combos" },
+  conjunto: { singular: "conjunto", plural: "conjuntos" },
+  banda: { singular: "banda", plural: "bandas" },
+  paquete: { singular: "paquete", plural: "paquetes" },
+  hoja: { singular: "hoja", plural: "hojas" },
+  galon: { singular: "galón", plural: "galones" },
+  "numero de rollos": { singular: "rollo", plural: "rollos" },
+  rollo: { singular: "rollo", plural: "rollos" },
+  libra: { singular: "libra", plural: "libras" },
+  carrete: { singular: "carrete", plural: "carretes" },
+};
