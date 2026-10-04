@@ -1,0 +1,390 @@
+{
+  "count": 64,
+  "passed": true,
+  "images": [
+    {
+      "file": "before/catalogo-1440-claro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "before/catalogo-1440-oscuro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "before/catalogo-390-claro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "before/catalogo-390-oscuro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "before/categoria-1440-claro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "before/categoria-1440-oscuro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "before/categoria-390-claro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "before/categoria-390-oscuro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "before/cotizacion-1440-claro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "before/cotizacion-1440-oscuro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "before/cotizacion-390-claro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "before/cotizacion-390-oscuro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "before/ficha-foto-1440-claro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "before/ficha-foto-1440-oscuro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "before/ficha-foto-390-claro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "before/ficha-foto-390-oscuro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "before/ficha-sin-foto-1440-claro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "before/ficha-sin-foto-1440-oscuro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "before/ficha-sin-foto-390-claro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "before/ficha-sin-foto-390-oscuro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "before/footer-1440-claro.jpg",
+      "width": 1440,
+      "height": 758,
+      "valid": true
+    },
+    {
+      "file": "before/footer-1440-oscuro.jpg",
+      "width": 1440,
+      "height": 758,
+      "valid": true
+    },
+    {
+      "file": "before/footer-390-claro.jpg",
+      "width": 390,
+      "height": 1908,
+      "valid": true
+    },
+    {
+      "file": "before/footer-390-oscuro.jpg",
+      "width": 390,
+      "height": 1908,
+      "valid": true
+    },
+    {
+      "file": "before/inicio-1440-claro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "before/inicio-1440-oscuro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "before/inicio-390-claro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "before/inicio-390-oscuro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "before/sin-resultados-1440-claro.jpg",
+      "width": 1440,
+      "height": 2306,
+      "valid": true
+    },
+    {
+      "file": "before/sin-resultados-1440-oscuro.jpg",
+      "width": 1440,
+      "height": 2306,
+      "valid": true
+    },
+    {
+      "file": "before/sin-resultados-390-claro.jpg",
+      "width": 390,
+      "height": 3482,
+      "valid": true
+    },
+    {
+      "file": "before/sin-resultados-390-oscuro.jpg",
+      "width": 390,
+      "height": 3482,
+      "valid": true
+    },
+    {
+      "file": "after/catalogo-1440-claro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "after/catalogo-1440-oscuro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "after/catalogo-390-claro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "after/catalogo-390-oscuro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "after/categoria-1440-claro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "after/categoria-1440-oscuro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "after/categoria-390-claro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "after/categoria-390-oscuro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "after/cotizacion-1440-claro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "after/cotizacion-1440-oscuro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "after/cotizacion-390-claro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "after/cotizacion-390-oscuro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "after/ficha-foto-1440-claro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "after/ficha-foto-1440-oscuro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "after/ficha-foto-390-claro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "after/ficha-foto-390-oscuro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "after/ficha-sin-foto-1440-claro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "after/ficha-sin-foto-1440-oscuro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "after/ficha-sin-foto-390-claro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "after/ficha-sin-foto-390-oscuro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "after/footer-1440-claro.jpg",
+      "width": 1440,
+      "height": 690,
+      "valid": true
+    },
+    {
+      "file": "after/footer-1440-oscuro.jpg",
+      "width": 1440,
+      "height": 690,
+      "valid": true
+    },
+    {
+      "file": "after/footer-390-claro.jpg",
+      "width": 390,
+      "height": 1942,
+      "valid": true
+    },
+    {
+      "file": "after/footer-390-oscuro.jpg",
+      "width": 390,
+      "height": 1942,
+      "valid": true
+    },
+    {
+      "file": "after/inicio-1440-claro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "after/inicio-1440-oscuro.jpg",
+      "width": 1440,
+      "height": 900,
+      "valid": true
+    },
+    {
+      "file": "after/inicio-390-claro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "after/inicio-390-oscuro.jpg",
+      "width": 390,
+      "height": 844,
+      "valid": true
+    },
+    {
+      "file": "after/sin-resultados-1440-claro.jpg",
+      "width": 1440,
+      "height": 2030,
+      "valid": true
+    },
+    {
+      "file": "after/sin-resultados-1440-oscuro.jpg",
+      "width": 1440,
+      "height": 2030,
+      "valid": true
+    },
+    {
+      "file": "after/sin-resultados-390-claro.jpg",
+      "width": 390,
+      "height": 3408,
+      "valid": true
+    },
+    {
+      "file": "after/sin-resultados-390-oscuro.jpg",
+      "width": 390,
+      "height": 3408,
+      "valid": true
+    }
+  ]
+}

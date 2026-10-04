@@ -13,9 +13,9 @@ export default function ProductSpecs({ specs, limit = 2 }: Props) {
   if (!visible.length) return null;
 
   return (
-    <dl className="mt-3 space-y-1 text-[13px] text-gray-600 dark:text-gray-300">
+    <dl className="mt-3 space-y-1 font-mono text-xs leading-4 tracking-[0.025em] text-ink-2">
       {visible.map((spec, index) => (
-        <div key={`${spec.label}-${index}`} className="flex gap-1.5 leading-relaxed">
+        <div key={`${spec.label}-${index}`} className="flex gap-1.5">
           <dt className="shrink-0 font-medium">{spec.label}:</dt>
           <dd className="min-w-0 break-words">{spec.value}</dd>
         </div>

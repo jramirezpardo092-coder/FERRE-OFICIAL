@@ -1,16 +1,17 @@
+import BrandStripes from "./BrandStripes";
 import Link from "next/link";
 
 export default function BrandCarousel({ brands }: { brands: string[] }) {
   return (
-    <section id="marcas" className="py-20 md:py-28 bg-white dark:bg-gray-950 relative">
-      <div className="absolute top-0 left-0 right-0 divider-gradient" />
+    <section id="marcas" className="home-section bg-surface  relative">
+      <div className="absolute top-0 left-0 right-0 border-t border-line" />
 
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-14">
+      <div className="site-container">
+        <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 mb-4">
-            <div className="w-8 h-[2px] bg-brand-red rounded-full" />
-            <span className="text-xs font-bold text-brand-red uppercase tracking-[0.2em]">Marcas</span>
-            <div className="w-8 h-[2px] bg-brand-red rounded-full" />
+            <BrandStripes className="h-4 w-7" />
+            <span className="text-xs font-bold text-brand-text uppercase tracking-[0.2em]">Marcas</span>
+            <BrandStripes className="h-4 w-7" />
           </div>
           <h2 className="section-title">
             Marcas que nos respaldan
@@ -26,9 +27,9 @@ export default function BrandCarousel({ brands }: { brands: string[] }) {
             <Link
               key={brand}
               href={`/catalogo?brand=${encodeURIComponent(brand)}`}
-              className="bg-gray-50 dark:bg-gray-900 rounded-2xl px-5 py-7 flex items-center justify-center border border-gray-100 dark:border-gray-800 hover:border-brand-red/20 hover:shadow-lg hover:shadow-red-900/5 hover:-translate-y-0.5 transition-all duration-300 group"
+              className="bg-surface  rounded-card px-5 py-7 flex items-center justify-center border border-line  hover:border-brand hover:shadow-card   transition-all duration-200 group"
             >
-              <span className="font-black text-base text-gray-600 dark:text-gray-300 group-hover:text-brand-red transition-colors duration-300 text-center">
+              <span className="font-black text-base text-ink-2  group-hover:text-brand-text transition-colors duration-200 text-center">
                 {brand}
               </span>
             </Link>
@@ -39,7 +40,7 @@ export default function BrandCarousel({ brands }: { brands: string[] }) {
         <div className="text-center mt-10">
           <Link
             href="/marcas"
-            className="inline-flex items-center gap-2 text-brand-red font-bold text-sm hover:text-red-700 transition-colors"
+            className="inline-flex min-h-11 items-center gap-2 text-ink font-bold text-sm hover:text-ink-2 transition-colors"
           >
             Ver todas las marcas
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

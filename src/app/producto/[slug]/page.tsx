@@ -74,77 +74,56 @@ export default function ProductoPage({ params }: { params: { slug: string } }) {
         ]}
       />
 
-      <section className="max-w-7xl mx-auto px-4 py-8 md:py-12">
+      <section className="product-detail-page">
         {/* Product detail */}
-        <div className="grid md:grid-cols-2 gap-10 lg:gap-16 mb-16">
+        <div className="mb-12 grid gap-8 md:grid-cols-2 lg:gap-12">
           {/* Image */}
-          <div className="relative self-start rounded-3xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+          <div className="relative self-start overflow-hidden rounded-card border border-line">
             {discount && (
-              <span className="absolute top-4 left-4 bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-xl z-10">
+              <span className="absolute left-4 top-4 z-10 rounded-control border border-line bg-surface px-3 py-1 font-mono text-sm font-medium text-ink">
                 -{discount}%
               </span>
             )}
-            <ProductMedia product={product} showGalleryControls priority sizes="(max-width: 768px) 100vw, 50vw" imageClassName="p-8 pb-16" />
+            <ProductMedia product={product} showGalleryControls priority sizes="(max-width: 768px) 100vw, 50vw" />
           </div>
 
           {/* Info */}
           <div className="min-w-0">
-            <div className="text-sm font-bold text-brand-red dark:text-red-400 uppercase tracking-wider mb-2">
-              {displayBrand(product.brand)}
-            </div>
-            <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white mb-4 leading-tight">
+            {displayBrand(product.brand) && <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-ink">{displayBrand(product.brand)}</p>}
+            <p className="mb-3 break-words font-mono text-xs tracking-[0.025em] text-ink-2">SKU {product.id}{product.ref && product.ref !== product.id ? ` · Ref. ${product.ref}` : ""}</p>
+            <h1 className="mb-4 font-display text-[28px] font-bold leading-8 tracking-[-0.025em] text-ink md:text-[40px] md:leading-[44px]">
               {normalizeProductName(product.nombre)}
             </h1>
 
-            <div className="flex flex-wrap items-center gap-3 mb-6">
-              <span className="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-lg font-mono">
-                SKU {product.id}
-              </span>
-              {formatUnit(product.unidad) && <span className="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-lg font-medium">{formatUnit(product.unidad)}</span>}
-              <span className={`text-xs px-3 py-1 rounded-lg font-semibold ${
-                inStock
-                  ? "bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-900"
-                  : "bg-amber-50 text-amber-700 border border-amber-200 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-900"
-              }`}>
-                {getStockLabel(product)}
-              </span>
-            </div>
+            <p className="mb-6 flex items-center gap-2 text-sm text-ink-2"><span aria-hidden="true" className={`h-2 w-2 rounded-full ${!inStock ? "bg-muted" : stock <= 3 ? "bg-warn" : "bg-ok"}`} />{getStockLabel(product)}</p>
 
-            <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-5 mb-6">
+            <div className="mb-6 border-y border-line py-5">
               <PricePreferenceToggle idPrefix="detail-price" className="mb-4" />
-              <PriceDisplay product={product} principalClassName="text-3xl md:text-4xl" />
+              <PriceDisplay product={product} principalClassName="text-[40px] leading-[44px]" />
             </div>
-
-            {product.ref && product.ref !== product.id && <p className="mb-4 text-xs text-gray-500 dark:text-gray-400">Ref. {product.ref}</p>}
-            {!!product.specs?.length && (
-              <div className="mb-8">
-                <h2 className="text-base font-bold text-gray-900 dark:text-white">Especificaciones</h2>
-                <ProductSpecs specs={product.specs} limit={12} />
-              </div>
-            )}
 
             {/* Actions - Client Component */}
             <ProductActions product={product} />
 
-            {/* Category */}
-            <div className="mt-8 pt-6 border-t border-gray-100 dark:border-gray-800">
-              <div className="text-sm text-gray-500">
-                <span className="font-medium text-gray-700 dark:text-gray-300">Categoría:</span>{" "}
-                <Link
-                  href={getCategoryPath(product.cat)}
-                  className="text-brand-red hover:underline"
-                >
-                  {product.cat}
-                </Link>
-              </div>
+            <div className="mt-8">
+              <h2 className="mb-2 font-display text-[22px] font-bold leading-7 text-ink">Datos del producto</h2>
+              <dl className="product-detail-data text-sm leading-5">
+                <div><dt className="text-ink-2">SKU</dt><dd className="break-words font-mono text-ink">{product.id}</dd></div>
+                {product.ref && <div><dt className="text-ink-2">Referencia</dt><dd className="break-words font-mono text-ink">{product.ref}</dd></div>}
+                {displayBrand(product.brand) && <div><dt className="text-ink-2">Marca</dt><dd className="text-ink">{displayBrand(product.brand)}</dd></div>}
+                {formatUnit(product.unidad) && <div><dt className="text-ink-2">Unidad</dt><dd className="font-mono text-ink">{formatUnit(product.unidad)}</dd></div>}
+                <div><dt className="text-ink-2">Categoría</dt><dd><Link href={getCategoryPath(product.cat)} className="inline-flex min-h-11 min-w-11 items-center text-ink underline decoration-control underline-offset-4">{product.cat}</Link></dd></div>
+                <div><dt className="text-ink-2">Disponibilidad</dt><dd className="text-ink">{getStockLabel(product)}</dd></div>
+              </dl>
             </div>
+            {!!product.specs?.length && <div className="mt-6"><h2 className="font-display text-[22px] font-bold leading-7 text-ink">Especificaciones</h2><ProductSpecs specs={product.specs} limit={12} /></div>}
           </div>
         </div>
 
         {/* Related Products */}
         {related.length > 0 && (
           <div>
-            <h2 className="text-2xl font-extrabold text-gray-900 dark:text-white mb-6">Productos relacionados</h2>
+            <h2 className="mb-6 font-display text-[28px] font-bold leading-8 tracking-[-0.025em] text-ink">Productos relacionados</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {related.map((item) => <ProductCard key={item.id} product={item} />)}
             </div>

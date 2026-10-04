@@ -9,9 +9,14 @@ export default function PricePreferenceToggle({ idPrefix, className }: { idPrefi
   const id = `${idPrefix ?? generatedId}-company-prices`;
   const mode = usePricePreference();
   return (
-    <label htmlFor={id} className={cn("inline-flex min-h-11 cursor-pointer items-center gap-2 text-sm text-gray-600 dark:text-gray-300", className)}>
-      <input id={id} type="checkbox" checked={mode === "net"} onChange={(event) => setPricePreference(event.target.checked ? "net" : "gross")} className="h-5 w-5 rounded border-gray-300 accent-brand-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-red" />
-      Precios para empresas (sin IVA)
-    </label>
+    <fieldset className={cn("inline-flex shrink-0 rounded-control border border-control bg-surface p-0.5", className)}>
+      <legend className="sr-only">Visualización de precios: con IVA o sin IVA para empresas</legend>
+      {(["gross", "net"] as const).map(option => <label key={option} className="relative cursor-pointer">
+        <input id={`${id}-${option}`} type="radio" name={id} value={option} checked={mode === option} onChange={() => setPricePreference(option)} className="peer sr-only" />
+        <span className={cn("flex min-h-11 items-center justify-center rounded-control px-3 text-sm font-semibold transition-colors duration-150 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-ink motion-reduce:transition-none", mode === option ? "bg-ink text-on-ink" : "text-ink-2 hover:bg-paper hover:text-ink")}>
+          {option === "gross" ? "Con IVA" : <span className="text-center leading-5">Sin IVA<span className="block sm:inline"> (empresas)</span></span>}
+        </span>
+      </label>)}
+    </fieldset>
   );
 }

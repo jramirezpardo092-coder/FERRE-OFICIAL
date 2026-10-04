@@ -1,12 +1,14 @@
 "use client";
 
 import ParditoPortrait from "./ParditoPortrait";
+import BrandStripes from "@/components/BrandStripes";
 
 export default function ParditoState({ mode = "loading", onRetry }: { mode?: "loading" | "error"; onRetry?: () => void }) {
-  return <div className="rounded-2xl border border-gray-200 bg-white p-8 text-center dark:border-gray-800 dark:bg-gray-900" role="status" aria-live="polite">
-    <ParditoPortrait decorative sizes="128px" />
-    <h2 className="mt-2 text-lg font-bold text-gray-900 dark:text-white">{mode === "loading" ? "PARDITO está buscando tus productos" : "No pudimos cargar el catálogo"}</h2>
-    <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">{mode === "loading" ? "Un momento: estamos preparando las referencias y sus precios." : "Revisa tu conexión e inténtalo de nuevo."}</p>
-    {mode === "loading" ? <div aria-hidden="true" className="mx-auto mt-5 h-1 w-32 animate-pulse rounded-full bg-brand-red motion-reduce:animate-none" /> : onRetry && <button type="button" onClick={onRetry} className="mt-5 min-h-11 rounded-xl bg-brand-red px-5 py-3 text-sm font-bold text-white hover:bg-brand-red-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900">Volver a intentar</button>}
+  return <div className="rounded-card border border-line bg-surface p-6 text-center" role="status" aria-live="polite">
+    <ParditoPortrait decorative className="h-[180px] w-[180px]" sizes="180px" />
+    <BrandStripes className="mx-auto mt-3 h-8 w-14" />
+    <h2 className="mt-3 font-display text-[22px] font-bold leading-7 text-ink">{mode === "loading" ? "PARDITO está buscando tus productos" : "No pudimos cargar el catálogo"}</h2>
+    <p className="mt-2 text-sm leading-5 text-ink-2">{mode === "loading" ? "Un momento: estamos preparando las referencias y sus precios." : "Revisa tu conexión e inténtalo de nuevo."}</p>
+    {mode === "error" && onRetry && <button type="button" onClick={onRetry} className="mt-5 min-h-11 rounded-control bg-ink px-5 py-3 text-sm font-semibold text-on-ink hover:bg-ink/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink">Volver a intentar</button>}
   </div>;
 }

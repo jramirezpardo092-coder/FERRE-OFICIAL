@@ -120,6 +120,7 @@ test("adding a product leaves the quotation panel closed; explicit open/toggle e
   };
   const MiniCart = load("src/components/MiniCart.tsx", {
     react, "react/jsx-runtime": require("react/jsx-runtime"), "@/lib/utils": utils,
+    "next/image": () => null, "next/link": () => null, "./catalog/ParditoPortrait": () => null,
     "@/lib/cart-store": { getCart: () => [], subscribeCart: () => () => {} },
     "@/lib/useDialog": { useDialog: () => {} }, "@/lib/catalog/normalize": normalizer,
     "@/lib/quote-presentation": presentation, "./catalog/PriceDisplay": () => null,

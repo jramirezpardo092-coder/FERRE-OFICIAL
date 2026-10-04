@@ -1,3 +1,4 @@
+import BrandStripes from "./BrandStripes";
 import React from "react";
 import { getCategoryPath } from "@/lib/catalog/routes";
 import Link from "next/link";
@@ -79,17 +80,17 @@ interface Props {
 
 export default function CategoryGrid({ counts: productCounts }: Props) {
   return (
-    <section id="categorias" className="py-20 md:py-28 bg-white dark:bg-gray-950 relative">
+    <section id="categorias" className="home-section bg-surface  relative">
       {/* Subtle top divider */}
-      <div className="absolute top-0 left-0 right-0 divider-gradient" />
+      <div className="absolute top-0 left-0 right-0 border-t border-line" />
 
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="site-container">
         {/* Section Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 mb-4">
-            <div className="w-8 h-[2px] bg-brand-red rounded-full" />
-            <span className="text-xs font-bold text-brand-red uppercase tracking-[0.2em]">Categorías</span>
-            <div className="w-8 h-[2px] bg-brand-red rounded-full" />
+            <BrandStripes className="h-4 w-7" />
+            <span className="text-xs font-bold text-brand-text uppercase tracking-[0.2em]">Categorías</span>
+            <BrandStripes className="h-4 w-7" />
           </div>
           <h2 className="section-title">
             Explora por categoría
@@ -101,7 +102,7 @@ export default function CategoryGrid({ counts: productCounts }: Props) {
 
         {/* Category Grid — flex wrap to center the last row */}
         <div className="flex flex-wrap justify-center gap-4 md:gap-5 mb-12">
-          {CATEGORIES.map((cat) => {
+          {CATEGORIES.filter(cat => (productCounts[cat.name] || 0) > 0).map((cat) => {
             const IconComponent = iconMap[cat.name] || IconWrench;
             const count = (productCounts[cat.name] || 0).toLocaleString("es-CO");
             return (
@@ -110,19 +111,19 @@ export default function CategoryGrid({ counts: productCounts }: Props) {
                 href={getCategoryPath(cat.name)}
                 className="group w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.75rem)] lg:w-[calc(20%-1rem)]"
               >
-                <div className="relative h-full bg-white dark:bg-gray-900 rounded-2xl p-6 md:p-8 text-center border border-gray-100 dark:border-gray-800 hover:border-brand-red/20 dark:hover:border-brand-red/30 hover:shadow-xl hover:shadow-red-900/5 transition-all duration-300 hover:-translate-y-1 flex flex-col items-center justify-center">
+                <div className="relative h-full bg-surface  rounded-card p-6 md:p-8 text-center border border-line  hover:border-brand  hover:shadow-card  transition-all duration-200  flex flex-col items-center justify-center">
                   {/* Product Count Badge */}
-                  <div className="absolute top-3 right-3 bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 text-[10px] font-bold px-2.5 py-1 rounded-lg group-hover:bg-red-50 dark:group-hover:bg-red-900/20 group-hover:text-brand-red transition-colors duration-300">
+                  <div className="absolute top-3 right-3 bg-paper  text-ink-2  font-mono text-xs px-2.5 py-1 rounded-control group-hover:bg-brand-tint  group-hover:text-brand-text transition-colors duration-200">
                     {count}
                   </div>
 
                   {/* Icon Container */}
-                  <div className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center text-gray-400 mb-4 group-hover:bg-brand-red group-hover:text-white transition-all duration-300 group-hover:shadow-lg group-hover:shadow-red-900/15 group-hover:scale-110">
+                  <div className="w-14 h-14 rounded-card bg-surface flex items-center justify-center text-ink-2 mb-4 group-hover:bg-brand-tint group-hover:text-ink transition-all duration-200 group-hover:shadow-card ">
                     <IconComponent />
                   </div>
 
                   {/* Category Name */}
-                  <h3 className="font-bold text-sm md:text-base text-gray-700 dark:text-gray-200 group-hover:text-brand-red transition-colors duration-300 leading-tight">
+                  <h3 className="font-bold text-sm md:text-base text-ink-2  group-hover:text-brand-text transition-colors duration-200 leading-tight">
                     {cat.name}
                   </h3>
                 </div>
@@ -135,7 +136,7 @@ export default function CategoryGrid({ counts: productCounts }: Props) {
         <div className="flex justify-center">
           <Link
             href="/catalogo"
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5 text-sm"
+            className="inline-flex items-center gap-2 px-8 py-3.5 bg-ink text-on-ink font-semibold rounded-card hover:bg-ink hover:shadow-card transition-all duration-200  text-sm"
           >
             Ver todas las categorías
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

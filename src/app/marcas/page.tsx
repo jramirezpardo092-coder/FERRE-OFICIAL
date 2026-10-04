@@ -29,12 +29,12 @@ export default function MarcasPage() {
     <>
       <Breadcrumbs items={[{ label: "Marcas", href: "/marcas" }]} />
 
-      <section className="max-w-7xl mx-auto px-4 py-12">
+      <section className="site-container py-12">
         <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-3">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-ink  mb-3">
             Nuestras marcas
           </h1>
-          <p className="text-gray-500 dark:text-gray-400 text-lg">
+          <p className="text-ink-2  text-lg">
             Encuentra los productos de cada marca en nuestro catálogo.
           </p>
         </div>
@@ -44,12 +44,12 @@ export default function MarcasPage() {
             <Link
               key={brand.name}
               href={`/catalogo?brand=${encodeURIComponent(brand.name)}`}
-              className="group bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 text-center hover:shadow-xl hover:border-brand-red/30 hover:scale-105 transition-all duration-300"
+              className="group bg-surface  rounded-card border border-line  p-6 text-center hover:shadow-card hover:border-brand  transition-all duration-200"
             >
-              <div className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-brand-red transition-colors mb-2">
+              <div className="text-lg font-bold text-ink  group-hover:text-brand-text transition-colors mb-2">
                 {brand.name}
               </div>
-              <div className="text-sm text-gray-400">
+              <div className="text-sm text-ink-2">
                 {brand.count.toLocaleString("es-CO")} productos
               </div>
             </Link>

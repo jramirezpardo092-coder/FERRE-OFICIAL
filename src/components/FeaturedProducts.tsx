@@ -1,5 +1,6 @@
 "use client";
 
+import BrandStripes from "./BrandStripes";
 import { useState } from "react";
 import Link from "next/link";
 import { Product } from "@/lib/types";
@@ -19,22 +20,22 @@ export default function FeaturedProducts({ products }: Props) {
   if (featured.length === 0) return null;
 
   return (
-    <section className="py-20 md:py-28 bg-gray-50 dark:bg-gray-900/50 relative">
-      <div className="absolute top-0 left-0 right-0 divider-gradient" />
+    <section className="home-section bg-surface  relative">
+      <div className="absolute top-0 left-0 right-0 border-t border-line" />
 
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="site-container">
         <div className="flex items-end justify-between mb-10">
           <div>
             <div className="inline-flex items-center gap-2 mb-4">
-              <div className="w-8 h-[2px] bg-brand-red rounded-full" />
-              <span className="text-xs font-bold text-brand-red uppercase tracking-[0.2em]">Destacados</span>
+              <BrandStripes className="h-4 w-7" />
+              <span className="text-xs font-bold text-brand-text uppercase tracking-[0.2em]">Destacados</span>
             </div>
             <h2 className="section-title">Productos para tu proyecto</h2>
             <p className="section-subtitle mt-2">Explora nuestras categorías y prepara tu cotización</p>
           </div>
           <Link
             href="/catalogo"
-            className="hidden min-h-11 md:inline-flex items-center gap-2 text-brand-red font-semibold text-sm hover:text-red-700 transition-colors"
+            className="hidden min-h-11 md:inline-flex min-h-11 items-center gap-2 text-ink font-semibold text-sm hover:text-ink-2 transition-colors"
           >
             Ver todo el catálogo
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
