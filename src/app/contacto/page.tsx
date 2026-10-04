@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { SITE } from "@/lib/constants";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { getLocalBusinessJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Contacto | Ferretería Pardo SAS - Bogotá",
@@ -12,10 +11,6 @@ export const metadata: Metadata = {
 export default function ContactoPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(getLocalBusinessJsonLd()) }}
-      />
       <Breadcrumbs items={[{ label: "Contacto", href: "/contacto" }]} />
 
       <section className="max-w-7xl mx-auto px-4 py-12 md:py-16">

@@ -6,6 +6,7 @@ import type { Product } from "@/lib/types";
 import type { CatalogResponse, CatalogSuggestion } from "@/lib/catalog-types";
 import { getActiveFilterCount, normalizeCatalogFilters, type FiltersValue } from "@/lib/catalog-filters";
 import { cn } from "@/lib/utils";
+import { getCategoryPath, getProductPath } from "@/lib/catalog/routes";
 import ProductCard from "./ProductCard";
 import ProductModal from "./ProductModal";
 import CatalogFilters from "./catalog/CatalogFilters";
@@ -18,7 +19,7 @@ import ParditoState from "./catalog/ParditoState";
 const SORT_OPTIONS = ["relevance", "price-asc", "price-desc", "discount", "name"];
 
 /** Only one page of public products reaches the browser. Sales data stay on the server. */
-export default function CatalogClient({ offersOnly = false }: { offersOnly?: boolean }) {
+export default function CatalogClient({ offersOnly = false, initialData, initialParamsKey = "", category = "" }: { offersOnly?: boolean; initialData?: CatalogResponse; initialParamsKey?: string; category?: string }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const paramsKey = searchParams.toString();
@@ -27,22 +28,23 @@ export default function CatalogClient({ offersOnly = false }: { offersOnly?: boo
   const filters = useMemo(() => {
     const params = new URLSearchParams(paramsKey);
     return normalizeCatalogFilters({
-      category: params.get("cat") || "", brand: params.get("brand") || "",
+      category: category || params.get("cat") || "", brand: params.get("brand") || "",
       priceMin: params.get("min") ?? params.get("priceMin") ?? "",
       priceMax: params.get("max") ?? params.get("priceMax") ?? "",
       availability: params.get("availability") as FiltersValue["availability"],
       offersOnly: offersOnly || params.get("ofertas") === "true",
     });
-  }, [paramsKey, offersOnly]);
+  }, [paramsKey, offersOnly, category]);
   const [search, setSearch] = useState(query);
-  const [result, setResult] = useState<{ key: string; data: CatalogResponse } | null>(null);
+  const resultKey = (key: string) => (offersOnly ? "offers:" : "catalog:") + category + ":" + key;
+  const [result, setResult] = useState<{ key: string; data: CatalogResponse } | null>(() => initialData ? { key: resultKey(initialParamsKey), data: initialData } : null);
   const [error, setError] = useState(false);
   const [retry, setRetry] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
   const topRef = useRef<HTMLDivElement>(null);
-  const requestKey = (offersOnly ? "offers:" : "catalog:") + paramsKey;
+  const requestKey = resultKey(paramsKey);
   const loading = !result || result.key !== requestKey;
   const data = result?.data;
   const busy = loading && !error;
@@ -54,10 +56,17 @@ export default function CatalogClient({ offersOnly = false }: { offersOnly?: boo
       if (value === null || !value.trim()) params.delete(key);
       else params.set(key, value);
     }
-    const next = params.toString();
-    const url = window.location.pathname + (next ? "?" + next : "") + window.location.hash;
-    if (url !== window.location.pathname + window.location.search + window.location.hash) window.history.pushState(null, "", url);
-  }, []);
+    const nextCategory = Object.prototype.hasOwnProperty.call(updates, "cat") ? updates.cat : category;
+    const path = offersOnly ? "/ofertas" : getCategoryPath(nextCategory || "");
+    params.delete("cat");
+    const nextQuery = params.toString();
+    const url = path + (nextQuery ? "?" + nextQuery : "");
+    if (path !== window.location.pathname) router.push(url);
+    else if (url !== window.location.pathname + window.location.search) window.history.pushState(null, "", url);
+  }, [category, offersOnly, router]);
+  useEffect(() => {
+    if (initialData) setResult({ key: (offersOnly ? "offers:" : "catalog:") + category + ":" + initialParamsKey, data: initialData });
+  }, [initialData, initialParamsKey, category, offersOnly]);
   useEffect(() => { setSearch(query); }, [query]);
   useEffect(() => {
     const restoreSearch = () => setSearch(new URLSearchParams(window.location.search).get("q") || "");
@@ -77,10 +86,12 @@ export default function CatalogClient({ offersOnly = false }: { offersOnly?: boo
   }, [search, query, updateParams]);
 
   useEffect(() => {
+    if (result?.key === requestKey && retry === 0) return;
     const controller = new AbortController();
     let current = true;
     setError(false);
     const params = new URLSearchParams(paramsKey);
+    if (category) params.set("cat", category);
     if (offersOnly) params.set("ofertas", "true");
     async function load() {
       try {
@@ -95,7 +106,7 @@ export default function CatalogClient({ offersOnly = false }: { offersOnly?: boo
     void load();
     // Slow requests cannot replace the results of a newer search.
     return () => { current = false; controller.abort(); };
-  }, [paramsKey, offersOnly, requestKey, retry]);
+  }, [paramsKey, offersOnly, category, requestKey, retry]);
 
   const changeFilters = (next: FiltersValue) => updateParams({
     cat: next.category, brand: next.brand, min: next.priceMin, max: next.priceMax,
@@ -107,7 +118,7 @@ export default function CatalogClient({ offersOnly = false }: { offersOnly?: boo
     updateParams({ q: null, cat: null, brand: null, min: null, max: null, priceMin: null, priceMax: null, availability: null, ofertas: null, page: null, sort: null });
   };
   const chooseSuggestion = (suggestion: CatalogSuggestion) => {
-    if (suggestion.type === "product") router.push("/producto/" + encodeURIComponent(suggestion.value));
+    if (suggestion.type === "product") router.push(getProductPath({ id: suggestion.value, nombre: suggestion.label }));
     else {
       setSearch("");
       updateParams({ q: null, [suggestion.type === "category" ? "cat" : "brand"]: suggestion.value, page: null });
@@ -162,7 +173,11 @@ export default function CatalogClient({ offersOnly = false }: { offersOnly?: boo
           <div className={cn(viewMode === "grid" ? "grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4 md:gap-4" : "flex flex-col gap-3")}>
             {data.products.map(product => <ProductCard key={product.id} product={product} onOpenModal={setModalProduct} viewMode={viewMode} />)}
           </div>
-          <CatalogPagination page={data.page} totalPages={data.totalPages} onPageChange={page => {
+          <CatalogPagination page={data.page} totalPages={data.totalPages} pageHref={page => {
+            const params = new URLSearchParams(paramsKey);
+            if (page > 1) params.set("page", String(page)); else params.delete("page");
+            return (offersOnly ? "/ofertas" : getCategoryPath(category)) + (params.size ? "?" + params.toString() : "");
+          }} onPageChange={page => {
             updateParams({ page: page === 1 ? null : String(page) });
             topRef.current?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
           }} />

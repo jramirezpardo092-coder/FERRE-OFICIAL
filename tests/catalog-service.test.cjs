@@ -17,6 +17,9 @@ function loadModule(file, dependencies = {}) {
 }
 
 const constants = loadModule("src/lib/constants.ts");
+const dictionaries = loadModule("src/lib/catalog/dictionaries.ts");
+const normalization = loadModule("src/lib/catalog/normalize.ts", { "./dictionaries": dictionaries });
+const routes = loadModule("src/lib/catalog/routes.ts", { "../constants": constants, "./normalize": normalization });
 const utils = loadModule("src/lib/utils.ts", { "./constants": constants });
 const filters = loadModule("src/lib/catalog-filters.ts", { "./utils": utils });
 const search = loadModule("src/lib/search.ts", { "fuse.js": require("fuse.js") });
@@ -33,7 +36,7 @@ function service(products = fixture, enrichmentEntries = {}) {
   return loadModule("src/lib/catalog-service.ts", {
     "server-only": {}, "@/data/products.json": products,
     "./catalog-filters": filters, "./product-enrichment": enrichment,
-    "./search": search, "./utils": utils,
+    "./search": search, "./utils": utils, "./catalog/routes": routes,
   });
 }
 const query = (catalog, parameters = "", offersOnly = false) => catalog.queryCatalog(new URLSearchParams(parameters), offersOnly);

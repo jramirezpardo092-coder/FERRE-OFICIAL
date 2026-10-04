@@ -7,6 +7,7 @@ import { applyCatalogFilters, normalizeCatalogFilters, validateCatalogFilters } 
 import { enrichProducts, getLocalProductImagePath } from "./product-enrichment";
 import { normalizeSearchText, searchProducts } from "./search";
 import { getAvailableQuantity, getDiscountPercent, hasVerifiedPrice } from "./utils";
+import { getProductSlug } from "./catalog/routes";
 
 const PAGE_SIZE = 24;
 const SORT_OPTIONS = new Set(["relevance", "price-asc", "price-desc", "discount", "name"]);
@@ -42,6 +43,7 @@ function publicProduct(product: Product): Product {
 
 const catalog = enrichProducts(productsData as Product[]).map(publicProduct);
 const catalogById = new Map(catalog.map((product) => [product.id, product]));
+const catalogBySlug = new Map(catalog.map((product) => [getProductSlug(product), product]));
 const catalogByCategory = new Map<string, Product[]>();
 for (const product of catalog) {
   const category = catalogByCategory.get(product.cat) || [];
@@ -85,7 +87,7 @@ export function getFeaturedCatalogProducts(): Product[] {
 }
 
 export function getCatalogProduct(id: string): Product | undefined {
-  const product = catalogById.get(id);
+  const product = catalogById.get(id) || catalogBySlug.get(id);
   return product ? publicProduct(product) : undefined;
 }
 

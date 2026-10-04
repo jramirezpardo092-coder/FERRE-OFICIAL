@@ -10,25 +10,30 @@ import ProductCard from "@/components/ProductCard";
 import ProductMedia from "@/components/catalog/ProductMedia";
 import ProductSpecs from "@/components/catalog/ProductSpecs";
 import ProductActions from "./ProductActions";
+import { getProductSlug, getProductPath, getCategoryPath } from "@/lib/catalog/routes";
+import { displayBrand, normalizeProductName } from "@/lib/catalog/normalize";
 
 // Generate static pages for all products
 export function generateStaticParams() {
-  return getCatalogProducts().map((product) => ({ slug: product.id }));
+  return getCatalogProducts().map((product) => ({ slug: getProductSlug(product) }));
 }
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const product = getCatalogProduct(params.slug);
   if (!product) return { title: "Producto no encontrado" };
+  const name = normalizeProductName(product.nombre);
+  const brand = displayBrand(product.brand);
+  const title = [name, brand && !name.toLowerCase().includes(brand.toLowerCase()) ? brand : "", "Ferretería Pardo Bogotá"].filter(Boolean).join(" | ");
   const priceDescription = hasVerifiedPrice(product)
     ? `${formatCOP(product.precio)} ${formatTaxLabel(product)}`
     : "Precio por confirmar";
 
   return {
-    title: `${product.nombre} - ${product.brand} | Ferretería Pardo`,
-    alternates: { canonical: `/producto/${encodeURIComponent(product.id)}` },
-    description: `${product.nombre} de ${product.brand}. ${priceDescription}. Consulta disponibilidad en Ferretería Pardo, Bogotá. Cotiza por WhatsApp.`,
+    title,
+    alternates: { canonical: getProductPath(product) },
+    description: `${name}${brand && !name.toLowerCase().includes(brand.toLowerCase()) ? ` de ${brand}` : ""}. ${priceDescription}. Consulta disponibilidad en Ferretería Pardo, Bogotá. Cotiza por WhatsApp.`,
     openGraph: {
-      title: `${product.nombre} - ${product.brand}`,
+      title: name,
       description: `${priceDescription} | ${product.cat}`,
       images: [getLocalProductImagePath(product.img) || "/logo-ferreteria-pardo.png"],
     },
@@ -61,8 +66,8 @@ export default function ProductoPage({ params }: { params: { slug: string } }) {
       <Breadcrumbs
         items={[
           { label: "Catálogo", href: "/catalogo" },
-          { label: product.cat, href: `/catalogo?cat=${encodeURIComponent(product.cat)}` },
-          { label: product.nombre, href: `/producto/${encodeURIComponent(product.id)}` },
+          { label: product.cat, href: getCategoryPath(product.cat) },
+          { label: normalizeProductName(product.nombre), href: getProductPath(product) },
         ]}
       />
 
@@ -146,7 +151,7 @@ export default function ProductoPage({ params }: { params: { slug: string } }) {
               <div className="text-sm text-gray-500">
                 <span className="font-medium text-gray-700 dark:text-gray-300">Categoría:</span>{" "}
                 <Link
-                  href={`/catalogo?cat=${encodeURIComponent(product.cat)}`}
+                  href={getCategoryPath(product.cat)}
                   className="text-brand-red hover:underline"
                 >
                   {product.cat}

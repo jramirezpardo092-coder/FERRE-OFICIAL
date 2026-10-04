@@ -6,7 +6,6 @@ import BrandCarousel from "@/components/BrandCarousel";
 import Testimonials from "@/components/Testimonials";
 import ScrollReveal from "@/components/ScrollReveal";
 import { getCatalogProducts, getFeaturedCatalogProducts } from "@/lib/catalog-service";
-import { getLocalBusinessJsonLd } from "@/lib/seo";
 
 export default function HomePage() {
   const products = getCatalogProducts();
@@ -22,10 +21,6 @@ export default function HomePage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(getLocalBusinessJsonLd()) }}
-      />
       <HeroCarousel
         productCount={products.length}
         brandCount={brands.length}

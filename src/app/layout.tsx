@@ -6,7 +6,8 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import MiniCart from "@/components/MiniCart";
 import ThemeProvider from "@/components/ThemeProvider";
-import { getOrganizationJsonLd, getWebsiteJsonLd } from "@/lib/seo";
+import { getLocalBusinessJsonLd, getWebsiteJsonLd } from "@/lib/seo";
+import { SITE } from "@/lib/constants";
 import productsData from "@/data/products.json";
 
 const catalogCount = productsData.length.toLocaleString("es-CO");
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
   title: "Ferretería Pardo SAS | Catálogo, herrajes y herramientas en Bogotá",
   description:
     `Ferretería Pardo SAS: herrajes, cerrajería, herramientas y asesoría ferretera en Bogotá. ${catalogCount} productos en catálogo. Cotiza directo por WhatsApp.`,
-  metadataBase: new URL("https://ferre-oficial.vercel.app"),
+  metadataBase: new URL(SITE.url),
   openGraph: {
     type: "website",
     title: `Ferretería Pardo SAS | ${catalogCount} productos ferreteros en Bogotá`,
@@ -56,7 +57,7 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(getOrganizationJsonLd()) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(getLocalBusinessJsonLd()).replace(/</g, "\\u003c") }}
         />
         <script
           type="application/ld+json"
