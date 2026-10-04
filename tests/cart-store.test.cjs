@@ -136,3 +136,62 @@ test("adding a product leaves the quotation panel closed; explicit open/toggle e
   cleanup.forEach((fn) => fn());
   assert.equal(events.size, 0);
 });
+
+test("quotation toast shows the reference count without opening the panel and dismisses on open/toggle", () => {
+  const states = [];
+  const effects = [];
+  const events = new Map();
+  const dispatched = [];
+  let stateIndex = 0;
+  const react = {
+    useState(initial) {
+      const index = stateIndex++;
+      if (index >= states.length) states.push(initial);
+      return [states[index], (next) => { states[index] = typeof next === "function" ? next(states[index]) : next; }];
+    },
+    useEffect: (effect) => effects.push(effect),
+  };
+  const window = {
+    addEventListener(event, listener) {
+      if (!events.has(event)) events.set(event, new Set());
+      events.get(event).add(listener);
+    },
+    removeEventListener(event, listener) {
+      events.get(event)?.delete(listener);
+      if (events.get(event)?.size === 0) events.delete(event);
+    },
+    dispatchEvent(event) {
+      dispatched.push(event.type);
+      events.get(event.type)?.forEach((listener) => listener(event));
+    },
+  };
+  const QuoteToast = load("src/components/QuoteToast.tsx", {
+    react, "react/jsx-runtime": require("react/jsx-runtime"),
+    "@/lib/cart-store": { getCart: () => [{ ...product, qty: 3 }, { ...product, id: "9212", qty: 5 }] },
+  }, { window }).default;
+  const render = () => { stateIndex = 0; return QuoteToast(); };
+  assert.equal(render(), null);
+  const cleanup = effects[0]();
+
+  window.dispatchEvent(new Event("cart-added"));
+  const visible = render();
+  assert.match(renderToStaticMarkup(visible), /Ver cotización \(2\)/);
+  assert.deepEqual(dispatched, ["cart-added"], "adding only shows the toast; it dispatches no panel event");
+  visible.props.onPointerEnter();
+  assert.equal(states[1], true);
+  window.dispatchEvent(new Event("open-cart"));
+  assert.equal(render(), null, "opening from the header removes the mobile overlay");
+  assert.equal(states[1], false, "opening also resets the hover pause");
+
+  window.dispatchEvent(new Event("cart-added"));
+  render().props.onFocusCapture();
+  assert.equal(states[1], true);
+  window.dispatchEvent(new Event("toggle-cart"));
+  assert.equal(render(), null, "toggling from the header also removes the overlay");
+  assert.equal(states[1], false, "toggling resets the focus pause");
+
+  cleanup();
+  assert.equal(events.size, 0, "all three listeners are removed on unmount");
+  window.dispatchEvent(new Event("cart-added"));
+  assert.equal(render(), null);
+});
