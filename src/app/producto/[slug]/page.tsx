@@ -84,7 +84,7 @@ export default function ProductoPage({ params }: { params: { slug: string } }) {
                 -{discount}%
               </span>
             )}
-            <ProductMedia product={product} showGalleryControls priority sizes="(max-width: 768px) 100vw, 50vw" />
+            <ProductMedia product={product} showGalleryControls priority sizes="(max-width: 639px) calc(80vw - 27.2px), (max-width: 767px) calc(80vw - 40px), (max-width: 1023px) calc(40vw - 33.6px), (max-width: 1279px) calc(40vw - 46.4px), 465.6px" />
           </div>
 
           {/* Info */}

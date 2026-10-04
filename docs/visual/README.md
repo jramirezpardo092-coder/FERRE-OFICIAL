@@ -4,6 +4,12 @@ Fuente de verdad: [DESIGN.md](../../DESIGN.md). Comparación con producción bas
 
 Se conservan rutas, precios, datos, fotos aprobadas, metadatos, JSON-LD y la lógica de cotización. [Informe de invariantes](reports/invariants.json).
 
+## Resultados de verificación
+
+[CI de la revisión 236d11d](https://github.com/jramirezpardo092-coder/FERRE-OFICIAL/actions/runs/37233918680): 44 estados aprobados, cero infracciones de axe y preload exclusivo de Archivo. Lighthouse móvil: catálogo 98 y ficha 95; CLS 0,019 y 0,00009. Son mediciones de laboratorio, no datos de campo. La última revisión vuelve a ejecutar los mismos gates; sus informes completos quedan en el check de la PR.
+
+[Resumen CI](reports/ci-verification.json) · [Historial de rendimiento, incluido el primer fallo](reports/performance-history.json) · [Verificación local](reports/visual-verification.json). Se conservan los resultados `incomplete` de axe para revisión humana.
+
 ## Decisiones visuales para revisión
 
 - Archivo variable con ancho 80 y peso 700–800; Manrope 400/600 e IBM Plex Mono 500. Sólo dos archivos nuevos de fuente y preload exclusivo de Archivo.
@@ -319,4 +325,4 @@ Cada ancho es el viewport CSS real: 390 × 844 y 1440 × 900. Footer y búsqueda
 
 Los resultados de axe, alineación, fondos rojos, controles táctiles y estabilidad se guardan en los [informes](reports/). Los scripts no ejecutan envíos de WhatsApp. Las mediciones de rendimiento identifican entorno y versión; no se presenta una puntuación antigua de producción como resultado del código nuevo.
 
-Los informes de CI aportarán las métricas finales de validación; sus resultados permanecen pendientes.
+El check de la PR contiene la validación de su última revisión. Cada ejecución conserva JSON, HTML y capturas completos, también cuando un criterio falla.
