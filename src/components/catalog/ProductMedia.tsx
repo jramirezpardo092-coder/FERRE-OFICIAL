@@ -20,16 +20,39 @@ interface Props {
   active?: boolean;
   showGalleryControls?: boolean;
   priority?: boolean;
+  /** Miniatura de 72 px para la lista móvil. */
+  compact?: boolean;
+  /** Por defecto sigue compact; false permite la grilla en escritorio. */
+  compactDesktop?: boolean;
+}
+
+const CATEGORY_ICON_PATHS: Record<string, string> = {
+    "Cerrajería": "M7 10V7a5 5 0 0110 0v3M5 10h14v11H5zM12 14v3",
+    "Herramientas": "M14 6a5 5 0 00-6 6L3 17a3 3 0 004 4l5-5a5 5 0 006-6l-4 3-3-3 3-4z",
+    "Herrajes para Muebles": "M4 4h16v16H4zM4 12h16M10 8h4M10 16h4",
+    "Tornillería y Fijación": "M8 3h8v4H8zM10 7v13h4V7M9 11h6M9 15h6M10 20l2 2 2-2",
+    "Adhesivos y Sellantes": "M9 3h6v3H9zM8 6h8l2 14H6L8 6zM9 12h6",
+    "Eléctrico": "M9 2v5M15 2v5M7 7h10v4a5 5 0 01-10 0V7zM12 16v6",
+    "Fontanería": "M3 7h10V3h8v8h-8v10H5V11H3V7zM13 7v4M5 11h8",
+    "Seguridad Industrial": "M3 16v-2a9 9 0 0118 0v2M7 13V8M17 13V8M10 6V3h4v3M2 16h20v4H2z",
+};
+
+function CategoryIcon({ category }: { category: string }) {
+  return <svg className="h-8 w-8 shrink-0" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={CATEGORY_ICON_PATHS[category] || "M3 7h18v14H3zM8 7V3h8v4M3 12h18M10 10h4v4h-4z"} />
+  </svg>;
 }
 
 export default function ProductMedia({
   product,
-  sizes = "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw",
+  sizes = "(max-width: 640px) 72px, (max-width: 1024px) 33vw, 280px",
   className,
   imageClassName,
   active = false,
   showGalleryControls = false,
   priority = false,
+  compact = false,
+  compactDesktop = compact,
 }: Props) {
   const [failedSources, setFailedSources] = useState<string[]>([]);
   const [secondaryRequested, setSecondaryRequested] = useState(false);
@@ -68,10 +91,13 @@ export default function ProductMedia({
 
   const failImage = (src: string) => setFailedSources((failed) => failed.includes(src) ? failed : [...failed, src]);
   const showSecondary = active && secondary && loadedSecondary === secondary.src;
+  const imageSizes = compact && compactDesktop ? "72px" : sizes;
+  const mediaPadding = compact ? compactDesktop ? "p-1.5" : "p-1.5 sm:p-5" : "p-5";
 
   return (
-    <div className={cn("overflow-hidden bg-gray-50 dark:bg-gray-950", className)}>
-      <div className="relative aspect-square">
+    <div className={cn("overflow-hidden bg-gray-50 dark:bg-gray-950", compact && "w-[72px] shrink-0", compact && !compactDesktop && "sm:w-full", className)}>
+      {/* Sin una foto verificada, el icono no reserva un cuadrado vacío de toda la tarjeta. */}
+      <div className={cn("relative", primary ? "aspect-square" : "h-[72px] sm:h-24", !primary && compactDesktop && "sm:h-[72px]")}>
       {primary && selected ? showGalleryControls ? (
         // Only the selected photo mounts: choosing a later photo never downloads the whole gallery.
         <Image
@@ -79,14 +105,12 @@ export default function ProductMedia({
           id={imageId}
           src={selected.src}
           alt={selected.alt?.trim() || product.nombre}
-          // Los WebP importados ya son sin pérdida: servirlos directamente conserva sus píxeles.
-          unoptimized={selected.src.startsWith("/products/whatsapp/")}
-          quality={100}
+          quality={75}
           fill
-          sizes={sizes}
+          sizes={imageSizes}
           priority={priority && selectedIndex === 0}
           loading={priority && selectedIndex === 0 ? undefined : "lazy"}
-          className={cn("object-contain p-5", imageClassName)}
+          className={cn("object-contain", mediaPadding, imageClassName)}
           onError={() => failImage(selected.src)}
         />
       ) : (
@@ -94,14 +118,13 @@ export default function ProductMedia({
           <Image
             src={primary.src}
             alt={showSecondary ? "" : primary.alt?.trim() || product.nombre}
-            unoptimized={primary.src.startsWith("/products/whatsapp/")}
-            quality={100}
+            quality={75}
             aria-hidden={showSecondary ? true : undefined}
             fill
-            sizes={sizes}
+            sizes={imageSizes}
             priority={priority}
             loading={priority ? undefined : "lazy"}
-            className={cn("object-contain p-5 transition-opacity duration-200 motion-reduce:transition-none", showSecondary ? "opacity-0" : "opacity-100", imageClassName)}
+            className={cn("object-contain transition-opacity duration-200 motion-reduce:transition-none", mediaPadding, showSecondary ? "opacity-0" : "opacity-100", imageClassName)}
             onError={() => failImage(primary.src)}
           />
           {secondaryRequested && secondary && (
@@ -109,24 +132,21 @@ export default function ProductMedia({
               key={secondary.src}
               src={secondary.src}
               alt={showSecondary ? secondary.alt?.trim() || product.nombre : ""}
-              unoptimized={secondary.src.startsWith("/products/whatsapp/")}
-              quality={100}
+              quality={75}
               aria-hidden={showSecondary ? undefined : true}
               fill
-              sizes={sizes}
+              sizes={imageSizes}
               loading="lazy"
-              className={cn("object-contain p-5 transition-opacity duration-200 motion-reduce:transition-none", showSecondary ? "opacity-100" : "opacity-0", imageClassName)}
+              className={cn("object-contain transition-opacity duration-200 motion-reduce:transition-none", mediaPadding, showSecondary ? "opacity-100" : "opacity-0", imageClassName)}
               onLoad={() => setLoadedSecondary(secondary.src)}
               onError={() => failImage(secondary.src)}
             />
           )}
         </>
       ) : (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-4 text-center text-gray-500 dark:text-gray-400">
-          <svg className="h-9 w-9 text-gray-300 dark:text-gray-600" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2 2H6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-          </svg>
-          <span className="text-xs">Sin foto disponible</span>
+        <div role="img" aria-label={`${product.nombre}: sin foto disponible; categoría ${product.cat}`} className="absolute inset-0 flex flex-col items-center justify-center gap-1 px-1 text-center text-gray-600 dark:text-gray-300">
+          <CategoryIcon category={product.cat} />
+          <span aria-hidden="true" className={cn("text-xs", compact && (compactDesktop ? "sr-only" : "sr-only sm:not-sr-only"))}>Sin foto disponible</span>
         </div>
       )}
       </div>
@@ -161,7 +181,7 @@ export default function ProductMedia({
             Ampliar imagen
           </a>}
           <p role="status" aria-live="polite" className="sr-only">{selected ? `Foto ${selectedIndex + 1} de ${candidates.length}: ${selected.alt?.trim() || product.nombre}` : "Sin fotos disponibles."}</p>
-          {failedSources.length > 0 && <p className="mt-2 text-center text-xs text-gray-500 dark:text-gray-400">Una foto no está disponible.{selected ? " Mostramos otra imagen." : ""}</p>}
+          {failedSources.length > 0 && <p className="mt-2 text-center text-xs text-gray-600 dark:text-gray-300">Una foto no está disponible.{selected ? " Mostramos otra imagen." : ""}</p>}
         </div>
       )}
     </div>

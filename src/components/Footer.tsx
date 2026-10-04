@@ -1,8 +1,7 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { SITE, NAV_LINKS } from "@/lib/constants";
+import MapFacade from "./MapFacade";
 
 export default function Footer() {
   return (
@@ -38,18 +37,18 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           {/* Col 1: Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <Image
-                src="/logo-ferreteria-pardo.png"
-                alt="Ferretería Pardo"
-                width={44}
-                height={44}
-                className="rounded-xl"
-              />
-              <div>
-                <div className="font-black text-white text-lg">Ferretería Pardo</div>
-                <div className="text-[11px] text-gray-500">Desde 1966 · Bogotá</div>
+            <div className="mb-6">
+              <div className="w-fit rounded-lg bg-white p-2">
+                <Image
+                  src="/logo-ferreteria-pardo.svg"
+                  alt="Ferretería Pardo SAS"
+                  width={477}
+                  height={136}
+                  sizes="196px"
+                  className="h-14 w-auto"
+                />
               </div>
+              <div className="mt-2 text-xs text-gray-400">Desde 1966 · Bogotá</div>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed mb-6">
               Más de 60 años ofreciendo herrajes, cerrajería, herramientas y soluciones ferreteras de calidad en Bogotá.
@@ -57,7 +56,7 @@ export default function Footer() {
             {/* Payments */}
             <div className="flex flex-wrap gap-2">
               {SITE.payments.map((p) => (
-                <span key={p} className="text-[10px] bg-gray-900 text-gray-400 px-2.5 py-1.5 rounded-lg font-medium border border-gray-800">
+                <span key={p} className="text-xs bg-gray-900 text-gray-300 px-2.5 py-1.5 rounded-lg font-medium border border-gray-800">
                   {p}
                 </span>
               ))}
@@ -114,19 +113,19 @@ export default function Footer() {
               </div>
 
               <div className="space-y-2 mt-4 pt-4 border-t border-gray-800/50">
-                <div className="flex items-center gap-3 text-xs text-gray-500">
+                <div className="flex items-center gap-3 text-xs text-gray-400">
                   <svg className="w-3.5 h-3.5 text-gray-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <span>{SITE.hours.weekdays}</span>
                 </div>
-                <div className="flex items-center gap-3 text-xs text-gray-500">
+                <div className="flex items-center gap-3 text-xs text-gray-400">
                   <svg className="w-3.5 h-3.5 text-gray-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <span>{SITE.hours.saturday}</span>
                 </div>
-                <div className="flex items-center gap-3 text-xs text-gray-500">
+                <div className="flex items-center gap-3 text-xs text-gray-400">
                   <svg className="w-3.5 h-3.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
@@ -176,25 +175,14 @@ export default function Footer() {
             </div>
 
             {/* Map */}
-            <div className="rounded-2xl overflow-hidden border border-gray-800 aspect-video shadow-xl">
-              <iframe
-                src={SITE.mapEmbed}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Ubicación Ferretería Pardo"
-              />
-            </div>
+            <MapFacade />
           </div>
         </div>
       </div>
 
       {/* Bottom */}
       <div className="border-t border-gray-800/50">
-        <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-gray-600">
+        <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-gray-400">
           <p>&copy; 2026 Ferretería Pardo SAS. Todos los derechos reservados.</p>
           <p>Hecho con cuidado en Bogotá</p>
         </div>

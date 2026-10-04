@@ -241,11 +241,12 @@ export default function Header() {
             {/* Logo - Premium styling */}
             <Link href="/" className="flex items-center gap-3 shrink-0">
               <Image
-                src="/logo-ferreteria-pardo.png"
+                src="/logo-ferreteria-pardo.svg"
                 alt="Ferretería Pardo SAS"
-                width={52}
-                height={52}
-                className="rounded-2xl"
+                width={126}
+                height={36}
+                sizes="126px"
+                className="h-9 w-[126px] bg-white p-1"
                 priority
               />
               <div className="hidden sm:block">

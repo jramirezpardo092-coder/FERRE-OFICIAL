@@ -23,7 +23,7 @@ const routes = loadModule("src/lib/catalog/routes.ts", { "../constants": constan
 const utils = loadModule("src/lib/utils.ts", { "./constants": constants });
 const filters = loadModule("src/lib/catalog-filters.ts", { "./utils": utils });
 const synonyms = loadModule("src/lib/catalog/synonyms.ts");
-const search = loadModule("src/lib/search.ts", { "fuse.js": require("fuse.js"), "./catalog/synonyms": synonyms });
+const search = loadModule("src/lib/search.ts", { "fuse.js": require("fuse.js"), "./catalog/synonyms": synonyms, "./catalog/normalize": normalization });
 const base = { id: "0001", nombre: "Taladro", precio: 100, stock: 3, unidad: "unidad", cat: "Herramientas", brand: "TRUPER", taxRate: 19, priceVerified: true };
 const fixture = Array.from({ length: 55 }, (_, index) => ({
   ...base, id: `P${String(index).padStart(3, "0")}`, nombre: `Taladro ${index}`, precio: 100 + index,
@@ -342,7 +342,7 @@ test("public shipment is a whitelist even for nested verified media/specs; respo
   assert.equal(untouched.specs[0].value, "120V");
 });
 
-test("GET emits only a limited public page with no-store and rejects oversized queries", () => {
+test("GET emits only a limited public page with CDN cache and rejects oversized queries", () => {
   const catalog = service();
   const route = loadModule("src/app/api/catalogo/route.ts", {
     "@/lib/catalog-service": catalog,
@@ -352,7 +352,7 @@ test("GET emits only a limited public page with no-store and rejects oversized q
   assert.equal(response.status, 200);
   assert.equal(response.body.products.length, 24);
   assert.equal(response.body.page, 2);
-  assert.match(response.headers["Cache-Control"], /no-store/);
+  assert.equal(response.headers["Cache-Control"], "public, s-maxage=300, stale-while-revalidate=86400");
   assert.equal(route.dynamic, "force-dynamic");
   const invalid = route.GET({ nextUrl: new URL(`https://example.test/api/catalogo?q=${"x".repeat(4097)}`) });
   assert.equal(invalid.status, 400);
