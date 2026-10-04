@@ -29,7 +29,7 @@ export default function QuoteToast() {
         window.dispatchEvent(new Event("open-cart"));
         setNotice(null);
       }}>Ver cotización ({notice.count})</button>
-      <button type="button" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Cerrar aviso de producto agregado" onClick={() => setNotice(null)}>✕</button>
+      <button type="button" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800" aria-label="Cerrar aviso de producto agregado" onClick={() => setNotice(null)}>✕</button>
     </div>
   );
 }

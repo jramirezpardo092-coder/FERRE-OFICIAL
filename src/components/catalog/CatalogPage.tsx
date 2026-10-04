@@ -12,12 +12,15 @@ export function catalogMetadata({ category, searchParams }: CatalogPageProps): M
   const params = toSearchParams(searchParams);
   const path = category ? `/catalogo/${category.slug}` : "/catalogo";
   const filtered = [...params.keys()].some(key => key !== "page");
-  const page = /^\d+$/.test(params.get("page") || "") ? Number(params.get("page")) : 1;
+  const requestedPage = /^\d+$/.test(params.get("page") || "") ? Number(params.get("page")) : 1;
+  const pageParams = new URLSearchParams(params);
+  if (category) pageParams.set("cat", category.name);
+  const page = requestedPage > 1 ? queryCatalog(pageParams).page : 1;
   return {
     title: `${category?.name || "Catálogo de productos"} | Ferretería Pardo Bogotá`,
     description: category?.introduction || "Consulta herrajes, cerraduras, herramientas y tornillería en Ferretería Pardo Bogotá. Precios con IVA y cotización por WhatsApp. Visítanos en el Barrio 12 de Octubre.",
     alternates: { canonical: path + (!filtered && page > 1 ? `?page=${page}` : "") },
-    robots: { index: !filtered, follow: true },
+    robots: { index: !filtered && requestedPage === page, follow: true },
   };
 }
 export default function CatalogPage({ category, searchParams }: CatalogPageProps) {
@@ -31,9 +34,9 @@ export default function CatalogPage({ category, searchParams }: CatalogPageProps
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getItemListJsonLd(initialData.products, (initialData.page - 1) * 24)).replace(/</g, "\\u003c") }} />
     {category && <Breadcrumbs items={[{ label: "Catálogo", href: "/catalogo" }, { label: category.name, href: `/catalogo/${category.slug}` }]} />}
     <header className="bg-gray-900 text-white">
-      <div className="mx-auto max-w-[1400px] px-4 py-4 md:py-7">
-        <h1 className="text-2xl font-extrabold md:text-3xl">{category?.name || "Catálogo Ferretería Pardo"}</h1>
-        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-gray-200">{category?.introduction || "Encuentra referencias para tu proyecto y reúne tu cotización. Incluimos productos agotados para consultar su reposición."}</p>
+      <div className="mx-auto max-w-[1400px] px-4 py-3 md:py-7">
+        <h1 className="text-xl font-extrabold md:text-3xl">{category?.name || "Catálogo Ferretería Pardo"}</h1>
+        <p className="mt-2 line-clamp-2 max-w-3xl text-sm leading-relaxed text-gray-200 md:line-clamp-none">{category?.introduction || "Encuentra referencias para tu proyecto y reúne tu cotización. Incluimos productos agotados para consultar su reposición."}</p>
         <p className="mt-2 text-xs text-gray-300">Actualización: {date}. Disponibilidad a confirmar al cotizar.</p>
       </div>
     </header>

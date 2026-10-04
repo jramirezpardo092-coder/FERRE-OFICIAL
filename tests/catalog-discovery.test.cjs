@@ -5,6 +5,13 @@ const load = createLoader();
 const catalog = load("src/lib/catalog-service.ts");
 const routes = load("src/lib/catalog/routes.ts");
 const { formatCOP, getUnitPriceWithTax } = load("src/lib/utils.ts");
+const { normalizeProductName } = load("src/lib/catalog/normalize.ts");
+test("copying the visible normalized product name finds its exact SKU without fuzzy fallback", () => {
+  const product = catalog.getCatalogProduct("1863");
+  const result = catalog.queryCatalog(new URLSearchParams({ q: normalizeProductName(product.nombre) }));
+  assert.equal(result.isFuzzy, false);
+  assert.equal(result.products[0].id, "1863");
+});
 for (const query of ["chapa", "visagra", "tornillo drywall", "candado yale", "lija 120", "broca 1/4"]) {
   test(`Colombian search: ${query} finds actual source references`, () => {
     const result = catalog.queryCatalog(new URLSearchParams({ q: query }));

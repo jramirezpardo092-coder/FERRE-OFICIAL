@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import type { Product, ProductImage } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -58,6 +58,7 @@ export default function ProductMedia({
   const [secondaryRequested, setSecondaryRequested] = useState(false);
   const [loadedSecondary, setLoadedSecondary] = useState<string | null>(null);
   const [selectedSource, setSelectedSource] = useState<string | null>(null);
+  const previousProduct = useRef({ id: product.id, img: product.img, gallery: product.gallery });
   const imageId = `product-photo-${useId().replace(/:/g, "")}`;
   const candidates = useMemo(() => {
     const images = new Map<string, ProductImage>();
@@ -79,6 +80,9 @@ export default function ProductMedia({
   const selectedIndex = selected ? candidates.findIndex((image) => image.src === selected.src) : -1;
 
   useEffect(() => {
+    const previous = previousProduct.current;
+    if (previous.id === product.id && previous.img === product.img && previous.gallery === product.gallery) return;
+    previousProduct.current = { id: product.id, img: product.img, gallery: product.gallery };
     setFailedSources([]);
     setSecondaryRequested(false);
     setLoadedSecondary(null);
@@ -172,7 +176,7 @@ export default function ProductMedia({
             href={selected.src}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Ampliar foto ${selectedIndex + 1} de ${product.nombre} (se abre en otra pestaña)`}
+            aria-label={`Ampliar imagen: foto ${selectedIndex + 1} de ${product.nombre} (se abre en otra pestaña)`}
             className={cn("mx-auto flex min-h-11 w-fit items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red dark:text-gray-200 dark:hover:bg-gray-800", candidates.length > 1 && "mt-2")}
           >
             <svg className="h-4 w-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">

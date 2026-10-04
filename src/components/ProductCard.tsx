@@ -60,7 +60,7 @@ export default function ProductCard({ product, onOpenModal, viewMode = "responsi
           <span className="font-mono text-gray-500 dark:text-gray-400">SKU {product.id}</span>
         </div>
         <h3 className="text-sm font-semibold leading-snug text-gray-900 dark:text-white sm:min-h-[2.5rem]">
-          <Link href={href} prefetch={false} onClick={openDetails} className="line-clamp-2 hover:text-brand-red dark:hover:text-red-400">{name}</Link>
+          <Link href={href} prefetch={false} onClick={openDetails} className="line-clamp-2 min-h-11 hover:text-brand-red dark:hover:text-red-400">{name}</Link>
         </h3>
         {product.ref && product.ref !== product.id && <p className="mt-1 break-words text-xs text-gray-500 dark:text-gray-400">Ref. {product.ref}</p>}
         <ProductSpecs specs={product.specs} limit={2} />
@@ -69,7 +69,7 @@ export default function ProductCard({ product, onOpenModal, viewMode = "responsi
           <PriceDisplay product={product} compact />
           {unit && <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Por {unit}</p>}
           <div className="mt-3 flex items-stretch gap-2">
-            <button type="button" onClick={handleAdd} className={cn("inline-flex min-h-11 min-w-0 flex-1 items-center justify-center rounded-xl px-3 py-2 text-xs font-semibold transition-colors motion-reduce:transition-none", inStock ? "bg-brand-red text-white hover:bg-brand-red-dark" : "border border-brand-red text-brand-red hover:bg-red-50 dark:border-red-400 dark:text-red-400 dark:hover:bg-gray-800")} aria-label={`Agregar ${name} a cotización${inStock ? "" : ", disponibilidad a confirmar"}`}>
+            <button type="button" onClick={handleAdd} className={cn("inline-flex min-h-11 min-w-0 flex-1 items-center justify-center rounded-xl px-3 py-2 text-xs font-semibold transition-colors motion-reduce:transition-none", inStock ? "bg-brand-red text-white hover:bg-brand-red-dark" : "border border-brand-red text-brand-red hover:bg-red-50 dark:border-red-400 dark:text-red-400 dark:hover:bg-gray-800")} aria-label={`${inStock ? "Agregar a cotización" : "Consultar disponibilidad"}: ${name}${inStock ? "" : ", agregar con disponibilidad a confirmar"}`}>
               {inStock ? "Agregar a cotización" : "Consultar disponibilidad"}
             </button>
             <a href={buildQuoteWhatsAppUrl([{ ...product, qty: inStock ? Math.min(1, stock) : 1 }])} target="_blank" rel="noopener noreferrer" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-emerald-200 text-emerald-700 hover:bg-emerald-50 dark:border-emerald-900 dark:text-emerald-300 dark:hover:bg-emerald-950" aria-label={`Consultar ${name} por WhatsApp`} title="Consultar por WhatsApp">

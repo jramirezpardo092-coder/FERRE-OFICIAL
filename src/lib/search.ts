@@ -1,16 +1,22 @@
 import Fuse from "fuse.js";
 import { Product } from "./types";
 import { SEARCH_SYNONYMS } from "./catalog/synonyms";
+import { normalizeProductName } from "./catalog/normalize";
 
 let fuseInstance: Fuse<Product> | null = null;
 let fuseProducts: Product[] | null = null;
+const normalizedNames = new Map<string, string>();
+function displayName(name: string): string {
+  if (!normalizedNames.has(name)) normalizedNames.set(name, normalizeProductName(name));
+  return normalizedNames.get(name)!;
+}
 
 export function normalizeSearchText(value: string): string {
   return value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
 export function getSearchableText(product: Product): string {
-  const text = normalizeSearchText(`${product.nombre} ${product.brand} ${product.id} ${product.cat} ${product.ref || ""} ${product.sku || ""} ${(product.tags || []).join(" ")}`);
+  const text = normalizeSearchText(`${product.nombre} ${displayName(product.nombre)} ${product.brand} ${product.id} ${product.cat} ${product.ref || ""} ${product.sku || ""} ${(product.tags || []).join(" ")}`);
   const names = normalizeSearchText(product.nombre);
   const aliases = SEARCH_SYNONYMS.filter(group => group.some(term => names.includes(term))).flat();
   return text + " " + aliases.join(" ");
@@ -66,7 +72,8 @@ export function searchProducts(
     exactResults.sort((a, b) => {
       const score = (p: Product) => {
         let s = 0;
-        const nameL = normalizeSearchText(p.nombre);
+        const nameL = normalizeSearchText(`${p.nombre} ${displayName(p.nombre)}`);
+        if (normalizeSearchText(displayName(p.nombre)) === normalizedQuery) s += 100;
         if ([p.id, p.ref, p.sku].some(value => value && normalizeSearchText(value) === normalizedQuery)) s += 100;
         if (tokens.every((t) => nameL.includes(t))) s += 50;
         if (nameL.startsWith(tokens[0])) s += 30;

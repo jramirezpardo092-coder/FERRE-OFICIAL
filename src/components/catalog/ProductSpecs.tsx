@@ -13,7 +13,7 @@ export default function ProductSpecs({ specs, limit = 2 }: Props) {
   if (!visible.length) return null;
 
   return (
-    <dl className="mt-3 space-y-1 text-xs text-gray-600 dark:text-gray-300">
+    <dl className="mt-3 space-y-1 text-[13px] text-gray-600 dark:text-gray-300">
       {visible.map((spec, index) => (
         <div key={`${spec.label}-${index}`} className="flex gap-1.5 leading-relaxed">
           <dt className="shrink-0 font-medium">{spec.label}:</dt>

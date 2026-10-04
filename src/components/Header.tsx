@@ -239,19 +239,19 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-16 lg:h-[72px]">
             {/* Logo - Premium styling */}
-            <Link href="/" className="flex items-center gap-3 shrink-0">
+            <Link href="/" className="flex min-h-11 items-center gap-3 shrink-0">
               <Image
                 src="/logo-ferreteria-pardo.svg"
                 alt="Ferretería Pardo SAS"
                 width={126}
                 height={36}
                 sizes="126px"
-                className="h-9 w-[126px] bg-white p-1"
+                className="h-9 w-[126px] bg-white"
                 priority
               />
               <div className="hidden sm:block">
-                <div className="font-black text-brand-red leading-tight text-lg">Ferretería Pardo</div>
-                <div className="text-xs text-gray-500 font-semibold">Desde 1966 · Bogotá</div>
+                <div className="font-black text-brand-red dark:text-red-400 leading-tight text-lg">Ferretería Pardo</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400 font-semibold">Desde 1966 · Bogotá</div>
               </div>
             </Link>
 
@@ -265,7 +265,7 @@ export default function Header() {
                       onClick={() => setCatOpen(!catOpen)}
                       aria-expanded={catOpen}
                       aria-controls="desktop-categories"
-                      className="flex items-center px-4 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/20"
+                      className="flex min-h-11 items-center px-4 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/20"
                     >
                       {link.label}
                       <ChevronDown />
@@ -300,7 +300,7 @@ export default function Header() {
                     key={link.label}
                     href={link.href}
                     aria-current={pathname === link.href ? "page" : undefined}
-                    className={cn("px-4 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/20", pathname === link.href && "bg-red-50 dark:bg-red-900/20 text-brand-red dark:text-red-400")}
+                    className={cn("flex min-h-11 items-center px-4 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/20", pathname === link.href && "bg-red-50 dark:bg-red-900/20 text-brand-red dark:text-red-400")}
                   >
                     {link.label}
                   </Link>
@@ -314,12 +314,12 @@ export default function Header() {
               <div className="hidden xl:flex items-center gap-2 mr-2">
                 <a href={SITE.social.instagram} target="_blank" rel="noreferrer"
                    aria-label="Instagram de Ferretería Pardo"
-                   className="p-2.5 text-gray-400 hover:text-pink-500 transition-all duration-300 rounded-2xl hover:bg-pink-50">
+                   className="flex h-11 w-11 items-center justify-center text-gray-400 hover:text-pink-500 transition-all duration-300 rounded-2xl hover:bg-pink-50">
                   <InstagramIcon />
                 </a>
                 <a href={SITE.social.facebook} target="_blank" rel="noreferrer"
                    aria-label="Facebook de Ferretería Pardo"
-                   className="p-2.5 text-gray-400 hover:text-blue-600 transition-all duration-300 rounded-2xl hover:bg-blue-50">
+                   className="flex h-11 w-11 items-center justify-center text-gray-400 hover:text-blue-600 transition-all duration-300 rounded-2xl hover:bg-blue-50">
                   <FacebookIcon />
                 </a>
               </div>
@@ -398,7 +398,7 @@ export default function Header() {
                             <Link
                               key={cat.slug}
                               href={getCategoryPath(cat.name)}
-                              className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 dark:text-gray-300 hover:text-brand-red hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-300 rounded-2xl"
+                              className="flex min-h-11 items-center gap-3 px-4 py-2.5 text-sm text-gray-600 dark:text-gray-300 hover:text-brand-red hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-300 rounded-2xl"
                               onClick={() => { setMobileCatOpen(false); setMobileOpen(false); }}
                             >
                               {IconComponent && (
@@ -443,8 +443,8 @@ export default function Header() {
                 <p className="flex items-center gap-2"><LocationIcon /> {SITE.address}</p>
                 <p className="flex items-center gap-2"><ClockIcon /> Lun–Vie 8:15am–4:55pm · Sáb 8:15am–2:15pm</p>
                 <div className="flex items-center gap-3 pt-2">
-                  <a href={SITE.social.instagram} target="_blank" rel="noreferrer" aria-label="Instagram de Ferretería Pardo" className="text-gray-400 hover:text-pink-500 transition-all duration-300"><InstagramIcon /></a>
-                  <a href={SITE.social.facebook} target="_blank" rel="noreferrer" aria-label="Facebook de Ferretería Pardo" className="text-gray-400 hover:text-blue-600 transition-all duration-300"><FacebookIcon /></a>
+                  <a href={SITE.social.instagram} target="_blank" rel="noreferrer" aria-label="Instagram de Ferretería Pardo" className="flex h-11 w-11 items-center justify-center rounded-xl text-gray-400 hover:text-pink-500 transition-all duration-300"><InstagramIcon /></a>
+                  <a href={SITE.social.facebook} target="_blank" rel="noreferrer" aria-label="Facebook de Ferretería Pardo" className="flex h-11 w-11 items-center justify-center rounded-xl text-gray-400 hover:text-blue-600 transition-all duration-300"><FacebookIcon /></a>
                 </div>
               </div>
             </nav>

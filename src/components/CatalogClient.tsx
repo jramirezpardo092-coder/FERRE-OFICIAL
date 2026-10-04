@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import dynamic from "next/dynamic";
 import type { Product } from "@/lib/types";
 import type { CatalogResponse, CatalogSuggestion } from "@/lib/catalog-types";
 import { getActiveFilterCount, normalizeCatalogFilters, type FiltersValue } from "@/lib/catalog-filters";
@@ -10,7 +11,6 @@ import { getCategoryPath, getProductPath } from "@/lib/catalog/routes";
 import { CATEGORIES } from "@/lib/constants";
 import PricePreferenceToggle from "./catalog/PricePreferenceToggle";
 import ProductCard from "./ProductCard";
-import ProductModal from "./ProductModal";
 import CatalogFilters from "./catalog/CatalogFilters";
 import CatalogFilterDrawer from "./catalog/CatalogFilterDrawer";
 import CatalogSearch from "./catalog/CatalogSearch";
@@ -19,6 +19,8 @@ import CatalogEmptyState from "./catalog/CatalogEmptyState";
 import ParditoState from "./catalog/ParditoState";
 
 const SORT_OPTIONS = ["relevance", "availability", "price-asc", "price-desc", "discount", "name"];
+// La vista rápida se descarga cuando el cliente abre una ficha.
+const ProductModal = dynamic(() => import("./ProductModal"), { ssr: false });
 
 /** Only one page of public products reaches the browser. Sales data stay on the server. */
 export default function CatalogClient({ offersOnly = false, initialData, initialParamsKey = "", category = "" }: { offersOnly?: boolean; initialData?: CatalogResponse; initialParamsKey?: string; category?: string }) {
@@ -67,7 +69,10 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
     else if (url !== window.location.pathname + window.location.search) window.history.pushState(null, "", url);
   }, [category, offersOnly, router]);
   useEffect(() => {
-    if (initialData) setResult({ key: (offersOnly ? "offers:" : "catalog:") + category + ":" + initialParamsKey, data: initialData });
+    if (initialData) {
+      const key = (offersOnly ? "offers:" : "catalog:") + category + ":" + initialParamsKey;
+      setResult(previous => previous?.key === key && previous.data === initialData ? previous : { key, data: initialData });
+    }
   }, [initialData, initialParamsKey, category, offersOnly]);
   useEffect(() => { setSearch(query); }, [query]);
   useEffect(() => {
@@ -97,7 +102,7 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
     if (offersOnly) params.set("ofertas", "true");
     async function load() {
       try {
-        const response = await fetch("/api/catalogo?" + params, { signal: controller.signal, cache: "no-store" });
+        const response = await fetch("/api/catalogo?" + params, { signal: controller.signal });
         if (!response.ok) throw new Error("Catalog unavailable");
         const body = await response.json() as CatalogResponse;
         if (current) setResult({ key: requestKey, data: body });
@@ -151,15 +156,15 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
         {item.name}<span>{data?.categories.find(facet => facet.name === item.name)?.count || 0}</span>
       </a>)}
     </nav>
-    <div className="mb-5 flex flex-wrap gap-x-5 gap-y-2 rounded-xl bg-gray-100 px-4 py-3 text-xs leading-relaxed text-gray-700 dark:bg-gray-900 dark:text-gray-200" aria-label="Información para cotizar">
+    <div role="group" className="mb-5 flex flex-wrap gap-x-5 gap-y-2 rounded-xl bg-gray-100 px-4 py-3 text-xs leading-relaxed text-gray-700 dark:bg-gray-900 dark:text-gray-200" aria-label="Información para cotizar">
       <span>Recoge en tienda · Calle 72 No. 50-23</span><span>Envíos: consulta condiciones</span><span>Factura electrónica</span><span>Nequi, Daviplata, tarjetas</span>
     </div>
     <PricePreferenceToggle idPrefix="catalog-price" className="mb-5" />
-    {chips.length > 0 && <div className="mb-5 flex flex-wrap items-center gap-2" aria-label="Filtros activos">
+    {chips.length > 0 && <div role="group" className="mb-5 flex flex-wrap items-center gap-2" aria-label="Filtros activos">
       {chips.map(chip => <button key={chip.key} type="button" onClick={() => {
         if (chip.key === "q") setSearch("");
         updateParams(chip.key === "price" ? { min: null, max: null, priceMin: null, priceMax: null, page: null } : { [chip.key]: null, page: null });
-      }} className="inline-flex max-w-full items-center gap-2 rounded-full border border-red-200 bg-red-50 px-3 py-2 text-xs font-semibold text-brand-red dark:border-red-900 dark:bg-red-900/20 dark:text-red-300" aria-label={"Quitar filtro " + chip.label}>
+      }} className="inline-flex min-h-11 max-w-full items-center gap-2 rounded-full border border-red-200 bg-red-50 px-3 py-2 text-xs font-semibold text-brand-red dark:border-red-900 dark:bg-red-900/20 dark:text-red-300" aria-label={"Quitar filtro " + chip.label}>
         <span className="truncate">{chip.label}</span><span aria-hidden="true">✕</span>
       </button>)}
       <button type="button" onClick={clearAll} className="min-h-11 px-2 py-2 text-xs font-semibold text-brand-red hover:underline dark:text-red-300">Limpiar filtros</button>
@@ -167,18 +172,19 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
     <div className="flex items-start gap-6">
       <aside className="sticky top-24 hidden max-h-[calc(100vh-7rem)] w-64 shrink-0 overflow-y-auto lg:block"><CatalogFilters {...filterProps} idPrefix="desktop-catalog" /></aside>
       <section className="min-w-0 flex-1" aria-label="Productos del catálogo" aria-busy={busy}>
+        <h2 className="sr-only">Productos para cotizar</h2>
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
           <div className="text-sm text-gray-500 dark:text-gray-400" role="status" aria-live="polite">
             {error ? "Catálogo no disponible" : loading ? "Buscando productos…" : data && data.total > 0 ? <><strong className="text-gray-900 dark:text-white">{(data.page - 1) * data.pageSize + 1}–{Math.min(data.page * data.pageSize, data.total)}</strong> de <strong className="text-gray-900 dark:text-white">{data.total.toLocaleString("es-CO")}</strong> productos</> : "Sin resultados"}
             {!loading && data?.isFuzzy && <span className="mt-1 block text-xs text-amber-700 dark:text-amber-400">Coincidencias aproximadas: verifica la referencia.</span>}
           </div>
           <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto">
-            <button type="button" onClick={() => setDrawerOpen(true)} aria-haspopup="dialog" aria-expanded={drawerOpen} className="rounded-xl border border-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-white lg:hidden">Filtros{activeCount > 0 ? " (" + activeCount + ")" : ""}</button>
-            <select aria-label="Ordenar productos" value={sort} onChange={event => updateParams({ sort: event.target.value === "relevance" ? null : event.target.value, page: null })} className="min-w-0 flex-1 rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white sm:flex-none">
+            <button type="button" onClick={() => setDrawerOpen(true)} aria-haspopup="dialog" aria-expanded={drawerOpen} className="min-h-11 rounded-xl border border-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-white lg:hidden">Filtros{activeCount > 0 ? " (" + activeCount + ")" : ""}</button>
+            <select aria-label="Ordenar productos" value={sort} onChange={event => updateParams({ sort: event.target.value === "relevance" ? null : event.target.value, page: null })} className="min-h-11 min-w-0 flex-1 rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white sm:flex-none">
               <option value="relevance">{query ? "Relevancia" : "Disponibles · con foto · A–Z"}</option><option value="availability">Disponibles primero</option><option value="price-asc">Menor precio</option><option value="price-desc">Mayor precio</option><option value="discount">Mayor descuento</option><option value="name">A–Z</option>
             </select>
-            <div className="hidden gap-1 sm:flex" aria-label="Vista de productos">
-              {(["grid", "list"] as const).map(mode => <button type="button" key={mode} onClick={() => setViewMode(mode)} aria-pressed={viewMode === mode} aria-label={mode === "grid" ? "Vista cuadrícula" : "Vista lista"} className={cn("rounded-lg px-3 py-2 text-sm", viewMode === mode ? "bg-brand-red text-white" : "text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800")}>{mode === "grid" ? "▦" : "☰"}</button>)}
+            <div role="group" className="hidden gap-1 sm:flex" aria-label="Vista de productos">
+              {(["grid", "list"] as const).map(mode => <button type="button" key={mode} onClick={() => setViewMode(mode)} aria-pressed={viewMode === mode || (viewMode === "responsive" && mode === "grid")} aria-label={mode === "grid" ? "Vista cuadrícula" : "Vista lista"} className={cn("min-h-11 min-w-11 rounded-lg px-3 py-2 text-sm", viewMode === mode || (viewMode === "responsive" && mode === "grid") ? "bg-brand-red text-white" : "text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800")}><svg aria-hidden="true" className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth={1.75} d={mode === "grid" ? "M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z" : "M8 5h13M8 12h13M8 19h13M3 5h1M3 12h1M3 19h1"} /></svg></button>)}
             </div>
           </div>
         </div>
@@ -199,6 +205,6 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
       </section>
     </div>
     <CatalogFilterDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)}><CatalogFilters {...filterProps} idPrefix="mobile-catalog" /></CatalogFilterDrawer>
-    <ProductModal product={modalProduct} onClose={() => setModalProduct(null)} />
+    {modalProduct && <ProductModal product={modalProduct} onClose={() => setModalProduct(null)} />}
   </div>;
 }

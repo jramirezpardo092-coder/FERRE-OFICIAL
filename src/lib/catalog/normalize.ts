@@ -4,6 +4,7 @@ export type BrandSuggestion = { suggestion: string | null; confidence: number };
 
 const quantityFormatter = new Intl.NumberFormat("es-CO", { maximumFractionDigits: 20 });
 const brandsByName = new Map(BRAND_DICTIONARY.map((brand) => [brand.name, brand.display]));
+const nameCache = new Map<string, string>();
 const escapeRegex = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const fold = (value: string) => value.normalize("NFD").replace(/\p{M}/gu, "").trim().replace(/\s+/g, " ").toLocaleLowerCase("es-CO");
 
@@ -29,6 +30,8 @@ function normalizeWord(token: string): string {
 
 /** Tipo oración para mostrar. Los modelos alfanuméricos, fracciones y códigos quedan intactos. */
 export function normalizeProductName(name: string): string {
+  const cached = nameCache.get(name);
+  if (cached !== undefined) return cached;
   let text = name.trim().replace(/\s+/g, " ");
   for (const { pattern, replacement } of abbreviations) {
     text = text.replace(pattern, (_match, prefix: string) => `${prefix}${replacement}`);
@@ -36,7 +39,10 @@ export function normalizeProductName(name: string): string {
   text = text.replace(/\bELECTRO\s+ESTATICA\b/giu, "electrostática").replace(/\s+/g, " ").trim();
   text = text.replace(/[\p{L}\p{N}]+(?:[./+_-][\p{L}\p{N}]+)*/gu, normalizeWord);
   text = text.replace(/(\S)\((par|unidad)\)/giu, "$1 ($2)");
-  return text.replace(/\p{L}/u, (letter) => letter.toLocaleUpperCase("es-CO"));
+  const normalized = text.replace(/\p{L}/u, (letter) => letter.toLocaleUpperCase("es-CO"));
+  if (nameCache.size >= 3000) nameCache.clear();
+  nameCache.set(name, normalized);
+  return normalized;
 }
 
 /** Muestra exclusivamente la marca ya declarada; no consulta detectBrand. */

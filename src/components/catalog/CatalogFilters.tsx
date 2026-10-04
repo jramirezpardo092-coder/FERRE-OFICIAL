@@ -25,14 +25,15 @@ const availabilityOptions: { value: FiltersValue["availability"]; label: string;
   { value: "on-request", label: "Consultar disponibilidad", description: "Confirma existencia con un asesor" },
 ];
 
-const inputClass = "w-full min-w-0 rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none transition-colors placeholder:text-gray-400 focus:border-brand-red focus:ring-2 focus:ring-brand-red/15 dark:border-gray-700 dark:bg-gray-950 dark:text-gray-100 dark:placeholder:text-gray-500";
-const countLabel = (count: number) => new Intl.NumberFormat("es-CO").format(count);
+const inputClass = "min-h-11 w-full min-w-0 rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none transition-colors placeholder:text-gray-500 focus:border-brand-red focus:ring-2 focus:ring-brand-red/15 dark:border-gray-700 dark:bg-gray-950 dark:text-gray-100 dark:placeholder:text-gray-400";
+const numberFormatter = new Intl.NumberFormat("es-CO", { maximumFractionDigits: 0 });
+const countLabel = (count: number) => numberFormatter.format(count);
 
 export default function CatalogFilters({ value, onChange, onClear, categories, brands, priceBounds, idPrefix, offersLocked = false }: CatalogFiltersProps) {
   const generatedId = useId();
   const [brandSearch, setBrandSearch] = useState("");
   const visibleBrands = brands.filter(brand => brand.name.toLocaleLowerCase("es-CO").includes(brandSearch.toLocaleLowerCase("es-CO")));
-  const priceInput = (raw: string) => raw ? new Intl.NumberFormat("es-CO", { maximumFractionDigits: 0 }).format(Number(raw)) : "";
+  const priceInput = (raw: string) => raw ? numberFormatter.format(Number(raw)) : "";
   const priceDraft = (raw: string) => raw.replace(/[^0-9]/g, "");
   const prefix = idPrefix || `catalog-filters-${generatedId.replace(/:/g, "")}`;
   const validation = validateCatalogFilters(value);
@@ -74,7 +75,7 @@ export default function CatalogFilters({ value, onChange, onClear, categories, b
           <label htmlFor={`${prefix}-brand`} className="sr-only">Filtrar por marca</label>
           <select id={`${prefix}-brand`} name="brand" value={value.brand} onChange={(event) => update({ brand: event.target.value })} className={inputClass}>
             <option value="">Todas las marcas</option>
-            {value.brand && !brands.some((brand) => brand.name === value.brand) && <option value={value.brand}>{value.brand} (0)</option>}
+            {value.brand && !visibleBrands.some((brand) => brand.name === value.brand) && <option value={value.brand}>{value.brand} (0)</option>}
             {visibleBrands.map((brand) => <option key={brand.name} value={brand.name}>{brand.name} ({countLabel(brand.count)})</option>)}
           </select>
         </fieldset>
@@ -102,7 +103,7 @@ export default function CatalogFilters({ value, onChange, onClear, categories, b
           {rangeError && <p id={priceErrorId} role="status" className="mt-2 text-xs text-red-600 dark:text-red-400">{rangeError}</p>}
           <p id={`${prefix}-price-help`} className="mt-2 text-xs leading-relaxed text-gray-500 dark:text-gray-400">Al aplicar un rango, se muestran productos con precio confirmado.</p>
           {priceBounds && Number.isFinite(priceBounds.min) && Number.isFinite(priceBounds.max) && priceBounds.min > 0 && priceBounds.max >= priceBounds.min && (
-            <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">Desde {formatCOP(priceBounds.min)} hasta {formatCOP(priceBounds.max)}.</p>
+            <p className="mt-1 text-xs text-gray-600 dark:text-gray-400">Desde {formatCOP(priceBounds.min)} hasta {formatCOP(priceBounds.max)}.</p>
           )}
         </fieldset>
 

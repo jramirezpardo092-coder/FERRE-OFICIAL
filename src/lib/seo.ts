@@ -28,6 +28,7 @@ export function getOrganizationJsonLd() {
 }
 export function getProductJsonLd(product: Product) {
   const price = getUnitPriceWithTax(product);
+  const gross = price === null ? null : Math.round(product.precio * (1 + product.taxRate! / 100));
   const brand = displayBrand(product.brand);
   const description = product.specs?.map(spec => `${spec.label}: ${spec.value}`).join(". ");
   return {
@@ -35,8 +36,8 @@ export function getProductJsonLd(product: Product) {
     name: normalizeProductName(product.nombre), sku: product.id,
     ...(product.img ? { image: `${SITE.url}/${product.img.replace(/^\//, "")}` } : {}),
     ...(description ? { description } : {}), ...(brand ? { brand: { "@type": "Brand", name: brand } } : {}),
-    ...(price !== null ? { offers: { "@type": "Offer", url: `${SITE.url}${getProductPath(product)}`, priceCurrency: "COP", price: Math.round(price),
-      priceSpecification: { "@type": "PriceSpecification", priceCurrency: "COP", price: Math.round(price), valueAddedTaxIncluded: true },
+    ...(gross !== null ? { offers: { "@type": "Offer", url: `${SITE.url}${getProductPath(product)}`, priceCurrency: "COP", price: gross,
+      priceSpecification: { "@type": "PriceSpecification", priceCurrency: "COP", price: gross, valueAddedTaxIncluded: true },
       availability: getAvailableQuantity(product) > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
       seller: { "@id": `${SITE.url}/#business` } } } : {}),
   };

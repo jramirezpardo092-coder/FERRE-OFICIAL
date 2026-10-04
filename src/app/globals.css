@@ -20,17 +20,17 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center gap-2 bg-brand-red text-white font-semibold px-5 py-2.5 rounded-2xl
+    @apply inline-flex min-h-11 min-w-11 items-center gap-2 bg-brand-red text-white font-semibold px-5 py-2.5 rounded-2xl
            hover:bg-brand-red-dark transition-all duration-200 hover:shadow-lg hover:shadow-red-900/20 hover:scale-[1.02]
            active:scale-[0.98];
   }
   .btn-wa {
-    @apply inline-flex items-center gap-2 bg-[#25D366] text-white font-semibold px-5 py-2.5 rounded-2xl
-           hover:bg-[#1da851] transition-all duration-200 hover:shadow-lg hover:shadow-green-500/30 hover:scale-[1.02]
+    @apply inline-flex min-h-11 min-w-11 items-center gap-2 bg-green-700 text-white font-semibold px-5 py-2.5 rounded-2xl
+           hover:bg-green-800 transition-all duration-200 hover:shadow-lg hover:shadow-green-500/30 hover:scale-[1.02]
            active:scale-[0.98];
   }
   .btn-outline {
-    @apply inline-flex items-center gap-2 border-2 border-brand-red text-brand-red font-semibold
+    @apply inline-flex min-h-11 min-w-11 items-center gap-2 border-2 border-brand-red text-brand-red font-semibold
            px-5 py-2.5 rounded-2xl hover:bg-brand-red hover:text-white transition-all duration-200
            active:scale-[0.98];
   }
@@ -148,18 +148,18 @@
 
 /* Price IVA tag */
 .iva-tag {
-  @apply text-[10px] text-amber-600 font-semibold ml-1;
+  @apply text-[13px] text-amber-700 dark:text-amber-300 font-semibold ml-1;
 }
 
 /* Badge styles - enhanced */
 .badge-bestseller {
-  @apply absolute top-2 left-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-lg uppercase tracking-wide z-10 shadow-md shadow-orange-500/20;
+  @apply absolute top-2 left-2 bg-gradient-to-r from-amber-500 to-orange-500 text-gray-900 text-xs font-bold px-2.5 py-1 rounded-lg uppercase tracking-wide z-10 shadow-md shadow-orange-500/20;
 }
 .badge-photo {
-  @apply absolute top-2 right-2 bg-black/60 text-white text-[10px] font-medium px-2 py-0.5 rounded-full backdrop-blur-sm z-10;
+  @apply absolute top-2 right-2 bg-black/60 text-white text-xs font-medium px-2 py-0.5 rounded-full backdrop-blur-sm z-10;
 }
 .badge-discount {
-  @apply absolute top-10 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10;
+  @apply absolute top-10 left-2 bg-brand-red text-white text-xs font-bold px-2 py-0.5 rounded-full z-10;
 }
 
 /* Catalog page specific */
@@ -194,6 +194,8 @@ input[type="checkbox"]:checked {
 input:focus-visible,
 select:focus-visible {
   @apply ring-2 ring-brand-red/20 ring-offset-1;
+  outline: 2px solid #D02731;
+  outline-offset: 2px;
 }
 
 /* Subtle divider line with gradient */
@@ -290,11 +292,18 @@ button:focus-visible {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
   }
   .scroll-hidden, .scroll-hidden-left, .scroll-hidden-scale,
   .scroll-hidden.reveal-ready, .scroll-hidden-left.reveal-ready,
   .scroll-hidden-scale.reveal-ready, .stagger-children.reveal-ready > * {
     opacity: 1;
+    transform: none;
+  }
+  .btn-primary:hover, .btn-primary:active,
+  .btn-wa:hover, .btn-wa:active, .btn-outline:active,
+  .card-hover:hover, .hover-lift:hover {
     transform: none;
   }
 }

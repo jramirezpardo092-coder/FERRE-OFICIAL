@@ -14,7 +14,9 @@ const catalogCount = productsData.length.toLocaleString("es-CO");
 
 const manrope = Manrope({
   subsets: ["latin"],
-  display: "swap",
+  // En conexiones lentas, el texto aparece con la fuente de reserva sin esperar ni volver a saltar.
+  display: "optional",
+  preload: true,
   variable: "--font-manrope",
 });
 

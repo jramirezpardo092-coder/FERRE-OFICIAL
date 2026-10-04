@@ -14,7 +14,7 @@ export function getStockLabel(product: Product): string {
   const available = getAvailableQuantity(product);
   if (available <= 0) return "Consultar disponibilidad";
   const label = available <= 3 ? "Últimas unidades" : "Disponible";
-  const exact = formatUnit(product.unidad, available);
+  const exact = SHOW_EXACT_STOCK ? formatUnit(product.unidad, available) : "";
   return SHOW_EXACT_STOCK && exact ? `${label} · ${exact}` : label;
 }
 

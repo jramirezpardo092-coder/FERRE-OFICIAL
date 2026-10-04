@@ -24,6 +24,9 @@ test("each category has unique metadata; pagination self canonical and filters n
   assert.equal(new Set(CATALOG_CATEGORIES.map(category => category.introduction)).size, 9);
   assert.equal(catalogMetadata({ searchParams: { page: "2" } }).alternates.canonical, "/catalogo?page=2");
   assert.equal(catalogMetadata({ category: CATALOG_CATEGORIES[0], searchParams: { page: "2" } }).alternates.canonical, "/catalogo/cerrajeria?page=2");
+  const excessive = catalogMetadata({ searchParams: { page: "999" } });
+  assert.equal(excessive.alternates.canonical, "/catalogo?page=55");
+  assert.equal(excessive.robots.index, false);
   for (const key of ["q", "sort", "brand", "min", "availability"]) {
     const metadata = catalogMetadata({ searchParams: { [key]: "test" } });
     assert.equal(metadata.robots.index, false); assert.equal(metadata.robots.follow, true);
@@ -40,6 +43,7 @@ test("schemas use genuine product content, integer gross COP, no invented image 
   assert.equal(json.name, "Bisagra BO-90 PVC"); assert.equal(json.offers.price, 6188);
   assert.equal(json.offers.availability, "https://schema.org/OutOfStock");
   assert.equal(json.brand, undefined); assert.equal(json.image, undefined); assert.equal(json.description, undefined);
+  assert.equal(seo.getProductJsonLd({ ...product, precio: 10.5 }).offers.price, 12);
   const itemList = seo.getItemListJsonLd([product], 24);
   assert.equal(itemList.itemListElement[0].position, 25);
   assert.ok(itemList.itemListElement[0].url.includes("0099-bisagra-bo-90-pvc"));
