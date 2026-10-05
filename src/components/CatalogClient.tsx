@@ -97,7 +97,10 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
   }, [initialData, initialParamsKey, category, offersOnly]);
   useEffect(() => { setSearch(query); }, [query]);
   useEffect(() => {
-    const restoreSearch = () => setSearch(new URLSearchParams(window.location.search).get("q") || "");
+    const restoreSearch = () => {
+      setSearch(new URLSearchParams(window.location.search).get("q") || "");
+      setDrawerOpen(false);
+    };
     window.addEventListener("popstate", restoreSearch);
     return () => window.removeEventListener("popstate", restoreSearch);
   }, []);
@@ -186,7 +189,7 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
       </div>}
     </div>
     {visibleCategoryChips.length > 1 && <p className="mb-1 text-xs text-ink-2 sm:hidden">Categorías <span aria-hidden="true">· desliza para explorar →</span></p>}
-    {visibleCategoryChips.length > 0 && <nav data-design-categories aria-label="Categorías del catálogo" className="mb-3 flex gap-2 overflow-x-auto pb-2">
+    {visibleCategoryChips.length > 0 && <nav data-design-categories aria-label="Categorías del catálogo" className="catalog-category-rail mb-3 flex gap-2 overflow-x-auto pb-2">
       {visibleCategoryChips.map(item => <a key={item.slug} href={getCategoryPath(item.name)} onClick={event => {
         if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
         event.preventDefault(); setSearch(""); updateParams({ cat: item.name, q: null, page: null });

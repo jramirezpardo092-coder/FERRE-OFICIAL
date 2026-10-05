@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { REQUIRED_CASES, parseArgs, parseCOP, expectedDisplay, compareCatalogState, readCatalogState, selectMode } = require('../scripts/verify-catalog-functional-browser.cjs');
+const { REQUIRED_CASES, parseArgs, parseCOP, expectedDisplay, compareCatalogState, compareDismissedOverlayState, readCatalogState, selectMode } = require('../scripts/verify-catalog-functional-browser.cjs');
 
 const product = { id: '0044', precio: 6200, taxRate: 19, priceVerified: true, stock: 0, unidad: 'unidad' };
 const api = { priceMode: 'net', priceBounds: { min: 6200, max: 6200 }, products: [product] };
@@ -119,4 +119,16 @@ test('browser mode selection clicks radio labels, is idempotent, and rejects mis
       if (value === undefined) delete global[name]; else global[name] = value;
     }
   }
+});
+
+test('history dismissal audit rejects a leftover dialog, scroll lock, or surviving focus trap', () => {
+  const dismissed = { dialogCount: 0, bodyOverflowY: 'auto', htmlOverflowY: 'visible', focusConnected: true, focusInDialog: false, focusOnCatalogSearch: true };
+  assert.deepEqual(compareDismissedOverlayState(dismissed), []);
+  assert.match(compareDismissedOverlayState({ ...dismissed, dialogCount: 1 }).join(' '), /modal remains/);
+  assert.match(compareDismissedOverlayState({ ...dismissed, bodyOverflowY: 'hidden' }).join(' '), /scrolling remains locked/);
+  assert.match(compareDismissedOverlayState({ ...dismissed, htmlOverflowY: 'clip' }).join(' '), /scrolling remains locked/);
+  for (const state of [{ focusInDialog: true }, { focusConnected: false }, { focusOnCatalogSearch: false }]) {
+    assert.match(compareDismissedOverlayState({ ...dismissed, ...state }).join(' '), /Focus remains trapped/);
+  }
+  for (const name of ['modal-history-back-gross', 'modal-history-forward-net', 'modal-open-forward-net']) assert.ok(REQUIRED_CASES.includes(name), name);
 });

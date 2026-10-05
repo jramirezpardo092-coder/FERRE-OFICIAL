@@ -209,6 +209,7 @@ function measureDocument() {
     url: location.href, theme: document.documentElement.classList.contains('dark') ? 'dark' : 'light',
     viewport: { width: innerWidth, height: innerHeight, devicePixelRatio }, scrollY,
     paints, translucentPaints, unresolvedPseudos, gradients, cards, targets, runtimeClasses: [...runtimeClasses],
+    images: [...document.images].filter(image => clippedRect(image, image.getBoundingClientRect())).map(image => ({ src: image.currentSrc || image.src, alt: image.alt, complete: image.complete, naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight })),
     fonts: { strategy: 'system', bodyFamily, fontRequests, preloads, faces, loadedFaces, unreadableSheets },
     layoutShifts: window.__visualAuditShifts || [], clsSupported: !!window.__visualAuditClsSupported,
   };
@@ -227,6 +228,7 @@ function summarizeMeasurement(dom, { alignmentRequired, redBudgetRequired, fontG
     redSurfaces: { required: redBudgetRequired, budget: 2, count: redRegions.length, regions: redRegions, passed: redRegions.length <= 2 && dom.unresolvedPseudos.length === 0 && dom.gradients.length === 0 },
     alignment: { required: alignmentRequired, tolerancePx: 2, cards: dom.cards.length, rows, passed: comparable.length > 0 && rows.every(row => row.passed) },
     runtimeColors: { passed: runtimeColors.length === 0, findings: runtimeColors },
+    imagesLoaded: { passed: Array.isArray(dom.images) && dom.images.every(image => image.complete && image.naturalWidth > 0 && image.naturalHeight > 0), failures: (dom.images || []).filter(image => !image.complete || image.naturalWidth <= 0 || image.naturalHeight <= 0), scope: 'Visible image elements must finish decoding; offscreen lazy images are excluded.' },
     touch44: { passed: touchFailures.length === 0, failures: touchFailures },
     targetOcclusion: { required: false, passed: occlusionFailures.length === 0, warnings: occlusionFailures, partialViewportTargets: dom.targets.filter(target => target.viewportClipped), scope: 'Current viewport center hit test only. Fixed bars can cover a reachable control at this scroll position; this report is not a scroll-to-reveal or end-of-document reachability gate.' },
     buttons14: { passed: buttonTypeFailures.length === 0, failures: buttonTypeFailures },

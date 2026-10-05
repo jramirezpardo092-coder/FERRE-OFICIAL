@@ -178,3 +178,99 @@ test("gallery thumbnails keep originals and every selected full image retains it
   assert.equal(elements(tree).filter((node) => node.type === "button")[2].props.disabled, true);
   assert.deepEqual(plain(source), before);
 });
+
+test("product modal has accessible price radios and prices from its catalog URL provider", () => {
+  const preferences = load("src/lib/price-preference.ts", { react: React });
+  const PriceDisplay = load("src/components/catalog/PriceDisplay.tsx", {
+    "react/jsx-runtime": jsx, "@/lib/utils": utils, "@/lib/price-preference": preferences,
+  }).default;
+  const PricePreferenceToggle = load("src/components/catalog/PricePreferenceToggle.tsx", {
+    react: React, "react/jsx-runtime": jsx, "@/lib/utils": utils, "@/lib/price-preference": preferences,
+  }).default;
+  const Modal = load("src/components/ProductModal.tsx", {
+    react: React, "react/jsx-runtime": jsx, "next/link": ({ children, prefetch, ...props }) => React.createElement("a", props, children),
+    "@/lib/utils": utils, "@/lib/cart-store": { addToCart: () => true }, "@/lib/useQuoteQuantity": { useQuoteQuantity: () => 0 },
+    "@/lib/useDialog": { useDialog() {} }, "@/lib/catalog/normalize": normalizer, "@/lib/catalog/routes": routes,
+    "@/lib/quote-presentation": presentation, "./catalog/ProductMedia": () => null, "./catalog/ProductSpecs": () => null,
+    "./catalog/PriceDisplay": PriceDisplay, "./catalog/PricePreferenceToggle": PricePreferenceToggle,
+  }).default;
+  for (const mode of ["gross", "net"]) {
+    const html = renderToStaticMarkup(React.createElement(preferences.CatalogPriceModeProvider, { value: { mode, onModeChange() {} } }, React.createElement(Modal, { product, onClose() {} })));
+    const radios = [...html.matchAll(/<input\b[^>]*type="radio"[^>]*>/g)].map(match => match[0]);
+    assert.equal(radios.length, 2);
+    assert.equal(radios.filter(radio => radio.includes('checked=""')).length, 1);
+    assert.match(radios.find(radio => radio.includes('checked=""')), new RegExp(`value="${mode}"`));
+    assert.match(radios[0], /aria-label="Precios con IVA"/);
+    assert.match(radios[1], /aria-label="Precios sin IVA para empresas"/);
+    assert.equal(html.indexOf("7.378") < html.indexOf("6.200"), mode === "gross");
+  }
+});
+
+test("history dismisses quick view, releases the real focus trap, restores scrolling, and removes listeners", () => {
+  const refs = [], effects = [], states = [], frames = new Map();
+  let refIndex = 0, effectIndex = 0, stateIndex = 0, frameId = 0;
+  const pending = [];
+  const events = () => {
+    const listeners = new Map();
+    return { listeners, addEventListener(name, fn) { if (!listeners.has(name)) listeners.set(name, new Set()); listeners.get(name).add(fn); },
+      removeEventListener(name, fn) { listeners.get(name)?.delete(fn); if (!listeners.get(name)?.size) listeners.delete(name); },
+      emit(name, event = {}) { [...(listeners.get(name) || [])].forEach(fn => fn(event)); } };
+  };
+  const window = events();
+  const document = { ...events(), body: { style: { overflow: "auto" } }, activeElement: null };
+  class Element {
+    constructor(name) { this.name = name; this.isConnected = true; }
+    focus() { document.activeElement = this; document.emit("focusin", { target: this }); }
+    getClientRects() { return [{}]; }
+  }
+  const trigger = new Element("catalog card"), control = new Element("modal close");
+  const outside = new Element("catalog search"), dialog = new Element("dialog");
+  dialog.querySelectorAll = () => [control];
+  dialog.contains = node => node === control || node === dialog;
+  document.activeElement = trigger;
+  let disconnected = 0;
+  const globals = { window, document, HTMLElement: Element, getComputedStyle: () => ({ visibility: "visible" }),
+    requestAnimationFrame: fn => { const id = ++frameId; frames.set(id, fn); return id; }, cancelAnimationFrame: id => frames.delete(id),
+    MutationObserver: class { observe() {} disconnect() { disconnected++; } },
+  };
+  const react = {
+    useRef(initial) { const index = refIndex++; return refs[index] || (refs[index] = { current: initial }); },
+    useState(initial) { const index = stateIndex++; if (!(index in states)) states[index] = initial; return [states[index], value => { states[index] = value; }]; },
+    useEffect(effect, deps) { const index = effectIndex++, previous = effects[index]; if (!previous || deps.some((value, i) => value !== previous.deps[i])) pending.push(() => { previous?.cleanup?.(); effects[index] = { deps, cleanup: effect() }; }); },
+  };
+  const dialogHook = load("src/lib/useDialog.ts", { react }, globals);
+  const Modal = load("src/components/ProductModal.tsx", {
+    react, "react/jsx-runtime": jsx, "next/link": () => null, "@/lib/utils": utils,
+    "@/lib/cart-store": { addToCart: () => true }, "@/lib/useQuoteQuantity": { useQuoteQuantity: () => 0 },
+    "@/lib/useDialog": dialogHook, "@/lib/catalog/normalize": normalizer, "@/lib/catalog/routes": routes,
+    "@/lib/quote-presentation": presentation, "./catalog/ProductMedia": () => null, "./catalog/ProductSpecs": () => null,
+    "./catalog/PriceDisplay": () => null, "./catalog/PricePreferenceToggle": () => null,
+  }, globals).default;
+  let closes = 0;
+  const render = (item, onClose) => {
+    refIndex = effectIndex = stateIndex = 0;
+    const tree = Modal({ product: item, onClose });
+    refs[0].current = item ? dialog : null;
+    pending.splice(0).forEach(effect => effect());
+    [...frames.values()].forEach(fn => fn()); frames.clear();
+    return tree;
+  };
+  render(product, () => { closes += 100; });
+  assert.equal(document.body.style.overflow, "hidden");
+  assert.equal(document.activeElement, control);
+  outside.focus();
+  assert.equal(document.activeElement, control, "the live dialog genuinely traps focus");
+  render(product, () => { closes++; });
+  window.emit("popstate");
+  assert.equal(closes, 1, "history must use the latest onClose callback");
+  assert.equal(render(null, () => { closes++; }), null);
+  assert.equal(document.body.style.overflow, "auto", "the previous body overflow value is restored");
+  assert.equal(document.activeElement, trigger, "focus returns to the opening control");
+  outside.focus();
+  assert.equal(document.activeElement, outside, "dismissed dialog cannot recapture focus");
+  assert.equal(window.listeners.size, 0);
+  assert.equal(document.listeners.size, 0);
+  assert.equal(disconnected, 1);
+  window.emit("popstate");
+  assert.equal(closes, 1, "Forward must not reopen or invoke a stale closed modal");
+});

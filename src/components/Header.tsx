@@ -187,10 +187,10 @@ export default function Header() {
         <div className="flex shrink-0 items-center gap-2">
           {(pathname === "/catalogo" || pathname.startsWith("/catalogo/")) && <span id="catalog-assist-slot" className="inline-flex h-11 w-11 shrink-0 sm:hidden" />}
           <a href={SITE.social.whatsapp} target="_blank" rel="noreferrer" className="btn-wa hidden whitespace-nowrap px-3 xl:inline-flex"><WhatsAppMini />Hablar con asesor</a>
-          <button type="button" className="relative flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-chip border border-control bg-surface px-3 text-sm font-semibold text-ink transition-colors hover:bg-paper" data-quote-trigger aria-label={"Ver cotización" + (cartCount ? ", " + cartCount + " " + (cartCount === 1 ? "referencia" : "referencias") : "")}
+          <button type="button" className="relative flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-chip border border-control bg-surface px-3 text-sm font-semibold text-ink transition-colors hover:bg-paper" data-quote-trigger
             onClick={() => {setMobileOpen(false); window.dispatchEvent(new CustomEvent("toggle-cart"));}}>
-            <CartIcon /><span className="hidden sm:inline">Cotización</span>
-            {cartCount > 0 && <span key={quotePulse} className={cn("flex h-5 min-w-5 items-center justify-center rounded-chip bg-brand px-1 font-mono text-xs text-on-brand", quotePulse>0 && "animate-count-pulse")}>{cartCount}</span>}
+            <CartIcon /><span className="sr-only sm:not-sr-only">Cotización</span>
+            {cartCount > 0 && <span key={quotePulse} className={cn("flex h-5 min-w-5 items-center justify-center rounded-chip bg-brand px-1 font-mono text-xs text-on-brand", quotePulse>0 && "animate-count-pulse")}><span className="sr-only">, </span>{cartCount}<span className="sr-only"> {cartCount === 1 ? "referencia" : "referencias"}</span></span>}
           </button>
           <button type="button" ref={mobileToggleRef} className="flex h-11 w-11 items-center justify-center rounded-control text-ink transition-colors hover:bg-paper lg:hidden" onClick={() => setMobileOpen(!mobileOpen)} aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"} aria-expanded={mobileOpen} aria-controls="mobile-navigation">{mobileOpen ? <CloseIcon /> : <MenuIcon />}</button>
         </div>

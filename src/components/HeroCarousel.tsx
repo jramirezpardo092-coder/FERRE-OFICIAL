@@ -4,6 +4,7 @@ import { SITE } from "@/lib/constants";
 import { getCategoryPath, getProductPath } from "@/lib/catalog/routes";
 import { normalizeProductName } from "@/lib/catalog/normalize";
 import type { Product } from "@/lib/types";
+import { getLocalProductImagePath } from "@/lib/product-enrichment";
 
 const QUICK_CATEGORIES = ["Cerrajería", "Herramientas", "Herrajes para Muebles"];
 
@@ -11,6 +12,7 @@ const QUICK_CATEGORIES = ["Cerrajería", "Herramientas", "Herrajes para Muebles"
 export default function HeroCarousel({ productCount, brandCount, categoryCount, spotlight }: {
   productCount: number; brandCount: number; categoryCount: number; spotlight?: Product;
 }) {
+  const spotlightImage = getLocalProductImagePath(spotlight?.img);
   return <section aria-label="Bienvenido a Ferretería Pardo" className="home-hero">
     <div className="site-container">
       <div className="hero-layout">
@@ -32,11 +34,11 @@ export default function HeroCarousel({ productCount, brandCount, categoryCount, 
             <a href={SITE.social.whatsapp} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center text-sm text-ink-2 hover:text-ink">Hablar con un asesor ↗</a>
           </div>
         </div>
-        {spotlight?.img && <Link href={getProductPath(spotlight)} className="hero-spotlight group" aria-label={`Ver ${normalizeProductName(spotlight.nombre)}`}>
+        {spotlight && spotlightImage && <Link href={getProductPath(spotlight)} className="hero-spotlight group">
           <div className="flex items-center justify-between gap-3 px-7 pt-6">
             <span className="eyebrow text-ink-2">En el catálogo</span><span aria-hidden="true" className="hero-spotlight-arrow">↗</span>
           </div>
-          <div className="hero-product-image"><Image src={spotlight.img} alt={normalizeProductName(spotlight.nombre)} fill sizes="(max-width: 767px) 320px, (max-width: 1023px) 44vw, 510px" priority className="object-contain" /></div>
+          <div className="hero-product-image"><Image src={spotlightImage} alt={normalizeProductName(spotlight.nombre)} fill sizes="(max-width: 767px) 320px, (max-width: 1023px) 44vw, 510px" priority className="object-contain" /></div>
           <div className="px-7 pb-6"><p className="text-sm font-semibold text-ink">{normalizeProductName(spotlight.nombre)}</p><p className="mt-1 text-xs text-ink-2">Ref. {spotlight.ref || spotlight.id} · Ver producto</p></div>
         </Link>}
       </div>

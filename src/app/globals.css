@@ -89,7 +89,7 @@
 
 /* Quiet surfaces, considered space and one clear action per task. */
 .eyebrow { font-size: 12px; line-height: 18px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
-.hero-layout { display: grid; grid-template-columns: 1.08fr 1fr; align-items: center; gap: 56px; padding-block: 56px; }
+.hero-layout { display: grid; grid-template-columns: minmax(0,1.08fr) minmax(0,1fr); align-items: center; gap: 56px; padding-block: 56px; }
 .hero-title { font-size: clamp(40px, 4.2vw, 60px); font-weight: 650; line-height: 1.06; letter-spacing: -.055em; }
 .hero-intro { max-width: 480px; margin-block: 24px; font-size: 18px; line-height: 1.6; color: rgb(var(--ink-2)); }
 .hero-search { display: flex; align-items: center; gap: 12px; padding: 6px 6px 6px 18px; border: 1px solid rgb(var(--control)); border-radius: 16px; background: rgb(var(--surface)); }
@@ -107,7 +107,7 @@
 .product-detail-heading { display: none; }
 @media (max-width: 1023px) { .hero-layout { gap: 28px; padding-block: 40px; } .hero-title { font-size: 44px; } .hero-product-image { margin-inline: 24px; } }
 @media (max-width: 767px) {
-  .hero-layout { grid-template-columns: 1fr; gap: 28px; padding-block: 32px; }
+  .hero-layout { grid-template-columns: minmax(0,1fr); gap: 28px; padding-block: 32px; }
   .hero-title { font-size: clamp(34px,9vw,46px); }
   .hero-intro { margin-block: 18px; font-size: 16px; line-height: 1.6; }
   .hero-copy .eyebrow { font-size: 10px; letter-spacing: .08em; }
@@ -120,3 +120,12 @@
   .product-detail-media .product-media-frame { aspect-ratio: 1.3; max-height: 330px; }
   .product-detail-media[data-has-photo="false"] .product-media-frame { aspect-ratio: auto; height: 180px; }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-spotlight:hover .hero-spotlight-arrow { transform: none; }
+}
+
+.hero-copy { min-width: 0; }
+.catalog-category-rail { scrollbar-width: thin; scrollbar-color: rgb(var(--control)) transparent; }
+.catalog-category-rail::-webkit-scrollbar { height: 5px; }
+.catalog-category-rail::-webkit-scrollbar-thumb { background: rgb(var(--control)); border-radius: 999px; }

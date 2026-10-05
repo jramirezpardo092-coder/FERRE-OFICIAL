@@ -13,12 +13,23 @@ import { buildQuoteWhatsAppUrl, getStockLabel } from "@/lib/quote-presentation";
 import ProductMedia from "./catalog/ProductMedia";
 import ProductSpecs from "./catalog/ProductSpecs";
 import PriceDisplay from "./catalog/PriceDisplay";
+import PricePreferenceToggle from "./catalog/PricePreferenceToggle";
 
 export default function ProductModal({ product, onClose }: { product: Product | null; onClose: () => void }) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const [feedback, setFeedback] = useState("");
   const quoteQuantity = useQuoteQuantity(product?.id ?? "");
   useDialog(!!product, dialogRef, onClose);
+  const closeRef = useRef(onClose);
+  closeRef.current = onClose;
+  const isOpen = !!product;
+  useEffect(() => {
+    if (!isOpen) return;
+    // A quick view must never retain its focus trap over an older catalog URL.
+    const closeForHistory = () => closeRef.current();
+    window.addEventListener("popstate", closeForHistory);
+    return () => window.removeEventListener("popstate", closeForHistory);
+  }, [isOpen]);
   useEffect(() => setFeedback(""), [product?.id]);
   if (!product) return null;
   const available = getAvailableQuantity(product);
@@ -51,6 +62,7 @@ export default function ProductModal({ product, onClose }: { product: Product | 
               <span className="flex items-center gap-2 text-ink-2"><span aria-hidden="true" className={cn("h-2 w-2 rounded-full", !inStock ? "bg-muted" : available <= 3 ? "bg-warn" : "bg-ok")} />{getStockLabel(product)}</span>
             </div>
             <ProductSpecs specs={product.specs} limit={6} />
+            <PricePreferenceToggle idPrefix="quick-product-price" className="mt-4" />
             <PriceDisplay product={product} className="my-4 border-y border-line py-4" principalClassName="text-[28px] leading-8" />
             <div className="flex gap-2">
               <button type="button" onClick={handleAdd} className="min-h-11 flex-1 rounded-control bg-brand px-4 py-3 text-sm font-semibold text-on-brand hover:bg-brand-press" aria-label={`${actionLabel}: ${name}${quoteQuantity > 0 ? ", agregar más a cotización" : ""}${inStock ? "" : ", se agrega a cotización con disponibilidad a confirmar"}`}>{quoteQuantity > 0 && <span aria-hidden="true">✓ </span>}{actionLabel}</button>

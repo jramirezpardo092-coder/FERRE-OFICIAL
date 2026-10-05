@@ -45,7 +45,7 @@ test('paint regions deduplicate nested surfaces but preserve distinct visible re
 });
 
 test('report mode preserves a font-strategy failure while required mode rejects it', () => {
-  const dom = { paints: [], cards: [], runtimeClasses: [], targets: [], unresolvedPseudos: [], gradients: [], clsSupported: true, layoutShifts: [], fonts: { bodyFamily: 'Archivo', faces: [], fontRequests: [], unreadableSheets: [], preloads: [] } };
+  const dom = { images: [], paints: [], cards: [], runtimeClasses: [], targets: [], unresolvedPseudos: [], gradients: [], clsSupported: true, layoutShifts: [], fonts: { bodyFamily: 'Archivo', faces: [], fontRequests: [], unreadableSheets: [], preloads: [] } };
   const options = { alignmentRequired: false, redBudgetRequired: false };
   const reported = summarizeMeasurement(dom, { ...options, fontGate: 'report' });
   assert.equal(reported.checks.fonts.passed, false);
@@ -68,4 +68,19 @@ test('system typography requires a native stack and rejects font downloads, prel
 test('unknown options and invalid font gate cannot silently reduce coverage', () => {
   assert.throws(() => parseArgs(['--output', 'diagnostic-output', '--font-preload-gate', 'optional']), /font-preload-gate/);
   assert.throws(() => parseArgs(['--view', 'catalogo']), /Unknown argument/);
+});
+
+
+test('visual gate fails broken or unresolved visible image resources', () => {
+  const base = { images: [], paints: [], cards: [], runtimeClasses: [], targets: [], unresolvedPseudos: [], gradients: [], clsSupported: true, layoutShifts: [], fonts: { bodyFamily: 'system-ui', faces: [], fontRequests: [], unreadableSheets: [], preloads: [] } };
+  const options = { alignmentRequired: false, redBudgetRequired: false, fontGate: 'required' };
+  assert.equal(summarizeMeasurement(base, options).checks.imagesLoaded.passed, true);
+  const valid = { src: '/products/official/13751-1.webp', complete: true, naturalWidth: 640, naturalHeight: 515 };
+  assert.equal(summarizeMeasurement({ ...base, images: [valid] }, options).checks.imagesLoaded.passed, true);
+  for (const image of [{ ...valid, naturalWidth: 0 }, { ...valid, complete: false }]) {
+    const result = summarizeMeasurement({ ...base, images: [image] }, options);
+    assert.equal(result.checks.imagesLoaded.passed, false);
+    assert.equal(result.passed, false);
+  }
+  assert.equal(summarizeMeasurement({ ...base, images: undefined }, options).checks.imagesLoaded.passed, false);
 });

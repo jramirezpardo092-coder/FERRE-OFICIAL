@@ -55,7 +55,7 @@ export default function ProductCard({ product, onOpenModal, viewMode = "responsi
       onFocusCapture={() => setMediaActive(true)}
       onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setMediaActive(false); }}
     >
-      <Link href={href} prefetch={false} onClick={openDetails} className="product-card-media relative block shrink-0 self-start" aria-label={`Ver detalles de ${name}`}>
+      <Link href={href} prefetch={false} onClick={openDetails} className="product-card-media relative block shrink-0 self-start">
         <ProductMedia product={product} active={mediaActive} cardLayout={viewMode} sizes={isList ? "88px" : responsive ? "(max-width: 639px) 88px, (max-width: 1024px) 50vw, 280px" : "(max-width: 639px) 50vw, (max-width: 1024px) 50vw, 280px"} />
         {!!discount && discount > 0 && <span className="absolute left-2 top-2 rounded-control border border-line bg-surface px-2 py-1 font-mono text-xs font-medium text-ink">-{discount}%</span>}
       </Link>

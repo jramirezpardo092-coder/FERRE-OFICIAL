@@ -10,7 +10,8 @@ const { execFileSync } = require('node:child_process');
 const REQUIRED_CASES = ['ssr-gross', 'ssr-shared-net', 'ssr-category-page2-net', 'clean-gross', 'toggle-net', 'toggle-gross',
   'back-net', 'back-clean-gross', 'forward-net', 'forward-gross', 'range-net', 'range-retained-gross',
   'range-followed-availability', 'range-followed-brand', 'saved-net-on-clean-first-visit', 'back-clean-overrides-saved-net',
-  'shared-net-overrides-saved-gross', 'modal-toggle-gross', 'modal-toggle-net', 'modal-closed-range-net', 'suggestion-mob-display', 'suggestion-stable-product-route'];
+  'shared-net-overrides-saved-gross', 'modal-toggle-gross', 'modal-toggle-net', 'modal-closed-range-net',
+  'modal-history-back-gross', 'modal-history-forward-net', 'modal-open-forward-net', 'suggestion-mob-display', 'suggestion-stable-product-route'];
 
 function parseArgs(args) {
   const options = { baseUrl: 'http://localhost:3010', output: null, chromePath: process.env.CHROME_PATH };
@@ -93,6 +94,30 @@ function readCatalogState() {
 }
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+// Serialized into the browser. Focusing a real background control proves that
+// a dismissed dialog's focusin listener cannot silently recapture keyboard focus.
+function readOverlayDismissalState() {
+  const control = document.querySelector('input[role="combobox"][name="q"]');
+  control?.focus();
+  return {
+    dialogCount: document.querySelectorAll('[role="dialog"]').length,
+    bodyOverflowY: getComputedStyle(document.body).overflowY,
+    htmlOverflowY: getComputedStyle(document.documentElement).overflowY,
+    focusConnected: document.activeElement?.isConnected === true,
+    focusInDialog: !!document.activeElement?.closest('[role="dialog"]'),
+    focusOnCatalogSearch: !!control && document.activeElement === control,
+  };
+}
+
+function compareDismissedOverlayState(state) {
+  const issues = [];
+  if (state.dialogCount !== 0) issues.push('A modal remains mounted after browser history navigation.');
+  if ([state.bodyOverflowY, state.htmlOverflowY].some(value => ['hidden', 'clip'].includes(value))) issues.push('Page scrolling remains locked after the dialog closes.');
+  if (!state.focusConnected || state.focusInDialog || !state.focusOnCatalogSearch) issues.push('Focus remains trapped or cannot move to the catalog search after dismissal.');
+  return issues;
+}
+
 async function waitReady(page) {
   await page.waitForFunction(() => {
     const section = document.querySelector('section[aria-label="Productos del catálogo"]');
@@ -303,6 +328,42 @@ async function main() {
     await shared.click('[role="dialog"] button[aria-label*="Cerrar"]');
     await shared.waitForSelector('[role="dialog"]', { hidden: true, timeout: 20000 });
     await observe('modal-closed-range-net', shared);
+
+    // Opening quick view does not create a URL entry. Back must close it while
+    // restoring the previous filter URL; Forward must not resurrect the dialog.
+    const sharedNetUrl = shared.url();
+    await shared.click('section[aria-label="Productos del catálogo"] article h3 a');
+    await shared.waitForSelector('[role="dialog"]', { visible: true, timeout: 20000 });
+    for (const [name, direction, mode] of [['modal-history-back-gross', 'goBack', 'gross'], ['modal-history-forward-net', 'goForward', 'net']]) {
+      await shared[direction]({ waitUntil: 'domcontentloaded', timeout: 20000 });
+      await shared.waitForFunction(expected => (new URLSearchParams(location.search).get('priceMode') || 'gross') === expected, { timeout: 20000 }, mode);
+      await shared.waitForSelector('[role="dialog"]', { hidden: true, timeout: 20000 });
+      await waitReady(shared);
+      const dismissal = await shared.evaluate(readOverlayDismissalState);
+      const issues = compareDismissedOverlayState(dismissal);
+      if (mode === 'net' && shared.url() !== sharedNetUrl) issues.push('Forward does not restore the exact retained filter URL.');
+      const entry = await observe(name, shared, { extra: issues });
+      entry.dismissal = dismissal;
+    }
+
+    // Also exercise Forward with a dialog actually open, using a broad enough
+    // price range that the genuine fixture exists in both tax modes.
+    await shared.goto(options.baseUrl + '/catalogo?q=0435&priceMode=gross', { waitUntil: 'domcontentloaded' });
+    await waitReady(shared);
+    await selectMode(shared, 'net');
+    await shared.goBack({ waitUntil: 'domcontentloaded', timeout: 20000 });
+    await shared.waitForFunction(() => new URLSearchParams(location.search).get('priceMode') === 'gross', { timeout: 20000 });
+    await waitReady(shared);
+    await shared.click('section[aria-label="Productos del catálogo"] article h3 a');
+    await shared.waitForSelector('[role="dialog"]', { visible: true, timeout: 20000 });
+    await shared.goForward({ waitUntil: 'domcontentloaded', timeout: 20000 });
+    await shared.waitForFunction(() => new URLSearchParams(location.search).get('priceMode') === 'net', { timeout: 20000 });
+    await shared.waitForSelector('[role="dialog"]', { hidden: true, timeout: 20000 });
+    await waitReady(shared);
+    const forwardDismissal = await shared.evaluate(readOverlayDismissalState);
+    const forwardEntry = await observe('modal-open-forward-net', shared, { extra: compareDismissedOverlayState(forwardDismissal) });
+    forwardEntry.dismissal = forwardDismissal;
+
     await shared.goto(options.baseUrl + '/catalogo', { waitUntil: 'domcontentloaded' });
     await waitReady(shared);
     const search = await shared.$('input[role="combobox"][name="q"]');
@@ -348,5 +409,5 @@ async function main() {
   }
 }
 
-module.exports = { REQUIRED_CASES, parseArgs, parseCOP, expectedDisplay, compareCatalogState, readCatalogState, selectMode };
+module.exports = { REQUIRED_CASES, parseArgs, parseCOP, expectedDisplay, compareCatalogState, compareDismissedOverlayState, readCatalogState, readOverlayDismissalState, selectMode };
 if (require.main === module) main().catch(error => { console.error(error.message); process.exitCode = 2; });
