@@ -7,6 +7,12 @@ import { CATEGORIES } from "./lib/constants";
 const productPaths = new Map(products.map((product) => [product.id, getProductPath(product)]));
 export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
+  // Internal render destinations are never an alternative public catalog URL.
+  // Rewrites do not run Middleware a second time, so only direct visits redirect.
+  if (url.pathname === "/catalogo-interno" || url.pathname.startsWith("/catalogo-interno/")) {
+    url.pathname = "/catalogo" + url.pathname.slice("/catalogo-interno".length);
+    return NextResponse.redirect(url, 301);
+  }
   if (url.pathname === "/catalogo" || url.pathname.startsWith("/catalogo/")) {
     const category = url.searchParams.get("cat") || url.searchParams.get("category");
     if (category && CATEGORIES.some((item) => item.name === category || item.slug === category)) {
@@ -14,6 +20,12 @@ export function middleware(request: NextRequest) {
       url.searchParams.delete("cat");
       url.searchParams.delete("category");
       return NextResponse.redirect(url, 301);
+    }
+    // Even pagination, empty values and unknown parameters stay dynamic. The
+    // Next 14 adapter strips framework-only _rsc before exposing this request.
+    if (url.searchParams.size > 0) {
+      url.pathname = "/catalogo-interno" + url.pathname.slice("/catalogo".length);
+      return NextResponse.rewrite(url);
     }
   }
   if (url.pathname.startsWith("/producto/")) {
@@ -23,4 +35,4 @@ export function middleware(request: NextRequest) {
   }
   return NextResponse.next();
 }
-export const config = { matcher: ["/catalogo/:path*", "/producto/:path*"] };
+export const config = { matcher: ["/catalogo/:path*", "/catalogo-interno/:path*", "/producto/:path*"] };

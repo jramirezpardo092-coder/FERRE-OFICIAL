@@ -1,13 +1,15 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import type { Product } from "@/lib/types";
 import type { CatalogResponse, CatalogSuggestion } from "@/lib/catalog-types";
 import { getActiveFilterCount, normalizeCatalogFilters, type FiltersValue } from "@/lib/catalog-filters";
 import { cn, formatCOP } from "@/lib/utils";
-import { getCategoryPath, getProductPath } from "@/lib/catalog/routes";
+import { getCategoryPath } from "@/lib/catalog/routes";
+import CatalogUrlSync from "./catalog/CatalogUrlSync";
+import { CatalogPriceModeProvider, getPricePreference, setPricePreference, type PriceMode } from "@/lib/price-preference";
 import { CATEGORIES } from "@/lib/constants";
 import PricePreferenceToggle from "./catalog/PricePreferenceToggle";
 import ProductCard from "./ProductCard";
@@ -25,8 +27,8 @@ const ProductModal = dynamic(() => import("./ProductModal"), { ssr: false });
 /** Only one page of public products reaches the browser. Sales data stay on the server. */
 export default function CatalogClient({ offersOnly = false, initialData, initialParamsKey = "", category = "" }: { offersOnly?: boolean; initialData?: CatalogResponse; initialParamsKey?: string; category?: string }) {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const paramsKey = searchParams.toString();
+  const [paramsKey, setParamsKey] = useState(initialParamsKey);
+  const searchParams = useMemo(() => new URLSearchParams(paramsKey), [paramsKey]);
   const query = searchParams.get("q") || "";
   const sort = SORT_OPTIONS.includes(searchParams.get("sort") || "") ? searchParams.get("sort")! : "relevance";
   const filters = useMemo(() => {
@@ -35,6 +37,7 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
       category: category || params.get("cat") || "", brand: params.get("brand") || "",
       priceMin: params.get("min") ?? params.get("priceMin") ?? "",
       priceMax: params.get("max") ?? params.get("priceMax") ?? "",
+      priceMode: params.get("priceMode") as PriceMode,
       availability: params.get("availability") as FiltersValue["availability"],
       offersOnly: offersOnly || params.get("ofertas") === "true",
     });
@@ -48,6 +51,7 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
   const [viewMode, setViewMode] = useState<"responsive" | "grid" | "list">("responsive");
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
   const topRef = useRef<HTMLDivElement>(null);
+  const preferenceRestored = useRef(false);
   const requestKey = resultKey(paramsKey);
   const loading = !result || result.key !== requestKey;
   const data = result?.data;
@@ -66,8 +70,25 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
     const nextQuery = params.toString();
     const url = path + (nextQuery ? "?" + nextQuery : "");
     if (path !== window.location.pathname) router.push(url);
-    else if (url !== window.location.pathname + window.location.search) window.history.pushState(null, "", url);
+    else if (url !== window.location.pathname + window.location.search) {
+      window.history.pushState(null, "", url);
+      // Initial preference restoration can run before Next hydrates its history subscription.
+      setParamsKey(nextQuery);
+    }
   }, [category, offersOnly, router]);
+  const changePriceMode = useCallback((mode: PriceMode) => updateParams({ priceMode: mode === "net" ? "net" : null, page: null }), [updateParams]);
+  const pricePreference = useMemo(() => ({ mode: filters.priceMode, onModeChange: changePriceMode }), [filters.priceMode, changePriceMode]);
+  useEffect(() => {
+    if (!preferenceRestored.current) {
+      preferenceRestored.current = true;
+      // Restore a saved preference only on a clean first visit; shared filters and Back stay authoritative.
+      if (!paramsKey && getPricePreference() === "net") {
+        updateParams({ priceMode: "net" });
+        return;
+      }
+    }
+    setPricePreference(filters.priceMode);
+  }, [paramsKey, filters.priceMode, updateParams]);
   useEffect(() => {
     if (initialData) {
       const key = (offersOnly ? "offers:" : "catalog:") + category + ":" + initialParamsKey;
@@ -125,7 +146,8 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
     updateParams({ q: null, cat: null, brand: null, min: null, max: null, priceMin: null, priceMax: null, availability: null, ofertas: null, page: null, sort: null });
   };
   const chooseSuggestion = (suggestion: CatalogSuggestion) => {
-    if (suggestion.type === "product") router.push(getProductPath({ id: suggestion.value, nombre: suggestion.label }));
+    // The SKU redirect resolves the stable canonical URL; display names can expand abbreviations.
+    if (suggestion.type === "product") router.push(`/producto/${encodeURIComponent(suggestion.value)}`);
     else {
       setSearch("");
       updateParams({ q: null, [suggestion.type === "category" ? "cat" : "brand"]: suggestion.value, page: null });
@@ -133,17 +155,18 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
   };
   const activeCount = getActiveFilterCount({ ...filters, offersOnly: !offersOnly && filters.offersOnly }) + Number(!!query.trim());
   const filterProps = { value: filters, onChange: changeFilters, onClear: clearAll,
-    categories: data?.categories || [], brands: data?.brands || [], priceBounds: data?.priceBounds, offersLocked: offersOnly };
+    categories: data?.categories || [], brands: data?.brands || [], priceBounds: data?.priceMode === filters.priceMode ? data.priceBounds : undefined, offersLocked: offersOnly };
   const chips = [
     query && { key: "q", label: "Búsqueda: " + query },
     filters.category && { key: "cat", label: filters.category },
     filters.brand && { key: "brand", label: filters.brand },
     filters.availability !== "all" && { key: "availability", label: filters.availability === "in-stock" ? "En stock" : "Consultar disponibilidad" },
-    (filters.priceMin || filters.priceMax) && { key: "price", label: "Precio sin IVA: " + formatCOP(Number(filters.priceMin || 0)) + " – " + (filters.priceMax ? formatCOP(Number(filters.priceMax)) : "sin máximo") },
+    (filters.priceMin || filters.priceMax) && { key: "price", label: (filters.priceMode === "net" ? "Precio sin IVA: " : "Precio con IVA: ") + formatCOP(Number(filters.priceMin || 0)) + " – " + (filters.priceMax ? formatCOP(Number(filters.priceMax)) : "sin máximo") },
     !offersOnly && filters.offersOnly && { key: "ofertas", label: "Solo ofertas" },
   ].filter((chip): chip is { key: string; label: string } => !!chip);
 
-  return <div ref={topRef} className="mx-auto max-w-[1400px] scroll-mt-24 px-4 pt-5 pb-24 md:pt-8">
+  return <CatalogPriceModeProvider value={pricePreference}><div ref={topRef} className="mx-auto max-w-[1400px] scroll-mt-24 px-4 pt-5 pb-24 md:pt-8">
+    <Suspense fallback={null}><CatalogUrlSync onChange={setParamsKey} /></Suspense>
     <div className="mx-auto mb-6 max-w-3xl">
       <CatalogSearch value={search} onChange={setSearch} suggestions={!loading && query === search ? data?.suggestions || [] : []} onSelect={chooseSuggestion} loading={busy || search !== query} />
       <p className="mt-2 px-1 text-xs text-gray-600 dark:text-gray-300">Busca por nombre, SKU o referencia. Incluimos agotados para consultar reposición.</p>
@@ -206,5 +229,5 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
     </div>
     <CatalogFilterDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)}><CatalogFilters {...filterProps} idPrefix="mobile-catalog" /></CatalogFilterDrawer>
     {modalProduct && <ProductModal product={modalProduct} onClose={() => setModalProduct(null)} />}
-  </div>;
+  </div></CatalogPriceModeProvider>;
 }

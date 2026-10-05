@@ -229,6 +229,25 @@ test("search normalizes accents and uses fuzzy fallback without silently requiri
   assert.equal(fuzzy.isFuzzy, true);
 });
 
+test("an exact public SKU outranks another product reference with the same code1104", () => {
+  const published = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "src/data/products.json"), "utf8"));
+  const matches = published.filter((product) => [product.id, product.sku, product.ref].includes("1104"));
+  assert.deepEqual(matches.map((product) => product.id), ["0548", "1104"], "published order reproduces the reference collision");
+  const result = query(service(matches), "q=1104");
+  assert.deepEqual(ids(result.products), ["1104", "0548"]);
+  assert.equal(result.suggestions[0].value, "1104");
+  assert.equal(result.isFuzzy, false);
+
+  const stable = query(service([
+    { ...base, id: "first-ref", ref: "0044" },
+    { ...base, id: "44", ref: "0044" },
+    { ...base, id: "0044", stock: 0 },
+    { ...base, id: "own-sku", sku: "0044" },
+    { ...base, id: "last-ref", ref: "0044" },
+  ]), "q=0044");
+  assert.deepEqual(ids(stable.products), ["0044", "own-sku", "first-ref", "44", "last-ref"]);
+});
+
 test("server detail helpers return only exact/public related references and preserve exhausted ones", () => {
   const catalog = service([
     { ...base, id: "0044" },
@@ -256,26 +275,125 @@ test("facets omit their own filter but retain the query and other selected filte
     { ...base, id: "E", cat: "Construcción", brand: "TRUPER", precio: 200 },
     { ...base, id: "F", nombre: "Candado", cat: "Construcción", brand: "TRUPER", precio: 100 },
   ]);
-  const result = query(catalog, "q=taladro&cat=Herramientas&brand=TRUPER&max=100");
+  const result = query(catalog, "q=taladro&cat=Herramientas&brand=TRUPER&max=100&priceMode=net");
   assert.deepEqual(ids(result.products), ["A"]);
   assert.deepEqual(plain(result.categories), [{ name: "Construcción", count: 1 }, { name: "Herramientas", count: 1 }]);
   assert.deepEqual(plain(result.brands), [{ name: "BOSCH", count: 1 }, { name: "TRUPER", count: 1 }]);
 });
 
-test("missing prices remain consultable; ranges and bounds use verified prices before IVA", () => {
+test("missing prices remain consultable; gross bounds default and net ranges use confirmed amounts", () => {
   const catalog = service([
     { ...base, id: "pending", precio: 0, priceVerified: false },
     { ...base, id: "known", precio: 100, stock: 0 },
     { ...base, id: "expensive", precio: 150 },
   ]);
   assert.equal(query(catalog).total, 3);
-  assert.deepEqual(plain(query(catalog).priceBounds), { min: 100, max: 150 });
-  assert.deepEqual(ids(query(catalog, "min=0&max=100").products), ["known"]);
+  assert.deepEqual(plain(query(catalog).priceBounds), { min: 119, max: 179 });
+  assert.deepEqual(plain(query(catalog, "priceMode=net").priceBounds), { min: 100, max: 150 });
+  assert.deepEqual(ids(query(catalog, "min=0&max=100&priceMode=net").products), ["known"]);
+  assert.deepEqual(ids(query(catalog, "min=0&max=100").products), []);
   for (const sort of ["price-asc", "price-desc"]) assert.equal(query(catalog, `sort=${sort}`).products.at(-1).id, "pending");
   const invalid = query(catalog, "min=200&max=100&availability=on-request");
   assert.equal(invalid.filtersValid, false);
   assert.deepEqual(ids(invalid.products), ["known"]);
   assert.equal(query(service([{ ...base, precio: 0, priceVerified: false }])).priceBounds, undefined);
+});
+
+test("price mode controls range, bounds and ordering with mixed IVA and fractional base prices", () => {
+  const products = [
+    { ...base, id: "vat19", precio: 100, taxRate: 19, stock: 0 },
+    { ...base, id: "exempt", precio: 110, taxRate: 0 },
+    { ...base, id: "vat5", precio: 107, taxRate: 5 },
+    { ...base, id: "fractional", precio: 100.49, taxRate: 5 },
+    { ...base, id: "pending", precio: 1, priceVerified: false },
+    { ...base, id: "pending-second", precio: 2, priceVerified: false },
+  ];
+  const before = JSON.stringify(products);
+  const catalog = service(products);
+  const gross = query(catalog, "sort=price-asc");
+  const net = query(catalog, "sort=price-asc&priceMode=net");
+  assert.equal(gross.priceMode, "gross");
+  assert.equal(net.priceMode, "net");
+  assert.deepEqual(plain(gross.priceBounds), { min: 106, max: 119 });
+  assert.deepEqual(plain(net.priceBounds), { min: 100, max: 110 });
+  assert.deepEqual(ids(gross.products), ["fractional", "exempt", "vat5", "vat19", "pending", "pending-second"]);
+  assert.deepEqual(ids(net.products), ["vat19", "fractional", "vat5", "exempt", "pending", "pending-second"]);
+  assert.deepEqual(ids(query(catalog, "sort=price-desc").products), ["vat19", "vat5", "exempt", "fractional", "pending", "pending-second"]);
+  assert.deepEqual(ids(query(catalog, "sort=price-desc&priceMode=net").products), ["exempt", "vat5", "vat19", "fractional", "pending", "pending-second"]);
+  assert.deepEqual(ids(query(catalog, "min=105&max=112&sort=price-asc").products), ["fractional", "exempt", "vat5"]);
+  assert.deepEqual(ids(query(catalog, "min=105&max=112&sort=price-asc&priceMode=net").products), ["vat5", "exempt"]);
+  const exhausted = query(catalog, "min=119&max=119");
+  assert.deepEqual(ids(exhausted.products), ["vat19"]);
+  assert.equal(exhausted.products[0].stock, 0);
+  assert.equal(gross.products[0].precio, 100.49, "public DTO keeps the actual base price");
+  assert.equal(JSON.stringify(products), before);
+});
+
+test("a confirmed base with unknown tax participates in net ranges but never invents a gross amount", () => {
+  const catalog = service([
+    { ...base, id: "unknown-tax", precio: 100.49, taxRate: undefined },
+    { ...base, id: "known", precio: 200, taxRate: 0 },
+    { ...base, id: "pending", precio: 1, priceVerified: false },
+  ]);
+  const gross = query(catalog, "sort=price-asc");
+  const net = query(catalog, "sort=price-asc&priceMode=net");
+  assert.equal(gross.total, 3);
+  assert.deepEqual(ids(gross.products), ["known", "unknown-tax", "pending"]);
+  assert.deepEqual(plain(gross.priceBounds), { min: 200, max: 200 });
+  assert.deepEqual(ids(net.products), ["unknown-tax", "known", "pending"]);
+  assert.deepEqual(plain(net.priceBounds), { min: 100, max: 200 });
+  assert.deepEqual(ids(query(catalog, "max=100").products), []);
+  const baseOnly = query(catalog, "max=100&priceMode=net");
+  assert.deepEqual(ids(baseOnly.products), ["unknown-tax"]);
+  assert.equal(baseOnly.products[0].precio, 100.49);
+  assert.equal(baseOnly.products[0].taxRate, undefined);
+});
+
+test("mode-aware bounds omit the range itself while facets keep the requested mode and other filters", () => {
+  const catalog = service([
+    { ...base, id: "A", precio: 100, taxRate: 19, cat: "Herramientas", brand: "TRUPER" },
+    { ...base, id: "B", precio: 100, taxRate: 5, cat: "Construcción", brand: "TRUPER" },
+    { ...base, id: "C", precio: 100, taxRate: 0, cat: "Herramientas", brand: "BOSCH" },
+    { ...base, id: "D", precio: 200, taxRate: 0, cat: "Herramientas", brand: "TRUPER" },
+    { ...base, id: "pending", precio: 1, priceVerified: false, cat: "Herramientas", brand: "TRUPER" },
+  ]);
+  const gross = query(catalog, "q=taladro&cat=Herramientas&brand=TRUPER&max=105");
+  assert.equal(gross.total, 0);
+  assert.deepEqual(plain(gross.categories), [{ name: "Construcción", count: 1 }]);
+  assert.deepEqual(plain(gross.brands), [{ name: "BOSCH", count: 1 }]);
+  assert.deepEqual(plain(gross.priceBounds), { min: 119, max: 200 });
+  const net = query(catalog, "q=taladro&cat=Herramientas&brand=TRUPER&max=105&priceMode=net");
+  assert.deepEqual(ids(net.products), ["A"]);
+  assert.deepEqual(plain(net.priceBounds), { min: 100, max: 200 });
+  assert.deepEqual(plain(net.categories), [{ name: "Construcción", count: 1 }, { name: "Herramientas", count: 1 }]);
+});
+
+test("API priceMode defaults gross and reports unsupported modes without fabricating prices", () => {
+  const catalog = service([
+    { ...base, id: "known", precio: 100, taxRate: 5 },
+    { ...base, id: "pending", precio: 0, priceVerified: false },
+  ]);
+  for (const parameters of ["", "priceMode=gross", "priceMode=net"]) assert.equal(query(catalog, parameters).filtersValid, true);
+  for (const mode of ["", "GROSS", "19", "unknown"]) {
+    const invalid = query(catalog, `priceMode=${mode}&max=104`);
+    assert.equal(invalid.filtersValid, false);
+    assert.equal(invalid.priceMode, "gross");
+    assert.deepEqual(ids(invalid.products), []);
+    assert.deepEqual(plain(invalid.priceBounds), { min: 105, max: 105 });
+  }
+  assert.equal(query(catalog, "priceMode=net&max=104").products[0].id, "known");
+});
+
+test("service bounds and exact ranges preserve the displayed COP at rounding boundaries", () => {
+  const catalog = service([
+    { ...base, id: "half", precio: 10.5, taxRate: 19 },
+    { ...base, id: "fractional", precio: 550.425, taxRate: 19 },
+  ]);
+  assert.deepEqual(plain(query(catalog).priceBounds), { min: 12, max: 655 });
+  assert.deepEqual(plain(query(catalog, "priceMode=net").priceBounds), { min: 11, max: 550 });
+  assert.deepEqual(ids(query(catalog, "min=12&max=12").products), ["half"]);
+  assert.deepEqual(ids(query(catalog, "min=13&max=13").products), []);
+  assert.equal(query(catalog, "min=12&max=12").products[0].precio, 10.5);
 });
 
 test("availability stays voluntary and the offers-only server option cannot be switched off", () => {
@@ -352,8 +470,17 @@ test("GET emits only a limited public page with CDN cache and rejects oversized 
   assert.equal(response.status, 200);
   assert.equal(response.body.products.length, 24);
   assert.equal(response.body.page, 2);
+  assert.equal(response.body.priceMode, "gross");
   assert.equal(response.headers["Cache-Control"], "public, s-maxage=300, stale-while-revalidate=86400");
   assert.equal(route.dynamic, "force-dynamic");
+  const gross = route.GET({ nextUrl: new URL("https://example.test/api/catalogo?max=100&priceMode=gross") });
+  const net = route.GET({ nextUrl: new URL("https://example.test/api/catalogo?max=100&priceMode=net") });
+  assert.equal(gross.body.total, 0);
+  assert.deepEqual(ids(net.body.products), ["P000"]);
+  assert.equal(net.body.priceMode, "net");
+  assert.equal(net.body.products[0].precio, 100);
+  assert.equal(net.body.products[0].stock, 0);
+  assert.equal(net.headers["Cache-Control"], response.headers["Cache-Control"]);
   const invalid = route.GET({ nextUrl: new URL(`https://example.test/api/catalogo?q=${"x".repeat(4097)}`) });
   assert.equal(invalid.status, 400);
   assert.match(invalid.headers["Cache-Control"], /no-store/);

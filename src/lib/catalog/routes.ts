@@ -1,9 +1,9 @@
 import { CATEGORIES } from "../constants";
 import type { Product } from "../types";
-import { normalizeProductName } from "./normalize";
+import { normalizeProductNameForRoute } from "./normalize";
 
 export function getProductSlug(product: Pick<Product, "id" | "nombre">): string {
-  const name = normalizeProductName(product.nombre).toLowerCase().normalize("NFD")
+  const name = normalizeProductNameForRoute(product.nombre).toLowerCase().normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   return `${product.id}-${name || "producto"}`;
 }

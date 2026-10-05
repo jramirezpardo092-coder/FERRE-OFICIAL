@@ -48,6 +48,48 @@ export function getFuseInstance(products: Product[]): Fuse<Product> {
   return fuseInstance;
 }
 
+function startsWithTerm(text: string, term: string): boolean {
+  return text.startsWith(term) && (!text[term.length] || /[^\p{L}\p{N}]/u.test(text[term.length]));
+}
+
+/** Alternatives affect relevance only; identifiers and the existing match set stay literal. */
+function leadingQueryVariants(query: string): string[] {
+  const variants = new Set([query]);
+  for (const group of SEARCH_SYNONYMS) {
+    for (const term of group) {
+      if (!startsWithTerm(query, term)) continue;
+      const tail = query.slice(term.length);
+      for (const alternative of group) variants.add(alternative + tail);
+    }
+  }
+  return [...variants];
+}
+
+function relevanceRank(product: Product, query: string, tokens: string[], variants: string[]): number[] {
+  const names = [normalizeSearchText(product.nombre), normalizeSearchText(displayName(product.nombre))];
+  const isIdentifier = (value?: string) => !!value && normalizeSearchText(value) === query;
+  const identifier = isIdentifier(product.id) ? 3 : isIdentifier(product.sku) ? 2 : isIdentifier(product.ref) ? 1 : 0;
+  const exactName = names.includes(query) ? 2 : variants.some(variant => names.includes(variant)) ? 1 : 0;
+  const prefix = names.some(name => name.startsWith(tokens[0])) || variants.slice(1).some(variant => {
+    const first = variant.split(/\s+/)[0];
+    return names.some(name => startsWithTerm(name, first) || startsWithTerm(name, first + "s"));
+  });
+  const inName = variants.some(variant => {
+    const words = variant.split(/\s+/).filter(Boolean);
+    return names.some(name => words.every(word => name.includes(word)));
+  });
+  // Lexicographic tiers keep stock or a promotion from outranking an exact SKU or name prefix.
+  return [identifier, exactName, Number(prefix), Number(inName),
+    Number(normalizeSearchText(product.brand).includes(query)), Number(product.stock > 0), Number(!!product.disc && product.disc > 0)];
+}
+
+function compareRanks(a: number[], b: number[]): number {
+  for (let index = 0; index < a.length; index++) {
+    if (a[index] !== b[index]) return b[index] - a[index];
+  }
+  return 0;
+}
+
 /**
  * Hybrid search: exact tokenized match first, then fuzzy fallback
  */
@@ -68,23 +110,10 @@ export function searchProducts(
   });
 
   if (exactResults.length > 0) {
-    // Score and sort exact results
-    exactResults.sort((a, b) => {
-      const score = (p: Product) => {
-        let s = 0;
-        const nameL = normalizeSearchText(`${p.nombre} ${displayName(p.nombre)}`);
-        if (normalizeSearchText(displayName(p.nombre)) === normalizedQuery) s += 100;
-        if ([p.id, p.ref, p.sku].some(value => value && normalizeSearchText(value) === normalizedQuery)) s += 100;
-        if (tokens.every((t) => nameL.includes(t))) s += 50;
-        if (nameL.startsWith(tokens[0])) s += 30;
-        if (normalizeSearchText(p.brand).includes(normalizedQuery)) s += 20;
-        if (p.stock > 0) s += 5;
-        if (p.disc && p.disc > 0) s += 3;
-        return s;
-      };
-      return score(b) - score(a);
-    });
-    return { results: exactResults, isFuzzy: false };
+    const variants = leadingQueryVariants(tokens.join(" "));
+    const ranked = exactResults.map(product => ({ product, rank: relevanceRank(product, normalizedQuery, tokens, variants) }));
+    ranked.sort((a, b) => compareRanks(a.rank, b.rank));
+    return { results: ranked.map(({ product }) => product), isFuzzy: false };
   }
 
   // 2. Fuzzy fallback

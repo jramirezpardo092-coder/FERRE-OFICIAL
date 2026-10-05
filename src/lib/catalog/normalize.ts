@@ -1,10 +1,11 @@
-import { BRAND_DICTIONARY, MODEL_WORDS, NAME_ABBREVIATIONS, NAME_SPELLING, PRESERVED_ACRONYMS, UNIT_DICTIONARY } from "./dictionaries";
+import { APPROVED_NAME_ABBREVIATIONS, BRAND_DICTIONARY, MODEL_WORDS, NAME_ABBREVIATIONS, NAME_SPELLING, PRESERVED_ACRONYMS, UNIT_DICTIONARY } from "./dictionaries";
 
 export type BrandSuggestion = { suggestion: string | null; confidence: number };
 
 const quantityFormatter = new Intl.NumberFormat("es-CO", { maximumFractionDigits: 20 });
 const brandsByName = new Map(BRAND_DICTIONARY.map((brand) => [brand.name, brand.display]));
 const nameCache = new Map<string, string>();
+const routeNameCache = new Map<string, string>();
 const escapeRegex = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const fold = (value: string) => value.normalize("NFD").replace(/\p{M}/gu, "").trim().replace(/\s+/g, " ").toLocaleLowerCase("es-CO");
 
@@ -18,31 +19,42 @@ const brandPatterns = BRAND_DICTIONARY.map((brand) => ({
   pattern: new RegExp(`(^|[^\\p{L}\\p{N}])${escapeRegex(brand.name)}(?=$|[^\\p{L}\\p{N}])`, "iu"),
 }));
 
-function normalizeWord(token: string): string {
+function normalizeWord(token: string, expandApprovedAbbreviations: boolean): string {
   const upper = token.toLocaleUpperCase("es-CO");
   if (brandsByName.has(upper)) return brandsByName.get(upper)!;
   if (PRESERVED_ACRONYMS.has(upper)) return upper;
   // No se interpretan números como medidas ni se modifica la escritura de un modelo.
   if (/\p{N}/u.test(token) || (token.length === 1 && upper !== "Y")) return token;
-  if (/[./+_-]/u.test(token)) return token.replace(/\p{L}+/gu, normalizeWord);
-  return MODEL_WORDS[upper] ?? NAME_SPELLING[upper] ?? token.toLocaleLowerCase("es-CO");
+  if (/[./+_-]/u.test(token)) return token.replace(/\p{L}+/gu, (word) => normalizeWord(word, false));
+  return (expandApprovedAbbreviations ? APPROVED_NAME_ABBREVIATIONS[upper] : undefined)
+    ?? MODEL_WORDS[upper] ?? NAME_SPELLING[upper] ?? token.toLocaleLowerCase("es-CO");
 }
 
-/** Tipo oración para mostrar. Los modelos alfanuméricos, fracciones y códigos quedan intactos. */
-export function normalizeProductName(name: string): string {
-  const cached = nameCache.get(name);
+function normalizeName(name: string, expandApprovedAbbreviations: boolean): string {
+  const cache = expandApprovedAbbreviations ? nameCache : routeNameCache;
+  const cached = cache.get(name);
   if (cached !== undefined) return cached;
   let text = name.trim().replace(/\s+/g, " ");
   for (const { pattern, replacement } of abbreviations) {
     text = text.replace(pattern, (_match, prefix: string) => `${prefix}${replacement}`);
   }
   text = text.replace(/\bELECTRO\s+ESTATICA\b/giu, "electrostática").replace(/\s+/g, " ").trim();
-  text = text.replace(/[\p{L}\p{N}]+(?:[./+_-][\p{L}\p{N}]+)*/gu, normalizeWord);
+  text = text.replace(/[\p{L}\p{N}]+(?:[./+_-][\p{L}\p{N}]+)*/gu, (token) => normalizeWord(token, expandApprovedAbbreviations));
   text = text.replace(/(\S)\((par|unidad)\)/giu, "$1 ($2)");
   const normalized = text.replace(/\p{L}/u, (letter) => letter.toLocaleUpperCase("es-CO"));
-  if (nameCache.size >= 3000) nameCache.clear();
-  nameCache.set(name, normalized);
+  if (cache.size >= 3000) cache.clear();
+  cache.set(name, normalized);
   return normalized;
+}
+
+/** Tipo oración para mostrar. Los modelos alfanuméricos, fracciones y códigos quedan intactos. */
+export function normalizeProductName(name: string): string {
+  return normalizeName(name, true);
+}
+
+/** Las expansiones nuevas de presentación no modifican enlaces ya publicados. */
+export function normalizeProductNameForRoute(name: string): string {
+  return normalizeName(name, false);
 }
 
 /** Muestra exclusivamente la marca ya declarada; no consulta detectBrand. */

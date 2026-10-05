@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCatalogProduct, getCatalogProducts, getRelatedCatalogProducts } from "@/lib/catalog-service";
 import { getLocalProductImagePath } from "@/lib/product-enrichment";
-import { formatCOP, getDiscountPercent, hasVerifiedPrice, formatTaxLabel, getUnitPriceWithTax, getAvailableQuantity, formatQuantity } from "@/lib/utils";
+import { formatCOP, getDiscountPercent, hasVerifiedPrice, getUnitPriceWithTax, getAvailableQuantity, formatQuantity } from "@/lib/utils";
 import { getProductJsonLd } from "@/lib/seo";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ProductCard from "@/components/ProductCard";
@@ -15,6 +15,7 @@ import PricePreferenceToggle from "@/components/catalog/PricePreferenceToggle";
 import { getStockLabel } from "@/lib/quote-presentation";
 import { getProductSlug, getProductPath, getCategoryPath } from "@/lib/catalog/routes";
 import { displayBrand, normalizeProductName, formatUnit } from "@/lib/catalog/normalize";
+import { getCatalogPrice } from "@/lib/catalog-filters";
 
 // Generate static pages for all products
 export function generateStaticParams() {
@@ -27,14 +28,15 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const name = normalizeProductName(product.nombre);
   const brand = displayBrand(product.brand);
   const title = [name, brand && !name.toLowerCase().includes(brand.toLowerCase()) ? brand : "", "Ferretería Pardo Bogotá"].filter(Boolean).join(" | ");
-  const priceDescription = hasVerifiedPrice(product)
-    ? `${formatCOP(product.precio)} ${formatTaxLabel(product)}`
+  const grossPrice = getCatalogPrice(product, "gross");
+  const priceDescription = grossPrice !== null
+    ? `${formatCOP(grossPrice)} IVA incluido`
     : "Precio por confirmar";
 
   return {
     title,
     alternates: { canonical: getProductPath(product) },
-    description: `${name}${brand && !name.toLowerCase().includes(brand.toLowerCase()) ? ` de ${brand}` : ""}. ${priceDescription}. Consulta disponibilidad en Ferretería Pardo, Bogotá. Cotiza por WhatsApp.`,
+    description: `${priceDescription}. ${name}${brand && !name.toLowerCase().includes(brand.toLowerCase()) ? ` de ${brand}` : ""}. Consulta disponibilidad en Ferretería Pardo, Bogotá. Cotiza por WhatsApp.`,
     openGraph: {
       title: name,
       description: `${priceDescription} | ${product.cat}`,
