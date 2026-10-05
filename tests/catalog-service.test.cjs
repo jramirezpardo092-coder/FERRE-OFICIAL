@@ -438,14 +438,14 @@ test("query text and facet names are bounded and unsupported availability remain
 test("public shipment is a whitelist even for nested verified media/specs; responses are isolated", () => {
   const catalog = service([{ ...base, quantitySold: 500, ingresos: 30000, audit: { private: true }, sales: { client: "Private" },
     tags: ["taladro"],
-    gallery: [{ src: "/productos/taladro.webp", alt: "Taladro", verified: true, quantitySold: 10 }, { src: "/unverified.webp", verified: false }],
+    gallery: [{ src: "/productos/taladro.webp", alt: "Taladro", verified: true, kind: "supplier-render", caption: " Vista exterior; mecanismo no visible. ", sourcePath: "/private/original", quantitySold: 10 }, { src: "/unverified.webp", verified: false }],
     specs: [{ label: "Voltaje", value: "120V", verified: true, revenue: 100 }, { label: "Inventado", value: "No", verified: false }],
   }]);
   const result = query(catalog);
-  assert.deepEqual(plain(result.products[0].gallery), [{ src: "/productos/taladro.webp", alt: "Taladro", verified: true }]);
+  assert.deepEqual(plain(result.products[0].gallery), [{ src: "/productos/taladro.webp", alt: "Taladro", verified: true, kind: "supplier-render", caption: "Vista exterior; mecanismo no visible." }]);
   assert.deepEqual(plain(result.products[0].specs), [{ label: "Voltaje", value: "120V", verified: true }]);
   const serialized = JSON.stringify(result);
-  for (const privateName of ["quantitySold", "ingresos", "audit", "sales", "revenue", "Private"]) assert.equal(serialized.includes(privateName), false, privateName);
+  for (const privateName of ["quantitySold", "ingresos", "audit", "sales", "revenue", "Private", "sourcePath", "/private/original"]) assert.equal(serialized.includes(privateName), false, privateName);
   result.products[0].nombre = "Mutated";
   result.products[0].tags.push("Mutated");
   result.products[0].gallery[0].alt = "Mutated";

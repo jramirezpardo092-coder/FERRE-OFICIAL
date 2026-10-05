@@ -1,0 +1,2463 @@
+{
+  "date": "2026-10-05",
+  "scope": "139 additional approved in-stock product images. Includes clearly disclosed shared-size illustrations, partial views and installation references. Catalog prices, stock, units and source identities remain unchanged. Rights remain with original sources; no open-license claim.",
+  "manifestSha256": "41518b035bc792966156f70ea3a7ed70051a0aa30bf91ab1510c17386d74c29e",
+  "withdrawn": [
+    {
+      "sku": "10747",
+      "reason": "Distinct PL285 Profesional vs Madera family found; catalog specifies only PL285 and capacity. Pending source identity verification."
+    },
+    {
+      "sku": "5203",
+      "reason": "Distinct PL285 Profesional vs Madera family found; catalog specifies only PL285 and capacity. Pending source identity verification."
+    },
+    {
+      "sku": "8639",
+      "reason": "Catalog 50 kg versus current maker 45 kg standard / 35 kg soft-close; exact code does not establish old-stock generation or rating. Owner/supplier confirmation required."
+    },
+    {
+      "sku": "8496",
+      "reason": "Catalog 50 kg versus current maker 45 kg standard / 35 kg soft-close; exact code does not establish old-stock generation or rating. Owner/supplier confirmation required."
+    },
+    {
+      "sku": "8497",
+      "reason": "Catalog 50 kg versus current maker 45 kg standard / 35 kg soft-close; exact code does not establish old-stock generation or rating. Owner/supplier confirmation required."
+    },
+    {
+      "sku": "8165",
+      "reason": "Catalog 50 kg versus current maker 45 kg standard / 35 kg soft-close; exact code does not establish old-stock generation or rating. Owner/supplier confirmation required."
+    },
+    {
+      "sku": "7226",
+      "reason": "Catalog 50 kg versus current maker 45 kg standard / 35 kg soft-close; exact code does not establish old-stock generation or rating. Owner/supplier confirmation required."
+    },
+    {
+      "sku": "11954",
+      "reason": "Catalog 50 kg versus current maker 45 kg standard / 35 kg soft-close; exact code does not establish old-stock generation or rating. Owner/supplier confirmation required."
+    },
+    {
+      "sku": "9122",
+      "reason": "Catalog 50 kg versus current maker 45 kg standard / 35 kg soft-close; exact code does not establish old-stock generation or rating. Owner/supplier confirmation required."
+    },
+    {
+      "sku": "9123",
+      "reason": "Catalog 50 kg versus current maker 45 kg standard / 35 kg soft-close; exact code does not establish old-stock generation or rating. Owner/supplier confirmation required."
+    },
+    {
+      "sku": "9124",
+      "reason": "Catalog 50 kg versus current maker 45 kg standard / 35 kg soft-close; exact code does not establish old-stock generation or rating. Owner/supplier confirmation required."
+    },
+    {
+      "sku": "11840",
+      "reason": "Local Gato/GT407 versus current manufacturer Duralock. Ideace owns separate Gato and Duralock brands; no maker-supported product-generation equivalence established for code740701."
+    }
+  ],
+  "images": [
+    {
+      "sku": "12333",
+      "alt": "Espuma expansiva de poliuretano Afix de 750 ml; imagen comercial del fabricante.",
+      "researchKind": "manufacturer-packshot",
+      "provenance": "download-original",
+      "sourcePage": "https://afix.com.co/productos/afix-pegadit-espuma-expansiva-de-poliuretano/",
+      "imageUrl": "https://afix.com.co/wp-content/uploads/2024/10/Afix_Espuma_Poliu_750ml.png",
+      "evidence": "Official Afix Colombia page explicitly offers 750 ml; selected gallery original is named Afix_Espuma_Poliu_750ml, not the 500 ml primary image. Visually reviewed the single labelled can.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer marketing asset; no express open license verified. Reuse under user-authorized marketing-image sourcing with transparent provenance, not license-cleared.",
+      "dimensions": [
+        2000,
+        2000
+      ],
+      "sha256": "e549018eda442ba4a14afed9c949c08eabdf0e2eb4f56742c20e552549ed7a60"
+    },
+    {
+      "sku": "12332",
+      "alt": "Afix Pegadit Turbo Max Pega Todo de 290 ml; imagen comercial del fabricante.",
+      "researchKind": "manufacturer-packshot",
+      "provenance": "download-original",
+      "sourcePage": "https://afix.com.co/productos/afix-pegadit-turbo-max-pega-todo-ms/",
+      "imageUrl": "https://afix.com.co/wp-content/uploads/2024/10/01-AFIX-PEGADI-TURBO-MAX-446.png",
+      "evidence": "Official Afix Colombia Turbo Max page includes 290 ml / 446 g cartridge. Selected original is the 446 g full cartridge, not the separate 165 g tube; visual review confirms Turbo Max Pega Todo.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer marketing asset; no express open license verified. Reuse under user-authorized marketing-image sourcing with transparent provenance, not license-cleared.",
+      "dimensions": [
+        2000,
+        2000
+      ],
+      "sha256": "c039d7dc4de6252153a7a649f1b936daf6cb32c086b74dfd3a7c880bcd355ded"
+    },
+    {
+      "sku": "5176",
+      "alt": "Pegante Carpincol MR-60, presentación de un galón; imagen comercial del fabricante.",
+      "researchKind": "manufacturer-packshot",
+      "provenance": "download-original",
+      "sourcePage": "https://afix.com.co/productos/afix-carpincol-mr-60/",
+      "imageUrl": "https://afix.com.co/wp-content/uploads/2024/10/01-Afix_Carpincol_MR-60_1GL.png",
+      "evidence": "Official Afix page offers 1 gal; the linked gallery original is expressly named MR-60_1GL. Image label is net 4 kg, the manufacturer gallon presentation. Single pail, no bundle.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer marketing asset; no express open license verified. Reuse under user-authorized marketing-image sourcing with transparent provenance, not license-cleared.",
+      "dimensions": [
+        2000,
+        2000
+      ],
+      "sha256": "43bbccf1fec03f373ff32e329968f6aeee9bed647d4927dcf827ecf4678f7759"
+    },
+    {
+      "sku": "1651",
+      "alt": "Par de guantes de hilaza Zubi-Ola Halcón, referencia 19800127; imagen comercial del fabricante.",
+      "researchKind": "manufacturer-marketing-image",
+      "provenance": "download-original",
+      "sourcePage": "https://zubi-ola.com/producto/guantes-industriales-hilaza-algodonpoliester-%E2%80%A2-halcon/",
+      "imageUrl": "https://zubi-ola.com/wp-content/uploads/2016/11/19800127-800x450-copy-1.jpg",
+      "evidence": "Official Zubi-Ola page and image filename identify exact 19800127 Halcón gloves; catalog title names Zubiola/Halcón. Image shows one pair, with manufacturer detail inset and Halcón brand mark. Brand graphic is part of original asset, not a distributor watermark.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer marketing asset; no express open license verified. Reuse under user-authorized marketing-image sourcing with transparent provenance, not license-cleared.",
+      "dimensions": [
+        800,
+        450
+      ],
+      "sha256": "e6d671bd2be99472a86a2c080831f472af4ad19b52ecd322884d8380f97688a2"
+    },
+    {
+      "sku": "8584",
+      "alt": "Ilustración de referencia del sistema Mobile HRE126; vista compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia del sistema Mobile HRE126; vista compartida entre medidas, sin escala dimensional",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-extension-total-carga-media-250-mm-38-kg-acero?variant=45720301699302",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-riel-cajon-extension-total-mobile-HRE126-madecentro_1.jpg?v=1748469277",
+      "evidence": "Supplier Madecentro product record explicitly lists exact SKU HRE126-55 as variant 55 cm, vendor Mobile. This original supplier product illustration is shared across the explicitly mapped size variants; it depicts the established model/components, not a dimensionally representative photograph or proof of load rating or complete supplied kit. Visible zinc finish and mechanism match the source model. No changes to source catalog attributes. Catalog title states 37 kg; current supplier states 38 kg for this same exact code. Recorded as load-label discrepancy for business confirmation; catalog unchanged.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "efb133209241dd63d120d618cc55913652382747ee04b660e22504bc3bc27234"
+    },
+    {
+      "sku": "8897",
+      "alt": "Ilustración de referencia del sistema Mobile HRE126; vista compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia del sistema Mobile HRE126; vista compartida entre medidas, sin escala dimensional",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-extension-total-carga-media-250-mm-38-kg-acero?variant=45720301633766",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-riel-cajon-extension-total-mobile-HRE126-madecentro_1.jpg?v=1748469277",
+      "evidence": "Supplier Madecentro product record explicitly lists exact SKU HRE126-45 as variant 45 cm, vendor Mobile. This original supplier product illustration is shared across the explicitly mapped size variants; it depicts the established model/components, not a dimensionally representative photograph or proof of load rating or complete supplied kit. Visible zinc finish and mechanism match the source model. No changes to source catalog attributes. Catalog title states 37 kg; current supplier states 38 kg for this same exact code. Recorded as load-label discrepancy for business confirmation; catalog unchanged.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "efb133209241dd63d120d618cc55913652382747ee04b660e22504bc3bc27234"
+    },
+    {
+      "sku": "9012",
+      "alt": "Ilustración de referencia del sistema Bonuit HRE790; vista compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia del sistema Bonuit HRE790; vista compartida entre medidas, sin escala dimensional",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-corredera-para-cajon-montaje-bajo-cierre-lento-extension-total-30-kg?variant=47024787587302",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-riel-corredera-para-cajon-bonuit-hre790-madecentro-correc_3b98f7b6-b591-42f9-a208-474ef7f621c3.jpg?v=1765381978",
+      "evidence": "Supplier Madecentro product record explicitly lists exact SKU HRE790-50 as variant 50 cm, vendor Bonuit. This original supplier product illustration is shared across the explicitly mapped size variants; it depicts the established model/components, not a dimensionally representative photograph or proof of load rating or complete supplied kit. Visible zinc finish and mechanism match the source model. No changes to source catalog attributes.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "0e03d453fdfebe721a936dee48480e470eb00e04ee07c6b3a3a537924e63a3df"
+    },
+    {
+      "sku": "11179",
+      "alt": "Ilustración de referencia del sistema Mobile HRE126; vista compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia del sistema Mobile HRE126; vista compartida entre medidas, sin escala dimensional",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-extension-total-carga-media-250-mm-38-kg-acero?variant=45720301535462",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-riel-cajon-extension-total-mobile-HRE126-madecentro_1.jpg?v=1748469277",
+      "evidence": "Supplier Madecentro product record explicitly lists exact SKU HRE126-30 as variant 30 cm, vendor Mobile. This original supplier product illustration is shared across the explicitly mapped size variants; it depicts the established model/components, not a dimensionally representative photograph or proof of load rating or complete supplied kit. Visible zinc finish and mechanism match the source model. No changes to source catalog attributes. Catalog title states 37 kg; current supplier states 38 kg for this same exact code. Recorded as load-label discrepancy for business confirmation; catalog unchanged.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "efb133209241dd63d120d618cc55913652382747ee04b660e22504bc3bc27234"
+    },
+    {
+      "sku": "11334",
+      "alt": "Ilustración de referencia del sistema Mobile HRE126; vista compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia del sistema Mobile HRE126; vista compartida entre medidas, sin escala dimensional",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-extension-total-carga-media-250-mm-38-kg-acero?variant=45720301600998",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-riel-cajon-extension-total-mobile-HRE126-madecentro_1.jpg?v=1748469277",
+      "evidence": "Supplier Madecentro product record explicitly lists exact SKU HRE126-40 as variant 40 cm, vendor Mobile. This original supplier product illustration is shared across the explicitly mapped size variants; it depicts the established model/components, not a dimensionally representative photograph or proof of load rating or complete supplied kit. Visible zinc finish and mechanism match the source model. No changes to source catalog attributes. Catalog title states 37 kg; current supplier states 38 kg for this same exact code. Recorded as load-label discrepancy for business confirmation; catalog unchanged.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "efb133209241dd63d120d618cc55913652382747ee04b660e22504bc3bc27234"
+    },
+    {
+      "sku": "11335",
+      "alt": "Ilustración de referencia del sistema Mobile HRE126; vista compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia del sistema Mobile HRE126; vista compartida entre medidas, sin escala dimensional",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-extension-total-carga-media-250-mm-38-kg-acero?variant=45720301568230",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-riel-cajon-extension-total-mobile-HRE126-madecentro_1.jpg?v=1748469277",
+      "evidence": "Supplier Madecentro product record explicitly lists exact SKU HRE126-35 as variant 35 cm, vendor Mobile. This original supplier product illustration is shared across the explicitly mapped size variants; it depicts the established model/components, not a dimensionally representative photograph or proof of load rating or complete supplied kit. Visible zinc finish and mechanism match the source model. No changes to source catalog attributes. Catalog title states 37 kg; current supplier states 38 kg for this same exact code. Recorded as load-label discrepancy for business confirmation; catalog unchanged.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "efb133209241dd63d120d618cc55913652382747ee04b660e22504bc3bc27234"
+    },
+    {
+      "sku": "11336",
+      "alt": "Ilustración de referencia del sistema Mobile HRE126; vista compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia del sistema Mobile HRE126; vista compartida entre medidas, sin escala dimensional",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-extension-total-carga-media-250-mm-38-kg-acero?variant=45720301666534",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-riel-cajon-extension-total-mobile-HRE126-madecentro_1.jpg?v=1748469277",
+      "evidence": "Supplier Madecentro product record explicitly lists exact SKU HRE126-50 as variant 50 cm, vendor Mobile. This original supplier product illustration is shared across the explicitly mapped size variants; it depicts the established model/components, not a dimensionally representative photograph or proof of load rating or complete supplied kit. Visible zinc finish and mechanism match the source model. No changes to source catalog attributes. Catalog title states 37 kg; current supplier states 38 kg for this same exact code. Recorded as load-label discrepancy for business confirmation; catalog unchanged.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "efb133209241dd63d120d618cc55913652382747ee04b660e22504bc3bc27234"
+    },
+    {
+      "sku": "12098",
+      "alt": "Ilustración de referencia del sistema Mobile HRE126; vista compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia del sistema Mobile HRE126; vista compartida entre medidas, sin escala dimensional",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-extension-total-carga-media-250-mm-38-kg-acero?variant=45534393696486",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-riel-cajon-extension-total-mobile-HRE126-madecentro_1.jpg?v=1748469277",
+      "evidence": "Supplier Madecentro product record explicitly lists exact SKU HRE126-25 as variant 25 cm, vendor Mobile. This original supplier product illustration is shared across the explicitly mapped size variants; it depicts the established model/components, not a dimensionally representative photograph or proof of load rating or complete supplied kit. Visible zinc finish and mechanism match the source model. No changes to source catalog attributes. Catalog title states 37 kg; current supplier states 38 kg for this same exact code. Recorded as load-label discrepancy for business confirmation; catalog unchanged.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "efb133209241dd63d120d618cc55913652382747ee04b660e22504bc3bc27234"
+    },
+    {
+      "sku": "12721",
+      "alt": "Ilustración de referencia del sistema Mobile HRE220; vista compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia del sistema Mobile HRE220; vista compartida entre medidas, sin escala dimensional",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-corredera-para-cajon-extension-total-carga-liviana-20-kg?variant=45991385104614",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-rieles-extension-total-HRE220-madecentro_1.jpg?v=1748469186",
+      "evidence": "Supplier Madecentro product record explicitly lists exact SKU HRE220-30 as variant 30 cm, vendor Mobile. This original supplier product illustration is shared across the explicitly mapped size variants; it depicts the established model/components, not a dimensionally representative photograph or proof of load rating or complete supplied kit. Visible zinc finish and mechanism match the source model. No changes to source catalog attributes.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "9ad9d5a11df7a24c1e3bdc8fa5747aaf68c25bcc54fcc24242ec63d127909506"
+    },
+    {
+      "sku": "12722",
+      "alt": "Ilustración de referencia del sistema Mobile HRE220; vista compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia del sistema Mobile HRE220; vista compartida entre medidas, sin escala dimensional",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-corredera-para-cajon-extension-total-carga-liviana-20-kg?variant=45991385137382",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-rieles-extension-total-HRE220-madecentro_1.jpg?v=1748469186",
+      "evidence": "Supplier Madecentro product record explicitly lists exact SKU HRE220-35 as variant 35 cm, vendor Mobile. This original supplier product illustration is shared across the explicitly mapped size variants; it depicts the established model/components, not a dimensionally representative photograph or proof of load rating or complete supplied kit. Visible zinc finish and mechanism match the source model. No changes to source catalog attributes.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "9ad9d5a11df7a24c1e3bdc8fa5747aaf68c25bcc54fcc24242ec63d127909506"
+    },
+    {
+      "sku": "12723",
+      "alt": "Ilustración de referencia del sistema Mobile HRE220; vista compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia del sistema Mobile HRE220; vista compartida entre medidas, sin escala dimensional",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-corredera-para-cajon-extension-total-carga-liviana-20-kg?variant=45991385170150",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-rieles-extension-total-HRE220-madecentro_1.jpg?v=1748469186",
+      "evidence": "Supplier Madecentro product record explicitly lists exact SKU HRE220-40 as variant 40 cm, vendor Mobile. This original supplier product illustration is shared across the explicitly mapped size variants; it depicts the established model/components, not a dimensionally representative photograph or proof of load rating or complete supplied kit. Visible zinc finish and mechanism match the source model. No changes to source catalog attributes.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "9ad9d5a11df7a24c1e3bdc8fa5747aaf68c25bcc54fcc24242ec63d127909506"
+    },
+    {
+      "sku": "12724",
+      "alt": "Ilustración de referencia del sistema Mobile HRE220; vista compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia del sistema Mobile HRE220; vista compartida entre medidas, sin escala dimensional",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-corredera-para-cajon-extension-total-carga-liviana-20-kg?variant=45991385202918",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-rieles-extension-total-HRE220-madecentro_1.jpg?v=1748469186",
+      "evidence": "Supplier Madecentro product record explicitly lists exact SKU HRE220-45 as variant 45 cm, vendor Mobile. This original supplier product illustration is shared across the explicitly mapped size variants; it depicts the established model/components, not a dimensionally representative photograph or proof of load rating or complete supplied kit. Visible zinc finish and mechanism match the source model. No changes to source catalog attributes.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "9ad9d5a11df7a24c1e3bdc8fa5747aaf68c25bcc54fcc24242ec63d127909506"
+    },
+    {
+      "sku": "12725",
+      "alt": "Ilustración de referencia del sistema Mobile HRE220; vista compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia del sistema Mobile HRE220; vista compartida entre medidas, sin escala dimensional",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-corredera-para-cajon-extension-total-carga-liviana-20-kg?variant=45991385235686",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-rieles-extension-total-HRE220-madecentro_1.jpg?v=1748469186",
+      "evidence": "Supplier Madecentro product record explicitly lists exact SKU HRE220-50 as variant 50 cm, vendor Mobile. This original supplier product illustration is shared across the explicitly mapped size variants; it depicts the established model/components, not a dimensionally representative photograph or proof of load rating or complete supplied kit. Visible zinc finish and mechanism match the source model. No changes to source catalog attributes.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "9ad9d5a11df7a24c1e3bdc8fa5747aaf68c25bcc54fcc24242ec63d127909506"
+    },
+    {
+      "sku": "13424",
+      "alt": "Detalle del perfil de zócalo PVC aluminizado PERPVC59; no representa la longitud completa de 4 m",
+      "caption": "Detalle del perfil de zócalo PVC aluminizado PERPVC59; no representa la longitud completa de 4 m",
+      "kind": "profile-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/perpvc59-zocalo-pvc-aluminizado-100mm-x-4-mts?variant=47586953232614",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/products/herrajes-aluminio-bonuit-zocalo-PERPVC59-madecentro.jpg?v=1613080850",
+      "evidence": "Exact supplier SKU PERPVC59, aluminizado option, linked product handle explicitly identifies 100 mm x 4 meters. Original profile-detail illustration shows the aluminized PVC section, not the whole 4-meter bar. Black alternate variant not pictured. Catalog unchanged.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1024,
+        720
+      ],
+      "sha256": "50ea7eef937c4babec19305277723c7189bc854915e2e330c290f19d5406bbbf"
+    },
+    {
+      "sku": "14814",
+      "alt": "Ilustración de referencia del sistema Mach HRE127; vista compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia del sistema Mach HRE127; vista compartida entre medidas, sin escala dimensional",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-corredera-para-cajon-eco-extension-total-carga-mediana?variant=46441800728806",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-rieles-riel-corredera-para-cajon-eco-extension-total-carga-mediana-hre127-madecentro_4511f5db-0038-4591-bbe5-de6490db925b.jpg?v=1784923152",
+      "evidence": "Supplier Madecentro product record explicitly lists exact SKU HRE127-35 as variant 35 cm, vendor Mach. This original supplier product illustration is shared across the explicitly mapped size variants; it depicts the established model/components, not a dimensionally representative photograph or proof of load rating or complete supplied kit. Visible zinc finish and mechanism match the source model. No changes to source catalog attributes.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "0f687917e30a6191aea61fb96a9f6740d622906ab1d14f5cb80b0fb2c40a76d5"
+    },
+    {
+      "sku": "14815",
+      "alt": "Ilustración de referencia del sistema Mach HRE127; vista compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia del sistema Mach HRE127; vista compartida entre medidas, sin escala dimensional",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-corredera-para-cajon-eco-extension-total-carga-mediana?variant=46441800761574",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-rieles-riel-corredera-para-cajon-eco-extension-total-carga-mediana-hre127-madecentro_4511f5db-0038-4591-bbe5-de6490db925b.jpg?v=1784923152",
+      "evidence": "Supplier Madecentro product record explicitly lists exact SKU HRE127-40 as variant 40 cm, vendor Mach. This original supplier product illustration is shared across the explicitly mapped size variants; it depicts the established model/components, not a dimensionally representative photograph or proof of load rating or complete supplied kit. Visible zinc finish and mechanism match the source model. No changes to source catalog attributes.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "0f687917e30a6191aea61fb96a9f6740d622906ab1d14f5cb80b0fb2c40a76d5"
+    },
+    {
+      "sku": "14816",
+      "alt": "Ilustración de referencia del sistema Mach HRE127; vista compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia del sistema Mach HRE127; vista compartida entre medidas, sin escala dimensional",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-corredera-para-cajon-eco-extension-total-carga-mediana?variant=46441800794342",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-rieles-riel-corredera-para-cajon-eco-extension-total-carga-mediana-hre127-madecentro_4511f5db-0038-4591-bbe5-de6490db925b.jpg?v=1784923152",
+      "evidence": "Supplier Madecentro product record explicitly lists exact SKU HRE127-45 as variant 45 cm, vendor Mach. This original supplier product illustration is shared across the explicitly mapped size variants; it depicts the established model/components, not a dimensionally representative photograph or proof of load rating or complete supplied kit. Visible zinc finish and mechanism match the source model. No changes to source catalog attributes.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "0f687917e30a6191aea61fb96a9f6740d622906ab1d14f5cb80b0fb2c40a76d5"
+    },
+    {
+      "sku": "14914",
+      "alt": "Ilustración de referencia del sistema Mach HRE127; vista compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia del sistema Mach HRE127; vista compartida entre medidas, sin escala dimensional",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-corredera-para-cajon-eco-extension-total-carga-mediana?variant=46441800827110",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-rieles-riel-corredera-para-cajon-eco-extension-total-carga-mediana-hre127-madecentro_4511f5db-0038-4591-bbe5-de6490db925b.jpg?v=1784923152",
+      "evidence": "Supplier Madecentro product record explicitly lists exact SKU HRE127-50 as variant 50 cm, vendor Mach. This original supplier product illustration is shared across the explicitly mapped size variants; it depicts the established model/components, not a dimensionally representative photograph or proof of load rating or complete supplied kit. Visible zinc finish and mechanism match the source model. No changes to source catalog attributes.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "0f687917e30a6191aea61fb96a9f6740d622906ab1d14f5cb80b0fb2c40a76d5"
+    },
+    {
+      "sku": "15747",
+      "alt": "Ilustración de referencia del sistema Mobile HRE551; vista compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia del sistema Mobile HRE551; vista compartida entre medidas, sin escala dimensional",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-corredera-para-cajon-cierre-lento-eco-con-extension-total-20-kg?variant=45991382679782",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-rieles-para-cajon-cierre-lento-mobile-HRE551-40-madecentro_1.jpg?v=1748470552",
+      "evidence": "Supplier Madecentro product record explicitly lists exact SKU HRE551-40 as variant 40 cm, vendor Mobile. This original supplier product illustration is shared across the explicitly mapped size variants; it depicts the established model/components, not a dimensionally representative photograph or proof of load rating or complete supplied kit. Visible zinc finish and mechanism match the source model. No changes to source catalog attributes.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "4746d86754d938f280176d978c200b66d8bef99f6799431ddcb2f760ee047d2d"
+    },
+    {
+      "sku": "15979",
+      "alt": "Ilustración de referencia del sistema Bonuit HRE320; vista compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia del sistema Bonuit HRE320; vista compartida entre medidas, sin escala dimensional",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-corredera-para-cajon-de-extension-total-carga-pesada-45-kg?variant=45932144492774",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-riel-para-cajon-extension-total-bonuit-HRE320-madecentro_1.jpg?v=1748469518",
+      "evidence": "Supplier Madecentro product record explicitly lists exact SKU HRE320-35 as variant 35 cm / Zincado, vendor Bonuit. This original supplier product illustration is shared across the explicitly mapped size variants; it depicts the established model/components, not a dimensionally representative photograph or proof of load rating or complete supplied kit. Visible zinc finish and mechanism match the source model. No changes to source catalog attributes.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "c66f9d2ee234276da48897e3b1b8737765ef2ad18c80a1a6136eedd1acf09685"
+    },
+    {
+      "sku": "15981",
+      "alt": "Ilustración de referencia del sistema Bonuit HRE320; vista compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia del sistema Bonuit HRE320; vista compartida entre medidas, sin escala dimensional",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-corredera-para-cajon-de-extension-total-carga-pesada-45-kg?variant=45932144623846",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-riel-para-cajon-extension-total-bonuit-HRE320-madecentro_1.jpg?v=1748469518",
+      "evidence": "Supplier Madecentro product record explicitly lists exact SKU HRE320-45 as variant 45 cm / Zincado, vendor Bonuit. This original supplier product illustration is shared across the explicitly mapped size variants; it depicts the established model/components, not a dimensionally representative photograph or proof of load rating or complete supplied kit. Visible zinc finish and mechanism match the source model. No changes to source catalog attributes.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "c66f9d2ee234276da48897e3b1b8737765ef2ad18c80a1a6136eedd1acf09685"
+    },
+    {
+      "sku": "15982",
+      "alt": "Ilustración de referencia del sistema Bonuit HRE320; vista compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia del sistema Bonuit HRE320; vista compartida entre medidas, sin escala dimensional",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-corredera-para-cajon-de-extension-total-carga-pesada-45-kg?variant=45932144689382",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-riel-para-cajon-extension-total-bonuit-HRE320-madecentro_1.jpg?v=1748469518",
+      "evidence": "Supplier Madecentro product record explicitly lists exact SKU HRE320-50 as variant 50 cm / Zincado, vendor Bonuit. This original supplier product illustration is shared across the explicitly mapped size variants; it depicts the established model/components, not a dimensionally representative photograph or proof of load rating or complete supplied kit. Visible zinc finish and mechanism match the source model. No changes to source catalog attributes.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "c66f9d2ee234276da48897e3b1b8737765ef2ad18c80a1a6136eedd1acf09685"
+    },
+    {
+      "sku": "15216",
+      "alt": "Tomacorriente inteligente VTA-84626, blanco",
+      "researchKind": "product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://allforall.com.co/producto/tomacorriente-inteligente-link-iot-vta-84626",
+      "imageUrl": "https://moreproducts.vtexassets.com/arquivos/ids/183717/VTA-84626_1.jpg?v=639071325091900000",
+      "evidence": "Source explicitly names VTA-84626; original image served by More Products VTA asset CDN. White dual grounded outlets and USB match the specified model.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        1400,
+        1400
+      ],
+      "sha256": "b71f188e089f89234814c32517c00a554b6f362d625edf00fc6b0dc297530bdf"
+    },
+    {
+      "sku": "15329",
+      "alt": "Herraje zapatero plástico negro de tres niveles HSO408-00",
+      "caption": "Vista de un componente del herraje zapatero; no incluye el mueble.",
+      "kind": "component-detail",
+      "researchKind": "product-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://virtualmuebles.com/products/hso408-00-zapatero-de-plastico-de-3-capas-negro",
+      "imageUrl": "https://virtualmuebles.com/cdn/shop/products/herrajes-accesorios-zapatero-HSO408-00-madecentro.jpg?v=1688762767&width=1200",
+      "evidence": "Exact HSO408-00 reference, black plastic and three levels in distributor listing; photo shows one component of the shoe-rack hardware, not a finished cabinet.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        1024,
+        720
+      ],
+      "sha256": "cde6c030dcbfa516d927f25cdcd93586be13f55ec4de0aaa8ddd10d33e3234ae"
+    },
+    {
+      "sku": "15389",
+      "alt": "Mecanismo hidráulico HCA005-140 instalado en cama baúl doble; cama y colchón no incluidos",
+      "caption": "Ilustración del mecanismo instalado. No incluye cama ni colchón.",
+      "kind": "supplier-render",
+      "researchKind": "installation-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/collections/diasnaranja0423/products/mecanismo-hidraulico-para-cama-bahul-doble?_fid=134c17f34&_pos=53&_ss=c",
+      "imageUrl": "https://madecentro.com/cdn/shop/products/herrajes-mecanismo-hidraulico-cama-HCA005-140-madecentro2.jpg?v=1668705702",
+      "evidence": "Exact HCA005-140 in distributor page; original is an installation render showing mechanism in context. Catalog sold item is hardware; render caption explicitly excludes bed and mattress.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        1024,
+        720
+      ],
+      "sha256": "c82877eb3c0797af014641bd493c5390d255479ee008064f237844b746703b52"
+    },
+    {
+      "sku": "15214",
+      "alt": "Interruptor sencillo inteligente VTA-84500, blanco",
+      "researchKind": "product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://www.alkosto.com/interruptor-luz-inteligente-vta-touch-wifi-sencillo/p/7702271845009",
+      "imageUrl": "https://www.alkosto.com/medias/7702271845009-001-750Wx750H?context=bWFzdGVyfGltYWdlc3wyMjgyfGltYWdlL3dlYnB8YUdSbUwyaG1aQzh4TkRNek9UZzNNVE0zTlRNNU1DODNOekF5TWpjeE9EUTFNREE1WHpBd01WODNOVEJYZURjMU1FZ3w4NWRkMzEyNDBkMDFhZWE5ODVkNmUwMDY0ZTMwMDVkYzdjZDhhZjM3N2I0YmI0NWUxNjI3Y2MzYjc0YjkyZmYy",
+      "evidence": "Alkosto page explicitly identifies VTA-84500, single touch switch; 750px original product image reviewed.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        750,
+        750
+      ],
+      "sha256": "c9a8404edfe71ad5e2f874a998305276231a81084966a299a59de525d5dee427"
+    },
+    {
+      "sku": "5075",
+      "alt": "Pasador Amig 390-40 niquelado, 40 mm",
+      "researchKind": "product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://agas.pl/zasuwy-drzwiowe/13874-p13874-zasuwka-390-40-niklowana-5902136714361.html",
+      "imageUrl": "https://agas.pl/92541-large_default/zasuwka-meblowa-stalowa-40x28mm-niklowana-mod-390.jpg",
+      "evidence": "Current AGAS manufacturer field AMIG and exact model 390, 40x28mm nickel finish; image is silver and depicts a single bolt with fasteners.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "0d985c41748f005982b822434a035c3fc29642b1d1b29454d60eaeff480dd065"
+    },
+    {
+      "sku": "9097",
+      "alt": "Detalle de bisagra FEH 4365 de cazuela angular 135°; venta por par",
+      "caption": "Vista de una bisagra del par.",
+      "kind": "pair-detail",
+      "researchKind": "manufacturer-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://flexoneh.com.co/producto/bisagra-de-cazuela-angular-135-feh/",
+      "imageUrl": "https://flexoneh.com.co/wp-content/uploads/2022/07/4365A.png",
+      "evidence": "Official FEH/Flexon page identifies 4365 and 135 degrees; source image depicts one hinge, scoped as detail of pair sold locally.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        1920,
+        1920
+      ],
+      "sha256": "5e9e4f09d27335a6bddd50475b4d5949f4c50ef116d760838ad0ab4a992cca22"
+    },
+    {
+      "sku": "9096",
+      "alt": "Detalle de bisagra FEH 4366 de cazuela angular 165°; venta por par",
+      "caption": "Vista de una bisagra del par.",
+      "kind": "pair-detail",
+      "researchKind": "manufacturer-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://flexoneh.com.co/producto/bisagra-de-cazuela-angular-165-feh/",
+      "imageUrl": "https://flexoneh.com.co/wp-content/uploads/2022/07/4366A.jpg",
+      "evidence": "Official FEH/Flexon page identifies 4366 and 165 degrees; source image depicts one hinge, scoped as detail of pair sold locally.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "77cac5f13509037a602635536494fb6e32a8416d3d8fca5ff70550cb4d8bd4a6"
+    },
+    {
+      "sku": "9468",
+      "alt": "Detalle de cerradura ovalada Gato 2060 con referencia 720601",
+      "caption": "Detalle de cerradura ovalada Gato 2060 con referencia 720601",
+      "kind": "component-detail",
+      "researchKind": "manufacturer-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://ideace.com/products/e01039",
+      "imageUrl": "http://ideace.com/cdn/shop/files/720601-cerradura_20de_20mueble_202060_20ideace-principal.webp?v=1753924341",
+      "evidence": "Official Ideace page explicitly names Gato 2060; original file names manufacturer code 720601 exactly. Photo depicts lock body, not all supplied components.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        1500,
+        1500
+      ],
+      "sha256": "0d6bc3e7226b556d62f69f1ff29b426711de37060f7da54a7f870794c9bb099c"
+    },
+    {
+      "sku": "10848",
+      "alt": "Cerradura de mueble Gato 2050 cromada, referencia 720501",
+      "caption": "Cerradura de mueble Gato 2050 cromada, referencia 720501",
+      "kind": "component-detail",
+      "researchKind": "manufacturer-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://ideace.com/products/e01038",
+      "imageUrl": "http://ideace.com/cdn/shop/files/720501-cerradura_20de_20mueble_202050_20ideace-principal.webp?v=1753924335",
+      "evidence": "Official Ideace page names Gato 2050 and original filename carries matching 720501. Chrome/silver body and square shape visually reviewed.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        1500,
+        1500
+      ],
+      "sha256": "afbb5edf0cba56f8753f1d3f4650350d929b6cef73e75b197bec83a12203cef0"
+    },
+    {
+      "sku": "9821",
+      "alt": "Válvula de regulación Dicol de 1/2 pulgada, referencia 6-307",
+      "researchKind": "product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://www.pamo.co/products/valvula-reguladora-presion-1-2-plastica-blanca",
+      "imageUrl": "http://www.pamo.co/cdn/shop/files/imgi_10_D_821102-MCO99635495281_112025-O.jpg?crop=center&height=1200&v=1764185059&width=1200",
+      "evidence": "Pamo listing SKU 6-307 and 1/2 regulator; Dicol marking visible on valve. Exact reference cross-confirmed with independent indexed listing.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        500,
+        500
+      ],
+      "sha256": "05806b375430a8c1e5ec9d84532d0f4521dee212c836961e4c4f5e7c25358fa0"
+    },
+    {
+      "sku": "7721",
+      "alt": "Clavija Leviton 515PV amarilla, 15 A",
+      "researchKind": "product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://leviton.com/products/515PV",
+      "imageUrl": "https://leviton.com/content/dam/leviton/residential/product_images/515pv/lc_img_jpg_325_515PV.png",
+      "evidence": "Official Leviton page exact model 515PV, yellow, 15A 125V NEMA 5-15P. Original manufacturer photo reviewed. Local reference L0515PV retains manufacturer model with vendor prefix.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        325,
+        325
+      ],
+      "sha256": "0f7597c72cadb95ffa50ea0b069a52f9d12561ec418b52725fd2105d7ad8dd99"
+    },
+    {
+      "sku": "7174",
+      "alt": "Clavija Codelca C-003 con polo a tierra, 15 A",
+      "researchKind": "product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://www.electroled.com.co/producto/clavija-15-amp-c-p-codelca-c-003/",
+      "imageUrl": "https://www.electroled.com.co/wp-content/uploads/2026/08/ht2-01.png",
+      "evidence": "Distributor explicitly identifies Codelca C-003 and unit sales; original gallery image depicts one grounded rubber plug.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        2297,
+        2358
+      ],
+      "sha256": "695859c4a994171d0edd1e36c6e5ba1f5fd51a5e83deefd7b96432b19b15cd1e"
+    },
+    {
+      "sku": "11867",
+      "alt": "Detalle del carro del sistema corredizo Ducasse D-100 de 100 kg",
+      "caption": "Detalle del carro del sistema corredizo Ducasse D-100 de 100 kg",
+      "kind": "component-detail",
+      "researchKind": "manufacturer-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://ducasseindustrial.com/mx/productos/corredera-d-100/",
+      "imageUrl": "https://ducasseindustrial.com/mx/wp-content/uploads/sites/21/2021/07/MX_10100217501_IMG_PROD1_BL.png",
+      "evidence": "Official Ducasse D-100 system up to 100kg for metal/wood door; image depicts a single trolley component. Classified and caption scoped as component detail, not representation of complete kit.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        2904,
+        2088
+      ],
+      "sha256": "990b85fc962c76a53568b91b84b59de86c28ec5ffe60a9edf38cc3808d7b4c27"
+    },
+    {
+      "sku": "11125",
+      "alt": "Retén para bisagra push Ducasse 3013110000",
+      "researchKind": "product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://ducasseindustrial.com/producto/reten-bisagra-push",
+      "imageUrl": "https://ducasseindustrial.com/wp-content/uploads/2020/09/CL_3013110000_IMG_PROD1_BL.jpg",
+      "evidence": "Official manufacturer page names exact code 3013110000 and function retaining push doors.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "05ea49f7067aa500d7e2ebc0ab624af744295fdf498477479f953b7db2211275"
+    },
+    {
+      "sku": "8682",
+      "alt": "Soporte multiusos Induma T1311-0009; vista de sus placas zincadas",
+      "caption": "Vista del soporte y sus placas; consultar contenido del par.",
+      "kind": "pair-detail",
+      "researchKind": "product-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.dyna.com.co/public/producto/45383/soporte-multiusos-de-2-x-112-pg-zincado-cabeza-redonda-calibre-12-con-tornillo-t1311-0009/B50",
+      "imageUrl": "https://cdn.laferreteria.online/thumb/phpThumb.php?src=/img/45383.jpg",
+      "evidence": "Dyna distributor exact T1311-0009, zinc plated round-head support, 2 x 1.5 inches and gauge12; image depicts one bracket component of pair.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "6d59108f46d234840ed2b3f272043fffba67f286af2cf7eaf509e826ab88ac0b"
+    },
+    {
+      "sku": "0957",
+      "alt": "Cerradura Yale 854D; vista del cuerpo y cilindro exterior",
+      "caption": "Vista exterior del modelo 854; no muestra el cilindro interior.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.gruporoldan.com.co/roldangr/vp1146/sp/",
+      "imageUrl": "https://www.gruporoldan.com.co/clientes/roldangr/images/portafolio/imagen_id_1146.webp",
+      "evidence": "Exact distributor reference 4022 maps local SKU 0957; manufacturer Yale Colombia 2025 catalog PDF page 58 corroborates model/function/finish. Re-reviewed original pixels as a scoped exterior/component view. Visible body, finish and geometry match. Supplier uses this view across variants differing on hidden internal function/cylinder length; image is NOT evidence of that hidden difference, complete kit contents, or exact dimensions. The explicit visible caption discloses view scope. No source catalog attributes changed. Previous hold concerned hidden-side/length visibility, not an observed mismatch; this narrower component presentation resolves the image-use issue.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing asset; no express open license established. Used for user-requested product catalog with source attribution in provenance, not license-cleared.",
+      "dimensions": [
+        600,
+        600
+      ],
+      "sha256": "a1643da1d8ed01f7341ae8dc2010fb0b30429433a527a0426a6e1eb3ebd9d3e1"
+    },
+    {
+      "sku": "0959",
+      "alt": "Cerradura Yale 854S; vista del cuerpo y cilindro exterior",
+      "caption": "Vista exterior del modelo 854; no muestra el mecanismo interior.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.gruporoldan.com.co/roldangr/vp1148/sp/",
+      "imageUrl": "https://www.gruporoldan.com.co/clientes/roldangr/images/portafolio/imagen_id_1148.webp",
+      "evidence": "Exact distributor reference 4021 maps local SKU 0959; manufacturer Yale Colombia 2025 catalog PDF page 58 corroborates model/function/finish. Re-reviewed original pixels as a scoped exterior/component view. Visible body, finish and geometry match. Supplier uses this view across variants differing on hidden internal function/cylinder length; image is NOT evidence of that hidden difference, complete kit contents, or exact dimensions. The explicit visible caption discloses view scope. No source catalog attributes changed. Previous hold concerned hidden-side/length visibility, not an observed mismatch; this narrower component presentation resolves the image-use issue.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing asset; no express open license established. Used for user-requested product catalog with source attribution in provenance, not license-cleared.",
+      "dimensions": [
+        600,
+        600
+      ],
+      "sha256": "a1643da1d8ed01f7341ae8dc2010fb0b30429433a527a0426a6e1eb3ebd9d3e1"
+    },
+    {
+      "sku": "0982",
+      "alt": "Cerradura Yale 2044; detalle frontal del pestillo vertical",
+      "caption": "Vista frontal del modelo 2044; no muestra la longitud del cilindro.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.gruporoldan.com.co/roldangr/vp1168/sp/",
+      "imageUrl": "https://www.gruporoldan.com.co/clientes/roldangr/images/portafolio/imagen_id_1168.webp",
+      "evidence": "Exact distributor reference 5007 maps local SKU 0982; manufacturer Yale Colombia 2025 catalog PDF page 139 corroborates model/function/finish. Re-reviewed original pixels as a scoped exterior/component view. Visible body, finish and geometry match. Supplier uses this view across variants differing on hidden internal function/cylinder length; image is NOT evidence of that hidden difference, complete kit contents, or exact dimensions. The explicit visible caption discloses view scope. No source catalog attributes changed. Previous hold concerned hidden-side/length visibility, not an observed mismatch; this narrower component presentation resolves the image-use issue.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing asset; no express open license established. Used for user-requested product catalog with source attribution in provenance, not license-cleared.",
+      "dimensions": [
+        600,
+        600
+      ],
+      "sha256": "9a44d88da5c313df923a7bea5a4dc314b5028d702f5c7fd3d9f10ac0ca527776"
+    },
+    {
+      "sku": "9940",
+      "alt": "Cerradura Yale 2045; detalle frontal del pestillo horizontal",
+      "caption": "Vista frontal del modelo 2045; no muestra la longitud del cilindro.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://ferricentro.com/cerradura-para-mueble-puerta-de-20mm-ff-0000030040",
+      "imageUrl": "https://ferricentro.com/media/catalog/product/i/m/imagen_0000030040_26550359.png?optimize=low&fit=bounds&height=700&width=700&format=jpeg",
+      "evidence": "Exact distributor reference 5008 maps local SKU 9940; manufacturer Yale Colombia 2025 catalog PDF page 139 corroborates model/function/finish. Re-reviewed original pixels as a scoped exterior/component view. Visible body, finish and geometry match. Supplier uses this view across variants differing on hidden internal function/cylinder length; image is NOT evidence of that hidden difference, complete kit contents, or exact dimensions. The explicit visible caption discloses view scope. No source catalog attributes changed. Previous hold concerned hidden-side/length visibility, not an observed mismatch; this narrower component presentation resolves the image-use issue.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing asset; no express open license established. Used for user-requested product catalog with source attribution in provenance, not license-cleared.",
+      "dimensions": [
+        700,
+        700
+      ],
+      "sha256": "623fa4058183b256b05356186419de449c28b159f57e087056414e22c6cb62d6"
+    },
+    {
+      "sku": "10129",
+      "alt": "Cerrojo Yale Phillips Oslo; vista exterior",
+      "caption": "Vista exterior del modelo Oslo; no muestra el mecanismo interior.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.casadelcomercio.com.co/producto-cerrojo-oslo-llave-us32d-6749-yale-8895",
+      "imageUrl": "https://casadelcomercio.com.co//gestion/uploads/product/8895/8895.jpg",
+      "evidence": "Exact distributor reference 6749 maps local SKU 10129; manufacturer Yale Colombia 2025 catalog PDF page 150 corroborates model/function/finish. Re-reviewed original pixels as a scoped exterior/component view. Visible body, finish and geometry match. Supplier uses this view across variants differing on hidden internal function/cylinder length; image is NOT evidence of that hidden difference, complete kit contents, or exact dimensions. The explicit visible caption discloses view scope. No source catalog attributes changed. Previous hold concerned hidden-side/length visibility, not an observed mismatch; this narrower component presentation resolves the image-use issue.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing asset; no express open license established. Used for user-requested product catalog with source attribution in provenance, not license-cleared.",
+      "dimensions": [
+        300,
+        300
+      ],
+      "sha256": "2bb0821ff002af90261d9cb1c9aebe297af7d3c8435f0a82b7b97155398f9407"
+    },
+    {
+      "sku": "15638",
+      "alt": "Cerrojo Yale Phillips Oslo; vista exterior",
+      "caption": "Vista exterior del modelo Oslo; no muestra el mecanismo interior.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.casadelcomercio.com.co/producto-cerrojo-oslo-llave-mariposa-us32d-6755-yale-8894",
+      "imageUrl": "https://casadelcomercio.com.co//gestion/uploads/product/8894/8894.jpg",
+      "evidence": "Exact distributor reference 6755 maps local SKU 15638; manufacturer Yale Colombia 2025 catalog PDF page 150 corroborates model/function/finish. Re-reviewed original pixels as a scoped exterior/component view. Visible body, finish and geometry match. Supplier uses this view across variants differing on hidden internal function/cylinder length; image is NOT evidence of that hidden difference, complete kit contents, or exact dimensions. The explicit visible caption discloses view scope. No source catalog attributes changed. Previous hold concerned hidden-side/length visibility, not an observed mismatch; this narrower component presentation resolves the image-use issue.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing asset; no express open license established. Used for user-requested product catalog with source attribution in provenance, not license-cleared.",
+      "dimensions": [
+        300,
+        300
+      ],
+      "sha256": "87bc797130c44f90be8a066ed36630d8e83ed4521f125c13f242bbd407b83257"
+    },
+    {
+      "sku": "12480",
+      "alt": "Manija Yale Bari US15; vista exterior con llave",
+      "caption": "Vista exterior del modelo Bari; no muestra la función del seguro interior.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriaonlinelevallejoaz.com/cerrad-p-alc-cromo-manija-bari-9055/",
+      "imageUrl": "https://ferreteriaonlinelevallejoaz.com/wp-content/uploads/2024/03/5100.jpg",
+      "evidence": "Exact distributor reference 9055 maps local SKU 12480; manufacturer Yale Colombia 2025 catalog PDF page 85 corroborates model/function/finish. Re-reviewed original pixels as a scoped exterior/component view. Visible body, finish and geometry match. Supplier uses this view across variants differing on hidden internal function/cylinder length; image is NOT evidence of that hidden difference, complete kit contents, or exact dimensions. The explicit visible caption discloses view scope. No source catalog attributes changed. Previous hold concerned hidden-side/length visibility, not an observed mismatch; this narrower component presentation resolves the image-use issue.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing asset; no express open license established. Used for user-requested product catalog with source attribution in provenance, not license-cleared.",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "683b348f0f559daaa58622e089dfb1178c5d94f5717699f2bd80e608f8dca663"
+    },
+    {
+      "sku": "12640",
+      "alt": "Manija Yale Bari US15; vista exterior con llave",
+      "caption": "Vista exterior del modelo Bari; no muestra la función del seguro interior.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.casaferretera.com/chapa_manija_yale_entrada_principal_9059cromado_bariag/p",
+      "imageUrl": "https://casaferretera.vtexassets.com/arquivos/ids/157659/072244.jpg?v=637995672541370000",
+      "evidence": "Exact distributor reference 9059 maps local SKU 12640; manufacturer Yale Colombia 2025 catalog PDF page 85 corroborates model/function/finish. Re-reviewed original pixels as a scoped exterior/component view. Visible body, finish and geometry match. Supplier uses this view across variants differing on hidden internal function/cylinder length; image is NOT evidence of that hidden difference, complete kit contents, or exact dimensions. The explicit visible caption discloses view scope. No source catalog attributes changed. Previous hold concerned hidden-side/length visibility, not an observed mismatch; this narrower component presentation resolves the image-use issue.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing asset; no express open license established. Used for user-requested product catalog with source attribution in provenance, not license-cleared.",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "41cf32ab71db7a1ca8f531397462748da6ec317be1bd9e848817b20ce8649b17"
+    },
+    {
+      "sku": "15698",
+      "alt": "Cerradura Yale Mini E negra; vista del exterior",
+      "caption": "Vista exterior de Mini E negra; no muestra el cilindro interior.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.electricoslacabalgata.com/products/cerra-yale-mini-ll-ll-ne-4152",
+      "imageUrl": "http://www.electricoslacabalgata.com/cdn/shop/products/0004152-0004150_f340d0d3-9f25-4763-b1b2-d282f0ec0a9b_600x.png?v=1626921037",
+      "evidence": "Exact distributor reference 4152 maps local SKU 15698; manufacturer Yale Colombia 2025 catalog PDF page 58 corroborates model/function/finish. Re-reviewed original pixels as a scoped exterior/component view. Visible body, finish and geometry match. Supplier uses this view across variants differing on hidden internal function/cylinder length; image is NOT evidence of that hidden difference, complete kit contents, or exact dimensions. The explicit visible caption discloses view scope. No source catalog attributes changed. Previous hold concerned hidden-side/length visibility, not an observed mismatch; this narrower component presentation resolves the image-use issue.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing asset; no express open license established. Used for user-requested product catalog with source attribution in provenance, not license-cleared.",
+      "dimensions": [
+        600,
+        522
+      ],
+      "sha256": "c717135f9a6fe4d5cfe89a2cd93811e20d233532d7b2b2821cc5c9c358f85f14"
+    },
+    {
+      "sku": "11485",
+      "alt": "Cerrojo Yale 170 para vidrio, referencia 4047; vista exterior",
+      "caption": "Vista exterior del cerrojo para vidrio; no muestra la mariposa interior.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.electricoslacabalgata.com/products/chapa-yale-170-1-4-4047-ll-m-vidrio",
+      "imageUrl": "https://www.electricoslacabalgata.com/cdn/shop/products/0004047.png?v=1626920995",
+      "evidence": "Exact reference 4047 listed by distributor and original filename, corroborated official Yale 170 glass page and manufacturer 2025 catalog page 90 as US14 key-thumbturn glass lock. Downloaded original is the large version of the same common exterior/body view used by Yale official page. Narrow front plate, deadbolt and polished nickel exterior are consistent. Interior thumbturn is hidden and is not claimed to be visually proved. Source catalog unchanged; earlier hold had not yet searched this exact 4047 reference.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing asset; no express open license established. Used for user-requested product catalog with source attribution in provenance, not license-cleared.",
+      "dimensions": [
+        1534,
+        720
+      ],
+      "sha256": "7c54ffc885ab336f138682d880c7fc8ed8d0172e26d3ac8820e38381be4aa5b8"
+    },
+    {
+      "sku": "11275",
+      "alt": "Soporte para entrepaño de vidrio 880 de 105 mm, referencia HVS888-01",
+      "researchKind": "product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/soporte-pared-vidrio-lujo-880-niquel-cepillado-105-mm",
+      "imageUrl": "https://madecentro.com/cdn/shop/products/herrajes_soportes-vidrio_mobile_hvs888-01_madecentro.jpg?v=1613077766",
+      "evidence": "La referencia HVS888-01 y medida 105 mm coinciden con el catálogo local. Imagen individual del soporte en la ficha específica; archivo de fabricante/distribuidor identificado Mobile; página actual comercializada como Bonuit. Fotografía de una unidad, sin empaque múltiple.",
+      "exactVariant": true,
+      "licenseStatus": "public-commercial-product-image; no express open license verified; reuse authorized by user; not license-cleared",
+      "dimensions": [
+        1024,
+        695
+      ],
+      "sha256": "62656f63d30efae0997afaf460fb60b5dd037244ad893f0dd8049eae84d9b8db"
+    },
+    {
+      "sku": "13469",
+      "alt": "Soporte Mobile para vidrio, referencia HVS604-01",
+      "researchKind": "product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/soportes-vidrio-604",
+      "imageUrl": "https://madecentro.com/cdn/shop/products/herrajes_soportes-vidrio_mobile_hvs604-01.jpg?v=1613077776",
+      "evidence": "La ficha Mobile coincide exactamente con HVS604-01 del catálogo; soporte niquelado para vidrio de 10 mm, vendido por unidad. Se muestra solamente el herraje principal de una unidad.",
+      "exactVariant": true,
+      "licenseStatus": "public-commercial-product-image; no express open license verified; reuse authorized by user; not license-cleared",
+      "dimensions": [
+        1024,
+        720
+      ],
+      "sha256": "371a57cefa236f39864576320470fb7f00075f2097e070e12fa02480720204a2"
+    },
+    {
+      "sku": "13322",
+      "alt": "Representación del soporte ovalado HTU100-01",
+      "caption": "Representación del soporte ovalado HTU100-01",
+      "kind": "manufacturer-render",
+      "researchKind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/tubos-roperos-100",
+      "imageUrl": "https://madecentro.com/cdn/shop/files/herrajes-aluminio-soporte-tubo-ovalado-htu100-01-madecentro_1.jpg?v=1782146220",
+      "evidence": "SKU HTU100-01 del catálogo coincide con la variante níquel de Mobile. Imagen de detalle cuyo archivo identifica HTU100-01, distinta de HTU100-02N negro. Render comercial de una sola unidad.",
+      "exactVariant": true,
+      "licenseStatus": "public-commercial-product-image; no express open license verified; reuse authorized by user; not license-cleared",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "sha256": "c45d9a6f8da2c3ea88ba70b530f5ac28d06330da0d648efa5c545f418b80ac95"
+    },
+    {
+      "sku": "5618",
+      "alt": "Grapa para muebles Fuerte GRA-87",
+      "researchKind": "product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://www.industriasfuerte.com/",
+      "imageUrl": "https://www.industriasfuerte.com/images/Portafolio/5/GRA-87.png",
+      "evidence": "Fabricante Industrias Fuerte identifica GRA-87, grapa para muebles zinc iris. Catálogo local identifica Fuerte y GRA-87. Foto muestra una sola grapa, coincide venta local por unidad; bolsa industrial de 500 no representada.",
+      "exactVariant": true,
+      "licenseStatus": "public-commercial-product-image; no express open license verified; reuse authorized by user; not license-cleared",
+      "dimensions": [
+        640,
+        400
+      ],
+      "sha256": "dd17bfbb0ab5131199f0388b232d61e721e1284240612db9794e23223518f8c6"
+    },
+    {
+      "sku": "5652",
+      "alt": "Caja de clavillos Senco AY10 de 5/8 pulgada",
+      "researchKind": "product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://maquitodo.com.co/grapas-y-puntillas/clavo-ay10-58-cal-18-cajax5mil-senco-r5",
+      "imageUrl": "https://clientebhp7b0eo.com.co/backend/admin/backend/web/archivosDelCliente/items/images/TORNILLOS-GRAPAS-Y-PUNTILLAS-GRAPAS-Y-PUNTILLAS-CLAVO-AY10-58-CAL-18-CAJAx5MIL-SENCO-425320240816172402.jpg",
+      "evidence": "Caja legible Senco AY10, 5/8 pulgadas (16 mm), calibre 18, galvanizado, cabeza ligera, 5000. Tabla oficial Senco identifica AY10EAA con esas especificaciones y caja 5000; coincide catálogo local Caja y AY10EAA.",
+      "exactVariant": true,
+      "licenseStatus": "public-commercial-product-image; no express open license verified; reuse authorized by user; not license-cleared",
+      "dimensions": [
+        750,
+        750
+      ],
+      "sha256": "4d8b9ec0a03e9d73f523cee2b10a049652bde4c4d5039a741ea0f438ac45417a"
+    },
+    {
+      "sku": "8553",
+      "alt": "Caja de clavillos Senco AX13 de 1 pulgada",
+      "researchKind": "product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://maquitodo.com.co/grapas-y-puntillas/clavo-ay10-58-cal-18-cajax5mil-senco-r5",
+      "imageUrl": "https://clientebhp7b0eo.com.co/backend/admin/backend/web/archivosDelCliente/items/images/TORNILLOS-GRAPAS-Y-PUNTILLAS-GRAPAS-Y-PUNTILLAS-CLAVO-AX13-1-CAL-18-CAJAx5MIL-SENCO-424520240816172401.jpg",
+      "evidence": "Imagen de producto relacionado AX13 en página Maquitodo. Caja legible Senco AX13, 1 pulgada (25 mm), calibre 18, galvanizado, cabeza mediana, 5000. Tabla oficial y Arlington identifican AX13EAA con esas especificaciones, coincide catálogo local Caja y AX13EAA.",
+      "exactVariant": true,
+      "licenseStatus": "public-commercial-product-image; no express open license verified; reuse authorized by user; not license-cleared",
+      "dimensions": [
+        750,
+        750
+      ],
+      "sha256": "f34ef737ab206a997ae8a3d64ea1cfd614086f28ead10b09bc531e2ffa43f185"
+    },
+    {
+      "sku": "1952",
+      "alt": "Tarugo HVA356-03 de 8 × 40 mm; vista de referencia compartida de la familia, no a escala",
+      "caption": "Tarugo HVA356-03 de 8 × 40 mm; vista de referencia compartida de la familia, no a escala",
+      "kind": "supplier-render",
+      "researchKind": "supplier-family-reference",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/varios-tarugos-17112",
+      "imageUrl": "https://madecentro.com/cdn/shop/products/herrajes_varios_tarugos_mobile_hva356-02_1_1.jpg?v=1613079643",
+      "evidence": "Página Madecentro individual SKU HVA356-03 especifica 8x40 mm, Mobile y unidad. Imagen compartida con HVA356-02: no demuestra longitud; autorizada como vista de familia con código exacto y alcance declarado.",
+      "exactVariant": true,
+      "licenseStatus": "public-commercial-product-image; no express open license verified; reuse authorized by user; not license-cleared",
+      "dimensions": [
+        1024,
+        720
+      ],
+      "sha256": "fc872890e260823ce50385ee877f6edc2645923902ccc412aa739fb7458d1baa"
+    },
+    {
+      "sku": "8800",
+      "alt": "Tarugo HVA356-02 de 8 × 30 mm; vista de referencia compartida de la familia, no a escala",
+      "caption": "Tarugo HVA356-02 de 8 × 30 mm; vista de referencia compartida de la familia, no a escala",
+      "kind": "supplier-render",
+      "researchKind": "supplier-family-reference",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/varios-tarugos-17111",
+      "imageUrl": "https://madecentro.com/cdn/shop/products/herrajes_varios_tarugos_mobile_hva356-02_1.jpg?v=1613078345",
+      "evidence": "Página Madecentro individual HVA356-02 especifica 8x30 mm, Mobile y unidad. Imagen compartida con HVA356-03: no demuestra longitud; autorizada como vista de familia con código exacto y alcance declarado.",
+      "exactVariant": true,
+      "licenseStatus": "public-commercial-product-image; no express open license verified; reuse authorized by user; not license-cleared",
+      "dimensions": [
+        1024,
+        720
+      ],
+      "sha256": "fc872890e260823ce50385ee877f6edc2645923902ccc412aa739fb7458d1baa"
+    },
+    {
+      "sku": "14189",
+      "alt": "Soporte HVS688-01 para vidrio de 8 mm: una pieza del par, vista compartida de la familia",
+      "caption": "Soporte HVS688-01 para vidrio de 8 mm: una pieza del par, vista compartida de la familia",
+      "kind": "supplier-render",
+      "researchKind": "supplier-family-reference",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/soporte-entrepa-o-vidrio-media-luna-plano-de-8-mm-cromado",
+      "imageUrl": "https://madecentro.com/cdn/shop/products/herrajes_soportes-vidrio_mobile_entrepano-vidrio_hvs688-01.jpg?v=1613077777",
+      "evidence": "Página Madecentro SKU HVS688-01, Mobile, cromado, vidrio 8 mm; mismo archivo visual que HVS688-02. Foto muestra una pieza del par vendido en Pardo; no demuestra espesor. Coincide código exacto, mecanismo y acabado.",
+      "exactVariant": true,
+      "licenseStatus": "public-commercial-product-image; no express open license verified; reuse authorized by user; not license-cleared",
+      "dimensions": [
+        1024,
+        720
+      ],
+      "sha256": "0dd370bede9da6373a4d47acb4322e31780172904111490f452e2b8fbfc9a7c8"
+    },
+    {
+      "sku": "12747",
+      "alt": "Soporte HVS688-02 para vidrio de 10 mm: una pieza del par, vista compartida de la familia",
+      "caption": "Soporte HVS688-02 para vidrio de 10 mm: una pieza del par, vista compartida de la familia",
+      "kind": "supplier-render",
+      "researchKind": "supplier-family-reference",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/soporte-entrepa-o-vidrio-media-luna-plano-de-10-mm-cromado",
+      "imageUrl": "https://madecentro.com/cdn/shop/products/herrajes_soportes-vidrio_mobile_entrepano-vidrio_hvs688-02.jpg?v=1613077777",
+      "evidence": "Página Madecentro SKU HVS688-02, Mobile, cromado, vidrio 10 mm; mismo archivo visual que HVS688-01. Foto muestra una pieza del par vendido en Pardo; no demuestra espesor. Coincide código exacto, mecanismo y acabado.",
+      "exactVariant": true,
+      "licenseStatus": "public-commercial-product-image; no express open license verified; reuse authorized by user; not license-cleared",
+      "dimensions": [
+        1024,
+        720
+      ],
+      "sha256": "0dd370bede9da6373a4d47acb4322e31780172904111490f452e2b8fbfc9a7c8"
+    },
+    {
+      "sku": "5233",
+      "alt": "Silicona Pegadit blanca de 280 ml; imagen comercial del fabricante.",
+      "researchKind": "manufacturer-packshot",
+      "provenance": "download-original",
+      "sourcePage": "https://afix.com.co/productos/afix-pegadit-silicona-banos-y-cocinas/",
+      "imageUrl": "https://afix.com.co/wp-content/uploads/2024/10/01-Silicona-Peg-Acetica-BYC-BL-TB-280ML.png",
+      "evidence": "Manufacturer BYC white 280 ml packshot. Exact catalog reference 0402823 confirmed independently by Homecenter 18500 (402823), white 280 ml; the 50 ml gallery alternative is excluded.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing asset; no express open license verified. User-authorized sourcing with transparent provenance, not license-cleared.",
+      "dimensions": [
+        2000,
+        2000
+      ],
+      "sha256": "730a6be23aa307d750ab4260c5ae21091d86c4ea2c223182dfb67aa48bc09ee6"
+    },
+    {
+      "sku": "5234",
+      "alt": "Silicona Pegadit negra de 280 ml; imagen comercial del fabricante.",
+      "researchKind": "manufacturer-packshot",
+      "provenance": "download-original",
+      "sourcePage": "https://afix.com.co/productos/afix-pegadit-silicona-vidrio-y-aluminio/",
+      "imageUrl": "https://afix.com.co/wp-content/uploads/2024/10/01-Silicona-Peg-Acetica-VYA-NG-TB-280ML.png",
+      "evidence": "Manufacturer VYA NG TB280ML packshot visibly labelled negro. Exact catalog ref 0406173 confirmed by Ferretería Moderna listing for black vidrio/aluminio 280 ml. Automotriz black listing was not substituted.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing asset; no express open license verified. User-authorized sourcing with transparent provenance, not license-cleared.",
+      "dimensions": [
+        2000,
+        2000
+      ],
+      "sha256": "f09d0eea86cf75820b4dafaba7acaa3cdc6941c795b04b2849c20bcfaaad5379"
+    },
+    {
+      "sku": "13536",
+      "alt": "Pegante PU Montaje de 310 ml; imagen comercial del fabricante.",
+      "researchKind": "manufacturer-packshot",
+      "provenance": "download-original",
+      "sourcePage": "https://afix.com.co/productos/afix-pu-montaje/",
+      "imageUrl": "https://afix.com.co/wp-content/uploads/2024/10/01-AFIX_PU_MONTAJE-310ML.png",
+      "evidence": "Official Afix PU Montaje 310 ml beige packshot. Exact catalog ref 0405871 confirmed by Hoyostools item 20665, EAN 7702505504702, and Carpincentro 405871 listing.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing asset; no express open license verified. User-authorized sourcing with transparent provenance, not license-cleared.",
+      "dimensions": [
+        2000,
+        2000
+      ],
+      "sha256": "f5893db7039274310885992d6df1b81fcde751ae42febe8a12003e2c0aeb6fd5"
+    },
+    {
+      "sku": "11986",
+      "alt": "Fresa AGE MD142 de corte recto, 1/2 × 1.1/2 pulgadas y espigo de 1/2; imagen comercial.",
+      "researchKind": "distributor-product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://generalcuttingtools.com/product/amanatool-age-md142/",
+      "imageUrl": "https://generalcuttingtools.com/wp-content/uploads/2022/02/md142-f-1.jpg",
+      "evidence": "General Cutting Tools exact MD142 product page supplies md142-f-1.jpg. Visual review can read AGE MD142 on tool shank; separate JMP Wood and Euroferr listings confirm diameter 1/2, cutting height 1.1/2 and shank 1/2. Euroferr unlabelled alternate was rejected.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing asset; no express open license verified. User-authorized sourcing with transparent provenance, not license-cleared.",
+      "dimensions": [
+        900,
+        900
+      ],
+      "sha256": "5b4dfa8909a07eaf4c506e64164b85bbdf0a82194316fbf8ea3df7bfb70920d2"
+    },
+    {
+      "sku": "2603",
+      "alt": "Herraje Fuerte EP-87-1 resortado para puerta de clóset",
+      "researchKind": null,
+      "provenance": "download-original",
+      "sourcePage": "https://www.industriasfuerte.com/",
+      "imageUrl": "https://www.industriasfuerte.com/images/Portafolio/5/EP-87-1.png",
+      "evidence": "Official manufacturer site separately identifies EP-87-1 with spring; exact reference distinct from unsprung EP-87. Photograph depicts the pivots and sleeves in the source set.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer catalog/product-marketing image. No express reuse license found; not license-cleared. No watermark or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        640,
+        400
+      ],
+      "sha256": "2eb8f6b616d853030f80ded3e456bd1c6bbc6b0e18c95fee692c81f5360a274e"
+    },
+    {
+      "sku": "5998",
+      "alt": "Escuadra Fuerte ES-90 de 10 x 18 mm",
+      "researchKind": null,
+      "provenance": "unspecified",
+      "provenanceDetail": "extract-embedded-image",
+      "extractionMethod": "pdfimages -f 10 -l 10 -png: lossless extraction/decoding of original embedded image. Source CMYK and PDF decode instructions applied; raw original JPEG stream and unchanged source PDF retained separately. Not page cropping or re-rendering. Embedded PDF object 300 0. Compare native rendered PDF page in fuerte-review-p10.png.",
+      "sourcePage": "https://industriasfuerte.com/Catalogo_web_industrias_fuerte.pdf#page=10",
+      "imageUrl": "https://industriasfuerte.com/Catalogo_web_industrias_fuerte.pdf",
+      "evidence": "Manufacturer catalog page 10 maps ES-90 to 10 x 18 mm. Image is the actual single ES-90 photograph, not the website collage of sizes and finishes. Provenance note: decoded embedded-image extraction from an unchanged downloaded PDF, not a byte-identical standalone image download. Original PDF embedded image decoded using pdfimages, not a standalone byte-identical image download; provenanceDetail=extract-embedded-image.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer catalog/product-marketing image. No express reuse license found; not license-cleared. No watermark or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        868,
+        577
+      ],
+      "sha256": "f8efa2b91b13292b4092714f7489b5760c001fd169dd6b3e97f373c3e85bc4a0"
+    },
+    {
+      "sku": "5999",
+      "alt": "Ilustración técnica del fabricante: escuadra Fuerte ES-95 de 30 mm",
+      "caption": "Ilustración técnica del fabricante: escuadra Fuerte ES-95 de 30 mm",
+      "kind": "manufacturer-render",
+      "researchKind": "product-illustration",
+      "provenance": "unspecified",
+      "provenanceDetail": "extract-embedded-image",
+      "extractionMethod": "pdfimages -f 10 -l 10 -png: lossless extraction/decoding of original embedded image. Source CMYK and PDF decode instructions applied; raw original JPEG stream and unchanged source PDF retained separately. Not page cropping or re-rendering. Embedded PDF object 378 0. Compare native rendered PDF page in fuerte-review-p10.png.",
+      "sourcePage": "https://industriasfuerte.com/Catalogo_web_industrias_fuerte.pdf#page=10",
+      "imageUrl": "https://industriasfuerte.com/Catalogo_web_industrias_fuerte.pdf",
+      "evidence": "Manufacturer catalog page 10 maps ES-95 to 13 x 30 mm zinc iris. Native isolated source technical render is used, avoiding the photograph showing both zinc and pavonado finishes. Not a photograph. Provenance note: decoded embedded-image extraction from an unchanged downloaded PDF, not a byte-identical standalone image download. Original PDF embedded image decoded using pdfimages, not a standalone byte-identical image download; provenanceDetail=extract-embedded-image.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer catalog/product-marketing image. No express reuse license found; not license-cleared. No watermark or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        598,
+        646
+      ],
+      "sha256": "470a4613d9766bff62196f7263c838792be196aa4e3b79092ce40055104928a8"
+    },
+    {
+      "sku": "6001",
+      "alt": "Escuadra Fuerte ES-110 de 25 x 40 mm",
+      "researchKind": null,
+      "provenance": "download-original",
+      "sourcePage": "https://www.industriasfuerte.com/",
+      "imageUrl": "https://www.industriasfuerte.com/images/Portafolio/3/ES-110.png",
+      "evidence": "Official single-model manufacturer photo ES-110. Catalog page 11 gives 25 x 40.3 mm; catalog sale label rounds 40 mm. Reinforced center rib and four holes visually verified.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer catalog/product-marketing image. No express reuse license found; not license-cleared. No watermark or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        640,
+        400
+      ],
+      "sha256": "089c4e279310b8eaae04eceee3bf218b67d6debe9fbbfb0d1b3b76fe69c071bb"
+    },
+    {
+      "sku": "6008",
+      "alt": "Rodamiento Fuerte P-814 de cuatro ruedas metálicas; una unidad",
+      "researchKind": null,
+      "provenance": "unspecified",
+      "provenanceDetail": "extract-embedded-image",
+      "extractionMethod": "pdfimages -f 24 -l 24 -png: lossless extraction/decoding of original embedded image. Source CMYK and PDF decode instructions applied; raw original JPEG stream and unchanged source PDF retained separately. Not page cropping or re-rendering. Embedded PDF object 1534 0. Compare native rendered PDF page in fuerte-review-p24.png.",
+      "sourcePage": "https://industriasfuerte.com/Catalogo_web_industrias_fuerte.pdf#page=24",
+      "imageUrl": "https://industriasfuerte.com/Catalogo_web_industrias_fuerte.pdf",
+      "evidence": "Manufacturer catalog page 24 identifies P-814 as metal four-wheel variant. Native photo depicts one carriage, matching local unit; supplier wholesale pack is two, not shown or implied as sale quantity. Provenance note: decoded embedded-image extraction from an unchanged downloaded PDF, not a byte-identical standalone image download. Original PDF embedded image decoded using pdfimages, not a standalone byte-identical image download; provenanceDetail=extract-embedded-image.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer catalog/product-marketing image. No express reuse license found; not license-cleared. No watermark or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        875,
+        581
+      ],
+      "sha256": "a903378aeea80d29029d387fab95481574b0d622a216f1e6e1c51f12e4890f67"
+    },
+    {
+      "sku": "6009",
+      "alt": "Rodamiento Fuerte P-814 N de cuatro ruedas de nylon; una unidad",
+      "researchKind": null,
+      "provenance": "unspecified",
+      "provenanceDetail": "extract-embedded-image",
+      "extractionMethod": "pdfimages -f 24 -l 24 -png: lossless extraction/decoding of original embedded image. Source CMYK and PDF decode instructions applied; raw original JPEG stream and unchanged source PDF retained separately. Not page cropping or re-rendering. Embedded PDF object 1473 0. Compare native rendered PDF page in fuerte-review-p24.png.",
+      "sourcePage": "https://industriasfuerte.com/Catalogo_web_industrias_fuerte.pdf#page=24",
+      "imageUrl": "https://industriasfuerte.com/Catalogo_web_industrias_fuerte.pdf",
+      "evidence": "Manufacturer catalog page 24 separately identifies P-814 N as four nylon-wheel version. Native photo shows white nylon wheels, unlike P-814 metal variant. One carriage illustrated, matching local unit. Provenance note: decoded embedded-image extraction from an unchanged downloaded PDF, not a byte-identical standalone image download. Original PDF embedded image decoded using pdfimages, not a standalone byte-identical image download; provenanceDetail=extract-embedded-image.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer catalog/product-marketing image. No express reuse license found; not license-cleared. No watermark or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        824,
+        577
+      ],
+      "sha256": "b5156c5a3ed4b469a42477f7c2c3359ce78c932cc3df4b6bb6d183aed5a430a1"
+    },
+    {
+      "sku": "6010",
+      "alt": "Rodamiento Fuerte ROG-800 para puerta de garaje; detalle del herraje",
+      "caption": "Vista del rodamiento; no detalla todo el contenido del conjunto.",
+      "kind": "component-detail",
+      "researchKind": null,
+      "provenance": "download-original",
+      "sourcePage": "https://www.industriasfuerte.com/",
+      "imageUrl": "https://www.industriasfuerte.com/images/Portafolio/7/ROG-800.png",
+      "evidence": "Exact manufacturer model photo and catalog page 27 establish ROG-800 garage carriage. Photograph depicts the carriage detail; local sale is juego, not a claim that image inventories all supplied pieces.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer catalog/product-marketing image. No express reuse license found; not license-cleared. No watermark or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        640,
+        400
+      ],
+      "sha256": "9b3173195e4a015a7f878ed06a133ef00b0c66b2aba1cd3c38633fc100d3cd79"
+    },
+    {
+      "sku": "6013",
+      "alt": "Rodamiento Fuerte RT-40 metálico en T; una unidad",
+      "researchKind": null,
+      "provenance": "unspecified",
+      "provenanceDetail": "extract-embedded-image",
+      "extractionMethod": "pdfimages -f 28 -l 28 -png: lossless extraction/decoding of original embedded image. Source CMYK and PDF decode instructions applied; raw original JPEG stream and unchanged source PDF retained separately. Not page cropping or re-rendering. Embedded PDF object 2921 0. Compare native rendered PDF page in fuerte-review-p28.png.",
+      "sourcePage": "https://industriasfuerte.com/Catalogo_web_industrias_fuerte.pdf#page=28",
+      "imageUrl": "https://industriasfuerte.com/Catalogo_web_industrias_fuerte.pdf",
+      "evidence": "Manufacturer catalog page 28 identifies RT-40 as metal beveled T roller. Native single-product photograph used instead of website collage that also depicts nylon and hook variants. Provenance note: decoded embedded-image extraction from an unchanged downloaded PDF, not a byte-identical standalone image download. Original PDF embedded image decoded using pdfimages, not a standalone byte-identical image download; provenanceDetail=extract-embedded-image.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer catalog/product-marketing image. No express reuse license found; not license-cleared. No watermark or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        874,
+        581
+      ],
+      "sha256": "e75b02826c794f07d460649bd9326bc8b53afad722f38bfda5e1ba8be0eced99"
+    },
+    {
+      "sku": "6015",
+      "alt": "Rodamiento Fuerte ROG-400 sencillo para puerta de garaje",
+      "caption": "Vista del rodamiento; no detalla todo el contenido del conjunto.",
+      "kind": "component-detail",
+      "researchKind": null,
+      "provenance": "download-original",
+      "sourcePage": "https://www.industriasfuerte.com/",
+      "imageUrl": "https://www.industriasfuerte.com/images/Portafolio/7/ROG-400.png",
+      "evidence": "Exact manufacturer ROG-400 photograph and catalog page 27 single garage carriage; distinguished from larger ROG-800 two-wheel-set mechanism.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer catalog/product-marketing image. No express reuse license found; not license-cleared. No watermark or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        640,
+        400
+      ],
+      "sha256": "0d052e000f10b7b8f515218114112c7519f54ee7a9e09d044eb9a6b0aa3c1d3b"
+    },
+    {
+      "sku": "15585",
+      "alt": "Manija Qualita QF3060 gris; imagen de referencia compartida para las medidas de 150 y 200 mm",
+      "caption": "Manija Qualita QF3060 gris; imagen de referencia compartida para las medidas de 150 y 200 mm",
+      "kind": "manufacturer-render",
+      "researchKind": "manufacturer-reference",
+      "provenance": "download-original",
+      "sourcePage": "https://hyadistribuciones.com.co/esl/Productos/Manijas/PERFIL-MANIJA-QF3060-GREY",
+      "imageUrl": "https://hyadistribuciones.com.co/var/hya/storage/images/productos/manijas/perfil-manija-qf3060-grey/qf3060-grey-1/17605-2-esl-CO/QF3060-GREY-1.jpg",
+      "evidence": "Exact official H&A QF3060 GREY family page explicitly lists QF3060-150Grey=150mm and QF3060-200Grey=200mm and shares the same gallery. Gray model/finish image verified; not visual proof of length. Native Qualita branding preserved.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        630,
+        353
+      ],
+      "sha256": "71ec15b371398b3b435214547f30c39dfe17bf29f63b2fefd1adfdc4c580f993"
+    },
+    {
+      "sku": "15603",
+      "alt": "Manija Qualita QF3060 gris; imagen de referencia compartida para las medidas de 150 y 200 mm",
+      "caption": "Manija Qualita QF3060 gris; imagen de referencia compartida para las medidas de 150 y 200 mm",
+      "kind": "manufacturer-render",
+      "researchKind": "manufacturer-reference",
+      "provenance": "download-original",
+      "sourcePage": "https://hyadistribuciones.com.co/esl/Productos/Manijas/PERFIL-MANIJA-QF3060-GREY",
+      "imageUrl": "https://hyadistribuciones.com.co/var/hya/storage/images/productos/manijas/perfil-manija-qf3060-grey/qf3060-grey-1/17605-2-esl-CO/QF3060-GREY-1.jpg",
+      "evidence": "Catalog title explicitly says QF3060-200 GREY (ref field has QF360 typo). Exact official H&A family page lists QF3060-200Grey=200mm and shares gallery with 150mm. Not visual proof of length. Native Qualita branding preserved.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        630,
+        353
+      ],
+      "sha256": "71ec15b371398b3b435214547f30c39dfe17bf29f63b2fefd1adfdc4c580f993"
+    },
+    {
+      "sku": "15841",
+      "alt": "Manija Qualita QF3060 dorada; imagen de referencia de la familia, medida del producto 150 mm",
+      "caption": "Manija Qualita QF3060 dorada; imagen de referencia de la familia, medida del producto 150 mm",
+      "kind": "manufacturer-render",
+      "researchKind": "manufacturer-reference",
+      "provenance": "download-original",
+      "sourcePage": "https://hyadistribuciones.com.co/esl/Productos/Manijas/PERFIL-MANIJA-QF3060-GOLD",
+      "imageUrl": "https://hyadistribuciones.com.co/var/hya/storage/images/productos/manijas/perfil-manija-qf3060-gold/qf3060-gold-1/17639-1-esl-CO/QF3060-GOLD-1.jpg",
+      "evidence": "Official H&A QF3060 GOLD heading/gallery establish model and gold finish. Tecnifacil technical sheet QF3060-GOLD_Manija-QUALITA-Perfil-Puerta-Dorada_FT_.pdf explicitly identifies QF3060-150GOLD as150mm, resolving apparent Grey template-text typo on official Gold page. Shared family reference is not proof of length. Native Qualita branding preserved.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        630,
+        353
+      ],
+      "sha256": "058bf152bbfc4f30f982d758285c37a6b0871de3ad049d4b4291cb9845ca2971"
+    },
+    {
+      "sku": "14317",
+      "alt": "Detalle de bisagra Classic BCP de resorte 4 x 3 pulgadas; venta por par",
+      "caption": "Detalle de bisagra Classic BCP de resorte 4 x 3 pulgadas; venta por par",
+      "kind": "pair-detail",
+      "researchKind": "product-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://tecnifacil.com.co/producto/bisagra-classic-tipo-cierra-puerta-4-x-3/",
+      "imageUrl": "https://tecnifacil.com.co/wp-content/uploads/2024/02/BCP_Bisagra-Classic-Tipo-Cierra-Puerta-4-x-3.png",
+      "evidence": "Tecnifacil exact Classic BCP reference and spring mechanism; source specifies 4x3 inches and pair supply. A single hinge is depicted. Photo does not independently prove catalog thickness2.5mm.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "sha256": "619fec8c03b768f0d2a9a6427b00a743908c238553601260383b1a4f491d82db"
+    },
+    {
+      "sku": "15156",
+      "alt": "Esquinero Bonuit FIMPVC59 para zócalo PVC aluminizado de 100 mm",
+      "caption": "Esquinero Bonuit FIMPVC59 para zócalo PVC aluminizado de 100 mm",
+      "researchKind": "product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://tecnifacil.com.co/producto/esquina-bonuit-para-zocalo/",
+      "imageUrl": "https://tecnifacil.com.co/wp-content/uploads/2024/06/FIMPVC59_Esquina-BONUIT-para-Zocalo.png",
+      "evidence": "Exact FIMPVC59 supplier reference; explicitly PVC, aluminum laminated finish, height100mm, right-angle straight profile and unit supply.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "sha256": "ad4d0533eb364b86d5396344b95190149f380bb3f5863eea1be4ab0f96c1ae97"
+    },
+    {
+      "sku": "13352",
+      "alt": "Portaescobas plástico blanco Rejiplas 56350 instalado; utensilios no incluidos",
+      "caption": "Portaescobas plástico blanco Rejiplas 56350 instalado; utensilios no incluidos",
+      "kind": "component-detail",
+      "researchKind": "installation-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://tecnifacil.com.co/producto/porta-escobas-rejiplas-inyeccion/",
+      "imageUrl": "https://tecnifacil.com.co/wp-content/uploads/2024/05/56350_Porta-Escobas-Rejiplas-Inyeccion.png",
+      "evidence": "Exact56350 distributor model, white injection plastic with4 hooks; photo illustrates installed use. Scope is support, not depicted broom handles.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "sha256": "70540f933f185297498b0e161570af609fa9025b16aaaaa796613a8014e957f5"
+    },
+    {
+      "sku": "14281",
+      "alt": "Juego de pivote pesado Fuerte BP-100",
+      "caption": "Juego de pivote pesado Fuerte BP-100",
+      "researchKind": "product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://www.industriasfuerte.com/#slidingDiv16",
+      "imageUrl": "https://www.industriasfuerte.com/images/Portafolio/1/BP-100.png",
+      "evidence": "Official Industrias Fuerte page exactBP-100, heavy pivot, one set per bag; photo shows the matching pivot hardware set.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        640,
+        400
+      ],
+      "sha256": "ab287e7c259f1a9078c82b798d0a452b5ba8b043d7f14950eaaf340a80a702a4"
+    },
+    {
+      "sku": "6362",
+      "alt": "Herraje niquelado para repisa Fuerte ERC-70; vista de referencia del mecanismo",
+      "caption": "Herraje niquelado para repisa Fuerte ERC-70; vista de referencia del mecanismo",
+      "kind": "manufacturer-render",
+      "researchKind": "manufacturer-reference",
+      "provenance": "download-original",
+      "sourcePage": "https://www.industriasfuerte.com/#slidingDiv31",
+      "imageUrl": "https://www.industriasfuerte.com/images/Portafolio/5/ERC-70.png",
+      "evidence": "Official Fuerte ERC-70 page lists nickel finish among variants; pictured mechanism is silver/nickel, not golden zinc-iris or dark pavon. Caption scopes a mechanism reference view; catalog pair sale retained.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        640,
+        400
+      ],
+      "sha256": "f4528dfa6b3901c6c90d5b3a42b3ad7bc434c98863b8471d2a081d191492e740"
+    },
+    {
+      "sku": "13269",
+      "alt": "Rodamiento Fuerte RPV-38 de 38 mm; imagen de referencia compartida de la familia RPV",
+      "caption": "Referencia de la familia RPV en varias medidas. Venta por unidad; no es un juego.",
+      "kind": "manufacturer-render",
+      "researchKind": "manufacturer-reference",
+      "provenance": "download-original",
+      "sourcePage": "https://www.industriasfuerte.com/#slidingDiv57",
+      "imageUrl": "https://www.industriasfuerte.com/images/Portafolio/8/RPV-X.png",
+      "evidence": "Official Fuerte groups RPV-32,38,50,63,76,89 under one original family image. RPV-38 model included. Photo shows assorted family sizes, not all items sold; no claim image proves size/load.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        640,
+        400
+      ],
+      "sha256": "84f34bfaa1a45d4cd07ab2264d1a1473c509881b271217436687d7b83a531314"
+    },
+    {
+      "sku": "14520",
+      "alt": "Rodamiento Fuerte RPV-50 de 50 mm; imagen de referencia compartida de la familia RPV",
+      "caption": "Referencia de la familia RPV en varias medidas. Venta por unidad; no es un juego.",
+      "kind": "manufacturer-render",
+      "researchKind": "manufacturer-reference",
+      "provenance": "download-original",
+      "sourcePage": "https://www.industriasfuerte.com/#slidingDiv57",
+      "imageUrl": "https://www.industriasfuerte.com/images/Portafolio/8/RPV-X.png",
+      "evidence": "Official Fuerte groups RPV-32,38,50,63,76,89 under one original family image. RPV-50 model included. Photo shows assorted family sizes, not all items sold; no claim image proves size/load.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        640,
+        400
+      ],
+      "sha256": "84f34bfaa1a45d4cd07ab2264d1a1473c509881b271217436687d7b83a531314"
+    },
+    {
+      "sku": "14521",
+      "alt": "Rodamiento Fuerte RPV-63 de 63 mm; imagen de referencia compartida de la familia RPV",
+      "caption": "Referencia de la familia RPV en varias medidas. Venta por unidad; no es un juego.",
+      "kind": "manufacturer-render",
+      "researchKind": "manufacturer-reference",
+      "provenance": "download-original",
+      "sourcePage": "https://www.industriasfuerte.com/#slidingDiv57",
+      "imageUrl": "https://www.industriasfuerte.com/images/Portafolio/8/RPV-X.png",
+      "evidence": "Official Fuerte groups RPV-32,38,50,63,76,89 under one original family image. RPV-63 model included. Photo shows assorted family sizes, not all items sold; no claim image proves size/load.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        640,
+        400
+      ],
+      "sha256": "84f34bfaa1a45d4cd07ab2264d1a1473c509881b271217436687d7b83a531314"
+    },
+    {
+      "sku": "6352",
+      "alt": "Casquillo Fuerte SBC-20 junto al soporte SB-10 como referencia; venta del casquillo individual",
+      "caption": "Casquillo Fuerte SBC-20 junto al soporte SB-10 como referencia; venta del casquillo individual",
+      "kind": "component-detail",
+      "researchKind": "manufacturer-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.industriasfuerte.com/#slidingDiv59",
+      "imageUrl": "https://www.industriasfuerte.com/images/Portafolio/9/SB-10.png",
+      "evidence": "Official Fuerte groups SBC-20 and SB-10 and labels casquillo/support. Original shows exact casquillo beside separate compatible support; caption does not include support in sale.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        640,
+        400
+      ],
+      "sha256": "6270b84619ab9d1b920a6acf377cfb790d7a16fedc4c7e6f290fc1154fb90c09"
+    },
+    {
+      "sku": "6366",
+      "alt": "Soporte Fuerte SB-20; imagen compartida con tamaños de soporte y casquillo de la familia",
+      "caption": "Referencia del soporte SB-20. Casquillos y otras medidas no incluidos.",
+      "kind": "manufacturer-render",
+      "researchKind": "manufacturer-reference",
+      "provenance": "download-original",
+      "sourcePage": "https://www.industriasfuerte.com/#slidingDiv60",
+      "imageUrl": "https://www.industriasfuerte.com/images/Portafolio/9/SB-20.png",
+      "evidence": "Official Fuerte group explicitly lists SBC-20 3/16,SB-20 3/16,SBC-20,SB-20. Original reference image shows the two support/socket sizes; not all components sold together. Exact model included; individual sale retained.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        640,
+        400
+      ],
+      "sha256": "b2e10e600377f1da11dab3d9ffeb8a39b77470793f9b2a00b8bf7cdde6204f58"
+    },
+    {
+      "sku": "12539",
+      "alt": "Ilustración de referencia de corredera Ducasse oculta de cierre suave; imagen de modelo compartida entre longitudes, sin escala dimensional",
+      "caption": "Ilustración de referencia de corredera Ducasse oculta de cierre suave; imagen de modelo compartida entre longitudes, sin escala dimensional",
+      "kind": "manufacturer-render",
+      "researchKind": "product-illustration",
+      "provenance": "download-original",
+      "sourcePage": "https://ducasseindustrial.com/co/product/corredera-oculta-cierre-suave/",
+      "imageUrl": "https://ducasseindustrial.com/co/wp-content/uploads/sites/19/2020/09/CO_4010036040_IMG_PROD1_BL.jpg",
+      "evidence": "Official Colombian manufacturer page variation JSON explicitly maps exact code 4010036040 to {'attribute_medida': '40 cm'} and this exact original image URL. Manufacturer publishes byte-identical model photography across its size-specific image URLs; used as disclosed model illustration, not dimensional proof or complete kit-content proof. Visible finish and mechanism verified. Manufacturer and local catalog agree on 35 kg.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "096ecba67400719344ad4787ffc381c93f7c337b35ae5dfe63a42b1b371921d1"
+    },
+    {
+      "sku": "12283",
+      "alt": "Ilustración de referencia de corredera Ducasse oculta de cierre suave; imagen de modelo compartida entre longitudes, sin escala dimensional",
+      "caption": "Ilustración de referencia de corredera Ducasse oculta de cierre suave; imagen de modelo compartida entre longitudes, sin escala dimensional",
+      "kind": "manufacturer-render",
+      "researchKind": "product-illustration",
+      "provenance": "download-original",
+      "sourcePage": "https://ducasseindustrial.com/co/product/corredera-oculta-cierre-suave/",
+      "imageUrl": "https://ducasseindustrial.com/co/wp-content/uploads/sites/19/2020/09/CO_4010036045_IMG_PROD1_BL.jpg",
+      "evidence": "Official Colombian manufacturer page variation JSON explicitly maps exact code 4010036045 to {'attribute_medida': '45 cm'} and this exact original image URL. Manufacturer publishes byte-identical model photography across its size-specific image URLs; used as disclosed model illustration, not dimensional proof or complete kit-content proof. Visible finish and mechanism verified. Manufacturer and local catalog agree on 35 kg.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "096ecba67400719344ad4787ffc381c93f7c337b35ae5dfe63a42b1b371921d1"
+    },
+    {
+      "sku": "13359",
+      "alt": "Ilustración de referencia de corredera Ducasse oculta de cierre suave; imagen de modelo compartida entre longitudes, sin escala dimensional",
+      "caption": "Ilustración de referencia de corredera Ducasse oculta de cierre suave; imagen de modelo compartida entre longitudes, sin escala dimensional",
+      "kind": "manufacturer-render",
+      "researchKind": "product-illustration",
+      "provenance": "download-original",
+      "sourcePage": "https://ducasseindustrial.com/co/product/corredera-oculta-cierre-suave/",
+      "imageUrl": "https://ducasseindustrial.com/co/wp-content/uploads/sites/19/2020/09/CO_4010036050_IMG_PROD1_BL.jpg",
+      "evidence": "Official Colombian manufacturer page variation JSON explicitly maps exact code 4010036050 to {'attribute_medida': '50 cm'} and this exact original image URL. Manufacturer publishes byte-identical model photography across its size-specific image URLs; used as disclosed model illustration, not dimensional proof or complete kit-content proof. Visible finish and mechanism verified. Manufacturer and local catalog agree on 35 kg.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "096ecba67400719344ad4787ffc381c93f7c337b35ae5dfe63a42b1b371921d1"
+    },
+    {
+      "sku": "14155",
+      "alt": "Ilustración de referencia de corredera Ducasse oculta de cierre suave; imagen de modelo compartida entre longitudes, sin escala dimensional",
+      "caption": "Ilustración de referencia de corredera Ducasse oculta de cierre suave; imagen de modelo compartida entre longitudes, sin escala dimensional",
+      "kind": "manufacturer-render",
+      "researchKind": "product-illustration",
+      "provenance": "download-original",
+      "sourcePage": "https://ducasseindustrial.com/co/product/corredera-oculta-cierre-suave/",
+      "imageUrl": "https://ducasseindustrial.com/co/wp-content/uploads/sites/19/2020/11/CO_4010036035_IMG_PROD1_BL.jpg",
+      "evidence": "Official Colombian manufacturer page variation JSON explicitly maps exact code 4010036035 to {'attribute_medida': '35 cm'} and this exact original image URL. Manufacturer publishes byte-identical model photography across its size-specific image URLs; used as disclosed model illustration, not dimensional proof or complete kit-content proof. Visible finish and mechanism verified. Manufacturer and local catalog agree on 35 kg.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "096ecba67400719344ad4787ffc381c93f7c337b35ae5dfe63a42b1b371921d1"
+    },
+    {
+      "sku": "10928",
+      "alt": "Manija tubular hueca FEH 5675 de 64 mm, níquel satinado",
+      "caption": "Imagen de referencia de la manija hueca FEH; compartida entre medidas, sin escala dimensional.",
+      "kind": "manufacturer-render",
+      "researchKind": null,
+      "provenance": "download-original",
+      "sourcePage": "https://flexoneh.com.co/producto/manija-hueca-niquel-satinado-64mm/",
+      "imageUrl": "https://flexoneh.com.co/wp-content/uploads/2022/07/5675A.jpg",
+      "evidence": "Official Flexon FEH page explicitly identifies 5675 at 64 mm, hollow tubular handle and nickel satin finish. Catalog calls it liviana 64 mm with same reference. Original exact-code photograph; no dimensions or finish changed. Additional review: supplier reuses the same model image across sizes; use only with explicit shared-size caption, not dimensional proof.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "3828a50217cdfdeb27fb6d1bc34f5815a0940845444f9cb162d0b50975e1da2a"
+    },
+    {
+      "sku": "10094",
+      "alt": "Ilustración de referencia del plato giratorio negro FEH 2876; vista de modelo compartida entre tamaños, sin escala dimensional",
+      "caption": "Ilustración de referencia del plato giratorio negro FEH 2876; vista de modelo compartida entre tamaños, sin escala dimensional",
+      "kind": "manufacturer-render",
+      "researchKind": "product-illustration",
+      "provenance": "download-original",
+      "sourcePage": "https://flexoneh.com.co/producto/plato-giratorio-esferado-8x8/",
+      "imageUrl": "https://flexoneh.com.co/wp-content/uploads/2022/07/2876A.jpg",
+      "evidence": "Official FEH product page explicitly maps 2876 to 8x8 pulgadas, black finish. It publishes the same original photograph for 6x6 and 8x8 variants at their separate reference-specific URLs. Used only as disclosed manufacturer model illustration; no claim that image proves size. Source and local sale unit are one plate.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "194d8cc52e5cba081b191cbcc2c6f15f697fc909bdf47df9a727b3c6a0e0e580"
+    },
+    {
+      "sku": "10076",
+      "alt": "Ilustración de referencia del plato giratorio negro FEH 4154; vista de modelo compartida entre tamaños, sin escala dimensional",
+      "caption": "Ilustración de referencia del plato giratorio negro FEH 4154; vista de modelo compartida entre tamaños, sin escala dimensional",
+      "kind": "manufacturer-render",
+      "researchKind": "product-illustration",
+      "provenance": "download-original",
+      "sourcePage": "https://flexoneh.com.co/producto/plato-giratorio-esferado-6x6/",
+      "imageUrl": "https://flexoneh.com.co/wp-content/uploads/2022/07/4154A.jpg",
+      "evidence": "Official FEH product page explicitly maps 4154 to 6x6 pulgadas, black finish. It publishes the same original photograph for 6x6 and 8x8 variants at their separate reference-specific URLs. Used only as disclosed manufacturer model illustration; no claim that image proves size. Source and local sale unit are one plate.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "194d8cc52e5cba081b191cbcc2c6f15f697fc909bdf47df9a727b3c6a0e0e580"
+    },
+    {
+      "sku": "14523",
+      "alt": "Bisagra Ducasse 165 grados con base; detalle de una bisagra del par",
+      "caption": "Vista de una bisagra y su base; venta por par.",
+      "kind": "pair-detail",
+      "researchKind": null,
+      "provenance": "download-original",
+      "sourcePage": "https://ducasseindustrial.com/producto/bisagra-165",
+      "imageUrl": "https://ducasseindustrial.com/wp-content/uploads/2020/09/CL_3012100003_IMG_PROD1_BL.jpg",
+      "evidence": "Catalog identity names Ducasse 165-degree overlay hinge; official Ducasse source identifies its 165-degree model 3012100003 and original photo. Manufacturer technical literature establishes surface overlay door mounting, 35 mm cup and pair with two bases. Original photograph shows one hinge and its base, caption scoped to one component of the local pair. Not the 135-degree intermediate hinge.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product-marketing image. No express reuse license found; not license-cleared. No watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "6f83d5f962e077ed61b1b13b89e794606c65729e34621bb6b43191d5660d2b08"
+    },
+    {
+      "sku": "10799",
+      "alt": "Grapas L13BAB de 1 pulgada: vista de referencia del contenido de la caja",
+      "caption": "Grapas L13BAB de 1 pulgada: vista de referencia del contenido de la caja",
+      "kind": "supplier-render",
+      "researchKind": "supplier-family-reference",
+      "provenance": "download-original",
+      "sourcePage": "https://toolkitdepot.com.au/senco-l-series-staple-25mm-box-of-5000-l13bab/",
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a579g2rqqa/images/stencil/1280x1280/products/11945/20280/37610-senco-l-series-staples-electro-galvanised-25mm-box-of-5000-l13bab-HERO__56597.1651814732.jpg?c=1",
+      "evidence": "L13 BAB del catálogo local corresponde al identificador L13BAB; la página distribuidora y ficha técnica Senco identifican 18 ga, corona 6.4 mm, longitud 25.4 mm, galvanizado Sencoted, caja 5000. Fotografía comercial de tiras, no representa cantidad completa.",
+      "exactVariant": true,
+      "licenseStatus": "public-commercial-product-image; no express open license verified; reuse authorized by user; not license-cleared",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "aab6ff7ea4c9576248cbed458ddc126dbd8ebc64597c115d91ad519dbf2cec62"
+    },
+    {
+      "sku": "10802",
+      "alt": "Grapas L15BAB de 1¼ pulgadas: vista de referencia del contenido de la caja",
+      "caption": "Grapas L15BAB de 1¼ pulgadas: vista de referencia del contenido de la caja",
+      "kind": "supplier-render",
+      "researchKind": "supplier-family-reference",
+      "provenance": "download-original",
+      "sourcePage": "https://honeybrookhardware.com/p/9f7fb7b0-501a-499b-a433-f67d50760871/3300522",
+      "imageUrl": "https://images.orgill.com/weblarge/10033/3300522.jpg",
+      "evidence": "Modelo L15BAB de página exacta y tabla Senco: 1¼ pulgadas, calibre 18, corona 1/4, galvanizado Sencoted, caja 5000. Catálogo local L15 BAB 1.1/4 caja coincide. Foto de dos tiras, no cantidad completa.",
+      "exactVariant": true,
+      "licenseStatus": "public-commercial-product-image; no express open license verified; reuse authorized by user; not license-cleared",
+      "dimensions": [
+        800,
+        552
+      ],
+      "sha256": "3d435246f2398fae9b8977ebc1cfd42fef86636eddc4904c585ec44adf6436c1"
+    },
+    {
+      "sku": "10803",
+      "alt": "Empaque comercial de referencia L17BAB de 1½ pulgadas; confirmar unidad de venta",
+      "caption": "Empaque comercial de referencia L17BAB de 1½ pulgadas; confirmar unidad de venta",
+      "kind": "supplier-render",
+      "researchKind": "commercial-packaging-reference",
+      "provenance": "download-original",
+      "sourcePage": "https://toolkitdepot.com.au/senco-l-series-staple-25mm-box-of-5000-l13bab/",
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a579g2rqqa/images/stencil/1280w/products/11947/20673/7870-senco-l-series-staples-electro-galvanised-38mm-box-of-5000-l17bab-HERO2__02083.1652230293.jpg?c=1",
+      "evidence": "Imagen de producto relacionado L17BAB en página distribuidora. Caja con etiqueta legible L17BAB, 38 mm, calibre 18, galvanizado, 5000; modelo exacto local L17 BAB 1.1/2. La unidad local requiere consulta: caption no promete caja ni 5000 unidades en la venta. Tabla Senco y distribuidor Proffsmagasinet corroboran L17BAB.",
+      "exactVariant": true,
+      "licenseStatus": "public-commercial-product-image; no express open license verified; reuse authorized by user; not license-cleared",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "20e1bb1feeb986504d2bb7aa2b717a5d640fa635317c74a31e22d8e21e5e2810"
+    },
+    {
+      "sku": "8691",
+      "alt": "Clavillos Senco AX17EAA de 1½ pulgadas: vista de referencia compartida de la familia, no a escala",
+      "caption": "Clavillos Senco AX17EAA de 1½ pulgadas: vista de referencia compartida de la familia, no a escala",
+      "kind": "supplier-render",
+      "researchKind": "supplier-family-reference",
+      "provenance": "download-original",
+      "sourcePage": "https://beavertools.com/products/ax17eaa-senco-18-x-1-1-2-in-med-eg-straight-strip-brad-nails",
+      "imageUrl": "https://beavertools.com/cdn/shop/files/ax10eaa-senco-nails_4.png?v=1769412721",
+      "evidence": "Página individual Beaver asigna imagen familia AX a AX17EAA, 1½ pulgadas, 18 ga, cabeza mediana, galvanizado, caja 5000. El archivo es compartido y no prueba longitud ni cantidad; las especificaciones y caja coinciden con modelo local.",
+      "exactVariant": true,
+      "licenseStatus": "public-commercial-product-image; no express open license verified; reuse authorized by user; not license-cleared",
+      "dimensions": [
+        610,
+        244
+      ],
+      "sha256": "b5dbb5e51bf64141b4e863e0ad98df256ff3b030e5923eb5a34d85dc2fbc7f83"
+    },
+    {
+      "sku": "5653",
+      "alt": "Clavillos Senco AX18EAA de 1⅝ pulgadas: vista de referencia compartida de la familia, no a escala",
+      "caption": "Clavillos Senco AX18EAA de 1⅝ pulgadas: vista de referencia compartida de la familia, no a escala",
+      "kind": "supplier-render",
+      "researchKind": "supplier-family-reference",
+      "provenance": "download-original",
+      "sourcePage": "https://beavertools.com/products/ax18eaa-senco-18-x-1-5-8-in-med-eg-straight-strip-brad-nails",
+      "imageUrl": "https://beavertools.com/cdn/shop/files/ax10eaa-senco-nails_5.png?v=1769412719",
+      "evidence": "La página individual asigna imagen de familia AX a AX18EAA y especifica 1⅝ pulgadas, calibre 18, cabeza mediana, galvanizado, caja 5000. Catálogo local AX18EAA 1-5/8 Caja coincide. No se representa longitud a escala ni cantidad completa.",
+      "exactVariant": true,
+      "licenseStatus": "public-commercial-product-image; no express open license verified; reuse authorized by user; not license-cleared",
+      "dimensions": [
+        610,
+        244
+      ],
+      "sha256": "b5dbb5e51bf64141b4e863e0ad98df256ff3b030e5923eb5a34d85dc2fbc7f83"
+    },
+    {
+      "sku": "8554",
+      "alt": "Diagrama comercial de la familia Senco AX; la variante AX21 corresponde a 2 pulgadas",
+      "caption": "Diagrama comercial de la familia Senco AX; la variante AX21 corresponde a 2 pulgadas",
+      "kind": "technical-diagram",
+      "researchKind": "supplier-technical-illustration",
+      "provenance": "download-original",
+      "sourcePage": "https://marsonequipment.com/products/senco-ax21-18-gauge-brad-nail-2-5000pk",
+      "imageUrl": "https://marsonequipment.com/cdn/shop/products/sencoax_873e4d05-50ad-4f74-91dd-322e5d2b0e97_600x600.jpg?v=1659971899",
+      "evidence": "La página individual Senco AX21 18 Gauge Brad Nail 2 pulgadas 5000pk proporciona diagrama con AX21 etiquetado 2 pulgadas. Catálogo técnico Senco Colombia identifica AX21EAA de 2 pulgadas 5M galvanizado. Se entrega diagrama original entero con varias medidas, no se oculta su alcance. Se descartó fotografía de caja en esa página porque etiqueta visible parecía 1¼ pulgadas.",
+      "exactVariant": true,
+      "licenseStatus": "public-commercial-product-image; no express open license verified; reuse authorized by user; not license-cleared",
+      "dimensions": [
+        600,
+        600
+      ],
+      "sha256": "3a5b27f25880515eed105b26068a9dd6bddcbda29048f94807e55f5c01d55eb9"
+    },
+    {
+      "sku": "0547",
+      "alt": "Candado Yale 110 de latón; imagen de referencia del modelo",
+      "caption": "Imagen de referencia de la serie 110; la imagen no representa una escala dimensional.",
+      "kind": "supplier-render",
+      "researchKind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://www.dyna.com.co/public/producto/52741/candado-italiano-de-laton-110-50mm-1103/UND",
+      "imageUrl": "https://cdn.laferreteria.online/thumb/phpThumb.php?src=/img/52741.jpg",
+      "evidence": "Exact source page reference 1103 matches catalog; official Yale 2025 catalog PDF page 104 confirms model family/variant. Original pixels reviewed, with no visible inconsistent material, finish or geometry. This is a scoped reference view and not proof of dimension or hidden interior mechanism. Caption discloses limits. The previously held image is now used only at this established view scope; no catalog data changed.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing asset; no express open license established. Used for user-requested product catalog with source attribution in provenance, not license-cleared.",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "98147981e54b4e6e53c486d33b726f5d9d1b57716478b9a5f64b776b8aee2c47"
+    },
+    {
+      "sku": "0548",
+      "alt": "Candado Yale 110 de latón; imagen de referencia del modelo",
+      "caption": "Imagen compartida de la serie 110; no representa la medida exacta de 60 mm.",
+      "kind": "supplier-render",
+      "researchKind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://www.gruporoldan.com.co/roldangr/vp1103/sp/",
+      "imageUrl": "https://www.gruporoldan.com.co/clientes/roldangr/images/portafolio/imagen_id_1103.webp",
+      "evidence": "Exact source page reference 1104 matches catalog; official Yale 2025 catalog PDF page 104 confirms model family/variant. Original pixels reviewed, with no visible inconsistent material, finish or geometry. This is a scoped reference view and not proof of dimension or hidden interior mechanism. Caption discloses limits. The previously held image is now used only at this established view scope; no catalog data changed.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing asset; no express open license established. Used for user-requested product catalog with source attribution in provenance, not license-cleared.",
+      "dimensions": [
+        600,
+        600
+      ],
+      "sha256": "1fafccb3fb6e4217748d092920f4696a6d40397c45a0a640afbedea9ec16231b"
+    },
+    {
+      "sku": "0983",
+      "alt": "Cerradura Yale 2045; vista frontal del pestillo horizontal",
+      "caption": "Vista frontal del modelo 2045; no muestra la longitud del cilindro.",
+      "kind": "component-detail",
+      "researchKind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.electricoslacabalgata.com/products/cerra-yale-2045-l-5010",
+      "imageUrl": "http://www.electricoslacabalgata.com/cdn/shop/products/0005010_600x.png?v=1621977892",
+      "evidence": "Exact source page reference 5010 matches catalog; official Yale 2025 catalog PDF page 139 confirms model family/variant. Original pixels reviewed, with no visible inconsistent material, finish or geometry. This is a scoped reference view and not proof of dimension or hidden interior mechanism. Caption discloses limits. The previously held image is now used only at this established view scope; no catalog data changed.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing asset; no express open license established. Used for user-requested product catalog with source attribution in provenance, not license-cleared.",
+      "dimensions": [
+        600,
+        418
+      ],
+      "sha256": "15375c3821ba781bc2431c2d6cf12c39a212d3d47371bb5b702a5f1bb342823d"
+    },
+    {
+      "sku": "15034",
+      "alt": "Cerradura Yale Mini E aluminio; vista exterior",
+      "caption": "Vista exterior de Mini E; no muestra la mariposa interior.",
+      "kind": "component-detail",
+      "researchKind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://ferricentro.com/cerradura-para-embutir-mini-llave-mariposa-ff-0000047773",
+      "imageUrl": "https://ferricentro.com/media/catalog/product/i/m/imagen_0000047773_27342503.jpg?optimize=low&fit=bounds&height=&width=",
+      "evidence": "Exact source page reference 4020 matches catalog; official Yale 2025 catalog PDF page 58 confirms model family/variant. Original pixels reviewed, with no visible inconsistent material, finish or geometry. This is a scoped reference view and not proof of dimension or hidden interior mechanism. Caption discloses limits. The previously held image is now used only at this established view scope; no catalog data changed.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing asset; no express open license established. Used for user-requested product catalog with source attribution in provenance, not license-cleared.",
+      "dimensions": [
+        700,
+        700
+      ],
+      "sha256": "3b05a14088b1510e460a48767ec57e4315802b6b945989740b81a9ba4acd8de4"
+    },
+    {
+      "sku": "5235",
+      "alt": "Silicona Pegadit transparente de 280 ml; imagen comercial.",
+      "researchKind": "distributor-product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://www.homecenter.com.co/homecenter-co/product/39877/pegadit-silicona-vidrio-y-aluminio-transparente-280-ml/39877/",
+      "imageUrl": "https://media.falabella.com/sodimacCO/39877/w=1036,h=832,f=webp,fit=contain,q=85",
+      "evidence": "Homecenter exact product39877 gives manufacturer ref0406218, transparent280ml. Downloaded original-as-served main image visibly reads transparente280ml. PVC del Caribe watermarked candidate and official50ml gallery poster rejected.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor marketing asset; no express open license verified. User-authorized sourcing with transparent provenance, not license-cleared.",
+      "dimensions": [
+        832,
+        832
+      ],
+      "sha256": "8cec69d8b3d8a66749be2a081adb07d8d2ba6e56afbde47787fb2ddeb8506c97"
+    },
+    {
+      "sku": "11988",
+      "alt": "Fresa AGE MD210 para fórmica, diámetro 1/2 y espigo 1/4, largo de corte 1 pulgada",
+      "researchKind": "distributor-product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://generalcuttingtools.com/product/amanatool-age-md210/",
+      "imageUrl": "https://generalcuttingtools.com/wp-content/uploads/2022/02/md210-f.jpg",
+      "evidence": "General Cutting Tools supplies exact md210-f.jpg on MD210 product page. Model MD210 visible on shank; Beaver MD206 drawing rejected. Beaver title/specification text independently confirms1/2-inch cutter,1-inch cutting height,1/4-inch shank.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor marketing asset; no express open license verified. User-authorized sourcing with transparent provenance, not license-cleared.",
+      "dimensions": [
+        300,
+        300
+      ],
+      "sha256": "06170a9697ef1fb84914b284e14165e3829a826327b830afe56768ca2140661b"
+    },
+    {
+      "sku": "14208",
+      "alt": "Fresa Welldone de corte recto, dos filos, 1/4 de pulgada; fotografía comercial del producto empacado.",
+      "researchKind": "distributor-product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriaonlinelevallejoaz.com/fresa-recta-para-corte-1-4-2-filos-12438-welldone/",
+      "imageUrl": "https://ferreteriaonlinelevallejoaz.com/wp-content/uploads/2026/05/10747.jpg",
+      "evidence": "Levallejo public product API and page title identify WellDone 12438. Visual review of the actual single-item package reads Ref. 12438 and the exact catalog cutter diameter. This resolves stale retailer URL names; packaging model controls identification. No reseller logo/watermark is overlaid; some original package inventory stickers remain untouched.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor marketing photograph; no express open license verified. User-authorized sourcing with transparent provenance, not license-cleared.",
+      "dimensions": [
+        1600,
+        1600
+      ],
+      "sha256": "c879f4ec3c5123dafb06ac72f2fbdeff9ae6b537e23b62ecca53ef13fcbb590d"
+    },
+    {
+      "sku": "14214",
+      "alt": "Fresa Welldone de corte recto, dos filos, 3/16 de pulgada; fotografía comercial del producto empacado.",
+      "researchKind": "distributor-product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriaonlinelevallejoaz.com/fresa-rt-recta-3-162f-22436-welldn/",
+      "imageUrl": "https://ferreteriaonlinelevallejoaz.com/wp-content/uploads/2024/10/10066.jpg",
+      "evidence": "Levallejo public product API and page title identify WellDone 12436. Visual review of the actual single-item package reads Ref. 12436 and the exact catalog cutter diameter. This resolves stale retailer URL names; packaging model controls identification. No reseller logo/watermark is overlaid; some original package inventory stickers remain untouched.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor marketing photograph; no express open license verified. User-authorized sourcing with transparent provenance, not license-cleared.",
+      "dimensions": [
+        1500,
+        2000
+      ],
+      "sha256": "8e3b9ac4697a3ffd9bd0c5b3a355c9cc76b25783d9f7dd858bd99521f7b79a57"
+    },
+    {
+      "sku": "14282",
+      "alt": "Fresa Welldone para rebordear fórmica, 1/4 de pulgada; fotografía comercial del producto empacado.",
+      "researchKind": "distributor-product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriaonlinelevallejoaz.com/fresa-rt-rebordear-5-1622553-welldon/",
+      "imageUrl": "https://ferreteriaonlinelevallejoaz.com/wp-content/uploads/2024/10/10552.jpg",
+      "evidence": "Levallejo public product API and page title identify WellDone 12552. Visual review of the actual single-item package reads Ref. 12552 and the exact catalog cutter diameter. This resolves stale retailer URL names; packaging model controls identification. No reseller logo/watermark is overlaid; some original package inventory stickers remain untouched.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor marketing photograph; no express open license verified. User-authorized sourcing with transparent provenance, not license-cleared.",
+      "dimensions": [
+        1500,
+        2000
+      ],
+      "sha256": "f309e8eae0e022a1e8b69e0337ee67cedc439859fbbd5949105f1d65895572d8"
+    },
+    {
+      "sku": "14223",
+      "alt": "Fresa Welldone para rebordear fórmica, 3/8 de pulgada; fotografía comercial del producto empacado.",
+      "researchKind": "distributor-product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriaonlinelevallejoaz.com/fresa-rt-rebordear-3-8-22560-welldon/",
+      "imageUrl": "https://ferreteriaonlinelevallejoaz.com/wp-content/uploads/2024/10/10554.jpg",
+      "evidence": "Levallejo public product API and page title identify WellDone 12554. Visual review of the actual single-item package reads Ref. 12554 and the exact catalog cutter diameter. This resolves stale retailer URL names; packaging model controls identification. No reseller logo/watermark is overlaid; some original package inventory stickers remain untouched.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor marketing photograph; no express open license verified. User-authorized sourcing with transparent provenance, not license-cleared.",
+      "dimensions": [
+        1500,
+        2000
+      ],
+      "sha256": "8b94e04ce1b00cdf7d26e2bf343340812b6fb255ec7886b8aba7c3cdb7beea18"
+    },
+    {
+      "sku": "5526",
+      "alt": "Pistola Sagola Classic Lux de succión, referencia 20121102",
+      "caption": "Pistola Sagola Classic Lux de succión, referencia 20121102",
+      "kind": "manufacturer-render",
+      "researchKind": "manufacturer-reference",
+      "provenance": "download-original",
+      "sourcePage": "https://sagola.com/es/productos/ferreteria-decoracion/pistolas-aerograficas/pistolas-de-succion/classic-lux-succion",
+      "imageUrl": "https://sagola.com/uploads/images/classic-lux-succion-lateral.jpg",
+      "evidence": "Official Sagola page lists exact 20121102 as Classic Lux suction 39/1.80. Side-view marketing image depicts the suction cup system and model. Nozzle diameter is mapped by model table, not inferred from image.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        1509,
+        2264
+      ],
+      "sha256": "591996c1481cbfc592efc4adb04228bcb6bd7bc177ffef41f4d7734c6a937b36"
+    },
+    {
+      "sku": "3761",
+      "alt": "Lubricante multiusos WD-40 en aerosol de 11 oz",
+      "caption": "Lubricante multiusos WD-40 en aerosol de 11 oz",
+      "researchKind": "product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://www.dyna.com.co/public/producto/14035/lubricante-multiusos-en-aerosol-wd-40-382ml-11oz-wd-40-1440311/C24",
+      "imageUrl": "https://cdn.laferreteria.online/thumb/phpThumb.php?src=/img/14035.jpg",
+      "evidence": "Dyna page identifies WD-40 multiuse 382 ml/11 oz, supplier 1440311; original can photo visibly states 11 oz. Exact branded size and conventional aerosol format match. Catalog 55550101 is retained unchanged.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        600,
+        800
+      ],
+      "sha256": "9685932271d0081c9b2d8e94c482897b52cf9aef7ea77927e2b610d017398bc0"
+    },
+    {
+      "sku": "15266",
+      "alt": "Juego de pivote FEH 6338; vista de referencia del conjunto",
+      "caption": "Juego de pivote FEH 6338; vista de referencia del conjunto",
+      "kind": "manufacturer-render",
+      "researchKind": "manufacturer-reference",
+      "provenance": "download-original",
+      "sourcePage": "https://flexoneh.com.co/producto/bisagra-pivote/",
+      "imageUrl": "https://flexoneh.com.co/wp-content/uploads/2022/07/6338A.jpg",
+      "evidence": "Official Flexon identifies code 6338 stainless pivot; independent catalog listing confirms 200 kg. Photo shows pivot components of the exact code, not substitute 6340. Weight/load is not inferred from the image.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "d40be71939f31358f616405a1849ba03f219f536fc5ef578d9ac15d99ce8b3b1"
+    },
+    {
+      "sku": "13351",
+      "alt": "Basurera deslizante Classic Rejiplas metalizada, vista instalada; mueble no incluido",
+      "caption": "Basurera deslizante Classic Rejiplas metalizada, vista instalada; mueble no incluido",
+      "kind": "component-detail",
+      "researchKind": "installation-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://www.homecenter.com.co/homecenter-co/product/350281/basureras-deslizantes-classic-plastificado-metalizado-caja-color-rejiplas/350281/",
+      "imageUrl": "https://media.falabella.com/sodimacCO/350281_1/public",
+      "evidence": "Homecenter identifies Rejiplas Classic metalized finish. Independent Enchapes y Apliques product table maps 33621 to gray 26x 44x 46 cm; exact Classic family. Installation photograph shows silver/gray frame, two gray bins; no cabinet included.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        768,
+        768
+      ],
+      "sha256": "db96e3a7c829ef80e31a3cc92692b094ea207cada75f3a598f00004f08ce01a5"
+    },
+    {
+      "sku": "5073",
+      "alt": "Pasador Amig 390-30 niquelado, 30 mm",
+      "researchKind": "product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://praktiker.bg/bg/Obkov-za-vrati/SYuRME-30-MM-AMIG-390-30/p/122051",
+      "imageUrl": "https://api.praktiker.bg/medias/122051.jpg-Product-details-main?context=bWFzdGVyfHJvb3R8NDQ3MTF8aW1hZ2UvanBlZ3xhREJqTDJobU1DOHhNelF3TURjM016QTVPVFUxTUM1cWNHY3w3ZjJlYTkzOWNmZDM0YzJhZTc3MzFkZmQ4NmI0NjViNzEyNTNhMDY3ZDhkZmNlYjYxZTllMDM4MzI3MDFiNmU5",
+      "evidence": "Praktiker explicitly identifies AMIG390-30, 30 mm, steel, nickel finish. Silver single-bolt image reviewed, not gold 390 variant.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        815,
+        815
+      ],
+      "sha256": "cce2b151914dd276b1b3ca86b5502779955856dcb7c01c73b144c9715543d781"
+    },
+    {
+      "sku": "8479",
+      "alt": "Lubricante multiusos WD-40 en aerosol de 5.5 oz",
+      "researchKind": "product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://www.farmatodo.com.co/producto/1056309-lubricante-wd-40",
+      "imageUrl": "https://lh3.googleusercontent.com/Y0P0ngfPZDe0r_0goQ6_CJ20uqeCmIBfo36Ty2emZz_SXHGbFwsDt1LZY1q0B12-vdrvqA7YegPELp9HAli57MehMzfVK_MOQqC8vUH8RxvYKOMz",
+      "evidence": "Farmatodo exact branded 5.5 oz 191 ml page; original can visibly states 5.5 oz. Conventional multiuse aerosol, not Specialist or another volume.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        418,
+        418
+      ],
+      "sha256": "585c40504a2ee8eacc47f56f6a94fbc2d2ab820a5ce442fed527bc9d4ca02f89"
+    },
+    {
+      "sku": "0663",
+      "alt": "Cerradura Inafer C-999 izquierda, referencia PTI02022 VC",
+      "researchKind": "product-photo",
+      "provenance": "download-original",
+      "sourcePage": "https://www.homecenter.com.co/homecenter-co/product/04442/cerradura-c999-izquierda-70mm-soldar/04442/",
+      "imageUrl": "https://media.falabella.com/sodimacCO/04442_1/public",
+      "evidence": "Homecenter SKU04442 explicitly identifies manufacturer model PTI02022 VC exactly matching local reference and left-hand C99970 mm weld-on version. Original left-hand image visually reviewed. Earlier contradictory right-labeled distributor photo was rejected.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        768,
+        768
+      ],
+      "sha256": "7022a25dd40be0c35fa3d2bfa709aa5665f54ee1a741d9cb2ac836f63f648fc8"
+    },
+    {
+      "sku": "13181",
+      "alt": "Vista de referencia de pasadores FEH en tres tamaños; este producto corresponde a 5223 de 56 mm, no a un juego de tres",
+      "caption": "Vista de referencia de pasadores FEH en tres tamaños; este producto corresponde a 5223 de 56 mm, no a un juego de tres",
+      "kind": "manufacturer-render",
+      "researchKind": "product-illustration",
+      "provenance": "download-original",
+      "sourcePage": "https://flexoneh.com.co/producto/pasador-acero-comun-56mm/",
+      "imageUrl": "https://flexoneh.com.co/wp-content/uploads/2022/07/5223A.jpg",
+      "evidence": "Cached exact official manufacturer reference page 5223, 56 mm, and original image were rechecked. Manufacturer intentionally publishes the same composite of three length variants for 5223/5224/5225. This is a disclosed family reference illustration, not exact-variant product photography and not a three-piece sale kit. Specific SKU is 5223; no pixel modification.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product photography; no explicit reuse license found; site copyright footer reserves rights; no watermark or specific incompatible reuse restriction observed. Not license-cleared.",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "286064a48d00e9bf4adf927b42c1478a77d9a5e9bf9410a317c27221170f70a7"
+    },
+    {
+      "sku": "13182",
+      "alt": "Vista de referencia de pasadores FEH en tres tamaños; este producto corresponde a 5224 de 66 mm, no a un juego de tres",
+      "caption": "Vista de referencia de pasadores FEH en tres tamaños; este producto corresponde a 5224 de 66 mm, no a un juego de tres",
+      "kind": "manufacturer-render",
+      "researchKind": "product-illustration",
+      "provenance": "download-original",
+      "sourcePage": "https://flexoneh.com.co/producto/pasador-acero-comun-66mm/",
+      "imageUrl": "https://flexoneh.com.co/wp-content/uploads/2022/07/5224A.jpg",
+      "evidence": "Cached exact official manufacturer reference page 5224, 66 mm, and original image were rechecked. Manufacturer intentionally publishes the same composite of three length variants for 5223/5224/5225. This is a disclosed family reference illustration, not exact-variant product photography and not a three-piece sale kit. Specific SKU is 5224; no pixel modification.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product photography; no explicit reuse license found; site copyright footer reserves rights; no watermark or specific incompatible reuse restriction observed. Not license-cleared.",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "286064a48d00e9bf4adf927b42c1478a77d9a5e9bf9410a317c27221170f70a7"
+    },
+    {
+      "sku": "13183",
+      "alt": "Vista de referencia de pasadores FEH en tres tamaños; este producto corresponde a 5225 de 123 mm, no a un juego de tres",
+      "caption": "Vista de referencia de pasadores FEH en tres tamaños; este producto corresponde a 5225 de 123 mm, no a un juego de tres",
+      "kind": "manufacturer-render",
+      "researchKind": "product-illustration",
+      "provenance": "download-original",
+      "sourcePage": "https://flexoneh.com.co/producto/pasador-acero-comun-123mm/",
+      "imageUrl": "https://flexoneh.com.co/wp-content/uploads/2022/07/5225A.jpg",
+      "evidence": "Cached exact official manufacturer reference page 5225, 123 mm, and original image were rechecked. Manufacturer intentionally publishes the same composite of three length variants for 5223/5224/5225. This is a disclosed family reference illustration, not exact-variant product photography and not a three-piece sale kit. Specific SKU is 5225; no pixel modification.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product photography; no explicit reuse license found; site copyright footer reserves rights; no watermark or specific incompatible reuse restriction observed. Not license-cleared.",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "286064a48d00e9bf4adf927b42c1478a77d9a5e9bf9410a317c27221170f70a7"
+    },
+    {
+      "sku": "13564",
+      "alt": "Ilustración de referencia de manija hueca FEH 5676; imagen de modelo compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia de manija hueca FEH 5676; imagen de modelo compartida entre medidas, sin escala dimensional",
+      "kind": "manufacturer-render",
+      "researchKind": "product-illustration",
+      "provenance": "download-original",
+      "sourcePage": "https://flexoneh.com.co/producto/manija-hueca-niquel-satinado-96mm/",
+      "imageUrl": "https://flexoneh.com.co/wp-content/uploads/2022/07/5676A.jpg",
+      "evidence": "Cached exact official manufacturer page for FEH 5676, 96 mm, establishes nickel-satin hollow tubular handle. Manufacturer shares the unchanged same model photograph across size codes, now disclosed as reference illustration, not proof of photographed dimension.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product photography; no explicit reuse license found; site copyright footer reserves rights; no watermark or specific incompatible reuse restriction observed. Not license-cleared.",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "3828a50217cdfdeb27fb6d1bc34f5815a0940845444f9cb162d0b50975e1da2a"
+    },
+    {
+      "sku": "13565",
+      "alt": "Ilustración de referencia de manija hueca FEH 5678; imagen de modelo compartida entre medidas, sin escala dimensional",
+      "caption": "Ilustración de referencia de manija hueca FEH 5678; imagen de modelo compartida entre medidas, sin escala dimensional",
+      "kind": "manufacturer-render",
+      "researchKind": "product-illustration",
+      "provenance": "download-original",
+      "sourcePage": "https://flexoneh.com.co/producto/manija-hueca-niquel-satinado-128mm/",
+      "imageUrl": "https://flexoneh.com.co/wp-content/uploads/2022/07/5678A.jpg",
+      "evidence": "Cached exact official manufacturer page for FEH 5678, 128 mm, establishes nickel-satin hollow tubular handle. Manufacturer shares the unchanged same model photograph across size codes, now disclosed as reference illustration, not proof of photographed dimension.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product photography; no explicit reuse license found; site copyright footer reserves rights; no watermark or specific incompatible reuse restriction observed. Not license-cleared.",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "3828a50217cdfdeb27fb6d1bc34f5815a0940845444f9cb162d0b50975e1da2a"
+    },
+    {
+      "sku": "1959",
+      "alt": "Detalle de un carro Ducasse DN 80 PL del sistema de cuatro puertas; no muestra el kit completo",
+      "caption": "Detalle de un carro Ducasse DN 80 PL del sistema de cuatro puertas; no muestra el kit completo",
+      "kind": "component-detail",
+      "researchKind": "product-illustration",
+      "provenance": "download-original",
+      "sourcePage": "https://ducasseindustrial.com/co/product/dn-80-pl-4-hojas/",
+      "imageUrl": "https://ducasseindustrial.com/co/wp-content/uploads/sites/19/2020/09/CO_10100217401_IMG_PROD1_BL.jpg",
+      "evidence": "Cached official manufacturer page explicitly identifies DN 80 PL 4 HOJAS reference 10100217401 and binds it to this unchanged carriage photograph. The same carriage is used in PL2 and PL4; image represents one common component, not the entire four-door kit. Caption makes component-only scope explicit. No kit quantity, unseen fittings or different SR mechanism inferred. Catalog reference for this SKU is unambiguous DN-80PL4 / 10100217401.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product photograph. No express reuse license found; not license-cleared. No watermark or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "1b2df3d6432a769662bb1abad6f3f6af8fdf74ec297571fd2f4188707ea0be60"
+    },
+    {
+      "sku": "2150",
+      "alt": "Grapas Stanley TRA706 de 3/8 pulgada, referencia de empaque",
+      "caption": "Referencia visual del empaque Stanley TRA706 de 3/8″. La foto muestra una caja de 1.000 grapas; confirmar la cantidad de la unidad ofrecida.",
+      "kind": "supplier-render",
+      "researchKind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriaprat.cl/products/stanley-grapa-3-8-pulg-tra706?variant=59517813096734",
+      "imageUrl": "https://ferreteriaprat.cl/cdn/shop/files/gra007083_5_wg6cfsfdobnjipod.jpg?v=1782929146",
+      "evidence": "Exact TRA706 3/8 inch seller listing and inspected manufacturer packaging show 3/8 inch / 10 mm staples and 1000 pieces. Catalog ref TRA-706 is normalized hyphen spelling; catalog unit does not specify pack count. Approved only as explicitly captioned packaging reference, not a promise of local unit quantity.",
+      "exactVariant": true,
+      "licenseStatus": "Publicly accessible product marketing original; no explicit incompatible reuse restriction observed on source product page. Reuse license unverified; not claimed open-license or copyright-free.",
+      "dimensions": [
+        458,
+        458
+      ],
+      "sha256": "fad2922e02f168c3a985cb84aa125cf88e06f214349d78760b501aa306c2d5c8"
+    },
+    {
+      "sku": "2913",
+      "alt": "Punta TOTAL TACIM16PH223 PH2 de 50 mm, referencia visual del fabricante",
+      "caption": "Se vende por unidad. La imagen de referencia del fabricante muestra la punta TACIM16PH223 y su presentación de 10 piezas; el estuche y el juego no están incluidos en la unidad.",
+      "kind": "supplier-render",
+      "researchKind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://totalmalaysia.my/tacim16ph223-10-pcs-impact-screwdriver-bits/",
+      "imageUrl": "https://totalmalaysia.my/wp-content/uploads/2023/03/TACIM16PH223.jpg?v=20250731",
+      "evidence": "TOTAL Malaysia page maps exact code TACIM16PH223 to PH2 50 mm impact bit. Pixels show correct single-ended PH2 impact geometry, turquoise sleeve and dark S2 hex shank alongside 10-piece case. Current catalog explicitly sells one unit, so required caption discloses supplier pack and excludes case/multiple bits.",
+      "exactVariant": true,
+      "licenseStatus": "Publicly accessible product marketing original; no explicit incompatible reuse restriction observed on source product page. Reuse license unverified; not claimed open-license or copyright-free.",
+      "dimensions": [
+        1072,
+        1280
+      ],
+      "sha256": "32c326ee365274de5504841853dc94bbbe32841153c00990f0448575b83cfd3a"
+    },
+    {
+      "sku": "15834",
+      "alt": "Punta de impacto TOTAL TACIM16PH263 PH2 de 150 mm, referencia de empaque",
+      "caption": "Se vende por unidad. La foto de referencia muestra una punta TACIM16PH263 junto a un empaque de 10 piezas; el estuche y las otras puntas no están incluidos.",
+      "kind": "supplier-render",
+      "researchKind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://derhali.com/products/total-tools-impact-screwdriver-bit-tacim16ph263",
+      "imageUrl": "https://derhali.com/cdn/shop/files/539.jpg?v=1703062278",
+      "evidence": "Exact supplier page binds TACIM16PH263 to PH2 x150 mm impact bit. Visible package says PH2x150mm and 10 PCS; visible single bit has correct long black hexagonal shaft and turquoise torsion sleeve. Accepted as packaging/component reference only with explicit local single-unit caveat.",
+      "exactVariant": true,
+      "licenseStatus": "Publicly accessible product marketing original; no explicit incompatible reuse restriction observed on source product page. Reuse license unverified; not claimed open-license or copyright-free.",
+      "dimensions": [
+        1244,
+        1244
+      ],
+      "sha256": "9a0cbca659726409ec86c5de5e47bd047d45cfe866282a3d532f323ceefc8a54"
+    },
+    {
+      "sku": "14283",
+      "alt": "Ilustración de referencia Welldone 12310 para bisagra de 35 mm; imagen de modelo compartida entre diámetros",
+      "caption": "Ilustración de referencia Welldone 12310 para bisagra de 35 mm; imagen de modelo compartida entre diámetros",
+      "kind": "manufacturer-render",
+      "researchKind": "product-illustration",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-para-bisagra-de-parche-de-uso-profesional-123/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-PARA-BISAGRA-DE-PARCHE-DE-USO-PROFESIONAL-1.png",
+      "evidence": "Official Welldone page table explicitly maps 12310 to 35 mm cutting diameter, 15 mm cutting length and 3-1/8 inch total length. Page uses a shared product photograph for 12308 (26 mm) and 12310 (35 mm); caption explicitly scopes it as source model illustration, not dimensional proof. Original photo isolated by manufacturer, no assistant edit.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing image. No express reuse license found; not license-cleared. No watermark or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        343,
+        729
+      ],
+      "sha256": "ecc5fc1f853251eece59eed2550f59448f871d1f773b2209b4fbb4113801f177"
+    },
+    {
+      "sku": "1096",
+      "alt": "Vajillero Rejiplas 35550 blanco de 80 cm instalado abajo; vista de uso, sin incluir menaje ni platero superior",
+      "caption": "Vajillero Rejiplas 35550 blanco de 80 cm instalado abajo; vista de uso, sin incluir menaje ni platero superior",
+      "kind": "component-detail",
+      "researchKind": "product-illustration",
+      "provenance": "download-original",
+      "sourcePage": "https://www.comaderas.com/vajillero-classic-de-80-cm-blanco-35550",
+      "imageUrl": "https://cdnx.jumpseller.com/ace-comaderas/image/35692789/resize/1200/1200?1693843718",
+      "evidence": "Exact supplier reference 35550, Rejiplas, 80 cm and white plastified steel. Catalog uses broader word locero. Supplier photo shows the 35550 flat vajillero installed at bottom, with cups/plates and a separate upper dish rack as context. Caption explicitly identifies the sold lower shelf and excludes scene accessories. Source is unchanged retailer marketing image.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing image. No express reuse license found; not license-cleared. No watermark or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "cca8cdc51c00b9d4001f76da18a21e894287efa6c32355d6d12c0cee1e73c3ac"
+    },
+    {
+      "sku": "13204",
+      "alt": "Carro lateral FEH 5759 de tres niveles con cierre suave; fotografía de instalación, sin incluir mueble ni alimentos",
+      "caption": "Carro lateral FEH 5759 de tres niveles con cierre suave; fotografía de instalación, sin incluir mueble ni alimentos",
+      "kind": "component-detail",
+      "researchKind": "product-illustration",
+      "provenance": "download-original",
+      "sourcePage": "https://flexoneh.com.co/producto/carro-lateral-3n-c-suave-modulo-200mm/",
+      "imageUrl": "https://flexoneh.com.co/wp-content/uploads/2022/07/5759A.jpg",
+      "evidence": "Official exact manufacturer reference 5759 states lateral 3-level soft-close carriage, herraje measures 140 x 485 x 566 mm. Catalog ref5759 and KPTJ009F-1 agree with independently indexed Tecnifacil exact-code sheet; local abbreviated dimensions48x14 cm correspond to rounded depth/width, source precise dimensions retained here. Source photo shows installed three-level carriage, not standalone cabinet or contents; caption scopes sale to carriage. No source attributes changed.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product-marketing image. No express reuse license found; not license-cleared. No watermark or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "d0924deb8e61f7e01bd315919b538ffc2c4efadd8fb506f9e0e9da462d664c11"
+    },
+    {
+      "sku": "3552",
+      "alt": "Sierra copa Bahco 3830-22 de 22 mm, referencia visual de la familia Sandflex",
+      "caption": "Imagen de referencia del proveedor para esta familia de sierras Bahco Sandflex 3830, compartida entre medidas y sin escala. La variante ofrecida es de 22 mm (7/8″).",
+      "kind": "supplier-render",
+      "researchKind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://sirian.cl/shop/3830-22-c-sierra-copa-bimetal-22-mm-7-8-bahco-3830-22-c-72333?search=3830-22-C",
+      "imageUrl": "https://sirian.cl/web/image/product.template/72333/image_1024?unique=db76c8a",
+      "evidence": "Sirian exact product page explicitly identifies Bahco 3830-22-C and 22 mm diameter. Original depicts the matching narrow orange cup without side relief slots, variable-pitch teeth and native BAHCO branding, without a conflicting size/model label or reseller watermark. Sirian shares the small-diameter illustration across exact 22, 25 and 27 mm pages and a distinct large-diameter illustration for 60 mm. Accepted only as no-scale supplier family reference. The image depicts the cup component, not retail packaging. Earlier images visibly labeled 35/108 mm and the Toolsbox watermark remain rejected.",
+      "exactVariant": true,
+      "licenseStatus": "Publicly accessible supplier product original; no explicit incompatible reuse restriction observed on source product page. Reuse license unverified; not claimed open-license or copyright-free.",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sha256": "95e0fbca596211d3c5a68fe45367a940369580921f939b48d5832043abd6253d"
+    },
+    {
+      "sku": "10951",
+      "alt": "Broca IRWIN HSS IW1112 de 1/8 de pulgada, imagen de referencia",
+      "caption": "Imagen de referencia del proveedor para la familia IRWIN HSS, sin escala. La referencia ofrecida es IW1112 de 1/8″ y se vende por unidad.",
+      "kind": "supplier-render",
+      "researchKind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://www.comaderas.com/broca-hss-x-18-iw1112-irwin",
+      "imageUrl": "https://cdnx.jumpseller.com/ace-comaderas/image/26869795/resize/1200/1200?1693843453",
+      "evidence": "Exact Comaderas product page identifies IW1112 and 3.17 mm / 1/8 inch bright HSS, straight cylindrical shank and 118-degree point. Image is the supplier illustration for this exact listed code; pixels show a matching bright HSS twist bit with straight round shank and no conflicting size/model label. Accepted as captioned family illustration, not dimensional proof. Supplier lists bulk 10 but image shows only a single bit; local unit remains one.",
+      "exactVariant": true,
+      "licenseStatus": "Publicly accessible supplier product original; no explicit incompatible reuse restriction observed on source product page. Reuse license unverified; not claimed open-license or copyright-free.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "d5aa635923c40083a2389b0a7cd9ad9f09df077162b1a1f8760b234dab87d7f3"
+    },
+    {
+      "sku": "11403",
+      "alt": "Broca IRWIN SpeedHammer SDS Plus 14159 de 5/16 por 6 pulgadas, referencia de empaque",
+      "caption": "Se vende por unidad. La foto de referencia muestra cinco brocas IRWIN 14159 en sus tubos; no corresponde a la cantidad incluida.",
+      "kind": "supplier-render",
+      "researchKind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://www.cripedistributing.com/products/irwin-14159-sds-plus-5-16-x-4-x-6-carbide-speedhammer-drill-bit-5pcs",
+      "imageUrl": "https://www.cripedistributing.com/cdn/shop/products/thumbnail_14_cb37e1e8-1875-4a96-8539-e64a3e7355b4.jpg?v=1643136195",
+      "evidence": "Cripe product title maps 14159 to SDS Plus 5/16 x 4 working x 6 total inch carbide SpeedHammer bits. Photograph visibly shows five individual packaged bits; labels show 5/16 inch and 6 inch and 14159. Exact diameter, length and SDS Plus tooling established. No watermark. Accepted as packaging reference with explicit local-single-unit caveat.",
+      "exactVariant": true,
+      "licenseStatus": "Publicly accessible supplier product original; no explicit incompatible reuse restriction observed on source product page. Reuse license unverified; not claimed open-license or copyright-free.",
+      "dimensions": [
+        480,
+        640
+      ],
+      "sha256": "af65c5e757fdd8bbce4a1e19ec368c297f9588506ca9eb811079fcec2e815352"
+    },
+    {
+      "sku": "12118",
+      "alt": "Sierra copa Bahco 3830-25 de 25 mm, referencia visual de la familia Sandflex",
+      "caption": "Imagen de referencia del proveedor para esta familia de sierras Bahco Sandflex 3830, compartida entre medidas y sin escala. La variante ofrecida es de 25 mm (1″).",
+      "kind": "supplier-render",
+      "researchKind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://sirian.cl/shop/3830-25-c-sierra-copa-bimetal-25-mm-bahco-3830-25-c-72349?search=3830-25",
+      "imageUrl": "https://sirian.cl/web/image/product.template/72349/image_1024?unique=b942899",
+      "evidence": "Sirian exact product page explicitly identifies Bahco 3830-25-C and 25 mm diameter. Original depicts the matching narrow orange cup without side relief slots, variable-pitch teeth and native BAHCO branding, without a conflicting size/model label or reseller watermark. Sirian shares the small-diameter illustration across exact 22, 25 and 27 mm pages and a distinct large-diameter illustration for 60 mm. Accepted only as no-scale supplier family reference. The image depicts the cup component, not retail packaging. Earlier images visibly labeled 35/108 mm and the Toolsbox watermark remain rejected.",
+      "exactVariant": true,
+      "licenseStatus": "Publicly accessible supplier product original; no explicit incompatible reuse restriction observed on source product page. Reuse license unverified; not claimed open-license or copyright-free.",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sha256": "95e0fbca596211d3c5a68fe45367a940369580921f939b48d5832043abd6253d"
+    },
+    {
+      "sku": "12119",
+      "alt": "Sierra copa Bahco 3830-27 de 27 mm, referencia visual de la familia Sandflex",
+      "caption": "Imagen de referencia del proveedor para esta familia de sierras Bahco Sandflex 3830, compartida entre medidas y sin escala. La variante ofrecida es de 27 mm (1 1/16″).",
+      "kind": "supplier-render",
+      "researchKind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://sirian.cl/shop/3830-27-c-sierra-copa-bimetal-27-mm-1-1-16-bahco-3830-27-c-72353?search=3830-27",
+      "imageUrl": "https://sirian.cl/web/image/product.template/72353/image_1024?unique=9f9ade4",
+      "evidence": "Sirian exact product page explicitly identifies Bahco 3830-27-C and 27 mm diameter. Original depicts the matching narrow orange cup without side relief slots, variable-pitch teeth and native BAHCO branding, without a conflicting size/model label or reseller watermark. Sirian shares the small-diameter illustration across exact 22, 25 and 27 mm pages and a distinct large-diameter illustration for 60 mm. Accepted only as no-scale supplier family reference. The image depicts the cup component, not retail packaging. Earlier images visibly labeled 35/108 mm and the Toolsbox watermark remain rejected. This replaces the provisional Mercado Industrial wide-cup illustration because the independently observed size-specific Sirian image shows the narrower small-cup geometry.",
+      "exactVariant": true,
+      "licenseStatus": "Publicly accessible supplier product original; no explicit incompatible reuse restriction observed on source product page. Reuse license unverified; not claimed open-license or copyright-free.",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sha256": "95e0fbca596211d3c5a68fe45367a940369580921f939b48d5832043abd6253d"
+    },
+    {
+      "sku": "12128",
+      "alt": "Sierra copa Bahco 3830-51, referencia visual de la familia Sandflex",
+      "caption": "Imagen de referencia del proveedor para la familia Bahco Sandflex 3830, sin escala. La variante ofrecida es de 51 mm (2″).",
+      "kind": "supplier-render",
+      "researchKind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://www.elmetro.cl/sierra-copa-51-mm-bahco-3830-51-c-bi-metal-para-corte-en-metal",
+      "imageUrl": "https://cdnx.jumpseller.com/elmetro-cl/image/71754539/Proyecto_20nuevo_20-_202025-11-10T111112.881.png?1768221369",
+      "evidence": "El Metro exact page identifies 3830-51-C, 51 mm, bi-metal Sandflex orange cup, 38 mm depth. Original supplier image shows the correct product family with relief slots and native BAHCO logo, no conflicting size/model text and no reseller watermark. Same family illustration appears for another size from an independent supplier; approved only with no-scale family disclosure. Catalog 3830-51 matches cup component; image does not promise retail packaging.",
+      "exactVariant": true,
+      "licenseStatus": "Publicly accessible supplier product original; no explicit incompatible reuse restriction observed on source product page. Reuse license unverified; not claimed open-license or copyright-free.",
+      "dimensions": [
+        2000,
+        2000
+      ],
+      "sha256": "2b31195688f1a894062b2670def7bb7843a095b50bc5aaed2692ccb46fa6f4b9"
+    },
+    {
+      "sku": "12130",
+      "alt": "Sierra copa Bahco 3830-60 de 60 mm, referencia visual de la familia Sandflex",
+      "caption": "Imagen de referencia del proveedor para esta familia de sierras Bahco Sandflex 3830, compartida entre medidas y sin escala. La variante ofrecida es de 60 mm (2 3/8″).",
+      "kind": "supplier-render",
+      "researchKind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://sirian.cl/shop/3830-60-c-sierra-copa-bimetal-60-mm-2-3-8-bahco-3830-60-c-72469?category=173",
+      "imageUrl": "https://sirian.cl/web/image/product.template/72469/image_1920?unique=a1085c3",
+      "evidence": "Sirian exact product page explicitly identifies Bahco 3830-60-C and 60 mm diameter. Original depicts the matching wide orange cup with two side relief slots, variable-pitch teeth and native BAHCO branding, without a conflicting size/model label or reseller watermark. Sirian shares the small-diameter illustration across exact 22, 25 and 27 mm pages and a distinct large-diameter illustration for 60 mm. Accepted only as no-scale supplier family reference. The image depicts the cup component, not retail packaging. Earlier images visibly labeled 35/108 mm and the Toolsbox watermark remain rejected.",
+      "exactVariant": true,
+      "licenseStatus": "Publicly accessible supplier product original; no explicit incompatible reuse restriction observed on source product page. Reuse license unverified; not claimed open-license or copyright-free.",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sha256": "3806843be542044b5b7c316ed8762533aaed834bade8a1ddb0df58426dd3c3fb"
+    },
+    {
+      "sku": "14862",
+      "alt": "Taladro atornillador TOTAL UTDLI1222 de 12 V, detalle del taladro",
+      "caption": "Detalle del taladro del conjunto TOTAL UTDLI1222. La imagen no muestra la segunda batería, el cargador ni el maletín incluidos en la descripción.",
+      "kind": "component-detail",
+      "researchKind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://ideamaq.com.co/taladro-inalambrico-12v-2-baterias-total-utdli1222/",
+      "imageUrl": "https://ideamaq.com.co/wp-content/uploads/Taladro-inalambrico-12V-2-baterias-Total-UTDLI1222-1.webp",
+      "evidence": "Independent Ideamaq exact UTDLI1222 page verifies 12 V / 1.5 Ah, 15+1 / 16 torque positions, 25 Nm, two batteries,charger and canvas case. High-resolution original shows a single non-impact drill and 12 V / 1.5 Ah battery, torque selector terminating at 15 plus drill mode, without separate impact selector or impact label. This genuinely independent correct-function image replaces previously rejected manufacturer-page impact photo. Native TOTAL branding only; not a reseller watermark. Caption discloses partial kit contents.",
+      "exactVariant": true,
+      "licenseStatus": "Publicly accessible supplier product original; no explicit incompatible reuse restriction observed on source product page. Reuse license unverified; not claimed open-license or copyright-free.",
+      "dimensions": [
+        1800,
+        1800
+      ],
+      "sha256": "d0e91f89df930edcc6b30be3842862c6daedb455dc2495db0accf3624b5b0787"
+    },
+    {
+      "sku": "15038",
+      "alt": "Basurera para puerta HSO625-00 de acero 201 y 12 L; vista de referencia",
+      "caption": "Referencia HSO625-00 de 12 L según las especificaciones del proveedor. Se muestra una basurera con tapa y soporte; mueble no incluido.",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://virtualmuebles.com/products/basurera-puerta-interna-acero-inoxidable-201",
+      "imageUrl": "https://virtualmuebles.com/cdn/shop/products/herrajes-cocina-bonuit-basurera-interna-hso625-00-madecentro.jpg?v=1688762037&width=1946",
+      "evidence": "Virtual Muebles explicitly states reference HSO625-00, steel 201, 12 lt, and supply of one waste bin. Its exact product gallery provides this bare-product image. Madecentro current body specifications independently confirm SKU HSO625-00, 12 litros, polished steel/plastic, one container with lid and door mounting. Madecentro HTML title says20L but its body says12L; this is documented as source metadata inconsistency, not evidence of changed product generation.",
+      "exactVariant": true,
+      "licenseStatus": "Public supplier marketing image; no open license or express reproduction permission evidenced. Not license-cleared.",
+      "dimensions": [
+        1024,
+        720
+      ],
+      "sha256": "43a049f5b2d0df8f770c62bcfdbbdbfa9f01c56dc7400c2b9efde099e75ac86d"
+    }
+  ]
+}

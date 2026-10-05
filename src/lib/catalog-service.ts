@@ -36,6 +36,7 @@ function publicProduct(product: Product): Product {
       verified: true as const,
       ...(["manufacturer-render", "supplier-render", "technical-diagram", "profile-detail", "component-detail", "pair-detail"].includes(image.kind || "") ? { kind: image.kind } : {}),
       ...(typeof image.alt === "string" ? { alt: image.alt } : {}),
+      ...(typeof image.caption === "string" && image.caption.trim() ? { caption: image.caption.trim() } : {}),
     })) } : {}),
     ...(Array.isArray(product.specs) ? { specs: product.specs.filter((spec) => spec.verified === true && typeof spec.label === "string" && typeof spec.value === "string").map((spec) => ({
       label: spec.label, value: spec.value, verified: true as const,

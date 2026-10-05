@@ -148,3 +148,15 @@ test("non-photographic official assets retain only recognized media classificati
   const result = enrichProduct(product, { [product.id]: { gallery: [{ src: "/products/example.webp", verified: true, kind: "unverified-artwork" }] } });
   assert.equal(result.gallery[0].kind, undefined);
 });
+
+
+test("verified visible captions are trimmed and whitelisted without exposing source metadata", () => {
+  const result = enrichProduct(product, { [product.id]: { gallery: [{ ...photo, kind: "supplier-render", caption: " No incluye cama ni colchón. ", sourcePath: "/private/original.png", evidence: "private audit" }] } });
+  assert.equal(result.gallery[0].caption, "No incluye cama ni colchón.");
+  assert.equal(result.gallery[0].kind, "supplier-render");
+  assert.equal(result.gallery[0].sourcePath, undefined);
+  assert.equal(result.gallery[0].evidence, undefined);
+  for (const caption of [false, 17, {}, " "]) {
+    assert.equal(enrichProduct(product, { [product.id]: { gallery: [{ ...photo, caption }] } }).gallery[0].caption, undefined);
+  }
+});

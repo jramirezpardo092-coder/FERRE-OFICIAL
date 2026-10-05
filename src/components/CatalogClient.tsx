@@ -19,6 +19,7 @@ import CatalogSearch from "./catalog/CatalogSearch";
 import CatalogPagination from "./catalog/CatalogPagination";
 import CatalogEmptyState from "./catalog/CatalogEmptyState";
 import ParditoState from "./catalog/ParditoState";
+import { shouldShowCategoryShortcuts } from "@/lib/catalog-navigation";
 
 const SORT_OPTIONS = ["relevance", "availability", "price-asc", "price-desc", "discount", "name"];
 // La vista rápida se descarga cuando el cliente abre una ficha.
@@ -172,6 +173,8 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
     return count > 0 ? [{ ...item, count }] : [];
   });
 
+  const showCategoryNavigation = shouldShowCategoryShortcuts(visibleCategoryChips, filters.category);
+
   return <CatalogPriceModeProvider value={pricePreference}><div ref={topRef} className="mx-auto max-w-site scroll-mt-24 px-4 pt-3 pb-24 md:px-6 lg:px-8">
     <Suspense fallback={null}><CatalogUrlSync onChange={setParamsKey} /></Suspense>
     <div className="lg:mb-3 lg:flex lg:items-center lg:gap-3">
@@ -188,8 +191,8 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
         <button type="button" onClick={clearAll} className="min-h-11 px-2 py-2 text-sm font-semibold text-ink-2 hover:text-ink hover:underline">Limpiar filtros</button>
       </div>}
     </div>
-    {visibleCategoryChips.length > 1 && <p className="mb-1 text-xs text-ink-2 sm:hidden">Categorías <span aria-hidden="true">· desliza para explorar →</span></p>}
-    {visibleCategoryChips.length > 0 && <nav data-design-categories aria-label="Categorías del catálogo" className="catalog-category-rail mb-3 flex gap-2 overflow-x-auto pb-2">
+    {showCategoryNavigation && visibleCategoryChips.length > 1 && <p className="mb-1 text-xs text-ink-2 sm:hidden">Categorías <span aria-hidden="true">· desliza para explorar →</span></p>}
+    {showCategoryNavigation && <nav data-design-categories aria-label="Categorías del catálogo" className="catalog-category-rail mb-3 flex gap-2 overflow-x-auto pb-2">
       {visibleCategoryChips.map(item => <a key={item.slug} href={getCategoryPath(item.name)} onClick={event => {
         if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
         event.preventDefault(); setSearch(""); updateParams({ cat: item.name, q: null, page: null });

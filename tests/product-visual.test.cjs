@@ -26,6 +26,7 @@ const dictionaries = load("src/lib/catalog/dictionaries.ts");
 const normalizer = load("src/lib/catalog/normalize.ts", { "./dictionaries": dictionaries });
 const routes = load("src/lib/catalog/routes.ts", { "../constants": constants, "./normalize": normalizer });
 const presentation = load("src/lib/quote-presentation.ts", { "./constants": constants, "./utils": utils, "./catalog/normalize": normalizer });
+const mediaCaptions = load("src/lib/product-media.ts");
 const jsx = require("react/jsx-runtime");
 const product = Object.freeze({ id: "0044", nombre: "CERRADURA P/ PUERTA YALE", brand: "YALE", cat: "Cerrajería", unidad: "unidad", precio: 6200, stock: 26, ref: "REF-0044", priceVerified: true, taxRate: 19 });
 const plain = (value) => JSON.parse(JSON.stringify(value));
@@ -92,7 +93,7 @@ test("card exposes persistent quotation quantity while adding keeps the original
   const additions = [];
   const Card = load("src/components/ProductCard.tsx", {
     react: hooks.react, "react/jsx-runtime": jsx, "next/link": ({ children, prefetch, ...props }) => React.createElement("a", props, children),
-    "@/lib/utils": utils, "@/lib/catalog/normalize": normalizer, "@/lib/catalog/routes": routes,
+    "@/lib/utils": utils, "@/lib/product-media": mediaCaptions, "@/lib/catalog/normalize": normalizer, "@/lib/catalog/routes": routes,
     "@/lib/cart-store": { addToCart: (item) => { additions.push(item); return true; } },
     "@/lib/useQuoteQuantity": { useQuoteQuantity: (id) => id === "0044" ? 2 : 0 },
     "@/lib/quote-presentation": presentation, "./catalog/ProductMedia": () => null,
@@ -121,7 +122,7 @@ test("mobile and desktop product actions share fractional quantity, sold-out con
   const hooks = stateHooks();
   const additions = [];
   const Actions = load("src/app/producto/[slug]/ProductActions.tsx", {
-    react: hooks.react, "react/jsx-runtime": jsx, "@/lib/utils": utils,
+    react: hooks.react, "react/jsx-runtime": jsx, "@/lib/utils": utils, "@/lib/product-media": mediaCaptions,
     "@/lib/cart-store": { addToCart: (item, qty) => { additions.push({ item, qty }); return true; } },
     "@/lib/useQuoteQuantity": { useQuoteQuantity: () => 0 }, "@/lib/catalog/normalize": normalizer,
     "@/lib/quote-presentation": presentation, "@/components/catalog/PriceDisplay": () => null,
@@ -150,7 +151,7 @@ test("gallery thumbnails keep originals and every selected full image retains it
   const hooks = stateHooks();
   const Image = () => null;
   const Media = load("src/components/catalog/ProductMedia.tsx", {
-    react: hooks.react, "react/jsx-runtime": jsx, "next/image": Image, "@/lib/utils": utils,
+    react: hooks.react, "react/jsx-runtime": jsx, "next/image": Image, "@/lib/utils": utils, "@/lib/product-media": mediaCaptions,
   }).default;
   const source = Object.freeze({ ...product, img: "products/front.webp", gallery: Object.freeze([
     Object.freeze({ src: "/products/front.webp", alt: "Frente exacto", verified: true }),
@@ -185,14 +186,14 @@ test("gallery thumbnails keep originals and every selected full image retains it
 test("product modal has accessible price radios and prices from its catalog URL provider", () => {
   const preferences = load("src/lib/price-preference.ts", { react: React });
   const PriceDisplay = load("src/components/catalog/PriceDisplay.tsx", {
-    "react/jsx-runtime": jsx, "@/lib/utils": utils, "@/lib/price-preference": preferences,
+    "react/jsx-runtime": jsx, "@/lib/utils": utils, "@/lib/product-media": mediaCaptions, "@/lib/price-preference": preferences,
   }).default;
   const PricePreferenceToggle = load("src/components/catalog/PricePreferenceToggle.tsx", {
-    react: React, "react/jsx-runtime": jsx, "@/lib/utils": utils, "@/lib/price-preference": preferences,
+    react: React, "react/jsx-runtime": jsx, "@/lib/utils": utils, "@/lib/product-media": mediaCaptions, "@/lib/price-preference": preferences,
   }).default;
   const Modal = load("src/components/ProductModal.tsx", {
     react: React, "react/jsx-runtime": jsx, "next/link": ({ children, prefetch, ...props }) => React.createElement("a", props, children),
-    "@/lib/utils": utils, "@/lib/cart-store": { addToCart: () => true }, "@/lib/useQuoteQuantity": { useQuoteQuantity: () => 0 },
+    "@/lib/utils": utils, "@/lib/product-media": mediaCaptions, "@/lib/cart-store": { addToCart: () => true }, "@/lib/useQuoteQuantity": { useQuoteQuantity: () => 0 },
     "@/lib/useDialog": { useDialog() {} }, "@/lib/catalog/normalize": normalizer, "@/lib/catalog/routes": routes,
     "@/lib/quote-presentation": presentation, "./catalog/ProductMedia": () => null, "./catalog/ProductSpecs": () => null,
     "./catalog/PriceDisplay": PriceDisplay, "./catalog/PricePreferenceToggle": PricePreferenceToggle,
@@ -243,7 +244,7 @@ test("history dismisses quick view, releases the real focus trap, restores scrol
   };
   const dialogHook = load("src/lib/useDialog.ts", { react }, globals);
   const Modal = load("src/components/ProductModal.tsx", {
-    react, "react/jsx-runtime": jsx, "next/link": () => null, "@/lib/utils": utils,
+    react, "react/jsx-runtime": jsx, "next/link": () => null, "@/lib/utils": utils, "@/lib/product-media": mediaCaptions,
     "@/lib/cart-store": { addToCart: () => true }, "@/lib/useQuoteQuantity": { useQuoteQuantity: () => 0 },
     "@/lib/useDialog": dialogHook, "@/lib/catalog/normalize": normalizer, "@/lib/catalog/routes": routes,
     "@/lib/quote-presentation": presentation, "./catalog/ProductMedia": () => null, "./catalog/ProductSpecs": () => null,
@@ -281,7 +282,7 @@ test("history dismisses quick view, releases the real focus trap, restores scrol
 test("manufacturer illustrations and technical diagrams are visibly identified as such", () => {
   for (const [kind, caption] of [["manufacturer-render", "Ilustración del fabricante"], ["supplier-render", "Ilustración del distribuidor"], ["technical-diagram", "Ficha técnica"]]) {
     const hooks = stateHooks();
-    const Media = load("src/components/catalog/ProductMedia.tsx", { react: hooks.react, "react/jsx-runtime": jsx, "next/image": () => null, "@/lib/utils": utils }).default;
+    const Media = load("src/components/catalog/ProductMedia.tsx", { react: hooks.react, "react/jsx-runtime": jsx, "next/image": () => null, "@/lib/utils": utils, "@/lib/product-media": mediaCaptions }).default;
     const source = { ...product, img: "products/illustration.webp", gallery: [{ src: "/products/illustration.webp", alt: "Referencia exacta", verified: true, kind }] };
     const tree = hooks.render(Media, { product: source, showGalleryControls: true });
     const html = renderToStaticMarkup(tree);
@@ -299,4 +300,78 @@ test("mobile action hides redundant desktop copy without clipping an accessible 
   assert.doesNotMatch(desktopCopy, /clip|position|width|height/);
   assert.match(mobile, /\.product-card-add-mobile\s*\{[^}]*display:\s*inline/);
   assert.match(mobile, /\.product-card-add-quantity\s*\{[^}]*display:\s*inline/);
+});
+
+
+test("scoped images retain full visible caveats and follow the actually displayed image", () => {
+  const hooks = stateHooks();
+  const Image = () => null;
+  const Media = load("src/components/catalog/ProductMedia.tsx", { react: hooks.react, "react/jsx-runtime": jsx, "next/image": Image, "@/lib/utils": utils, "@/lib/product-media": mediaCaptions }).default;
+  const caption = "Ilustración del mecanismo instalado. No incluye cama ni colchón.";
+  const source = { ...product, img: "products/install.webp", gallery: [
+    { src: "/products/install.webp", verified: true, kind: "supplier-render", caption },
+    { src: "/products/profile.webp", verified: true, kind: "profile-detail", caption: "Detalle parcial; no muestra el largo completo de 3 m." },
+  ] };
+  const render = (props = {}) => hooks.render(Media, { product: source, ...props });
+  let tree = render();
+  assert.ok(renderToStaticMarkup(tree).includes(caption));
+  const secondary = elements(render({ active: true })).filter(node => node.type === Image)[1];
+  assert.equal(secondary, undefined, "the secondary is not downloaded before interaction requests it");
+  tree = render({ showGalleryControls: true });
+  elements(tree).filter(node => node.type === "button")[1].props.onClick();
+  tree = render({ showGalleryControls: true });
+  assert.ok(renderToStaticMarkup(tree).includes(source.gallery[1].caption));
+  assert.ok(!renderToStaticMarkup(tree).includes(caption), "selected image does not keep a different view's caveat");
+  const fullImage = elements(tree).find(node => node.type === Image && node.props.fill);
+  fullImage.props.onError();
+  tree = render({ showGalleryControls: true });
+  assert.ok(renderToStaticMarkup(tree).includes(caption), "failed image restores the fallback image's caveat");
+  assert.ok(!renderToStaticMarkup(render({ showCaption: false })).includes("data-product-media-caption"), "cards place the same caption in their readable body column");
+});
+
+test("mobile card caveats are visible in the body instead of the 88px thumbnail", () => {
+  const hooks = stateHooks();
+  const Media = () => null;
+  const Card = load("src/components/ProductCard.tsx", {
+    react: hooks.react, "react/jsx-runtime": jsx, "next/link": ({ children, prefetch, ...props }) => React.createElement("a", props, children),
+    "@/lib/utils": utils, "@/lib/product-media": mediaCaptions, "@/lib/catalog/normalize": normalizer, "@/lib/catalog/routes": routes,
+    "@/lib/cart-store": { addToCart: () => true }, "@/lib/useQuoteQuantity": { useQuoteQuantity: () => 0 },
+    "@/lib/quote-presentation": presentation, "./catalog/ProductMedia": Media, "./catalog/PriceDisplay": () => null,
+  }).default;
+  const caption = "Ilustración compartida entre medidas; sin escala dimensional.";
+  const source = { ...product, img: "products/size.webp", gallery: [{ src: "/products/size.webp", verified: true, kind: "supplier-render", caption }] };
+  let tree = hooks.render(Card, { product: source });
+  const media = elements(tree).find(node => node.type === Media);
+  assert.equal(media.props.showCaption, false);
+  const body = elements(tree).find(node => node.props.className?.includes("product-card-body"));
+  assert.ok(renderToStaticMarkup(body).includes(caption));
+  media.props.onCaptionChange("Vista de una pieza del par");
+  tree = hooks.render(Card, { product: source });
+  assert.ok(renderToStaticMarkup(tree).includes("Vista de una pieza del par"));
+  media.props.onCaptionChange("");
+  assert.ok(!renderToStaticMarkup(hooks.render(Card, { product: source })).includes("data-product-media-caption"));
+});
+
+
+test("hover captions change only when the secondary image is actually loaded", () => {
+  const hooks = stateHooks();
+  hooks.react.useEffect = callback => callback();
+  const Image = () => null;
+  const notifications = [];
+  const Media = load("src/components/catalog/ProductMedia.tsx", { react: hooks.react, "react/jsx-runtime": jsx, "next/image": Image, "@/lib/utils": utils, "@/lib/product-media": mediaCaptions }).default;
+  const source = { ...product, img: "products/front.webp", gallery: [
+    { src: "/products/front.webp", verified: true, caption: "Vista exterior; mecanismo no visible." },
+    { src: "/products/back.webp", verified: true, caption: "Detalle posterior; accesorios no incluidos." },
+  ] };
+  const render = active => hooks.render(Media, { product: source, active, onCaptionChange: caption => notifications.push(caption) });
+  render(true);
+  let tree = render(true);
+  assert.ok(renderToStaticMarkup(tree).includes(source.gallery[0].caption));
+  elements(tree).filter(node => node.type === Image)[1].props.onLoad();
+  tree = render(true);
+  assert.ok(renderToStaticMarkup(tree).includes(source.gallery[1].caption));
+  assert.equal(notifications.at(-1), source.gallery[1].caption);
+  tree = render(false);
+  assert.ok(renderToStaticMarkup(tree).includes(source.gallery[0].caption));
+  assert.equal(notifications.at(-1), source.gallery[0].caption);
 });

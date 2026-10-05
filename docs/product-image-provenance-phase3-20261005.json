@@ -1,0 +1,2068 @@
+{
+  "date": "2026-10-05",
+  "scope": "125 additional approved product image assignments:118 zero-stock and7 in-stock. Images include labelled family illustrations, component views and technical diagrams. Catalog stock and commercial data unchanged. Rights remain with original sources; no open-license claim.",
+  "manifestSha256": "17bbd5aad3c504558f8eee263c4aec0b7e7dd9f5912a89a1cefa4168c3c530b2",
+  "images": [
+    {
+      "sku": "1860",
+      "alt": "Fresa welldone biselar 1-1/2 basatago 1/4; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12744 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-para-biselar-127/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-PARA-BISELAR-1.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12744: diameter 1-1/2 in, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        386,
+        647
+      ],
+      "sha256": "edd59348322a2b4a4396a3c9445ca9bb1c2b2d8cd784fe2df07a58265e1e4659"
+    },
+    {
+      "sku": "1862",
+      "alt": "Fresa welldone biselar 1.1/4 bastago 1/4; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12743 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-para-biselar-127/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-PARA-BISELAR-1.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12743: diameter 1-1/4 in, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        386,
+        647
+      ],
+      "sha256": "edd59348322a2b4a4396a3c9445ca9bb1c2b2d8cd784fe2df07a58265e1e4659"
+    },
+    {
+      "sku": "1868",
+      "alt": "Fresa welldone corte 6 mm 1 corete; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12424 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-corte-recto-un-filo-de-uso-profesional-124/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-CORTE-RECTO-UN-FILO.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12424: single flute, diameter 6 mm, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        303,
+        819
+      ],
+      "sha256": "b57e6f420cc8bb8f99b1160a463d3a540bc32ec88f116e700f6cf08762df1bab"
+    },
+    {
+      "sku": "1888",
+      "alt": "Fresa welldone media caa 3/8\"; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12721 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-de-media-cana-12721/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/02/WhatsApp-Image-2022-02-11-at-12.30.16-PM_preview_rev_1.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12721: diameter 3/8 in, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        190,
+        510
+      ],
+      "sha256": "f9714ed8ef3514baeea182671c70b8f9b619e14d7cf66e18eb28a44878871c46"
+    },
+    {
+      "sku": "1907",
+      "alt": "Fresa welldone p/redondear 7/8\"; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12766 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-para-encajar-de-uso-profesional-2/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-PARA-REDONDEAR-DE-USO-PROFESIONAL-1.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12766: diameter 7/8 in, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        392,
+        637
+      ],
+      "sha256": "698a69d5ab5ea3a0d01111384efa621dc22ed964118d2b28487f90085471e69b"
+    },
+    {
+      "sku": "1927",
+      "alt": "Fresa welldone corte recto 2 filos 3/8 industrial 2\"largo bastago 1/4; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12441 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-corte-recto-un-filo-de-uso-profesional-124/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-CORTE-RECTO-DOS-FILOS-DE-DOS-FILOS-DE-USO-PROFESIONAL.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12441: two flutes, diameter 3/8 in, 2 in cutting length, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        600,
+        600
+      ],
+      "sha256": "42f6a8f277b2ff99f3a49961fad13622515f91a478f5ce3e35b6c6931357c89e"
+    },
+    {
+      "sku": "2043",
+      "alt": "Fresa welldone prof redondear 1.1/4; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12770 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-para-encajar-de-uso-profesional-2/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-PARA-REDONDEAR-DE-USO-PROFESIONAL-1.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12770: diameter 1-1/4 in, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        392,
+        637
+      ],
+      "sha256": "698a69d5ab5ea3a0d01111384efa621dc22ed964118d2b28487f90085471e69b"
+    },
+    {
+      "sku": "2044",
+      "alt": "Fresa welldone prof redondear 1.1/2; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12772 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-para-encajar-de-uso-profesional-2/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-PARA-REDONDEAR-DE-USO-PROFESIONAL-1.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12772: diameter 1-1/2 in, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        392,
+        637
+      ],
+      "sha256": "698a69d5ab5ea3a0d01111384efa621dc22ed964118d2b28487f90085471e69b"
+    },
+    {
+      "sku": "2045",
+      "alt": "Fresa welldone rebordear copiado 1/2; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12443 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-corte-recto-con-rodamiento-de-uso-profesional/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-CORTE-RECTO-CON-RODAMIENTO-DE-USO-PROFESIONAL-1.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12443: upper bearing, diameter 1/2 in, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        306,
+        751
+      ],
+      "sha256": "bafa398141787598d8e3ca7ab22ac2763dafd85f353bb18fdaaaae0d3fa2a113"
+    },
+    {
+      "sku": "4081",
+      "alt": "Fresa welldone prof redondear corter 1 profesional; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12767 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-para-encajar-de-uso-profesional-2/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-PARA-REDONDEAR-DE-USO-PROFESIONAL-1.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12767: diameter 1 in, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        392,
+        637
+      ],
+      "sha256": "698a69d5ab5ea3a0d01111384efa621dc22ed964118d2b28487f90085471e69b"
+    },
+    {
+      "sku": "7830",
+      "alt": "Fresa welldone corte recto 1/2; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12447 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-corte-recto-un-filo-de-uso-profesional-124/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-CORTE-RECTO-DOS-FILOS-DE-DOS-FILOS-DE-USO-PROFESIONAL.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12447: two flutes, diameter 1/2 in, 2 in cutting length, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        600,
+        600
+      ],
+      "sha256": "42f6a8f277b2ff99f3a49961fad13622515f91a478f5ce3e35b6c6931357c89e"
+    },
+    {
+      "sku": "8827",
+      "alt": "Fresa welldone reborde form 3/8 esp 1/2; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 22861 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-para-rebordear-formica-22552-22559-22455/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/05/Fresa-para-Rebordear-Formica-con-Dos-o-Tres-Filos.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 22861: diameter 3/8 in, 1/2 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        219,
+        448
+      ],
+      "sha256": "bd8243cff0919c2e31b44b49789ef446522061aabf6c228d8e8f4a04c82aa98c"
+    },
+    {
+      "sku": "14215",
+      "alt": "Fresa welldone corte recto 2 fil 1/2 bastago 1/4; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12446 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-corte-recto-un-filo-de-uso-profesional-124/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-CORTE-RECTO-DOS-FILOS-DE-DOS-FILOS-DE-USO-PROFESIONAL.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12446: two flutes, diameter 1/2 in, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        600,
+        600
+      ],
+      "sha256": "42f6a8f277b2ff99f3a49961fad13622515f91a478f5ce3e35b6c6931357c89e"
+    },
+    {
+      "sku": "14216",
+      "alt": "Fresa welldone corte recto 1/8 bastago 1/4; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12407 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-corte-recto-un-filo-de-uso-profesional-124/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-CORTE-RECTO-UN-FILO.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12407: single flute, diameter 1/8 in, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        303,
+        819
+      ],
+      "sha256": "b57e6f420cc8bb8f99b1160a463d3a540bc32ec88f116e700f6cf08762df1bab"
+    },
+    {
+      "sku": "14217",
+      "alt": "Fresa welldone corte recto 5/32 1filo bastago 1/4; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12408 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-corte-recto-un-filo-de-uso-profesional-124/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-CORTE-RECTO-UN-FILO.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12408: single flute, diameter 5/32 in, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        303,
+        819
+      ],
+      "sha256": "b57e6f420cc8bb8f99b1160a463d3a540bc32ec88f116e700f6cf08762df1bab"
+    },
+    {
+      "sku": "14218",
+      "alt": "Fresa welldone corte recto 1 fil 3/16 bastago 1/4; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12409 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-corte-recto-un-filo-de-uso-profesional-124/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-CORTE-RECTO-UN-FILO.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12409: single flute, diameter 3/16 in, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        303,
+        819
+      ],
+      "sha256": "b57e6f420cc8bb8f99b1160a463d3a540bc32ec88f116e700f6cf08762df1bab"
+    },
+    {
+      "sku": "14219",
+      "alt": "Fresa welldone corte recto 2 fil 3/4 basatago 1/4; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12454 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-corte-recto-un-filo-de-uso-profesional-124/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-CORTE-RECTO-DOS-FILOS-DE-DOS-FILOS-DE-USO-PROFESIONAL.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12454: two flutes, diameter 3/4 in, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        600,
+        600
+      ],
+      "sha256": "42f6a8f277b2ff99f3a49961fad13622515f91a478f5ce3e35b6c6931357c89e"
+    },
+    {
+      "sku": "14220",
+      "alt": "Fresa welldone corte recto 2 fil 5/8 bastago 1/4; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12450 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-corte-recto-un-filo-de-uso-profesional-124/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-CORTE-RECTO-DOS-FILOS-DE-DOS-FILOS-DE-USO-PROFESIONAL.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12450: two flutes, diameter 5/8 in, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        600,
+        600
+      ],
+      "sha256": "42f6a8f277b2ff99f3a49961fad13622515f91a478f5ce3e35b6c6931357c89e"
+    },
+    {
+      "sku": "14284",
+      "alt": "Fresa welldone rebordear formica 5/16; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12553 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-para-rebordear-de-uso-profesional/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-PARA-REBORDEAR-DE-USO-PROFESIONAL-1.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12553: diameter 5/16 in, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        286,
+        776
+      ],
+      "sha256": "b054b3d26fb3903dad270b52f21ef1cfe6196d526c2b02bbf12b8b4aef7fc3af"
+    },
+    {
+      "sku": "14285",
+      "alt": "Fresa welldone rebordear formica 3/8 corta bastago 1/4; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12556 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-para-rebordear-de-uso-profesional/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-PARA-REBORDEAR-DE-USO-PROFESIONAL-1.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12556: diameter 3/8 in, short 1/2 in cutting length, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        286,
+        776
+      ],
+      "sha256": "b054b3d26fb3903dad270b52f21ef1cfe6196d526c2b02bbf12b8b4aef7fc3af"
+    },
+    {
+      "sku": "14286",
+      "alt": "Fresa welldone rebordear formica 1/2; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12557 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-para-rebordear-de-uso-profesional/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-PARA-REBORDEAR-DE-USO-PROFESIONAL-1.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12557: diameter 1/2 in, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        286,
+        776
+      ],
+      "sha256": "b054b3d26fb3903dad270b52f21ef1cfe6196d526c2b02bbf12b8b4aef7fc3af"
+    },
+    {
+      "sku": "14287",
+      "alt": "Fresa welldone corte recto 1 filo 1/4; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12410 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-corte-recto-un-filo-de-uso-profesional-124/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-CORTE-RECTO-UN-FILO.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12410: single flute, diameter 1/4 in, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        303,
+        819
+      ],
+      "sha256": "b57e6f420cc8bb8f99b1160a463d3a540bc32ec88f116e700f6cf08762df1bab"
+    },
+    {
+      "sku": "14288",
+      "alt": "Fresa welldone encajar 3/8 profesional batientar bastago 1/4; imagen de referencia del fabricante.",
+      "caption": "Diagrama de referencia del fabricante para la familia Welldone 12757/12758. Ref. 12757: corte de 3/8 y espigo de 1/4. No está a escala; consultar las medidas de la referencia.",
+      "kind": "technical-diagram",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-para-encajar-de-uso-profesional-22757/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-PARA-ENCAJAR.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 12757: 3/8 in cutting length, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        265,
+        422
+      ],
+      "sha256": "9e8f68b7e104b8fde389bf71c7f01de23412be81deb72a18d76f061bde3ba98d"
+    },
+    {
+      "sku": "15685",
+      "alt": "Fresa welldone biselar 1-1/4 industrial; imagen de referencia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 22743 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-para-biselar-22550-22741/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-PARA-BISELAS.png",
+      "evidence": "Official Welldone product family page and its published dimension table map exact reference 22743: industrial 45-degree bevel, diameter 1-1/4 in, 1/4 in shank. Original manufacturer family asset downloaded unchanged; visual review found no incompatible brand, finish or reseller watermark. This is a shared family reference, not dimensional proof. Visible caption is mandatory.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on the source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        242,
+        370
+      ],
+      "sha256": "4d558fa05e4815c5f654e73fecbc70559a88739a766147ff8c36d5f6ea894715"
+    },
+    {
+      "sku": "0549",
+      "alt": "Batería WORX WA3551 PowerShare de litio, 20 V y 2,0 Ah",
+      "provenance": "download-original",
+      "sourcePage": "https://eu.worx.com/en/20v-2-0-ah-battery-with-indicator-wa3551/",
+      "imageUrl": "https://storage.onpage.it/06ee3d91a63ea1645d31f94cfe82985997f8a57b/WA3551_2+%281%29.png?download=1",
+      "evidence": "Official WORX page identifies exact WA3551, 20V 2.0Ah battery. Original maker asset visibly carries the WORX PowerShare 20V 2.0Ah marks.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        4600,
+        4600
+      ],
+      "sha256": "b6d96558849967d2c12bb623c06aa803b5db53a014da0b5b91e6e874a131223c"
+    },
+    {
+      "sku": "5520",
+      "alt": "Pistola Discover F-75S semialta con vaso de 750 cc",
+      "provenance": "download-original",
+      "sourcePage": "https://www.util.com.co/pistola-para-pintar-semialta-discover-750-cc/p",
+      "imageUrl": "https://jensa.vtexassets.com/arquivos/ids/157146-800-800?v=638073411857730000&width=800&height=800&aspect=true",
+      "evidence": "JEN SA distributor explicitly identifies Discover F-75S and 750cc. Original silver siphon-feed gun matches the model and stated cup configuration.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "1f161d72d25146a0e893448003bc6289ede93b05fd04350a70c0a188a145a769"
+    },
+    {
+      "sku": "12116",
+      "alt": "Clavadora neumática SENCO F50F para clavillos AX/AY",
+      "provenance": "download-original",
+      "sourcePage": "https://sencolatinamerica.co/producto/f50f/",
+      "imageUrl": "https://sencolatinamerica.co/wp-content/uploads/2025/06/F50F-1-scaled-e1784042681918.jpg",
+      "evidence": "Official Senco Latin America F50F page supplies this original. Exact model cross-confirmed against Senco catalog and distributor AX/AY listing; red/black F50F body and magazine visible.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        1732,
+        1418
+      ],
+      "sha256": "d6797707d32b5f9fb77a0d2d8c06bcaa9cb1f790e24547c2ee5b8806cb10cd58"
+    },
+    {
+      "sku": "14847",
+      "alt": "Engrapadora neumática SENCO NS20XP",
+      "provenance": "download-original",
+      "sourcePage": "https://www.senco.com/senco-tool/ns20xp/",
+      "imageUrl": "https://www.senco.com/wp-content/uploads/2019/01/NS20XP_0否w_fasteners@72x-100.jpg",
+      "evidence": "Official Senco NS20XP model page supplies this original, visibly marked NS20XP. Local title calls it pistola esqueletera but explicitly identifies the same model; no alternative model substituted.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        1225,
+        1224
+      ],
+      "sha256": "5c1b2a20e30618b5e279d491afa5c348729ddf2867b5df9520f427b9231d4b92"
+    },
+    {
+      "sku": "1275",
+      "alt": "Cámara VTA+ OVO 2 con movimiento, 2K, VTA-84709",
+      "provenance": "download-original",
+      "sourcePage": "https://www.vta.co/camara-domo-interior-ovo-2-1080p-hd-con-rotacion-smart-home/p",
+      "imageUrl": "https://moreproducts.vtexassets.com/arquivos/ids/182460-800-auto?v=639023572476130000&width=800&height=auto&aspect=true",
+      "evidence": "Official VTA page explicitly identifies VTA-84709 and 2K 1440p in title/specifications, despite legacy 1080P URL slug. White rotating OVO2 original is the main image on that exact page.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "49ec4a07a1550a0a9c2d1ba702b5de9a232fb5f492cf9ced017d6433979aa26a"
+    },
+    {
+      "sku": "6385",
+      "alt": "Tope magnético Yale T11 para pared, referencia 9142",
+      "provenance": "download-original",
+      "sourcePage": "https://www.electricoslacabalgata.com/collections/yale/products/tope-yale-magnetico-t11-9142",
+      "imageUrl": "https://www.electricoslacabalgata.com/cdn/shop/products/9142_600x.png?v=1626921070",
+      "evidence": "Distributor exact Yale T11 9142 product page supplies silver magnetic wall stop and strike original. Catalog reference includes 9142; original was reviewed without retailer watermark.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        600,
+        479
+      ],
+      "sha256": "6d04c0216cd569cf303ddbbdc02cb156365d3b5b4055cf8f80cc9f50914bd6ad"
+    },
+    {
+      "sku": "12430",
+      "alt": "Cerradura Gato 785 pico de loro doble, referencia 778502",
+      "caption": "Vista exterior de la cerradura; no muestra el mecanismo interior ni certifica todos los accesorios.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.electricoslacabalgata.com/products/chapa-gato-p-l-d-c-60m-785-778502",
+      "imageUrl": "https://www.electricoslacabalgata.com/cdn/shop/products/Incrustar_785_600x.jpg?v=1626920865",
+      "evidence": "Distributor names Gato 785 and exact 778502. Original shows silver mortise hook lock and paired front pieces. No Duralock mark appears and no code-only rebranding assumption was used.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        600,
+        600
+      ],
+      "sha256": "5ddd27e260207fca9b651c01beec2ae6867cf57cc9b9c40662a2ee796b565c39"
+    },
+    {
+      "sku": "12883",
+      "alt": "Candado Yale 220 de 51 mm para intemperie, referencia 8815",
+      "caption": "Imagen de referencia del modelo Yale Y220; no está a escala. La referencia ofrecida es 8815 de 51 mm.",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://www.util.com.co/candado-intemperie-220-51-mm-b-yale8815/p",
+      "imageUrl": "https://jensa.vtexassets.com/arquivos/ids/160353-800-800?v=638188036667530000&width=800&height=800&aspect=true",
+      "evidence": "Exact JEN SA Yale 8815 listing, 220 series, 51mm. Original black weatherproof body visibly has Yale and Y220 marks; no size-substituted photo.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "264a672d28a35a1a77376548677931a62a4f5e7b460d715491f26b962778a75a"
+    },
+    {
+      "sku": "13068",
+      "alt": "Candado Yale 220 de 71 mm para intemperie, referencia 8817",
+      "provenance": "download-original",
+      "sourcePage": "https://webshop.yale.pe/products/candado-serie-220-71-mm",
+      "imageUrl": "https://webshop.yale.pe/cdn/shop/files/CandadoSerie220-_71mm.png?v=1750252640",
+      "evidence": "Official Yale Peru listing identifies SKU0008817 and 71mm. Original marketing asset explicitly labels71mm and shows black Y220 body.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        600,
+        600
+      ],
+      "sha256": "87518094f5ef3e018e39228d3b894acdcb3373d1d423786ce2ced8099f045629"
+    },
+    {
+      "sku": "13971",
+      "alt": "Candado Yale 221 para intemperie, 61 mm, referencia 8505",
+      "provenance": "download-original",
+      "sourcePage": "https://roxvan.com/producto/candado-yale-intemperie-negro-y221-61mm-8505/",
+      "imageUrl": "https://roxvan.com/wp-content/uploads/2024/11/c584812325688d0557398005fc454d57cee6230c-1732137630-11382.jpg",
+      "evidence": "Exact distributor8505 61mm page supplies original blister photograph; package visibly identifies Yale padlock series221-61, matching the protected-shackle black variant.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "3f1bfae5ed44f43344532e959fb53d2729e3e548cd70833f4a61a5b36a818f9b"
+    },
+    {
+      "sku": "14563",
+      "alt": "Cerradura KL106A de manija cuadrada para alcoba, cromada",
+      "caption": "Vista exterior de la cerradura; no muestra el mecanismo interior ni certifica todos los accesorios.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.electricoslacabalgata.com/products/copia-de-cerradura-de-manija-cuadrada-trafico-pesado-alcoba-kl-106a?variant=41943429480616",
+      "imageUrl": "https://www.electricoslacabalgata.com/cdn/shop/products/334-012-02195_d55a31d8-751e-4799-bb5a-47e6d1efa3e5_600x.png?v=1643833138",
+      "evidence": "Exact distributor article identifies KL106A and alcoba; original square-rose silver lever visibly has shaped keyed exterior. No bathroom privacy photo substituted.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        600,
+        497
+      ],
+      "sha256": "d33f4888717cf4f32efac73cf21c99abd46c8f649f49510c4476eb9a1253a95a"
+    },
+    {
+      "sku": "14854",
+      "alt": "Cerradura Yale E Mini negra llave-mariposa, referencia4150",
+      "caption": "Vista exterior de la cerradura; no muestra el mecanismo interior ni certifica todos los accesorios.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://ferricentro.com/cerradura-embutir-e-mini-negro-lm-ff-0000042876",
+      "imageUrl": "https://ferricentro.com/media/catalog/product/i/m/imagenp_0000042876.png?optimize=low&fit=bounds&height=700&width=700&format=jpeg",
+      "evidence": "Ferricentro exact product identifies manufacturer model4150 and black E Mini llave-mariposa with21mm backset. Original shows black mechanism and levers with exterior key cylinder; larger gallery original reviewed.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        700,
+        700
+      ],
+      "sha256": "bc57ea817947e3d791f0905701b501a62ed5a2cc17a992d1a1ed356c6399c483"
+    },
+    {
+      "sku": "15873",
+      "alt": "Cerradura Inafer C-999 negra de sobreponer, izquierda",
+      "provenance": "download-original",
+      "sourcePage": "https://ferricentro.com/cerradura-para-porton-izquierda-de-sobreponer-negra-ff-0000041400",
+      "imageUrl": "https://ferricentro.com/media/catalog/product/i/m/imagenp_0000041400.png?optimize=low&fit=bounds&height=700&width=700&format=jpeg",
+      "evidence": "Ferricentro explicitly identifies INAFER C-999 BLA, izquierda, negra. Larger gallery original shows two locking bolts and strike mounting plate on the left, black body, and pull lever on right. Correct handedness verified; not a mirrored right-hand photo.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        700,
+        700
+      ],
+      "sha256": "361e5df861561350cb988dcf44943e95c68a6d6e4d887848c3f6c9d30573ed4f"
+    },
+    {
+      "sku": "15761",
+      "alt": "Candado Yale anticizalla de 90 mm para intemperie, referencia6985",
+      "provenance": "download-original",
+      "sourcePage": "https://roxvan.com/producto/candado-yale-anti-cizalla-cortina-interperie-90mm-6985/",
+      "imageUrl": "https://roxvan.com/wp-content/uploads/2025/07/22465.jpg",
+      "evidence": "Exact distributor product identifies Yale6985,90mm, black weatherproof shutter-padlock. Original black horizontal enclosed-shackle image reviewed; modest245x191 native resolution disclosed.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        245,
+        191
+      ],
+      "sha256": "ac0b635d0caf5bb1b8240a86eb366451c2404d433f80c38ad4377eff80f1f973"
+    },
+    {
+      "sku": "15634",
+      "alt": "Cerradura Kale Kilit152 3MR de45mm cromada, referenciaCE-15",
+      "caption": "Detalle de la cerradura Kale1523MR de45mm. La ilustración del fabricante muestra accesorios de referencia; no certifica el contenido del empaque.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://tailco.co/tienda/cerraduras-residenciales/cerraduras-entrada-principal/cerradura-de-alta-seguridad-con-pestillo-152-3mr-ce-15/",
+      "imageUrl": "https://tailco.co/wp-content/uploads/2017/04/153-3MR-Accesorios.jpg",
+      "evidence": "Exact Tailco page identifies1523MR CE-15 and45mm backset with chrome latch/front; original maker-branded artwork depicts lock body with three round bolts. Maker Kale logo is native. Photo includes key/escutcheon accessories while page sells lock body, so limited-view caption applies.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "sha256": "e923e8954b60798ac934f1c9c802d0d59e0695f884f47bb7f7b422864e55596e"
+    },
+    {
+      "sku": "16010",
+      "alt": "Detalle de cerradura automática Kale Kilit252RA del conjunto",
+      "caption": "Vista parcial de la cerradura automática Kale252RA. No muestra ni certifica los cilindros, escudos, manijas u otros accesorios del conjunto.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://tailco.co/tienda/cerraduras-residenciales/cerraduras-entrada-principal/cerradura-de-alta-seguridad-con-pestillo-252-ra-ce-198/",
+      "imageUrl": "https://tailco.co/wp-content/uploads/2018/04/252RA-Accesorios.jpg",
+      "evidence": "Exact source identifies Kale252RA automatic locking mechanism,60mm backset and chrome three-bolt lock body. Native Kale-marked artwork depicts body and strike only; source does not prove the catalog bundle cylinder, antidrill escutcheon or handles.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "sha256": "a7f7fdde8c88a29ada6659d48117aa6560afbae793c72d86eca15d5183a54ee4"
+    },
+    {
+      "sku": "15724",
+      "alt": "Sistema Ducasse Easy Soft DN-80, referencia10107026485",
+      "provenance": "download-original",
+      "sourcePage": "https://www.imeca.com/products/du-10107026485",
+      "imageUrl": "https://www.imeca.com/cdn/shop/files/DU-10107026485_2.png?v=1757946853",
+      "evidence": "Imeca exact manufacturer10107026485 article names Ducasse Easy Soft DN80 and80kg one-panel mechanism. Original shows soft-close unit, trolleys and activators; no different-load variant used.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "91e6216d6645b3d14d72808d8939a40437b1a24990decb355f0608b6ed73485f"
+    },
+    {
+      "sku": "9973",
+      "alt": "Sistema granero Ducasse4010900010 instalado",
+      "caption": "Ejemplo de instalación del herraje granero Ducasse4010900010. Puerta, muebles y decoración no incluidos; la escena no certifica todo el contenido del kit.",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://www.teminsa.com/herrajes-corredera/6369-6369-6369-1-KIT-PUERTA-CORREDERA-GRANERO-DUCASSE-DE-2m-ref-4010900010-7805738019033",
+      "imageUrl": "https://www.teminsa.com/36940-large_default/6369-1-KIT-PUERTA-CORREDERA-GRANERO-DUCASSE-DE-2m-ref-4010900010.jpg",
+      "evidence": "Teminsa exact4010900010 page and gallery identify Ducasse2m granero system. Original supplier marketing room image shows the rail and rollers installed; caption explicitly excludes door and furniture.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "23bd63cf727fb4cad0a3d415625092858d0a12432463add6e933ed45fbb16d29"
+    },
+    {
+      "sku": "11707",
+      "alt": "Pistola Sagola Junior G1.6, referencia20141903",
+      "caption": "Ilustración oficial compartida de la familia Sagola Junior G; no está a escala ni permite comprobar la medida interna de la boquilla. Este producto corresponde a1,6mm, referencia20141903.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://sagola.com/es/productos/carroceria/carroceria-refinish/pistolas-aerograficas/junior-g",
+      "imageUrl": "https://sagola.com/images/cache/product/uploads/images/junior-g-lateral-con-deposito.jpg",
+      "evidence": "Official Sagola Junior G page explicitly maps20141903 to1.6mm. Original gallery artwork is shared across the Junior G nozzle family, not evidence of visible nozzle size.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        267,
+        400
+      ],
+      "sha256": "1eab34a99775f343d34b8cd64dd1c683234f0f794478fbe17bef095424a27b6b"
+    },
+    {
+      "sku": "0671",
+      "alt": "Kit Yale Connect con cerraduraYMC420W, referencia5410",
+      "caption": "Ilustración oficial de la cerraduraYMC420W y su conexión con Yale Connect. El teléfono es ilustrativo y no está incluido; no se muestra el contenido completo del kit.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://tiendaonline.yalecolombia.com/products/kit-cerradura-digital-ymc420d-yale-connect",
+      "imageUrl": "https://tiendaonline.yalecolombia.com/cdn/shop/files/6_79ff14cd-fa3d-416b-bf6f-8901981ad645.jpg?v=1721754368",
+      "evidence": "Official Yale Colombia exactSKU0005410 YMC420W+Connect article supplies this marketing illustration. Caption distinguishes illustrated lock/app phone from a complete bundle contents photograph.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "sha256": "b93aa084e239f25fd2e4972341e37fb087caeea125d453bea609413cded56ab7"
+    },
+    {
+      "sku": "13514",
+      "alt": "Cerradura digital KL Cheka para puerta corrediza",
+      "caption": "Ilustración oficial de la cerraduraKL Cheka. El teléfono y la aplicación muestran su uso; el teléfono no está incluido y no se muestra todo el contenido del empaque.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://klcerraduras.com/producto/cerradura-digital-para-puertas-corredizas-cheka-kl-connect/",
+      "imageUrl": "https://klcerraduras.com/wp-content/uploads/2025/10/CHEKA-WEB.jpg",
+      "evidence": "Official KL Cheka page supplies original brand marketing illustration. Native repeating CHEKA branding is manufacturer artwork, not reseller/stock watermark. Exact named Cheka model visible; phone is illustrative.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "101d41386b8faa16d21b4b7e967ac81089b1bb88bd2c8127404961fdd9e6bff8"
+    },
+    {
+      "sku": "7710",
+      "alt": "Clavija Codelca C-007 de caucho, 3 x 50 A",
+      "provenance": "download-original",
+      "sourcePage": "https://roxvan.com/producto/clavija-3x50-codelca-caucho-c-007/",
+      "imageUrl": "https://roxvan.com/wp-content/uploads/2024/11/c584812325688d0557398005fc454d57cee6230c-1732134863-4023.jpg",
+      "evidence": "Exact Codelca C-007 3x50 distributor article; original shows black rubber plug with three flat heavy-duty pins and cable clamp matching the specified configuration.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "4923f0a3c2fd6493bbc6623917a1326e1bf62e0fa9238da0d3e09b52cd9b4874"
+    },
+    {
+      "sku": "8100",
+      "alt": "Clavija doméstica Codelca C-018 de caucho, 15 A",
+      "provenance": "download-original",
+      "sourcePage": "https://www.electricoslacabalgata.com/products/enchufe-codelca-15-amperios?variant=40934933299368",
+      "imageUrl": "https://www.electricoslacabalgata.com/cdn/shop/products/122-001-08101_600x.png?v=1630772508",
+      "evidence": "Exact Codelca C-018 15 A distributor article; original depicts the two-flat-pin rubber domestic plug. Maker page returned 403 and was not retried; this is an independent authorized distributor original.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        294,
+        275
+      ],
+      "sha256": "dd7098d60175d176be953a5ee828a2a7ae05e8e0b8dc0c1d85c8a80b36b21f0c"
+    },
+    {
+      "sku": "14856",
+      "alt": "Cerrojo KL 107 llave-mariposa con llave de puntos",
+      "caption": "Vista exterior del cerrojo KL107. La mariposa interior no se aprecia en esta toma.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.electricoslacabalgata.com/products/cerrojo-llave-mariposa-sistemas-de-puntos-kl-107",
+      "imageUrl": "https://www.electricoslacabalgata.com/cdn/shop/products/334-012-02108_600x.png?v=1643130470",
+      "evidence": "Exact distributor article identifies KL107 llave-mariposa and point-key system. Original shows silver finish, the KL Security mark and matching high-security keys; interior thumbturn is not visible from the chosen angle.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        600,
+        437
+      ],
+      "sha256": "2344f8e42513281ed75f4ce87eba036af34bba8ceb96c9316693ba30ca5dd2f6"
+    },
+    {
+      "sku": "15037",
+      "alt": "Cerradura MHA E3860-SS auxiliar llave-llave, CER-097",
+      "caption": "Vista exterior de la cerradura auxiliar MHA E3860-SS; no muestra el mecanismo interior.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://eltallerlabs.com/products/e3860-ss-m-h",
+      "imageUrl": "https://eltallerlabs.com/cdn/shop/files/E3860-SS-2.png?v=1725740182",
+      "evidence": "Distributor exact E3860-SS listing explicitly maps CER-097, three chrome bolts, stainless finish and a 60mm key-key security cylinder. Original depicts this auxiliary lock with the MHA escutcheon.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        800,
+        600
+      ],
+      "sha256": "8607e94c4d0bf24be66efcea760486e868ebcf7552ccd69a535d417ad887485e"
+    },
+    {
+      "sku": "15502",
+      "alt": "Cerrojo Croix TK501E llave-mariposa, CE-396",
+      "caption": "Ilustración original Croix del cerrojo TK501E. Vista exterior; la mariposa interior no se aprecia.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://tailco.co/tienda/cerraduras-residenciales/cerrojos-auxiliares/cerrojo-con-llaves-de-alta-seguridad-llave-mariposa-marca-croix-ref-tk501e-ce-396/",
+      "imageUrl": "https://tailco.co/wp-content/uploads/2022/04/TK-501E-1-mercado-libre-fotos.png",
+      "evidence": "Exact Tailco maker/distributor page maps TK501E CE-396 and key-thumbturn point-key function. Native Croix branded original marketing artwork displays the exact model and high-security keys. No Tailco reseller watermark is present.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "ddba987709fc39d1021c8d119bcfdceb8b6c33a84b31c07afdcef0e60400af30"
+    },
+    {
+      "sku": "15753",
+      "alt": "Cerradura digital MHA Ibiza con Wi-Fi",
+      "provenance": "download-original",
+      "sourcePage": "https://mhacolombia.co/product/cerradura-digital-con-manija-ref-ibiza/",
+      "imageUrl": "https://mhacolombia.co/wp-content/uploads/2026/01/Diseno-sin-titulo-1.png",
+      "evidence": "Official MHA Ibiza product page supplies this exact model original with the visible M&H mark. Manufacturer describes five access methods and Wi-Fi, matching the local Ibiza title; catalog CER-116 is a distributor reference.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        1080,
+        1350
+      ],
+      "sha256": "3ee2fccd7eee8a13c25ebfae40a66f867136e77797680e93ece5b50ea9a3fae2"
+    },
+    {
+      "sku": "15758",
+      "alt": "Cerradura digital MHA Asturias con reconocimiento facial",
+      "caption": "Ilustración y dimensiones del fabricante para MHA Asturias; no está a escala.",
+      "kind": "technical-diagram",
+      "provenance": "download-original",
+      "sourcePage": "https://www.homecenter.com.co/homecenter-co/product/3022779/cerradura-inteligente-6-tipos-apertura-reconocimiento-facial-asturias-mha/3022779/",
+      "imageUrl": "https://media.falabella.com/sodimacCO/3022779/public",
+      "evidence": "Exact Homecenter manufacturer-model ASTURIAS listing, M&H/MHA brand, black finish and facial-recognition model. Original maker artwork shows both units with M&H Security Locks logo and dimensions; no retailer watermark.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        768,
+        768
+      ],
+      "sha256": "03dbcb7ca58073f253c2b18634c2f8014ca1ae4de969a16588e0da341d5329d5"
+    },
+    {
+      "sku": "2421",
+      "alt": "Refiladora de cantos au93; imagen comercial de referencia.",
+      "provenance": "download-original",
+      "sourcePage": "https://www.virutextools.com/products/double-edge-trimmer-scraper-au93",
+      "imageUrl": "https://www.virutextools.com/cdn/shop/files/AU93_9e397c10-bc1c-41f4-90e9-0edc29bdea8f.jpg",
+      "evidence": "Official Virutex USA product page is AU93 double edge trimmer. Bare original image depicts exact AU93 assembly with matching native Virutex branding.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on source product page. User-authorized sourcing with honest provenance; not license-cleared.",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "sha256": "cb026e3e2cdc5b7e21ab981474913b64cebe2efc1106cdc5000b2b12eed4ebd7"
+    },
+    {
+      "sku": "2835",
+      "alt": "Tot decametro 50mts fibra vidrio; imagen comercial de referencia.",
+      "provenance": "download-original",
+      "sourcePage": "https://totaltoolsindia.in/product/total-fiberglass-measuring-tape-50mx12-5mm-tmtf12506/",
+      "imageUrl": "https://totaltoolsindia.in/wp-content/uploads/2023/09/2496933944-1.jpg",
+      "evidence": "TOTAL Tools India page explicitly maps TMTF12506 to fiberglass 50m x 12.5mm measuring tape. Original manufacturer product image, no reseller watermark.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on source product page. User-authorized sourcing with honest provenance; not license-cleared.",
+      "dimensions": [
+        2560,
+        1900
+      ],
+      "sha256": "77789e7c2170480f20f7957a65d7482fba5e3abc7ce9ebf769322907336816da"
+    },
+    {
+      "sku": "3018",
+      "alt": "Total hombresolo industrial 10\"; imagen comercial de referencia.",
+      "caption": "Ilustración comercial del fabricante para TOTAL HOMBRESOLO INDUSTRIAL 10\".",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreterialuispenagos.com/tienda/alicate-hombresolo-industrial-de-10-tht191005-total-tools/",
+      "imageUrl": "https://ferreterialuispenagos.com/wp-content/uploads/2024/08/THT1910052b.webp",
+      "evidence": "Source page explicitly maps THT191005 to 10-inch industrial locking pliers; original displays TOTAL and 10-inch text. Manufacturer feature layout with packaging inset, no reseller overlay.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on source product page. User-authorized sourcing with honest provenance; not license-cleared.",
+      "dimensions": [
+        800,
+        1075
+      ],
+      "sha256": "6e63d32da54a4aee2958cd057d86d8f84488ab58ab158ba940f0c5a29bc1289d"
+    },
+    {
+      "sku": "6328",
+      "alt": "Makita taladro rotomartillo sdsplus 15/16\" 780w; imagen comercial de referencia.",
+      "provenance": "download-original",
+      "sourcePage": "https://www.makita.com.mx/producto/hr2470-rotomartillo-electro-neumatico-3/",
+      "imageUrl": "https://www.makita.com.mx/wp-content/uploads/2025/03/HR2470_Rotomartillo-electro-neumatico.png",
+      "evidence": "Official Makita Mexico page explicitly confirms HR2470, SDS-PLUS 15/16 inch, 780W. Bare original tool image matches this model and native branding.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on source product page. User-authorized sourcing with honest provenance; not license-cleared.",
+      "dimensions": [
+        400,
+        400
+      ],
+      "sha256": "702f8f5278e67103039906f55e0ae1c9efdfeb4757cd2515b9d8c19f9360aee9"
+    },
+    {
+      "sku": "13034",
+      "alt": "Pegante afix kit express 200ml adhesivo 100gr; imagen comercial de referencia.",
+      "provenance": "download-original",
+      "sourcePage": "https://afix.com.co/productos/afix-pegadit-kit-express/",
+      "imageUrl": "https://afix.com.co/wp-content/uploads/2024/10/01-Afix-Pegadit-Kit-Express.png",
+      "evidence": "Official Afix Pegadit Kit Express page confirms 100g adhesive and 200ml activator. Original image visibly labels the two exact sizes, matching catalog.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on source product page. User-authorized sourcing with honest provenance; not license-cleared.",
+      "dimensions": [
+        2000,
+        2000
+      ],
+      "sha256": "c34c5270cd4198e10a6549c77711bad665ac45a6cf59bffbb631341947fc44d1"
+    },
+    {
+      "sku": "15853",
+      "alt": "Total pulidora mini 03 industrial v-variable 900 wts ref; imagen comercial de referencia.",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreterialuispenagos.com/tienda/mini-pulidora-industrial-con-v-v-de-900-w-utg109125565-total-tools/",
+      "imageUrl": "https://ferreterialuispenagos.com/wp-content/uploads/2024/08/Fondo-de-UTG1091255652-eliminadoa.webp",
+      "evidence": "Exact Total UTG109125565 retailer page identifies 900W variable-speed grinder. Original single tool image with native Total branding and no reseller watermark.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on source product page. User-authorized sourcing with honest provenance; not license-cleared.",
+      "dimensions": [
+        800,
+        1075
+      ],
+      "sha256": "be6d1cde6f001b9f0e0e022bfd1b72118ff87dd8aa43c1d67e8b39fa2ef8e671"
+    },
+    {
+      "sku": "4439",
+      "alt": "Pegante super pega infinita 250g industrial; imagen comercial de referencia.",
+      "provenance": "download-original",
+      "sourcePage": "https://infinita.com.co/products/super-pega-infinita-industrial-adhesivo-resistente",
+      "imageUrl": "https://infinita.com.co/cdn/shop/files/1731i.jpg?v=1775835131",
+      "evidence": "Official Infinita page explicitly maps SKU1731I to 250g. Chose individual 1731i.jpg rather than multi-size primary image; front label visibly states 1731i and 250g.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on source product page. User-authorized sourcing with honest provenance; not license-cleared.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "ee8f607602d2da94693c0db5a0d5ee2c9014fcd2ce96707e6e1bbe9dea369662"
+    },
+    {
+      "sku": "2828",
+      "alt": "Total marco para segueta 12 -605609 tht541026; imagen comercial de referencia.",
+      "caption": "Ilustración comercial del fabricante para TOTAL MARCO PARA SEGUETA 12 -605609 THT541026.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://totalmalaysia.my/tht541026-hacksaw-frame/",
+      "imageUrl": "https://totalmalaysia.my/wp-content/uploads/2023/11/THT541026.jpg?v=20250731",
+      "evidence": "TOTAL Malaysia page explicitly maps THT541026 to 12-inch/300mm hacksaw frame. Source original displays matching 300mm (12-inch) frame with native manufacturer feature art.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on source product page. User-authorized sourcing with honest provenance; not license-cleared.",
+      "dimensions": [
+        1280,
+        1183
+      ],
+      "sha256": "b499025cba1a79bf77103ed22ce6cec8bcc1c67d86a239302cb66791c67644eb"
+    },
+    {
+      "sku": "15492",
+      "alt": "Total taladro inhalam litio 1.5 ah tipo c3/8; imagen comercial de referencia.",
+      "caption": "Ilustración comercial del fabricante para TOTAL TALADRO INHALAM LITIO 1.5 AH TIPO C3/8.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://totalmalaysia.my/tdli12428-li-ion-cordless-drill/",
+      "imageUrl": "https://totalmalaysia.my/wp-content/uploads/2023/11/TDLI12428.jpg?v=20250731",
+      "evidence": "TOTAL Malaysia page explicitly maps TDLI12428 to 12V drill/driver, 3/8-inch, included 1.5Ah battery and USB-C charging. Original shows S12 and 1.5Ah x1; charger is explicitly sold separately, no conflicting catalog charger claim.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on source product page. User-authorized sourcing with honest provenance; not license-cleared.",
+      "dimensions": [
+        1040,
+        1280
+      ],
+      "sha256": "d74224170ecd17801616c30971259ec0c8f17523085dac6fb92a44e55300450c"
+    },
+    {
+      "sku": "2396",
+      "alt": "Ranger clavadora liv p/10 60-100psi f50; imagen de referencia.",
+      "caption": "Presentación de referencia del fabricante para la clavadora Ranger 1140-001. El maletín y los accesorios de la foto no confirman el contenido de venta; consulta qué incluye.",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://ferrescaleras.com/herramientas-neumaticas/1788-clavadora-ranger-1140-001-liviana-2.html",
+      "imageUrl": "https://ferrescaleras.com/2505-large_default/clavadora-ranger-1140-001-liviana-2.jpg",
+      "evidence": "Retailer product page explicitly names Ranger1140-001 lightweight2-inch nailer. Original shows native Ranger tool in case; catalog does not specify case accessories, so caption is limited to exact-model packaging reference, not a promise of complete contents.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on source product page. User-authorized marketing sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "7b772aeb42a70e843ebd286a9544a00946dc7f06dbbe578534c66bda4c61bdc7"
+    },
+    {
+      "sku": "8628",
+      "alt": "Stanley decametro 1/2\" 30mt; imagen de referencia.",
+      "provenance": "download-original",
+      "sourcePage": "https://www.cyechile.cl/product/huincha-de-medir-30-0mts-x-1-2-f-vidrio-34-262s",
+      "imageUrl": "https://dojiw2m9tvv09.cloudfront.net/79762/product/F_captura-de-pantalla-25-6-2026-124352-www-lavenecia-cl4248.jpeg?55&t=1791236638",
+      "evidence": "Exact Stanley34-262S retailer product page. Source image visibly carries34-262 and30m/100ft markings. Manufacturer page independently confirms30m x1/2-inch fiberglass; no visible reseller watermark.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on source product page. User-authorized marketing sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        717,
+        584
+      ],
+      "sha256": "5199c5ecdf8ff318a1b9ffeaca2b3c7ba038f9b36dcb230197a58ee5fd05e378"
+    },
+    {
+      "sku": "15705",
+      "alt": "Dewalt taladro percutor 1/2 20v 2 baterias 2ah + estuche; imagen de referencia.",
+      "caption": "Vista del cuerpo del taladro del kit DeWalt DCD7781D2-B3. Esta imagen no muestra las baterías, el cargador ni el estuche y no acredita el contenido completo.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.dewalt.com.mx/es-mx/producto/dcd7781d2-b3/kit-de-taladro-percutoratornillador-de-12-13mm-inalambrico-sin-carbones-de",
+      "imageUrl": "https://assets.dewalt.com.mx/LAG/PRODUCT/IMAGES/HIRES/WHITEBG/DCD7781D2_2_1680.webp",
+      "evidence": "Official Dewalt Mexico product page explicitly identifies DCD7781D2-B3 kit,20VMAX,1/2-inch,2x2.0Ah batteries and charger. Downloaded official bare-tool gallery asset for this exact kit. It is only a component view, caption explicitly says batteries/charger/case are not depicted.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on source product page. User-authorized marketing sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        1551,
+        1680
+      ],
+      "sha256": "432bf53ed2341d6c2700fd9e84e21e53747ea2a8e2b7d10412ed7b10b44f0da3"
+    },
+    {
+      "sku": "0172",
+      "alt": "Referencia Bonuit HRE320-70 zincada de extensión total",
+      "caption": "Ilustración original del proveedor para la familia HRE320, compartida entre medidas. Vista del par de rieles, sin tornillos y sin escala; no acredita dimensiones ni capacidad de carga.",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/riel-corredera-para-cajon-de-extension-total-carga-pesada-45-kg-copy?variant=45986625323238",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-riel-para-cajon-extension-total-bonuit-HRE320-madecentro_1.jpg?v=1748469518",
+      "evidence": "Madecentro source product explicitly maps SKU HRE320-70 to variant 70 cm / Zincado; vendor Bonuit. Catalog identity has no different named brand. Source geometry and finish match. The catalog itself names Bonuit, and the current supplier explicitly maps HRE320-70 to 70 cm Zincado with 45 kg family title. The original family image is shared across size variants, with matching zinc slide mechanism; not dimensional or load proof.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No express reuse license verified; not license-cleared. No reseller watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "c66f9d2ee234276da48897e3b1b8737765ef2ad18c80a1a6136eedd1acf09685"
+    },
+    {
+      "sku": "6337",
+      "alt": "Soporte para entrepaño de vidrio con chupa HVS036-01",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/soportes-vidrio-036?variant=37819397275805",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/products/herrajes_soportes-vidrio_mobile_chupa_hvs036-01-madecentro.jpg?v=1613077784",
+      "evidence": "Madecentro source product explicitly maps SKU HVS036-01 to variant Default Title; vendor Mobile. Catalog identity has no different named brand. Source geometry and finish match. ",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No express reuse license verified; not license-cleared. No reseller watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1024,
+        720
+      ],
+      "sha256": "8d2ba64af29cab0072066f0de768cf46a99a2988c1d75fa66d9c7c6ba30c8d19"
+    },
+    {
+      "sku": "15393",
+      "alt": "Pantalonero cromado de 11 ganchos HSO588-00",
+      "caption": "Ilustración original del proveedor para HSO588-00 cromado. Vista de referencia sin escala; no acredita dimensiones ni capacidad de carga. No muestra tornillería de instalación.",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/closet-588?variant=47520199868646",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-closet-bonuit-pantalonero-hso588-00-madecentro_1.jpg?v=1777412941",
+      "evidence": "Madecentro source product explicitly maps SKU HSO588-00 to variant Cromado brillante; vendor Bonuit. Catalog identity has no different named brand. Source geometry and finish match. Native Bonuit name molded/embossed into the product is consistent with the exact supplier variant; no Mobile-to-Bonuit rebrand assumption was used.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No express reuse license verified; not license-cleared. No reseller watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "d71c836e6378f25dcb0b4a33db68a72f4255ecffa62cd1253edccc84122de465"
+    },
+    {
+      "sku": "15970",
+      "alt": "Elevador para clóset HSO745-01 negro mate de 54 a 66 cm",
+      "caption": "Ilustración original del proveedor para HSO745-01 negro mate. Vista de referencia sin escala; no acredita dimensiones ni carga y no muestra toda la tornillería de instalación.",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/closet-744?variant=47520030752998",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-para-closet-bonuit-elevador-de-closet-hso745-01-madecentro_1.jpg?v=1777409632",
+      "evidence": "Madecentro source product explicitly maps SKU HSO745-01 to variant Negro mate; vendor Bonuit. Catalog identity has no different named brand. Source geometry and finish match. Native Bonuit name molded/embossed into the product is consistent with the exact supplier variant; no Mobile-to-Bonuit rebrand assumption was used.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No express reuse license verified; not license-cleared. No reseller watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "81d15337aee6c3895a93c3e1af4d01df54a1d75178592af86f70fe96cd052c4b"
+    },
+    {
+      "sku": "0081",
+      "alt": "Detalle del riel oculto Magic Door KITRIELOCULTO1.2 con cierre suave",
+      "caption": "Ilustración original del proveedor de KITRIELOCULTO1.2: detalle del mecanismo superior instalado. No muestra el kit completo; puerta y mueble no incluidos. Sin escala ni prueba de dimensiones o carga.",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/sistema-corredizo-tipo-granero-negro-mate-para-puerta-de-madera-copia-1",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/aluminios-Sistema-corredizo-con-riel-oculto-cierre-suave-puertas-de-madera-madecentro_1.jpg?v=1789055222",
+      "evidence": "Madecentro source explicitly identifies SKU KITRIELOCULTO1.2 and magic door hidden rail with soft closing. Source lists both 1200 mm rails. Catalog has same exact code and mechanism. Original supplier illustration is a partial installed upper-mechanism view, not a whole kit image.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No express reuse license verified; not license-cleared. No reseller watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "b7a1bb9feb0eb4cb894ed05832678d143aa0580d0797180e0689705588498d45"
+    },
+    {
+      "sku": "9916",
+      "alt": "Detalle del carro Ducasse PL-2550, referencia 10100800703",
+      "caption": "Foto original Ducasse: detalle de un carro del sistema PL-2550, ref. 10100800703. No muestra el kit completo; sin escala ni prueba de dimensiones o carga.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://ducasseindustrial.com/producto/pl-2550",
+      "imageUrl": "https://ducasseindustrial.com/wp-content/uploads/2020/09/CL_10100800703_IMG_PROD1_BL.jpg",
+      "evidence": "Ducasse manufacturer product page maps PL-2550 with original image tagged exact 10100800703; exact local reference matches. Original shows only carriage hardware close-up, not all system parts.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No express reuse license verified; not license-cleared. No reseller watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "6b99120e85689e1ff18ccd693ffa30964fd34c6a3c8f9cb0cc15b6e5f371779f"
+    },
+    {
+      "sku": "5654",
+      "alt": "Grapadora manual Rapid R23; vista de la herramienta",
+      "caption": "Foto original del fabricante de la grapadora Rapid R23. Solo muestra la herramienta; no las grapas del combo ni su cantidad.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.rapid.com/en-gb/products/rapid-tools/stapling/rapid-pro-r23-staple-gun2/",
+      "imageUrl": "https://www.rapid.com/azure/catalogfiles/products/Desktop__C9CF312D0E289499B42328CA48D1018F__1200__630__ra_5001667-6e04639f69ba45030a088e88eae18397.png",
+      "evidence": "Rapid manufacturer page explicitly identifies the R23 steel staple gun. Catalog R23 + grapa bundle is represented only by the exact R23 tool; no contents or quantity of bundled staples is inferred.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No express reuse license verified; not license-cleared. No reseller watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1200,
+        630
+      ],
+      "sha256": "0c54f4b192bcdc81c75ddb077e7be865cb26780202c46cef6b5bfa21339195e2"
+    },
+    {
+      "sku": "2151",
+      "alt": "Grapas Stanley TRA705T de 5/16 de pulgada",
+      "caption": "Presentación de referencia de grapas Stanley TRA705T de 5/16. La imagen no certifica la cantidad de la unidad ofrecida.",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://www.stanleytools.com.mx/es-mx/producto/tra705t/grapas-para-trabajo-pesado-516",
+      "imageUrl": "https://assets.stanleytools.com.mx/LAG/PRODUCT/IMAGES/HIRES/WHITEBG/TRA705T_1_1680.webp",
+      "evidence": "Stanley manufacturer page identifies TRA705T heavy-duty 5/16 inch staples. Same normalized local TRA-705T reference and brand; original depicted staple sticks and case have matching geometry, no different size marking. Official page original JPG returned404, so downloaded the actually published high-resolution WebP URL; no403 or denial bypass.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No express reuse license verified; not license-cleared. No reseller watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1680,
+        1163
+      ],
+      "sha256": "410fce3cb40ed20a5fad161d513456a0db8e7b13bc9fadde9950e22c733a29a6"
+    },
+    {
+      "sku": "2588",
+      "alt": "Detalle de pivotes Ducasse Plegaduc Pro de dos puertas, ref. 10100253062",
+      "caption": "Foto original Ducasse de componentes del Plegaduc Pro de 2 puertas, ref. 10100253062. No muestra el kit completo; sin escala ni prueba de dimensiones o carga.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://ducasseindustrial.com/producto/plegaduc-pro-2-hojas",
+      "imageUrl": "https://ducasseindustrial.com/wp-content/uploads/2020/09/CL_10100253062_IMG_PROD1_BL.jpg",
+      "evidence": "Manufacturer page and linked specification map exact10100253062 to Plegaduc Pro2 hojas; matches catalog. Original close-up shows pivot/guide hardware subset only.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No express reuse license verified; not license-cleared. No reseller watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "903641e521e557d64dbf867a66d0e893a54b1ef3ef493a65c4196f9327740cf4"
+    },
+    {
+      "sku": "9196",
+      "alt": "Sistema colgante Ducasse Twin Opuesto, ref. 10300001404",
+      "caption": "Ilustración original Ducasse de referencia 10300001404 Twin Opuesto. Detalle parcial del sistema; puertas y rieles complementarios no incluidos. Sin escala ni prueba de dimensiones o carga.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://ducasseindustrial.com/producto/twin-opuesto",
+      "imageUrl": "https://ducasseindustrial.com/wp-content/uploads/2020/09/CL_10300001404_IMG_PROD1_BL.jpg",
+      "evidence": "Manufacturer page explicitly maps Twin Opuesto to exact10300001404. Source original illustrates opposite synchronized carriages with cable and wooden door tops. It is a partial installation illustration, not a full kit photograph.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No express reuse license verified; not license-cleared. No reseller watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "e90dacc78dc783a52ef08eb430296f61ab2216017c91281e4dc79176624adacb"
+    },
+    {
+      "sku": "1150",
+      "alt": "Detalle de soporte lateral Rejiplas para rejilla, referencia 36940",
+      "caption": "Foto original Rejiplas: detalle de un soporte blanco instalado. El artículo corresponde al conjunto de 4 soportes; la rejilla y el mueble no están incluidos.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://rejiplas.com/producto/4-soportes-laterales-para-locero/",
+      "imageUrl": "https://rejiplas.com/wp-content/uploads/2023/08/4-soportes-laterales-para-locero-1.jpg",
+      "evidence": "Homecenter exact product page57481 explicitly identifies package reference36940 as the white4-piece Rejiplas support set. Manufacturer3694 white variantF369440 supplies unchanged photograph of one mounted bracket. Local36940 four-unit set matches corroborated supplier identity; no arbitrary color choice. Corroboration: https://www.homecenter.com.co/homecenter-co/product/57481/soporte-lateral-locero-4-unidades-44x16x17-cm-blanco/57481/",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No express reuse license verified; not license-cleared. No reseller watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        458,
+        458
+      ],
+      "sha256": "1b942e2f69243fb201f727e8650e41eeef7c0432f7bf9ba92fd133b114223372"
+    },
+    {
+      "sku": "14087",
+      "alt": "Bisagra Flexon FEH parche cierre suave con clip, ref. 5611",
+      "caption": "Foto original Flexon de una bisagra FEH 5611 con cierre suave y clip. La venta del catálogo corresponde al par; no muestra todo su empaque ni tornillería.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://flexoneh.com.co/producto/bisagra-de-cazuela-c-suave-parche-click-feh/",
+      "imageUrl": "https://flexoneh.com.co/wp-content/uploads/2022/07/5611A.png",
+      "evidence": "Manufacturer page exactly identifies SKU5611 as BISAGRA DE CAZUELA C.SUAVE PARCHE CLICK FEH,35mm niquelado; matches local FEH/Flexon gas/soft-close overlay clip hinge. Source actual photo shows one assembled hinge with matching straight arm, plate and clip mechanism.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No express reuse license verified; not license-cleared. No reseller watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1920,
+        1920
+      ],
+      "sha256": "f8b7f38f115971b7b33cbf65ab2c6cdb07f0353c4ce80edcd978eea8343c60b8"
+    },
+    {
+      "sku": "8809",
+      "alt": "Clavillos Senco AY11EAA de 3/4 de pulgada, cabeza reducida",
+      "caption": "Foto original del distribuidor para Senco AY11EAA. Vista parcial de tiras de clavillos, sin escala; no representa la cantidad completa de la caja.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://wurthbaersupply.com/product/673542/PIN-18G-X-3-4-L-5-000-BOX-AY11EAA",
+      "imageUrl": "https://media.witglobal.net/stmedia/1800/images/std.lang.all/resolutions/normal/800px/655690617.jpg",
+      "evidence": "Würth Baer supplier exact AY11EAA record establishes3/4 inch18gauge slight-head galvanised brad nails. Local title explicitlyAY11EAA. Primary supplier asset shows slight-head nail strips; medium-head AX family asset and package-plus-AX comparison chart are not used.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No express reuse license verified; not license-cleared. No reseller watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        600,
+        346
+      ],
+      "sha256": "da78ec8926f08cbde679f74a20ff15d7975bd38da320dae715a85a7eb120a778"
+    },
+    {
+      "sku": "8918",
+      "alt": "Clavillos Senco CZ13EAA sin cabeza, calibre 23 y 1 pulgada",
+      "caption": "Foto original del distribuidor para CZ13EAA: tiras de clavillos sin cabeza. Vista parcial sin escala; no representa la cantidad completa de la caja.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://wurthbaersupply.com/product/696176/MICROPIN-23-GAUGE-1-10M-BOX-CZ13EAA",
+      "imageUrl": "https://media.witglobal.net/stmedia/1800/images/std.lang.all/resolutions/normal/800px/655692053.jpg",
+      "evidence": "Würth Baer supplier exact CZ13EAA record matches local CZ13EAA23gauge1inch headless micropins. Primary supplier asset is clean headless strip original with native directional arrows. It does not depict a complete box.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No express reuse license verified; not license-cleared. No reseller watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        620,
+        620
+      ],
+      "sha256": "d2ba1c795ec95c0518749dd4418ee06b067ee4dc2a83fcc03ecd4430dbcfa154"
+    },
+    {
+      "sku": "13074",
+      "alt": "Caja de 5000 grapas Rapid tipo 13 de 8 mm",
+      "caption": "Empaque de referencia Rapid 13/8 de 5000 grapas; confirmar unidad de venta con la tienda.",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://www.rapid.com/cs-cz/products/rapid-tools/stapling/spony-13-8mm--5000ks--krabi%C4%8Dka/",
+      "imageUrl": "https://www.rapid.com/azure/catalogfiles/products/Desktop__F65ED7F9E01E4ADB6068A3DDDB4BE94A__1760__ra_11835600_p2-6dd81cd0140926f3a948bd42b15f0bb6.png",
+      "evidence": "Manufacturer product11835600 and unchanged package photo explicitly identify Rapid13/8mm5000pieces. Local title specifies identical branded type,size andcount;45151 is local reference not a conflicting manufacturer part number. French page search snippet was stale and actual fetched content showed13/10; rejected that page/image and used verified Czech exact13/8 page.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No express reuse license verified; not license-cleared. No reseller watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        1760,
+        1014
+      ],
+      "sha256": "77df5bd8ca222710f826114aa6f17f3e7d658b4516c9647bb512e444798b0820"
+    },
+    {
+      "sku": "8690",
+      "alt": "Caja Senco AX15EAA de 1-1/4 de pulgada con cuadro comparativo de la serie AX",
+      "caption": "Imagen original del distribuidor: caja AX15EAA de 1-1/4 de pulgada y comparación de la serie AX. Las otras medidas del cuadro no forman parte del artículo; esquema sin escala.",
+      "kind": "technical-diagram",
+      "provenance": "download-original",
+      "sourcePage": "https://wurthbaersupply.com/product/673538/18-GAUGE-BRAD-NAIL-1-1-4-5-000-BOX-AX15EAA",
+      "imageUrl": "https://media.witglobal.net/stmedia/1800/images/std.lang.all/resolutions/normal/1250px/SENCO%20-%20AX15EAA--30.jpg",
+      "evidence": "Independent Würth Baer listing explicitly identifies AX15EAA, 18 gauge, 1-1/4 inch, medium head, galvanized brad nails. Its unchanged detail-30 asset visibly labels the box AX15EAA and 1-1/4 inch, matching the catalog title. The adjacent AX size comparison includes other codes and is reference information, not included contents. Primary AX11-named asset and detail-20 photo visibly labeled AX13EAA were rejected. This independent supplier record and its own CDN image are unrelated retrievals to the quarantined Senco family page/image; neither quarantined resource is used.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No express reuse license verified; not license-cleared. No reseller watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        900,
+        900
+      ],
+      "sha256": "418c3e2779cd6070b659a430d4d253aaac9e50e77f5f3a290986e79f22076fa3"
+    },
+    {
+      "sku": "2148",
+      "alt": "Detalle de grapas Stanley de 1/2 de pulgada, familia TRA708",
+      "caption": "Foto original Stanley de grapas de 1/2 de pulgada, familia TRA708. Vista parcial de las tiras; no indica la cantidad ni el empaque de venta.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://co.stanleytools.global/producto/tra708t/grapas-para-trabajo-pesado-12",
+      "imageUrl": "https://co.stanleytools.global/LAG/PRODUCT/IMAGES/HIRES/TRA708T_1.jpg?resize=530x530",
+      "evidence": "Stanley Colombia identifies TRA708T as the 1/2-inch heavy-duty staple. Catalog Stanley TRA-708 and 1/2-inch title establish the same physical staple family. Local package count is unspecified, so the original photograph of loose staple sticks is used strictly as a component detail; no T-package count or packaging is asserted. Official support manual also calls the physical 1/2-inch staple TRA708: https://support.stanleytools.com/hc/en-us/article_attachments/360012469897 .",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No express reuse license verified; not license-cleared. No reseller watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        530,
+        530
+      ],
+      "sha256": "d31aa7de2f7c58d9ff1af5a455dd3efd88a60544e2541c3659fad298ad66ef6c"
+    },
+    {
+      "sku": "3981",
+      "alt": "Barra Yale Orlando roja de dos puntos; componente del combo sencillo 0034940",
+      "caption": "Foto original Yale de la barra Orlando roja de 2 puntos, componente del combo sencillo 0034940. No muestra el cierrapuertas, la manija exterior ni todos los accesorios del combo.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://webshop.yale.pe/products/barra-antipanico-orlando-de-2-puntos",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0731/0505/products/Yale-Productos_4b59712b-03b5-4bbb-949a-ca291a02305c.png?v=1750187387",
+      "evidence": "Yale Colombia combo page explicitly maps 0034940 to Com Senci Antip Orl R 2P. Its manufacturer technical sheet names 0034940 among compatible single-combo references and identifies red bar 0007137. Independent official Yale Peru store supplies the exact red 0007137 bar photo, with matching two-point mechanism and native Yale branding. Only the red bar component is shown; green combo source image was rejected. Image source page: https://webshop.yale.pe/products/barra-antipanico-orlando-de-2-puntos . Manufacturer combo mapping PDF saved as 3981-combo-evidence.pdf.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No express reuse license verified; not license-cleared. No reseller watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        600,
+        600
+      ],
+      "sha256": "469931666fcdb981e3f18d6de6ccb378aea6728fd1a114ca65fee8ac2ed2489b"
+    },
+    {
+      "sku": "7850",
+      "alt": "Basurera doble gris AB1127.GR instalada en un mueble de referencia",
+      "caption": "Ilustración original del distribuidor para la basurera doble AB1127.GR. Mueble, frente y objetos decorativos no incluidos. Vista de referencia sin escala; no acredita dimensiones ni muestra todos los accesorios.",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://internacional.altek.com.co/product/cocina-caneca-dos-cubos-ref-ab1127-gr/",
+      "imageUrl": "https://internacional.altek.com.co/wp-content/uploads/2024/06/CN-Doble.jpg",
+      "evidence": "Altek Internacional lists exact COCINA CANECA DOS CUBOS REF. AB1127.GR under TOIN and attaches this unmodified original installation illustration. This explicit catalog-title reference establishes identity despite the local secondary shorthand D011-B. Enchapes y Apliques independently maps AB1127 to two gray bins on a chrome normal-close frame, consistent with visible geometry. Native Polywise molded bin branding is consistent with the identified supplied product and catalog has no conflicting named brand. Source also reuses illustration for A41, but that distinct soft-close row remains held; no mechanism equivalence is claimed.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No express reuse license verified; not license-cleared. No reseller watermark, paywall or specific incompatible reuse restriction observed.",
+      "dimensions": [
+        680,
+        1020
+      ],
+      "sha256": "c63fe151e7913607ba04c912e6f90fef48a0353f69082983a4f96e0a9ca418f1"
+    },
+    {
+      "sku": "1931",
+      "alt": "Fresa welldone corte recto 5/16 2 filos profesional; referencia de la familia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12439 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-corte-recto-un-filo-de-uso-profesional-124/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-CORTE-RECTO-DOS-FILOS-DE-DOS-FILOS-DE-USO-PROFESIONAL.png",
+      "evidence": "Official Welldone product family page and published reference table explicitly map 12439: 5/16-inch diameter, 1-inch cutting length, 1/4-inch shank; two flutes. Exact manufacturer code and corresponding catalog dimensions match. Original family asset retained unchanged. Shared-reference caption required; image does not independently prove size. Previous retailer watermark avoided by direct independent manufacturer source.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on source page. User-authorized sourcing with transparent provenance; not license-cleared.",
+      "dimensions": [
+        600,
+        600
+      ],
+      "sha256": "42f6a8f277b2ff99f3a49961fad13622515f91a478f5ce3e35b6c6931357c89e"
+    },
+    {
+      "sku": "9340",
+      "alt": "Fresa welldone rebor formica 1/2 eje 1/2; referencia de la familia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12862 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-para-rebordear-de-uso-profesional/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-PARA-REBORDEAR-DE-USO-PROFESIONAL-1.png",
+      "evidence": "Official Welldone product family page and published reference table explicitly map 12862: 1/2-inch diameter, 1-3/16-inch cutting length, 1/2-inch shank. Exact manufacturer code and corresponding catalog dimensions match. Original family asset retained unchanged. Shared-reference caption required; image does not independently prove size. Previous retailer watermark avoided by direct independent manufacturer source.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on source page. User-authorized sourcing with transparent provenance; not license-cleared.",
+      "dimensions": [
+        286,
+        776
+      ],
+      "sha256": "b054b3d26fb3903dad270b52f21ef1cfe6196d526c2b02bbf12b8b4aef7fc3af"
+    },
+    {
+      "sku": "10380",
+      "alt": "Fresa welldone formica 1/2 bastago 1/4 tres cuchillas; referencia de la familia del fabricante.",
+      "caption": "Esquema del perfil de rebordeado Welldone; no representa la herramienta completa. La referencia 12355 tiene tres cuchillas, corte de 1/2 y espigo de 1/4.",
+      "kind": "technical-diagram",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-para-rebordear-de-uso-profesional/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/01/NM_preview_rev_1.png",
+      "evidence": "Official Welldone product family page and published reference table explicitly map 12355: 1/2-inch diameter, 1/4-inch shank, three flutes; use profile-only diagram rather than two-flute photo. Exact manufacturer code and corresponding catalog dimensions match. Original family asset retained unchanged. Shared-reference caption required; image does not independently prove size. Previous retailer watermark avoided by direct independent manufacturer source.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on source page. User-authorized sourcing with transparent provenance; not license-cleared.",
+      "dimensions": [
+        459,
+        260
+      ],
+      "sha256": "b86b155f0f738bf6fc801950f74120ab97ba534f5c7448d357b8900db9656a10"
+    },
+    {
+      "sku": "13427",
+      "alt": "Fresa welldone p/redondear 9/16; referencia de la familia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12754 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-para-encajar-de-uso-profesional-2/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-PARA-REDONDEAR-DE-USO-PROFESIONAL-1.png",
+      "evidence": "Official Welldone product family page and published reference table explicitly map 12754:9/16-inch diameter, 1/4-inch shank. Exact manufacturer code and corresponding catalog dimensions match. Original family asset retained unchanged. Shared-reference caption required; image does not independently prove size. Previous retailer watermark avoided by direct independent manufacturer source.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on source page. User-authorized sourcing with transparent provenance; not license-cleared.",
+      "dimensions": [
+        392,
+        637
+      ],
+      "sha256": "698a69d5ab5ea3a0d01111384efa621dc22ed964118d2b28487f90085471e69b"
+    },
+    {
+      "sku": "14209",
+      "alt": "Fresa welldone corte recto 2 filos 3/8 1\"largo bastago 1/4; referencia de la familia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12440 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-corte-recto-un-filo-de-uso-profesional-124/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-CORTE-RECTO-DOS-FILOS-DE-DOS-FILOS-DE-USO-PROFESIONAL.png",
+      "evidence": "Official Welldone product family page and published reference table explicitly map 12440:3/8-inch diameter, 1-inch cutting length, 1/4-inch shank;two flutes. Exact manufacturer code and corresponding catalog dimensions match. Original family asset retained unchanged. Shared-reference caption required; image does not independently prove size. Previous retailer watermark avoided by direct independent manufacturer source.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on source page. User-authorized sourcing with transparent provenance; not license-cleared.",
+      "dimensions": [
+        600,
+        600
+      ],
+      "sha256": "42f6a8f277b2ff99f3a49961fad13622515f91a478f5ce3e35b6c6931357c89e"
+    },
+    {
+      "sku": "14280",
+      "alt": "Fresa welldone rebordear formica 1/2 bastago 1/4; referencia de la familia del fabricante.",
+      "caption": "Imagen de referencia del fabricante compartida entre medidas de esta familia Welldone. La referencia 12555 se verifica en su tabla técnica. No está a escala ni acredita las dimensiones de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-para-rebordear-de-uso-profesional/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/FRESA-PARA-REBORDEAR-DE-USO-PROFESIONAL-1.png",
+      "evidence": "Official Welldone product family page and published reference table explicitly map 12555:1/2-inch diameter, 1/4-inch shank. Exact manufacturer code and corresponding catalog dimensions match. Original family asset retained unchanged. Shared-reference caption required; image does not independently prove size. Previous retailer watermark avoided by direct independent manufacturer source.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing asset; no open reuse license verified. No express incompatible reuse restriction observed on source page. User-authorized sourcing with transparent provenance; not license-cleared.",
+      "dimensions": [
+        286,
+        776
+      ],
+      "sha256": "b054b3d26fb3903dad270b52f21ef1cfe6196d526c2b02bbf12b8b4aef7fc3af"
+    },
+    {
+      "sku": "1859",
+      "alt": "Fresa Welldone para encajar 22758; referencia de familia del fabricante.",
+      "caption": "Imagen de referencia de la familia Welldone 22757/22758/22868/22869. El fabricante identifica 22758 con corte de 1/2 y espigo 1/4. No está a escala ni acredita las medidas de la pieza.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-para-encajar-con-rodamiento-22757/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/03/Fresa-para-Encajar-con-Rodamiento-Guia-de-%C2%BDR.png",
+      "evidence": "Official manufacturer exact table maps 22758 to 1-1/4-inch cutter diameter, 1/2-inch cutting length, 1/4-inch shank; wording encajar is compatible with catalog batientar. Reference 22758 is expressly present in catalog compound 22758-31118; secondary 31118 is not used to infer another product. Original shared family photo, visible required caption limits dimensional assertions.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing photo; no open reuse license verified and no explicit incompatible source-page restriction observed. Not license-cleared.",
+      "dimensions": [
+        227,
+        377
+      ],
+      "sha256": "72346d6b671e7a53deecd428b3ab72f18639c2627eaae54563f8316281f781d3"
+    },
+    {
+      "sku": "3551",
+      "alt": "Sierra copa Bahco 3830-19-C de 19 mm / 3/4 in; referencia de la familia.",
+      "caption": "Imagen de referencia de la familia Bahco 3830, compartida entre diámetros. La referencia 3830-19-C corresponde a 19 mm / 3/4 pulgadas. No está a escala ni acredita el diámetro de la pieza.",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://www.ferreteriaeuroferr.com/producto/sierra-copa-de-19mm-3-4%E2%80%B3-para-metales-h-s-s-bahco-3830-19-c/",
+      "imageUrl": "https://www.ferreteriaeuroferr.com/wp-content/uploads/2025/03/7-41.png",
+      "evidence": "Exact source retailer product code 3830-19-C (C suffix denotes retail packaging for this family) maps to 19 mm / 3/4 in. Public Bahco manufacturer 2020/2021 catalog also maps code and diameter. Original source family product illustration has no printed contradictory size. Caption clearly limits it to shared family reference and makes no scale/diameter proof claim.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing image; no express open reuse license verified. No incompatible restriction observed on source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "75603bda32fad67e1fffb48feecc94e644e5743161930ffe9759128e4bb93c3e"
+    },
+    {
+      "sku": "12121",
+      "alt": "Sierra copa Bahco 3830-30 de 30 mm / 1-3/16 in; referencia de la familia.",
+      "caption": "Imagen de referencia de la familia Bahco 3830, compartida entre diámetros. La referencia 3830-30 corresponde a 30 mm / 1-3/16 pulgadas. No está a escala ni acredita el diámetro de la pieza.",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://www.bahcocentrum.pl/otwornice-bimetalowe-o-30-mm/6775-otwornica-bimetalowa-o-30-mm-sandflex-3830-30-c-bahco-7311518225421.html",
+      "imageUrl": "https://www.bahcocentrum.pl/77166-large_default/otwornica-bimetalowa-o-30-mm-sandflex-3830-30-c-bahco.jpg",
+      "evidence": "Exact source retailer product code 3830-30 (C suffix denotes retail packaging for this family) maps to 30 mm / 1-3/16 in. Public Bahco manufacturer 2020/2021 catalog also maps code and diameter. Original source family product illustration has no printed contradictory size. Caption clearly limits it to shared family reference and makes no scale/diameter proof claim.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing image; no express open reuse license verified. No incompatible restriction observed on source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "3ba28623fca92885ea610e5c392a13a4b98cfddd2a9cc703dfc0ac8836fa1cdd"
+    },
+    {
+      "sku": "12123",
+      "alt": "Sierra copa Bahco 3830-33 de 33 mm / 1-5/16 in; referencia de la familia.",
+      "caption": "Imagen de referencia de la familia Bahco 3830, compartida entre diámetros. La referencia 3830-33 corresponde a 33 mm / 1-5/16 pulgadas. No está a escala ni acredita el diámetro de la pieza.",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://www.bahcocentrum.pl/otwornice-bimetalowe-o-33-mm/6777-otwornica-bimetalowa-o-33-mm-sandflex-3830-33-c-bahco-7311518228385.html",
+      "imageUrl": "https://www.bahcocentrum.pl/77164-large_default/otwornica-bimetalowa-o-33-mm-sandflex-3830-33-c-bahco.jpg",
+      "evidence": "Exact source retailer product code 3830-33 (C suffix denotes retail packaging for this family) maps to 33 mm / 1-5/16 in. Public Bahco manufacturer 2020/2021 catalog also maps code and diameter. Original source family product illustration has no printed contradictory size. Caption clearly limits it to shared family reference and makes no scale/diameter proof claim.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing image; no express open reuse license verified. No incompatible restriction observed on source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "3ba28623fca92885ea610e5c392a13a4b98cfddd2a9cc703dfc0ac8836fa1cdd"
+    },
+    {
+      "sku": "12127",
+      "alt": "Sierra copa Bahco 3830-48 de 48 mm / 1-7/8 in; referencia de la familia.",
+      "caption": "Imagen de referencia de la familia Bahco 3830, compartida entre diámetros. La referencia 3830-48 corresponde a 48 mm / 1-7/8 pulgadas. No está a escala ni acredita el diámetro de la pieza.",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://www.bahcocentrum.pl/otwornice-bimetalowe-o-48-mm/6786-otwornica-bimetalowa-o-48-mm-sandflex-3830-48-c-bahco-7311518225483.html",
+      "imageUrl": "https://www.bahcocentrum.pl/77155-large_default/otwornica-bimetalowa-o-48-mm-sandflex-3830-48-c-bahco.jpg",
+      "evidence": "Exact source retailer product code 3830-48 (C suffix denotes retail packaging for this family) maps to 48 mm / 1-7/8 in. Public Bahco manufacturer 2020/2021 catalog also maps code and diameter. Original source family product illustration has no printed contradictory size. Caption clearly limits it to shared family reference and makes no scale/diameter proof claim.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing image; no express open reuse license verified. No incompatible restriction observed on source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "3ba28623fca92885ea610e5c392a13a4b98cfddd2a9cc703dfc0ac8836fa1cdd"
+    },
+    {
+      "sku": "12129",
+      "alt": "Sierra copa Bahco 3830-54 de 54 mm / 2-1/8 in; referencia de la familia.",
+      "caption": "Imagen de referencia de la familia Bahco 3830, compartida entre diámetros. La referencia 3830-54 corresponde a 54 mm / 2-1/8 pulgadas. No está a escala ni acredita el diámetro de la pieza.",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://www.bahcocentrum.pl/otwornice-bimetalowe-o-54-mm/6790-otwornica-bimetalowa-o-54-mm-sandflex-3830-54-c-bahco-7311518225506.html",
+      "imageUrl": "https://www.bahcocentrum.pl/77151-large_default/otwornica-bimetalowa-o-54-mm-sandflex-3830-54-c-bahco.jpg",
+      "evidence": "Exact source retailer product code 3830-54 (C suffix denotes retail packaging for this family) maps to 54 mm / 2-1/8 in. Public Bahco manufacturer 2020/2021 catalog also maps code and diameter. Original source family product illustration has no printed contradictory size. Caption clearly limits it to shared family reference and makes no scale/diameter proof claim.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing image; no express open reuse license verified. No incompatible restriction observed on source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "3ba28623fca92885ea610e5c392a13a4b98cfddd2a9cc703dfc0ac8836fa1cdd"
+    },
+    {
+      "sku": "12219",
+      "alt": "Sierra copa Bahco 3830-44 de 44 mm / 1-3/4 in; referencia de la familia.",
+      "caption": "Imagen de referencia de la familia Bahco 3830, compartida entre diámetros. La referencia 3830-44 corresponde a 44 mm / 1-3/4 pulgadas. No está a escala ni acredita el diámetro de la pieza.",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://www.bahcocentrum.pl/otwornice-bimetalowe-o-44-mm/6784-otwornica-bimetalowa-o-44-mm-sandflex-3830-44-c-bahco-7311518225476.html",
+      "imageUrl": "https://www.bahcocentrum.pl/77157-large_default/otwornica-bimetalowa-o-44-mm-sandflex-3830-44-c-bahco.jpg",
+      "evidence": "Exact source retailer product code 3830-44 (C suffix denotes retail packaging for this family) maps to 44 mm / 1-3/4 in. Public Bahco manufacturer 2020/2021 catalog also maps code and diameter. Original source family product illustration has no printed contradictory size. Caption clearly limits it to shared family reference and makes no scale/diameter proof claim.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing image; no express open reuse license verified. No incompatible restriction observed on source product page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "3ba28623fca92885ea610e5c392a13a4b98cfddd2a9cc703dfc0ac8836fa1cdd"
+    },
+    {
+      "sku": "14868",
+      "alt": "Juego Stanley STMT66670-840 de dos destornilladores de 4 pulgadas.",
+      "provenance": "download-original",
+      "sourcePage": "https://rbtoolsonline.com/products/stmt66670-840",
+      "imageUrl": "https://rbtoolsonline.com/cdn/shop/files/STMT66670_1200x1200.jpg?v=1746128088",
+      "evidence": "Retailer title and SKU identify STMT66670-840. Original package visibly marks STMT66670, two pieces, 6.5 x 100 mm flat and PH2 x 100 mm Phillips. Corresponds to nominal 1/4 x 4-inch catalog set; no reseller watermark.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product marketing photo; no open reuse license verified and no express incompatible restriction observed. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "bb6fa30ab034b5ccf3bf067fee256c9bd6dced2012f47775ceea03c77ba36a17"
+    },
+    {
+      "sku": "1924",
+      "alt": "Perfil de rebordeado Welldone 12354; esquema de referencia.",
+      "caption": "Esquema de perfil de rebordeado de la familia Welldone. La tabla del fabricante identifica la ref. 12354 de 3/8 pulgadas con espigo 1/4. No está a escala ni representa la herramienta completa.",
+      "kind": "technical-diagram",
+      "provenance": "download-original",
+      "sourcePage": "https://welldonetools.com/fresa-para-rebordear-de-uso-profesional/",
+      "imageUrl": "https://welldonetools.com/wp-content/uploads/2022/01/NM_preview_rev_1.png",
+      "evidence": "Manufacturer professional rebordear table explicitly maps 12354 to 3/8-inch cutting diameter, 1/4-inch shank, three flutes. Catalog leading hyphen is formatting. Original profile-only diagram avoids asserting flute count from shared tool photograph.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer marketing diagram; no open reuse license verified or explicit incompatible source-page restriction observed. Not license-cleared.",
+      "dimensions": [
+        459,
+        260
+      ],
+      "sha256": "b86b155f0f738bf6fc801950f74120ab97ba534f5c7448d357b8900db9656a10"
+    },
+    {
+      "sku": "5177",
+      "alt": "Pegante carpincol kilo aplicador; referencia del fabricante.",
+      "provenance": "download-original",
+      "sourcePage": "https://afix.com.co/productos/afix-carpincol-mr-60/",
+      "imageUrl": "https://afix.com.co/wp-content/uploads/2024/10/04-Afix_Carpincol_MR-60_1kg.png",
+      "evidence": "Official Afix manufacturer product page explicitly offers 1 kg Carpincol MR-60. Selected official original 04-Afix_Carpincol_MR-60_1 kg.png shows 1 kg applicator bottle. Catalog ref 0404140MR60 independently crossmatched to 1 kg aplicador in exact public listing, with no conflicting size.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing asset; no open reuse license verified. No express incompatible source-page restriction observed. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        2000,
+        2000
+      ],
+      "sha256": "410f9c2d224024dd8c05f5fd5093dd1cb5fa17aac04907f2df693c8d5dea2a45"
+    },
+    {
+      "sku": "10428",
+      "alt": "Grapadora-clavadora senco sns 1840 l; referencia del fabricante.",
+      "provenance": "download-original",
+      "sourcePage": "https://sencolatinamerica.co/producto/sns1840l2-en-1/",
+      "imageUrl": "https://sencolatinamerica.co/wp-content/uploads/2025/06/SNS1840L_1.jpg",
+      "evidence": "Senco Latinamerica official product page explicitly identifies SNS1840L(2 EN1), matching catalog grapadora/clavadora model. Exact original source filename SNS1840L_1.jpg; photo shows matching native SENCO unit without reseller overlays.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing asset; no open reuse license verified. No express incompatible source-page restriction observed. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "c92bfc9bf45a02e7e3b351d4428969b7cdf81a9907b2d9ab31b3cbe214efceb8"
+    },
+    {
+      "sku": "15854",
+      "alt": "Total taladro inalambrico 3/8 + 2 baterias+ 1 cargador; referencia del fabricante.",
+      "caption": "Presentación de referencia del kit Total UTDLI20012. El catálogo confirma 2 baterías y 1 cargador; la foto no acredita capacidad de batería ni accesorios adicionales.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://totalherramientas.com/products/taladro-inalambrico-3-8-2-baterias-ion-litio-20v-total-super-select-utdli20012?_fid=f2e9a1ee6&_pos=135&_ss=c&variant=49875065340209",
+      "imageUrl": "https://totalherramientas.com/cdn/shop/files/UTDLI20012.jpg?v=1757195273",
+      "evidence": "Exact retailer model UTDLI20012 source identifies 3/8-inch drill with 2 batteries and 1 charger. Original manufacturer promotional layout shows charger andbatteryx 2, matching catalog. Source title says 2.0Ah but body/photo 1.5Ah; catalog omits capacity, therefore no capacity claim imported. Required reference caption avoids kit-content expansion.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing asset; no open reuse license verified. No express incompatible source-page restriction observed. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        493,
+        500
+      ],
+      "sha256": "10fbab34d4562c39a1be3cdc2fb08d380419023d741c3107ee4f002380641384"
+    },
+    {
+      "sku": "10014",
+      "alt": "Total taladro percutor 1/2 industrial ref uyg 111136; referencia del fabricante.",
+      "caption": "Ilustración original del fabricante TOTAL para el taladro UTG111136.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://www.totalbusiness.com/pa-en/product/impact-drill/UTG111136",
+      "imageUrl": "https://res-de.togroup.com/stc/home_product/total/userfiles/1/images/photo/20251016201421801/UTG111136.jpg",
+      "evidence": "Official TOTAL Panama page explicitly maps UTG111136 to 1/2-inch industrial 1010Wimpactdrill 110-120V. Catalog reference UTG 111136 matches ignoring space; title UYG typo not used to substitute model. Selected nativeproduct Pic List original UTG111136.jpg from official page. Native original includes a small white asterisk near the cord. It was obtained directly from the official TOTAL productPicList, preserved unchanged and not represented as an unmarked photograph.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing asset; no open reuse license verified. No express incompatible source-page restriction observed. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        500,
+        500
+      ],
+      "sha256": "bb93dc6a3ed51cb17466fd05317cccd7a05d473ca9af8e35e380085182d41ed7"
+    },
+    {
+      "sku": "3049",
+      "alt": "Grapadora neumática Ranger 1140-041, modelo 8016 para grapas calibre 21 de 6 a 16 mm.",
+      "caption": "Vista de la grapadora. No muestra ni acredita maletín u otros accesorios incluidos.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://ferrescaleras.com/herramientas-neumaticas/1790-grapadora-ranger-1140-04180-10.html",
+      "imageUrl": "https://ferrescaleras.com/2507-large_default/grapadora-ranger-1140-04180-10.jpg",
+      "evidence": "Exact 1140-041 product title. Original image visibly says MODEL 8016 and 21GA STAPLES FROM 6MM-16MM, matching catalog 8016/C21/1/4–5/8. Native Ranger badge only, no reseller watermark. Independent source https://compresoreselectroase.com/product/grapadora-neumatica-ranger-mod-1140-041-2/ specifies same code, series 80 and 6–16 mm; its HTML download returned 406 so no retry was made.",
+      "exactVariant": true,
+      "licenseStatus": "Public product-marketing image; reuse/license permission not verified. No explicit reuse restriction found on the source product page; not claimed license-cleared.",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "9687cc094e3dae960ecee47fcb3009bdcd66c9c9381b32dd7642e04918d1787d"
+    },
+    {
+      "sku": "7684",
+      "alt": "Imagen oficial de referencia de prensas rápidas IFEL DIN 5117; código 6478025 de 12 pulgadas.",
+      "caption": "Imagen de referencia compartida de la serie IFEL DIN 5117. El código 6478025 corresponde a 12 pulgadas. Las dos prensas ilustradas no representan un juego ni permiten comprobar medidas a escala o capacidad de carga.",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://www.impofer.com/producto/prensa-rapida-ifel-din-5117-t-pesado/",
+      "imageUrl": "https://www.impofer.com/wp-content/uploads/60087.jpeg",
+      "evidence": "The supplier/brand catalog HTML variation table explicitly maps SKU 6478025 to attribute_pa_medida=12 and image https://www.impofer.com/wp-content/uploads/60087.jpeg. Other size variants share the same image. Exact catalog reference matched, unlike abbreviated older references in other rows. Original shows IFEL branding and two differently sized clamps; no reseller watermark.",
+      "exactVariant": true,
+      "licenseStatus": "Public product-marketing image; reuse/license permission not verified. No explicit reuse restriction found on the source product page; not claimed license-cleared.",
+      "dimensions": [
+        1599,
+        1599
+      ],
+      "sha256": "3c01d22d8a3740aad524cd71efbd2a173823314ac9f4ed99ca8d9839fc164b53"
+    },
+    {
+      "sku": "10185",
+      "alt": "Detalle de sierra copa Morse de 1 3/8 pulgadas, 35 mm, referencia 5155918.",
+      "caption": "Vista de la copa de 35 mm. No acredita broca piloto, mandril ni otros accesorios incluidos.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.unitorni.co/sierra-copa-morse-1-38",
+      "imageUrl": "https://cdnx.jumpseller.com/universaldetornillosyherr/image/69627100/resize/1200/1200?1763041673",
+      "evidence": "Vendor product title explicitly maps 5155918 to Morse 1 3/8 / 35 mm. Second gallery photograph visibly reads MORSE 1 3/8 35MM, with no conflicting label or watermark. This is the unaltered image served by the supplier gallery CDN; the 1200-pixel response may be supplier-upscaled. The first gallery packaging photograph was not selected because it displays an arbor/pilot combination whose inclusion is not established by the catalog.",
+      "exactVariant": true,
+      "licenseStatus": "Public product-marketing image; reuse/license permission not verified. No explicit reuse restriction found on the source product page; not claimed license-cleared.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "722dc7871fc6db2c8cea20f19a6e5e30073f3b8d085ffd4a297fad02f7db1a19"
+    },
+    {
+      "sku": "10193",
+      "alt": "Sierra copa Morse de 2 1/8 pulgadas, 54 mm, referencia 5155933.",
+      "caption": "Vista de la copa de 54 mm. No acredita broca piloto, mandril ni otros accesorios incluidos.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.unitorni.co/sierra-copa-morse-2-18",
+      "imageUrl": "https://cdnx.jumpseller.com/universaldetornillosyherr/image/33205920/download.jpg?1742660595",
+      "evidence": "Exact product title and description map 5155933 to 2 1/8 / 54 mm. Original JSON-LD image source was downloaded rather than its CDN-upscaled 1200 x 1200 variant. Image visibly reads MORSE 2 1/8 54MM. Native resolution is only 225 x 225 and is suitable for a small thumbnail, not a large detailed view. No visible reseller watermark.",
+      "exactVariant": true,
+      "licenseStatus": "Public product-marketing image; reuse/license permission not verified. No explicit reuse restriction found on the source product page; not claimed license-cleared.",
+      "dimensions": [
+        225,
+        225
+      ],
+      "sha256": "efba0344e947e8b4c49e9f197ea63e39b600a69db0c06812fe4b82cae31d52cc"
+    },
+    {
+      "sku": "12447",
+      "alt": "Presentación oficial en bulto del adhesivo Afix Artemelt 1824 beige.",
+      "caption": "Imagen oficial de referencia de Afix Artemelt 1824 en bulto. La imagen no permite comprobar el color ni el peso del contenido.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://afix.com.co/productos/afix-artemelt-1824/",
+      "imageUrl": "https://afix.com.co/wp-content/uploads/2024/10/Afix-Atemelt-1824.png",
+      "evidence": "Official manufacturer product page explicitly identifies Afix Artemelt 1824, beige, bulto 25 kg. Original 2000 x 2000 PNG extracted from og:image and srcset. Manufacturer-produced packaging render reads Afix Artemelt, with no conflicting variant label or reseller watermark. The 1824 identity, beige specification and bulto presentation come from the exact product page, not from visual measurement or package quantity inference.",
+      "exactVariant": true,
+      "licenseStatus": "Public product-marketing image; reuse/license permission not verified. No explicit reuse restriction found on the source product page; not claimed license-cleared.",
+      "dimensions": [
+        2000,
+        2000
+      ],
+      "sha256": "8472a8e42677a236628feb05be81cefdbff0fc87c49935a828377c36e4d7e908"
+    },
+    {
+      "sku": "15256",
+      "alt": "Llave lavamanos monomando alta Amazonas 1371, código Ideace Gato 7137101, cromada.",
+      "caption": "Vista de la llave. No muestra ni acredita accesorios de instalación incluidos.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://ideace.com/collections/griferia/products/llave-lavamanos-con-mezclador-monomando-sinu-1371",
+      "imageUrl": "https://ideace.com/cdn/shop/files/7137101-LlaveLavamanosconMezcladorMonomandoSinu1371Ideace-Principal.webp?v=1755286547",
+      "evidence": "Official page JSON-LD explicitly sets sku and mpn 7137101, brand Gato, and model 1371. Its current title says Sinú, but the official technical sheet linked from https://ideace.com/pages/descargables resolves the naming difference: REFERENCIA 1371 Llave lavamanos monomando Amazonas; ITEM 7137101 · 0005587; ACABADO Cromado. The sheet is saved as sources/15256.pdf and extracted text sources/15256-pdf.txt. Image is the original unmodified 1500 x 1500 manufacturer asset, showing the tall single-lever chrome faucet.",
+      "exactVariant": true,
+      "licenseStatus": "Public product-marketing image; reuse/license permission not verified. No explicit reuse restriction found on the source product page; not claimed license-cleared.",
+      "dimensions": [
+        1500,
+        1500
+      ],
+      "sha256": "b1b705cbece0a36034c86ac96fb9aea87129024dbfa58d40b3b4679de6a71904"
+    },
+    {
+      "sku": "2400",
+      "alt": "Sierra caladora industrial Total UTS2081006 de 800 W con guía paralela.",
+      "provenance": "download-original",
+      "sourcePage": "https://elarenal.com.gt/products/sierra-caladora-industrial-800w-uts2081006-total",
+      "imageUrl": "https://elarenal.com.gt/cdn/shop/products/SIERRA-CALADORA_1200x1200.jpg?v=1635277207",
+      "evidence": "Independent El Arenal product page explicitly identifies UTS2081006 and 800 W. Its original bare-tool photograph shows the corresponding jigsaw and parallel guide, with native TOTAL branding. This is a separately supplied clean original, not a crop or edit of the previously held image advertising free blades. No promotional accessory, free-blade claim or reseller watermark is visible. Source image is natively 500x500 despite its CDN1200x1200 URL.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product marketing photo; no open reuse license verified. No express incompatible reuse restriction observed on source page. User-authorized sourcing with provenance; not license-cleared.",
+      "dimensions": [
+        500,
+        500
+      ],
+      "sha256": "a4b383d1bfd6d0657b7eeca39e485756c786777dbfa8e8f4ca6215e1a0b25eba"
+    },
+    {
+      "sku": "15786",
+      "alt": "Cerradura digital Yale YMC420W negra, referencia 5099",
+      "provenance": "download-original",
+      "sourcePage": "https://tiendaonline.yalecolombia.com/products/cerradura-digital-ymc420w",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0691/8406/1736/files/4_639c3483-98df-45e6-8853-22174ba94e53.jpg?v=1742587099",
+      "evidence": "Official Yale product feed and exact product page map SKU0005099 to standalone matte-black YMC420W, explicitly stating Yale Connect hub sold separately. This original shows the black lock only; no hub kit is implied.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "sha256": "e6241da05aa248237f419d0d3cdf8c31a2dc8ee360b81c2e0f08afa9d9980e6b"
+    },
+    {
+      "sku": "15350",
+      "alt": "Cierrapuertas de piso Yale Y80, referencia 9431",
+      "caption": "Detalle del mecanismo del cierrapuertas Yale Y80. La tapa y todos los accesorios no se muestran en esta vista.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.yalehome.com.co/es/products/productos/Cierrapuertas-de-piso/Cierrapuertas-Y-80",
+      "imageUrl": "https://www.yalehome.com.co/adobe/assets/urn:aaid:aem:bdbeb20d-8fb5-416d-af60-e16a106bd58f/as/Cierrapuertas-Y80-0009431--yale-home-colombia.jpeg",
+      "evidence": "Official Yale Y80 exact model page maps 0009431 and embeds the original named Cierrapuertas-Y80-0009431. Asset shows open closer mechanism, not the mistakenly configured generic safe thumbnail.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        524,
+        319
+      ],
+      "sha256": "a28eaec1d154269565e9461ca972d9223fde52591e26d8a4df57e39d77cde064"
+    },
+    {
+      "sku": "15816",
+      "alt": "Cierrapuertas de piso Yale Y120 PRO, referencia 9696",
+      "provenance": "download-original",
+      "sourcePage": "https://www.yalehome.com.co/es/products/productos/Cierrapuertas-de-piso/Cierrapuertas-Y120",
+      "imageUrl": "https://www.yalehome.com.co/adobe/assets/urn:aaid:aem:bea2683d-200b-45dd-a2aa-30342292c685/as/Cierrapuertas-Piso-Y120.jpeg",
+      "evidence": "Official Yale Y120 page explicitly maps 0009696 to Y120 PRO MAB7600. Original page-embedded asset shows silver floor closer and cover; placeholder thumbnail was discarded.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        524,
+        319
+      ],
+      "sha256": "10c878a880e7516123d2cd01127ffb1d91fbce0aea20890dc319adea981e6a9f"
+    },
+    {
+      "sku": "11700",
+      "alt": "Detalle de carro Ducasse DN-150 HD, rueda naranja",
+      "caption": "Detalle de un carro del sistema Ducasse DN-150 HD. La imagen no muestra ni certifica el contenido completo del conjunto.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://ducasseindustrial.com/co/product/corredera-dn-150-hd/",
+      "imageUrl": "https://ducasseindustrial.com/co/wp-content/uploads/sites/19/2020/09/CO_10100219511_img_prod1_bl.jpg",
+      "evidence": "Official Ducasse Colombia DN-150 HD page supplies this original for system 10100219511. Orange roller, housing and adjustable bracket match specified model. One component shown, not whole kit.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "a8a07e9f5b7cca1744f6156cb9edd06f85b0807f53de614412d58e2e505e026e"
+    },
+    {
+      "sku": "11080",
+      "alt": "Soporte cromado HVS901-01C para pared con 3 clips y 4 ganchos",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/soporte-pared-3-clips-4-ganchos-cromados",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-bonuit-soporte-pared-3-clips-4-ganchos-cromados-hvs901-01c-madecentro.jpg?v=1742368490",
+      "evidence": "Madecentro exact HVS901-01C product and original filename match chrome variant,3 clips and 4 hooks. Image visually shows those counts. Local catalog is unbranded; no Mobile-to-Bonuit equivalence is asserted.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "55af722d33ea592d762b545a30ec1b46881ec1c9b1c7a3f42f9ca3a211583b99"
+    },
+    {
+      "sku": "15650",
+      "alt": "Elevador de clóset HSO744-02 cromado de 64 a 90 cm",
+      "caption": "Ejemplo de instalación del elevador HSO744-02 de 64 a 90 cm. Clóset, ropa y accesorios de ambientación no incluidos.",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/closet-11819",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/files/herrajes-para-closet-bonuit-elevador-de-closet-hso744-02-madecentro_3.jpg?v=1777409956",
+      "evidence": "Madecentro variant id 47520122667238 maps exact HSO744-02 to 64-90 cm bright chrome; selected image specifically attaches to that variant, not HSO745 black. Catalog is unbranded and has same exact code/range.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "ed3e5cbc1766ac416da3b98973e76d5c9d97d12c2135371929e6c7904fe7f2ff"
+    },
+    {
+      "sku": "14850",
+      "alt": "Mecanismo hidráulico para cama baúl sencilla HCA005-100",
+      "caption": "Ejemplo de instalación del mecanismo HCA005-100 para cama baúl sencilla. Cama, colchón, muebles y decoración no incluidos; la escena no certifica todos los accesorios del conjunto.",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://madecentro.com/products/mecanismo-hidraulico-para-cama-bahul-sencilla",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0535/0608/0925/products/herrajes-mecanismo-hidraulico-cama-madecentro2.jpg?v=1669309004",
+      "evidence": "Madecentro exact HCA005-100 page and feed map the single-bed lift mechanism. Source expressly excludes bed and mattress. Local catalog is unbranded, names same code and single-bed configuration; no separate Mobile branded stock is assumed equivalent.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        1024,
+        720
+      ],
+      "sha256": "db51a8bbd0a5e8e1c38b65d6963539fa5cf08c24616bd3a94c0f4c3dfd50a0ba"
+    },
+    {
+      "sku": "0963",
+      "alt": "Cerradura Yale 396 de sobreponer derecha sin roseta, referencia 3021",
+      "provenance": "download-original",
+      "sourcePage": "https://ferricentro.com/cerradura-sobreponer-para-porton-derecha-ff-0000030043",
+      "imageUrl": "https://ferricentro.com/media/catalog/product/i/m/imagenp_0000030043.png?optimize=low&fit=bounds&height=700&width=700&format=jpeg",
+      "evidence": "Exact Ferricentro manufacturer reference 0003021/396 and right-hand article. Original shows fixed keyed cylinder without the scalloped turn rosette and hooks on right, matching catalog right-hand no-rosette variant.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        700,
+        700
+      ],
+      "sha256": "3621dd7e6d8b9e5803080ab568043155802f6695ee898bc6d86a74ecb9d12159"
+    },
+    {
+      "sku": "14018",
+      "alt": "Cerradura Yale 396-60 Plus de sobreponer derecha, referencia 3037",
+      "provenance": "download-original",
+      "sourcePage": "https://www.comaderas.com/cerradura-sobreponer-396-x-14-60-dr-3037",
+      "imageUrl": "https://cdnx.jumpseller.com/ace-comaderas/image/26868336/resize/1200/1200?1693843696",
+      "evidence": "Exact Comaderas reference 3037 product page describes four multipoint keys,60 mm backset and right-hand rosette Plus model. Original depicts scalloped turning rosette and hooks on right. Opposite 3038 page reuses right-hand imagery and is separately rejected.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "9bac2e480b78aca4e6c6868a82ada1d916b43131f4ca3024f6e035b663788660"
+    },
+    {
+      "sku": "15699",
+      "alt": "Pomo Yale Carolina negro para alcoba, referencia 8783",
+      "caption": "Vista exterior del pomo Yale Carolina negro de alcoba; no muestra el seguro interior.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.homecenter.com.co/homecenter-co/product/663128/pomo-carolina-yale-alcoba-negro/663128/",
+      "imageUrl": "https://media.falabella.com/sodimacCO/663128/public",
+      "evidence": "Homecenter exact black Carolina bedroom article identifies ref 8783; original shows a black round knob with a shaped keyed exterior. It is not the black privacy/bathroom image.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        768,
+        768
+      ],
+      "sha256": "dee006fedf4a080b57d58a465c80219300288aff3cb61319437f07e41bfd21ea"
+    },
+    {
+      "sku": "15784",
+      "alt": "Cerradura digital Yale YDM20 negra, referencia 9385",
+      "caption": "Ejemplo de instalación de la cerradura Yale YDM20. Puerta, muebles y decoración no incluidos; no se muestran todos los accesorios del empaque.",
+      "kind": "supplier-render",
+      "provenance": "download-original",
+      "sourcePage": "https://www.ferreinox.co/es/cerradura-digital-ydm20-yale-de-la-seccion-yale-de-array-en-pereira-CP85952",
+      "imageUrl": "https://s3.pagegear.co/321/articulos/85952/78976_1000x1000.jpg?8994330",
+      "evidence": "Ferreinox exact YDM20 article identifies code 0009385 and shows genuine supplier installation artwork of the same long narrow black keypad/lever body. Original compared against manufacturer 2025 catalog YDM20 profile.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "9668847e0c112079d7581feeb14521fd06bc3a624f8eddf05558c94987dffb98"
+    },
+    {
+      "sku": "15755",
+      "alt": "Detalle de brazo Qualita DTC SE2F push, referenciaQSE2FAH01A",
+      "caption": "Vista parcial del brazo DTC SE2F push QSE2FAH01A. No se muestran las bisagras ni todos los componentes del conjunto; la imagen no certifica el contenido completo del empaque.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.qualitahya.com/qualita/Productos/Brazos-para-muebles-de-madera/Brazo-Sencillo-DTC-Serie-SE-Push-Open",
+      "imageUrl": "https://www.qualitahya.com/var/hya/storage/images/productos/sistemas-de-elevacion-dtc/brazo-dtc-puerta-sencilla-se-push/brazo-dtc-push-open-2/18615-1-esl-CO/BRAZO-DTC-PUSH-OPEN-2.jpg",
+      "evidence": "Official Qualita product page and its linked native technical illustration BRAZOS-DTC-SERIE-SE_galleryfull.png explicitly map QSE2FAH01A to SE push-open system. Original supplier arm-and-push photograph shares the exact model page and matches the nickel arm. Hinges/remaining bundle pieces are not all shown; native Qualita logo matches the catalog Qualita/DTC identity.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        630,
+        353
+      ],
+      "sha256": "cca2f4205858d6b8864555cfb0529028242fbae117a9a9c94f619ee42656393e"
+    },
+    {
+      "sku": "5077",
+      "alt": "Pasador Amig 390 niquelado,50 mm",
+      "caption": "Ilustración de la familia Amig 390 niquelada, compartida por el proveedor entre medidas. No está a escala; este producto corresponde a 50 mm.",
+      "kind": "manufacturer-render",
+      "provenance": "download-original",
+      "sourcePage": "https://www.esteba.com/es/pestillo-amig-modelo-390",
+      "imageUrl": "https://www.esteba.com/img/p/2002/89445/default/pestillo-amig-modelo-390-amig390ni.webp",
+      "evidence": "Esteba manufacturer AMIG model 390 nickel-finish family page explicitly lists 50 mm variant 150934000 alongside 30/40 mm. Original shared model image is visibly silver/nickel; not brass. Catalog title explicitly specifies 390-50; internal ref 148 is not treated as maker part number.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        662,
+        590
+      ],
+      "sha256": "47483df1dd0c0c190c73bdacad0cf1b4b597ffb5d332a97ebe53d02636ed501c"
+    },
+    {
+      "sku": "15288",
+      "alt": "Candado Ideace Gato 7CH50 de hierro,50 mm",
+      "provenance": "download-original",
+      "sourcePage": "https://www.comaderas.com/candado-tipo-italiano-50-mm-de-hierro-ideace-modelo-7ch50",
+      "imageUrl": "https://cdnx.jumpseller.com/ace-comaderas/image/65537881/resize/1200/1200?1753122393",
+      "evidence": "Exact Comaderas article explicitly identifies brand Ideace Gato,model 7CH50,50 mm iron. Original product image visibly carries Ideace Gato engraved identity, not Duralock. This independent old-brand photograph resolves brand concern without assuming rebranding equivalence.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "sha256": "93afc20d13750fbe51d802f92ef0d277b17f025f705cad4cd531c67c04b0b6e1"
+    },
+    {
+      "sku": "14830",
+      "alt": "Detalle exterior de cerradura Yale A28 pico de loro llave-llave, referencia 7091",
+      "caption": "Detalle exterior del mecanismo Yale A28. La imagen de familia no muestra ni verifica el cilindro interior; este artículo corresponde a llave-llave 7091.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://www.electricoslacabalgata.com/products/chapa-yale-vidrio-a28-gancho-ll-ll-7091",
+      "imageUrl": "https://www.electricoslacabalgata.com/cdn/shop/products/0007088-0007093_ef297d7c-7e9e-44fb-b114-e89bf83639e7_600x.png?v=1626921018",
+      "evidence": "Exact distributor article names Yale A28 LL-LL7091. Image filename is shared across 7088-7093 family, so treated as model-body detail only. Original shows silver hook mechanism and exterior keyway; no conflicting thumbturn is shown. Caption does not claim to verify hidden opposite cylinder.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        600,
+        664
+      ],
+      "sha256": "187f8b3df431ef1ad0eb7a34be0185f7fb6905a0e32776cbfacacef86623693b"
+    },
+    {
+      "sku": "15949",
+      "alt": "Detalle de manija MHA MRC-530 del comboKIT-002",
+      "caption": "Detalle de la manija MRC-530 incluida en el combo. La foto no muestra ni certifica la cerradura E3528, el cilindro u otros componentes del conjunto.",
+      "kind": "component-detail",
+      "provenance": "download-original",
+      "sourcePage": "https://mhacolombia.co/product/ref-mrc-530/",
+      "imageUrl": "https://mhacolombia.co/wp-content/uploads/2024/11/manija_530.jpg",
+      "evidence": "Official MHA MRC-530 source names the exact handle component that the catalog explicitly includes in KIT-002. Original depicts one stainless/silver long-plate lever and keyhole; it does not establish the accompanying E3528 lock or 60 mm cylinder bundle contents.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product-marketing original. No open license or explicit reproduction permission evidenced; not license-cleared. No incompatible reuse restriction or reseller/stock watermark observed on the inspected source page or selected asset.",
+      "dimensions": [
+        800,
+        600
+      ],
+      "sha256": "01864754d75a8c72d9346ac73ebadfd9ad6a87b73477c6830e8d3cc211ceab6b"
+    }
+  ]
+}
