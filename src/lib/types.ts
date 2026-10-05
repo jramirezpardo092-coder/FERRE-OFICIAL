@@ -2,6 +2,8 @@ export type ProductImage = {
   src: string;
   kind?: "manufacturer-render" | "supplier-render" | "technical-diagram" | "profile-detail" | "component-detail" | "pair-detail";
   alt?: string;
+  /** Visible scope/variant caveat for the approved image; plain text, never HTML. */
+  caption?: string;
   verified: true;
 };
 

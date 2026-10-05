@@ -3,6 +3,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import type { Product, ProductImage } from "@/lib/types";
+import { getProductImageCaption } from "@/lib/product-media";
 import { cn } from "@/lib/utils";
 
 // Esta validación local evita importar todo el archivo de enriquecimiento al navegador.
@@ -20,6 +21,8 @@ interface Props {
   active?: boolean;
   showGalleryControls?: boolean;
   priority?: boolean;
+  showCaption?: boolean;
+  onCaptionChange?: (caption: string) => void;
   /** La tarjeta mantiene su marco cuadrado; la lista usa una miniatura de 88 px. */
   cardLayout?: "responsive" | "grid" | "list";
 }
@@ -49,6 +52,8 @@ export default function ProductMedia({
   active = false,
   showGalleryControls = false,
   priority = false,
+  showCaption = true,
+  onCaptionChange,
   cardLayout,
 }: Props) {
   const [failedSources, setFailedSources] = useState<string[]>([]);
@@ -66,7 +71,7 @@ export default function ProductMedia({
       if (image.verified !== true || !src) return;
       const existing = images.get(src);
       // The approved description also belongs to the legacy primary image.
-      if (!existing || image.alt?.trim()) images.set(src, { ...existing, ...image, src });
+      images.set(src, { ...existing, ...image, src, alt: image.alt?.trim() || existing?.alt });
     });
     return [...images.values()];
   }, [product.img, product.gallery, product.nombre]);
@@ -93,6 +98,9 @@ export default function ProductMedia({
   const failImage = (src: string) => setFailedSources((failed) => failed.includes(src) ? failed : [...failed, src]);
   const showSecondary = active && secondary && loadedSecondary === secondary.src;
   const imageSizes = cardLayout === "list" ? "88px" : sizes;
+  const displayedImage = showGalleryControls ? selected : showSecondary ? secondary : primary;
+  const caption = getProductImageCaption(displayedImage);
+  useEffect(() => { onCaptionChange?.(caption); }, [caption, onCaptionChange]);
 
   return (
     <div className={cn("product-media overflow-hidden", primary ? "bg-photo" : "bg-paper", cardLayout && `product-media--${cardLayout}`, className)}>
@@ -150,7 +158,7 @@ export default function ProductMedia({
         </div>
       )}
       </div>
-      {selected?.kind && <p className="border-t border-line bg-paper px-2 py-1 text-center text-xs leading-4 text-ink-2">{selected.kind === "technical-diagram" ? "Ficha técnica" : selected.kind === "profile-detail" ? "Detalle del perfil; no muestra el largo completo" : selected.kind === "component-detail" ? "Vista de un componente" : selected.kind === "pair-detail" ? "Vista de una pieza del par" : selected.kind === "supplier-render" ? "Ilustración del distribuidor" : "Ilustración del fabricante"}</p>}
+      {showCaption && caption && <p data-product-media-caption className="border-t border-line bg-paper px-3 py-2 text-center text-xs leading-4 text-ink-2">{caption}</p>}
       {showGalleryControls && candidates.length > 0 && (
         <div className="border-t border-line bg-surface px-3 py-3">
           {candidates.length > 1 && <div role="group" aria-label={`Imágenes de ${product.nombre}`} className="flex flex-wrap justify-center gap-2">

@@ -110,6 +110,11 @@ jobs:
         continue-on-error: true
         run: node scripts/verify-visual-browser.cjs --base-url "$AUDIT_BASE_URL" --output "$AUDIT_REPORTS/visual" --chrome-path "$CHROME_PATH" --views catalogo,categoria,ficha-foto,ficha-sin-foto,sin-resultados,footer,inicio,cotizacion --widths 390,1440 --themes light,dark --font-preload-gate required
 
+      - name: Verify phase-2/3 captions, stock labels and accessible product media
+        id: product_media
+        continue-on-error: true
+        run: node scripts/verify-product-media-browser.cjs --base-url "$AUDIT_BASE_URL" --output "$AUDIT_REPORTS/product-media" --chrome-path "$CHROME_PATH" --widths 360,1440 --themes light,dark
+
       - name: Measure mobile Lighthouse on catalog and photographed product
         id: lighthouse
         continue-on-error: true
@@ -123,11 +128,12 @@ jobs:
           HTTP_OUTCOME: ${{ steps.http.outcome }}
           FUNCTIONAL_OUTCOME: ${{ steps.functional.outcome }}
           VISUAL_OUTCOME: ${{ steps.visual.outcome }}
+          PRODUCT_MEDIA_OUTCOME: ${{ steps.product_media.outcome }}
           LIGHTHOUSE_OUTCOME: ${{ steps.lighthouse.outcome }}
         run: |
           node - <<'NODE'
           const fs = require('node:fs'), path = require('node:path');
-          const gates = ['TOKENS_OUTCOME','SERVER_OUTCOME','HTTP_OUTCOME','FUNCTIONAL_OUTCOME','VISUAL_OUTCOME','LIGHTHOUSE_OUTCOME'].map(name => ({gate:name,outcome:process.env[name] || 'not-run'}));
+          const gates = ['TOKENS_OUTCOME','SERVER_OUTCOME','HTTP_OUTCOME','FUNCTIONAL_OUTCOME','VISUAL_OUTCOME','PRODUCT_MEDIA_OUTCOME','LIGHTHOUSE_OUTCOME'].map(name => ({gate:name,outcome:process.env[name] || 'not-run'}));
           const passed = gates.every(gate => gate.outcome === 'success');
           const reports = process.env.AUDIT_REPORTS || path.join(process.env.RUNNER_TEMP,'ferrepardo-visual-quality');
           fs.mkdirSync(reports,{recursive:true});

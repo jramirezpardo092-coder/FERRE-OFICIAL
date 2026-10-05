@@ -1,8 +1,17 @@
-"""Import manually approved, local product photos without changing catalog data.
+"""Import manually approved, local product images without changing catalog data.
 
 Requires existing Pillow with WebP support (the bundled Codex Python has it).
 Manifest: a private JSON array of {sku: string, sourcePath: string, alt: string,
-provenance?: "capture-rendered" | "download-original" | "unspecified"}.
+provenance?: "capture-rendered" | "download-original" | "unspecified",
+kind?: supported ProductImage kind or research photo label, caption?: string}.
+Supported kinds: manufacturer-render, supplier-render, technical-diagram,
+profile-detail, component-detail, pair-detail. manufacturer-packshot and
+manufacturer-marketing-image normalize to ordinary images without a kind.
+Captions, when supplied, must be nonempty. Other kind values are rejected.
+Additive reruns retain omitted kind/caption metadata from an approved gallery
+entry only when reusing its exact image bytes. Explicit values take precedence;
+a research photo kind explicitly removes an existing kind without clearing an
+omitted caption. --replace-gallery rebuilds metadata solely from the manifest.
 Relative source paths resolve from the manifest directory. Keep the manifest
 outside the repository. Its mapping is authoritative; no SKU/model is inferred.
 Default is dry-run. --write publishes lossless WebP files and merges gallery,
@@ -21,6 +30,19 @@ import os
 import re
 import tempfile
 from pathlib import Path
+
+
+PRODUCT_IMAGE_KINDS = frozenset({
+    "manufacturer-render", "supplier-render", "technical-diagram",
+    "profile-detail", "component-detail", "pair-detail",
+})
+RESEARCH_PHOTO_KINDS = frozenset({"manufacturer-packshot", "manufacturer-marketing-image"})
+PRIVATE_EVIDENCE_FIELDS = (
+    "sourcePage", "imageUrl", "evidence", "exactVariant", "sourceEvidence",
+    "manufacturerEvidence", "additionalSources", "provenanceDetail", "extractionMethod",
+    "sourcePdfPage", "sourcePdfObjectId", "originalDownloadPath", "licenseStatus",
+    "researchKind", "visualReview", "parentVisualReview", "kind", "caption",
+)
 
 
 def sha(data):
@@ -112,6 +134,12 @@ def prepare_import(repo_root, manifest_path, collection="whatsapp", replace_gall
         provenance = record.get("provenance", "unspecified")
         if not isinstance(provenance, str) or provenance not in {"capture-rendered", "download-original", "unspecified"}:
             raise ValueError(f"Row {number}: unsupported provenance value.")
+        kind = record.get("kind")
+        if "kind" in record and (not isinstance(kind, str) or kind not in PRODUCT_IMAGE_KINDS | RESEARCH_PHOTO_KINDS):
+            raise ValueError(f"Row {number}: unsupported image kind; refusing to treat an unrecognized image type as a photograph.")
+        caption = record.get("caption")
+        if "caption" in record and (not isinstance(caption, str) or not caption.strip()):
+            raise ValueError(f"Row {number}: caption must be a nonempty string when supplied.")
         source_path = Path(source_path).expanduser()
         if not source_path.is_absolute():
             source_path = manifest_path.parent / source_path
@@ -152,8 +180,24 @@ def prepare_import(repo_root, manifest_path, collection="whatsapp", replace_gall
             entry["gallery"] = []
             replaced_skus.add(sku)
         gallery = entry.setdefault("gallery", [])
-        approved = {"src": public_src, "alt": alt.strip(), "verified": True}
         found = next((index for index, item in enumerate(gallery) if isinstance(item, dict) and isinstance(item.get("src"), str) and item["src"].lstrip("/") == public_src.lstrip("/")), None)
+        preserved_metadata = {}
+        if not replace_gallery and target not in files and found is not None and gallery[found].get("verified") is True:
+            # Legacy manifests predate the manual approval of some image caveats.
+            # Retain only valid public metadata from the identical reused image.
+            previous = gallery[found]
+            previous_kind = previous.get("kind")
+            previous_caption = previous.get("caption")
+            if "kind" not in record and isinstance(previous_kind, str) and previous_kind in PRODUCT_IMAGE_KINDS:
+                preserved_metadata["kind"] = previous_kind
+            if "caption" not in record and isinstance(previous_caption, str) and previous_caption.strip():
+                preserved_metadata["caption"] = previous_caption.strip()
+        approved = {"src": public_src, "alt": alt.strip(), "verified": True}
+        approved.update(preserved_metadata)
+        if kind in PRODUCT_IMAGE_KINDS:
+            approved["kind"] = kind
+        if caption is not None:
+            approved["caption"] = caption.strip()
         if found is None:
             gallery.append(approved)
         else:
@@ -164,7 +208,8 @@ def prepare_import(repo_root, manifest_path, collection="whatsapp", replace_gall
             "webpSha256": digest, "webpBytes": len(encoded), "width": size[0], "height": size[1],
             "encoding": "WebP lossless", "pillowVersion": pillow_version, "resized": False, "cropped": False,
             # Research evidence stays in the private audit, never in the public product DTO.
-            **{key: record[key] for key in ("sourcePage", "imageUrl", "evidence", "exactVariant") if key in record},
+            **{key: record[key] for key in PRIVATE_EVIDENCE_FIELDS if key in record},
+            **({"preservedGalleryMetadata": preserved_metadata} if preserved_metadata else {}),
         })
 
     return {
@@ -217,7 +262,7 @@ def main():
     parser.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--write", action="store_true", help="Publish prepared WebP files and merge gallery; otherwise read-only dry-run")
     parser.add_argument("--collection", choices=("whatsapp", "official"), default="whatsapp")
-    parser.add_argument("--replace-gallery", action="store_true", help="Replace galleries for manifest SKUs only, keeping specifications")
+    parser.add_argument("--replace-gallery", action="store_true", help="Replace galleries and image metadata for manifest SKUs only, keeping specifications; omitted kind/caption are not inherited")
     args = parser.parse_args()
     try:
         plan = prepare_import(args.repo_root, args.manifest, args.collection, args.replace_gallery)

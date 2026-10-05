@@ -28,6 +28,7 @@ function verifiedGallery(gallery: unknown): ProductImage[] {
       verified: true,
       ...(["manufacturer-render", "supplier-render", "technical-diagram", "profile-detail", "component-detail", "pair-detail"].includes(candidate.kind || "") ? { kind: candidate.kind } : {}),
       ...(typeof candidate.alt === "string" && candidate.alt.trim() ? { alt: candidate.alt.trim() } : {}),
+      ...(typeof candidate.caption === "string" && candidate.caption.trim() ? { caption: candidate.caption.trim() } : {}),
     });
   });
   return [...images.values()];

@@ -9,6 +9,7 @@ import { getProductPath } from "@/lib/catalog/routes";
 import { addToCart } from "@/lib/cart-store";
 import { useQuoteQuantity } from "@/lib/useQuoteQuantity";
 import { buildQuoteWhatsAppUrl, getStockLabel } from "@/lib/quote-presentation";
+import { getProductPrimaryImageCaption } from "@/lib/product-media";
 import ProductMedia from "./catalog/ProductMedia";
 import PriceDisplay from "./catalog/PriceDisplay";
 
@@ -21,6 +22,8 @@ interface Props {
 export default function ProductCard({ product, onOpenModal, viewMode = "responsive" }: Props) {
   const [feedback, setFeedback] = useState("");
   const [mediaActive, setMediaActive] = useState(false);
+  const initialMediaCaption = getProductPrimaryImageCaption(product);
+  const [mediaCaption, setMediaCaption] = useState(initialMediaCaption);
   const isList = viewMode === "list";
   const responsive = viewMode === "responsive";
   const stock = getAvailableQuantity(product);
@@ -34,7 +37,7 @@ export default function ProductCard({ product, onOpenModal, viewMode = "responsi
   const added = quoteQuantity > 0;
   const quantityLabel = formatQuantity(quoteQuantity);
   const actionLabel = added ? `En cotización · ${quantityLabel}` : "Agregar a cotización";
-  useEffect(() => { setFeedback(""); setMediaActive(false); }, [product.id]);
+  useEffect(() => { setFeedback(""); setMediaActive(false); setMediaCaption(initialMediaCaption); }, [product.id, initialMediaCaption]);
 
   const openDetails = (event: MouseEvent<HTMLAnchorElement>) => {
     if (!onOpenModal || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -56,7 +59,7 @@ export default function ProductCard({ product, onOpenModal, viewMode = "responsi
       onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setMediaActive(false); }}
     >
       <Link href={href} prefetch={false} onClick={openDetails} className="product-card-media relative block shrink-0 self-start">
-        <ProductMedia product={product} active={mediaActive} cardLayout={viewMode} sizes={isList ? "88px" : responsive ? "(max-width: 639px) 88px, (max-width: 1024px) 50vw, 280px" : "(max-width: 639px) 50vw, (max-width: 1024px) 50vw, 280px"} />
+        <ProductMedia product={product} showCaption={false} onCaptionChange={setMediaCaption} active={mediaActive} cardLayout={viewMode} sizes={isList ? "88px" : responsive ? "(max-width: 639px) 88px, (max-width: 1024px) 50vw, 280px" : "(max-width: 639px) 50vw, (max-width: 1024px) 50vw, 280px"} />
         {!!discount && discount > 0 && <span className="absolute left-2 top-2 rounded-control border border-line bg-surface px-2 py-1 font-mono text-xs font-medium text-ink">-{discount}%</span>}
       </Link>
       <div className="product-card-body flex min-w-0 flex-1 flex-col">
@@ -67,6 +70,7 @@ export default function ProductCard({ product, onOpenModal, viewMode = "responsi
         <h3 className="product-card-name font-semibold text-ink">
           <Link href={href} prefetch={false} onClick={openDetails} className="line-clamp-2 min-h-11 hover:text-brand-text">{name}</Link>
         </h3>
+        {mediaCaption && <p data-product-media-caption className="mt-2 text-xs leading-4 text-ink-2">{mediaCaption}</p>}
         <p className="product-stock mt-2 flex items-center gap-2 text-xs leading-4 text-ink-2"><span aria-hidden="true" className={cn("h-2 w-2 shrink-0 rounded-full", !inStock ? "bg-muted" : stock <= 3 ? "bg-warn" : "bg-ok")} />{getStockLabel(product)}</p>
         <div className="product-card-footer mt-auto">
           <PriceDisplay product={product} compact unit={unit ? `por ${unit}` : undefined} />
