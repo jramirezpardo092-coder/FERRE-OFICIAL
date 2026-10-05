@@ -1,5 +1,6 @@
 export type ProductImage = {
   src: string;
+  kind?: "manufacturer-render" | "supplier-render" | "technical-diagram" | "profile-detail" | "component-detail" | "pair-detail";
   alt?: string;
   verified: true;
 };

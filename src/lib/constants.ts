@@ -10,8 +10,9 @@ export const SITE = {
   email: "ferrepardo@gmail.com",
   address: "Calle 72 No. 50-23, Bogotá · Barrio 12 de Octubre",
   hours: {
-    weekdays: "Lunes a Viernes: 8:15 AM – 4:55 PM",
-    saturday: "Sábados: 8:15 AM – 2:15 PM",
+    weekdays: "Lunes a jueves: 8:15 AM – 4:45 PM",
+    friday: "Viernes: 8:15 AM – 4:30 PM",
+    saturday: "Sábados: 8:15 AM – 1:00 PM",
     sunday: "Domingos y festivos: Cerrado",
   },
   social: {

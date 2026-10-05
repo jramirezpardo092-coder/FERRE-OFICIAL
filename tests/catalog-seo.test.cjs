@@ -6,18 +6,18 @@ const routes = load("src/lib/catalog/routes.ts");
 const seo = load("src/lib/seo.ts");
 const { catalogMetadata } = load("src/components/catalog/CatalogPage.tsx");
 const { CATALOG_CATEGORIES } = load("src/lib/catalog/categories.ts");
-const { middleware } = load("src/middleware.ts");
+const { proxy } = load("src/proxy.ts");
 const { NextRequest } = require("next/server");
 const catalog = load("src/lib/catalog-service.ts");
 test("legacy links redirect with 301, preserving SKU zeros and other filters", () => {
   const product = catalog.getCatalogProduct("0435");
-  const response = middleware(new NextRequest("https://example.com/producto/0435?from=legacy"));
+  const response = proxy(new NextRequest("https://example.com/producto/0435?from=legacy"));
   assert.equal(response.status, 301);
   assert.equal(response.headers.get("location"), "https://example.com" + routes.getProductPath(product) + "?from=legacy");
-  const category = middleware(new NextRequest("https://example.com/catalogo?cat=Cerrajer%C3%ADa&page=2&brand=YALE"));
+  const category = proxy(new NextRequest("https://example.com/catalogo?cat=Cerrajer%C3%ADa&page=2&brand=YALE"));
   assert.equal(category.status, 301);
   assert.equal(category.headers.get("location"), "https://example.com/catalogo/cerrajeria?page=2&brand=YALE");
-  assert.equal(middleware(new NextRequest("https://example.com" + routes.getProductPath(product))).status, 200);
+  assert.equal(proxy(new NextRequest("https://example.com" + routes.getProductPath(product))).status, 200);
 });
 test("each category has unique metadata; pagination self canonical and filters noindex follow", () => {
   assert.equal(new Set(CATALOG_CATEGORIES.map(category => catalogMetadata({ category }).title)).size, 9);
@@ -35,7 +35,12 @@ test("each category has unique metadata; pagination self canonical and filters n
 test("schemas use genuine product content, integer gross COP, no invented image or unknown brand", () => {
   const business = seo.getLocalBusinessJsonLd();
   assert.equal(business["@type"], "HardwareStore"); assert.equal(business.telephone.length, 2);
-  assert.equal(business.openingHoursSpecification[0].closes, "16:55");
+  assert.deepEqual(JSON.parse(JSON.stringify(business.openingHoursSpecification)), [
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"], opens: "08:15", closes: "16:45" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "08:15", closes: "16:30" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "08:15", closes: "13:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "00:00", closes: "00:00" },
+  ]);
   assert.ok(business.address.streetAddress.includes("12 de Octubre"));
   assert.ok(business.paymentAccepted.includes("Nequi"));
   const product = { id: "0099", nombre: "BISAGRA BO-90 PVC", brand: "Sin marca", precio: 5200, taxRate: 19, priceVerified: true, stock: 0, unidad: "unidad", cat: "Cerrajería" };

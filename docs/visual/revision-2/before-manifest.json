@@ -1,0 +1,114 @@
+{
+  "baseline": "29d0e631cddcffe00b9ec1dd43dc03b21b08560c",
+  "origin": "https://ferre-oficial-gezwu7ja8-jramirezpardo092-4925s-projects.vercel.app",
+  "screenshots": [
+    {
+      "phase": "before",
+      "view": "inicio",
+      "width": 390,
+      "height": 844,
+      "theme": "claro",
+      "route": "/",
+      "file": "before/inicio-390-claro.jpg"
+    },
+    {
+      "phase": "before",
+      "view": "catalogo",
+      "width": 390,
+      "height": 844,
+      "theme": "claro",
+      "route": "/catalogo",
+      "file": "before/catalogo-390-claro.jpg"
+    },
+    {
+      "phase": "before",
+      "view": "sin-resultados",
+      "width": 390,
+      "height": 844,
+      "theme": "claro",
+      "route": "/catalogo?q=zzzz-inexistente-92846",
+      "file": "before/sin-resultados-390-claro.jpg"
+    },
+    {
+      "phase": "before",
+      "view": "inicio",
+      "width": 390,
+      "height": 844,
+      "theme": "oscuro",
+      "route": "/",
+      "file": "before/inicio-390-oscuro.jpg"
+    },
+    {
+      "phase": "before",
+      "view": "catalogo",
+      "width": 390,
+      "height": 844,
+      "theme": "oscuro",
+      "route": "/catalogo",
+      "file": "before/catalogo-390-oscuro.jpg"
+    },
+    {
+      "phase": "before",
+      "view": "sin-resultados",
+      "width": 390,
+      "height": 844,
+      "theme": "oscuro",
+      "route": "/catalogo?q=zzzz-inexistente-92846",
+      "file": "before/sin-resultados-390-oscuro.jpg"
+    },
+    {
+      "phase": "before",
+      "view": "inicio",
+      "width": 1440,
+      "height": 900,
+      "theme": "oscuro",
+      "route": "/",
+      "file": "before/inicio-1440-oscuro.jpg"
+    },
+    {
+      "phase": "before",
+      "view": "catalogo",
+      "width": 1440,
+      "height": 900,
+      "theme": "oscuro",
+      "route": "/catalogo",
+      "file": "before/catalogo-1440-oscuro.jpg"
+    },
+    {
+      "phase": "before",
+      "view": "sin-resultados",
+      "width": 1440,
+      "height": 900,
+      "theme": "oscuro",
+      "route": "/catalogo?q=zzzz-inexistente-92846",
+      "file": "before/sin-resultados-1440-oscuro.jpg"
+    },
+    {
+      "phase": "before",
+      "view": "inicio",
+      "width": 1440,
+      "height": 900,
+      "theme": "claro",
+      "route": "/",
+      "file": "before/inicio-1440-claro.jpg"
+    },
+    {
+      "phase": "before",
+      "view": "catalogo",
+      "width": 1440,
+      "height": 900,
+      "theme": "claro",
+      "route": "/catalogo",
+      "file": "before/catalogo-1440-claro.jpg"
+    },
+    {
+      "phase": "before",
+      "view": "sin-resultados",
+      "width": 1440,
+      "height": 900,
+      "theme": "claro",
+      "route": "/catalogo?q=zzzz-inexistente-92846",
+      "file": "before/sin-resultados-1440-claro.jpg"
+    }
+  ]
+}

@@ -3,307 +3,129 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 100px;
-    color-scheme: light;
+  :root {
+    --paper: 245 245 247; --surface: 255 255 255; --ink: 29 29 31; --ink-2: 86 86 92;
+    --line: 225 225 229; --control: 117 117 123; --brand: 208 39 49; --brand-press: 169 31 40;
+    --brand-text: 207 38 48; --brand-tint: 251 234 234; --on-brand: 255 255 255; --on-ink: 255 255 255;
+    --ok: 46 107 63; --warn: 167 100 18; --muted: 115 119 126;
+    --wa: 31 168 85; --wa-edge: 23 107 56; --on-wa: 7 27 16;
+    --hero: 21 23 27; --hero-ink: 246 244 239; --hero-muted: 185 190 198;
+    --photo: 255 255 255; --photo-ink: 29 29 31; --photo-muted: 86 86 92; --photo-line: 225 225 229; --overlay: 21 23 27;
+    --radius-control: 12px; --radius-card: 20px; --radius-chip: 999px;
+    --motion-duration: 180ms;
   }
-  html.dark { color-scheme: dark; }
-  body {
-    @apply font-sans text-gray-900 antialiased bg-gray-50/50;
-    @apply dark:bg-gray-950 dark:text-gray-100;
+  html.dark {
+    color-scheme: dark;
+    --paper: 18 20 23; --surface: 27 31 36; --ink: 246 244 239; --ink-2: 185 190 198;
+    --line: 52 58 67; --control: 124 131 140; --brand-text: 255 148 154; --brand-tint: 61 34 40;
+    --on-ink: 21 23 27; --ok: 112 185 133; --warn: 233 183 95; --muted: 146 155 167;
+    --wa-edge: 103 202 141; --overlay: 0 0 0;
   }
-  ::selection {
-    @apply bg-brand-red/15 text-brand-red;
+  html { color-scheme: light; scroll-padding-top: 80px; }
+  body { @apply bg-paper font-sans text-ink antialiased; }
+  h1, h2 { @apply font-display font-extrabold; letter-spacing: -0.025em; }
+  button, input, select, textarea { font: inherit; }
+  button, [role="button"], select, summary { touch-action: manipulation; }
+  ::selection { color: rgb(var(--ink)); background: rgb(var(--brand-tint)); }
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 2px solid rgb(var(--ink)); outline-offset: 3px;
   }
+  :where(input, select, textarea) { accent-color: rgb(var(--ink)); }
 }
 
 @layer components {
-  .btn-primary {
-    @apply inline-flex min-h-11 min-w-11 items-center gap-2 bg-brand-red text-white font-semibold px-5 py-2.5 rounded-2xl
-           hover:bg-brand-red-dark transition-all duration-200 hover:shadow-lg hover:shadow-red-900/20 hover:scale-[1.02]
-           active:scale-[0.98];
-  }
-  .btn-wa {
-    @apply inline-flex min-h-11 min-w-11 items-center gap-2 bg-green-700 text-white font-semibold px-5 py-2.5 rounded-2xl
-           hover:bg-green-800 transition-all duration-200 hover:shadow-lg hover:shadow-green-500/30 hover:scale-[1.02]
-           active:scale-[0.98];
-  }
-  .btn-outline {
-    @apply inline-flex min-h-11 min-w-11 items-center gap-2 border-2 border-brand-red text-brand-red font-semibold
-           px-5 py-2.5 rounded-2xl hover:bg-brand-red hover:text-white transition-all duration-200
-           active:scale-[0.98];
-  }
-  .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white;
-  }
-  .section-subtitle {
-    @apply text-lg md:text-xl text-gray-500 dark:text-gray-400 max-w-3xl;
-  }
-  .card-hover {
-    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-black/10;
-  }
+  .site-container { @apply mx-auto w-full max-w-site px-4 md:px-6 xl:px-8; }
+  .btn-primary { @apply inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-control border border-brand bg-brand px-5 py-3 text-sm font-semibold text-on-brand transition-colors hover:border-brand-press hover:bg-brand-press; }
+  .btn-outline { @apply inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-control border border-control bg-surface px-5 py-3 text-sm font-semibold text-ink transition-colors hover:border-ink hover:bg-paper; }
+  /* Only the quotation send button uses .btn-wa-solid. Other WhatsApp actions are outlined. */
+  .btn-wa { @apply inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-control border border-control bg-surface px-4 py-3 text-sm font-semibold text-ink transition-colors hover:border-wa-edge; }
+  .btn-wa svg { color: rgb(var(--wa)); }
+  .btn-wa-solid { @apply inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-control border border-wa-edge bg-wa px-5 py-3 text-sm font-semibold text-on-wa transition-colors; }
+  .btn-wa-solid:hover { filter: brightness(1.04); }
+  .section-title { @apply font-display text-2xl font-bold text-ink md:text-3xl; }
+  .section-subtitle { @apply max-w-3xl text-base text-ink-2; }
+  .card-hover { @apply border border-line transition-colors hover:border-ink-2 hover:shadow-card; }
+  .technical-label { @apply font-mono text-xs font-medium uppercase tracking-wide text-ink-2; }
+  .brand-logo-plate { @apply inline-flex shrink-0 items-center bg-photo; }
+  .brand-stripes { color: rgb(var(--brand)); }
+  .site-header { @apply sticky top-0 z-50 border-b border-line bg-surface/95; backdrop-filter: blur(18px); }
+  .site-footer { @apply bg-hero text-hero-ink; }
+  .site-footer :where(a,button):focus-visible { outline-color: rgb(var(--hero-ink)); }
+  .site-footer a { @apply transition-colors; }
+  .site-footer .footer-link { @apply inline-flex min-h-11 items-center text-sm text-hero-muted; }
+  .home-hero { @apply relative overflow-hidden bg-paper text-ink; }
+  .home-hero :where(a,button,input):focus-visible { outline-color: rgb(var(--ink)); }
+  .home-hero .bg-surface :where(a,button,input):focus-visible { outline-color: rgb(var(--ink)); }
+  .home-section { @apply py-12 md:py-20; }
+  .catalog-search-highlight { @apply bg-brand-tint text-ink; }
+  .iva-tag { @apply text-xs text-ink-2; }
+  .badge-discount { @apply absolute left-2 top-2 z-10 rounded-control border border-line bg-surface px-2 py-1 font-mono text-xs text-ink; }
+  .badge-photo { @apply absolute right-2 top-2 z-10 rounded-control bg-hero px-2 py-1 font-mono text-xs text-hero-ink; }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  .glass {
-    @apply bg-white/80 backdrop-blur-xl;
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .hover-lift {
-    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl;
-  }
+  .font-display { }
+  .font-mono { font-weight: 500; }
+  .tabular-nums { font-variant-numeric: tabular-nums; }
+  .text-balance { text-wrap: balance; }
+  .scrollbar-hide { scrollbar-width: none; -ms-overflow-style: none; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .sidebar-scroll { scrollbar-width: thin; scrollbar-color: rgb(var(--control)) transparent; }
 }
 
-/* Keyframe animations */
-@keyframes wa-pulse {
-  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
-  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes scalePulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.15); }
-  100% { transform: scale(1); }
-}
-
-@keyframes catalogFadeIn {
-  from { opacity: 0.6; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes badgePop {
-  0% { transform: scale(0.8); opacity: 0; }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-.wa-floating-pulse {
-  animation: wa-pulse 2s infinite;
-}
-
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.4) 50%, transparent 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.8s ease-in-out infinite;
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradientShift 4s ease infinite;
-}
-
-.animate-badge-pop {
-  animation: badgePop 0.3s ease-out forwards;
-}
-
-/* Carousel dots */
-.carousel-dot {
-  @apply w-2.5 h-2.5 rounded-full bg-white/40 transition-all duration-300 cursor-pointer;
-}
-.carousel-dot.active {
-  @apply bg-white w-8;
-}
-
-/* Price IVA tag */
-.iva-tag {
-  @apply text-[13px] text-amber-700 dark:text-amber-300 font-semibold ml-1;
-}
-
-/* Badge styles - enhanced */
-.badge-bestseller {
-  @apply absolute top-2 left-2 bg-gradient-to-r from-amber-500 to-orange-500 text-gray-900 text-xs font-bold px-2.5 py-1 rounded-lg uppercase tracking-wide z-10 shadow-md shadow-orange-500/20;
-}
-.badge-photo {
-  @apply absolute top-2 right-2 bg-black/60 text-white text-xs font-medium px-2 py-0.5 rounded-full backdrop-blur-sm z-10;
-}
-.badge-discount {
-  @apply absolute top-10 left-2 bg-brand-red text-white text-xs font-bold px-2 py-0.5 rounded-full z-10;
-}
-
-/* Catalog page specific */
-.catalog-search-highlight {
-  @apply bg-yellow-100 text-yellow-900 rounded px-0.5;
-}
-
-/* Custom checkbox style override */
-input[type="checkbox"]:checked {
-  background-color: #D02731;
-  border-color: #D02731;
-}
-
-/* Smooth page transition for catalog navigation */
-.catalog-fade-in {
-  animation: catalogFadeIn 0.2s ease-out;
-}
-
-/* Product card image shimmer placeholder */
-.img-placeholder {
-  @apply relative overflow-hidden;
-}
-.img-placeholder::after {
-  content: "";
-  @apply absolute inset-0;
-  background: linear-gradient(90deg, transparent 25%, rgba(0,0,0,0.03) 50%, transparent 75%);
-  background-size: 200% 100%;
-  animation: shimmer 2s ease-in-out infinite;
-}
-
-/* Elegant focus ring for inputs */
-input:focus-visible,
-select:focus-visible {
-  @apply ring-2 ring-brand-red/20 ring-offset-1;
-  outline: 2px solid #D02731;
-  outline-offset: 2px;
-}
-
-/* Subtle divider line with gradient */
-.divider-gradient {
-  background: linear-gradient(90deg, transparent, rgba(208,39,49,0.15), transparent);
-  height: 1px;
-}
-
-/* Better scrollbar for sidebar on desktop */
-@media (min-width: 1024px) {
-  .sidebar-scroll::-webkit-scrollbar {
-    width: 4px;
-  }
-  .sidebar-scroll::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .sidebar-scroll::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0.1);
-    border-radius: 999px;
-  }
-  .sidebar-scroll::-webkit-scrollbar-thumb:hover {
-    background: rgba(0,0,0,0.2);
-  }
-}
-
-/* Scroll reveal classes */
-.scroll-hidden.reveal-ready {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-}
-.scroll-hidden.scroll-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.scroll-hidden-left.reveal-ready {
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-}
-.scroll-hidden-left.scroll-visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-.scroll-hidden-scale.reveal-ready {
-  opacity: 0;
-  transform: scale(0.92);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-.scroll-hidden-scale.scroll-visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Staggered children animation */
-.stagger-children.reveal-ready > * {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-}
-.stagger-children.scroll-visible > *:nth-child(1) { transition-delay: 0ms; opacity: 1; transform: translateY(0); }
-.stagger-children.scroll-visible > *:nth-child(2) { transition-delay: 80ms; opacity: 1; transform: translateY(0); }
-.stagger-children.scroll-visible > *:nth-child(3) { transition-delay: 160ms; opacity: 1; transform: translateY(0); }
-.stagger-children.scroll-visible > *:nth-child(4) { transition-delay: 240ms; opacity: 1; transform: translateY(0); }
-.stagger-children.scroll-visible > *:nth-child(5) { transition-delay: 320ms; opacity: 1; transform: translateY(0); }
-.stagger-children.scroll-visible > *:nth-child(6) { transition-delay: 400ms; opacity: 1; transform: translateY(0); }
-.stagger-children.scroll-visible > *:nth-child(7) { transition-delay: 480ms; opacity: 1; transform: translateY(0); }
-.stagger-children.scroll-visible > *:nth-child(8) { transition-delay: 560ms; opacity: 1; transform: translateY(0); }
-.stagger-children.scroll-visible > *:nth-child(9) { transition-delay: 640ms; opacity: 1; transform: translateY(0); }
-
-/* Dark mode specific overrides */
-.dark input[type="checkbox"]:checked {
-  background-color: #D02731;
-  border-color: #D02731;
-}
-
-/* Dark mode scrollbar */
-.dark .sidebar-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.15);
-}
-.dark .sidebar-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(255,255,255,0.25);
-}
-
-a:focus-visible,
-button:focus-visible {
-  outline: 2px solid #D02731;
-  outline-offset: 4px;
+.pardito-assist-hidden:not(:focus-visible) { visibility: hidden; pointer-events: none; }
+@media (max-width: 639px) {
+  /* Antes de hidratar el portal, no mostrar una segunda ayuda encima de las tarjetas. */
+  .pardito-assist-catalog[data-pardito-placement="floating"] { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
   *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    transition-delay: 0ms !important;
-    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important; transition-delay: 0ms !important; scroll-behavior: auto !important;
   }
-  .scroll-hidden, .scroll-hidden-left, .scroll-hidden-scale,
-  .scroll-hidden.reveal-ready, .scroll-hidden-left.reveal-ready,
-  .scroll-hidden-scale.reveal-ready, .stagger-children.reveal-ready > * {
-    opacity: 1;
-    transform: none;
-  }
-  .btn-primary:hover, .btn-primary:active,
-  .btn-wa:hover, .btn-wa:active, .btn-outline:active,
-  .card-hover:hover, .hover-lift:hover {
-    transform: none;
-  }
+  :where(.card-hover, .hover-lift, .btn-primary, .btn-wa):hover { transform: none; }
 }
+
+/* Quiet surfaces, considered space and one clear action per task. */
+.eyebrow { font-size: 12px; line-height: 18px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.hero-layout { display: grid; grid-template-columns: minmax(0,1.08fr) minmax(0,1fr); align-items: center; gap: 56px; padding-block: 56px; }
+.hero-title { font-size: clamp(40px, 4.2vw, 60px); font-weight: 650; line-height: 1.06; letter-spacing: -.055em; }
+.hero-intro { max-width: 480px; margin-block: 24px; font-size: 18px; line-height: 1.6; color: rgb(var(--ink-2)); }
+.hero-search { display: flex; align-items: center; gap: 12px; padding: 6px 6px 6px 18px; border: 1px solid rgb(var(--control)); border-radius: 16px; background: rgb(var(--surface)); }
+.hero-search:focus-within { outline: 2px solid rgb(var(--ink)); outline-offset: 3px; }
+.hero-search input:focus { outline: none; }
+.hero-spotlight { display: block; min-width: 0; border-radius: 28px; background: rgb(var(--photo)); color: rgb(var(--photo-ink)); }
+.hero-spotlight .text-ink { color: rgb(var(--photo-ink)); }
+.hero-spotlight .text-ink-2 { color: rgb(var(--photo-muted)); }
+.hero-spotlight-arrow { display: flex; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid rgb(var(--photo-line)); border-radius: 50%; transition: transform 180ms ease; }
+.hero-spotlight:hover .hero-spotlight-arrow { transform: translate(2px,-2px); }
+.hero-product-image { position: relative; aspect-ratio: 1.5; margin: 16px 40px 24px; }
+.hero-trust { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 24px; padding-block: 24px 32px; border-top: 1px solid rgb(var(--line)); }
+.hero-trust p, .hero-trust a { display: flex; flex-direction: column; gap: 6px; font-size: 13px; line-height: 20px; color: rgb(var(--ink-2)); }
+.hero-trust strong { font-weight: 600; font-size: 15px; color: rgb(var(--ink)); }
+.product-detail-heading { display: none; }
+@media (max-width: 1023px) { .hero-layout { gap: 28px; padding-block: 40px; } .hero-title { font-size: 44px; } .hero-product-image { margin-inline: 24px; } }
+@media (max-width: 767px) {
+  .hero-layout { grid-template-columns: minmax(0,1fr); gap: 28px; padding-block: 32px; }
+  .hero-title { font-size: clamp(34px,9vw,46px); }
+  .hero-intro { margin-block: 18px; font-size: 16px; line-height: 1.6; }
+  .hero-copy .eyebrow { font-size: 10px; letter-spacing: .08em; }
+  .hero-spotlight { border-radius: 22px; }
+  .hero-product-image { aspect-ratio: 1.7; max-height: 220px; margin-inline: 42px; }
+  .hero-trust { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
+  .hero-trust strong { font-size: 14px; }
+  .product-detail-heading { display: block; }
+  .product-detail-information .product-detail-identity { display: none; }
+  .product-detail-media .product-media-frame { aspect-ratio: 1.3; max-height: 330px; }
+  .product-detail-media[data-has-photo="false"] .product-media-frame { aspect-ratio: auto; height: 180px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-spotlight:hover .hero-spotlight-arrow { transform: none; }
+}
+
+.hero-copy { min-width: 0; }
+.catalog-category-rail { scrollbar-width: thin; scrollbar-color: rgb(var(--control)) transparent; }
+.catalog-category-rail::-webkit-scrollbar { height: 5px; }
+.catalog-category-rail::-webkit-scrollbar-thumb { background: rgb(var(--control)); border-radius: 999px; }

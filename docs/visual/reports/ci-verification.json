@@ -1,0 +1,45 @@
+{
+  "auditedCommit": "236d11d2f5bdfad6a87ff2cf9a692361c5b39360",
+  "runURL": "https://github.com/jramirezpardo092-coder/FERRE-OFICIAL/actions/runs/37233918680",
+  "workflow": "success",
+  "environment": "GitHub Actions Ubuntu 24.04, production Next build, isolated Chrome",
+  "visual": {
+    "measured": 44,
+    "passed": 44,
+    "errors": 0,
+    "axeViolations": 0,
+    "axeIncompleteStates": 36,
+    "maxVisibleRed": 1,
+    "maximumPriceDeltaPx": 0,
+    "maximumActionsDeltaPx": 0,
+    "archivoOnlyPreload": true
+  },
+  "mobile": {
+    "methodology": "Fresh Chrome profile per route/run; default Lighthouse simulated mobile throttling. All requested runs must pass. No retries, discarded runs, CPU recalibration or best-result selection.",
+    "results": [
+      {
+        "route": "catalogo",
+        "score": 98,
+        "cls": 0.01880200852328479,
+        "lcpMs": 2225.7075,
+        "tbtMs": 91.5,
+        "warnings": [],
+        "passed": true
+      },
+      {
+        "route": "ficha-foto",
+        "score": 95,
+        "cls": 0.00008557671712418884,
+        "lcpMs": 2792.8545999999997,
+        "tbtMs": 25.536350000000084,
+        "warnings": [],
+        "passed": true
+      }
+    ]
+  },
+  "limitations": [
+    "Lighthouse móvil de laboratorio, no datos de campo CrUX ni garantía de puntuación constante.",
+    "axe conserva incomplete para revisión humana; primer foco no equivale a recorrer todo el teclado.",
+    "La última revisión de la PR vuelve a ejecutar estos gates y conserva los informes completos en Actions."
+  ]
+}

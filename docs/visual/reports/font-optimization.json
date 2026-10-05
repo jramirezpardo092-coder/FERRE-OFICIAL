@@ -1,0 +1,30 @@
+{
+  "source": "https://fonts.gstatic.com/s/archivo/v25/k3kQo8UDI-1M0wlSfdnoLg.woff2",
+  "tool": "fontTools 4.66.1 varLib.instancer",
+  "limits": {
+    "wdth": 80,
+    "wght": [
+      700,
+      800
+    ]
+  },
+  "originalAxes": [
+    [
+      "wght",
+      100.0,
+      600.0,
+      900.0
+    ],
+    [
+      "wdth",
+      62.0,
+      100.0,
+      125.0
+    ]
+  ],
+  "originalBytes": 90104,
+  "optimizedBytes": 24328,
+  "glyphs": 302,
+  "cmapUnchanged": true,
+  "license": "SIL OFL 1.1; Archivo-OFL.txt"
+}

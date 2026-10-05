@@ -1,0 +1,1514 @@
+{
+  "date": "2026-10-05",
+  "scope": "81 exact new product assets recovered from the existing store and identified manufacturer/distributor sources. Includes photographs, explicitly labelled supplier/manufacturer illustrations, and partial product/profile views. Copyright remains with each source; no open-license claim. Catalog commercial values unchanged.",
+  "images": [
+    {
+      "sku": "0344",
+      "alt": "Bisagra doble acción GT negra; vista de una pieza del par",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriapardo.com/tienda/bisagras/bisagra-doble-accion-gt-neg-unidad/",
+      "imageUrl": "https://ferreteriapardo.com/wp-content/uploads/2016/09/BISAGRADOBLEACCION-3.jpg",
+      "evidence": "Sole exact legacy store SKU344 maps current0344, with unchanged GT black double-action hinge name, function and finish. Pixels show one black double-action hinge; this is an item view of one piece, not a photograph of a pair. Legacy reference GT-29A/N differs from current52902; manufacturer-model equivalence is not independently cross-verified. Current product is sold by pair while legacy says unit: preserve current unit, stock and price. Do not duplicate pixels to fabricate a pair.",
+      "exactVariant": true,
+      "licenseStatus": "existing-store-publication: original already published on user-authorized legacy ferreteriapardo.com; copyright ownership not independently established",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "2e983ef5328015aa64bee2f3137b58018bc55a36f42570f45f627e1720322c23"
+    },
+    {
+      "sku": "0350",
+      "alt": "BISAGRA PISO B 100 D INAFER CROMADA (UND)",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriapardo.com/tienda/bisagras/bisagra-piso-b-100-d-inafer-cromada/",
+      "imageUrl": "https://ferreteriapardo.com/wp-content/uploads/2016/09/BISAGRAPISO-1.jpg",
+      "evidence": "Exact SKU 350 equals catalog 0350 after preserving local leading zero. Sole legacy variation b100d-cromada; title matches INAFER B100D chrome floor hinge. Pixels show a single chrome floor hinge with INAFER-branded floor-hinge box, no family assortment. Legacy supplier reference B-100CR differs from current PTI01010EC, but explicit brand/model B100D and chrome finish match; exact SKU is retained.",
+      "exactVariant": true,
+      "licenseStatus": "existing-store-publication: original already published on user-authorized legacy ferreteriapardo.com; copyright ownership not independently established",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "b90275c92ca755a25b866ce42cb9061bc79570f59f547c188b3d5a86e102995e"
+    },
+    {
+      "sku": "0678",
+      "alt": "CERRADURA MUEBLE FIM 16X22",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriapardo.com/tienda/cerradura-cajon/cerradura-mueble-fim-16x22/",
+      "imageUrl": "https://ferreteriapardo.com/wp-content/uploads/2016/09/CERRADURAMUEBLEFIM16X22-1.jpg",
+      "evidence": "Exact SKU 678 equals catalog 0678. Sole legacy variation mueble-fim-16x22 and title match FIM furniture lock 16x22. Pixels show one furniture lock with matching ring and keys, not a family assortment; size is evidenced by exact SKU/product title, not inferred visually. Legacy page also explicitly states reference HCM136-05, exactly matching current catalog reference.",
+      "exactVariant": true,
+      "licenseStatus": "existing-store-publication: original already published on user-authorized legacy ferreteriapardo.com; copyright ownership not independently established",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "eeebfe6a709d4adbe71e77feea1a4962e78a71240aa803bfb3f687e2cee343f2"
+    },
+    {
+      "sku": "10445",
+      "alt": "CERRADURA VERA 1550 NUOVO NIQUEL",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriapardo.com/tienda/cerradura-cajon/cerradura-vera-1550-nuovo-niquel/",
+      "imageUrl": "https://ferreteriapardo.com/wp-content/uploads/2016/09/CERRADURAVERA1550NUOVONIQUEL-1.jpg",
+      "evidence": "Exact SKU 10445; sole variation 1550-nuovo-niquel. Legacy title and photo filename identify VERA 1550 Nuovo nickel. Pixels show nickel-finish drawer lock, matching striker and VERA-style keys, consistent function and finish. Legacy reference VER-1550NI is corroborated to current DYNA7705 reference by manufacturer1550 model listing.",
+      "exactVariant": true,
+      "licenseStatus": "existing-store-publication: original already published on user-authorized legacy ferreteriapardo.com; copyright ownership not independently established",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "38829c3ad76dcde231245408c806de888d6c4b51a57ba722710f2e2a3660a994"
+    },
+    {
+      "sku": "10585",
+      "alt": "CERRADURA VERA 1555 NUOVO NIQUEL",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriapardo.com/tienda/cerradura-cajon/cerradura-vera-1555-nuovo-niquel/",
+      "imageUrl": "https://ferreteriapardo.com/wp-content/uploads/2016/09/CERRADURAVERA155NUOVONIQUEL-1.jpg",
+      "evidence": "Exact SKU 10585; sole variation 1555-nuovo-niquel. Legacy title identifies VERA 1555 Nuovo nickel. Pixels show nickel barrel/cam lock, retaining ring/nut/cam and two keys; no generic drawer-lock substitution. Independently corroborated against manufacturer VERA7706 image and product page https://www.dyna.com.co/producto/7706/detalle/C12.",
+      "exactVariant": true,
+      "licenseStatus": "existing-store-publication: original already published on user-authorized legacy ferreteriapardo.com; copyright ownership not independently established",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "7a705e8cba4dcff7a4694133d6159fdfcbf2892e5a99412a18b1cc39ed0feb01"
+    },
+    {
+      "sku": "10444",
+      "alt": "CERRADURA VERA 1560 NUOVO NIQUEL",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriapardo.com/tienda/cerradura-cajon/cerradura-vera-1560-nuovo-niquel/",
+      "imageUrl": "https://ferreteriapardo.com/wp-content/uploads/2016/09/CERRADURAVERA1560NUOVONIQUEL-1.jpg",
+      "evidence": "Exact SKU 10444; sole variation 1560-nuovo-niquel. Legacy title identifies VERA 1560 Nuovo nickel. Pixels show nickel lock with narrow mounting plate, trim ring and keys visibly branded VERA; correct 1560 function distinct from 1550/1555. Independently corroborated against manufacturer VERA7708 image and product page https://www.dyna.com.co/producto/7708/detalle/C12.",
+      "exactVariant": true,
+      "licenseStatus": "existing-store-publication: original already published on user-authorized legacy ferreteriapardo.com; copyright ownership not independently established",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "696b1ef8a4e38f94ff28762740667dfe213afe97dfee9212ac140fdc992aae33"
+    },
+    {
+      "sku": "6263",
+      "alt": "CARETA VISOR REPUESTO 921313A",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriapardo.com/tienda/por-marca/careta-visor-repuesto/",
+      "imageUrl": "https://ferreteriapardo.com/wp-content/uploads/2016/09/CARETAVISORREPUESTO-1.jpg",
+      "evidence": "Photo depicts one replacement face-shield visor sheet, not a complete helmet/headgear assembly. Physical barcode sticker in the unchanged original photo visibly identifies storeSKU6263, independently read by two reviewers. This disambiguates the shared parent image: embedded variationSKU6263 and explicit reference921313A exactly match current catalogSKU6263/ref921313A. Preserve current Consultar unidad, stock and price; do not infer a sale unit or safety certification. Only original asset is deliverable; zoom/rotation files are QA details.",
+      "exactVariant": true,
+      "licenseStatus": "existing-store-publication: original already published on user-authorized legacy ferreteriapardo.com; copyright ownership not independently established",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "e3438bdc24a8456cb558f72287527f22dc3a0b8ed6d48a8ab18442bed205cfe6"
+    },
+    {
+      "sku": "0955",
+      "alt": "Cerradura Yale L-370N con manija y placas cromadas",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriapardo.com/tienda/cerraduras/cerradura-yale-embutir-l-370d/",
+      "imageUrl": "https://ferreteriapardo.com/wp-content/uploads/2016/09/CERRADURAYALEEMBUTIRL370D-1.jpg",
+      "evidence": "Embedded legacy variationSKU955 identifies L-370N, matching currentSKU0955/ref4004. Though parent page and filename say L370D, pixels visibly isolate polished-chrome classic handle and escutcheon plates, not gold/caoba alternatives. Official Yale table https://www.yalehome.com.co/es/products/productos/Cerraduras-de-Embutir/serie-l370 maps0004004 to L370 clásica US26 (and0004006 to US3,0004003 to caoba), independently corroborating current4004 variant. Photo is the unchanged complete product components, not a crop or composite.",
+      "exactVariant": true,
+      "licenseStatus": "existing-store-publication: original already published on user-authorized legacy ferreteriapardo.com; copyright ownership not independently established",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "99619b3050a50216dfc67c37adc5207c55265cffe80b8654500b2e3d147f23c8"
+    },
+    {
+      "sku": "10268",
+      "alt": "Cerradura Häfele de mueble de doble efecto, referencia 23776600",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriapardo.com/tienda/cerradura-trampa/cerradura-hafele-doble/",
+      "imageUrl": "https://ferreteriapardo.com/wp-content/uploads/2016/09/CERRADURAHAFELEDOBLE-1.jpg",
+      "evidence": "Exact legacy SKU 10268, sole variation hafele-doble, and legacy reference 23776600 match current SKU and reference exactly. Original photo shows one round furniture lock body with opposed double-action bars and keys, not a mixed product group. Catalog states 8 mm; size is supported by the identical reference, not measured from pixels. Stock remains zero and no availability or price changes are authorized.",
+      "exactVariant": true,
+      "licenseStatus": "existing-store-publication: original already published on user-authorized legacy ferreteriapardo.com; copyright ownership not independently established",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "1900ec3e6e8ebdc13bd7baf3ed4d8959b223ab382936e40cbe1845eb33dff00b"
+    },
+    {
+      "sku": "0173",
+      "model": "B-48795",
+      "sourcePage": "https://makita.com.co/node/37600",
+      "imageUrl": "https://makita.com.co/sites/default/files/extensor_magnetico.png",
+      "sha256": "8fe378d0de500e29a3a5a30c1dd1ae75d0c6e349bed7585e70344f9ba2cadb20",
+      "bytes": 44596,
+      "alt": "Extensor magnético Makita B-48795 de 1/4 pulgada, 80 mm",
+      "evidence": "Makita Colombia page names B-48795, 3-1/8 inch screw guide and links this original image. Makita Canada official https://www.makita.ca/index2.php?event=newaccessorydetailstemp&id=667 confirms same code, 1/4 inch shank and 80 mm overall length. Pixel inspection shows single magnetic sleeve accessory, not a drill. Local catalog puts the exact model in nombre; ref147754 is preserved.",
+      "provenance": "download-original",
+      "exactVariant": true,
+      "confidence": "high",
+      "verifiedAt": "2026-10-05",
+      "catalogName": "PUNTA EXTENSION TALADRO MAKITA 1/4\"X3-1/8\" 80MM B-48795",
+      "catalogReference": "147754",
+      "licenseStatus": "Public manufacturer/distributor product marketing image; original copyright remains with its owner. No open or copyright-free license is claimed. Commercial reuse license was not independently verified; source provenance is retained.",
+      "visualInspection": "Original downloaded asset opened and visually checked. No generative edits, recoloring, cropping, compositing, upscaling or other changes to source pixels. Product-only views preferred.",
+      "pixelDimensions": [
+        396,
+        107
+      ]
+    },
+    {
+      "sku": "1630",
+      "model": "M3700B",
+      "sourcePage": "https://www.makita.com.mx/producto/m3700b-rebajadora/",
+      "imageUrl": "https://www.makita.com.mx/wp-content/uploads/2023/05/M3700B_Rebajadora.png",
+      "sha256": "76c2126c67284bb1cd60e4441e7856cdff644b9ad1dc1ad1e0bb32f33d164657",
+      "bytes": 61093,
+      "alt": "Rebordeadora Makita M3700B de 1/4 pulgada y 530 W",
+      "evidence": "Makita Mexico product page names exact M3700B and directly supplies this product photo. Makita Brazil https://www.makita.com.br/catalogoFDetalhes.asp?codParamD=1036 independently confirms M3700B 530 W and 1/4 inch. Single tool shown; no inferred country-specific plug, voltage or kit extras. Local full ref M3700B-117313 preserved.",
+      "provenance": "download-original",
+      "exactVariant": true,
+      "confidence": "high",
+      "verifiedAt": "2026-10-05",
+      "catalogName": "REBORDEADORA MAKITA PROFESIONAL 1/4\" 530W M3700B",
+      "catalogReference": "M3700B-117313",
+      "licenseStatus": "Public manufacturer/distributor product marketing image; original copyright remains with its owner. No open or copyright-free license is claimed. Commercial reuse license was not independently verified; source provenance is retained.",
+      "visualInspection": "Original downloaded asset opened and visually checked. No generative edits, recoloring, cropping, compositing, upscaling or other changes to source pixels. Product-only views preferred.",
+      "pixelDimensions": [
+        400,
+        400
+      ]
+    },
+    {
+      "sku": "3125",
+      "model": "62-511",
+      "sourcePage": "https://asia.stanleytools.global/product/62-511/9-way-screwdriver",
+      "imageUrl": "https://asia.stanleytools.global/ASIA/PRODUCT/IMAGES/HIRES/62-511_2.jpg?resize=530x530",
+      "sha256": "4c24736c47ed15e6369440ae3bb1970d0514e097e7a86396d5e93bfce52172a7",
+      "bytes": 38648,
+      "alt": "Juego de destornillador Stanley 62-511, 9 en 1",
+      "evidence": "Official Stanley product page names exact62-511, lists handle and interchangeable bars. Same code legible on original photo handle; contents match 9-way tool set. Not another Stanley screwdriver kit.",
+      "provenance": "download-original",
+      "exactVariant": true,
+      "confidence": "high",
+      "verifiedAt": "2026-10-05",
+      "catalogName": "JUEGO DESTOR. STANLEY 9EN1",
+      "catalogReference": "62-511",
+      "licenseStatus": "Public manufacturer/distributor product marketing image; original copyright remains with its owner. No open or copyright-free license is claimed. Commercial reuse license was not independently verified; source provenance is retained.",
+      "visualInspection": "Original downloaded asset opened and visually checked. No generative edits, recoloring, cropping, compositing, upscaling or other changes to source pixels. Product-only views preferred.",
+      "pixelDimensions": [
+        530,
+        530
+      ]
+    },
+    {
+      "sku": "9629",
+      "model": "DW2701",
+      "sourcePage": "https://asia.dewalt.global/product/dw2701/8-drill-flip-drive-complete-unit-yellow",
+      "imageUrl": "https://asia.dewalt.global/ASIA/PRODUCT/IMAGES/HIRES/DW2701_P1.jpg?resize=530x530",
+      "alt": "Accesorio reversible de perforación y atornillado DeWalt DW2701 número 8",
+      "evidence": "Official DeWalt page names DW2701 and number8 complete drill/drive unit. Downloaded product packaging visibly says DW2701 and #8. It is a drill accessory, not an electric screwdriver or different #6/#10 model.",
+      "provenance": "download-original",
+      "exactVariant": true,
+      "confidence": "high",
+      "verifiedAt": "2026-10-05",
+      "catalogName": "DEWALT ATORNILLADOR REVERSIBLE N8",
+      "catalogReference": "DW2701",
+      "licenseStatus": "Public manufacturer/distributor product marketing image; original copyright remains with its owner. No open or copyright-free license is claimed. Commercial reuse license was not independently verified; source provenance is retained.",
+      "visualInspection": "Original downloaded asset opened and visually checked. No generative edits, recoloring, cropping, compositing, upscaling or other changes to source pixels. Product-only views preferred.",
+      "sha256": "7f534d8ca50b506c518dd81e56a33141fc6bac5b275e5667d155c5c385c68e67",
+      "pixelDimensions": [
+        530,
+        530
+      ]
+    },
+    {
+      "sku": "15697",
+      "model": "WS3441U",
+      "sourcePage": "https://www.pintulac.com.ec/sierra-circular-71-4-1500w-wesco.html",
+      "imageUrl": "https://www.pintulac.com.ec/media/catalog/product/cache/01d5a80ef248257bf9991bbfc9cf4de4/w/s/ws3441u.jpg",
+      "alt": "Sierra circular Wesco WS3441U de 7-1/4 pulgadas y 1500 W",
+      "evidence": "Distributor Pintulac page explicitly names WS3441U, 1500W, 7-1/4 inch and 110V. Its product image filename names WS3441U; pixel inspection shows branded single circular saw. Official brand catalog distributed by Inanco https://inanco.com.co/wp-content/uploads/2020/10/Catalogo-Wesco.pdf maps WS3441U to the127V version. No voltage data changed in catalog.",
+      "provenance": "download-original",
+      "exactVariant": true,
+      "confidence": "high",
+      "verifiedAt": "2026-10-05",
+      "catalogName": "SIERRA CIRCULAR 7-1/4\" 1500W WESCO",
+      "catalogReference": "WS3441U",
+      "licenseStatus": "Public manufacturer/distributor product marketing image; original copyright remains with its owner. No open or copyright-free license is claimed. Commercial reuse license was not independently verified; source provenance is retained.",
+      "visualInspection": "Original downloaded asset opened and visually checked. No generative edits, recoloring, cropping, compositing, upscaling or other changes to source pixels. Product-only views preferred.",
+      "sha256": "dfba3d4ba84402d5422c16b8be877f742ce30feb0997eb450036b9313b7a6a68",
+      "pixelDimensions": [
+        700,
+        700
+      ]
+    },
+    {
+      "sku": "15183",
+      "model": "3362",
+      "imageUrl": "https://flexoneh.com.co/wp-content/uploads/2022/07/3362A.jpg",
+      "sourcePage": "https://flexoneh.com.co/producto/bisagra-de-cazuela-c-suave-parche-feh/",
+      "alt": "Bisagra FEH 3362 de parche con cierre suave; vista de una pieza del par",
+      "evidence": "Flexon exact product page states COD3362, parche and cierre suave, same as catalog ref3362. Original3362A image visibly shows full-overlay straight-arm hinge. Catalog sells a pair; photo shows one hinge, explicitly described in alt, no duplicated/generated parts.",
+      "provenance": "download-original",
+      "exactVariant": true,
+      "confidence": "high",
+      "verifiedAt": "2026-10-05",
+      "catalogName": "BISAGRA PARCHE FEH CIERRE LENTO (PAR)",
+      "catalogReference": "3362",
+      "licenseStatus": "Public manufacturer/distributor product marketing image; original copyright remains with its owner. No open or copyright-free license is claimed. Commercial reuse license was not independently verified; source provenance is retained.",
+      "visualInspection": "Original downloaded asset opened and visually checked. No generative edits, recoloring, cropping, compositing, upscaling or other changes to source pixels. Product-only views preferred.",
+      "sha256": "b03d9420a34fd0a9853ec80c307ac1e0a20ae1a55b0fca56743d6f0d04ae3f3f",
+      "pixelDimensions": [
+        800,
+        800
+      ]
+    },
+    {
+      "sku": "15184",
+      "model": "3363",
+      "imageUrl": "https://flexoneh.com.co/wp-content/uploads/2022/07/3363A.jpg",
+      "sourcePage": "https://flexoneh.com.co/producto/bisagra-de-cazuela-c-suave-semiparche-feh/",
+      "alt": "Bisagra FEH 3363 semiparche con cierre suave; vista de una pieza del par",
+      "evidence": "Flexon exact product page states COD3363, semiparche and cierre suave, same as catalog ref3363. Original3363A image visibly shows half-overlay cranked-arm hinge, different from3362 and6424. Catalog pair unchanged; photo shows one hinge, alt says so.",
+      "provenance": "download-original",
+      "exactVariant": true,
+      "confidence": "high",
+      "verifiedAt": "2026-10-05",
+      "catalogName": "BISAGRA SEMIPARCHE FEH CIERRE LENTO (PAR)",
+      "catalogReference": "3363",
+      "licenseStatus": "Public manufacturer/distributor product marketing image; original copyright remains with its owner. No open or copyright-free license is claimed. Commercial reuse license was not independently verified; source provenance is retained.",
+      "visualInspection": "Original downloaded asset opened and visually checked. No generative edits, recoloring, cropping, compositing, upscaling or other changes to source pixels. Product-only views preferred.",
+      "sha256": "57fd521e20f8799bdd61bdb7d90c259e2d77518040a2384527478a73f582dbcb",
+      "pixelDimensions": [
+        800,
+        800
+      ]
+    },
+    {
+      "sku": "14891",
+      "model": "6424",
+      "imageUrl": "https://flexoneh.com.co/wp-content/uploads/2022/07/6424A.jpg",
+      "sourcePage": "https://flexoneh.com.co/producto/bisagra-de-cazuela-c-suave-embebida-feh/",
+      "alt": "Bisagra FEH 6424 interior con cierre suave; vista de una pieza del par",
+      "evidence": "Flexon exact product page states COD6424, embebida and cierre suave. Local ref6424 interior/gas maps to same inset type. Original6424A pixel inspection shows strongly cranked inset arm, not3362 full overlay or3363 half overlay. Pair unit preserved; alt describes one hinge.",
+      "provenance": "download-original",
+      "exactVariant": true,
+      "confidence": "high",
+      "verifiedAt": "2026-10-05",
+      "catalogName": "BISAGRA INTERIOR FEH GAS (PAR)",
+      "catalogReference": "6424",
+      "licenseStatus": "Public manufacturer/distributor product marketing image; original copyright remains with its owner. No open or copyright-free license is claimed. Commercial reuse license was not independently verified; source provenance is retained.",
+      "visualInspection": "Original downloaded asset opened and visually checked. No generative edits, recoloring, cropping, compositing, upscaling or other changes to source pixels. Product-only views preferred.",
+      "sha256": "914bf8c14253ea69e0071b1d341260afcc804ef2d48d2dadf1946f99bbcdd3f1",
+      "pixelDimensions": [
+        800,
+        800
+      ]
+    },
+    {
+      "sku": "15828",
+      "model": "6538",
+      "imageUrl": "https://flexoneh.com.co/wp-content/uploads/2022/07/6538A.png",
+      "sourcePage": "https://flexoneh.com.co/producto/bisagra-de-cazuela-c-suave-angular-165-feh/",
+      "alt": "Bisagra FEH 6538 de 165 grados con cierre suave; vista de una pieza del par",
+      "evidence": "Flexon exact product page names COD6538,165 degrees,cierre suave. Local ref6538 and165 CL match. Original6538A image shows the articulated wide-angle hinge. Catalog pair unit preserved, alt describes one hinge.",
+      "provenance": "download-original",
+      "exactVariant": true,
+      "confidence": "high",
+      "verifiedAt": "2026-10-05",
+      "catalogName": "BISAGRA FEH CAZ 165 CL REF 6538 (PAR)",
+      "catalogReference": "6538",
+      "licenseStatus": "Public manufacturer/distributor product marketing image; original copyright remains with its owner. No open or copyright-free license is claimed. Commercial reuse license was not independently verified; source provenance is retained.",
+      "visualInspection": "Original downloaded asset opened and visually checked. No generative edits, recoloring, cropping, compositing, upscaling or other changes to source pixels. Product-only views preferred.",
+      "sha256": "ffc3c3f0e872a915da8eee18aa07c1563e83035e657f684357c910c121673f07",
+      "pixelDimensions": [
+        1920,
+        1920
+      ]
+    },
+    {
+      "sku": "2169",
+      "sourcePage": "https://www.dyna.com.co/public/producto/961664/destornillador-punta-phillips-2-14-x-4-stht69145/C120",
+      "imageUrl": "https://cdn.laferreteria.online/thumb/phpThumb.php?src=/img/961664.jpg",
+      "bytes": 78720,
+      "alt": "Destornillador Stanley STHT69145 Phillips número 2 por 4 pulgadas",
+      "evidence": "Dyna distributor page explicitly names STHT69145,#2 Phillips and4inch blade with blue/yellow hexalobular handle. Photo embedded as961664.jpg at that exact page; pixel inspection matches screwdriver style and tip. Official Stanley page corroborates ref and size but has only fallback logo, which was not used.",
+      "provenance": "download-original",
+      "exactVariant": true,
+      "confidence": "high",
+      "verifiedAt": "2026-10-05",
+      "catalogName": "DESTORNILLADOR STANLEY PHILIPS #2X4\"",
+      "catalogReference": "STHT69145",
+      "licenseStatus": "Public manufacturer/distributor product marketing image; original copyright remains with its owner. No open or copyright-free license is claimed. Commercial reuse license was not independently verified; source provenance is retained.",
+      "visualInspection": "Original downloaded asset opened and visually checked. No generative edits, recoloring, cropping, compositing, upscaling or other changes to source pixels. Product-only views preferred.",
+      "sha256": "1c7ac3778a54fadb9827ca9b6776e4c98fd8415d9d097401f942656918d3123c",
+      "pixelDimensions": [
+        700,
+        700
+      ]
+    },
+    {
+      "sku": "15865",
+      "sourcePage": "https://flexoneh.com.co/producto/plato-giratorio-esferado-10x10/",
+      "imageUrl": "https://flexoneh.com.co/wp-content/uploads/2022/07/4155A.jpg",
+      "bytes": 84268,
+      "alt": "Plato giratorio FEH 4155 de 10 por 10 pulgadas",
+      "evidence": "Official Flexon product page states SKU4155 and 10x10 inch plate, exactly the local ref4155 and dimensions. Original4155A photo shows one black square ball-bearing swivel plate with attachment slots, no furniture assembly.",
+      "provenance": "download-original",
+      "exactVariant": true,
+      "confidence": "high",
+      "verifiedAt": "2026-10-05",
+      "catalogName": "PLATO GIRATORIO FEH 10\"X10\"",
+      "catalogReference": "4155",
+      "licenseStatus": "Public manufacturer/distributor product marketing image; original copyright remains with its owner. No open or copyright-free license is claimed. Commercial reuse license was not independently verified; source provenance is retained.",
+      "visualInspection": "Original downloaded asset opened and visually checked. No generative edits, recoloring, cropping, compositing, upscaling or other changes to source pixels. Product-only views preferred.",
+      "sha256": "194d8cc52e5cba081b191cbcc2c6f15f697fc909bdf47df9a727b3c6a0e0e580",
+      "pixelDimensions": [
+        800,
+        800
+      ]
+    },
+    {
+      "sku": "0998",
+      "alt": "Cierrapuertas Yale serie 2234, referencia 8320, acabado plata",
+      "provenance": "download-original",
+      "sourcePage": "https://www.yalehome.com.co/es/products/productos/cierrapuertas-aereos/serie-2234",
+      "imageUrl": "https://www.yalehome.com.co/adobe/assets/urn:aaid:aem:443e10c1-54b9-489d-9564-99ede8ebfaef/as/portada-2234-c.jpg",
+      "evidence": "The official Serie 2234 page maps manufacturer SKU 0008320 to Plata / Caja and shows this original silver product photograph. Local reference is 8320 and model is 2234. The distinct black SKU 0009429 is not mapped to this photo.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing image; original copyright remains with its owner. No open or copyright-free license is claimed. Commercial reuse license was not independently verified; source provenance is retained.",
+      "manufacturerRef": "8320",
+      "pixelDimensions": [
+        1000,
+        435
+      ],
+      "sha256": "780554d8f15fb86e44112703aa2d3c14e2b14996abe43cf773b24953641c45ef",
+      "visualInspection": "Original downloaded asset opened and checked: product photograph, correct visible model, no watermark, no corruption; no crop, recolor, compositing, retouching, or other pixel transformation performed.",
+      "confidence": "high",
+      "verifiedAt": "2026-10-05",
+      "catalogName": "CIERRA PUERTA YALE 80 KG 2234",
+      "catalogReference": "8320"
+    },
+    {
+      "sku": "11568",
+      "alt": "Cierrapuertas Yale serie 3005, referencia 7019, acabado plata",
+      "provenance": "download-original",
+      "sourcePage": "https://www.yalehome.com.co/es/products/productos/cierrapuertas-aereos/serie-3005",
+      "imageUrl": "https://www.yalehome.com.co/adobe/assets/urn:aaid:aem:684d0347-a716-4608-adee-84e9fdcd4d35/as/portada-3005-c.jpg",
+      "evidence": "The official Serie 3005 product page has only manufacturer SKU 0007019, Plata / Caja; the linked technical sheet identifies the same SKU and model. Local reference 7019 matches. The original photo shows the complete silver closer and arm.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing image; original copyright remains with its owner. No open or copyright-free license is claimed. Commercial reuse license was not independently verified; source provenance is retained.",
+      "manufacturerRef": "7019",
+      "pixelDimensions": [
+        1000,
+        435
+      ],
+      "sha256": "a9cf5f72eef6c677475c8c01409de62d526a1b2066b4505e0bca73f70d8a9671",
+      "visualInspection": "Original downloaded asset opened and checked: product photograph, correct visible model, no watermark, no corruption; no crop, recolor, compositing, retouching, or other pixel transformation performed.",
+      "confidence": "high",
+      "verifiedAt": "2026-10-05",
+      "catalogName": "CIERRA PUERTA YALE 150KILOS",
+      "catalogReference": "7019"
+    },
+    {
+      "sku": "11779",
+      "alt": "Cierrapuertas Yale serie 1002, referencia 7018, acabado plata",
+      "provenance": "download-original",
+      "sourcePage": "https://www.yalehome.com.co/es/products/productos/cierrapuertas-aereos/serie-1002",
+      "imageUrl": "https://www.yalehome.com.co/adobe/assets/urn:aaid:aem:10246607-9ed2-4b21-a1f2-482a89862181/as/portada-1002-c.jpg",
+      "evidence": "The official Serie 1002 page maps manufacturer SKU 0007018 to Plata / Caja, and its linked technical sheet is explicitly for 0007018 / 0001513. The original gallery photo is the silver model; local reference 7018 and model 1002 match. White 0007020 is excluded.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing image; original copyright remains with its owner. No open or copyright-free license is claimed. Commercial reuse license was not independently verified; source provenance is retained.",
+      "manufacturerRef": "7018",
+      "pixelDimensions": [
+        1000,
+        435
+      ],
+      "sha256": "de289d51a3a898affbc0cb9ae867e303218c790ffa8544ea56735b1bec599133",
+      "visualInspection": "Original downloaded asset opened and checked: product photograph, correct visible model, no watermark, no corruption; no crop, recolor, compositing, retouching, or other pixel transformation performed.",
+      "confidence": "high",
+      "verifiedAt": "2026-10-05",
+      "catalogName": "CIERRA PUERTA YALE 45 KG 1002",
+      "catalogReference": "7018"
+    },
+    {
+      "sku": "10320",
+      "alt": "Candado Yale Y110 de gancho ajustable, referencia 8402",
+      "provenance": "download-original",
+      "sourcePage": "https://www.yalehome.com.co/es/products/productos/Candados/candado-ingles/ajustable",
+      "imageUrl": "https://www.yalehome.com.co/adobe/assets/urn:aaid:aem:ce2b0224-81d6-414b-b308-30b929380cce/as/1.-Y110-AJUSTABLE-BLANC.jpg",
+      "evidence": "The official Adjustable Y110 product page has only SKU 0008402 and records a 51 mm body, an 8 mm shackle, and adjustable free arc 59–155 mm. This is the original gallery image from that exact page. Local reference 8402 and adjustable Y110 50 mm model match.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing image; original copyright remains with its owner. No open or copyright-free license is claimed. Commercial reuse license was not independently verified; source provenance is retained.",
+      "manufacturerRef": "8402",
+      "pixelDimensions": [
+        756,
+        430
+      ],
+      "sha256": "ccdf5462c76ecdc2e08b87e9111fcc1a4e18e3c9338c24240b184bb754e89ed0",
+      "visualInspection": "Original downloaded asset opened and checked: product photograph, correct visible model, no watermark, no corruption; no crop, recolor, compositing, retouching, or other pixel transformation performed.",
+      "confidence": "high",
+      "verifiedAt": "2026-10-05",
+      "catalogName": "CANDADO YALE ITALIANO Y110 GANCHO AJUSTABLE 50MM",
+      "catalogReference": "8402"
+    },
+    {
+      "sku": "15333",
+      "alt": "Cerradura Yale de sobreponer 1010 Plus, referencia 6486",
+      "provenance": "download-original",
+      "sourcePage": "https://www.yalehome.com.co/es/products/productos/cerraduras-de-sobreponer/1010-Plus",
+      "imageUrl": "https://www.yalehome.com.co/adobe/assets/urn:aaid:aem:688e077c-b6dd-4535-90a7-d6b435fc2b7d/as/cerradura-de-sobreponer-yale-1010-.jpeg",
+      "evidence": "The official 1010 Plus page links the technical sheet FICHA TÉCNICA SOBREPONER 1010 (0006486).pdf. Its Productos disponibles table lists only 0006486, Cerradura sobreponer 1010 68 SD/SI P; specifications confirm right and left handing. Thus the original official lifestyle photograph is the exact reversible 6486 model, not a separate handing variant.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing image; original copyright remains with its owner. No open or copyright-free license is claimed. Commercial reuse license was not independently verified; source provenance is retained.",
+      "manufacturerRef": "6486",
+      "pixelDimensions": [
+        1000,
+        600
+      ],
+      "sha256": "8c9b745b06ca4a85a34f52c32426fc6e49f770e74f8cd546c2b900de1d011f31",
+      "visualInspection": "Original downloaded asset opened and checked: product photograph, correct visible model, no watermark, no corruption; no crop, recolor, compositing, retouching, or other pixel transformation performed.",
+      "technicalSource": "https://www.yalehome.com.co/content/dam/assa-abloy/americas/latam/yale-home/co/es/fichas-t%C3%A9cnicas/FICHA%20TE%CC%81CNICA%20SOBREPONER%201010%20%280006486%29.pdf",
+      "confidence": "high",
+      "verifiedAt": "2026-10-05",
+      "catalogName": "CERRADURA YALE SOBREPONER 1010 PLUS",
+      "catalogReference": "6486"
+    },
+    {
+      "sku": "14564",
+      "alt": "Cerradura KL 106B de manija cuadrada para baño, cromada",
+      "sourcePage": "https://www.casaferretera.com/chapa_manija_cuadrada-kl-kl_106_b-banocromada20/p",
+      "imageUrl": "https://casaferretera.vteximg.com.br/arquivos/ids/157692/077331.jpg?v=637995672612700000",
+      "evidence": "Casa Ferretera exact product listing names KL 106B, baño and cromada, matching local reference KL 106B and function. Original image visibly has the privacy/emergency coin slot, not the keyed cylinder seen in an incorrect alternate distributor image. Square rose, lever and tubular latch match the model. Wrong keyed La Cabalgata photo rejected.",
+      "provenance": "download-original",
+      "exactVariant": true,
+      "confidence": "high",
+      "licenseStatus": "Public distributor product marketing image. Copyright stays with source owner; no open or copyright-free license claimed and commercial license not independently verified.",
+      "sha256": "627b90dd17c7329adadceb6c7f55c017d7eac8b3d8e4df6823e61c833d0765df",
+      "pixelDimensions": [
+        800,
+        800
+      ],
+      "verifiedAt": "2026-10-05"
+    },
+    {
+      "sku": "15018",
+      "alt": "Cerradura KL 112A de pomo tubular para alcoba, cromada",
+      "sourcePage": "https://casaandina.com.co/cerr-pomo-tubular-alcoba-kl-112a",
+      "imageUrl": "https://casaandina.com.co/media/catalog/product/cache/3fba745dcec88e97bfe808bedc471260/1/8/188A48029049_1_1.png",
+      "evidence": "Casa Andina product page explicitly names KL 112A, pomo tubular and alcoba. Local reference KL 112A and same function/type match exactly. Product photo shows the silver keyed round knob and matching KL-stamped tubular latch. Not the keyless/privacy model or an adjacent related KL501A product. No dimensions or package contents inferred.",
+      "provenance": "download-original",
+      "exactVariant": true,
+      "confidence": "high",
+      "licenseStatus": "Public distributor product marketing image. Copyright stays with source owner; no open or copyright-free license claimed and commercial license not independently verified.",
+      "sha256": "0edaa064bed825e397633b81f1aab557d962d3e3ad5657f0a55cab17500196f5",
+      "pixelDimensions": [
+        500,
+        500
+      ],
+      "verifiedAt": "2026-10-05"
+    },
+    {
+      "sku": "2950",
+      "alt": "Formón profesional Bahco 424P-25 de 25 mm",
+      "provenance": "download-original",
+      "sourcePage": "https://www.dm-tools.co.uk/Bahco-424p-25-B-E-Chisel-25mm/P3861",
+      "imageUrl": "https://www.dm-tools.co.uk/images/auto/BAH424P25.jpg",
+      "evidence": "Exact 424P-25 manufacturer part number on retailer page. Pixel inspection: single Bahco chisel, orange/black two-component handle, blade visibly marked 424P and 25 mm. Official Bahco product page independently verifies 424P-25 = 25 mm.",
+      "exactVariant": true,
+      "licenseStatus": "Publicly accessible product marketing image; no explicit incompatible reuse restriction observed on source product page. Reuse license not verified; not claimed copyright-free.",
+      "sha256": "9a9cbc5fdb2b11dc5265b7ac8608ea988a1411fc5c4e1e3de0b827da8e73c6b5",
+      "dimensions": [
+        800,
+        600
+      ],
+      "byteCount": 20077
+    },
+    {
+      "sku": "3797",
+      "alt": "Serrucho Bahco PrizeCut NP-22-U7/8-HP de 22 pulgadas",
+      "provenance": "download-original",
+      "sourcePage": "https://www.bauhaus.se/handsag-bahco-universal-np-22-u7-8-hp",
+      "imageUrl": "https://www.bauhaus.se/media/catalog/product/cache/3bb3efcfae3f5a58e39cf1fc8fc4973f/4/3/43219bb7-5b3d-4ce8-a5d7-3b7723b26f0f.jpg",
+      "evidence": "Exact NP-22-U7/8-HP page; EAN 7311518034399. Pixel inspection: a single orange-handled Bahco PrizeCut saw with blade marking 22 inches / 550 mm and 7 teeth per inch. No watermark.",
+      "exactVariant": true,
+      "licenseStatus": "Publicly accessible product marketing image; no explicit incompatible reuse restriction observed on source product page. Reuse license not verified; not claimed copyright-free.",
+      "sha256": "9f29ca06243e10d938210fda159a9048e887b706bc340057108ee2ccf6a6d19c",
+      "dimensions": [
+        1000,
+        239
+      ],
+      "byteCount": 24733
+    },
+    {
+      "sku": "9447",
+      "alt": "Lima carrocera Bahco 3-330-14-1-0 de 350 mm",
+      "provenance": "download-original",
+      "sourcePage": "https://www.klium.be/en/bahco-3-330-14-1-0-pansar-flat-blade-without-handle-with-milled-teeth-bark-350-mm-48742",
+      "imageUrl": "https://cdn.klium.be/images/47b0c9c8-4fef-485b-8c99-e56dc5d47ec9/bahco_3_330_14_1_0/bahco_3_330_14_1_0.jpg",
+      "evidence": "Exact 3-330-14-1-0 retailer page and image filename. Official Bahco page independently verifies flat Pansar file 350 x 35 x 4.5 mm, 325 mm mounting-hole spacing. Pixel inspection: single flat curved-tooth car-body file, two screw holes, no handle, proportion consistent with stated size; no watermark.",
+      "exactVariant": true,
+      "licenseStatus": "Publicly accessible product marketing image; no explicit incompatible reuse restriction observed on source product page. Reuse license not verified; not claimed copyright-free.",
+      "sha256": "4fb8ce5ef8683d2f94b583f96c335b229e525c7ba1aae4ffd2b5f61805398682",
+      "dimensions": [
+        709,
+        145
+      ],
+      "byteCount": 18153
+    },
+    {
+      "sku": "10958",
+      "alt": "Broca Irwin HSS IW1120 de 1/4 de pulgada",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreterialuispenagos.com/tienda/broca-acero-rapido-hss-1-4-irwin-iw1120/",
+      "imageUrl": "https://ferreterialuispenagos.com/wp-content/uploads/2026/03/broca-acero-rapido-hss-1-4-irwin-iw1120.webp.webp",
+      "evidence": "Exact IW1120 page, image filename and alt; 1/4 inch, 70 mm flute length, 102 mm total length, bright finish and straight shank. Pixel inspection shows single bright HSS twist bit with straight shank, no packaging, no watermark; visual length/width proportion consistent with 102/6.35.",
+      "exactVariant": true,
+      "licenseStatus": "Publicly accessible product marketing image; no explicit incompatible reuse restriction observed on source product page. Reuse license not verified; not claimed copyright-free.",
+      "sha256": "bf5c3040c30707a5652d841a0c8402f67b3d669c015d4b7907e604e371361552",
+      "dimensions": [
+        800,
+        1075
+      ],
+      "byteCount": 5430
+    },
+    {
+      "sku": "14056",
+      "alt": "Respirador 3M 8822V con válvula",
+      "provenance": "download-original",
+      "sourcePage": "https://www.safetyworld.co.id/product/3m-8822v",
+      "imageUrl": "https://www.safetyworld.co.id/uploads/images/202111/img_x445_61823e9255c233-96040102-44462086.png",
+      "evidence": "Exact 3M 8822V product page. Pixel inspection: single white cup respirator marked 3M and 8822, blue headbands, white/yellow Cool Flow exhalation valve; no watermark. Manufacturer respiratory brochure separately lists 8822V as valved respirator (https://multimedia.3m.com/mws/media/1984658O/hazard-respiratory.pdf). V denotes valve; photographed 8822 unit has valve.",
+      "exactVariant": true,
+      "licenseStatus": "Publicly accessible product marketing image; no explicit incompatible reuse restriction observed on source product page. Reuse license not verified; not claimed copyright-free.",
+      "sha256": "684e43f4c485523e52bbd8d657fe309e6660ab0f530716963d1264b2394a057a",
+      "dimensions": [
+        455,
+        455
+      ],
+      "byteCount": 138984
+    },
+    {
+      "sku": "00050",
+      "alt": "Disco Dewalt DW54830 para desbaste de metal 4-1/2 x 1/4, tipo 27",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreterialuispenagos.com/tienda/disco-para-pulir-metal-t27-4-1-2-x-1-4-dewalt-dw54830/",
+      "imageUrl": "https://ferreterialuispenagos.com/wp-content/uploads/2025/07/DISCO-PARA-PULIR-METAL-T27-4.1-2-X-1-4-DEWALT-DW54830.webp",
+      "evidence": "Exact DW54830 title and reference on retailer page. Pixel inspection: single DEWALT disc visibly labeled DW54830, 4-1/2 x 1/4 x 7/8 inches, Type 27. Correct grinding/disbaste product; no watermark. Catalog marks brand Sin marca but reference and title DW match manufacturer.",
+      "exactVariant": true,
+      "licenseStatus": "Publicly accessible product marketing image; no explicit incompatible reuse restriction observed on source product page. Reuse license not verified; not claimed copyright-free.",
+      "sha256": "f2b3d8a96640d4756c2ba201e2f8b4041a69ac6ea1355a4006fae7bd3ad6ed84",
+      "dimensions": [
+        800,
+        1075
+      ],
+      "byteCount": 48566
+    },
+    {
+      "sku": "11846",
+      "alt": "Avellanador y atornillador reversible Dewalt DW2702 número 10",
+      "provenance": "download-original",
+      "sourcePage": "https://asia.dewalt.global/product/dw2702/drill-flip-drive-kit",
+      "imageUrl": "https://asia.dewalt.global/ASIA/PRODUCT/IMAGES/HIRES/DW2702_1.jpg?resize=530x530",
+      "evidence": "Official DEWALT exact DW2702 product page; its companion packaging photograph alt explicitly identifies #10 multi-cutter countersink. Pixel inspection of chosen original shows one yellow DEWALT flip-drive unit with bit, hex shank, metal quick-release sleeve; no added package or extra units; no watermark.",
+      "exactVariant": true,
+      "licenseStatus": "Publicly accessible product marketing image; no explicit incompatible reuse restriction observed on source product page. Reuse license not verified; not claimed copyright-free.",
+      "sha256": "b24da1ff98ac7258b69e06b1b7aafa5994355cd194ebb74afaf803b24576e2d3",
+      "dimensions": [
+        530,
+        530
+      ],
+      "byteCount": 14292
+    },
+    {
+      "sku": "1392",
+      "alt": "Juego de tres brocas escalonadas TOTAL TACSD2031",
+      "provenance": "download-original",
+      "sourcePage": "https://total-tools.by/nabor-stupenchatyh-sverl-4-12-4-20-4-32-mm-total-tacsd2031-3",
+      "imageUrl": "https://total-tools.by/image/cache/catalog/products/15/39/1153258/39124245/39124246/tacsd2031-450x450.jpg",
+      "evidence": "Exact TACSD2031 page and filename; three-piece HSS step drill set. Pixel inspection shows three gold-colored round-shank step bits and turquoise case, with visible 4-12 mm, 4-20 mm, 4-32 mm and 3 PCS/SET labels. No retailer watermark. Catalogue title is truncated but model and three-piece set agree.",
+      "exactVariant": true,
+      "licenseStatus": "Publicly accessible product marketing image; no explicit incompatible reuse restriction observed on source product page. Reuse license not verified; not claimed copyright-free.",
+      "sha256": "35e10111b801d0614216109fcbe16a7d42fcd9810f877754f2cf7ef49cad1098",
+      "dimensions": [
+        450,
+        450
+      ],
+      "byteCount": 49765
+    },
+    {
+      "sku": "13472",
+      "alt": "Bisagra de seguridad FEH 3231 cromado mate de cabeza plana",
+      "provenance": "download-original",
+      "sourcePage": "https://flexoneh.com.co/producto/bisagra-de-seguridad-plana-cromado-mate/",
+      "imageUrl": "https://flexoneh.com.co/wp-content/uploads/2022/07/3231A.jpg",
+      "evidence": "Official Flexon reference 3231 page and manufacturer original 3231A.jpg. Photo visibly shows FEH security hinge, flat pin head and chrome-matte leaves; not ornamental head or other finish. Local ref 3231 matches. Source supplies one hinge photograph while local commercial unit is a pair.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product-marketing image. No explicit reuse license found; copyright footer says all rights reserved. No watermark or specific incompatible reuse restriction observed.",
+      "sha256": "c9a61b7b29d2a96c898e276311401897c737d3052b038268e522e0f7acb9723a",
+      "bytes": 38714,
+      "dimensions": [
+        800,
+        800
+      ]
+    },
+    {
+      "sku": "13865",
+      "alt": "Bisagra de cazuela FEH WIN 6364 parche 35 mm niquelada",
+      "provenance": "download-original",
+      "sourcePage": "https://flexoneh.com.co/producto/bisagra-de-cazuela-de-bayoneta-win/",
+      "imageUrl": "https://flexoneh.com.co/wp-content/uploads/2022/07/6364Ficha.pdf",
+      "evidence": "Official reference-specific 6364Ficha.pdf first page labels reference 6364, WIN bayoneta PARCHE, 35 mm, steel and nickel finish, 105 degrees, sold as 1 pair. Losslessly extracted original embedded JPEG object 6 0, page 1; actual pixels inspected and FEH branding visible on single overlay hinge. Product page itself has placeholder, so original is from technical sheet rather than page gallery.",
+      "extractionMethod": "pdfimages -f 1 -l 1 -j; first image (PDF object 6 0). Original JPEG DCT bytes extracted without crop, redraw or re-encoding.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer technical sheet/product-marketing photograph. No explicit reuse license found; site copyright footer says all rights reserved. No watermark across product or specific incompatible reuse restriction observed.",
+      "sha256": "434a03c5179496d9275d5e46f9cd3698f40d58501e5b0f4874e7c64c3a6abaf4",
+      "bytes": 40112,
+      "dimensions": [
+        800,
+        800
+      ],
+      "sourcePDF": "https://flexoneh.com.co/wp-content/uploads/2022/07/6364Ficha.pdf",
+      "pdfObject": "6 0",
+      "sourcePDFSha256": "7d1e79e4d6d6ef7dbb3c097a07670ad40386724484f82950bc85b8d4bedda4d1",
+      "embeddedByteEqualityVerified": true,
+      "embeddedOriginalSha256": "434a03c5179496d9275d5e46f9cd3698f40d58501e5b0f4874e7c64c3a6abaf4"
+    },
+    {
+      "sku": "0542",
+      "alt": "Candado Yale alemán 800 de 70 mm, referencia 2003",
+      "provenance": "download-original",
+      "sourcePage": "https://www.gruporoldan.com.co/roldangr/vp1107/sp/",
+      "imageUrl": "https://www.gruporoldan.com.co/clientes/roldangr/images/portafolio/imagen_id_1107.webp",
+      "evidence": "The exact distributor article is titled Candado tipo aleman 870 Yale 2003. Its single brass German-series padlock photograph is a different asset and visibly wider-bodied than the same distributor’s 2002/50 mm photograph. The source reference and local 70 mm/2003 agree. Dyna’s shared 50/70 mm photo was not used.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product-marketing image. No explicit reuse license was evidenced. No incompatible reuse restriction or watermark observed on the inspected product page or asset; this is provenance, not a claim of license or rights clearance.",
+      "manufacturerRef": "2003",
+      "pixelDimensions": [
+        600,
+        600
+      ],
+      "sha256": "518188f71e91ca85b2b8f66e628ede7538d076e4bd86b9198e320c5621564f3e",
+      "visualInspection": "Downloaded original visually inspected for model, function, finish and visible configuration. No crop, mirror, recolor, compositing, retouching or other change to the delivered original was performed."
+    },
+    {
+      "sku": "0544",
+      "alt": "Candado Yale alemán 800 de 50 mm, referencia 2002",
+      "provenance": "download-original",
+      "sourcePage": "https://www.gruporoldan.com.co/roldangr/vp1106/sp/",
+      "imageUrl": "https://www.gruporoldan.com.co/clientes/roldangr/images/portafolio/imagen_id_1106.webp",
+      "evidence": "The exact distributor article is titled Candado tipo aleman 850 Yale 2002. Its single brass German-series padlock photograph differs from the distributor’s 2003/70 mm asset. The source reference and local 50 mm/2002 agree. Dyna’s shared 50/70 mm photo was not used.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product-marketing image. No explicit reuse license was evidenced. No incompatible reuse restriction or watermark observed on the inspected product page or asset; this is provenance, not a claim of license or rights clearance.",
+      "manufacturerRef": "2002",
+      "pixelDimensions": [
+        600,
+        600
+      ],
+      "sha256": "5aad21f34e4ac2c4c460c4b1a60e9a7686f9bdf50d34b8b3f81f5446912009da",
+      "visualInspection": "Downloaded original visually inspected for model, function, finish and visible configuration. No crop, mirror, recolor, compositing, retouching or other change to the delivered original was performed."
+    },
+    {
+      "sku": "10324",
+      "alt": "Candado Yale alemán 800 de 50 mm amarillo para intemperie, referencia 2041",
+      "provenance": "download-original",
+      "sourcePage": "https://dyna.com.co/public/producto/52924/candado-aleman-de-laton-para-intemperie-800-50mm-2041/UND",
+      "imageUrl": "https://cdn.laferreteria.online/thumb/phpThumb.php?src=/img/52924.jpg",
+      "evidence": "Dyna article explicitly names 800 50mm 2041 and describes a yellow PVC body with black-covered shackle. Image shows that yellow body and black shackle; no alternate color is substituted.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product-marketing image. No explicit reuse license was evidenced. No incompatible reuse restriction or watermark observed on the inspected product page or asset; this is provenance, not a claim of license or rights clearance.",
+      "manufacturerRef": "2041",
+      "pixelDimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "8865735b4e3f0cbd7ebe94b2901739743242d484c0a521e0e83a3f37a1efcf6e",
+      "visualInspection": "Downloaded original visually inspected for model, function, finish and visible configuration. No crop, mirror, recolor, compositing, retouching or other change to the delivered original was performed."
+    },
+    {
+      "sku": "12769",
+      "alt": "Cerradura Yale Carolina para baño, referencia 6374",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriaonlinelevallejoaz.com/cerrad-p-bao-crom-pomcarolina-6374/",
+      "imageUrl": "https://ferreteriaonlinelevallejoaz.com/wp-content/uploads/2024/03/6578.jpg",
+      "evidence": "Levallejo exact 6374 bathroom article supplies this photograph. The exterior release is a straight rectangular privacy slot, not the shaped keyed cylinder shown on keyed Carolina models; satin steel/chrome finish and Carolina knob profile match.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product-marketing image. No explicit reuse license was evidenced. No incompatible reuse restriction or watermark observed on the inspected product page or asset; this is provenance, not a claim of license or rights clearance.",
+      "manufacturerRef": "6374",
+      "pixelDimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "a2d8f7f22f33320a7778890f584daa4931a4ef892d332b3067402631f668e073",
+      "visualInspection": "Downloaded original visually inspected for model, function, finish and visible configuration. No crop, mirror, recolor, compositing, retouching or other change to the delivered original was performed."
+    },
+    {
+      "sku": "12770",
+      "alt": "Cerradura Yale Carolina para alcoba, referencia 6376",
+      "provenance": "download-original",
+      "sourcePage": "https://www.casaferretera.com/chapa_bola_alcoba-yale-6376carolina/p",
+      "imageUrl": "https://casaferretera.vtexassets.com/arquivos/ids/165495/072246.jpg?v=638156152509170000",
+      "evidence": "Casa Ferretera exact article and structured Product name identify Carolina alcoba 6376. The original photograph shows the keyed exterior knob and matching satin metallic finish. It is distinct from the selected 6374 privacy and 6377 entrance photographs; no bathroom image is reused.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product-marketing image. No explicit reuse license was evidenced. No incompatible reuse restriction or watermark observed on the inspected product page or asset; this is provenance, not a claim of license or rights clearance.",
+      "manufacturerRef": "6376",
+      "pixelDimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "7005759482b525d08ea89f92567fb9935dbda9bbce7b158ebfae423b5b03a9d9",
+      "visualInspection": "Downloaded original visually inspected for model, function, finish and visible configuration. No crop, mirror, recolor, compositing, retouching or other change to the delivered original was performed."
+    },
+    {
+      "sku": "12771",
+      "alt": "Cerradura Yale Carolina para entrada principal, referencia 6377",
+      "provenance": "download-original",
+      "sourcePage": "https://www.construmole.com/producto/cerradura-cilindrica-yale-us32d-satinada-carolina-entrada-p-pal-ue30/",
+      "imageUrl": "https://www.construmole.com/wp-content/uploads/2025/04/500-49.png",
+      "evidence": "Construmole article identifies Carolina entrada principal and manufacturer SKU CEYAL0006377. Original gallery image shows the keyed exterior knob, the Carolina profile and satin metallic finish. It is not the selected privacy-slot bathroom image.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product-marketing image. No explicit reuse license was evidenced. No incompatible reuse restriction or watermark observed on the inspected product page or asset; this is provenance, not a claim of license or rights clearance.",
+      "manufacturerRef": "6377",
+      "pixelDimensions": [
+        400,
+        400
+      ],
+      "sha256": "2840c01dc57453149783fc3d704545489374045025403466bd33510b0e99a370",
+      "visualInspection": "Downloaded original visually inspected for model, function, finish and visible configuration. No crop, mirror, recolor, compositing, retouching or other change to the delivered original was performed."
+    },
+    {
+      "sku": "12481",
+      "alt": "Cerradura Yale Bari de manija cuadrada para baño, referencia 9054",
+      "provenance": "download-original",
+      "sourcePage": "https://www.casaferretera.com/chapa_manija_yale_bano_9054_cromadobari/p",
+      "imageUrl": "https://casaferretera.vtexassets.com/arquivos/ids/165487/072240.jpg?v=638156152487570000",
+      "evidence": "Casa Ferretera exact article and structured Product name identify Bari bathroom 9054. Its original photograph visibly has the broad straight emergency/privacy-release slot on the exterior lever, not a warded keyway. The square rose and nickel-satin finish match. Keyed photos on other distributors’ 9054 pages were rejected.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product-marketing image. No explicit reuse license was evidenced. No incompatible reuse restriction or watermark observed on the inspected product page or asset; this is provenance, not a claim of license or rights clearance.",
+      "manufacturerRef": "9054",
+      "pixelDimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "e39fe30fe8bec7920f389adcf5a8f950f4acef05474d39b2eb91b5d62e8b7dad",
+      "visualInspection": "Downloaded original visually inspected for model, function, finish and visible configuration. No crop, mirror, recolor, compositing, retouching or other change to the delivered original was performed."
+    },
+    {
+      "sku": "14845",
+      "alt": "Cerradura Yale Bari de manija cuadrada negra para alcoba, referencia 9105",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriaonlinelevallejoaz.com/cerrad-p-alc-negro-manija-bari-9105/",
+      "imageUrl": "https://ferreteriaonlinelevallejoaz.com/wp-content/uploads/2024/03/5505.jpg",
+      "evidence": "Levallejo exact article identifies 9105, Bari alcoba negro, and describes two keys and an interior thumbturn. Image shows the correct black square-rose Bari set and a shaped exterior keyway. It is not assigned to bathroom SKU 9104.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product-marketing image. No explicit reuse license was evidenced. No incompatible reuse restriction or watermark observed on the inspected product page or asset; this is provenance, not a claim of license or rights clearance.",
+      "manufacturerRef": "9105",
+      "pixelDimensions": [
+        800,
+        800
+      ],
+      "sha256": "47b1f536dedce53fa1eccf09305c6e03771597c2a6b90c090125a1826ba9984b",
+      "visualInspection": "Downloaded original visually inspected for model, function, finish and visible configuration. No crop, mirror, recolor, compositing, retouching or other change to the delivered original was performed."
+    },
+    {
+      "sku": "0943",
+      "alt": "Cerradura Yale Austin para entrada principal, referencia 6476",
+      "provenance": "download-original",
+      "sourcePage": "https://www.gruporoldan.com.co/roldangr/vp1174/sp/",
+      "imageUrl": "https://www.gruporoldan.com.co/clientes/roldangr/images/portafolio/imagen_id_1174.webp",
+      "evidence": "Grupo Roldan exact article identifies Austin entrada principal US26D 6476. The photograph shows an Austin lever on a round rose with a shaped exterior keyway and satin chrome finish, consistent with this keyed entrance variant. The same distributor incorrectly also uses it on 6478 bathroom; that bathroom mapping is rejected.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product-marketing image. No explicit reuse license was evidenced. No incompatible reuse restriction or watermark observed on the inspected product page or asset; this is provenance, not a claim of license or rights clearance.",
+      "manufacturerRef": "6476",
+      "pixelDimensions": [
+        600,
+        600
+      ],
+      "sha256": "9a7c4bfd37d7427e2c3db5e2d7fff8352576cee0b1464eb201559f2fe2668548",
+      "visualInspection": "Downloaded original visually inspected for model, function, finish and visible configuration. No crop, mirror, recolor, compositing, retouching or other change to the delivered original was performed."
+    },
+    {
+      "sku": "12891",
+      "alt": "Cerradura Yale pico de loro 854 llave-mariposa, referencia 4054",
+      "provenance": "download-original",
+      "sourcePage": "https://www.gruporoldan.com.co/roldangr/vp1141/sp/",
+      "imageUrl": "https://www.gruporoldan.com.co/clientes/roldangr/images/portafolio/imagen_id_1141.webp",
+      "evidence": "Grupo Roldan exact article identifies 854 4054 llave-mariposa niquelada. The photograph visibly shows the hook bolt and the thumbturn rather than a second keyed cylinder, matching the function in the local product.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product-marketing image. No explicit reuse license was evidenced. No incompatible reuse restriction or watermark observed on the inspected product page or asset; this is provenance, not a claim of license or rights clearance.",
+      "manufacturerRef": "4054",
+      "pixelDimensions": [
+        600,
+        600
+      ],
+      "sha256": "02193b273d60d58d09ceccde08dcc5a1c660ffe6d7f575b154435f5968588686",
+      "visualInspection": "Downloaded original visually inspected for model, function, finish and visible configuration. No crop, mirror, recolor, compositing, retouching or other change to the delivered original was performed."
+    },
+    {
+      "sku": "0951",
+      "alt": "Cerrojo Yale 170 de doble llave niquelado, referencia 4011",
+      "provenance": "download-original",
+      "sourcePage": "https://www.gruporoldan.com.co/roldangr/vp1162/sp/",
+      "imageUrl": "https://www.gruporoldan.com.co/clientes/roldangr/images/portafolio/imagen_id_1162.webp",
+      "evidence": "Grupo Roldan exact article identifies niquelada 170-1/4 4011. The selected photograph is a single polished nickel 170 deadbolt with a regular keyed cylinder, matching 4011 US14. A separate Hoyostools 4011 gallery showing three different finishes was rejected.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product-marketing image. No explicit reuse license was evidenced. No incompatible reuse restriction or watermark observed on the inspected product page or asset; this is provenance, not a claim of license or rights clearance.",
+      "manufacturerRef": "4011",
+      "pixelDimensions": [
+        600,
+        600
+      ],
+      "sha256": "f283b92ac286bf70b38859e60848dc13e453c77a9292cbd7856b4a6ff24b1c43",
+      "visualInspection": "Downloaded original visually inspected for model, function, finish and visible configuration. No crop, mirror, recolor, compositing, retouching or other change to the delivered original was performed."
+    },
+    {
+      "sku": "11656",
+      "alt": "Cerrojo Yale 170 llave-mariposa de llave normal, referencia 4080",
+      "provenance": "download-original",
+      "sourcePage": "https://tecnifacil.com.co/producto/cerrojo-yale-170-llave-mariposa/",
+      "imageUrl": "https://tecnifacil.com.co/wp-content/uploads/2024/05/4080_Cerrojo-YALE-170-Llave-Mariposa.png",
+      "evidence": "Tecnifacil article names Cerrojo YALE 170 Llave Mariposa and SKU 4080. The original filename also begins 4080. The photograph shows both the ordinary keyed exterior and the interior thumbturn in bright nickel, distinguishing it from double-key and Plus variants.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product-marketing image. No explicit reuse license was evidenced. No incompatible reuse restriction or watermark observed on the inspected product page or asset; this is provenance, not a claim of license or rights clearance.",
+      "manufacturerRef": "4080",
+      "pixelDimensions": [
+        1080,
+        1080
+      ],
+      "sha256": "31279da56067ffede4fbc15eaccb54d3db57dcc15693a5793b9a2b1460d02e85",
+      "visualInspection": "Downloaded original visually inspected for model, function, finish and visible configuration. No crop, mirror, recolor, compositing, retouching or other change to the delivered original was performed."
+    },
+    {
+      "sku": "14275",
+      "alt": "Cerrojo Yale 170 Plus llave-mariposa, referencia 4082",
+      "provenance": "download-original",
+      "sourcePage": "https://www.gruporoldan.com.co/roldangr/vp1166/sp/",
+      "imageUrl": "https://www.gruporoldan.com.co/clientes/roldangr/images/portafolio/imagen_id_1166.webp",
+      "evidence": "Grupo Roldan exact article identifies 170-1/4 llave plus, llave-mariposa cromada, 4082. Photograph visibly shows the thumbturn and nickel 170 housing. It is not mapped to 4038 double-key or matte-finish entries.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product-marketing image. No explicit reuse license was evidenced. No incompatible reuse restriction or watermark observed on the inspected product page or asset; this is provenance, not a claim of license or rights clearance.",
+      "manufacturerRef": "4082",
+      "pixelDimensions": [
+        600,
+        600
+      ],
+      "sha256": "d3c1f6ab0da631dbe77e324f77d39a7452ff7bd28db5ab6a6c3b4a68dbd1880f",
+      "visualInspection": "Downloaded original visually inspected for model, function, finish and visible configuration. No crop, mirror, recolor, compositing, retouching or other change to the delivered original was performed."
+    },
+    {
+      "sku": "13344",
+      "alt": "Cerrojo Yale Kent llave-mariposa, referencia 4099",
+      "provenance": "download-original",
+      "sourcePage": "https://www.gruporoldan.com.co/roldangr/vp1219/sp/",
+      "imageUrl": "https://www.gruporoldan.com.co/clientes/roldangr/images/portafolio/imagen_id_1219.webp",
+      "evidence": "Grupo Roldan exact article identifies Kent US26D llave-mariposa Yale 4099. Photograph shows both sides, including interior thumbturn, exterior keyed cylinder, satin finish and regular keys, consistent with the exact function.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product-marketing image. No explicit reuse license was evidenced. No incompatible reuse restriction or watermark observed on the inspected product page or asset; this is provenance, not a claim of license or rights clearance.",
+      "manufacturerRef": "4099",
+      "pixelDimensions": [
+        600,
+        600
+      ],
+      "sha256": "43089839100146c5350c5d3be15d76e9b68159bbe9aa327c888dcb382eeeb551",
+      "visualInspection": "Downloaded original visually inspected for model, function, finish and visible configuration. No crop, mirror, recolor, compositing, retouching or other change to the delivered original was performed."
+    },
+    {
+      "sku": "13345",
+      "alt": "Cerrojo Yale Kent llave-llave, referencia 4100",
+      "provenance": "download-original",
+      "sourcePage": "https://www.electricoslacabalgata.com/products/cerrojo-yale-kent-ll-ll-4100",
+      "imageUrl": "http://www.electricoslacabalgata.com/cdn/shop/products/0004100_600x.png?v=1626920991",
+      "evidence": "La Cabalgata article is explicitly Cerrojo Yale Kent LL/LL 4100 and describes the double-key function. Its single-product photo shows the Kent housing, standard keyway and satin metallic finish. No thumbturn is pictured; it is distinct from the selected 4099 image.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product-marketing image. No explicit reuse license was evidenced. No incompatible reuse restriction or watermark observed on the inspected product page or asset; this is provenance, not a claim of license or rights clearance.",
+      "manufacturerRef": "4100",
+      "pixelDimensions": [
+        600,
+        329
+      ],
+      "sha256": "e4d8b6c76e744135961e2aaa9e2a1e4c0f9ff5b3fd9be360a3951068f3db39be",
+      "visualInspection": "Downloaded original visually inspected for model, function, finish and visible configuration. No crop, mirror, recolor, compositing, retouching or other change to the delivered original was performed."
+    },
+    {
+      "sku": "13041",
+      "alt": "Cerrojo Yale 170 con pestillo resbalón, referencia 4044",
+      "provenance": "download-original",
+      "sourcePage": "https://www.gruporoldan.com.co/roldangr/vp1163/sp/",
+      "imageUrl": "https://www.gruporoldan.com.co/clientes/roldangr/images/portafolio/imagen_id_1163.webp",
+      "evidence": "Grupo Roldan exact article identifies Cerradura 170 pestillo resbalon 170-1/4 Yale 4044. The visible rounded spring latch, rather than a rectangular deadbolt, matches local SKU 13041.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product-marketing image. No explicit reuse license was evidenced. No incompatible reuse restriction or watermark observed on the inspected product page or asset; this is provenance, not a claim of license or rights clearance.",
+      "manufacturerRef": "4044",
+      "pixelDimensions": [
+        600,
+        600
+      ],
+      "sha256": "bac54e8e669b6ae9a7bb66f2e48efe7afd9651be7543fc1d191936aa554d4408",
+      "visualInspection": "Downloaded original visually inspected for model, function, finish and visible configuration. No crop, mirror, recolor, compositing, retouching or other change to the delivered original was performed."
+    },
+    {
+      "sku": "13532",
+      "alt": "Cerradura Yale de sobreponer 105 de 50 mm izquierda, referencia 7192",
+      "provenance": "download-original",
+      "sourcePage": "https://www.dyna.com.co/public/producto/50018/cerradura-de-sobreponer-105-50mm-lado-izquierdo-color-beige-7192/UND",
+      "imageUrl": "https://cdn.laferreteria.online/thumb/phpThumb.php?src=/img/50018.jpg",
+      "evidence": "Dyna exact article identifies 105 50mm lado izquierdo beige 7192. Image shows the two cylindrical locking bolts and strike on the left of the pictured lock body, with pull lever on the right. It is visibly opposite the right-facing image wrongly reused by another distributor on its 7192 page.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product-marketing image. No explicit reuse license was evidenced. No incompatible reuse restriction or watermark observed on the inspected product page or asset; this is provenance, not a claim of license or rights clearance.",
+      "manufacturerRef": "7192",
+      "pixelDimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "ad862906e9bb101eae53088a47338f156b8be75f33647581a176244ee1bcb863",
+      "visualInspection": "Downloaded original visually inspected for model, function, finish and visible configuration. No crop, mirror, recolor, compositing, retouching or other change to the delivered original was performed."
+    },
+    {
+      "sku": "14149",
+      "alt": "Combo Yale Tampa de barra antipánico de un punto, cierrapuertas 2234 y manija, referencia 7190",
+      "provenance": "download-original",
+      "sourcePage": "https://www.homecenter.com.co/homecenter-co/product/3068193/combo-antipanico-sencillo-tampa-1pt-2234-plata/3068193/",
+      "imageUrl": "https://media.falabella.com/sodimacCO/3068193/public",
+      "evidence": "Homecenter exact article identifies Combo Antipanico Sencillo Tampa 1pt 2234 Plata and manufacturer reference 7190. Original marketing image shows all three included components: single-point panic bar, silver 2234 closer with arm, and entry lever. The image was downloaded intact; the components were not assembled or altered by us.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product-marketing image. No explicit reuse license was evidenced. No incompatible reuse restriction or watermark observed on the inspected product page or asset; this is provenance, not a claim of license or rights clearance.",
+      "manufacturerRef": "7190",
+      "pixelDimensions": [
+        768,
+        768
+      ],
+      "sha256": "41689c2813f2f14632e8a8f965f8c84a9cf96ad01365549cbfcf9a60cf72172e",
+      "visualInspection": "Downloaded original visually inspected for model, function, finish and visible configuration. No crop, mirror, recolor, compositing, retouching or other change to the delivered original was performed."
+    },
+    {
+      "sku": "14636",
+      "alt": "Cierrapuertas Yale 2234 negro para puertas de hasta 80 kg, referencia 9429",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriaonlinelevallejoaz.com/cierrapuertas-hidraulico-2234-negro-30-80kg-9429-yale/",
+      "imageUrl": "https://ferreteriaonlinelevallejoaz.com/wp-content/uploads/2024/07/9429.jpg",
+      "evidence": "Levallejo exact article identifies Cierrapuertas Hidraulico 2234 Negro (30-80Kg) 9429 Yale. Image visibly shows the black closer body and black arm. It is an original black product asset, not a recolored silver 8320 image.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product-marketing image. No explicit reuse license was evidenced. No incompatible reuse restriction or watermark observed on the inspected product page or asset; this is provenance, not a claim of license or rights clearance.",
+      "manufacturerRef": "9429",
+      "pixelDimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "c150944f77637b8742aff649f99297422e10775a744481a6f8a8b827924dcf82",
+      "visualInspection": "Downloaded original visually inspected for model, function, finish and visible configuration. No crop, mirror, recolor, compositing, retouching or other change to the delivered original was performed."
+    },
+    {
+      "sku": "15915",
+      "alt": "Cierrapuertas Yale-Phillips PH65 plateado de 40 a 65 kg, referencia 5709",
+      "provenance": "download-original",
+      "sourcePage": "https://alfonsoeme.com/producto-detalle/cierrapuertas-ph65-assa-abloy-color-plateado/0005709",
+      "imageUrl": "https://cdn.it49.com/an1ince54c3/Alfonsoeme/Products/000570/byColor/6261d06f626d784adcf7782b/cierrapuertas.webp",
+      "evidence": "Alfonso Eme product article identifies PH65 ASSA ABLOY plateado under exact reference 0005709 and specifies 40–65 kg. Page embeds this full original CDN image showing the silver closer and articulated arm. No different-capacity model was substituted.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product-marketing image. No explicit reuse license was evidenced. No incompatible reuse restriction or watermark observed on the inspected product page or asset; this is provenance, not a claim of license or rights clearance.",
+      "manufacturerRef": "5709",
+      "pixelDimensions": [
+        1080,
+        1080
+      ],
+      "sha256": "4784787a2a6de80d5f9bf6e8ece422fbd0572c5a2e5eaca1752d93ac644ced68",
+      "visualInspection": "Downloaded original visually inspected for model, function, finish and visible configuration. No crop, mirror, recolor, compositing, retouching or other change to the delivered original was performed."
+    },
+    {
+      "sku": "16001",
+      "alt": "Cerrojo Yale Ferrara llave-mariposa negro mate, referencia 6048",
+      "provenance": "download-original",
+      "sourcePage": "https://dyna.com.co/public/producto/52926/cerrojo-de-seguridad-sencillo-llave-mariposa-ferrara-acabado-negro-mate-6048/UND",
+      "imageUrl": "https://cdn.laferreteria.online/thumb/phpThumb.php?src=/img/52926.jpg",
+      "evidence": "Dyna exact article names Ferrara 6048 negro mate, llave-mariposa. Original product image shows the black exterior keyed square unit and matching interior thumbturn unit, so both finish and function are visually established.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product-marketing image. No explicit reuse license was evidenced. No incompatible reuse restriction or watermark observed on the inspected product page or asset; this is provenance, not a claim of license or rights clearance.",
+      "manufacturerRef": "6048",
+      "pixelDimensions": [
+        1000,
+        1000
+      ],
+      "sha256": "78a8aa900c731be63269058b305bf2fba94d9e9de3bce7791746a9151ba394a1",
+      "visualInspection": "Downloaded original visually inspected for model, function, finish and visible configuration. No crop, mirror, recolor, compositing, retouching or other change to the delivered original was performed."
+    },
+    {
+      "sku": "15272",
+      "alt": "Cerradura FEH 6352 pico de loro con cilindro llave-llave de 45 mm",
+      "provenance": "download-original",
+      "sourcePage": "https://flexoneh.com.co/producto/cerradurade-incrustar-puerta-corrediza-3/",
+      "imageUrl": "https://flexoneh.com.co/wp-content/uploads/2022/07/6352A.png",
+      "sourcePDF": "https://flexoneh.com.co/wp-content/uploads/2022/07/6352Ficha.pdf",
+      "sourcePDFSha256": "64b610e729dcffc74db3cd79ba8cf83635d75f2e39f0c0be203d4c972349142d",
+      "evidence": "Official product page references 6352 and supplies original 6352A.png. Official reference-specific technical sheet explicitly gives 45 mm (22.5 + 22.5 mm) llave-llave cylinder and 20 mm lock backset, chrome-bright face/hook/strike and complete kit. Pixel-inspected original shows FEH lock body, key-key oval cylinder, two escutcheons, strike and three FEH keys. Matches local FEH 6352 pico-loro LL-LL 45 mm. No retailer watermark.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product-marketing image. No explicit reuse license found; site copyright footer says all rights reserved. No watermark or specific incompatible reuse restriction observed.",
+      "sha256": "0b72dad2b03303ef3cf10adadb9b115324f2112235945c0ffa61458d1c279d58",
+      "bytes": 514638,
+      "dimensions": [
+        1920,
+        1920
+      ]
+    },
+    {
+      "sku": "2879",
+      "alt": "Vista del taladro percutor CAT DX12 del kit, con una batería montada",
+      "provenance": "download-original",
+      "sourcePage": "https://www.catpowertools.com/es/producto/18v-brushless-1-2-hammer-drill-con-dos-baterias-2/",
+      "imageUrl": "https://www.catpowertools.com/wp-content/uploads/2021/10/dx12-carousel-image-1.png",
+      "evidence": "Manufacturer page names exact model DX12 and explicitly lists two DXB2 18V 2.0Ah batteries and one DXC4 4A charger, matching catalog DX12 kit with two batteries and charger. Pixel inspection shows exact DX12 badge and one 18V 2Ah battery mounted, no extra tools/accessories. This is an item view of the drill from the kit, not a full-kit photograph.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer product marketing image; reuse license not independently verified. Source footer carries a standard Caterpillar trademark-use notice; no explicit image-reproduction restriction encountered on product page. Not claimed copyright-free or openly licensed.",
+      "sha256": "e89e479e96b92a9d8fa3d7628c7bdf13825c6a753cf7312849b91c818ded1751",
+      "width": 960,
+      "height": 525
+    },
+    {
+      "sku": "8034",
+      "alt": "Ilustración de producto CAT DX87U de 1800 W, publicada por el distribuidor",
+      "provenance": "download-original",
+      "sourcePage": "https://boutique.tracsa.com.mx/products/dx87u",
+      "imageUrl": "https://boutique.tracsa.com.mx/cdn/shop/products/dx87.png?v=1677106335",
+      "evidence": "CAT distributor Tracsa product page identifies exact Item DX87U and 1800W at 110–127V 50/60Hz. Official manual https://mxa.catpowertools.com/pdf/manuales/DX87U.pdf corroborates DX87U=1800W, whereas DX87=2000W. This transparent product render is served by Tracsa as the exact DX87U item image; external badge shows base-family DX87, not an electrical specification. Pixel inspection shows heat gun alone with no accessories or watermark.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing image; reuse license not independently verified. No explicit incompatible reproduction restriction encountered on the source product page; not claimed copyright-free or openly licensed.",
+      "sha256": "88643c17182f4b18f48ae6c108aa4ad2300d416abd1ca905c943e0d165cf90e2",
+      "width": 678,
+      "height": 670,
+      "assetType": "supplier-render"
+    },
+    {
+      "sku": "7623",
+      "alt": "Disco de sierra CAT DA08002 para madera, 7 1/4 pulgadas y 40 dientes, en empaque",
+      "provenance": "download-original",
+      "sourcePage": "https://fapasisa.com.py/products/cat-disco-sierra-tct-7-1-4x30mm-40t-da08002",
+      "imageUrl": "https://fapasisa.com.py/cdn/shop/files/DA08002_1.jpg?v=1753451007",
+      "evidence": "Distributor Fapasisa product page explicitly names DA08002, 184mm (7 1/4 inch) and 40 teeth for wood. Pixel inspection independently confirms DA08002 on package and blade, 40T, 184mm and WOOD. Original front-package photo, clean white background, no retailer watermark.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing image; reuse license not independently verified. No explicit incompatible reproduction restriction encountered on the source product page; not claimed copyright-free or openly licensed.",
+      "sha256": "b247f033301539f43bb5948e9bb926c9dae41772a800a6a62a4b31f33260acaf",
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "sku": "11486",
+      "alt": "Disco de sierra CAT DA08001 para madera, 7 1/4 pulgadas y 24 dientes, en empaque",
+      "provenance": "download-original",
+      "sourcePage": "https://nissei.com/py/ferreteria-construccion/herramientas/escaleras-andamios/hojas-y-cuchillas-de-sierra/disco-sierra-cat-tct-7-1-4-x-30-mm-24t",
+      "imageUrl": "https://nissei.com/media/catalog/product/F/P/FPS-DA08001_001_fps-da08001.jpg",
+      "evidence": "Retailer Nissei page explicitly identifies manufacturer part DA08001 and 184mm (7 1/4 inch), 24 teeth. Pixel inspection independently confirms DA08001 on package and blade, 24T, 184mm and WOOD. Original front-package photo, clean white background, no retailer watermark.",
+      "exactVariant": true,
+      "licenseStatus": "Public manufacturer/distributor product marketing image; reuse license not independently verified. No explicit incompatible reproduction restriction encountered on the source product page; not claimed copyright-free or openly licensed.",
+      "sha256": "20acb08f4fa86fa3aab572145481d370008e045192f1b1d9929f2f51f149c571",
+      "width": 1000,
+      "height": 1000
+    },
+    {
+      "sku": "5616",
+      "alt": "Grapas Rapid 140/10 de 10 mm, caja de 5000 unidades",
+      "provenance": "download-original",
+      "sourcePage": "https://hardwickandsons.com/products/rapid-3-8-10-mm-staples-model-140-10-5000-pack",
+      "imageUrl": "https://hardwickandsons.com/cdn/shop/products/DSC03963.jpg?v=1660239635",
+      "evidence": "Retailer Hardwick & Sons page identifies Rapid model 140/10, 10mm (3/8 inch), 5000 pack, matching catalog name and reference. Pixel inspection independently confirms Rapid, 140/10, 10mm and 5000 Stck./pcs. printed on blue/green box. Clean original photo with no watermark. This is the older cardboard packaging shown by the retailer; catalog supplies no newer packaging requirement.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product marketing image; reuse license not independently verified. No explicit incompatible reproduction restriction encountered on source product page; not claimed copyright-free or openly licensed.",
+      "sha256": "60a2ae1cdb11188a40fd42b08ff10a76bf80a788fbe225dffa49b7cd1c2f4d56",
+      "width": 1600,
+      "height": 1000
+    },
+    {
+      "sku": "14676",
+      "alt": "Vista de la pulidora CAT DX31 del combo, con batería de 18 V y 4,0 Ah montada",
+      "provenance": "download-original",
+      "sourcePage": "https://www.noon.com/saudi-en/cat-dx31-brushless-cordless-angle-grinder-kit-18v-115mm-8500rpm-with-4-0ah-battery-charger-anti-restart-protection-auxiliary-handle/Z2DA9E7F4384EC0D1E0F5Z/p/",
+      "imageUrl": "https://f.nooncdn.com/p/pzsku/Z2DA9E7F4384EC0D1E0F5Z/45/_/1772873633/1d13c358-df24-4cd3-a12e-25cb2331f870.jpg",
+      "evidence": "Distributor Edadcom Trading Co listing on Noon identifies model DX31 and explicitly lists Battery pack (DXB4) x1 and Charger (DXC4) x1, 18V and 4.0Ah, exactly matching catalog DX31 + DXC4 + DXB4 combo. Pixel inspection confirms DX31 body badge and 18V DX4 4Ah battery marking. Chosen gallery image shows grinder with mounted battery and auxiliary handle only; case-inclusive first gallery photo was rejected because catalog does not state a case. This is an item view of the grinder from the exact kit, not a complete-kit photograph.",
+      "exactVariant": true,
+      "licenseStatus": "Public distributor product marketing image on marketplace; reuse license not independently verified. No explicit incompatible reproduction restriction encountered on source product listing; not claimed copyright-free or openly licensed.",
+      "sha256": "bb42c6fe9752be871bb13e7361085df878f69b82be73d8b69230cc7a0f02461d",
+      "width": 660,
+      "height": 900,
+      "assetType": "supplier-product-illustration"
+    },
+    {
+      "sku": "1957",
+      "sourcePage": "https://ducasseindustrial.com/producto/dn-80-cf",
+      "imageUrl": "https://ducasseindustrial.com/wp-content/uploads/2020/09/CL_10100217471_IMG_PROD1_BL.jpg",
+      "alt": "Carro con freno Ducasse DN-80 C/F, referencia 10100217471; vista de un componente del sistema",
+      "sha256": "523a6b37833b0854b89355e76bc393e9f61e64c371beab668f1a1fddf28319f1",
+      "bytes": 136966,
+      "evidence": "Official DN 80 CF product page explicitly identifies manufacturer code 10100217471, matching current reference. Original gallery image filename repeats the code. Visual inspection confirms one orange-wheel carriage with integrated brake and mounting plate; the photograph is a hardware detail, not every part in the system.",
+      "exactVariant": true,
+      "provenance": "download-original",
+      "licenseStatus": "public-manufacturer-marketing-photo: no explicit open license verified; no incompatible reproduction restriction observed on the reviewed product page",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "imageScope": "exact-code hardware component detail, not full kit contents",
+      "catalogReference": "10100217471",
+      "visuallyInspected": true,
+      "sourceEdits": "none",
+      "assetType": "manufacturer-photograph"
+    },
+    {
+      "sku": "1966",
+      "sourcePage": "https://ducasseindustrial.com/co/product/d-52/",
+      "imageUrl": "https://ducasseindustrial.com/co/wp-content/uploads/sites/19/2020/09/CO_10100106201_IMG_PROD1_BL.jpg",
+      "alt": "Carro Ducasse D-52, referencia 10100106201; vista de un componente del sistema de clóset",
+      "sha256": "4cec343d71b5b4bffff5228af3e1e5c39079e4ad3950af36e94624f2379a5355",
+      "bytes": 140993,
+      "evidence": "Official Colombian D 52 product page identifies code 10100106201, matching catalog reference. Its original gallery image is tied to that code and visibly shows a DUCASSE INDUSTRIAL-branded orange roller and metal mounting plate. This is one carriage detail, not the full two-door system contents.",
+      "exactVariant": true,
+      "provenance": "download-original",
+      "licenseStatus": "public-manufacturer-marketing-photo: no explicit open license verified; no incompatible reproduction restriction observed on the reviewed product page",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "imageScope": "exact-code hardware component detail, not full kit contents",
+      "catalogReference": "10100106201",
+      "visuallyInspected": true,
+      "sourceEdits": "none",
+      "assetType": "manufacturer-photograph"
+    },
+    {
+      "sku": "1968",
+      "sourcePage": "https://ducasseindustrial.com/mx/productos/d-25/",
+      "imageUrl": "https://ducasseindustrial.com/mx/wp-content/uploads/sites/21/2021/07/MX_10100117101_IMG_PROD1_BL.png",
+      "alt": "Carro Ducasse D-25, referencia 10100117101; vista de un componente del sistema para mueble",
+      "sha256": "4521e63b3dfc90be5091a6908f5f8a8526c071f1d5de0b7a84e9bf16f7cc7908",
+      "bytes": 1270408,
+      "evidence": "Official D 25 product page identifies code 10100117101, matching catalog reference, and uses this exact-code original PNG as its product image. Inspection shows the orange injected-plastic roller and zinc-colored mounting plate of D25. This is a single hardware detail, not a complete kit photograph.",
+      "exactVariant": true,
+      "provenance": "download-original",
+      "licenseStatus": "public-manufacturer-marketing-photo: no explicit open license verified; no incompatible reproduction restriction observed on the reviewed product page",
+      "dimensions": [
+        2904,
+        2088
+      ],
+      "imageScope": "exact-code hardware component detail, not full kit contents",
+      "catalogReference": "10100117101",
+      "visuallyInspected": true,
+      "sourceEdits": "none",
+      "assetType": "manufacturer-photograph"
+    },
+    {
+      "sku": "7553",
+      "sourcePage": "https://ducasseindustrial.com/cl/producto/corredera-dn-300-hd",
+      "imageUrl": "https://ducasseindustrial.com/cl/wp-content/uploads/sites/25/2020/09/CL_10100220021_img_prod1_bl.jpg",
+      "alt": "Carro Ducasse DN-300 HD con ruedas naranjas, referencia 10100220021; vista de una pieza",
+      "sha256": "42fe75ea814a97440ddfa6b0495b8cd8fb30194d4bd9a6eed34379f445787c5d",
+      "bytes": 175425,
+      "evidence": "Official CORREDERA DN-300 HD page identifies code 10100220021, matching catalog reference and HD model. Visual inspection confirms orange nylon-covered wheels, silver-colored chassis and mounting plate, matching the explicit RUEDA NARANJA catalog variant. Photo shows one carriage, while manufacturer describes a two-carriage system.",
+      "exactVariant": true,
+      "provenance": "download-original",
+      "licenseStatus": "public-manufacturer-marketing-photo: no explicit open license verified; no incompatible reproduction restriction observed on the reviewed product page",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "imageScope": "exact-code hardware component detail, not full kit contents",
+      "catalogReference": "10100220021",
+      "visuallyInspected": true,
+      "sourceEdits": "none",
+      "assetType": "manufacturer-photograph"
+    },
+    {
+      "sku": "9771",
+      "sourcePage": "https://ducasseindustrial.com/producto/al-1535-vidrio",
+      "imageUrl": "https://ducasseindustrial.com/wp-content/uploads/2020/09/CL_10100800200_IMG_PROD1_BL.jpg",
+      "alt": "Carro Ducasse AL-1535 para vidrio, referencia 10100800200; vista de un componente",
+      "sha256": "fc84c48982390b997b4b721135fabc9b66be9295c4f8af47107d2e72d23c304c",
+      "bytes": 291580,
+      "evidence": "Official AL 1535 VIDRIO page identifies code 10100800200, matching catalog reference and glass-door variant; it distinguishes glass 4–6 mm from the wood model. Gallery image is tied to this exact code. Inspection shows the black carriage and mounting plate; this is a component detail, not all kit contents.",
+      "exactVariant": true,
+      "provenance": "download-original",
+      "licenseStatus": "public-manufacturer-marketing-photo: no explicit open license verified; no incompatible reproduction restriction observed on the reviewed product page",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "imageScope": "exact-code hardware component detail, not full kit contents",
+      "catalogReference": "10100800200",
+      "visuallyInspected": true,
+      "sourceEdits": "none",
+      "assetType": "manufacturer-photograph"
+    },
+    {
+      "sku": "13456",
+      "sourcePage": "https://ducasseindustrial.com/mx/productos/bisagra-clip-cierre-suave/",
+      "imageUrl": "https://ducasseindustrial.com/mx/wp-content/uploads/sites/21/2021/07/MX_3010101007_IMG_PROD1_BL.png",
+      "alt": "Bisagra Ducasse 3D Premium parche de cierre suave, referencia 3010101007; vista de una bisagra del par",
+      "sha256": "b9644d32a21a60c528dd835f8b31c25d4ca63d4b5c9b0a3112b4d737f46ca02d",
+      "bytes": 2338829,
+      "evidence": "Official BISAGRA CLIP CIERRE SUAVE page variation data explicitly maps code 3010101007 to RECTA and this original image URL. This matches the catalog full-overlay/parche hinge. Inspection shows the nickel-colored straight-arm hinge with clip base and cover caps. Photo is one hinge; catalog sale unit remains a pair.",
+      "exactVariant": true,
+      "provenance": "download-original",
+      "licenseStatus": "public-manufacturer-marketing-photo: no explicit open license verified; no incompatible reproduction restriction observed on the reviewed product page",
+      "dimensions": [
+        2904,
+        2088
+      ],
+      "imageScope": "single hinge from pair",
+      "catalogReference": "3010101007",
+      "visuallyInspected": true,
+      "sourceEdits": "none",
+      "assetType": "manufacturer-photograph"
+    },
+    {
+      "sku": "13457",
+      "sourcePage": "https://ducasseindustrial.com/pe/product/bisagra-clip-cierre-suave/",
+      "imageUrl": "https://ducasseindustrial.com/pe/wp-content/uploads/sites/18/2020/09/PE_3010111007_IMG_PROD1_BL.jpg",
+      "alt": "Bisagra Ducasse 3D Premium semiparche de cierre suave, referencia 3010111007; vista de una bisagra del par",
+      "sha256": "192e91ed18b16706f9a5cfd804e6f2428040351cbf3e99c6ac6cfa23a147b324",
+      "bytes": 94306,
+      "evidence": "Official BISAGRA CLIP CIERRE SUAVE page variation data maps code 3010111007 to SEMICURVA and this original image URL. This matches the catalog half-overlay/semiparche hinge. Inspection confirms the cranked arm and nickel-colored finish, distinct from the full-overlay image. Photo is one hinge; catalog sale unit remains a pair.",
+      "exactVariant": true,
+      "provenance": "download-original",
+      "licenseStatus": "public-manufacturer-marketing-photo: no explicit open license verified; no incompatible reproduction restriction observed on the reviewed product page",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "imageScope": "single hinge from pair",
+      "catalogReference": "3010111007",
+      "visuallyInspected": true,
+      "sourceEdits": "none",
+      "assetType": "manufacturer-photograph"
+    },
+    {
+      "sku": "15954",
+      "sourcePage": "https://ducasseindustrial.com/producto/corredera-eco-80",
+      "imageUrl": "https://ducasseindustrial.com/wp-content/uploads/2020/09/CL_10100271080_img_prod1_bl.jpg",
+      "alt": "Carro Ducasse ECO-80, referencia 10100271080; vista de un componente del sistema",
+      "sha256": "bbff3d6cd4b01fdd35c08865d0ffbe1a9b6705ff4e42883c6b5345890e701bd8",
+      "bytes": 101460,
+      "evidence": "Official CORREDERA ECO-80 page explicitly identifies code 10100271080, matching the catalog reference. Original gallery image repeats the code. Inspection shows a silver-colored steel two-wheel carriage and mounting plate, without a door or unrelated accessories. This is one carriage detail, while manufacturer describes a two-carriage system.",
+      "exactVariant": true,
+      "provenance": "download-original",
+      "licenseStatus": "public-manufacturer-marketing-photo: no explicit open license verified; no incompatible reproduction restriction observed on the reviewed product page",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "imageScope": "exact-code hardware component detail, not full kit contents",
+      "catalogReference": "10100271080",
+      "visuallyInspected": true,
+      "sourceEdits": "none",
+      "assetType": "manufacturer-photograph"
+    },
+    {
+      "sku": "13516",
+      "sourcePage": "https://ducasseindustrial.com/producto/dn-50-riel-oculto",
+      "imageUrl": "https://ducasseindustrial.com/wp-content/uploads/2026/02/1760014527056.jpg",
+      "sha256": "ed33e07522c789a45dcd6d552b6ef79aba48d2c7fa0b5a1cdf29ebabf0499009",
+      "bytes": 433136,
+      "catalogReference": "40100934218",
+      "dimensions": [
+        2500,
+        2500
+      ],
+      "alt": "Ilustración del fabricante del kit Ducasse DN-50 de riel oculto y cierre suave, referencia 40100934218",
+      "provenance": "download-original",
+      "assetType": "manufacturer-render",
+      "evidence": "Official DN-50 RIEL OCULTO page explicitly identifies code 40100934218, matching catalog reference. It specifies a 1.2 m hidden-track kit with soft opening and closing for a wooden door up to 50 kg. This exact page gallery supplies the isolated kit-component rendering. Inspection confirms rails, carriage assemblies and soft-close hardware rather than an installed-door application. Original manufacturer rendering downloaded unchanged; not a photograph and no AI-generated or edited geometry.",
+      "exactVariant": true,
+      "licenseStatus": "public-manufacturer-marketing-render: no explicit open license verified; no incompatible reproduction restriction observed on the reviewed product page",
+      "imageScope": "manufacturer rendering of isolated kit components",
+      "visuallyInspected": true,
+      "sourceEdits": "none"
+    },
+    {
+      "sku": "5945",
+      "alt": "Detalle del perfil del riel embutido CX Ducasse para AL 1535 en aluminio anodizado mate; referencia de 3 m, sin mostrar la longitud completa",
+      "provenance": "download-original",
+      "sourcePage": "https://ducasseindustrial.com/co/product/riel-embutido-cx/",
+      "imageUrl": "https://ducasseindustrial.com/co/wp-content/uploads/sites/19/2020/09/CO_10100604630_IMG_PROD1.jpg",
+      "evidence": "Current catalog SKU 5945 contains exact manufacturer reference 10100604630. Manufacturer page live variation 7716 explicitly binds that reference to 3 m and the downloaded original image URL. Page confirms aluminio anodizado mate. Official AL1535 MD sheet, page 2, maps 10100604620 to 2.0 m and 10100604630 to 3.0 m CX AL rails. Visual inspection: Isolated silver CX channel extrusion end/profile detail, in perspective on white; one channel with flanges and retention ribs; far end outside the frame. No watermark, price label, application scene or overlaid dimensional claim. Source does not specify photography versus rendering, so no claim of photography is made. Image is an exact profile/material/finish detail, not a depiction or proof of full cut length. Original downloaded bytes retained without alteration.",
+      "exactVariant": true,
+      "licenseStatus": "public-manufacturer-marketing-image; copyright retained by rights holder; no explicit incompatible reproduction restriction, watermark or paywall found on inspected source product page and asset; not represented as license-cleared or copyright-free",
+      "assetType": "manufacturer-product-visual",
+      "imageScope": "exact-code profile/material/finish detail for 3 m reference; does not show full 3 m length",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "45f1bd218ca71af451f9476cadaaab843f2b81154056b8cd9819eb29e7ab17e1",
+      "bytes": 114857,
+      "manufacturerReference": "10100604630",
+      "sourceVariationId": 7716,
+      "sourceVariationAttributes": {
+        "attribute_medida": "3 m"
+      },
+      "sourceSnapshot": "/workspace/scratch/016efaced367/product-image-research/ducasse-rails/riel-embutido-cx.html",
+      "supportingSource": "https://ducasseindustrial.com/wp-content/uploads/2022/05/Ficha_Original_AL1535MD_v01_0621.pdf",
+      "catalogName": "RIEL DUCASSE 1535 SIMPLE 3MT",
+      "catalogReference": "10100604630  15353E"
+    },
+    {
+      "sku": "5951",
+      "alt": "Detalle del perfil del riel U-100 Ducasse en acero galvanizado; referencia de 2 m, sin mostrar la longitud completa",
+      "provenance": "download-original",
+      "sourcePage": "https://ducasseindustrial.com/co/product/riel-u-100/",
+      "imageUrl": "https://ducasseindustrial.com/co/wp-content/uploads/sites/19/2020/09/CO_10100608301_IMG_PROD1_BL.jpg",
+      "evidence": "Current catalog SKU 5951 contains exact manufacturer reference 10100608301. Manufacturer page live variation 7737 explicitly binds that reference to 2 m and the downloaded original image URL. Page confirms acero galvanizado. Official Heavy Duty manual, PDF page 26, maps 10100608301 to galvanized U100 2 m and 10100608302 to galvanized U100 3 m, with 1.4 mm steel and the same cross-section. Catalog load label 80KG is unchanged; no capacity assertion is added to the image. Visual inspection: Photograph of galvanized-steel U100 end/profile detail with folded inward lips and a fixing hole, on white. Far end outside the frame. No watermark, price label or full-length claim. Image is an exact profile/material/finish detail, not a depiction or proof of full cut length. Original downloaded bytes retained without alteration.",
+      "exactVariant": true,
+      "licenseStatus": "public-manufacturer-marketing-image; copyright retained by rights holder; no explicit incompatible reproduction restriction, watermark or paywall found on inspected source product page and asset; not represented as license-cleared or copyright-free",
+      "assetType": "manufacturer-photograph",
+      "imageScope": "exact-code profile/material/finish detail for 2 m reference; does not show full 2 m length",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "95a35682aec7991a42d40d2a8cd532fcfe6a28670de69e1242ad62fc30aab013",
+      "bytes": 123814,
+      "manufacturerReference": "10100608301",
+      "sourceVariationId": 7737,
+      "sourceVariationAttributes": {
+        "attribute_medida": "2 m"
+      },
+      "sourceSnapshot": "/workspace/scratch/016efaced367/product-image-research/ducasse-rails/riel-u-100.html",
+      "supportingSource": "https://ducasseindustrial.com/ar/wp-content/uploads/sites/17/2022/04/Manual10-04-heavyduty.pdf",
+      "catalogName": "RIEL DUCASSE U-100 2MT 80KG COLGANTE GALVANIZADO",
+      "catalogReference": "10100608301"
+    },
+    {
+      "sku": "5952",
+      "alt": "Detalle del perfil del riel U-100 Ducasse en acero galvanizado; referencia de 3 m, sin mostrar la longitud completa",
+      "provenance": "download-original",
+      "sourcePage": "https://ducasseindustrial.com/co/product/riel-u-100/",
+      "imageUrl": "https://ducasseindustrial.com/co/wp-content/uploads/sites/19/2020/09/CO_10100608302_IMG_PROD1_BL.jpg",
+      "evidence": "Current catalog SKU 5952 contains exact manufacturer reference 10100608302. Manufacturer page live variation 7738 explicitly binds that reference to 3 m and the downloaded original image URL. Page confirms acero galvanizado. Official Heavy Duty manual, PDF page 26, maps 10100608301 to galvanized U100 2 m and 10100608302 to galvanized U100 3 m, with 1.4 mm steel and the same cross-section. Catalog load label 80KG is unchanged; no capacity assertion is added to the image. Visual inspection: Photograph of galvanized-steel U100 end/profile detail with folded inward lips and a fixing hole, on white. Far end outside the frame. No watermark, price label or full-length claim. Image is an exact profile/material/finish detail, not a depiction or proof of full cut length. Original downloaded bytes retained without alteration.",
+      "exactVariant": true,
+      "licenseStatus": "public-manufacturer-marketing-image; copyright retained by rights holder; no explicit incompatible reproduction restriction, watermark or paywall found on inspected source product page and asset; not represented as license-cleared or copyright-free",
+      "assetType": "manufacturer-photograph",
+      "imageScope": "exact-code profile/material/finish detail for 3 m reference; does not show full 3 m length",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "95a35682aec7991a42d40d2a8cd532fcfe6a28670de69e1242ad62fc30aab013",
+      "bytes": 123814,
+      "manufacturerReference": "10100608302",
+      "sourceVariationId": 7738,
+      "sourceVariationAttributes": {
+        "attribute_medida": "3 m"
+      },
+      "sourceSnapshot": "/workspace/scratch/016efaced367/product-image-research/ducasse-rails/riel-u-100.html",
+      "supportingSource": "https://ducasseindustrial.com/ar/wp-content/uploads/sites/17/2022/04/Manual10-04-heavyduty.pdf",
+      "catalogName": "RIEL DUCASSE U-100 3MTS 80KG COLGANTE GALVANIZADO",
+      "catalogReference": "10100608302"
+    },
+    {
+      "sku": "5953",
+      "alt": "Detalle del perfil del riel doble U-20 Ducasse en acero galvanizado gris; referencia de 2 m, sin mostrar la longitud completa",
+      "provenance": "download-original",
+      "sourcePage": "https://ducasseindustrial.com/co/product/riel-u-20/",
+      "imageUrl": "https://ducasseindustrial.com/co/wp-content/uploads/sites/19/2020/09/CO_10100621002_IMG_PROD1_BL.jpg",
+      "evidence": "Current catalog SKU 5953 contains exact manufacturer reference 10100621002. Manufacturer page live variation 7741 explicitly binds that reference to 2 m and the downloaded original image URL. Page confirms acero galvanizado gris. Official Ducloset Simple sheet, page 2, maps galvanized U20 reference 10100621002 to 2.0 m and 10100623002 to 3.0 m. Visual inspection: Isolated grey double-channel U20 end/profile detail, in perspective on white; two rolling channels with central offset. Far end outside the frame. No watermark, price label or full-length claim. Source does not specify photography versus rendering, so no claim of photography is made. Image is an exact profile/material/finish detail, not a depiction or proof of full cut length. Original downloaded bytes retained without alteration.",
+      "exactVariant": true,
+      "licenseStatus": "public-manufacturer-marketing-image; copyright retained by rights holder; no explicit incompatible reproduction restriction, watermark or paywall found on inspected source product page and asset; not represented as license-cleared or copyright-free",
+      "assetType": "manufacturer-product-visual",
+      "imageScope": "exact-code profile/material/finish detail for 2 m reference; does not show full 2 m length",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "58771eaa92ccde71cfe594584d41bb02275e5069321c6221e2686c2a2e15ef87",
+      "bytes": 168695,
+      "manufacturerReference": "10100621002",
+      "sourceVariationId": 7741,
+      "sourceVariationAttributes": {
+        "attribute_medida": "2 m"
+      },
+      "sourceSnapshot": "/workspace/scratch/016efaced367/product-image-research/ducasse-rails/riel-u-20.html",
+      "supportingSource": "https://ducasseindustrial.com/wp-content/uploads/2022/05/Ficha_Original_Ducloset_Simple_v01_0621.pdf",
+      "catalogName": "RIEL DUCASSE U-20 2MTS GALV. GRIS",
+      "catalogReference": "10100621002"
+    },
+    {
+      "sku": "5960",
+      "alt": "Detalle del perfil del riel embutido CX Ducasse para AL 1535 en aluminio anodizado mate; referencia de 2 m, sin mostrar la longitud completa",
+      "provenance": "download-original",
+      "sourcePage": "https://ducasseindustrial.com/co/product/riel-embutido-cx/",
+      "imageUrl": "https://ducasseindustrial.com/co/wp-content/uploads/sites/19/2020/09/CO_10100604620_IMG_PROD1.jpg",
+      "evidence": "Current catalog SKU 5960 contains exact manufacturer reference 10100604620. Manufacturer page live variation 7715 explicitly binds that reference to 2 m and the downloaded original image URL. Page confirms aluminio anodizado mate. Official AL1535 MD sheet, page 2, maps 10100604620 to 2.0 m and 10100604630 to 3.0 m CX AL rails. Visual inspection: Isolated silver CX channel extrusion end/profile detail, in perspective on white; one channel with flanges and retention ribs; far end outside the frame. No watermark, price label, application scene or overlaid dimensional claim. Source does not specify photography versus rendering, so no claim of photography is made. Image is an exact profile/material/finish detail, not a depiction or proof of full cut length. Original downloaded bytes retained without alteration.",
+      "exactVariant": true,
+      "licenseStatus": "public-manufacturer-marketing-image; copyright retained by rights holder; no explicit incompatible reproduction restriction, watermark or paywall found on inspected source product page and asset; not represented as license-cleared or copyright-free",
+      "assetType": "manufacturer-product-visual",
+      "imageScope": "exact-code profile/material/finish detail for 2 m reference; does not show full 2 m length",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "e1ba9ebda373bf06f7cd9d63fef9f90e6e42d08a59ff877e1d6ed76d95907bcd",
+      "bytes": 114861,
+      "manufacturerReference": "10100604620",
+      "sourceVariationId": 7715,
+      "sourceVariationAttributes": {
+        "attribute_medida": "2 m"
+      },
+      "sourceSnapshot": "/workspace/scratch/016efaced367/product-image-research/ducasse-rails/riel-embutido-cx.html",
+      "supportingSource": "https://ducasseindustrial.com/wp-content/uploads/2022/05/Ficha_Original_AL1535MD_v01_0621.pdf",
+      "catalogName": "RIEL DUCASSE 1535 SIMPLE 2MT",
+      "catalogReference": "10100604620  15352"
+    },
+    {
+      "sku": "5963",
+      "alt": "Detalle del perfil del riel U-21 Ducasse en aluminio anodizado mate; referencia de 2 m, sin mostrar la longitud completa",
+      "provenance": "download-original",
+      "sourcePage": "https://ducasseindustrial.com/co/product/riel-u-21/",
+      "imageUrl": "https://ducasseindustrial.com/co/wp-content/uploads/sites/19/2020/09/CO_10100626020_IMG_PROD1_BL.jpg",
+      "evidence": "Current catalog SKU 5963 contains exact manufacturer reference 10100626020. Manufacturer page live variation 7745 explicitly binds that reference to 2 m and the downloaded original image URL. Page confirms aluminio anodizado mate. Live official variation 7745 directly maps reference 10100626020 to 2 m and its original image; the same page specifies aluminum with matte-anodized finish. Visual inspection: Photograph of a silver U21 aluminum extrusion end/profile detail, with top mounting channel and inward lower lips, isolated on white. Short visible section only; not a complete 2 m bar. No watermark, price label or application scene. Image is an exact profile/material/finish detail, not a depiction or proof of full cut length. Original downloaded bytes retained without alteration.",
+      "exactVariant": true,
+      "licenseStatus": "public-manufacturer-marketing-image; copyright retained by rights holder; no explicit incompatible reproduction restriction, watermark or paywall found on inspected source product page and asset; not represented as license-cleared or copyright-free",
+      "assetType": "manufacturer-photograph",
+      "imageScope": "exact-code profile/material/finish detail for 2 m reference; does not show full 2 m length",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "5272d461adc3ac6621b7d53c58ca52ab6a1e10c6c5e53dadc0285b878bcdbcbf",
+      "bytes": 91649,
+      "manufacturerReference": "10100626020",
+      "sourceVariationId": 7745,
+      "sourceVariationAttributes": {
+        "attribute_medida": "2 m"
+      },
+      "sourceSnapshot": "/workspace/scratch/016efaced367/product-image-research/ducasse-rails/riel-u-21.html",
+      "supportingSource": null,
+      "catalogName": "RIEL DUCASSE U-21 2MT ALUMINIO COLGANTE",
+      "catalogReference": "10100626020"
+    },
+    {
+      "sku": "8361",
+      "alt": "Detalle del perfil del riel doble U-20 Ducasse en acero galvanizado gris; referencia de 3 m, sin mostrar la longitud completa",
+      "provenance": "download-original",
+      "sourcePage": "https://ducasseindustrial.com/co/product/riel-u-20/",
+      "imageUrl": "https://ducasseindustrial.com/co/wp-content/uploads/sites/19/2020/09/CO_10100623002_IMG_PROD1_BL.jpg",
+      "evidence": "Current catalog SKU 8361 contains exact manufacturer reference 10100623002. Manufacturer page live variation 7742 explicitly binds that reference to 3 m and the downloaded original image URL. Page confirms acero galvanizado gris. Official Ducloset Simple sheet, page 2, maps galvanized U20 reference 10100621002 to 2.0 m and 10100623002 to 3.0 m. Visual inspection: Isolated grey double-channel U20 end/profile detail, in perspective on white; two rolling channels with central offset. Far end outside the frame. No watermark, price label or full-length claim. Source does not specify photography versus rendering, so no claim of photography is made. Image is an exact profile/material/finish detail, not a depiction or proof of full cut length. Original downloaded bytes retained without alteration.",
+      "exactVariant": true,
+      "licenseStatus": "public-manufacturer-marketing-image; copyright retained by rights holder; no explicit incompatible reproduction restriction, watermark or paywall found on inspected source product page and asset; not represented as license-cleared or copyright-free",
+      "assetType": "manufacturer-product-visual",
+      "imageScope": "exact-code profile/material/finish detail for 3 m reference; does not show full 3 m length",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "58771eaa92ccde71cfe594584d41bb02275e5069321c6221e2686c2a2e15ef87",
+      "bytes": 168695,
+      "manufacturerReference": "10100623002",
+      "sourceVariationId": 7742,
+      "sourceVariationAttributes": {
+        "attribute_medida": "3 m"
+      },
+      "sourceSnapshot": "/workspace/scratch/016efaced367/product-image-research/ducasse-rails/riel-u-20.html",
+      "supportingSource": "https://ducasseindustrial.com/wp-content/uploads/2022/05/Ficha_Original_Ducloset_Simple_v01_0621.pdf",
+      "catalogName": "RIEL DUCASSE U-20 3MTS GALV. GRIS",
+      "catalogReference": "10100623002"
+    }
+  ]
+}

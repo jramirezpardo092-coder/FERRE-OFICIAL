@@ -21,19 +21,19 @@ export default function OfertasPage() {
     <>
       <Breadcrumbs items={[{ label: "Ofertas", href: "/ofertas" }]} />
 
-      <section className="max-w-7xl mx-auto px-4 py-8">
+      <section className="site-container py-8">
         <div className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-2">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-ink  mb-2">
             Ofertas vigentes
           </h1>
-          <p className="text-gray-500 dark:text-gray-400">
+          <p className="text-ink-2 ">
             {offerProducts.length > 0 ? `${offerProducts.length} productos con descuento. Precios antes de IVA.` : "Pronto encontrarás aquí nuestras promociones confirmadas."}
           </p>
         </div>
 
         {offerProducts.length === 0 ? (
-          <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 p-8 text-center">
-            <p className="text-gray-600 dark:text-gray-300 mb-5">Mientras tanto, explora el catálogo y consulta la disponibilidad de lo que necesitas.</p>
+          <div className="rounded-card border border-line  bg-surface  p-8 text-center">
+            <p className="text-ink-2  mb-5">Mientras tanto, explora el catálogo y consulta la disponibilidad de lo que necesitas.</p>
             <Link href="/catalogo" className="btn-primary">Ver catálogo</Link>
           </div>
         ) : <Suspense fallback={<ParditoState />}>

@@ -3,7 +3,7 @@ import "server-only";
 import productsData from "@/data/products.json";
 import type { Product } from "./types";
 import type { CatalogFacet, CatalogResponse, CatalogSuggestion } from "./catalog-types";
-import { applyCatalogFilters, normalizeCatalogFilters, validateCatalogFilters } from "./catalog-filters";
+import { applyCatalogFilters, getCatalogPrice, isCatalogPriceMode, normalizeCatalogFilters, validateCatalogFilters } from "./catalog-filters";
 import { enrichProducts, getLocalProductImagePath } from "./product-enrichment";
 import { normalizeSearchText, searchProducts } from "./search";
 import { getAvailableQuantity, getDiscountPercent, hasVerifiedPrice } from "./utils";
@@ -34,6 +34,7 @@ function publicProduct(product: Product): Product {
     ...(Array.isArray(product.gallery) ? { gallery: product.gallery.filter((image) => image.verified === true && typeof image.src === "string").map((image) => ({
       src: image.src,
       verified: true as const,
+      ...(["manufacturer-render", "supplier-render", "technical-diagram", "profile-detail", "component-detail", "pair-detail"].includes(image.kind || "") ? { kind: image.kind } : {}),
       ...(typeof image.alt === "string" ? { alt: image.alt } : {}),
     })) } : {}),
     ...(Array.isArray(product.specs) ? { specs: product.specs.filter((spec) => spec.verified === true && typeof spec.label === "string" && typeof spec.value === "string").map((spec) => ({
@@ -63,7 +64,7 @@ export function getFeaturedCatalogProducts(): Product[] {
   const candidates = catalog.filter((product) => {
     const primary = getLocalProductImagePath(product.img);
     return hasVerifiedPrice(product) && getAvailableQuantity(product) > 0 && !!primary
-      && product.gallery?.some((image) => image.verified === true && getLocalProductImagePath(image.src) === primary);
+      && product.gallery?.some((image) => image.verified === true && !image.kind && getLocalProductImagePath(image.src) === primary);
   });
   const featured: Product[] = [];
   const selectedIds = new Set<string>();
@@ -124,7 +125,11 @@ function search(query: string): { results: Product[]; isFuzzy: boolean } {
     // Textual equality keeps 0044 distinct from 44 and outranks substring/fuzzy names.
     const identifiers = catalog.filter((product) => [product.id, product.ref, product.sku]
       .some((value) => value && normalizeSearchText(value) === normalized));
-    if (identifiers.length) return { results: identifiers, isFuzzy: false };
+    if (identifiers.length) {
+      const ownCode = (product: Product) => [product.id, product.sku].some((value) => value && normalizeSearchText(value) === normalized);
+      identifiers.sort((a, b) => Number(ownCode(b)) - Number(ownCode(a)));
+      return { results: identifiers, isFuzzy: false };
+    }
   }
   return searchProducts(catalog, query);
 }
@@ -155,16 +160,18 @@ export function queryCatalog(params: URLSearchParams, offersOnly = false): Catal
   const q = (params.get("q") || "").trim().slice(0, 120);
   const rawCategory = (params.get("cat") ?? params.get("category") ?? "").trim();
   const rawBrand = (params.get("brand") || "").trim();
+  const rawPriceMode = params.get("priceMode") ?? "gross";
   const availability = params.get("availability") || "all";
   const filters = normalizeCatalogFilters({
     category: rawCategory.slice(0, 80), brand: rawBrand.slice(0, 80),
     priceMin: params.get("min") ?? params.get("priceMin") ?? "",
     priceMax: params.get("max") ?? params.get("priceMax") ?? "",
+    priceMode: isCatalogPriceMode(rawPriceMode) ? rawPriceMode : "gross",
     availability: availability === "in-stock" || availability === "on-request" ? availability : "all",
     offersOnly: offersOnly || params.get("ofertas") === "true" || params.get("offersOnly") === "true",
   });
   const filtersValid = validateCatalogFilters(filters).valid && rawCategory.length <= 80 && rawBrand.length <= 80
-    && ["all", "in-stock", "on-request"].includes(availability);
+    && ["all", "in-stock", "on-request"].includes(availability) && isCatalogPriceMode(rawPriceMode);
   const searchResult = search(q);
   const selected = applyCatalogFilters(searchResult.results, filters);
   const sort = params.get("sort") || "relevance";
@@ -177,9 +184,9 @@ export function queryCatalog(params: URLSearchParams, offersOnly = false): Catal
   else if (safeSort === "price-asc" || safeSort === "price-desc") {
     const direction = safeSort === "price-asc" ? 1 : -1;
     selected.sort((a, b) => {
-      const aKnown = hasVerifiedPrice(a);
-      const bKnown = hasVerifiedPrice(b);
-      return Number(bKnown) - Number(aKnown) || (aKnown && bKnown ? direction * (a.precio - b.precio) : 0);
+      const aPrice = getCatalogPrice(a, filters.priceMode);
+      const bPrice = getCatalogPrice(b, filters.priceMode);
+      return Number(bPrice !== null) - Number(aPrice !== null) || (aPrice !== null && bPrice !== null ? direction * (aPrice - bPrice) : 0);
     });
   } else if (safeSort === "discount") {
     const discount = (product: Product) => hasVerifiedPrice(product) && typeof product.original === "number" && product.original > product.precio
@@ -193,7 +200,7 @@ export function queryCatalog(params: URLSearchParams, offersOnly = false): Catal
   const parsedPage = /^\d+$/.test(rawPage) ? Number(rawPage) : 1;
   const page = Math.max(1, Math.min(totalPages, Number.isSafeInteger(parsedPage) ? parsedPage : 1));
   const confirmedPrices = applyCatalogFilters(searchResult.results, { ...filters, priceMin: "", priceMax: "" })
-    .filter(hasVerifiedPrice).map((product) => product.precio);
+    .map((product) => getCatalogPrice(product, filters.priceMode)).filter((price): price is number => price !== null);
   return {
     products: selected.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE).map(publicProduct),
     total, page, pageSize: PAGE_SIZE, totalPages,
@@ -201,6 +208,7 @@ export function queryCatalog(params: URLSearchParams, offersOnly = false): Catal
     categories: facets(applyCatalogFilters(searchResult.results, { ...filters, category: "" }), "cat"),
     brands: facets(applyCatalogFilters(searchResult.results, { ...filters, brand: "" }), "brand"),
     ...(confirmedPrices.length ? { priceBounds: { min: Math.min(...confirmedPrices), max: Math.max(...confirmedPrices) } } : {}),
+    priceMode: filters.priceMode,
     suggestions: suggestions(q, applyCatalogFilters(searchResult.results, filters)),
     filtersValid,
   };

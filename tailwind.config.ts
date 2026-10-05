@@ -1,104 +1,31 @@
 import type { Config } from "tailwindcss";
 
+// Names and values are documented in DESIGN.md. Components only consume roles.
+const token = (name: string) => `rgb(var(--${name}) / <alpha-value>)`;
+const names = ["paper", "surface", "ink", "ink-2", "line", "control", "brand", "brand-press", "brand-text", "brand-tint", "on-brand", "on-ink", "ok", "warn", "muted", "wa", "wa-edge", "on-wa", "hero", "hero-ink", "hero-muted", "photo", "overlay"];
 const config: Config = {
   darkMode: "class",
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/pages/**/*.{js,ts,jsx,tsx,mdx}", "./src/components/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
+    colors: { transparent: "transparent", current: "currentColor", inherit: "inherit", ...Object.fromEntries(names.map(name => [name, token(name)])) },
+    fontSize: {
+      xs: ["12px", "16px"], sm: ["14px", "20px"], base: ["16px", "24px"], lg: ["18px", "28px"], xl: ["22px", "28px"],
+      "2xl": ["28px", "32px"], "3xl": ["40px", "44px"], "4xl": ["40px", "44px"], "5xl": ["56px", "56px"], "6xl": ["56px", "56px"],
+    },
     extend: {
-      colors: {
-        brand: {
-          red: "#D02731",
-          "red-light": "#E8454F",
-          "red-dark": "#A81F27",
-          gray: "#333333",
-          "gray-light": "#888888",
-          orange: "#f97316",
-          "orange-light": "#fdba74",
-          // Legacy aliases for compatibility
-          green: "#D02731",
-          "green-light": "#E8454F",
-          "green-dark": "#A81F27",
-        },
-        ferro: {
-          50: "#FEF2F2",
-          100: "#FEE2E2",
-          200: "#FECACA",
-          500: "#EF4444",
-          600: "#DC2626",
-          700: "#D02731",
-          800: "#A81F27",
-          900: "#7F1D1D",
-        },
-      },
       fontFamily: {
-        sans: ["var(--font-manrope)", "Manrope", "system-ui", "sans-serif"],
+        sans: ["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Arial", "sans-serif"],
+        display: ["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Arial", "sans-serif"],
+        mono: ["ui-monospace", "SFMono-Regular", "Consolas", "monospace"],
       },
-      animation: {
-        "fade-in": "fadeIn 0.5s ease-out",
-        "slide-up": "slideUp 0.5s ease-out",
-        "slide-in-right": "slideInRight 0.3s ease-out",
-        "pulse-soft": "pulseSoft 2s infinite",
-        "bounce-subtle": "bounceSubtle 2s infinite",
-        "reveal": "reveal 0.7s ease-out both",
-        "reveal-left": "revealLeft 0.7s ease-out both",
-        "reveal-right": "revealRight 0.7s ease-out both",
-        "reveal-scale": "revealScale 0.6s ease-out both",
-        "count-up": "countUp 0.4s ease-out",
-        "glow": "glow 2s ease-in-out infinite alternate",
-      },
-      keyframes: {
-        fadeIn: {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
-        },
-        slideUp: {
-          "0%": { opacity: "0", transform: "translateY(20px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        slideInRight: {
-          "0%": { opacity: "0", transform: "translateX(20px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
-        },
-        pulseSoft: {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.8" },
-        },
-        bounceSubtle: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-4px)" },
-        },
-        reveal: {
-          "0%": { opacity: "0", transform: "translateY(30px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        revealLeft: {
-          "0%": { opacity: "0", transform: "translateX(-30px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
-        },
-        revealRight: {
-          "0%": { opacity: "0", transform: "translateX(30px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
-        },
-        revealScale: {
-          "0%": { opacity: "0", transform: "scale(0.9)" },
-          "100%": { opacity: "1", transform: "scale(1)" },
-        },
-        countUp: {
-          "0%": { opacity: "0", transform: "translateY(10px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        glow: {
-          "0%": { boxShadow: "0 0 5px rgba(208,39,49,0.2)" },
-          "100%": { boxShadow: "0 0 20px rgba(208,39,49,0.4)" },
-        },
-      },
+      borderRadius: { control: "var(--radius-control)", card: "var(--radius-card)", chip: "var(--radius-chip)" },
+      maxWidth: { site: "1280px", "7xl": "1280px" },
+      boxShadow: { card: "0 2px 6px rgb(var(--overlay) / 0.06)" },
+      transitionDuration: { DEFAULT: "180ms" },
+      animation: { "count-pulse": "countPulse 180ms ease-out both" },
+      keyframes: { countPulse: { "0%, 100%": { transform: "scale(1)" }, "50%": { transform: "scale(1.12)" } } },
     },
   },
   plugins: [],
 };
-
 export default config;

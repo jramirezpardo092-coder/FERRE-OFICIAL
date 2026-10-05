@@ -22,6 +22,7 @@ export default function HomePage() {
   return (
     <>
       <HeroCarousel
+        spotlight={products.find(product => product.id === "13751" && product.img && product.stock > 0) || featured[0]}
         productCount={products.length}
         brandCount={brands.length}
         categoryCount={Object.keys(categoryCounts).length}
@@ -32,14 +33,14 @@ export default function HomePage() {
       <ScrollReveal>
         <FeaturedProducts products={featured} />
       </ScrollReveal>
-      <ScrollReveal variant="scale">
-        <InstagramSection />
-      </ScrollReveal>
       <ScrollReveal>
         <BrandCarousel brands={brands} />
       </ScrollReveal>
       <ScrollReveal variant="left">
         <Testimonials />
+      </ScrollReveal>
+      <ScrollReveal>
+        <InstagramSection />
       </ScrollReveal>
     </>
   );

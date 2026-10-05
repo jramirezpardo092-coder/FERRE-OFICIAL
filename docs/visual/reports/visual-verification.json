@@ -1,0 +1,136 @@
+{
+  "generatedAt": "2026-10-04T20:51:44.864Z",
+  "auditedCommit": "7894563142b25831d0f5fd9b2f780e0ae1d8e5d6",
+  "sourceCleanAtStart": true,
+  "localBuildId": "smSVQQn9s3m_mO-9XmAnJ",
+  "origin": "http://localhost:3010",
+  "browser": "Chrome/154.0.8037.58",
+  "methodology": {
+    "isolatedHeadlessProfile": true,
+    "freshContextPerPrimaryCase": true,
+    "cssViewports": [
+      "390x844",
+      "1440x900"
+    ],
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "cpuThrottling": "none; observed visual checks, not Lighthouse",
+    "fontPreloadGate": "report",
+    "retriesForScoreSelection": false
+  },
+  "cases": {
+    "primary": 32,
+    "additional": 12,
+    "measured": 44,
+    "passed": 44,
+    "failed": 0,
+    "executionErrors": 0
+  },
+  "checks": {
+    "sourceTokens": {
+      "passed": true,
+      "scannedFiles": 51,
+      "findings": 0
+    },
+    "axe": {
+      "violations": 0,
+      "serious": 0,
+      "critical": 0,
+      "incompleteRules": [
+        "color-contrast"
+      ],
+      "incompleteStates": 36
+    },
+    "desktopCatalogRedSurfaces": {
+      "requiredStates": 14,
+      "maximumVisible": 1,
+      "budget": 2,
+      "passed": true
+    },
+    "gridAlignment": {
+      "requiredStates": 12,
+      "comparableRowMeasurements": 96,
+      "maximumPriceDeltaPx": 1,
+      "maximumActionsDeltaPx": 1,
+      "tolerancePx": 2,
+      "passed": true
+    },
+    "hoverCtaBrand": {
+      "states": 4,
+      "passed": true
+    },
+    "touch44": {
+      "passed": true,
+      "failures": 0,
+      "viewportEdgeClipping": "informative; ancestor clipping is included in available target dimensions"
+    },
+    "buttonText14": {
+      "passed": true,
+      "failures": 0
+    },
+    "firstKeyboardFocus": {
+      "measured": 32,
+      "passed": true,
+      "minimumContrast": 15.066368507314227,
+      "requiredContrast": 3,
+      "scope": "one focus probe per primary case, not a complete keyboard traversal"
+    },
+    "observedCls": {
+      "maximum": 0.009419938351980454,
+      "maximumExclusive": 0.1,
+      "passed": true,
+      "scope": "initial navigation and measured state; session-window calculation, no Lighthouse throttle"
+    },
+    "whatsappFill": {
+      "maximumVisible": 1,
+      "preparedQuotationStates": 4,
+      "passed": true,
+      "actionInvoked": false
+    },
+    "archivoPreload": {
+      "requiredLocally": false,
+      "preloadValidated": false,
+      "realFamilyLoadedInAllStates": true,
+      "reason": "Windows Next 14 build emitted no font preload; kept as an explicit failed report. Linux CI requires loaded Archivo plus exactly its single font preload."
+    },
+    "targetOcclusion": {
+      "required": false,
+      "warningStates": [
+        "catalogo-390-light",
+        "catalogo-390-dark",
+        "categoria-1440-light-added",
+        "categoria-1440-dark-added",
+        "ficha-foto-390-light",
+        "ficha-foto-390-dark",
+        "ficha-sin-foto-390-light",
+        "ficha-sin-foto-390-dark",
+        "cotizacion-390-light",
+        "cotizacion-390-dark",
+        "cotizacion-1440-light",
+        "cotizacion-1440-dark"
+      ],
+      "scope": "current viewport only; does not test scroll-to-reveal or final-document reachability"
+    }
+  },
+  "limitations": [
+    "axe incomplete contrast results need manual review; zero violations does not mean complete accessibility certification.",
+    "Local font preload did not pass and must be required in Linux CI.",
+    "This report does not assert Lighthouse performance or validate every keyboard focus target.",
+    "Fixed-bar reachability at the document end is reviewed separately by the UI reviewer."
+  ],
+  "evidence": {
+    "directory": "outputs/ferrepardo-visual-20261004/verification-release (outside repository)",
+    "artifacts": [
+      "summary.json",
+      "index.html",
+      "per-state DOM JSON, axe JSON and viewport PNG"
+    ],
+    "earlierRunsRetained": [
+      "verification-v2",
+      "verification-final",
+      "verification-links"
+    ]
+  }
+}

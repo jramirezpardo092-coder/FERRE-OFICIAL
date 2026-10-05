@@ -138,3 +138,13 @@ test("does not mutate source products or approved enrichment records", () => {
   assert.equal(result.gallery[0].alt, "Frente");
   assert.equal(result.specs[0].value, "Acero");
 });
+
+test("non-photographic official assets retain only recognized media classifications", () => {
+  for (const kind of ["manufacturer-render", "supplier-render", "technical-diagram"]) {
+    const result = enrichProduct(product, { [product.id]: { gallery: [{ src: "/products/example.webp", alt: "Imagen técnica exacta", verified: true, kind }] } });
+    assert.equal(result.gallery[0].kind, kind);
+    assert.equal(result.precio, product.precio);
+  }
+  const result = enrichProduct(product, { [product.id]: { gallery: [{ src: "/products/example.webp", verified: true, kind: "unverified-artwork" }] } });
+  assert.equal(result.gallery[0].kind, undefined);
+});

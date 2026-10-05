@@ -1,0 +1,59 @@
+{
+  "methodology": "Fresh Chrome profile per route/run; default Lighthouse simulated mobile throttling. All requested runs must pass. No retries, discarded runs, CPU recalibration or best-result selection.",
+  "initialRun": {
+    "commit": "7894563142b25831d0f5fd9b2f780e0ae1d8e5d6",
+    "url": "https://github.com/jramirezpardo092-coder/FERRE-OFICIAL/actions/runs/37233579385",
+    "results": [
+      {
+        "route": "catalogo",
+        "performance": 95,
+        "cls": 0.01880200852328479,
+        "lcpMs": 2855.22,
+        "tbtMs": 3,
+        "passed": true,
+        "runWarnings": []
+      },
+      {
+        "route": "ficha-foto",
+        "performance": 94,
+        "cls": 0.00008557671712418884,
+        "lcpMs": 3083.5444000000007,
+        "tbtMs": 0,
+        "passed": false,
+        "runWarnings": []
+      }
+    ],
+    "visual": {
+      "states": 44,
+      "passed": 44,
+      "axeViolations": 0,
+      "errors": 0,
+      "fontPreloadGate": "required"
+    }
+  },
+  "reasonForChange": "Ficha 94: se limita Archivo a los ejes usados y se ajusta sizes al área real de la fotografía; mismos glifos, producto, calidad y prioridad.",
+  "afterFontOptimization": {
+    "commit": "236d11d2f5bdfad6a87ff2cf9a692361c5b39360",
+    "url": "https://github.com/jramirezpardo092-coder/FERRE-OFICIAL/actions/runs/37233918680",
+    "results": [
+      {
+        "route": "catalogo",
+        "score": 98,
+        "cls": 0.01880200852328479,
+        "lcpMs": 2225.7075,
+        "tbtMs": 91.5,
+        "warnings": [],
+        "passed": true
+      },
+      {
+        "route": "ficha-foto",
+        "score": 95,
+        "cls": 0.00008557671712418884,
+        "lcpMs": 2792.8545999999997,
+        "tbtMs": 25.536350000000084,
+        "warnings": [],
+        "passed": true
+      }
+    ]
+  }
+}

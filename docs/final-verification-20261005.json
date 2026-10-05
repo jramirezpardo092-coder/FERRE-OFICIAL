@@ -1,0 +1,35 @@
+{
+  "framework": "Next16.3.8",
+  "react": "19.2.8",
+  "catalogProducts": 1319,
+  "newProductAssets": 81,
+  "productsWithApprovedMedia": 273,
+  "productsWithoutApprovedMedia": 1046,
+  "mediaCountsIncludeExplicitlyLabelledIllustrationsAndDetails": true,
+  "lint": {
+    "exitCode": 0,
+    "errors": 0,
+    "warnings": 17,
+    "warningScope": "Inherited state-sync/ref patterns surfaced by the new React Compiler lint rules"
+  },
+  "tests": {
+    "nodePassed": 241,
+    "nodeFailed": 0,
+    "pythonPassed": 9,
+    "pythonFailed": 0
+  },
+  "typecheck": "pass",
+  "build": "pass",
+  "http": {
+    "passed": true,
+    "checks": 149,
+    "failed": 0,
+    "requests": 16,
+    "isrRequired": false
+  },
+  "productionDependencyAudit": {
+    "vulnerabilities": 0
+  },
+  "browserAndPerformance": "Pending final independent desktop verification and CI for the final remote commit. Earlier successful measurements are not substituted.",
+  "upstreamCIIncident": "https://www.githubstatus.com/incidents/3q1yb5m7ltvb"
+}

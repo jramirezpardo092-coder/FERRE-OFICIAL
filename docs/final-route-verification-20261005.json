@@ -1,0 +1,52 @@
+{
+  "framework": "Next16.3.8",
+  "prerenderedEntries": 1338,
+  "expectedProductRoutes": 1319,
+  "actualProductRoutes": 1319,
+  "missingProductRoutes": [],
+  "unexpectedProductRoutes": [],
+  "otherPrerenderedRoutes": [
+    "/",
+    "/_global-error",
+    "/_not-found",
+    "/blog",
+    "/catalogo",
+    "/catalogo/adhesivos-y-sellantes",
+    "/catalogo/cerrajeria",
+    "/catalogo/electrico",
+    "/catalogo/ferreteria-general",
+    "/catalogo/fontaneria",
+    "/catalogo/herrajes-para-muebles",
+    "/catalogo/herramientas",
+    "/catalogo/seguridad-industrial",
+    "/catalogo/tornilleria-y-fijacion",
+    "/contacto",
+    "/marcas",
+    "/ofertas",
+    "/robots.txt",
+    "/sitemap.xml"
+  ],
+  "appRoutePatterns": [
+    "/_not-found/page",
+    "/_global-error/page",
+    "/robots.txt/route",
+    "/sitemap.xml/route",
+    "/api/catalogo/route",
+    "/api/pedido/productos/route",
+    "/page",
+    "/catalogo-interno/page",
+    "/catalogo-interno/[category]/page",
+    "/catalogo/[category]/page",
+    "/catalogo/page",
+    "/blog/page",
+    "/marcas/page",
+    "/ofertas/page",
+    "/contacto/page",
+    "/producto/[slug]/page"
+  ],
+  "catalogRevalidationSeconds": {
+    "/catalogo": 300,
+    "/catalogo/cerrajeria": 300
+  },
+  "explanation": "Framework generation counters are not public-route counts. Every existing canonical product URL is present; dynamic catalog/API routes remain in the app manifest."
+}

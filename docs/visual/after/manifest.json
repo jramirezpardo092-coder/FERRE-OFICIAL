@@ -1,0 +1,329 @@
+{
+  "baseline": "6909394e0f59a585caeaece768ffec4eee6f83d8",
+  "screenshots": [
+    {
+      "view": "inicio",
+      "theme": "claro",
+      "width": 390,
+      "height": 844,
+      "viewportHeight": 844,
+      "route": "/",
+      "file": "after/inicio-390-claro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "catalogo",
+      "theme": "claro",
+      "width": 390,
+      "height": 844,
+      "viewportHeight": 844,
+      "route": "/catalogo",
+      "file": "after/catalogo-390-claro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "categoria",
+      "theme": "claro",
+      "width": 390,
+      "height": 844,
+      "viewportHeight": 844,
+      "route": "/catalogo/cerrajeria",
+      "file": "after/categoria-390-claro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "ficha-foto",
+      "theme": "claro",
+      "width": 390,
+      "height": 844,
+      "viewportHeight": 844,
+      "route": "/producto/0435-bisagra-parche-mob-mini-par",
+      "file": "after/ficha-foto-390-claro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "ficha-sin-foto",
+      "theme": "claro",
+      "width": 390,
+      "height": 844,
+      "viewportHeight": 844,
+      "route": "/producto/00050-disco-dw-pulir-metal-1-4x4-1-2-t27",
+      "file": "after/ficha-sin-foto-390-claro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "sin-resultados",
+      "theme": "claro",
+      "width": 390,
+      "height": 3408,
+      "viewportHeight": 844,
+      "route": "/catalogo?q=zzzz-inexistente-92846",
+      "file": "after/sin-resultados-390-claro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "inicio",
+      "theme": "claro",
+      "width": 1440,
+      "height": 900,
+      "viewportHeight": 900,
+      "route": "/",
+      "file": "after/inicio-1440-claro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "catalogo",
+      "theme": "claro",
+      "width": 1440,
+      "height": 900,
+      "viewportHeight": 900,
+      "route": "/catalogo",
+      "file": "after/catalogo-1440-claro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "categoria",
+      "theme": "claro",
+      "width": 1440,
+      "height": 900,
+      "viewportHeight": 900,
+      "route": "/catalogo/cerrajeria",
+      "file": "after/categoria-1440-claro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "ficha-foto",
+      "theme": "claro",
+      "width": 1440,
+      "height": 900,
+      "viewportHeight": 900,
+      "route": "/producto/0435-bisagra-parche-mob-mini-par",
+      "file": "after/ficha-foto-1440-claro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "ficha-sin-foto",
+      "theme": "claro",
+      "width": 1440,
+      "height": 900,
+      "viewportHeight": 900,
+      "route": "/producto/00050-disco-dw-pulir-metal-1-4x4-1-2-t27",
+      "file": "after/ficha-sin-foto-1440-claro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "sin-resultados",
+      "theme": "claro",
+      "width": 1440,
+      "height": 2030,
+      "viewportHeight": 900,
+      "route": "/catalogo?q=zzzz-inexistente-92846",
+      "file": "after/sin-resultados-1440-claro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "inicio",
+      "theme": "oscuro",
+      "width": 390,
+      "height": 844,
+      "viewportHeight": 844,
+      "route": "/",
+      "file": "after/inicio-390-oscuro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "catalogo",
+      "theme": "oscuro",
+      "width": 390,
+      "height": 844,
+      "viewportHeight": 844,
+      "route": "/catalogo",
+      "file": "after/catalogo-390-oscuro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "categoria",
+      "theme": "oscuro",
+      "width": 390,
+      "height": 844,
+      "viewportHeight": 844,
+      "route": "/catalogo/cerrajeria",
+      "file": "after/categoria-390-oscuro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "ficha-foto",
+      "theme": "oscuro",
+      "width": 390,
+      "height": 844,
+      "viewportHeight": 844,
+      "route": "/producto/0435-bisagra-parche-mob-mini-par",
+      "file": "after/ficha-foto-390-oscuro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "ficha-sin-foto",
+      "theme": "oscuro",
+      "width": 390,
+      "height": 844,
+      "viewportHeight": 844,
+      "route": "/producto/00050-disco-dw-pulir-metal-1-4x4-1-2-t27",
+      "file": "after/ficha-sin-foto-390-oscuro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "sin-resultados",
+      "theme": "oscuro",
+      "width": 390,
+      "height": 3408,
+      "viewportHeight": 844,
+      "route": "/catalogo?q=zzzz-inexistente-92846",
+      "file": "after/sin-resultados-390-oscuro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "inicio",
+      "theme": "oscuro",
+      "width": 1440,
+      "height": 900,
+      "viewportHeight": 900,
+      "route": "/",
+      "file": "after/inicio-1440-oscuro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "catalogo",
+      "theme": "oscuro",
+      "width": 1440,
+      "height": 900,
+      "viewportHeight": 900,
+      "route": "/catalogo",
+      "file": "after/catalogo-1440-oscuro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "categoria",
+      "theme": "oscuro",
+      "width": 1440,
+      "height": 900,
+      "viewportHeight": 900,
+      "route": "/catalogo/cerrajeria",
+      "file": "after/categoria-1440-oscuro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "ficha-foto",
+      "theme": "oscuro",
+      "width": 1440,
+      "height": 900,
+      "viewportHeight": 900,
+      "route": "/producto/0435-bisagra-parche-mob-mini-par",
+      "file": "after/ficha-foto-1440-oscuro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "ficha-sin-foto",
+      "theme": "oscuro",
+      "width": 1440,
+      "height": 900,
+      "viewportHeight": 900,
+      "route": "/producto/00050-disco-dw-pulir-metal-1-4x4-1-2-t27",
+      "file": "after/ficha-sin-foto-1440-oscuro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "sin-resultados",
+      "theme": "oscuro",
+      "width": 1440,
+      "height": 2030,
+      "viewportHeight": 900,
+      "route": "/catalogo?q=zzzz-inexistente-92846",
+      "file": "after/sin-resultados-1440-oscuro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "cotizacion",
+      "theme": "oscuro",
+      "width": 1440,
+      "height": 900,
+      "viewportHeight": 900,
+      "route": "/producto/0435-bisagra-parche-mob-mini-par",
+      "file": "after/cotizacion-1440-oscuro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "cotizacion",
+      "theme": "oscuro",
+      "width": 390,
+      "height": 844,
+      "viewportHeight": 844,
+      "route": "/producto/0435-bisagra-parche-mob-mini-par",
+      "file": "after/cotizacion-390-oscuro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "cotizacion",
+      "theme": "claro",
+      "width": 390,
+      "height": 844,
+      "viewportHeight": 844,
+      "route": "/producto/0435-bisagra-parche-mob-mini-par",
+      "file": "after/cotizacion-390-claro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "cotizacion",
+      "theme": "claro",
+      "width": 1440,
+      "height": 900,
+      "viewportHeight": 900,
+      "route": "/producto/0435-bisagra-parche-mob-mini-par",
+      "file": "after/cotizacion-1440-claro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf"
+    },
+    {
+      "view": "footer",
+      "theme": "claro",
+      "width": 390,
+      "height": 1942,
+      "viewportHeight": 844,
+      "route": "/",
+      "file": "after/footer-390-claro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf",
+      "contextBeforeFooter": 96
+    },
+    {
+      "view": "footer",
+      "theme": "claro",
+      "width": 1440,
+      "height": 690,
+      "viewportHeight": 900,
+      "route": "/",
+      "file": "after/footer-1440-claro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf",
+      "contextBeforeFooter": 0
+    },
+    {
+      "view": "footer",
+      "theme": "oscuro",
+      "width": 390,
+      "height": 1942,
+      "viewportHeight": 844,
+      "route": "/",
+      "file": "after/footer-390-oscuro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf",
+      "contextBeforeFooter": 96
+    },
+    {
+      "view": "footer",
+      "theme": "oscuro",
+      "width": 1440,
+      "height": 690,
+      "viewportHeight": 900,
+      "route": "/",
+      "file": "after/footer-1440-oscuro.jpg",
+      "buildId": "bSN3-xint9S164S11qkZf",
+      "contextBeforeFooter": 0
+    }
+  ]
+}

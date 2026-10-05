@@ -51,19 +51,19 @@ const GUIDES = [
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
+    <div className="min-h-screen bg-surface ">
       <Breadcrumbs items={[{ label: "Guías de compra", href: "/blog" }]} />
 
-      <section className="max-w-7xl mx-auto px-4 py-10 md:py-16">
-        <div className="max-w-3xl mb-10 md:mb-14">
-          <span className="inline-flex items-center gap-2 text-xs font-bold text-brand-red dark:text-red-400 uppercase tracking-[0.2em] mb-4">
+      <section className="site-container py-10 md:py-16">
+        <div className="max-w-3xl mb-10 md:mb-8">
+          <span className="inline-flex items-center gap-2 text-xs font-bold text-brand-text  uppercase tracking-[0.2em] mb-4">
             <span className="w-8 h-0.5 bg-current rounded-full" aria-hidden="true" />
             Compra con confianza
           </span>
-          <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-5 text-balance">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-ink  mb-5 text-balance">
             Antes de comprar, revisa estos detalles
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+          <p className="text-lg text-ink-2  leading-relaxed">
             Prepara tus medidas, fotos y referencias. Estas guías te ayudan a elegir
             productos compatibles y a pedir una cotización más completa.
           </p>
@@ -73,26 +73,26 @@ export default function BlogPage() {
           {GUIDES.map((guide) => (
             <article
               key={guide.category}
-              className="flex flex-col rounded-3xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 md:p-8"
+              className="flex flex-col rounded-card border border-line  bg-surface  p-6 md:p-8"
             >
               <div className="flex items-center justify-between gap-3 mb-6">
-                <span className="text-xs font-bold text-brand-red dark:text-red-400 bg-red-50 dark:bg-red-950/40 px-3 py-1.5 rounded-full">
+                <span className="text-xs font-bold text-brand-text  bg-brand-tint  px-3 py-1.5 rounded-full">
                   {guide.category}
                 </span>
-                <span className="text-3xl font-black text-gray-200 dark:text-gray-700" aria-hidden="true">
+                <span className="text-3xl font-black text-ink-2 " aria-hidden="true">
                   {guide.number}
                 </span>
               </div>
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+              <h2 className="text-xl font-bold text-ink  mb-3">
                 {guide.title}
               </h2>
-              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+              <p className="text-sm text-ink-2  leading-relaxed mb-6">
                 {guide.description}
               </p>
               <ul className="space-y-4 mb-8">
                 {guide.checklist.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                    <svg className="w-5 h-5 shrink-0 text-brand-red dark:text-red-400 mt-0.5" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <li key={item} className="flex items-start gap-3 text-sm text-ink-2  leading-relaxed">
+                    <svg className="w-5 h-5 shrink-0 text-brand-text  mt-0.5" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12l4 4L19 6" />
                     </svg>
                     <span>{item}</span>
@@ -101,7 +101,7 @@ export default function BlogPage() {
               </ul>
               <Link
                 href={getCategoryPath(guide.category)}
-                className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-brand-red dark:text-red-400 hover:underline underline-offset-4"
+                className="mt-auto inline-flex min-h-11 items-center gap-2 text-sm font-bold text-brand-text  hover:underline underline-offset-4"
               >
                 Ver {guide.category.toLowerCase()}
                 <span aria-hidden="true">→</span>
@@ -110,10 +110,10 @@ export default function BlogPage() {
           ))}
         </div>
 
-        <div className="mt-10 md:mt-14 rounded-3xl bg-gradient-to-r from-brand-red-dark to-brand-red px-6 py-8 md:p-10 text-white flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="mt-10 md:mt-14 rounded-card bg-hero px-6 py-8 md:p-10 text-hero-ink flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="max-w-xl">
             <h2 className="text-2xl font-extrabold mb-3">¿Tienes dudas sobre una referencia?</h2>
-            <p className="text-red-100 leading-relaxed">
+            <p className="text-hero-muted leading-relaxed">
               Comparte la foto del producto, las medidas y la cantidad que necesitas.
               Un asesor te ayudará a revisar las opciones disponibles.
             </p>
@@ -122,7 +122,7 @@ export default function BlogPage() {
             href={SITE.social.whatsapp}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex justify-center items-center gap-2 bg-white text-brand-red font-bold px-6 py-3.5 rounded-xl hover:bg-red-50 transition-colors shrink-0"
+            className="btn-wa shrink-0 focus-visible:outline-hero-ink"
           >
             Consultar con un asesor
             <span aria-hidden="true">↗</span>

@@ -20,10 +20,8 @@ interface Props {
   active?: boolean;
   showGalleryControls?: boolean;
   priority?: boolean;
-  /** Miniatura de 72 px para la lista móvil. */
-  compact?: boolean;
-  /** Por defecto sigue compact; false permite la grilla en escritorio. */
-  compactDesktop?: boolean;
+  /** La tarjeta mantiene su marco cuadrado; la lista usa una miniatura de 88 px. */
+  cardLayout?: "responsive" | "grid" | "list";
 }
 
 const CATEGORY_ICON_PATHS: Record<string, string> = {
@@ -38,21 +36,20 @@ const CATEGORY_ICON_PATHS: Record<string, string> = {
 };
 
 function CategoryIcon({ category }: { category: string }) {
-  return <svg className="h-8 w-8 shrink-0" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  return <svg className="h-10 w-10 shrink-0" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={CATEGORY_ICON_PATHS[category] || "M3 7h18v14H3zM8 7V3h8v4M3 12h18M10 10h4v4h-4z"} />
   </svg>;
 }
 
 export default function ProductMedia({
   product,
-  sizes = "(max-width: 640px) 72px, (max-width: 1024px) 33vw, 280px",
+  sizes = "(max-width: 640px) 88px, (max-width: 1024px) 50vw, 280px",
   className,
   imageClassName,
   active = false,
   showGalleryControls = false,
   priority = false,
-  compact = false,
-  compactDesktop = compact,
+  cardLayout,
 }: Props) {
   const [failedSources, setFailedSources] = useState<string[]>([]);
   const [secondaryRequested, setSecondaryRequested] = useState(false);
@@ -95,13 +92,11 @@ export default function ProductMedia({
 
   const failImage = (src: string) => setFailedSources((failed) => failed.includes(src) ? failed : [...failed, src]);
   const showSecondary = active && secondary && loadedSecondary === secondary.src;
-  const imageSizes = compact && compactDesktop ? "72px" : sizes;
-  const mediaPadding = compact ? compactDesktop ? "p-1.5" : "p-1.5 sm:p-5" : "p-5";
+  const imageSizes = cardLayout === "list" ? "88px" : sizes;
 
   return (
-    <div className={cn("overflow-hidden bg-gray-50 dark:bg-gray-950", compact && "w-[72px] shrink-0", compact && !compactDesktop && "sm:w-full", className)}>
-      {/* Sin una foto verificada, el icono no reserva un cuadrado vacío de toda la tarjeta. */}
-      <div className={cn("relative", primary ? "aspect-square" : "h-[72px] sm:h-24", !primary && compactDesktop && "sm:h-[72px]")}>
+    <div className={cn("product-media overflow-hidden", primary ? "bg-photo" : "bg-paper", cardLayout && `product-media--${cardLayout}`, className)}>
+      <div className="product-media-frame relative aspect-square">
       {primary && selected ? showGalleryControls ? (
         // Only the selected photo mounts: choosing a later photo never downloads the whole gallery.
         <Image
@@ -114,7 +109,7 @@ export default function ProductMedia({
           sizes={imageSizes}
           priority={priority && selectedIndex === 0}
           loading={priority && selectedIndex === 0 ? undefined : "lazy"}
-          className={cn("object-contain", mediaPadding, imageClassName)}
+          className={cn("product-media-photo object-contain", imageClassName)}
           onError={() => failImage(selected.src)}
         />
       ) : (
@@ -128,7 +123,7 @@ export default function ProductMedia({
             sizes={imageSizes}
             priority={priority}
             loading={priority ? undefined : "lazy"}
-            className={cn("object-contain transition-opacity duration-200 motion-reduce:transition-none", mediaPadding, showSecondary ? "opacity-0" : "opacity-100", imageClassName)}
+            className={cn("product-media-photo object-contain transition-opacity duration-200 motion-reduce:transition-none", showSecondary ? "opacity-0" : "opacity-100", imageClassName)}
             onError={() => failImage(primary.src)}
           />
           {secondaryRequested && secondary && (
@@ -141,22 +136,24 @@ export default function ProductMedia({
               fill
               sizes={imageSizes}
               loading="lazy"
-              className={cn("object-contain transition-opacity duration-200 motion-reduce:transition-none", mediaPadding, showSecondary ? "opacity-100" : "opacity-0", imageClassName)}
+              className={cn("product-media-photo object-contain transition-opacity duration-200 motion-reduce:transition-none", showSecondary ? "opacity-100" : "opacity-0", imageClassName)}
               onLoad={() => setLoadedSecondary(secondary.src)}
               onError={() => failImage(secondary.src)}
             />
           )}
         </>
       ) : (
-        <div role="img" aria-label={`${product.nombre}: sin foto disponible; categoría ${product.cat}`} className="absolute inset-0 flex flex-col items-center justify-center gap-1 px-1 text-center text-gray-600 dark:text-gray-300">
+        <div role="img" aria-label={`${product.nombre}: sin foto disponible; categoría ${product.cat}`} className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-1 text-center text-ink-2">
           <CategoryIcon category={product.cat} />
-          <span aria-hidden="true" className={cn("text-xs", compact && (compactDesktop ? "sr-only" : "sr-only sm:not-sr-only"))}>Sin foto disponible</span>
+          <span aria-hidden="true" className="text-xs leading-4">Foto pendiente</span>
+          <span className="sr-only">Sin foto disponible</span>
         </div>
       )}
       </div>
+      {selected?.kind && <p className="border-t border-line bg-paper px-2 py-1 text-center text-xs leading-4 text-ink-2">{selected.kind === "technical-diagram" ? "Ficha técnica" : selected.kind === "profile-detail" ? "Detalle del perfil; no muestra el largo completo" : selected.kind === "component-detail" ? "Vista de un componente" : selected.kind === "pair-detail" ? "Vista de una pieza del par" : selected.kind === "supplier-render" ? "Ilustración del distribuidor" : "Ilustración del fabricante"}</p>}
       {showGalleryControls && candidates.length > 0 && (
-        <div className="border-t border-gray-200 bg-white px-3 py-3 dark:border-gray-800 dark:bg-gray-900">
-          {candidates.length > 1 && <div role="group" aria-label={`Fotos de ${product.nombre}`} className="flex flex-wrap justify-center gap-2">
+        <div className="border-t border-line bg-surface px-3 py-3">
+          {candidates.length > 1 && <div role="group" aria-label={`Imágenes de ${product.nombre}`} className="flex flex-wrap justify-center gap-2">
             {candidates.map((image, index) => {
               const unavailable = failedSources.includes(image.src);
               const isSelected = selected?.src === image.src;
@@ -165,27 +162,31 @@ export default function ProductMedia({
                 type="button"
                 disabled={unavailable}
                 onClick={() => setSelectedSource(image.src)}
-                aria-label={unavailable ? `Foto ${index + 1} no disponible` : `Ver foto ${index + 1} de ${product.nombre}`}
+                aria-label={unavailable ? `Imagen ${index + 1} no disponible` : `Ver ${image.kind ? "imagen" : "foto"} ${index + 1} de ${product.nombre}`}
                 aria-controls={selected ? imageId : undefined}
                 aria-pressed={isSelected}
-                className={cn("min-h-11 min-w-11 rounded-lg border px-3 py-2 text-xs font-semibold shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red disabled:cursor-default disabled:opacity-40", isSelected ? "border-brand-red bg-brand-red text-white" : "border-gray-200 bg-white text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200")}
-              >Foto {index + 1}</button>;
+                className={cn("product-gallery-button flex min-h-11 min-w-11 flex-col items-center gap-1 rounded-control border p-1.5 font-mono text-xs leading-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink disabled:cursor-default disabled:opacity-40", isSelected ? "border-ink bg-ink text-on-ink" : "border-control bg-surface text-ink-2")}
+              >
+                {!unavailable && <Image src={image.src} alt="" aria-hidden="true" width={44} height={44} sizes="44px" quality={75} loading="lazy" className="h-11 w-11 rounded-control bg-photo object-contain p-1" onError={() => failImage(image.src)} />}
+                {unavailable && <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center">—</span>}
+                {image.kind ? "Imagen" : "Foto"} {index + 1}
+              </button>;
             })}
           </div>}
           {selected && <a
             href={selected.src}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Ampliar imagen: foto ${selectedIndex + 1} de ${product.nombre} (se abre en otra pestaña)`}
-            className={cn("mx-auto flex min-h-11 w-fit items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red dark:text-gray-200 dark:hover:bg-gray-800", candidates.length > 1 && "mt-2")}
+            aria-label={`Ampliar imagen: ${selected.kind ? "imagen" : "foto"} ${selectedIndex + 1} de ${product.nombre} (se abre en otra pestaña)`}
+            className={cn("mx-auto flex min-h-11 w-fit items-center justify-center gap-2 rounded-control px-3 py-2 text-sm font-semibold text-ink-2 hover:bg-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink", candidates.length > 1 && "mt-2")}
           >
             <svg className="h-4 w-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M21 21l-5.2-5.2M10 7v6m-3-3h6M17 10a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             Ampliar imagen
           </a>}
-          <p role="status" aria-live="polite" className="sr-only">{selected ? `Foto ${selectedIndex + 1} de ${candidates.length}: ${selected.alt?.trim() || product.nombre}` : "Sin fotos disponibles."}</p>
-          {failedSources.length > 0 && <p className="mt-2 text-center text-xs text-gray-600 dark:text-gray-300">Una foto no está disponible.{selected ? " Mostramos otra imagen." : ""}</p>}
+          <p role="status" aria-live="polite" className="sr-only">{selected ? `Imagen ${selectedIndex + 1} de ${candidates.length}: ${selected.alt?.trim() || product.nombre}` : "Sin fotos disponibles."}</p>
+          {failedSources.length > 0 && <p className="mt-2 text-center text-xs text-ink-2">Una imagen no está disponible.{selected ? " Mostramos otra imagen." : ""}</p>}
         </div>
       )}
     </div>

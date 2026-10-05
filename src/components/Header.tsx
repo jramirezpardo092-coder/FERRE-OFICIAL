@@ -7,21 +7,8 @@ import { usePathname } from "next/navigation";
 import { SITE, NAV_LINKS, CATEGORIES } from "@/lib/constants";
 import { getCart, subscribeCart } from "@/lib/cart-store";
 import { cn } from "@/lib/utils";
-import { useTheme } from "./ThemeProvider";
 import QuoteToast from "./QuoteToast";
 import { getCategoryPath } from "@/lib/catalog/routes";
-
-const SunIcon = () => (
-  <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-  </svg>
-);
-
-const MoonIcon = () => (
-  <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-  </svg>
-);
 
 /* ── Icons ─── */
 const MenuIcon = () => (
@@ -40,26 +27,6 @@ const ChevronDown = () => (
   <svg className="w-3.5 h-3.5 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
   </svg>
-);
-
-const InstagramIcon = () => (
-  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-);
-
-const FacebookIcon = () => (
-  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-);
-
-const PhoneIcon = () => (
-  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-);
-
-const LocationIcon = () => (
-  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-);
-
-const ClockIcon = () => (
-  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
 );
 
 const CartIcon = () => (
@@ -151,7 +118,6 @@ export default function Header() {
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
   const categoryToggleRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
-  const { theme, toggle: toggleTheme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -203,279 +169,42 @@ export default function Header() {
     return () => document.removeEventListener("click", handleClick);
   }, []);
 
-  return (
-    <>
-      {/* Top strip - Sleek info bar */}
-      <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white text-xs py-2 hidden lg:block">
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
-          <span className="flex items-center gap-2 font-medium text-gray-300">
-            <LocationIcon />
-            {SITE.address}
-          </span>
-          <div className="flex items-center gap-6">
-            <span className="flex items-center gap-2 font-medium text-gray-300">
-              <PhoneIcon />
-              {SITE.phone1Display}
-            </span>
-            <span className="flex items-center gap-2 font-medium text-gray-300">
-              <PhoneIcon />
-              {SITE.phone2Display}
-            </span>
-            <span className="flex items-center gap-2 text-gray-400 font-medium">
-              <ClockIcon />
-              Lun-Vie 8:15am-4:55pm · Sab 8:15am-2:15pm
-            </span>
-          </div>
+  const navClass = "flex min-h-11 items-center rounded-control px-3 py-2 text-sm font-semibold text-ink-2 transition-colors hover:bg-paper hover:text-ink";
+  return <>
+    <header className="site-header">
+      <div className="site-container flex h-16 items-center justify-between gap-3 lg:h-20">
+        <Link href="/" className="brand-logo-plate min-h-11 items-center px-1" aria-label="Ferretería Pardo SAS — Inicio">
+          <Image src="/logo-ferreteria-pardo.svg" alt="Ferretería Pardo SAS" width={140} height={40} sizes="(min-width: 1024px) 140px, 112px" className="h-8 w-28 lg:h-10 lg:w-[140px]" priority />
+        </Link>
+        <nav aria-label="Navegación principal" className="hidden items-center lg:flex">
+          {NAV_LINKS.map(link => link.hasDropdown ? <div key={link.label} className="relative" ref={dropdownRef}>
+            <button type="button" ref={categoryToggleRef} onClick={() => setCatOpen(!catOpen)} aria-expanded={catOpen} aria-controls="desktop-categories" className={navClass}>{link.label}<ChevronDown /></button>
+            {catOpen && <div id="desktop-categories" className="absolute left-1/2 top-full z-50 mt-2 grid w-[360px] -translate-x-1/2 grid-cols-2 gap-1 rounded-card border border-line bg-surface p-3 shadow-card">
+              {CATEGORIES.map(cat => {const Icon=categoryIconMap[cat.name]; return <Link key={cat.slug} href={getCategoryPath(cat.name)} onClick={() => setCatOpen(false)} className="flex min-h-11 items-center gap-2 rounded-control p-2 text-sm text-ink transition-colors hover:bg-paper">{Icon && <span className="shrink-0 text-ink-2"><Icon /></span>}{cat.name}</Link>;})}
+            </div>}
+          </div> : <Link key={link.label} href={link.href} aria-current={pathname===link.href ? "page" : undefined} className={cn(navClass,pathname===link.href && "bg-paper text-ink underline decoration-brand decoration-2 underline-offset-8")}>{link.label}</Link>)}
+        </nav>
+        <div className="flex shrink-0 items-center gap-2">
+          {(pathname === "/catalogo" || pathname.startsWith("/catalogo/")) && <span id="catalog-assist-slot" className="inline-flex h-11 w-11 shrink-0 sm:hidden" />}
+          <a href={SITE.social.whatsapp} target="_blank" rel="noreferrer" className="btn-wa hidden whitespace-nowrap px-3 xl:inline-flex"><WhatsAppMini />Hablar con asesor</a>
+          <button type="button" className="relative flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-chip border border-control bg-surface px-3 text-sm font-semibold text-ink transition-colors hover:bg-paper" data-quote-trigger
+            onClick={() => {setMobileOpen(false); window.dispatchEvent(new CustomEvent("toggle-cart"));}}>
+            <CartIcon /><span className="sr-only sm:not-sr-only">Cotización</span>
+            {cartCount > 0 && <span key={quotePulse} className={cn("flex h-5 min-w-5 items-center justify-center rounded-chip bg-brand px-1 font-mono text-xs text-on-brand", quotePulse>0 && "animate-count-pulse")}><span className="sr-only">, </span>{cartCount}<span className="sr-only"> {cartCount === 1 ? "referencia" : "referencias"}</span></span>}
+          </button>
+          <button type="button" ref={mobileToggleRef} className="flex h-11 w-11 items-center justify-center rounded-control text-ink transition-colors hover:bg-paper lg:hidden" onClick={() => setMobileOpen(!mobileOpen)} aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"} aria-expanded={mobileOpen} aria-controls="mobile-navigation">{mobileOpen ? <CloseIcon /> : <MenuIcon />}</button>
         </div>
       </div>
-
-      {/* Main Header */}
-      <header
-        className={cn(
-          "sticky top-0 z-50 bg-white dark:bg-gray-900 transition-all duration-300 border-b",
-          scrolled ? "backdrop-blur-2xl bg-white/95 dark:bg-gray-900/95 shadow-lg shadow-black/5 border-gray-100 dark:border-gray-800" : "border-transparent"
-        )}
-      >
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between h-16 lg:h-[72px]">
-            {/* Logo - Premium styling */}
-            <Link href="/" className="flex min-h-11 items-center gap-3 shrink-0">
-              <Image
-                src="/logo-ferreteria-pardo.svg"
-                alt="Ferretería Pardo SAS"
-                width={126}
-                height={36}
-                sizes="126px"
-                className="h-9 w-[126px] bg-white"
-                priority
-              />
-              <div className="hidden sm:block lg:hidden">
-                <div className="font-black text-brand-red dark:text-red-400 leading-tight text-lg">Ferretería Pardo</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400 font-semibold">Desde 1966 · Bogotá</div>
-              </div>
-            </Link>
-
-            {/* Desktop Nav - Premium styling */}
-            <nav aria-label="Navegación principal" className="hidden lg:flex items-center gap-2">
-              {NAV_LINKS.map((link) =>
-                link.hasDropdown ? (
-                  <div key={link.label} className="relative group" ref={dropdownRef}>
-                    <button
-                      ref={categoryToggleRef}
-                      onClick={() => setCatOpen(!catOpen)}
-                      aria-expanded={catOpen}
-                      aria-controls="desktop-categories"
-                      className="flex min-h-11 items-center px-4 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/20"
-                    >
-                      {link.label}
-                      <ChevronDown />
-                    </button>
-                    {catOpen && (
-                      <div id="desktop-categories" className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[360px] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl shadow-black/12 border border-gray-100 dark:border-gray-700 p-5 animate-fade-in z-50">
-                        <div className="grid grid-cols-3 gap-2">
-                          {CATEGORIES.map((cat) => {
-                            const IconComponent = categoryIconMap[cat.name];
-                            return (
-                              <Link
-                                key={cat.slug}
-                                href={getCategoryPath(cat.name)}
-                                className="flex flex-col items-center gap-2 p-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-brand-red transition-all duration-300 rounded-2xl border border-transparent hover:border-red-200 dark:hover:border-red-800"
-                                onClick={() => setCatOpen(false)}
-                              >
-                                {IconComponent && (
-                                  <div className="text-brand-red">
-                                    <IconComponent />
-                                  </div>
-                                )}
-                                <span className="text-center font-medium text-xs">{cat.name}</span>
-                              </Link>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    aria-current={pathname === link.href ? "page" : undefined}
-                    className={cn("flex min-h-11 items-center px-4 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-brand-red transition-all duration-300 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/20", pathname === link.href && "bg-red-50 dark:bg-red-900/20 text-brand-red dark:text-red-400")}
-                  >
-                    {link.label}
-                  </Link>
-                )
-              )}
-            </nav>
-
-            {/* Right actions */}
-            <div className="flex shrink-0 items-center gap-2">
-              {/* Social icons - desktop */}
-              <div className="hidden xl:flex items-center gap-2 mr-2">
-                <a href={SITE.social.instagram} target="_blank" rel="noreferrer"
-                   aria-label="Instagram de Ferretería Pardo"
-                   className="flex h-11 w-11 shrink-0 items-center justify-center text-gray-500 dark:text-gray-400 hover:text-pink-500 transition-all duration-300 rounded-2xl hover:bg-pink-50">
-                  <InstagramIcon />
-                </a>
-                <a href={SITE.social.facebook} target="_blank" rel="noreferrer"
-                   aria-label="Facebook de Ferretería Pardo"
-                   className="flex h-11 w-11 shrink-0 items-center justify-center text-gray-500 dark:text-gray-400 hover:text-blue-600 transition-all duration-300 rounded-2xl hover:bg-blue-50">
-                  <FacebookIcon />
-                </a>
-              </div>
-
-              <a href={SITE.social.whatsapp} target="_blank" rel="noreferrer"
-                 className="btn-wa text-xs hidden xl:inline-flex whitespace-nowrap rounded-xl px-5 py-2.5">
-                <WhatsAppMini />
-                Hablar con asesor
-              </a>
-
-              {/* Dark mode toggle */}
-              <button
-                onClick={toggleTheme}
-                className="flex h-11 w-11 shrink-0 items-center justify-center text-gray-500 dark:text-gray-400 hover:text-brand-red dark:hover:text-brand-orange transition-all duration-300 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800 motion-reduce:transition-none"
-                aria-label="Cambiar tema"
-              >
-                {theme === "dark" ? <SunIcon /> : <MoonIcon />}
-              </button>
-
-              {/* Cart button - Premium scale animation */}
-              <button
-                className="relative flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-2xl px-2.5 text-gray-700 transition-colors hover:bg-red-50 hover:text-brand-red dark:text-gray-300 dark:hover:bg-red-900/20 motion-reduce:transition-none"
-                data-quote-trigger
-                aria-label={`Ver cotización${cartCount ? `, ${cartCount} ${cartCount === 1 ? "referencia" : "referencias"}` : ""}`}
-                onClick={() => {
-                  setMobileOpen(false);
-                  const event = new CustomEvent("toggle-cart");
-                  window.dispatchEvent(event);
-                }}
-              >
-                <CartIcon />
-                <span className="hidden text-xs font-semibold sm:inline">Cotización</span>
-                {cartCount > 0 && (
-                  <span key={quotePulse} className={cn("absolute -top-1 -right-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-red px-1 text-xs font-bold text-white", quotePulse > 0 && "animate-quote-bump")}>
-                    {cartCount}
-                  </span>
-                )}
-              </button>
-
-              {/* Mobile menu toggle */}
-              <button
-                ref={mobileToggleRef}
-                className="flex h-11 w-11 items-center justify-center lg:hidden text-gray-700 dark:text-gray-200 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 motion-reduce:transition-none"
-                onClick={() => setMobileOpen(!mobileOpen)}
-                aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
-                aria-expanded={mobileOpen}
-                aria-controls="mobile-navigation"
-              >
-                {mobileOpen ? <CloseIcon /> : <MenuIcon />}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile menu - Smooth slide-down animation */}
-        {mobileOpen && (
-          <div id="mobile-navigation" className="lg:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 animate-slide-down max-h-[calc(100dvh-4rem)] overflow-y-auto">
-            <nav aria-label="Navegación móvil" className="max-w-7xl mx-auto px-4 py-4 space-y-1.5">
-              {NAV_LINKS.map((link) =>
-                link.hasDropdown ? (
-                  <div key={link.label}>
-                    <button
-                      onClick={() => setMobileCatOpen(!mobileCatOpen)}
-                      aria-expanded={mobileCatOpen}
-                      aria-controls="mobile-categories"
-                      className="w-full flex items-center justify-between px-4 py-3 text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-brand-red transition-all duration-300 rounded-2xl"
-                    >
-                      {link.label}
-                      <ChevronDown />
-                    </button>
-                    {mobileCatOpen && (
-                      <div id="mobile-categories" className="ml-2 space-y-1.5 mt-1 pb-2">
-                        {CATEGORIES.map((cat) => {
-                          const IconComponent = categoryIconMap[cat.name];
-                          return (
-                            <Link
-                              key={cat.slug}
-                              href={getCategoryPath(cat.name)}
-                              className="flex min-h-11 items-center gap-3 px-4 py-2.5 text-sm text-gray-600 dark:text-gray-300 hover:text-brand-red hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-300 rounded-2xl"
-                              onClick={() => { setMobileCatOpen(false); setMobileOpen(false); }}
-                            >
-                              {IconComponent && (
-                                <div className="text-brand-red">
-                                  <IconComponent />
-                                </div>
-                              )}
-                              {cat.name}
-                            </Link>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    aria-current={pathname === link.href ? "page" : undefined}
-                    className={cn("block px-4 py-3 text-sm font-semibold text-gray-700 dark:text-gray-200 hover:text-brand-red hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-300 rounded-2xl", pathname === link.href && "bg-red-50 dark:bg-red-900/20 text-brand-red dark:text-red-400")}
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                )
-              )}
-
-              {/* Mobile actions */}
-              <div className="pt-4 border-t border-gray-100 dark:border-gray-800 space-y-1.5">
-                <a href={SITE.social.whatsapp} target="_blank" rel="noreferrer"
-                   className="btn-wa w-full justify-center text-sm rounded-2xl py-3">
-                  <WhatsAppMini /> Cotizar por WhatsApp
-                </a>
-                <Link href="/catalogo" onClick={() => setMobileOpen(false)} className="btn-primary w-full justify-center text-sm rounded-2xl py-3">
-                  Explorar catálogo completo
-                </Link>
-              </div>
-
-              {/* Mobile info */}
-              <div className="pt-4 border-t border-gray-100 dark:border-gray-800 text-xs text-gray-500 dark:text-gray-400 space-y-2">
-                <p className="flex items-center gap-2"><PhoneIcon /> {SITE.phone1Display} | {SITE.phone2Display}</p>
-                <p className="flex items-center gap-2"><LocationIcon /> {SITE.address}</p>
-                <p className="flex items-center gap-2"><ClockIcon /> Lun–Vie 8:15am–4:55pm · Sáb 8:15am–2:15pm</p>
-                <div className="flex items-center gap-3 pt-2">
-                  <a href={SITE.social.instagram} target="_blank" rel="noreferrer" aria-label="Instagram de Ferretería Pardo" className="flex h-11 w-11 items-center justify-center rounded-xl text-gray-400 hover:text-pink-500 transition-all duration-300"><InstagramIcon /></a>
-                  <a href={SITE.social.facebook} target="_blank" rel="noreferrer" aria-label="Facebook de Ferretería Pardo" className="flex h-11 w-11 items-center justify-center rounded-xl text-gray-400 hover:text-blue-600 transition-all duration-300"><FacebookIcon /></a>
-                </div>
-              </div>
-            </nav>
-          </div>
-        )}
-      </header>
-      <QuoteToast />
-
-      <style>{`
-        @keyframes quote-bump {
-          0%, 100% { transform: scale(1); }
-          45% { transform: scale(1.3); }
-        }
-        .animate-quote-bump { animation: quote-bump 300ms ease-out; }
-        @media (prefers-reduced-motion: reduce) {
-          .animate-quote-bump, .animate-slide-down { animation: none; }
-        }
-        @keyframes slide-down {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-slide-down {
-          animation: slide-down 300ms ease-out;
-        }
-      `}</style>
-    </>
-  );
+      {mobileOpen && <div id="mobile-navigation" className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-surface lg:hidden">
+        <nav aria-label="Navegación móvil" className="site-container space-y-1 py-4">
+          {NAV_LINKS.map(link => link.hasDropdown ? <div key={link.label}>
+            <button type="button" onClick={() => setMobileCatOpen(!mobileCatOpen)} aria-expanded={mobileCatOpen} aria-controls="mobile-categories" className={cn(navClass,"w-full justify-between")}>{link.label}<ChevronDown /></button>
+            {mobileCatOpen && <div id="mobile-categories" className="ml-3 border-l border-line pl-2">{CATEGORIES.map(cat => {const Icon=categoryIconMap[cat.name];return <Link key={cat.slug} href={getCategoryPath(cat.name)} className={cn(navClass,"gap-3")} onClick={() => {setMobileCatOpen(false);setMobileOpen(false);}}>{Icon && <Icon />}{cat.name}</Link>;})}</div>}
+          </div> : <Link key={link.label} href={link.href} aria-current={pathname===link.href ? "page" : undefined} className={cn(navClass,pathname===link.href && "bg-paper text-ink")} onClick={() => setMobileOpen(false)}>{link.label}</Link>)}
+          <div className="grid gap-2 border-t border-line pt-4"><a href={SITE.social.whatsapp} target="_blank" rel="noreferrer" className="btn-wa"><WhatsAppMini />Cotizar por WhatsApp</a><Link href="/catalogo" onClick={() => setMobileOpen(false)} className="btn-outline">Explorar catálogo completo</Link></div>
+        </nav>
+      </div>}
+    </header>
+    <QuoteToast />
+  </>;
 }
