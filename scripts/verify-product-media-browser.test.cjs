@@ -186,7 +186,26 @@ test('workflow collects phase-2/3 evidence and fails the aggregate gate if the a
   assert.match(workflow, /PRODUCT_MEDIA_OUTCOME: \$\{\{ steps\.product_media\.outcome \}\}/);
   assert.match(workflow, /const gates = \[[^\n]*'PRODUCT_MEDIA_OUTCOME'/);
   assert.match(workflow, /gates\.every\(gate => gate\.outcome === 'success'\)/);
-  assert.match(workflow, /Upload complete evidence even when an audit fails\s+if: always\(\)/);
+  const uploads = workflow.split('      - name: ').filter(step => step.includes('uses: actions/upload-artifact@'));
+  assert.equal(uploads.length, 3, 'Evidence is split into three independent, smaller artifacts.');
+  for (const step of uploads) {
+    assert.match(step, /if: always\(\)/);
+    assert.match(step, /uses: actions\/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a/);
+    assert.match(step, /if-no-files-found: error/);
+    assert.match(step, /include-hidden-files: false/);
+    assert.match(step, /retention-days: 14/);
+  }
+  const root = '${{ runner.temp }}/ferrepardo-visual-quality';
+  const suffix = '${{ github.run_id }}-${{ github.run_attempt }}';
+  const visual = uploads.find(step => step.includes(`name: visual-quality-visual-${suffix}`));
+  const media = uploads.find(step => step.includes(`name: visual-quality-product-media-${suffix}`));
+  const reports = uploads.find(step => step.includes(`name: visual-quality-reports-${suffix}`));
+  assert.ok(visual?.includes(`path: ${root}/visual\n`), 'Visual index and all of its evidence stay together.');
+  assert.ok(media?.includes(`path: ${root}/product-media\n`), 'Media index and all of its evidence stay together.');
+  assert.ok(reports?.includes(`path: |\n            ${root}\n`), 'Core reports include all remaining evidence, including functional and Lighthouse reports.');
+  assert.ok(reports.includes(`!${root}/visual/**`));
+  assert.ok(reports.includes(`!${root}/product-media/**`));
+  assert.equal(reports.split('\n').filter(line => line.trim().startsWith('!')).length, 2, 'Only the two independently uploaded groups are excluded.');
   const script = fs.readFileSync(path.join(__dirname, 'verify-product-media-browser.cjs'), 'utf8');
   assert.doesNotMatch(script, /integration-manifest\.json|product-image-research/);
 });
