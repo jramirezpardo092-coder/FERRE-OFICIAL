@@ -101,7 +101,10 @@ test("card exposes persistent quotation quantity while adding keeps the original
   const tree = hooks.render(Card, { product });
   assert.equal(tree.props["data-sku"], "0044");
   const add = elements(tree).find((node) => node.type === "button");
-  assert.match(add.props["aria-label"], /^En cotización · 2:/);
+  assert.match(add.props["aria-label"], /^Agregado 2\. En cotización · 2:/);
+  assert.ok(add.props["aria-label"].includes("Agregado 2"), "visible mobile confirmation and quantity are a contiguous part of its accessible name");
+  const mobileQuantity = elements(tree).find(node => node.props.className?.includes("product-card-add-quantity"));
+  assert.equal(mobileQuantity.props.children[0], " ", "visible mobile words and quantity retain a real text separator");
   assert.match(renderToStaticMarkup(tree), /En cotización · 2/);
   add.props.onClick();
   assert.equal(additions.length, 1);
@@ -273,4 +276,16 @@ test("history dismisses quick view, releases the real focus trap, restores scrol
   assert.equal(disconnected, 1);
   window.emit("popstate");
   assert.equal(closes, 1, "Forward must not reopen or invoke a stale closed modal");
+});
+
+test("manufacturer illustrations and technical diagrams are visibly identified as such", () => {
+  for (const [kind, caption] of [["manufacturer-render", "Ilustración del fabricante"], ["supplier-render", "Ilustración del distribuidor"], ["technical-diagram", "Ficha técnica"]]) {
+    const hooks = stateHooks();
+    const Media = load("src/components/catalog/ProductMedia.tsx", { react: hooks.react, "react/jsx-runtime": jsx, "next/image": () => null, "@/lib/utils": utils }).default;
+    const source = { ...product, img: "products/illustration.webp", gallery: [{ src: "/products/illustration.webp", alt: "Referencia exacta", verified: true, kind }] };
+    const tree = hooks.render(Media, { product: source, showGalleryControls: true });
+    const html = renderToStaticMarkup(tree);
+    assert.ok(html.includes(caption));
+    assert.match(html, /Ampliar imagen: imagen 1/);
+  }
 });

@@ -5,10 +5,10 @@ import { CATEGORIES } from "./lib/constants";
 
 // Only public identity is used. Query strings and SKU leading zeros survive the migration.
 const productPaths = new Map(products.map((product) => [product.id, getProductPath(product)]));
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const url = request.nextUrl.clone();
   // Internal render destinations are never an alternative public catalog URL.
-  // Rewrites do not run Middleware a second time, so only direct visits redirect.
+  // Rewrites do not run Proxy a second time, so only direct visits redirect.
   if (url.pathname === "/catalogo-interno" || url.pathname.startsWith("/catalogo-interno/")) {
     url.pathname = "/catalogo" + url.pathname.slice("/catalogo-interno".length);
     return NextResponse.redirect(url, 301);
@@ -22,7 +22,7 @@ export function middleware(request: NextRequest) {
       return NextResponse.redirect(url, 301);
     }
     // Even pagination, empty values and unknown parameters stay dynamic. The
-    // Next 14 adapter strips framework-only _rsc before exposing this request.
+    // Next's request adapter strips framework-only _rsc before exposing this request.
     if (url.searchParams.size > 0) {
       url.pathname = "/catalogo-interno" + url.pathname.slice("/catalogo".length);
       return NextResponse.rewrite(url);

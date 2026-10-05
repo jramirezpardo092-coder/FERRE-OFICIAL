@@ -8,10 +8,17 @@ const { execFileSync } = require('node:child_process');
 const { classifyUtility } = require('./verify-visual-tokens.cjs');
 const { catalogLayoutChecks, measureViewportLayout, measureCatalogHits, planViewportCases } = require('./verify-visual-layout.cjs');
 
+// Photo coverage evolves: the empty-media case must still use a genuinely unphotographed SKU.
+const sourceLoader = require('../tests/load-ts.cjs')();
+const { getCatalogProducts } = sourceLoader('src/lib/catalog-service.ts');
+const { getProductPath } = sourceLoader('src/lib/catalog/routes.ts');
+const noPhotoProduct = getCatalogProducts().find(product => !product.img && !product.gallery?.length);
+if (!noPhotoProduct) throw new Error('No real unphotographed product remains; replace the empty-media fixture with an explicit failed-image test.');
+
 const VIEWS = {
   inicio: '/', catalogo: '/catalogo', categoria: '/catalogo/cerrajeria',
   'ficha-foto': '/producto/0435-bisagra-parche-mob-mini-par',
-  'ficha-sin-foto': '/producto/00050-disco-dw-pulir-metal-1-4x4-1-2-t27',
+  'ficha-sin-foto': getProductPath(noPhotoProduct),
   'sin-resultados': '/catalogo?q=zzzz-inexistente-92846',
   footer: '/', cotizacion: '/producto/0435-bisagra-parche-mob-mini-par',
 };
@@ -283,6 +290,11 @@ async function clickVisible(page, selector) {
 }
 async function auditState(page, axeSource, output, key, options) {
   await settle(page);
+  // A newly revealed lazy image gets time to settle, but an actual broken resource still fails.
+  await page.waitForFunction(() => [...document.images].filter(image => {
+    const rect = image.getBoundingClientRect(), style = getComputedStyle(image);
+    return rect.width > 0 && rect.height > 0 && rect.bottom > 0 && rect.top < innerHeight && rect.right > 0 && rect.left < innerWidth && style.visibility === 'visible' && Number(style.opacity) > 0;
+  }).every(image => image.complete), { timeout: 15000, polling: 100 }).catch(() => {});
   const dom = await page.evaluate(measureDocument);
   dom.viewportLayout = await page.evaluate(measureViewportLayout);
   const summary = summarizeMeasurement(dom, options);
@@ -465,6 +477,12 @@ async function main() {
           await clickVisible(page, '[data-design-card] button[aria-label^="Agregar a cotización"]');
           await page.waitForFunction(() => [...document.querySelectorAll('[data-design-card] button')].some(button => button.textContent.includes('En cotización')));
           results.push(await auditState(page, axeSource, options.output, `${key}-added`, { ...stateOptions,initialViewport:false }));
+        }
+        if (['catalogo', 'categoria'].includes(view) && width < 640) {
+          await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+          await clickVisible(page, '[data-design-card] button[aria-label^="Agregar a cotización"]');
+          await page.waitForFunction(() => [...document.querySelectorAll('[data-design-card] button')].some(button => button.getAttribute('aria-label')?.startsWith('Agregado ')));
+          results.push(await auditState(page, axeSource, options.output, `${key}-added`, { ...stateOptions, initialViewport: false }));
         }
         const failedChecks = Object.entries(result.checks).filter(([,check])=>check.required!==false&&!check.passed).map(([name])=>name);
         if (result.stripeSequence?.passed===false) failedChecks.push('stripeSequence');

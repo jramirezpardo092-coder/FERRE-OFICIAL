@@ -22,7 +22,8 @@ export function generateStaticParams() {
   return getCatalogProducts().map((product) => ({ slug: getProductSlug(product) }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const product = getCatalogProduct(params.slug);
   if (!product) return { title: "Producto no encontrado" };
   const name = normalizeProductName(product.nombre);
@@ -45,7 +46,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function ProductoPage({ params }: { params: { slug: string } }) {
+export default async function ProductoPage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   // El servidor une contenido verificado por SKU; el cliente recibe solo esta ficha y sus relacionados.
   const product = getCatalogProduct(params.slug);
   if (!product) notFound();

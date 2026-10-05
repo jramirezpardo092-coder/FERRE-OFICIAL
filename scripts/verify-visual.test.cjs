@@ -84,3 +84,12 @@ test('visual gate fails broken or unresolved visible image resources', () => {
   }
   assert.equal(summarizeMeasurement({ ...base, images: undefined }, options).checks.imagesLoaded.passed, false);
 });
+
+
+test('empty-photo view still selects an actual missing-media product as coverage grows', () => {
+  const { VIEWS } = require('./verify-visual-browser.cjs');
+  const load = require('../tests/load-ts.cjs')();
+  const product = load('src/lib/catalog-service.ts').getCatalogProduct(VIEWS['ficha-sin-foto'].split('/').pop());
+  assert.ok(product);
+  assert.equal(Boolean(product.img || product.gallery?.length), false);
+});

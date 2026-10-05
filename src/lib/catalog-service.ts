@@ -34,6 +34,7 @@ function publicProduct(product: Product): Product {
     ...(Array.isArray(product.gallery) ? { gallery: product.gallery.filter((image) => image.verified === true && typeof image.src === "string").map((image) => ({
       src: image.src,
       verified: true as const,
+      ...(["manufacturer-render", "supplier-render", "technical-diagram", "profile-detail", "component-detail", "pair-detail"].includes(image.kind || "") ? { kind: image.kind } : {}),
       ...(typeof image.alt === "string" ? { alt: image.alt } : {}),
     })) } : {}),
     ...(Array.isArray(product.specs) ? { specs: product.specs.filter((spec) => spec.verified === true && typeof spec.label === "string" && typeof spec.value === "string").map((spec) => ({
@@ -63,7 +64,7 @@ export function getFeaturedCatalogProducts(): Product[] {
   const candidates = catalog.filter((product) => {
     const primary = getLocalProductImagePath(product.img);
     return hasVerifiedPrice(product) && getAvailableQuantity(product) > 0 && !!primary
-      && product.gallery?.some((image) => image.verified === true && getLocalProductImagePath(image.src) === primary);
+      && product.gallery?.some((image) => image.verified === true && !image.kind && getLocalProductImagePath(image.src) === primary);
   });
   const featured: Product[] = [];
   const selectedIds = new Set<string>();

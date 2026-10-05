@@ -49,7 +49,8 @@ test('catalog hero cannot exceed120px and missing frame cannot approve desktop r
 test('coverage includes1280 boundary and all three narrow home widths without duplicates',()=>{
   const planned=planViewportCases({views:['inicio','catalogo','categoria'],widths:[390,1440],themes:['light','dark']});
   assert.equal(planned.filter(item=>item.primary).length,12);
-  assert.equal(planned.filter(item=>!item.primary).length,8);
+  assert.equal(planned.filter(item=>!item.primary).length,10);
+  assert.ok(planned.some(item=>item.view==="catalogo" && item.width===360), "small-mobile added state must be audited");
   assert.equal(planned.filter(item=>item.view==='inicio').length,8);
   const keys=planned.map(item=>[item.view,item.width,item.theme].join('-'));
   assert.equal(new Set(keys).size,keys.length);

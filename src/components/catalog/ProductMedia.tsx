@@ -150,9 +150,10 @@ export default function ProductMedia({
         </div>
       )}
       </div>
+      {selected?.kind && <p className="border-t border-line bg-paper px-2 py-1 text-center text-xs leading-4 text-ink-2">{selected.kind === "technical-diagram" ? "Ficha técnica" : selected.kind === "profile-detail" ? "Detalle del perfil; no muestra el largo completo" : selected.kind === "component-detail" ? "Vista de un componente" : selected.kind === "pair-detail" ? "Vista de una pieza del par" : selected.kind === "supplier-render" ? "Ilustración del distribuidor" : "Ilustración del fabricante"}</p>}
       {showGalleryControls && candidates.length > 0 && (
         <div className="border-t border-line bg-surface px-3 py-3">
-          {candidates.length > 1 && <div role="group" aria-label={`Fotos de ${product.nombre}`} className="flex flex-wrap justify-center gap-2">
+          {candidates.length > 1 && <div role="group" aria-label={`Imágenes de ${product.nombre}`} className="flex flex-wrap justify-center gap-2">
             {candidates.map((image, index) => {
               const unavailable = failedSources.includes(image.src);
               const isSelected = selected?.src === image.src;
@@ -161,14 +162,14 @@ export default function ProductMedia({
                 type="button"
                 disabled={unavailable}
                 onClick={() => setSelectedSource(image.src)}
-                aria-label={unavailable ? `Foto ${index + 1} no disponible` : `Ver foto ${index + 1} de ${product.nombre}`}
+                aria-label={unavailable ? `Imagen ${index + 1} no disponible` : `Ver ${image.kind ? "imagen" : "foto"} ${index + 1} de ${product.nombre}`}
                 aria-controls={selected ? imageId : undefined}
                 aria-pressed={isSelected}
                 className={cn("product-gallery-button flex min-h-11 min-w-11 flex-col items-center gap-1 rounded-control border p-1.5 font-mono text-xs leading-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink disabled:cursor-default disabled:opacity-40", isSelected ? "border-ink bg-ink text-on-ink" : "border-control bg-surface text-ink-2")}
               >
                 {!unavailable && <Image src={image.src} alt="" aria-hidden="true" width={44} height={44} sizes="44px" quality={75} loading="lazy" className="h-11 w-11 rounded-control bg-photo object-contain p-1" onError={() => failImage(image.src)} />}
                 {unavailable && <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center">—</span>}
-                Foto {index + 1}
+                {image.kind ? "Imagen" : "Foto"} {index + 1}
               </button>;
             })}
           </div>}
@@ -176,7 +177,7 @@ export default function ProductMedia({
             href={selected.src}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Ampliar imagen: foto ${selectedIndex + 1} de ${product.nombre} (se abre en otra pestaña)`}
+            aria-label={`Ampliar imagen: ${selected.kind ? "imagen" : "foto"} ${selectedIndex + 1} de ${product.nombre} (se abre en otra pestaña)`}
             className={cn("mx-auto flex min-h-11 w-fit items-center justify-center gap-2 rounded-control px-3 py-2 text-sm font-semibold text-ink-2 hover:bg-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink", candidates.length > 1 && "mt-2")}
           >
             <svg className="h-4 w-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -184,8 +185,8 @@ export default function ProductMedia({
             </svg>
             Ampliar imagen
           </a>}
-          <p role="status" aria-live="polite" className="sr-only">{selected ? `Foto ${selectedIndex + 1} de ${candidates.length}: ${selected.alt?.trim() || product.nombre}` : "Sin fotos disponibles."}</p>
-          {failedSources.length > 0 && <p className="mt-2 text-center text-xs text-ink-2">Una foto no está disponible.{selected ? " Mostramos otra imagen." : ""}</p>}
+          <p role="status" aria-live="polite" className="sr-only">{selected ? `Imagen ${selectedIndex + 1} de ${candidates.length}: ${selected.alt?.trim() || product.nombre}` : "Sin fotos disponibles."}</p>
+          {failedSources.length > 0 && <p className="mt-2 text-center text-xs text-ink-2">Una imagen no está disponible.{selected ? " Mostramos otra imagen." : ""}</p>}
         </div>
       )}
     </div>

@@ -4,9 +4,17 @@
 
 La rama integra las PR #9 y #10, conservando ambas historias. Mejora jerarquía, búsqueda en portada, consistencia tipográfica, fichas móviles y acciones de cotización. El catálogo mantiene sus 1.319 registros, identificadores, valores comerciales y rutas canónicas.
 
-Se añadieron seis fotografías exactas recuperadas de la tienda existente: 0344, 0350, 0678, 10444, 10445 y 10585. La del SKU 0344 muestra una pieza del par, indicado expresamente en su texto alternativo; la unidad comercial no cambia. Las fuentes y correspondencias están en `product-image-provenance-20261005.json`. Los archivos originales se convierten a WebP sin pérdida, sin recorte, generación ni duplicación artificial de piezas.
+Se añadieron 81 imágenes de referencias antes sin imagen: nueve recuperadas de la tienda existente y setenta y dos de fuentes de fabricante/distribuidor, contrastando SKU, modelo, función y variante. Las fuentes y correspondencias están en `product-image-provenance-20261005.json`. Los originales se convierten a WebP sin pérdida, sin recorte, generación ni duplicación artificial de piezas. El SKU 0344 muestra una pieza del par, indicado en su texto alternativo; el SKU 10268 conserva stock cero; 6263 es el visor de repuesto, sin atribuirle certificaciones ni presentar una careta completa.
 
-No se publican los 18 candidatos adicionales de fabricantes/distribuidores mientras no se confirme su permiso de reutilización. Tampoco se activan imágenes de cerraduras de alcoba para variantes de baño ni fotos de familias con medidas/acabados no verificables. El SKU 2267 sigue requiriendo aclaración de 3/8 frente a referencia 1/2. Los pendientes conservan una indicación honesta; completar cobertura no justifica una foto incorrecta.
+Se conserva el copyright de las fuentes; no se afirma que las imágenes sean de dominio público o tengan licencia abierta. Se excluyen fuentes con restricciones de reutilización incompatibles, muros de pago o marcas de agua de terceros. Tampoco se activan imágenes de cerraduras de alcoba para variantes de baño ni fotos de familias con medidas/acabados no verificables. El SKU 2267 sigue requiriendo aclaración de 3/8 frente a referencia 1/2. Los pendientes conservan una indicación honesta; completar cobertura no justifica una foto incorrecta.
+
+Los renders del fabricante/distribuidor, la ficha técnica existente y las vistas parciales de componentes, pares y perfiles llevan una aclaración visible. No se cuentan indiscriminadamente como fotografías; los destacados de portada sólo usan fotografías sin esa clasificación.
+
+La revisión de navegador detectó y corrigió dos regresiones: la imagen de portada necesitaba normalizar la ruta relativa antes de pasarla a Next Image; y Atrás/Adelante debía cerrar la vista rápida y liberar su bloqueo de foco. La vista rápida recupera también el selector de IVA compartido con catálogo.
+
+## Actualización de seguridad
+
+La entrega integra Next16.3.8 y React19.2.8. Véase `security-upgrade-20261005.md`: cero vulnerabilidades en dependencias de producción, con una limitación conocida sin parche en herramientas de desarrollo. El proyecto conserva Webpack, las rutas y el comportamiento de ISR.
 
 ## Verificación reproducible
 
@@ -25,4 +33,4 @@ La comprobación fuente/build debe ejecutarse tras compilar los mismos archivos.
 
 ## Evidencia disponible en esta etapa
 
-Compilación optimizada correcta con 1.340 rutas. Lint limpio, typecheck correcto, 231 pruebas Node y 9 Python correctas. Auditoría de tokens sin hallazgos. HTTP: 149 comprobaciones, cero fallos en el build de cinco fotos previo al último añadido. Repetir al incorporar cualquier cambio. Navegador y rendimiento se validan en CI y revisión de escritorio antes de producción; no afirmar éxito de etapas pendientes.
+La combinación de seguridad, medios y accesibilidad debe repetir todos los gates en su commit final. La revisión previa de escritorio verificó búsqueda, IVA, filtros, historial, cantidades, galería, vacíos y cotización; corrigió la foto de portada y el cierre de vista rápida. La medición CI previa obtuvo Lighthouse móvil 97 en catálogo y 98 en ficha, CLS0. Estos resultados previos no sustituyen los del commit final.

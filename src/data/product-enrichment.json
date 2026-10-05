@@ -111,6 +111,13 @@
         "value": "Entrada",
         "verified": true
       }
+    ],
+    "gallery": [
+      {
+        "src": "/products/official/12771-1.webp",
+        "alt": "Cerradura Yale Carolina para entrada principal, referencia 6377",
+        "verified": true
+      }
     ]
   },
   "12770": {
@@ -125,6 +132,13 @@
         "value": "Alcoba",
         "verified": true
       }
+    ],
+    "gallery": [
+      {
+        "src": "/products/official/12770-1.webp",
+        "alt": "Cerradura Yale Carolina para alcoba, referencia 6376",
+        "verified": true
+      }
     ]
   },
   "12769": {
@@ -137,6 +151,13 @@
       {
         "label": "Función",
         "value": "Baño",
+        "verified": true
+      }
+    ],
+    "gallery": [
+      {
+        "src": "/products/official/12769-1.webp",
+        "alt": "Cerradura Yale Carolina para baño, referencia 6374",
         "verified": true
       }
     ]
@@ -158,7 +179,8 @@
       {
         "src": "/products/whatsapp/13384-2.webp",
         "alt": "Ficha técnica de manija Vera Cádiz para alcoba",
-        "verified": true
+        "verified": true,
+        "kind": "technical-diagram"
       }
     ]
   },
@@ -2055,7 +2077,674 @@
       {
         "src": "/products/official/0344-1.webp",
         "alt": "Bisagra doble acción GT negra; vista de una pieza del par",
+        "verified": true,
+        "kind": "pair-detail"
+      }
+    ]
+  },
+  "6263": {
+    "gallery": [
+      {
+        "src": "/products/official/6263-1.webp",
+        "alt": "CARETA VISOR REPUESTO 921313A",
         "verified": true
+      }
+    ]
+  },
+  "0955": {
+    "gallery": [
+      {
+        "src": "/products/official/0955-1.webp",
+        "alt": "Cerradura Yale L-370N con manija y placas cromadas",
+        "verified": true
+      }
+    ]
+  },
+  "10268": {
+    "gallery": [
+      {
+        "src": "/products/official/10268-1.webp",
+        "alt": "Cerradura Häfele de mueble de doble efecto, referencia 23776600",
+        "verified": true
+      }
+    ]
+  },
+  "0173": {
+    "gallery": [
+      {
+        "src": "/products/official/0173-1.webp",
+        "alt": "Extensor magnético Makita B-48795 de 1/4 pulgada, 80 mm",
+        "verified": true
+      }
+    ]
+  },
+  "1630": {
+    "gallery": [
+      {
+        "src": "/products/official/1630-1.webp",
+        "alt": "Rebordeadora Makita M3700B de 1/4 pulgada y 530 W",
+        "verified": true
+      }
+    ]
+  },
+  "3125": {
+    "gallery": [
+      {
+        "src": "/products/official/3125-1.webp",
+        "alt": "Juego de destornillador Stanley 62-511, 9 en 1",
+        "verified": true
+      }
+    ]
+  },
+  "9629": {
+    "gallery": [
+      {
+        "src": "/products/official/9629-1.webp",
+        "alt": "Accesorio reversible de perforación y atornillado DeWalt DW2701 número 8",
+        "verified": true
+      }
+    ]
+  },
+  "15697": {
+    "gallery": [
+      {
+        "src": "/products/official/15697-1.webp",
+        "alt": "Sierra circular Wesco WS3441U de 7-1/4 pulgadas y 1500 W",
+        "verified": true
+      }
+    ]
+  },
+  "15183": {
+    "gallery": [
+      {
+        "src": "/products/official/15183-1.webp",
+        "alt": "Bisagra FEH 3362 de parche con cierre suave; vista de una pieza del par",
+        "verified": true
+      }
+    ]
+  },
+  "15184": {
+    "gallery": [
+      {
+        "src": "/products/official/15184-1.webp",
+        "alt": "Bisagra FEH 3363 semiparche con cierre suave; vista de una pieza del par",
+        "verified": true
+      }
+    ]
+  },
+  "14891": {
+    "gallery": [
+      {
+        "src": "/products/official/14891-1.webp",
+        "alt": "Bisagra FEH 6424 interior con cierre suave; vista de una pieza del par",
+        "verified": true
+      }
+    ]
+  },
+  "15828": {
+    "gallery": [
+      {
+        "src": "/products/official/15828-1.webp",
+        "alt": "Bisagra FEH 6538 de 165 grados con cierre suave; vista de una pieza del par",
+        "verified": true
+      }
+    ]
+  },
+  "2169": {
+    "gallery": [
+      {
+        "src": "/products/official/2169-1.webp",
+        "alt": "Destornillador Stanley STHT69145 Phillips número 2 por 4 pulgadas",
+        "verified": true
+      }
+    ]
+  },
+  "15865": {
+    "gallery": [
+      {
+        "src": "/products/official/15865-1.webp",
+        "alt": "Plato giratorio FEH 4155 de 10 por 10 pulgadas",
+        "verified": true
+      }
+    ]
+  },
+  "0998": {
+    "gallery": [
+      {
+        "src": "/products/official/0998-1.webp",
+        "alt": "Cierrapuertas Yale serie 2234, referencia 8320, acabado plata",
+        "verified": true
+      }
+    ]
+  },
+  "11568": {
+    "gallery": [
+      {
+        "src": "/products/official/11568-1.webp",
+        "alt": "Cierrapuertas Yale serie 3005, referencia 7019, acabado plata",
+        "verified": true
+      }
+    ]
+  },
+  "11779": {
+    "gallery": [
+      {
+        "src": "/products/official/11779-1.webp",
+        "alt": "Cierrapuertas Yale serie 1002, referencia 7018, acabado plata",
+        "verified": true
+      }
+    ]
+  },
+  "10320": {
+    "gallery": [
+      {
+        "src": "/products/official/10320-1.webp",
+        "alt": "Candado Yale Y110 de gancho ajustable, referencia 8402",
+        "verified": true
+      }
+    ]
+  },
+  "15333": {
+    "gallery": [
+      {
+        "src": "/products/official/15333-1.webp",
+        "alt": "Cerradura Yale de sobreponer 1010 Plus, referencia 6486",
+        "verified": true
+      }
+    ]
+  },
+  "14564": {
+    "gallery": [
+      {
+        "src": "/products/official/14564-1.webp",
+        "alt": "Cerradura KL 106B de manija cuadrada para baño, cromada",
+        "verified": true
+      }
+    ]
+  },
+  "15018": {
+    "gallery": [
+      {
+        "src": "/products/official/15018-1.webp",
+        "alt": "Cerradura KL 112A de pomo tubular para alcoba, cromada",
+        "verified": true
+      }
+    ]
+  },
+  "2950": {
+    "gallery": [
+      {
+        "src": "/products/official/2950-1.webp",
+        "alt": "Formón profesional Bahco 424P-25 de 25 mm",
+        "verified": true
+      }
+    ]
+  },
+  "3797": {
+    "gallery": [
+      {
+        "src": "/products/official/3797-1.webp",
+        "alt": "Serrucho Bahco PrizeCut NP-22-U7/8-HP de 22 pulgadas",
+        "verified": true
+      }
+    ]
+  },
+  "9447": {
+    "gallery": [
+      {
+        "src": "/products/official/9447-1.webp",
+        "alt": "Lima carrocera Bahco 3-330-14-1-0 de 350 mm",
+        "verified": true
+      }
+    ]
+  },
+  "10958": {
+    "gallery": [
+      {
+        "src": "/products/official/10958-1.webp",
+        "alt": "Broca Irwin HSS IW1120 de 1/4 de pulgada",
+        "verified": true
+      }
+    ]
+  },
+  "14056": {
+    "gallery": [
+      {
+        "src": "/products/official/14056-1.webp",
+        "alt": "Respirador 3M 8822V con válvula",
+        "verified": true
+      }
+    ]
+  },
+  "00050": {
+    "gallery": [
+      {
+        "src": "/products/official/00050-1.webp",
+        "alt": "Disco Dewalt DW54830 para desbaste de metal 4-1/2 x 1/4, tipo 27",
+        "verified": true
+      }
+    ]
+  },
+  "11846": {
+    "gallery": [
+      {
+        "src": "/products/official/11846-1.webp",
+        "alt": "Avellanador y atornillador reversible Dewalt DW2702 número 10",
+        "verified": true
+      }
+    ]
+  },
+  "1392": {
+    "gallery": [
+      {
+        "src": "/products/official/1392-1.webp",
+        "alt": "Juego de tres brocas escalonadas TOTAL TACSD2031",
+        "verified": true
+      }
+    ]
+  },
+  "13472": {
+    "gallery": [
+      {
+        "src": "/products/official/13472-1.webp",
+        "alt": "Bisagra de seguridad FEH 3231 cromado mate de cabeza plana",
+        "verified": true
+      }
+    ]
+  },
+  "13865": {
+    "gallery": [
+      {
+        "src": "/products/official/13865-1.webp",
+        "alt": "Bisagra de cazuela FEH WIN 6364 parche 35 mm niquelada",
+        "verified": true
+      }
+    ]
+  },
+  "0542": {
+    "gallery": [
+      {
+        "src": "/products/official/0542-1.webp",
+        "alt": "Candado Yale alemán 800 de 70 mm, referencia 2003",
+        "verified": true
+      }
+    ]
+  },
+  "0544": {
+    "gallery": [
+      {
+        "src": "/products/official/0544-1.webp",
+        "alt": "Candado Yale alemán 800 de 50 mm, referencia 2002",
+        "verified": true
+      }
+    ]
+  },
+  "10324": {
+    "gallery": [
+      {
+        "src": "/products/official/10324-1.webp",
+        "alt": "Candado Yale alemán 800 de 50 mm amarillo para intemperie, referencia 2041",
+        "verified": true
+      }
+    ]
+  },
+  "12481": {
+    "gallery": [
+      {
+        "src": "/products/official/12481-1.webp",
+        "alt": "Cerradura Yale Bari de manija cuadrada para baño, referencia 9054",
+        "verified": true
+      }
+    ]
+  },
+  "14845": {
+    "gallery": [
+      {
+        "src": "/products/official/14845-1.webp",
+        "alt": "Cerradura Yale Bari de manija cuadrada negra para alcoba, referencia 9105",
+        "verified": true
+      }
+    ]
+  },
+  "0943": {
+    "gallery": [
+      {
+        "src": "/products/official/0943-1.webp",
+        "alt": "Cerradura Yale Austin para entrada principal, referencia 6476",
+        "verified": true
+      }
+    ]
+  },
+  "12891": {
+    "gallery": [
+      {
+        "src": "/products/official/12891-1.webp",
+        "alt": "Cerradura Yale pico de loro 854 llave-mariposa, referencia 4054",
+        "verified": true
+      }
+    ]
+  },
+  "0951": {
+    "gallery": [
+      {
+        "src": "/products/official/0951-1.webp",
+        "alt": "Cerrojo Yale 170 de doble llave niquelado, referencia 4011",
+        "verified": true
+      }
+    ]
+  },
+  "11656": {
+    "gallery": [
+      {
+        "src": "/products/official/11656-1.webp",
+        "alt": "Cerrojo Yale 170 llave-mariposa de llave normal, referencia 4080",
+        "verified": true
+      }
+    ]
+  },
+  "14275": {
+    "gallery": [
+      {
+        "src": "/products/official/14275-1.webp",
+        "alt": "Cerrojo Yale 170 Plus llave-mariposa, referencia 4082",
+        "verified": true
+      }
+    ]
+  },
+  "13344": {
+    "gallery": [
+      {
+        "src": "/products/official/13344-1.webp",
+        "alt": "Cerrojo Yale Kent llave-mariposa, referencia 4099",
+        "verified": true
+      }
+    ]
+  },
+  "13345": {
+    "gallery": [
+      {
+        "src": "/products/official/13345-1.webp",
+        "alt": "Cerrojo Yale Kent llave-llave, referencia 4100",
+        "verified": true
+      }
+    ]
+  },
+  "13041": {
+    "gallery": [
+      {
+        "src": "/products/official/13041-1.webp",
+        "alt": "Cerrojo Yale 170 con pestillo resbalón, referencia 4044",
+        "verified": true
+      }
+    ]
+  },
+  "13532": {
+    "gallery": [
+      {
+        "src": "/products/official/13532-1.webp",
+        "alt": "Cerradura Yale de sobreponer 105 de 50 mm izquierda, referencia 7192",
+        "verified": true
+      }
+    ]
+  },
+  "14149": {
+    "gallery": [
+      {
+        "src": "/products/official/14149-1.webp",
+        "alt": "Combo Yale Tampa de barra antipánico de un punto, cierrapuertas 2234 y manija, referencia 7190",
+        "verified": true
+      }
+    ]
+  },
+  "14636": {
+    "gallery": [
+      {
+        "src": "/products/official/14636-1.webp",
+        "alt": "Cierrapuertas Yale 2234 negro para puertas de hasta 80 kg, referencia 9429",
+        "verified": true
+      }
+    ]
+  },
+  "15915": {
+    "gallery": [
+      {
+        "src": "/products/official/15915-1.webp",
+        "alt": "Cierrapuertas Yale-Phillips PH65 plateado de 40 a 65 kg, referencia 5709",
+        "verified": true
+      }
+    ]
+  },
+  "16001": {
+    "gallery": [
+      {
+        "src": "/products/official/16001-1.webp",
+        "alt": "Cerrojo Yale Ferrara llave-mariposa negro mate, referencia 6048",
+        "verified": true
+      }
+    ]
+  },
+  "15272": {
+    "gallery": [
+      {
+        "src": "/products/official/15272-1.webp",
+        "alt": "Cerradura FEH 6352 pico de loro con cilindro llave-llave de 45 mm",
+        "verified": true
+      }
+    ]
+  },
+  "2879": {
+    "gallery": [
+      {
+        "src": "/products/official/2879-1.webp",
+        "alt": "Vista del taladro percutor CAT DX12 del kit, con una batería montada",
+        "verified": true
+      }
+    ]
+  },
+  "8034": {
+    "gallery": [
+      {
+        "src": "/products/official/8034-1.webp",
+        "alt": "Ilustración de producto CAT DX87U de 1800 W, publicada por el distribuidor",
+        "verified": true,
+        "kind": "supplier-render"
+      }
+    ]
+  },
+  "7623": {
+    "gallery": [
+      {
+        "src": "/products/official/7623-1.webp",
+        "alt": "Disco de sierra CAT DA08002 para madera, 7 1/4 pulgadas y 40 dientes, en empaque",
+        "verified": true
+      }
+    ]
+  },
+  "11486": {
+    "gallery": [
+      {
+        "src": "/products/official/11486-1.webp",
+        "alt": "Disco de sierra CAT DA08001 para madera, 7 1/4 pulgadas y 24 dientes, en empaque",
+        "verified": true
+      }
+    ]
+  },
+  "5616": {
+    "gallery": [
+      {
+        "src": "/products/official/5616-1.webp",
+        "alt": "Grapas Rapid 140/10 de 10 mm, caja de 5000 unidades",
+        "verified": true
+      }
+    ]
+  },
+  "14676": {
+    "gallery": [
+      {
+        "src": "/products/official/14676-1.webp",
+        "alt": "Vista de la pulidora CAT DX31 del combo, con batería de 18 V y 4,0 Ah montada",
+        "verified": true,
+        "kind": "supplier-render"
+      }
+    ]
+  },
+  "1957": {
+    "gallery": [
+      {
+        "src": "/products/official/1957-1.webp",
+        "alt": "Carro con freno Ducasse DN-80 C/F, referencia 10100217471; vista de un componente del sistema",
+        "verified": true,
+        "kind": "component-detail"
+      }
+    ]
+  },
+  "1966": {
+    "gallery": [
+      {
+        "src": "/products/official/1966-1.webp",
+        "alt": "Carro Ducasse D-52, referencia 10100106201; vista de un componente del sistema de clóset",
+        "verified": true,
+        "kind": "component-detail"
+      }
+    ]
+  },
+  "1968": {
+    "gallery": [
+      {
+        "src": "/products/official/1968-1.webp",
+        "alt": "Carro Ducasse D-25, referencia 10100117101; vista de un componente del sistema para mueble",
+        "verified": true,
+        "kind": "component-detail"
+      }
+    ]
+  },
+  "7553": {
+    "gallery": [
+      {
+        "src": "/products/official/7553-1.webp",
+        "alt": "Carro Ducasse DN-300 HD con ruedas naranjas, referencia 10100220021; vista de una pieza",
+        "verified": true,
+        "kind": "component-detail"
+      }
+    ]
+  },
+  "9771": {
+    "gallery": [
+      {
+        "src": "/products/official/9771-1.webp",
+        "alt": "Carro Ducasse AL-1535 para vidrio, referencia 10100800200; vista de un componente",
+        "verified": true,
+        "kind": "component-detail"
+      }
+    ]
+  },
+  "13456": {
+    "gallery": [
+      {
+        "src": "/products/official/13456-1.webp",
+        "alt": "Bisagra Ducasse 3D Premium parche de cierre suave, referencia 3010101007; vista de una bisagra del par",
+        "verified": true,
+        "kind": "pair-detail"
+      }
+    ]
+  },
+  "13457": {
+    "gallery": [
+      {
+        "src": "/products/official/13457-1.webp",
+        "alt": "Bisagra Ducasse 3D Premium semiparche de cierre suave, referencia 3010111007; vista de una bisagra del par",
+        "verified": true,
+        "kind": "pair-detail"
+      }
+    ]
+  },
+  "15954": {
+    "gallery": [
+      {
+        "src": "/products/official/15954-1.webp",
+        "alt": "Carro Ducasse ECO-80, referencia 10100271080; vista de un componente del sistema",
+        "verified": true,
+        "kind": "component-detail"
+      }
+    ]
+  },
+  "13516": {
+    "gallery": [
+      {
+        "src": "/products/official/13516-1.webp",
+        "alt": "Ilustración del fabricante del kit Ducasse DN-50 de riel oculto y cierre suave, referencia 40100934218",
+        "verified": true,
+        "kind": "manufacturer-render"
+      }
+    ]
+  },
+  "5945": {
+    "gallery": [
+      {
+        "src": "/products/official/5945-1.webp",
+        "alt": "Detalle del perfil del riel embutido CX Ducasse para AL 1535 en aluminio anodizado mate; referencia de 3 m, sin mostrar la longitud completa",
+        "verified": true,
+        "kind": "profile-detail"
+      }
+    ]
+  },
+  "5951": {
+    "gallery": [
+      {
+        "src": "/products/official/5951-1.webp",
+        "alt": "Detalle del perfil del riel U-100 Ducasse en acero galvanizado; referencia de 2 m, sin mostrar la longitud completa",
+        "verified": true,
+        "kind": "profile-detail"
+      }
+    ]
+  },
+  "5952": {
+    "gallery": [
+      {
+        "src": "/products/official/5952-1.webp",
+        "alt": "Detalle del perfil del riel U-100 Ducasse en acero galvanizado; referencia de 3 m, sin mostrar la longitud completa",
+        "verified": true,
+        "kind": "profile-detail"
+      }
+    ]
+  },
+  "5953": {
+    "gallery": [
+      {
+        "src": "/products/official/5953-1.webp",
+        "alt": "Detalle del perfil del riel doble U-20 Ducasse en acero galvanizado gris; referencia de 2 m, sin mostrar la longitud completa",
+        "verified": true,
+        "kind": "profile-detail"
+      }
+    ]
+  },
+  "5960": {
+    "gallery": [
+      {
+        "src": "/products/official/5960-1.webp",
+        "alt": "Detalle del perfil del riel embutido CX Ducasse para AL 1535 en aluminio anodizado mate; referencia de 2 m, sin mostrar la longitud completa",
+        "verified": true,
+        "kind": "profile-detail"
+      }
+    ]
+  },
+  "5963": {
+    "gallery": [
+      {
+        "src": "/products/official/5963-1.webp",
+        "alt": "Detalle del perfil del riel U-21 Ducasse en aluminio anodizado mate; referencia de 2 m, sin mostrar la longitud completa",
+        "verified": true,
+        "kind": "profile-detail"
+      }
+    ]
+  },
+  "8361": {
+    "gallery": [
+      {
+        "src": "/products/official/8361-1.webp",
+        "alt": "Detalle del perfil del riel doble U-20 Ducasse en acero galvanizado gris; referencia de 3 m, sin mostrar la longitud completa",
+        "verified": true,
+        "kind": "profile-detail"
       }
     ]
   }

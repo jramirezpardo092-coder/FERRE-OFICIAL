@@ -26,6 +26,7 @@ function verifiedGallery(gallery: unknown): ProductImage[] {
     images.set(src, {
       src,
       verified: true,
+      ...(["manufacturer-render", "supplier-render", "technical-diagram", "profile-detail", "component-detail", "pair-detail"].includes(candidate.kind || "") ? { kind: candidate.kind } : {}),
       ...(typeof candidate.alt === "string" && candidate.alt.trim() ? { alt: candidate.alt.trim() } : {}),
     });
   });

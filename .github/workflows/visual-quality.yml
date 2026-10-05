@@ -46,6 +46,8 @@ jobs:
 
       - name: Functional checks
         run: |
+          npm run lint 2>&1 | tee "$AUDIT_REPORTS/lint.log"
+          npm run audit:production 2>&1 | tee "$AUDIT_REPORTS/dependency-audit.log"
           npm run typecheck 2>&1 | tee "$AUDIT_REPORTS/typecheck.log"
           node --test --test-concurrency=1 tests/*.test.cjs scripts/*.test.cjs 2>&1 | tee "$AUDIT_REPORTS/tests.log"
 

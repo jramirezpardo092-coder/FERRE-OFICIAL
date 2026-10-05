@@ -112,6 +112,7 @@ function planViewportCases(options) {
   const add = (view,width) => { if (!options.widths.includes(width)) for (const theme of options.themes) cases.push({ view,width,theme,primary:false }); };
   if (options.widths.some(width => width >= 1280)) for (const view of options.views.filter(view => ['catalogo','categoria'].includes(view))) add(view,1280);
   if (options.views.includes('inicio') && options.widths.some(width => width < 640)) { add('inicio',360); add('inicio',430); }
+  if (options.views.includes('catalogo') && options.widths.some(width => width < 640)) add('catalogo',360);
   return cases;
 }
 
