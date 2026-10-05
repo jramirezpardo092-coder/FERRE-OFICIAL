@@ -289,3 +289,14 @@ test("manufacturer illustrations and technical diagrams are visibly identified a
     assert.match(html, /Ampliar imagen: imagen 1/);
   }
 });
+
+
+test("mobile action hides redundant desktop copy without clipping an accessible name", () => {
+  const css = fs.readFileSync(path.join(root, "src/components/catalog/product-visual.css"), "utf8");
+  const mobile = css.split("@media (max-width: 639px)")[1];
+  const desktopCopy = mobile.match(/\.product-card-add-label\s*\{([^}]+)\}/)[1];
+  assert.match(desktopCopy, /display:\s*none/);
+  assert.doesNotMatch(desktopCopy, /clip|position|width|height/);
+  assert.match(mobile, /\.product-card-add-mobile\s*\{[^}]*display:\s*inline/);
+  assert.match(mobile, /\.product-card-add-quantity\s*\{[^}]*display:\s*inline/);
+});

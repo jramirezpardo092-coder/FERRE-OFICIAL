@@ -306,6 +306,31 @@ async function auditState(page, axeSource, output, key, options) {
   return { key, url: dom.url, theme: dom.theme, viewport: dom.viewport, ...summary, axe: { violations: axe.violations.map(v => ({ id: v.id, impact: v.impact, nodes: v.nodes.map(n => ({ target: n.target, html: n.html, failureSummary: n.failureSummary })) })), incomplete: axe.incomplete.map(v => ({ id: v.id, impact: v.impact, nodes: v.nodes.length })) }, passed: summary.passed && axe.violations.length === 0, evidence: [`${key}.dom.json`, `${key}.axe.json`, `${key}.png`] };
 }
 
+async function probeMobileAddedLabel(page, axeSource, output, key) {
+  // Reinitialize axe so a focused rule check does not inherit the full-run virtual-node cache.
+  await page.addScriptTag({ content: axeSource });
+  const result = await page.evaluate(async () => {
+    const button = [...document.querySelectorAll('[data-design-card] button')].find(node => node.getAttribute('aria-label')?.startsWith('Agregado '));
+    if (!button) return { passed: false, reason: 'Missing added mobile action.' };
+    const desktop = button.querySelector('.product-card-add-label');
+    const mobile = button.querySelector('.product-card-add-mobile');
+    const quantity = button.querySelector('.product-card-add-quantity');
+    const visibleText = `${mobile?.textContent || ''} ${quantity?.textContent || ''}`.replace(/\s+/g, ' ').trim();
+    const name = button.getAttribute('aria-label') || '';
+    const box = desktop?.getBoundingClientRect();
+    const desktopDisplay = desktop ? getComputedStyle(desktop).display : null;
+    const audit = await window.axe.run(document, { runOnly: { type: 'rule', values: ['label-content-name-mismatch'] }, resultTypes: ['passes', 'violations', 'incomplete'] });
+    const matches = node => node.target.some(target => { try { return typeof target === 'string' && document.querySelector(target) === button; } catch { return false; } });
+    const explicitPass = audit.passes.some(rule => rule.id === 'label-content-name-mismatch' && rule.nodes.some(matches));
+    const violations = audit.violations.map(rule => ({ id: rule.id, nodes: rule.nodes.map(node => ({ target: node.target, html: node.html, failureSummary: node.failureSummary })) }));
+    const incomplete = audit.incomplete.filter(rule => rule.nodes.some(matches)).map(rule => rule.id);
+    return { engine: audit.testEngine, visibleText, accessibleName: name, desktopDisplay, desktopRect: box ? { width: box.width, height: box.height } : null, explicitPass, violations, incomplete,
+      passed: desktopDisplay === 'none' && box?.width === 0 && box?.height === 0 && visibleText.length > 0 && name.includes(visibleText) && explicitPass && violations.length === 0 && incomplete.length === 0 };
+  });
+  fs.writeFileSync(path.join(output, `${key}.added-label.json`), JSON.stringify(result, null, 2) + '\n');
+  return result;
+}
+
 async function probeHomeStripes(page, output, key) {
   const states = [], buttons = await page.$$('.home-hero button[aria-label^="Ver diapositiva "]');
   if (buttons.length === 0) {
@@ -482,7 +507,11 @@ async function main() {
           await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
           await clickVisible(page, '[data-design-card] button[aria-label^="Agregar a cotización"]');
           await page.waitForFunction(() => [...document.querySelectorAll('[data-design-card] button')].some(button => button.getAttribute('aria-label')?.startsWith('Agregado ')));
-          results.push(await auditState(page, axeSource, options.output, `${key}-added`, { ...stateOptions, initialViewport: false }));
+          const added = await auditState(page, axeSource, options.output, `${key}-added`, { ...stateOptions, initialViewport: false });
+          added.mobileAddedLabelProbe = await probeMobileAddedLabel(page, axeSource, options.output, key);
+          added.passed = added.passed && added.mobileAddedLabelProbe.passed;
+          added.evidence.push(`${key}.added-label.json`);
+          results.push(added);
         }
         const failedChecks = Object.entries(result.checks).filter(([,check])=>check.required!==false&&!check.passed).map(([name])=>name);
         if (result.stripeSequence?.passed===false) failedChecks.push('stripeSequence');

@@ -215,16 +215,9 @@
     padding-inline: 8px;
   }
 
+  /* The complete button aria-label remains available; this desktop-only copy is redundant. */
   .product-card-add-label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
+    display: none;
   }
 
   .product-card-add-mobile { display: inline; font-size: 13px; }
