@@ -1,0 +1,96 @@
+{
+  "date": "2026-10-05",
+  "scope": "Verified product photos already published on the existing Ferretería Pardo store. Catalog values unchanged.",
+  "images": [
+    {
+      "sku": "0344",
+      "alt": "Bisagra doble acción GT negra; vista de una pieza del par",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriapardo.com/tienda/bisagras/bisagra-doble-accion-gt-neg-unidad/",
+      "imageUrl": "https://ferreteriapardo.com/wp-content/uploads/2016/09/BISAGRADOBLEACCION-3.jpg",
+      "evidence": "Sole exact legacy store SKU344 maps current0344, with unchanged GT black double-action hinge name, function and finish. Pixels show one black double-action hinge; this is an item view of one piece, not a photograph of a pair. Legacy reference GT-29A/N differs from current52902; manufacturer-model equivalence is not independently cross-verified. Current product is sold by pair while legacy says unit: preserve current unit, stock and price. Do not duplicate pixels to fabricate a pair.",
+      "exactVariant": true,
+      "licenseStatus": "existing-store-publication: original already published on user-authorized legacy ferreteriapardo.com; copyright ownership not independently established",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "2e983ef5328015aa64bee2f3137b58018bc55a36f42570f45f627e1720322c23"
+    },
+    {
+      "sku": "0350",
+      "alt": "BISAGRA PISO B 100 D INAFER CROMADA (UND)",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriapardo.com/tienda/bisagras/bisagra-piso-b-100-d-inafer-cromada/",
+      "imageUrl": "https://ferreteriapardo.com/wp-content/uploads/2016/09/BISAGRAPISO-1.jpg",
+      "evidence": "Exact SKU 350 equals catalog 0350 after preserving local leading zero. Sole legacy variation b100d-cromada; title matches INAFER B100D chrome floor hinge. Pixels show a single chrome floor hinge with INAFER-branded floor-hinge box, no family assortment. Legacy supplier reference B-100CR differs from current PTI01010EC, but explicit brand/model B100D and chrome finish match; exact SKU is retained.",
+      "exactVariant": true,
+      "licenseStatus": "existing-store-publication: original already published on user-authorized legacy ferreteriapardo.com; copyright ownership not independently established",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "b90275c92ca755a25b866ce42cb9061bc79570f59f547c188b3d5a86e102995e"
+    },
+    {
+      "sku": "0678",
+      "alt": "CERRADURA MUEBLE FIM 16X22",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriapardo.com/tienda/cerradura-cajon/cerradura-mueble-fim-16x22/",
+      "imageUrl": "https://ferreteriapardo.com/wp-content/uploads/2016/09/CERRADURAMUEBLEFIM16X22-1.jpg",
+      "evidence": "Exact SKU 678 equals catalog 0678. Sole legacy variation mueble-fim-16x22 and title match FIM furniture lock 16x22. Pixels show one furniture lock with matching ring and keys, not a family assortment; size is evidenced by exact SKU/product title, not inferred visually. Legacy page also explicitly states reference HCM136-05, exactly matching current catalog reference.",
+      "exactVariant": true,
+      "licenseStatus": "existing-store-publication: original already published on user-authorized legacy ferreteriapardo.com; copyright ownership not independently established",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "eeebfe6a709d4adbe71e77feea1a4962e78a71240aa803bfb3f687e2cee343f2"
+    },
+    {
+      "sku": "10445",
+      "alt": "CERRADURA VERA 1550 NUOVO NIQUEL",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriapardo.com/tienda/cerradura-cajon/cerradura-vera-1550-nuovo-niquel/",
+      "imageUrl": "https://ferreteriapardo.com/wp-content/uploads/2016/09/CERRADURAVERA1550NUOVONIQUEL-1.jpg",
+      "evidence": "Exact SKU 10445; sole variation 1550-nuovo-niquel. Legacy title and photo filename identify VERA 1550 Nuovo nickel. Pixels show nickel-finish drawer lock, matching striker and VERA-style keys, consistent function and finish. Legacy reference VER-1550NI is corroborated to current DYNA7705 reference by manufacturer1550 model listing.",
+      "exactVariant": true,
+      "licenseStatus": "existing-store-publication: original already published on user-authorized legacy ferreteriapardo.com; copyright ownership not independently established",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "38829c3ad76dcde231245408c806de888d6c4b51a57ba722710f2e2a3660a994"
+    },
+    {
+      "sku": "10585",
+      "alt": "CERRADURA VERA 1555 NUOVO NIQUEL",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriapardo.com/tienda/cerradura-cajon/cerradura-vera-1555-nuovo-niquel/",
+      "imageUrl": "https://ferreteriapardo.com/wp-content/uploads/2016/09/CERRADURAVERA155NUOVONIQUEL-1.jpg",
+      "evidence": "Exact SKU 10585; sole variation 1555-nuovo-niquel. Legacy title identifies VERA 1555 Nuovo nickel. Pixels show nickel barrel/cam lock, retaining ring/nut/cam and two keys; no generic drawer-lock substitution. Independently corroborated against manufacturer VERA7706 image and product page https://www.dyna.com.co/producto/7706/detalle/C12.",
+      "exactVariant": true,
+      "licenseStatus": "existing-store-publication: original already published on user-authorized legacy ferreteriapardo.com; copyright ownership not independently established",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "7a705e8cba4dcff7a4694133d6159fdfcbf2892e5a99412a18b1cc39ed0feb01"
+    },
+    {
+      "sku": "10444",
+      "alt": "CERRADURA VERA 1560 NUOVO NIQUEL",
+      "provenance": "download-original",
+      "sourcePage": "https://ferreteriapardo.com/tienda/cerradura-cajon/cerradura-vera-1560-nuovo-niquel/",
+      "imageUrl": "https://ferreteriapardo.com/wp-content/uploads/2016/09/CERRADURAVERA1560NUOVONIQUEL-1.jpg",
+      "evidence": "Exact SKU 10444; sole variation 1560-nuovo-niquel. Legacy title identifies VERA 1560 Nuovo nickel. Pixels show nickel lock with narrow mounting plate, trim ring and keys visibly branded VERA; correct 1560 function distinct from 1550/1555. Independently corroborated against manufacturer VERA7708 image and product page https://www.dyna.com.co/producto/7708/detalle/C12.",
+      "exactVariant": true,
+      "licenseStatus": "existing-store-publication: original already published on user-authorized legacy ferreteriapardo.com; copyright ownership not independently established",
+      "dimensions": [
+        800,
+        800
+      ],
+      "sha256": "696b1ef8a4e38f94ff28762740667dfe213afe97dfee9212ac140fdc992aae33"
+    }
+  ]
+}
