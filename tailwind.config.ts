@@ -14,9 +14,9 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-manrope)", "Arial", "sans-serif"],
-        display: ["var(--font-archivo)", "Arial Narrow", "Arial", "sans-serif"],
-        mono: ["var(--font-plex-mono)", "ui-monospace", "monospace"],
+        sans: ["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Arial", "sans-serif"],
+        display: ["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Arial", "sans-serif"],
+        mono: ["ui-monospace", "SFMono-Regular", "Consolas", "monospace"],
       },
       borderRadius: { control: "var(--radius-control)", card: "var(--radius-card)", chip: "var(--radius-chip)" },
       maxWidth: { site: "1280px", "7xl": "1280px" },

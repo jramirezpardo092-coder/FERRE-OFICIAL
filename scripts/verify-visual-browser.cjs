@@ -72,6 +72,15 @@ function countPaintRegions(paints) {
   return groups.map(group => group.map(item => ({ selector: item.selector, pseudo: item.pseudo })));
 }
 
+function systemFontCheck(fonts) {
+  const firstFamily = (fonts.bodyFamily || '').split(',')[0].trim().replace(/^['"]|['"]$/g, '');
+  return ['-apple-system', 'BlinkMacSystemFont', 'system-ui', 'ui-sans-serif'].includes(firstFamily)
+    && Array.isArray(fonts.faces) && fonts.faces.length === 0
+    && Array.isArray(fonts.preloads) && fonts.preloads.length === 0
+    && Array.isArray(fonts.fontRequests) && fonts.fontRequests.length === 0
+    && Array.isArray(fonts.unreadableSheets) && fonts.unreadableSheets.length === 0;
+}
+
 // This function is serialized by Puppeteer; all DOM helpers deliberately live inside it.
 function measureDocument() {
   const rootStyle = getComputedStyle(document.documentElement);
@@ -180,7 +189,7 @@ function measureDocument() {
     targets.push({ selector: selector(target), name: control.getAttribute('aria-label') || target.textContent?.trim().slice(0, 140) || control.getAttribute('name'), rect: rectangle(rect), availableRect: rectangle(ancestorVisible), visibleRect: rectangle(visible), disabled: control.matches(':disabled'), fontSize, isButton: control.matches('button,[role="button"],summary,[class*="btn-"]'), clipped: visible.width < rect.width || visible.height < rect.height, viewportClipped, ancestorClipped: ancestorVisible.width < rect.width - .01 || ancestorVisible.height < rect.height - .01, hitVisible: hitVisible(target, visible), centerHit: !!centerHit && (centerHit === target || target.contains(centerHit)), centerOccluder: centerHit ? selector(centerHit) : null, nestedIn: parent?.tagName });
   }
   const stripQuotes = value => value.trim().replace(/^['"]|['"]$/g, '');
-  const archivoFamily = stripQuotes(rootStyle.getPropertyValue('--font-archivo').split(',')[0] || '');
+  const bodyFamily = getComputedStyle(document.body).fontFamily;
   const faces = [], unreadableSheets = [];
   function inspectRules(rules, source) {
     for (const rule of rules) {
@@ -194,13 +203,13 @@ function measureDocument() {
     try { inspectRules(sheet.cssRules, sheet.href); } catch { unreadableSheets.push(sheet.href); }
   }
   const preloads = [...document.querySelectorAll('link[rel="preload"][as="font"]')].map(link => ({ href: link.href, type: link.type, crossOrigin: link.crossOrigin }));
-  const archivoUrls = faces.filter(face => face.family === archivoFamily).flatMap(face => face.urls);
+  const fontRequests = performance.getEntriesByType('resource').filter(entry => /\.(?:woff2?|ttf|otf)(?:[?#]|$)|fonts\.(?:googleapis|gstatic)\.com/i.test(entry.name)).map(entry => entry.name);
   const loadedFaces = [...document.fonts].filter(face => face.status === 'loaded').map(face => ({ family: stripQuotes(face.family), weight: face.weight, status: face.status }));
   return {
     url: location.href, theme: document.documentElement.classList.contains('dark') ? 'dark' : 'light',
     viewport: { width: innerWidth, height: innerHeight, devicePixelRatio }, scrollY,
     paints, translucentPaints, unresolvedPseudos, gradients, cards, targets, runtimeClasses: [...runtimeClasses],
-    fonts: { archivoFamily, archivoUrls, preloads, faces, loadedFaces, unreadableSheets, passed: !!archivoFamily && archivoUrls.length > 0 && preloads.length === 1 && archivoUrls.includes(preloads[0].href) && loadedFaces.some(face => face.family === archivoFamily) },
+    fonts: { strategy: 'system', bodyFamily, fontRequests, preloads, faces, loadedFaces, unreadableSheets },
     layoutShifts: window.__visualAuditShifts || [], clsSupported: !!window.__visualAuditClsSupported,
   };
 }
@@ -221,7 +230,7 @@ function summarizeMeasurement(dom, { alignmentRequired, redBudgetRequired, fontG
     touch44: { passed: touchFailures.length === 0, failures: touchFailures },
     targetOcclusion: { required: false, passed: occlusionFailures.length === 0, warnings: occlusionFailures, partialViewportTargets: dom.targets.filter(target => target.viewportClipped), scope: 'Current viewport center hit test only. Fixed bars can cover a reachable control at this scroll position; this report is not a scroll-to-reveal or end-of-document reachability gate.' },
     buttons14: { passed: buttonTypeFailures.length === 0, failures: buttonTypeFailures },
-    fonts: { required: fontGate === 'required', passed: dom.fonts.passed, evidence: dom.fonts },
+    fonts: { required: fontGate === 'required', passed: systemFontCheck(dom.fonts), evidence: dom.fonts },
     cls: { required: true, maximumExclusive: .1, value: cls, passed: cls !== null && cls < .1, scope: 'Observed initial load and current state, session-window CLS; not a Lighthouse/PSI run.' },
     whatsappFill: { passed: greenRegions.length <= 1, count: greenRegions.length, regions: greenRegions },
     ...catalogLayoutChecks(dom.viewportLayout?.catalog, dom.viewport || {}, dom.scrollY, groupRows(dom.viewportLayout?.catalog?.cards || []), initialViewport && layoutScope === 'catalog'),
@@ -285,6 +294,16 @@ async function auditState(page, axeSource, output, key, options) {
 
 async function probeHomeStripes(page, output, key) {
   const states = [], buttons = await page.$$('.home-hero button[aria-label^="Ver diapositiva "]');
+  if (buttons.length === 0) {
+    await settle(page);
+    const layout = await page.evaluate(measureViewportLayout);
+    const evidence = `${key}-static-hero.png`;
+    await page.screenshot({ path: path.join(output, evidence), fullPage: false });
+    states.push({ presentation: 'static', evidence, ...layout.stripes, passed: layout.stripes?.passed === true });
+    const result = { passed: states[0].passed, presentation: 'static', states };
+    fs.writeFileSync(path.join(output, `${key}.stripes.json`), JSON.stringify(result, null, 2) + '\n');
+    return result;
+  }
   if (buttons.length !== 3) return { passed: false, states, reason: 'Expected three carousel slide controls; cannot verify every title and paragraph.' };
   for (const [index, button] of buttons.entries()) {
     await button.click(); // Focus pauses the existing carousel; no timer or UI state is rewritten.
@@ -471,4 +490,4 @@ async function main() {
 }
 
 if (require.main === module) main().catch(error => { console.error(error.stack); process.exitCode = 2; });
-module.exports = { VIEWS, groupRows, sessionCLS, countPaintRegions, measureDocument, summarizeMeasurement, parseArgs };
+module.exports = { VIEWS, groupRows, sessionCLS, countPaintRegions, systemFontCheck, measureDocument, summarizeMeasurement, parseArgs };

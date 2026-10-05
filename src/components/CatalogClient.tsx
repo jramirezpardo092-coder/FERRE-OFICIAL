@@ -1,13 +1,15 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import type { Product } from "@/lib/types";
 import type { CatalogResponse, CatalogSuggestion } from "@/lib/catalog-types";
 import { getActiveFilterCount, normalizeCatalogFilters, type FiltersValue } from "@/lib/catalog-filters";
 import { cn, formatCOP } from "@/lib/utils";
-import { getCategoryPath, getProductPath } from "@/lib/catalog/routes";
+import { getCategoryPath } from "@/lib/catalog/routes";
+import CatalogUrlSync from "./catalog/CatalogUrlSync";
+import { CatalogPriceModeProvider, getPricePreference, setPricePreference, type PriceMode } from "@/lib/price-preference";
 import { CATEGORIES } from "@/lib/constants";
 import PricePreferenceToggle from "./catalog/PricePreferenceToggle";
 import ProductCard from "./ProductCard";
@@ -25,8 +27,8 @@ const ProductModal = dynamic(() => import("./ProductModal"), { ssr: false });
 /** Only one page of public products reaches the browser. Sales data stay on the server. */
 export default function CatalogClient({ offersOnly = false, initialData, initialParamsKey = "", category = "" }: { offersOnly?: boolean; initialData?: CatalogResponse; initialParamsKey?: string; category?: string }) {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const paramsKey = searchParams.toString();
+  const [paramsKey, setParamsKey] = useState(initialParamsKey);
+  const searchParams = useMemo(() => new URLSearchParams(paramsKey), [paramsKey]);
   const query = searchParams.get("q") || "";
   const sort = SORT_OPTIONS.includes(searchParams.get("sort") || "") ? searchParams.get("sort")! : "relevance";
   const filters = useMemo(() => {
@@ -35,6 +37,7 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
       category: category || params.get("cat") || "", brand: params.get("brand") || "",
       priceMin: params.get("min") ?? params.get("priceMin") ?? "",
       priceMax: params.get("max") ?? params.get("priceMax") ?? "",
+      priceMode: params.get("priceMode") as PriceMode,
       availability: params.get("availability") as FiltersValue["availability"],
       offersOnly: offersOnly || params.get("ofertas") === "true",
     });
@@ -48,6 +51,7 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
   const [viewMode, setViewMode] = useState<"responsive" | "grid" | "list">("responsive");
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
   const topRef = useRef<HTMLDivElement>(null);
+  const preferenceRestored = useRef(false);
   const requestKey = resultKey(paramsKey);
   const loading = !result || result.key !== requestKey;
   const data = result?.data;
@@ -66,8 +70,25 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
     const nextQuery = params.toString();
     const url = path + (nextQuery ? "?" + nextQuery : "");
     if (path !== window.location.pathname) router.push(url);
-    else if (url !== window.location.pathname + window.location.search) window.history.pushState(null, "", url);
+    else if (url !== window.location.pathname + window.location.search) {
+      window.history.pushState(null, "", url);
+      // Initial preference restoration can run before Next hydrates its history subscription.
+      setParamsKey(nextQuery);
+    }
   }, [category, offersOnly, router]);
+  const changePriceMode = useCallback((mode: PriceMode) => updateParams({ priceMode: mode === "net" ? "net" : null, page: null }), [updateParams]);
+  const pricePreference = useMemo(() => ({ mode: filters.priceMode, onModeChange: changePriceMode }), [filters.priceMode, changePriceMode]);
+  useEffect(() => {
+    if (!preferenceRestored.current) {
+      preferenceRestored.current = true;
+      // Restore a saved preference only on a clean first visit; shared filters and Back stay authoritative.
+      if (!paramsKey && getPricePreference() === "net") {
+        updateParams({ priceMode: "net" });
+        return;
+      }
+    }
+    setPricePreference(filters.priceMode);
+  }, [paramsKey, filters.priceMode, updateParams]);
   useEffect(() => {
     if (initialData) {
       const key = (offersOnly ? "offers:" : "catalog:") + category + ":" + initialParamsKey;
@@ -113,7 +134,7 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
     void load();
     // Slow requests cannot replace the results of a newer search.
     return () => { current = false; controller.abort(); };
-  }, [paramsKey, offersOnly, category, requestKey, retry]);
+  }, [paramsKey, offersOnly, category, requestKey, retry, result?.key]);
 
   const changeFilters = (next: FiltersValue) => updateParams({
     cat: next.category, brand: next.brand, min: next.priceMin, max: next.priceMax,
@@ -125,7 +146,8 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
     updateParams({ q: null, cat: null, brand: null, min: null, max: null, priceMin: null, priceMax: null, availability: null, ofertas: null, page: null, sort: null });
   };
   const chooseSuggestion = (suggestion: CatalogSuggestion) => {
-    if (suggestion.type === "product") router.push(getProductPath({ id: suggestion.value, nombre: suggestion.label }));
+    // The SKU redirect resolves the stable canonical URL; display names can expand abbreviations.
+    if (suggestion.type === "product") router.push(`/producto/${encodeURIComponent(suggestion.value)}`);
     else {
       setSearch("");
       updateParams({ q: null, [suggestion.type === "category" ? "cat" : "brand"]: suggestion.value, page: null });
@@ -133,13 +155,13 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
   };
   const activeCount = getActiveFilterCount({ ...filters, offersOnly: !offersOnly && filters.offersOnly }) + Number(!!query.trim());
   const filterProps = { value: filters, onChange: changeFilters, onClear: clearAll,
-    categories: data?.categories || [], brands: data?.brands || [], priceBounds: data?.priceBounds, offersLocked: offersOnly };
+    categories: data?.categories || [], brands: data?.brands || [], priceBounds: data?.priceMode === filters.priceMode ? data.priceBounds : undefined, offersLocked: offersOnly };
   const chips = [
     query && { key: "q", label: "Búsqueda: " + query },
     filters.category && { key: "cat", label: filters.category },
     filters.brand && { key: "brand", label: filters.brand },
     filters.availability !== "all" && { key: "availability", label: filters.availability === "in-stock" ? "En stock" : "Consultar disponibilidad" },
-    (filters.priceMin || filters.priceMax) && { key: "price", label: "Precio sin IVA: " + formatCOP(Number(filters.priceMin || 0)) + " – " + (filters.priceMax ? formatCOP(Number(filters.priceMax)) : "sin máximo") },
+    (filters.priceMin || filters.priceMax) && { key: "price", label: (filters.priceMode === "net" ? "Precio sin IVA: " : "Precio con IVA: ") + formatCOP(Number(filters.priceMin || 0)) + " – " + (filters.priceMax ? formatCOP(Number(filters.priceMax)) : "sin máximo") },
     !offersOnly && filters.offersOnly && { key: "ofertas", label: "Solo ofertas" },
   ].filter((chip): chip is { key: string; label: string } => !!chip);
   const visibleCategoryChips = CATEGORIES.flatMap(item => {
@@ -147,7 +169,8 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
     return count > 0 ? [{ ...item, count }] : [];
   });
 
-  return <div ref={topRef} className="mx-auto max-w-site scroll-mt-24 px-4 pt-3 pb-24 md:px-6 lg:px-8">
+  return <CatalogPriceModeProvider value={pricePreference}><div ref={topRef} className="mx-auto max-w-site scroll-mt-24 px-4 pt-3 pb-24 md:px-6 lg:px-8">
+    <Suspense fallback={null}><CatalogUrlSync onChange={setParamsKey} /></Suspense>
     <div className="lg:mb-3 lg:flex lg:items-center lg:gap-3">
       <div className="mb-3 min-w-0 flex-1 lg:mb-0">
       <CatalogSearch value={search} onChange={setSearch} suggestions={!loading && query === search ? data?.suggestions || [] : []} onSelect={chooseSuggestion} loading={busy || search !== query} />
@@ -162,7 +185,8 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
         <button type="button" onClick={clearAll} className="min-h-11 px-2 py-2 text-sm font-semibold text-ink-2 hover:text-ink hover:underline">Limpiar filtros</button>
       </div>}
     </div>
-    {visibleCategoryChips.length > 0 && <nav data-design-categories aria-label="Categorías del catálogo" className="mb-3 flex gap-2 overflow-x-auto pb-1">
+    {visibleCategoryChips.length > 1 && <p className="mb-1 text-xs text-ink-2 sm:hidden">Categorías <span aria-hidden="true">· desliza para explorar →</span></p>}
+    {visibleCategoryChips.length > 0 && <nav data-design-categories aria-label="Categorías del catálogo" className="mb-3 flex gap-2 overflow-x-auto pb-2">
       {visibleCategoryChips.map(item => <a key={item.slug} href={getCategoryPath(item.name)} onClick={event => {
         if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
         event.preventDefault(); setSearch(""); updateParams({ cat: item.name, q: null, page: null });
@@ -170,12 +194,6 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
         {item.name}<span className="font-mono text-xs tracking-[0.025em]">{item.count.toLocaleString("es-CO")}</span>
       </a>)}
     </nav>}
-    <div role="group" tabIndex={0} className="mb-3 flex divide-x divide-line overflow-x-auto text-xs leading-4 text-ink-2" aria-label="Información para cotizar">
-      <span className="inline-flex shrink-0 items-center gap-2 pr-3"><svg aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M3 10l2-6h14l2 6M4 10v10h16V10M3 10h18M9 20v-6h6v6" /></svg>Recoge en tienda · Calle 72 No. 50-23</span>
-      <span className="inline-flex shrink-0 items-center gap-2 px-3"><svg aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M3 6h11v11H3V6zm11 5h4l3 4v2h-7M8 19a2 2 0 11-4 0 2 2 0 014 0zm12 0a2 2 0 11-4 0 2 2 0 014 0z" /></svg>Envíos: consulta condiciones</span>
-      <span className="inline-flex shrink-0 items-center gap-2 px-3"><svg aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M6 3h12v18l-3-2-3 2-3-2-3 2V3zm3 5h6m-6 4h6" /></svg>Factura electrónica</span>
-      <span className="inline-flex shrink-0 items-center gap-2 pl-3"><svg aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M3 5h18v14H3V5zm0 5h18m-14 5h3" /></svg>Nequi, Daviplata, tarjetas</span>
-    </div>
     <div className="flex items-start gap-6">
       <aside className="sticky top-24 hidden max-h-[calc(100vh-7rem)] w-64 shrink-0 overflow-y-auto lg:block"><CatalogFilters {...filterProps} idPrefix="desktop-catalog" /></aside>
       <section className="min-w-0 flex-1" aria-label="Productos del catálogo" aria-busy={busy}>
@@ -210,7 +228,13 @@ export default function CatalogClient({ offersOnly = false, initialData, initial
         </> : <CatalogEmptyState query={query} onClear={clearAll} onCategory={nextCategory => { setSearch(""); updateParams({ q: null, cat: nextCategory, brand: null, min: null, max: null, availability: null, page: null }); }} categories={CATEGORIES.map(item => item.name)} />}
       </section>
     </div>
+    <div role="group" className="mt-8 grid gap-4 border-t border-line pt-5 sm:grid-cols-2 lg:grid-cols-4 text-xs leading-4 text-ink-2" aria-label="Información para cotizar">
+      <span className="inline-flex shrink-0 items-center gap-2"><svg aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M3 10l2-6h14l2 6M4 10v10h16V10M3 10h18M9 20v-6h6v6" /></svg>Recoge en tienda · Calle 72 No. 50-23</span>
+      <span className="inline-flex shrink-0 items-center gap-2"><svg aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M3 6h11v11H3V6zm11 5h4l3 4v2h-7M8 19a2 2 0 11-4 0 2 2 0 014 0zm12 0a2 2 0 11-4 0 2 2 0 014 0z" /></svg>Envíos: consulta condiciones</span>
+      <span className="inline-flex shrink-0 items-center gap-2"><svg aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M6 3h12v18l-3-2-3 2-3-2-3 2V3zm3 5h6m-6 4h6" /></svg>Factura electrónica</span>
+      <span className="inline-flex shrink-0 items-center gap-2"><svg aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M3 5h18v14H3V5zm0 5h18m-14 5h3" /></svg>Nequi, Daviplata, tarjetas</span>
+    </div>
     <CatalogFilterDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)}><CatalogFilters {...filterProps} idPrefix="mobile-catalog" /></CatalogFilterDrawer>
     {modalProduct && <ProductModal product={modalProduct} onClose={() => setModalProduct(null)} />}
-  </div>;
+  </div></CatalogPriceModeProvider>;
 }

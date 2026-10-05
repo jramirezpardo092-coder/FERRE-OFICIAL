@@ -82,7 +82,7 @@ export default function CatalogFilters({ value, onChange, onClear, categories, b
         </fieldset>
 
         <fieldset aria-describedby={`${prefix}-price-help`} className="border-t border-line pt-3">
-          <legend className="mb-2 font-mono text-xs uppercase tracking-[0.025em] text-ink-2">Precio antes de IVA</legend>
+          <legend className="mb-2 font-mono text-xs uppercase tracking-[0.025em] text-ink-2">{value.priceMode === "net" ? "Precio antes de IVA" : "Precio con IVA"}</legend>
           <div className="grid grid-cols-2 gap-2">
             <div>
               <label htmlFor={`${prefix}-price-min`} className="mb-1.5 block font-mono text-xs text-ink-2">Mínimo (COP)</label>

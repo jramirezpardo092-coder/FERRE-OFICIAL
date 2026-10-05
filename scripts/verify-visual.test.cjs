@@ -1,7 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const { classifyUtility, scanSource } = require('./verify-visual-tokens.cjs');
-const { groupRows, sessionCLS, countPaintRegions, summarizeMeasurement, parseArgs } = require('./verify-visual-browser.cjs');
+const { groupRows, sessionCLS, countPaintRegions, systemFontCheck, summarizeMeasurement, parseArgs } = require('./verify-visual-browser.cjs');
 
 test('semantic tokens and geometry are accepted while palette variants and literal colors are rejected', () => {
   for (const value of ['hover:bg-brand', 'dark:text-ink-2', 'border-wa-edge', 'bg-overlay/40', 'text-[28px]', 'ring-2', 'w-[72px]', 'fill-current', 'bg-[rgb(var(--paper)/0.5)]']) assert.equal(classifyUtility(value), null, value);
@@ -44,14 +44,25 @@ test('paint regions deduplicate nested surfaces but preserve distinct visible re
   assert.equal(countPaintRegions([paint('left', 0, 0, 10, 10), paint('right', 20, 0, 30, 10), paint('bridge', 10, 0, 20, 10)]).length, 1);
 });
 
-test('report mode preserves the actual missing preload failure while required mode rejects it', () => {
-  const dom = { paints: [], cards: [], runtimeClasses: [], targets: [], unresolvedPseudos: [], gradients: [], clsSupported: true, layoutShifts: [], fonts: { passed: false, archivoFamily: 'Archivo', archivoUrls: ['/archivo.woff2'], preloads: [] } };
+test('report mode preserves a font-strategy failure while required mode rejects it', () => {
+  const dom = { paints: [], cards: [], runtimeClasses: [], targets: [], unresolvedPseudos: [], gradients: [], clsSupported: true, layoutShifts: [], fonts: { bodyFamily: 'Archivo', faces: [], fontRequests: [], unreadableSheets: [], preloads: [] } };
   const options = { alignmentRequired: false, redBudgetRequired: false };
   const reported = summarizeMeasurement(dom, { ...options, fontGate: 'report' });
   assert.equal(reported.checks.fonts.passed, false);
   assert.equal(reported.checks.fonts.required, false);
   assert.equal(reported.passed, true);
   assert.equal(summarizeMeasurement(dom, { ...options, fontGate: 'required' }).passed, false);
+});
+
+test('system typography requires a native stack and rejects font downloads, preloads, or unreadable CSS', () => {
+  const fonts = { bodyFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif', faces: [], preloads: [], fontRequests: [], unreadableSheets: [] };
+  assert.equal(systemFontCheck(fonts), true);
+  assert.equal(systemFontCheck({ ...fonts, bodyFamily: 'Archivo, sans-serif' }), false);
+  assert.equal(systemFontCheck({ ...fonts, faces: [{ family: 'Unused downloaded font' }] }), false);
+  assert.equal(systemFontCheck({ ...fonts, preloads: [{ href: '/unnecessary-font.woff2' }] }), false);
+  assert.equal(systemFontCheck({ ...fonts, fontRequests: ['https://fonts.googleapis.com/css2?family=Archivo'] }), false);
+  assert.equal(systemFontCheck({ ...fonts, unreadableSheets: ['https://unknown.example/styles.css'] }), false);
+  assert.equal(systemFontCheck({ bodyFamily: 'system-ui' }), false, 'missing measurement evidence cannot pass');
 });
 
 test('unknown options and invalid font gate cannot silently reduce coverage', () => {

@@ -1,11 +1,13 @@
 import type { Product } from "./types";
-import { getAvailableQuantity, getDiscountPercent, hasVerifiedPrice } from "./utils";
+import type { CatalogPriceMode } from "./catalog-types";
+import { getAvailableQuantity, getDiscountPercent, getTaxRate, hasVerifiedPrice } from "./utils";
 
 export type FiltersValue = {
   category: string;
   brand: string;
   priceMin: string;
   priceMax: string;
+  priceMode?: CatalogPriceMode;
   availability: "all" | "in-stock" | "on-request";
   offersOnly: boolean;
 };
@@ -15,6 +17,7 @@ export const DEFAULT_FILTERS: Readonly<FiltersValue> = Object.freeze({
   brand: "",
   priceMin: "",
   priceMax: "",
+  priceMode: "gross",
   availability: "all",
   offersOnly: false,
 });
@@ -23,16 +26,32 @@ export type FiltersValidation = {
   valid: boolean;
   min?: number;
   max?: number;
-  errors: { priceMin?: string; priceMax?: string; priceRange?: string };
+  errors: { priceMin?: string; priceMax?: string; priceRange?: string; priceMode?: string };
 };
 
-export function normalizeCatalogFilters(value: Partial<FiltersValue>): FiltersValue {
+export function isCatalogPriceMode(mode: unknown): mode is CatalogPriceMode {
+  return mode === "gross" || mode === "net";
+}
+
+/** Ranges and sorting compare the same integer COP amount presented to the customer. */
+export function getCatalogPrice(product: Product, mode: CatalogPriceMode = "gross"): number | null {
+  if (!hasVerifiedPrice(product)) return null;
+  if (mode === "net") return Math.round(product.precio);
+  const rate = getTaxRate(product);
+  if (rate === null) return null;
+  const gross = product.precio * (1 + rate / 100);
+  if (!Number.isFinite(gross)) return null;
+  return Math.round(gross);
+}
+
+export function normalizeCatalogFilters(value: Partial<FiltersValue>): FiltersValue & { priceMode: CatalogPriceMode } {
   const text = (input: unknown) => typeof input === "string" ? input.trim() : "";
   return {
     category: text(value.category),
     brand: text(value.brand),
     priceMin: text(value.priceMin),
     priceMax: text(value.priceMax),
+    priceMode: isCatalogPriceMode(value.priceMode) ? value.priceMode : "gross",
     availability: value.availability === "in-stock" || value.availability === "on-request" ? value.availability : "all",
     offersOnly: value.offersOnly === true,
   };
@@ -40,6 +59,7 @@ export function normalizeCatalogFilters(value: Partial<FiltersValue>): FiltersVa
 
 export function validateCatalogFilters(value: FiltersValue): FiltersValidation {
   const errors: FiltersValidation["errors"] = {};
+  if (value.priceMode !== undefined && !isCatalogPriceMode(value.priceMode)) errors.priceMode = "Selecciona precios con IVA o sin IVA.";
   const parse = (text: string, field: "priceMin" | "priceMax") => {
     if (!text.trim()) return undefined;
     const price = Number(text);
@@ -80,7 +100,10 @@ export function applyCatalogFilters<T extends Product>(products: readonly T[], v
     const inStock = getAvailableQuantity(product) > 0;
     if (filters.availability === "in-stock" && !inStock) return false;
     if (filters.availability === "on-request" && inStock) return false;
-    if (usesPrice && (!hasVerifiedPrice(product) || (min !== undefined && product.precio < min) || (max !== undefined && product.precio > max))) return false;
+    if (usesPrice) {
+      const price = getCatalogPrice(product, filters.priceMode);
+      if (price === null || (min !== undefined && price < min) || (max !== undefined && price > max)) return false;
+    }
     if (filters.offersOnly && !(hasVerifiedPrice(product) && typeof product.original === "number"
       && Number.isFinite(product.original) && product.original > product.precio && (getDiscountPercent(product) ?? 0) > 0)) return false;
     return true;

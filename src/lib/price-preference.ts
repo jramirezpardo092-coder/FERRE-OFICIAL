@@ -1,8 +1,10 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { createContext, useContext, useSyncExternalStore } from "react";
 
 export type PriceMode = "gross" | "net";
+const CatalogPriceMode = createContext<{ mode: PriceMode; onModeChange: (mode: PriceMode) => void } | null>(null);
+export const CatalogPriceModeProvider = CatalogPriceMode.Provider;
 const STORAGE_KEY = "fp_price_mode";
 let preference: PriceMode = "gross";
 let loaded = false;
@@ -45,5 +47,14 @@ function subscribe(listener: () => void) {
 }
 
 export function usePricePreference(): PriceMode {
-  return useSyncExternalStore(subscribe, getPricePreference, () => "gross");
+  const catalogMode = useContext(CatalogPriceMode);
+  const savedMode = useSyncExternalStore<PriceMode>(subscribe, getPricePreference, () => "gross");
+  // A shared catalog URL controls cards, filters and the selector, including server HTML.
+  return catalogMode?.mode ?? savedMode;
+}
+
+/** Quick-view and toolbar selectors share the catalog URL while other screens use saved preferences. */
+export function useSetPricePreference(): (mode: PriceMode) => void {
+  const catalog = useContext(CatalogPriceMode);
+  return (mode) => { setPricePreference(mode); catalog?.onModeChange(mode); };
 }

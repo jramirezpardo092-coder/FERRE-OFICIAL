@@ -28,7 +28,7 @@ export default function ParditoAssist() {
     const onScroll = () => { const next = Math.max(0, window.scrollY); if (Math.abs(next - previous) > 8) { setHidden(next > previous && next > (isCatalog && mobile.matches ? 16 : 100)); previous = next; } };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [pathname]);
+  }, [pathname, isCatalog]);
   const dialogRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const wasOpen = useRef(false);

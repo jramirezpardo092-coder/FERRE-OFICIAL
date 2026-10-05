@@ -73,7 +73,7 @@ export default function ProductCard({ product, onOpenModal, viewMode = "responsi
           <div data-design-actions className="product-card-actions flex items-stretch gap-2">
             <button type="button" onClick={handleAdd} className={cn("product-card-add inline-flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-control border text-sm font-semibold transition-colors motion-reduce:transition-none", added ? "border-ink bg-ink text-on-ink" : "border-brand-text bg-brand-tint text-brand-text hover:border-brand hover:bg-brand hover:text-on-brand active:bg-brand-press")} aria-label={`${actionLabel}: ${name}${added ? ", agregar más a cotización" : ""}${inStock ? "" : ", agregar con disponibilidad a confirmar"}`}>
               <span aria-hidden="true" className="product-card-add-symbol">{added ? "✓" : "+"}</span>
-              <span className="product-card-add-label">{actionLabel}</span>
+              <span className="product-card-add-label">{actionLabel}</span><span className="product-card-add-mobile">{added ? "Agregado" : "Agregar"}</span>
               {added && <span aria-hidden="true" className="product-card-add-quantity font-mono text-xs">{quantityLabel}</span>}
             </button>
             <a href={buildQuoteWhatsAppUrl([{ ...product, qty: inStock ? Math.min(1, stock) : 1 }])} target="_blank" rel="noopener noreferrer" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-control border border-wa-edge bg-surface text-wa hover:border-ink" aria-label={`Consultar ${name} por WhatsApp`} title="Consultar por WhatsApp">

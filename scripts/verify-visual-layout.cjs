@@ -68,7 +68,14 @@ function measureViewportLayout() {
         if (hitRoles.size) collisions.push(item);
       } catch (error) { unknown.push({ path: index, message: error.message }); }
     }
-    stripes = { hero: homeBox, texts, svgCount: drawings.length, pathCount: paths.length, evidence, unknown, collisions, passed: texts.every(text => text.rect && text.rect.width > 0 && text.rect.height > 0) && drawings.length > 0 && paths.length > 0 && unknown.length === 0 && collisions.length === 0, scope: 'Conservative path stroke sampling at <=0.25 screen px with stroke radius plus full-sample uncertainty; protects entire H1/paragraph boxes.' };
+    const searchForm = home.querySelector('form[role="search"]');
+    const searchInput = searchForm?.querySelector('input[type="search"][name="q"]');
+    const searchSubmit = searchForm?.querySelector('button[type="submit"]');
+    const searchRect = rect(searchForm);
+    const search = { present: !!searchInput && !!searchSubmit, action: searchForm?.getAttribute('action'), method: searchForm?.getAttribute('method'), rect: searchRect,
+      passed: !!searchInput && !!searchSubmit && searchForm.getAttribute('action') === '/catalogo' && searchForm.getAttribute('method')?.toLowerCase() === 'get' && !!searchRect && searchRect.left >= 0 && searchRect.right <= innerWidth && searchRect.top >= fixedHeaderBottom && searchRect.bottom <= innerHeight };
+    const decorationsResolved = drawings.length === 0 || paths.length > 0;
+    stripes = { hero: homeBox, texts, search, svgCount: drawings.length, pathCount: paths.length, evidence, unknown, collisions, passed: texts.every(text => text.text?.trim() && text.rect && text.rect.width > 0 && text.rect.height > 0 && text.rect.left >= 0 && text.rect.right <= innerWidth) && search.passed && decorationsResolved && unknown.length === 0 && collisions.length === 0, scope: 'Static hero must show its title, introduction, and working GET search above the fold. Optional decorative paths must not cross text: conservative stroke sampling at <=0.25 screen px.' };
   }
   return { catalog, stripes };
 }

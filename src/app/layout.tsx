@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
-import localFont from "next/font/local";
 import "./globals.css";
 import "./quote-visual.css";
 import "@/components/catalog/product-visual.css";
@@ -14,16 +12,6 @@ import { SITE } from "@/lib/constants";
 import productsData from "@/data/products.json";
 
 const catalogCount = productsData.length.toLocaleString("es-CO");
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  display: "swap",
-  preload: false,
-  variable: "--font-manrope",
-});
-
-const archivo = localFont({ src: "./fonts/archivo-latin-variable.woff2", weight: "700 800", style: "normal", display: "swap", preload: true, variable: "--font-archivo", fallback: ["Arial Narrow", "Arial", "sans-serif"] });
-const plexMono = localFont({ src: "./fonts/ibm-plex-mono-latin-500.woff2", weight: "500", style: "normal", display: "swap", preload: false, variable: "--font-plex-mono", fallback: ["Courier New", "monospace"] });
 
 export const metadata: Metadata = {
   title: "Ferretería Pardo SAS | Catálogo, herrajes y herramientas en Bogotá",
@@ -60,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={`${manrope.variable} ${archivo.variable} ${plexMono.variable}`} suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <head>
         {/* Aplica la preferencia antes del primer pintado para evitar un destello claro. */}
         <script dangerouslySetInnerHTML={{ __html: `(()=>{let t;try{t=localStorage.getItem("theme")}catch{}document.documentElement.classList.toggle("dark",t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches))})()` }} />

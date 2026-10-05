@@ -37,7 +37,7 @@ test("company price preference persists, synchronizes tabs and works when storag
     addEventListener: (key, listener) => events.set(key, listener),
     removeEventListener: (key) => events.delete(key),
   };
-  const preferences = load("src/lib/price-preference.ts", { react: { useSyncExternalStore(subscribe, snapshot, serverSnapshot) {
+  const preferences = load("src/lib/price-preference.ts", { react: { createContext: React.createContext, useContext: () => null, useSyncExternalStore(subscribe, snapshot, serverSnapshot) {
     assert.equal(serverSnapshot(), "gross");
     cleanup = subscribe(() => { notifications++; });
     return snapshot();
@@ -52,7 +52,7 @@ test("company price preference persists, synchronizes tabs and works when storag
   assert.equal(notifications, 2);
   cleanup();
   assert.equal(events.size, 0);
-  const blocked = load("src/lib/price-preference.ts", { react: {} }, { window: { localStorage: { getItem() { throw new Error("Blocked"); }, setItem() { throw new Error("Blocked"); } } } });
+  const blocked = load("src/lib/price-preference.ts", { react: { createContext: React.createContext } }, { window: { localStorage: { getItem() { throw new Error("Blocked"); }, setItem() { throw new Error("Blocked"); } } } });
   assert.equal(blocked.getPricePreference(), "gross");
   blocked.setPricePreference("net");
   assert.equal(blocked.getPricePreference(), "net");
@@ -80,6 +80,16 @@ test("quotation message preserves exact SKU/ref, formats units, marks sold-out a
   assert.match(pending, /Cantidad: 1 \(unidad por confirmar\)/);
   assert.match(pending, /Precio e impuesto: por confirmar/);
   assert.doesNotMatch(pending, /999|Total estimado con IVA/);
+});
+
+test("catalog URL price mode governs server-rendered cards while other screens keep the default", () => {
+  const preferences = load("src/lib/price-preference.ts", { react: React });
+  function Value() { return React.createElement("span", null, preferences.usePricePreference()); }
+  assert.equal(renderToStaticMarkup(React.createElement(Value)), "<span>gross</span>");
+  for (const mode of ["net", "gross"]) {
+    const html = renderToStaticMarkup(React.createElement(preferences.CatalogPriceModeProvider, { value: { mode, onModeChange() {} } }, React.createElement(Value)));
+    assert.equal(html, `<span>${mode}</span>`);
+  }
 });
 
 test("price display gives gross priority, flips company hierarchy and does not invent unknown price/tax", () => {

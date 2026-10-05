@@ -1,107 +1,36 @@
-# Ferretería Pardo — mostrador experto
+# Ferretería Pardo: claridad para elegir
 
-Fuente de verdad visual. Alcance: presentación y estados de interfaz; conservar datos, fotos aprobadas, logo, rutas, textos legales, metadatos, JSON-LD y reglas de cotización. Base: `6909394e0f59a585caeaece768ffec4eee6f83d8`. Las 32 referencias anteriores al cambio están en `outputs/ferrepardo-visual-20261004/before` fuera del repositorio.
+La instrucción del 5 de octubre de 2026 actualiza la dirección visual de la PR #9: una experiencia limpia, precisa y tranquila, inspirada en los principios de jerarquía, consistencia y accesibilidad de Apple. Conserva la identidad de Pardo y las funcionalidades de las PR #9 y #10.
 
-## Dirección
+## Principios
 
-Catálogo industrial y etiquetas de estantería: papel cálido, negro, rojo preciso, información técnica legible y alineación constante. Sin degradados, cristales, elevación grande, decoración flotante ni animaciones de entrada al hacer scroll. El blanco de las fotografías se trata como soporte fotográfico y no como otro marco.
+- El producto y la tarea llevan el protagonismo. No hay rotación automática de mensajes ni controles decorativos.
+- Buscar, comprobar la referencia y cotizar son las acciones principales. La búsqueda está cerca del título en móvil.
+- Fotografías reales verificadas, sin sustituir variantes por artículos parecidos. Un diagrama no es una fotografía. Donde falta evidencia, se muestra «Foto pendiente».
+- La cotización no es un pago ni una confirmación de existencia. El asesor confirma disponibilidad, total y entrega.
+- No mostrar testimonios sin fuente. El bloque anterior de citas anónimas se sustituye por los pasos reales de cotización.
 
-## Tokens de color
+## Sistema visual
 
-Los valores se declaran una sola vez como componentes RGB en `globals.css`. Tailwind expone nombres semánticos con `rgb(var(--token) / <alpha-value>)`, incluyendo opacidades. Prohibidas las paletas Tailwind y los hex arbitrarios en componentes y páginas; `transparent`, `currentColor` e `inherit` son valores estructurales permitidos.
+Los colores están definidos mediante tokens semánticos en `src/app/globals.css`. Papel gris neutro, superficies blancas, texto oscuro, rojo Pardo como acción principal. Modo oscuro completo y soporte fotográfico blanco constante. Los tokens `photo-ink`, `photo-muted` y `photo-line` mantienen contraste dentro del soporte fotográfico incluso en oscuro.
 
-| Variable / utilidad | Claro | Oscuro | Uso |
-| --- | --- | --- | --- |
-| `--paper` / paper | #F6F4EF | #121417 | Fondo general |
-| `--surface` / surface | #FFFFFF | #1B1F24 | Tarjetas y paneles |
-| `--ink` / ink | #15171B | #F6F4EF | Texto y selección neutra |
-| `--ink-2` / ink-2 | #4A4F57 | #B9BEC6 | Texto secundario |
-| `--line` / line | #E3DFD6 | #343A43 | Separadores y bordes no esenciales |
-| `--control` / control | #74716B | #7C838C | Borde esencial de campos y controles (≥ 3:1) |
-| `--brand` / brand | #D02731 | #D02731 | CTA principal y contador |
-| `--brand-press` / brand-press | #A91F28 | #A91F28 | CTA pulsado |
-| `--brand-text` / brand-text | #CF2630 | #FF949A | Texto y borde de CTA sobre tinte |
-| `--brand-tint` / brand-tint | #FBEAEA | #3D2228 | CTA de tarjeta en reposo |
-| `--on-brand` / on-brand | #FFFFFF | #FFFFFF | Texto sobre rojo sólido |
-| `--on-ink` / on-ink | #FFFFFF | #15171B | Texto en chips/estado seleccionado |
-| `--ok` / ok | #2E6B3F | #70B985 | Punto de stock positivo exclusivamente |
-| `--warn` / warn | #A76412 | #E9B75F | Punto de últimas unidades |
-| `--muted` / muted | #73777E | #929BA7 | Punto de stock a confirmar |
-| `--wa` / wa | #1FA855 | #1FA855 | Exclusivamente WhatsApp |
-| `--wa-edge` / wa-edge | #176B38 | #67CA8D | Borde de acción WhatsApp |
-| `--on-wa` / on-wa | #071B10 | #071B10 | Texto accesible sobre verde WhatsApp |
-| `--hero` / hero | #15171B | #15171B | Inicio y footer, negro de marca estable |
-| `--hero-ink` / hero-ink | #F6F4EF | #F6F4EF | Texto sobre negro de marca |
-| `--hero-muted` / hero-muted | #B9BEC6 | #B9BEC6 | Texto secundario de footer |
-| `--photo` / photo | #FFFFFF | #FFFFFF | Fondo óptico de fotos y soporte del logo |
-| `--overlay` / overlay | #15171B | #000000 | Fondo de diálogos, con opacidad |
+Fuentes nativas de sistema: Apple system, BlinkMacSystemFont, Segoe UI, Arial. No descargas ni precargas de fuentes. Una sola familia visual para títulos y texto, monospace de sistema para referencias cuando aporta claridad. Títulos de espaciado ajustado, cuerpo de 16 px, botones de 14 px. Radios de controles de 12 px, tarjetas de 20 px y chips circulares.
 
-El rojo sólido en catálogo de escritorio se limita a dos elementos visibles como máximo. Las franjas son decorativas finas, no paneles. La tarjeta usa tinte en reposo y negro cuando ya forma parte de la cotización; sólo la tarjeta bajo hover se vuelve roja. En ficha la acción principal es roja. El panel usa verde WhatsApp como excepción específica solicitada; es el único CTA verde sólido. El resto de enlaces de WhatsApp son outline, con ícono verde sobre `surface` (3,09:1), no directamente sobre `paper` (2,81:1). El botón verde usa texto `on-wa` (5,79:1), nunca blanco.
+Contenedor máximo de 1280 px. Márgenes laterales de 16/24/32 px. Espacio generoso en portada, mayor compacidad en catálogo. Borde de campo con contraste esencial, foco visible de 2 px. Objetivos táctiles de 44 px como mínimo. El header usa fondo casi opaco y desenfoque discreto; el contenido no usa materiales translúcidos.
 
-El rojo de marca permanece #D02731. Sobre #FBEAEA da 4,496:1, ligeramente inferior al piso de 4,5:1: el token exclusivo para texto se ajusta un paso a #CF2630. Contrastes iniciales calculados: ink-2/paper 7,50:1; dark ink-2/surface 8,87:1; dark brand-text/brand-tint 6,83:1. Texto ≥ 4,5:1 y límites esenciales/foco ≥ 3:1, también en hover y oscuro. `line` es decorativo; no sustituye el borde `control` de un campo.
+## Experiencias
 
-## Tipografía
+- Portada estática con búsqueda GET nativa; fotografía existente del SKU 13751 enlazada a su ficha real, con alternativa de producto destacado si deja de estar disponible. Los conteos se calculan desde catálogo.
+- Categorías en una cuadrícula simple y marcas del catálogo real. No afirmaciones de representación oficial.
+- Catálogo con búsqueda/filtrado compartibles por URL, navegación atrás/adelante, filtros de IVA y orden coherentes. Las categorías móviles indican que se pueden desplazar. La información de entrega y pago aparece después de los resultados.
+- Tarjetas móviles con acción textual «Agregar» y estado «Agregado». WhatsApp conserva su acción separada, sin enviar mensajes automáticamente.
+- Ficha móvil con nombre y referencia antes de la foto, fotografía de altura controlada y barra inferior de cotización. Cuando no hay foto se reduce el panel vacío.
+- Galería, detalles, disponibilidad, cantidades, cotización persistente y revalidación conservan la lógica existente.
 
-- **Display:** Archivo, ancho fijado en `wdth=80` y peso variable 700–800; `font-display: swap`, latin. H1/H2, precios y cifras. Única fuente con preload. `font-display` es el nombre de utilidad y `--font-archivo` la variable de Next. El archivo se limita a los ejes usados mediante `fontTools.varLib.instancer`: 24.328 bytes frente a 90.104, conservando los 302 glifos y su mapa Unicode; véase [informe](docs/visual/reports/font-optimization.json).
-- **Texto:** Manrope existente, estilos usados 400/600; `display: swap`, latin y preload desactivado. No introducir otra familia de texto.
-- **Técnica:** IBM Plex Mono 500 normal, latin, `display: swap`, sin preload; SKU, referencia, medidas, fecha, contadores y paginación. Nunca por debajo de 12 px.
-- Máximo dos archivos binarios nuevos: Archivo latin variable e IBM Plex Mono latin 500. Usar `next/font/local` con originales oficiales y licencia OFL para evitar que el loader de Google emita otros subconjuntos. Manrope mantiene su origen existente.
-- Escala: 12/16, 14/20, 16/24, 18/28, 22/28, 28/32, 40/44, 56/56 (tamaño/interlineado px). Botones 14 px semibold. Nombre de tarjeta 16/22, dos líneas. Espaciado del display grande: −0,025 em; de la tipografía técnica: 0,025 em. Precios y totales `tabular-nums`.
+## Datos protegidos
 
-## Forma, espacio y movimiento
+No se modifican precios, inventario, marcas, unidades, nombres originales ni rutas canónicas al cambiar presentación. La mejora de IVA de la PR #10 se integra conservando los controles de la PR #9. Los horarios aprobados de la PR #9 se mantienen. Fotografías adicionales se documentan por SKU con fuente y correspondencia exacta; las discrepancias se registran para aclaración comercial.
 
-- Contenedor máximo 1280 px; laterales 16 px móvil, 24 px tablet, 32 px escritorio. Base 4 px; separaciones de bloque 24/32/48 px.
-- `--radius-control: 6px`, `--radius-card: 10px`, `--radius-chip: 999px`. PARDITO usa radio card: 56 px como flotante y 44 px en el espacio reservado del header del catálogo móvil.
-- Borde 1 px; sin sombra en reposo. Hover de tarjeta: borde ink-2 y sombra 0 2px 6px con overlay al 6 %, desplazamiento máximo 1 px.
-- Transiciones 150–200 ms en color, borde, foco, imagen y estado agregado. Imagen hover 1,03. Pulso del contador una sola vez y ≤ 200 ms. Sin animación decorativa o dependiente de scroll. `prefers-reduced-motion` elimina animación, escala y desplazamiento.
-- Motivo: tres trazos diagonales paralelos a 60°, decorativos `aria-hidden`, un acento por bloque. Color brand; trazos finos, no fondo sólido dominante. Inicio y footer; separadores puntuales y estado vacío. No sustituir ni alterar el logo original.
+## Verificación
 
-## Anatomía de componentes
-
-### Header
-
-Una barra de surface con borde line. Logo original de al menos 36 px en escritorio y 30 px en móvil, con soporte photo cuando el modo oscuro lo requiera. Navegación sobria; asesor outline con ícono wa. Datos de contacto y horario en footer; redes en footer. Cambio de tema en footer o menú. Cotización en pastilla neutra con contador brand y área táctil ≥ 44 px. Menú y diálogos conservan su navegación/foco.
-
-### Inicio y hero compacto
-
-Inicio con fondo hero negro, acento diagonal en esquina, H1 display de 56 px en escritorio y 40 px en móvil, y buscador protagonista. En móvil, las franjas ocupan sólo la esquina superior derecha, por encima del inicio del texto; nunca se cruzan con títulos o párrafos. Contenido y destinos existentes conservados. Catálogo/categoría con hero paper: H1 display de 40 px en escritorio y 28 px en móvil, fecha mono y una sola línea breve bajo el H1 móvil. Altura máxima de 120/110 px respectivamente. Las introducciones de categoría existentes se mantienen completas al final del catálogo, sin alterar metadatos. La reposición de agotados se menciona una sola vez.
-
-### Herramientas y filtros
-
-Buscador de 52 px, radio de 6 px y borde control; foco de 1,5 px ink, sin ayuda repetida debajo. Categorías en chips con conteo mono; activo ink/on-ink; ocultar conteos de 0. El filtro activo sigue disponible en la lista de filtros aplicados para quitarlo. Información de confianza en una línea de íconos de 16 px y divisores, sin caja, con desplazamiento horizontal móvil. Segmento «Con IVA / Sin IVA», sin salto de línea y con «empresas» en el nombre accesible, usando el store existente. En móvil, contador, Filtros y orden comparten fila; el segmento IVA ocupa la siguiente. Separaciones de 12 px en estas herramientas para mostrar completa la primera tarjeta a 390×844. Radios de 16 px dentro de etiquetas táctiles de 44 px; disponibilidad en fila compacta con texto y descripción; secciones con separadores line y títulos mono uppercase. Barra lateral sticky con scroll propio.
-
-En categorías, las migas conservan objetivos de 44 px con espaciado vertical compacto. En escritorio, los filtros aplicados comparten la fila de 52 px del buscador; en móvil quedan justo debajo. Así la primera fila también cabe a 1440×900 sin eliminar controles.
-
-### Tarjeta
-
-`data-design-card` y SKU identifican la tarjeta para medición. Grilla: área 1:1 constante, excepto el catálogo de escritorio (desde 1024 px), donde el marco es 4:3. Fondo photo para imagen real y margen interior del 10 %, `object-contain`; sin foto usa paper, ícono de 40 px ink-2 y «Foto pendiente» de 12 px. Lista móvil: imagen de 88 px.
-
-Metadatos en una sola línea truncada: marca existente uppercase ink, SKU/ref mono ink-2. Nombre de 16/22 px semibold, dos líneas y altura mínima de 44 px. Stock: punto de 8 px ok/warn/muted más texto ink-2, sin colorear el texto. Precio display de 22/28 px, IVA de 12 px; segunda línea de 12 px para base + IVA + unidad. Reservar la misma altura aunque falten precio/unidad. `data-design-price` marca el precio principal y `data-design-actions` el bloque de acciones.
-
-Catálogo de 4 columnas desde 1280 px, también con barra lateral; primera fila completa con precio y acciones dentro de 1440×900. El CTA conserva 14 px, con dos líneas y altura de 56 px en el catálogo de escritorio. Acciones ancladas al fondo y alineadas por fila con diferencia ≤ 2 px. Botón tint/brand-text con borde brand-text y +; hover brand/on-brand. Si la cantidad en cotización es positiva: ink/on-ink y «✓ En cotización · cantidad» durante la sesión, con snapshot escalar del store existente. El estado no cambia la operación ni validación de agregar. En móvil el CTA es un botón «+» de 44 px a la derecha del precio con nombre accesible; el estado agregado muestra cantidad/confirmación. WhatsApp es un botón cuadrado de 44 px, outline sobre surface. Agotados siguen cotizables y marcados a confirmar. PARDITO ocupa un espacio reservado de 44 px en el header del catálogo móvil: se oculta al bajar y reaparece al subir; nunca se superpone a las acciones. La lista conserva 96 px de espacio inferior.
-
-### Ficha
-
-Un marco fotográfico y miniaturas bajo la imagen, misma galería y originales. Columna técnica con meta mono, H1 display, precio sin caja y separador; cantidad y CTA principal a la misma altura. Tabla Datos del producto de dos columnas con SKU, referencia, marca si existe, unidad si existe, categoría y disponibilidad de los campos actuales; no inferir especificaciones. Móvil: una barra fija inferior con precio y CTA, mismo estado/cantidad/handlers, padding y safe-area reservados. PARDITO flotante oculto mientras existe esta barra en móvil; no ocultar su diálogo ni quitar foco.
-
-### Cotización
-
-Mantener revalidación, límites, IVA, campos opcionales y mensaje WhatsApp. Líneas con miniatura o ícono de 48 px, nombre, SKU mono y selector de cantidad compacto de 44 px. Totales en tabla, cifras tabulares a la derecha; total display de 28 px y línea IVA ink-2. Botón final WhatsApp wa/on-wa, borde wa-edge. Preparar cotización conserva su paso/handler. Estado vacío con PARDITO de 160–200 px y Ver catálogo.
-
-### Vacíos, paginación y footer
-
-PARDITO de 160–200 px en búsqueda vacía, cotización vacía y página 404; título breve, motivo diagonal y acción existente con término buscado o catálogo. Conservar ilustraciones corporativas; ninguna foto sintética de producto. Paginación mono, página actual ink/on-ink, enlaces y aria-current intactos. Footer hero/hero-ink, franjas discretas, contactos y redes; medios de pago en mono sin pastillas.
-
-## Verificación y entrega
-
-Una PR. Comparativas antes/después: 8 vistas × 2 anchos (390/1440) × 2 temas = 32 antes y 32 después; footer/estado vacío pueden ser capturas completas para que sus acciones sean legibles. Capturas [antes](docs/visual/before/) y [después](docs/visual/after/); [índice de comparativas y resultados reproducibles](docs/visual/README.md). Los informes no incluyen datos privados ni credenciales.
-
-Script reproducible: detectar colores Tailwind no tokenizados en todos los componentes/páginas; contar fondos rojos sólidos efectivos visibles en catálogo desktop (incluye pseudo-elementos y estados reales); agrupar tarjetas por fila y comprobar diferencias de alineación de precio/acciones ≤ 2 px; axe con 0 violaciones en ambos temas y anchos. Comprobar foco/44 px, estados agregados, barra móvil, precio/IVA y contrastes. CLS < 0,1 y PSI móvil ≥ 95 en catálogo/ficha; conservar todas las mediciones, sin seleccionar reintentos favorables.
-
-Congelados: JSON de datos y enriquecimiento, core cart-store, rutas/middleware, seo.ts/metadata/JSON-LD y APIs. Las pruebas funcionales existentes siguen pasando; adaptar únicamente expectativas legítimas de presentación con evidencia.
-
-Correcciones solicitadas el 04·10·2026: se actualizan únicamente las reglas anteriores de franjas móviles, compacidad del catálogo, cuatro columnas, marco 4:3 y posición de PARDITO. La nueva instrucción sobre horarios autoriza actualizar el horario visible y `openingHoursSpecification`: lunes a jueves 08:15–16:45, viernes 08:15–16:30 y sábado 08:15–13:00. Los precios de lista 2 y los otros ajustes funcionales se reservan para una PR posterior a la fusión de la #9 por el usuario.
-
-## Validación de dirección con la propietaria/el propietario
-
-Se implementan las decisiones explícitas del encargo: Archivo con ancho 80, franjas a 60° y PARDITO existente. Se entrega la comparación para validar su intensidad y tamaño. Cualquier nueva ilustración de PARDITO o cambio de fuente distinto de Archivo requerirá una propuesta visual posterior; esta entrega no introduce nuevas ilustraciones.
+Ejecutar `npm run lint`, `npm run typecheck`, `npm test`, `node --test scripts/*.test.cjs`, `python -m unittest discover -s tests -p 'test_*.py'`, `npm run build` y los verificadores HTTP, funcionales de navegador y visuales disponibles. Navegador: escritorio y móvil, ambos temas, interacción repetida, cierre/Escape, navegación atrás/adelante, IVA, búsqueda, filtros, imágenes fallidas, cotización y ausencia de desbordamiento. Mantener cero violaciones axe y CLS menor de 0,1; registrar rendimiento sin seleccionar únicamente resultados favorables.

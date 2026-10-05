@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCatalogProduct, getCatalogProducts, getRelatedCatalogProducts } from "@/lib/catalog-service";
 import { getLocalProductImagePath } from "@/lib/product-enrichment";
-import { formatCOP, getDiscountPercent, hasVerifiedPrice, formatTaxLabel, getUnitPriceWithTax, getAvailableQuantity, formatQuantity } from "@/lib/utils";
+import { formatCOP, getDiscountPercent, hasVerifiedPrice, getUnitPriceWithTax, getAvailableQuantity, formatQuantity } from "@/lib/utils";
 import { getProductJsonLd } from "@/lib/seo";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ProductCard from "@/components/ProductCard";
@@ -15,6 +15,7 @@ import PricePreferenceToggle from "@/components/catalog/PricePreferenceToggle";
 import { getStockLabel } from "@/lib/quote-presentation";
 import { getProductSlug, getProductPath, getCategoryPath } from "@/lib/catalog/routes";
 import { displayBrand, normalizeProductName, formatUnit } from "@/lib/catalog/normalize";
+import { getCatalogPrice } from "@/lib/catalog-filters";
 
 // Generate static pages for all products
 export function generateStaticParams() {
@@ -27,14 +28,15 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const name = normalizeProductName(product.nombre);
   const brand = displayBrand(product.brand);
   const title = [name, brand && !name.toLowerCase().includes(brand.toLowerCase()) ? brand : "", "Ferretería Pardo Bogotá"].filter(Boolean).join(" | ");
-  const priceDescription = hasVerifiedPrice(product)
-    ? `${formatCOP(product.precio)} ${formatTaxLabel(product)}`
+  const grossPrice = getCatalogPrice(product, "gross");
+  const priceDescription = grossPrice !== null
+    ? `${formatCOP(grossPrice)} IVA incluido`
     : "Precio por confirmar";
 
   return {
     title,
     alternates: { canonical: getProductPath(product) },
-    description: `${name}${brand && !name.toLowerCase().includes(brand.toLowerCase()) ? ` de ${brand}` : ""}. ${priceDescription}. Consulta disponibilidad en Ferretería Pardo, Bogotá. Cotiza por WhatsApp.`,
+    description: `${priceDescription}. ${name}${brand && !name.toLowerCase().includes(brand.toLowerCase()) ? ` de ${brand}` : ""}. Consulta disponibilidad en Ferretería Pardo, Bogotá. Cotiza por WhatsApp.`,
     openGraph: {
       title: name,
       description: `${priceDescription} | ${product.cat}`,
@@ -75,10 +77,14 @@ export default function ProductoPage({ params }: { params: { slug: string } }) {
       />
 
       <section className="product-detail-page">
+        <div className="product-detail-heading mb-5">
+          <p className="mb-2 text-xs text-ink-2">{displayBrand(product.brand)} · SKU {product.id}{product.ref && product.ref !== product.id ? ` · Ref. ${product.ref}` : ""}</p>
+          <div role="heading" aria-level={1} className="text-[28px] font-bold leading-8 text-ink">{normalizeProductName(product.nombre)}</div>
+        </div>
         {/* Product detail */}
         <div className="mb-12 grid gap-8 md:grid-cols-2 lg:gap-12">
           {/* Image */}
-          <div className="relative self-start overflow-hidden rounded-card border border-line">
+          <div data-has-photo={!!product.img} className="product-detail-media relative self-start overflow-hidden rounded-card border border-line">
             {discount && (
               <span className="absolute left-4 top-4 z-10 rounded-control border border-line bg-surface px-3 py-1 font-mono text-sm font-medium text-ink">
                 -{discount}%
@@ -88,12 +94,14 @@ export default function ProductoPage({ params }: { params: { slug: string } }) {
           </div>
 
           {/* Info */}
-          <div className="min-w-0">
+          <div className="product-detail-information min-w-0">
+            <div className="product-detail-identity">
             {displayBrand(product.brand) && <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-ink">{displayBrand(product.brand)}</p>}
             <p className="mb-3 break-words font-mono text-xs tracking-[0.025em] text-ink-2">SKU {product.id}{product.ref && product.ref !== product.id ? ` · Ref. ${product.ref}` : ""}</p>
             <h1 className="mb-4 font-display text-[28px] font-bold leading-8 tracking-[-0.025em] text-ink md:text-[40px] md:leading-[44px]">
               {normalizeProductName(product.nombre)}
             </h1>
+            </div>
 
             <p className="mb-6 flex items-center gap-2 text-sm text-ink-2"><span aria-hidden="true" className={`h-2 w-2 rounded-full ${!inStock ? "bg-muted" : stock <= 3 ? "bg-warn" : "bg-ok"}`} />{getStockLabel(product)}</p>
 

@@ -1,4 +1,4 @@
-/** Diccionarios de presentación. No sustituyen referencias, SKU ni marcas de la fuente. */
+/** Reglas previas, también usadas por las rutas publicadas. No añadir expansiones nuevas aquí. */
 export const NAME_ABBREVIATIONS: ReadonlyArray<readonly [string, string]> = [
   ["P/", "para "],
   ["C/", "con "],
@@ -15,6 +15,12 @@ export const NAME_ABBREVIATIONS: ReadonlyArray<readonly [string, string]> = [
   ["GALV.", "galvanizado"],
   ["PULG.", "pulgadas"],
 ];
+
+/** Aprobadas por el usuario para presentación; las rutas mantienen su escritura previa. */
+export const APPROVED_NAME_ABBREVIATIONS: Readonly<Record<string, string>> = {
+  MOB: "mueble",
+  ECON: "económica",
+};
 
 /** Solo se corrige la escritura de palabras conocidas; no se completa información técnica. */
 export const NAME_SPELLING: Readonly<Record<string, string>> = {

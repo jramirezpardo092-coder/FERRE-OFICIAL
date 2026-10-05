@@ -1,0 +1,33 @@
+{
+  "source": "Evidence from PR9 CI, reused as unchanged visual baseline",
+  "run": "https://github.com/jramirezpardo092-coder/FERRE-OFICIAL/actions/runs/37241722772",
+  "prHead": "36e46a36204f71f038a5d49ef23a1b4220124c6e",
+  "testedTemporaryMergeRef": "5af81e2973432c428c6371a0cc23ecb059b426c1",
+  "note": "Temporary CI merge ref is not evidence that PR9 merged into main. These images predate the current functional branch and are not after screenshots.",
+  "images": [
+    {
+      "file": "catalogo-390-light.png",
+      "width": 390,
+      "height": 844,
+      "theme": "light"
+    },
+    {
+      "file": "catalogo-390-dark.png",
+      "width": 390,
+      "height": 844,
+      "theme": "dark"
+    },
+    {
+      "file": "catalogo-1440-light.png",
+      "width": 1440,
+      "height": 900,
+      "theme": "light"
+    },
+    {
+      "file": "catalogo-1440-dark.png",
+      "width": 1440,
+      "height": 900,
+      "theme": "dark"
+    }
+  ]
+}

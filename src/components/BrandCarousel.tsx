@@ -14,16 +14,16 @@ export default function BrandCarousel({ brands }: { brands: string[] }) {
             <BrandStripes className="h-4 w-7" />
           </div>
           <h2 className="section-title">
-            Marcas que nos respaldan
+            Marcas en nuestro catálogo
           </h2>
           <p className="section-subtitle mx-auto mt-4">
-            Trabajamos con las mejores marcas del mercado ferretero
+            Encuentra tu referencia entre las marcas disponibles.
           </p>
         </div>
 
         {/* Brand grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-          {brands.map((brand) => (
+          {brands.filter(brand => ["YALE", "STANLEY", "EINHELL", "KL", "MOB", "IRWIN"].includes(brand)).slice(0, 6).map((brand) => (
             <Link
               key={brand}
               href={`/catalogo?brand=${encodeURIComponent(brand)}`}

@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { catalogLayoutChecks, planViewportCases, inside } = require('./verify-visual-layout.cjs');
+const { catalogLayoutChecks, planViewportCases, measureViewportLayout, inside } = require('./verify-visual-layout.cjs');
 const { groupRows } = require('./verify-visual-browser.cjs');
 const box = (left,top,width,height) => ({ left,top,width,height,right:left+width,bottom:top+height });
 function catalog(count=4, bottom=890, ratio=4/3) {
@@ -55,4 +55,47 @@ test('coverage includes1280 boundary and all three narrow home widths without du
   assert.equal(new Set(keys).size,keys.length);
   assert.ok(planned.some(item=>item.view==='catalogo'&&item.width===1280));
   assert.equal(planViewportCases({views:['catalogo'],widths:[1280],themes:['light']}).length,1);
+});
+
+test('static home requires genuine visible copy and a GET catalog search within the first viewport', () => {
+  const saved = { document: global.document, innerWidth: global.innerWidth, innerHeight: global.innerHeight };
+  const title = { textContent: 'Grandes proyectos.', getBoundingClientRect: () => box(16, 130, 358, 96) };
+  const intro = { textContent: 'La herramienta indicada.', getBoundingClientRect: () => box(16, 240, 358, 72) };
+  const form = { attributes: { action: '/catalogo', method: 'get' }, search: true, submit: true, rect: box(16, 336, 358, 56),
+    getBoundingClientRect() { return this.rect; },
+    getAttribute(name) { return this.attributes[name]; },
+    querySelector(selector) { return selector.startsWith('input') ? this.search && {} : this.submit && {}; },
+  };
+  const home = {
+    getBoundingClientRect: () => box(0, 80, 390, 764),
+    querySelector: selector => selector.startsWith('[data-home-title') ? title : selector === '[data-home-intro]' ? intro : selector.startsWith('form') ? form : null,
+    querySelectorAll: () => [],
+  };
+  global.document = { querySelectorAll: () => [], querySelector: selector => selector === '.home-hero' ? home : null };
+  global.innerWidth = 390;
+  global.innerHeight = 844;
+  try {
+    assert.equal(measureViewportLayout().stripes.passed, true, 'a static hero does not need decorative SVGs or carousel controls');
+    form.rect.bottom = 845;
+    assert.equal(measureViewportLayout().stripes.passed, false, 'search must not slip below the fold');
+    form.rect.bottom = 392;
+    form.attributes.action = '/incorrect';
+    assert.equal(measureViewportLayout().stripes.passed, false);
+    form.attributes.action = '/catalogo';
+    form.attributes.method = 'post';
+    assert.equal(measureViewportLayout().stripes.passed, false);
+    form.attributes.method = 'get';
+    form.submit = false;
+    assert.equal(measureViewportLayout().stripes.passed, false);
+    form.submit = true;
+    title.textContent = ' ';
+    assert.equal(measureViewportLayout().stripes.passed, false);
+    title.textContent = 'Grandes proyectos.';
+    title.getBoundingClientRect = () => box(16, 130, 390, 96);
+    assert.equal(measureViewportLayout().stripes.passed, false, 'headline overflow must fail');
+  } finally {
+    for (const [name, value] of Object.entries(saved)) {
+      if (value === undefined) delete global[name]; else global[name] = value;
+    }
+  }
 });

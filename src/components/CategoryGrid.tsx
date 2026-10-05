@@ -1,4 +1,3 @@
-import BrandStripes from "./BrandStripes";
 import React from "react";
 import { getCategoryPath } from "@/lib/catalog/routes";
 import Link from "next/link";
@@ -79,72 +78,24 @@ interface Props {
 }
 
 export default function CategoryGrid({ counts: productCounts }: Props) {
-  return (
-    <section id="categorias" className="home-section bg-surface  relative">
-      {/* Subtle top divider */}
-      <div className="absolute top-0 left-0 right-0 border-t border-line" />
-
-      <div className="site-container">
-        {/* Section Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <BrandStripes className="h-4 w-7" />
-            <span className="text-xs font-bold text-brand-text uppercase tracking-[0.2em]">Categorías</span>
-            <BrandStripes className="h-4 w-7" />
-          </div>
-          <h2 className="section-title">
-            Explora por categoría
-          </h2>
-          <p className="section-subtitle mx-auto mt-4">
-            9 categorías con todo lo que necesitas para tu obra, hogar o negocio
-          </p>
-        </div>
-
-        {/* Category Grid — flex wrap to center the last row */}
-        <div className="flex flex-wrap justify-center gap-4 md:gap-5 mb-12">
-          {CATEGORIES.filter(cat => (productCounts[cat.name] || 0) > 0).map((cat) => {
-            const IconComponent = iconMap[cat.name] || IconWrench;
-            const count = (productCounts[cat.name] || 0).toLocaleString("es-CO");
-            return (
-              <Link
-                key={cat.slug}
-                href={getCategoryPath(cat.name)}
-                className="group w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.75rem)] lg:w-[calc(20%-1rem)]"
-              >
-                <div className="relative h-full bg-surface  rounded-card p-6 md:p-8 text-center border border-line  hover:border-brand  hover:shadow-card  transition-all duration-200  flex flex-col items-center justify-center">
-                  {/* Product Count Badge */}
-                  <div className="absolute top-3 right-3 bg-paper  text-ink-2  font-mono text-xs px-2.5 py-1 rounded-control group-hover:bg-brand-tint  group-hover:text-brand-text transition-colors duration-200">
-                    {count}
-                  </div>
-
-                  {/* Icon Container */}
-                  <div className="w-14 h-14 rounded-card bg-surface flex items-center justify-center text-ink-2 mb-4 group-hover:bg-brand-tint group-hover:text-ink transition-all duration-200 group-hover:shadow-card ">
-                    <IconComponent />
-                  </div>
-
-                  {/* Category Name */}
-                  <h3 className="font-bold text-sm md:text-base text-ink-2  group-hover:text-brand-text transition-colors duration-200 leading-tight">
-                    {cat.name}
-                  </h3>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-
-        {/* View All Button */}
-        <div className="flex justify-center">
-          <Link
-            href="/catalogo"
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-ink text-on-ink font-semibold rounded-card hover:bg-ink hover:shadow-card transition-all duration-200  text-sm"
-          >
-            Ver todas las categorías
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
-        </div>
+  const categories = CATEGORIES.filter(category => (productCounts[category.name] || 0) > 0);
+  return <section id="categorias" className="home-section bg-surface">
+    <div className="site-container">
+      <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+        <div><p className="eyebrow mb-3 text-brand-text">Encuentra lo tuyo</p><h2 className="section-title">Cada proyecto, su solución.</h2></div>
+        <Link href="/catalogo" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-ink">Ver todo el catálogo <span aria-hidden="true">→</span></Link>
       </div>
-    </section>
-  );
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+        {categories.map(category => {
+          const Icon = iconMap[category.name] || IconWrench;
+          return <Link key={category.slug} href={getCategoryPath(category.name)} className="category-tile group flex min-h-[150px] flex-col rounded-card bg-paper p-5 transition-colors hover:bg-brand-tint">
+            <span aria-hidden="true" className="mb-5 text-ink-2 group-hover:text-brand-text"><Icon /></span>
+            <h3 className="mt-auto text-sm font-semibold text-ink">{category.name}</h3>
+            <p className="mt-1 text-xs text-ink-2">{productCounts[category.name].toLocaleString("es-CO")} referencias <span aria-hidden="true" className="float-right">↗</span></p>
+          </Link>;
+        })}
+        <Link href="/contacto" className="flex min-h-[150px] flex-col justify-between rounded-card bg-ink p-5 text-on-ink"><span className="text-xl" aria-hidden="true">↗</span><div><h3 className="text-sm font-semibold">¿Buscas algo más?</h3><p className="mt-1 text-xs">Cuéntanos tu proyecto</p></div></Link>
+      </div>
+    </div>
+  </section>;
 }
